@@ -1,0 +1,8 @@
+# c compilation files
+*.exe
+*.ilk
+*.obj
+*.pdb
+
+# vscode directory
+.vscode

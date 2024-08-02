@@ -4,8 +4,8 @@ readme
 ## VScode config
 
 extensions:
-C/C++ Extension Pack
-TODO Tree
+- C/C++ Extension Pack
+- TODO Tree
 
 ## Building
 

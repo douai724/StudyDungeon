@@ -4,10 +4,14 @@
 #include <iostream>
 #include "artwork.h"
 #include "deck.h"
+#include <string>
 
 int main()
 {
     std::cout << "Hello World!\n";
+    std::string blah = "blah";
+    /* print out the current directory */
+    DECK_H_::load_decks();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

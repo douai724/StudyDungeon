@@ -19,7 +19,8 @@
 				"/sdl", // additional security development lifecyle recommended checks (VS19)
 				"/Od", // optimisation disabled (VS19)
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "includes\\*.cpp"
             ],
             "options": {
                 "cwd": "${fileDirname}"

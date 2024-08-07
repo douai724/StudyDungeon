@@ -2,8 +2,8 @@
 //
 
 #include <iostream>
-#include "artwork.h"
-#include "deck.h"
+#include "includes/artwork.h"
+#include "includes/deck.h"
 
 int main()
 {

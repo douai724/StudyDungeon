@@ -20,9 +20,7 @@
 				"/Od", // optimisation disabled (VS19)
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}",
-                "deck.cpp",
-                "menu.cpp",
-                "artwork.cpp"
+                "includes\\*.cpp"
             ],
             "options": {
                 "cwd": "${fileDirname}"

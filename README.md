@@ -1,6 +1,3 @@
-readme
-
-
 ## VScode config
 
 extensions:

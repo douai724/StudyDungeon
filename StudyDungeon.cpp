@@ -2,10 +2,11 @@
 //
 
 #include <iostream>
-#include "artwork.h"
-#include "deck.h"
 #include <string>
+#include "deck.h"
 #include "util.h"
+#include "artwork.h"
+
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
     //const char APP_PATH;  
     std::cout << get_app_path() << '\n';
     /* print out the current directory */
-    DECK_H_::load_decks();
+    load_decks();
     return 0;
 }
 

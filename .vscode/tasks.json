@@ -22,7 +22,8 @@
                 "${file}",
                 "deck.cpp",
                 "menu.cpp",
-                "artwork.cpp"
+                "artwork.cpp",
+                "util.cpp"
             ],
             "options": {
                 "cwd": "${fileDirname}"

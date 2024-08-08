@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,13 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="artwork.cpp" />
-    <ClCompile Include="deck.cpp" />
+    <ClCompile Include="includes/artwork.cpp" />
+    <ClCompile Include="includes/deck.cpp" />
+    <ClCompile Include="includes/menu.cpp" />
+    <ClCompile Include="includes/util.cpp" />
     <ClCompile Include="StudyDungeon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="artwork.h" />
-    <ClInclude Include="deck.h" />
+    <ClInclude Include="includes/artwork.h" />
+    <ClInclude Include="includes/deck.h" />
+    <ClCompile Include="includes/menu.h" />
+    <CLCompile Include="includes/util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,9 +18,10 @@
 				"/external:W3", // compile external standard libraries at W3
 				"/sdl", // additional security development lifecyle recommended checks (VS19)
 				"/Od", // optimisation disabled (VS19)
+                "/std:c++20",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "/I:includes",
-                "${file}"
+                "${file}",
+                "includes/*.cpp"
 
             ],
             "options": {

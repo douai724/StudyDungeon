@@ -3,9 +3,10 @@
 
 #include <iostream>
 #include <string>
-#include "deck.h"
-#include "util.h"
-#include "artwork.h"
+#include "includes/deck.h"
+#include "includes/util.h"
+#include "includes/artwork.h"
+#include "includes/menu.h"
 
 
 int main()
@@ -13,10 +14,11 @@ int main()
     // Store the name of the app
     //const std::string APP_NAME;
     // store the path to the app
-    //const char APP_PATH;  
-    std::cout << get_app_path() << '\n';
+    //const char APP_PATH; 
+    get_app_path(); 
+    // std::cout << get_app_path() << '\n';
     /* print out the current directory */
-    load_decks();
+
     return 0;
 }
 

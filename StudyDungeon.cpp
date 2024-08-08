@@ -5,13 +5,18 @@
 #include "artwork.h"
 #include "deck.h"
 #include <string>
+#include "util.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    std::string blah = "blah";
+    // Store the name of the app
+    //const std::string APP_NAME;
+    // store the path to the app
+    //const char APP_PATH;  
+    std::cout << get_app_path() << '\n';
     /* print out the current directory */
     DECK_H_::load_decks();
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

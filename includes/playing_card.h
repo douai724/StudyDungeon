@@ -1,3 +1,6 @@
+#ifndef PLAYING_CARD_H
+#define PLAYING_CARD_H
+
 #include "player.h"
 #include <string>
 
@@ -31,3 +34,5 @@ class HealCard: public PlayingCard {
 class SwapHandCard: public PlayingCard {
     
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef GAMELOOP_H
+#define GAMELOOP_H
+
 #include "player.h"
 #include "playing_card.h"
 
@@ -30,7 +33,7 @@ class GameState {
          */
         void nextTurn(Player player, PlayingCard card);
 
-}
+};
 
 
 /**
@@ -46,3 +49,5 @@ void gameloop();
  * Generates a hand of size numCards
  */
 std::vector<PlayingCard> generateHand(int numCards);
+
+#endif

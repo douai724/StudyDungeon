@@ -1,30 +1,31 @@
+#include "util.h"
+#include <string>
 #include <windows.h>
 #include <iostream>
 #include <string>
+#include <filesystem> // C++17 standard header file name
+namespace fs = std::filesystem;
 
+/**
+ * @brief Get the app path object
+ * 
+ * @return std::filesystem::path 
+ */
+std::filesystem::path get_app_path()
+{
+    // Buffer to store the path of the executable
+    char exePath[MAX_PATH];
 
-void get_app_path(){
- TCHAR path[MAX_PATH];
-
-    // This will return the path of the executable, can take this and build relative paths
-    // for where the deck files whould be
-    if(GetModuleFileName(NULL, path, MAX_PATH)){
-        std::cout << "Program path: " << path << std::endl;
-    } else {
-        std::cerr << "Error getting path." << std::endl;
-
+    // Get the path to the executable
+    if (GetModuleFileNameA(NULL, exePath, MAX_PATH) == 0) {
+        std::cerr << "Failed to get exe path" << std::endl;
+        // TODO deal with error
     }
-    //TODO subsstring to remove program name
-    // return path;
 
-    // remove app name
-    // return path
-}
-// printf("MAX_PATH: %d\n", MAX_PATH);
-//     TCHAR buffer[MAX_PATH];
-//     DWORD length = GetCurrentDirectory(MAX_PATH, buffer);
-//     if(length == 0){
-//         printf("Error\n");
-//     } else {
-//         printf("Current directory: %s\n", buffer);
-//     }
+    // Convert the path to the exe to a filesystem path object
+    fs::path exeFsPath(exePath);
+    // Get the directory of the exe
+    fs::path exeDir = exeFsPath.parent_path();
+
+    return exeDir;
+};

@@ -15,7 +15,7 @@
 
 #include <windows.h>
 #include <string>
-
+#include <filesystem>
 void create_card();
 void read_deck();
 void write_deck();
@@ -38,6 +38,6 @@ struct Card {
  * @brief Load the decks from files stored with the ".deck" extension inside decks/
  * 
  */
-void load_decks();
+void load_decks(std::filesystem::path deck_path);
 
 #endif

@@ -2,13 +2,25 @@
 #include <windows.h>
 #include <iostream>
 #include <string>
-#include "util.h"
+#include <filesystem>
+namespace fs = std::filesystem;
 
 
+
+
+// TODO define the Card class
 /**
+ * @brief Stores the data for a flashcard
  * 
  */
-// TODO define the Card class
+struct Card {
+    std::string question;
+    std::string answer;
+    int difficulty;
+    int n_times_answered;
+
+};
+
 
 /**
  * 
@@ -46,18 +58,29 @@ void write_deck(){
 };
 
 
-void load_decks(){
-    // char app_path[MAX_PATH];
-    // app_path = get_app_path(char app_path[MAX_PATH]);
-    // std::string deck_path = app_path + "Decks";
-    // std::cout << deck_path;
+/**
+ * @brief Function that will scan the deck directory and read in all the deck files found
+ * 
+ * @param deck_path 
+ */
+void load_decks(fs::path deck_path){
+    // TODO create an array of Decks to store eacn deck in
+    std::cout << deck_path << std::endl;
 
-   get_app_path();
+    // Check the deck directory exists
+    if (fs::exists(deck_path) && fs::is_directory(deck_path)){
+        std::cout << deck_path << " is a directory" << std::endl;
+        // list out the contents of the directory
+        for (const auto& entry : fs::directory_iterator(deck_path)){
+            std::cout << (entry.is_directory() ? "[DIR] " : "[FILE] ") << entry.path().filename().string() << std::endl;
+            // TODO for each "<file>.deck" files, call read_deck() and add into the Deck array
+        }
+    } else {
+        std::cerr << "Directory does not exist, or is not a directory";
+        //TODO deal with error
+    }
 
-
-    // take path and remove app name, then add on "decks\"
-
-    // List the contents of decks\ and loop through each .deck file reading them in
+    //return deck_array;
 
 };
 

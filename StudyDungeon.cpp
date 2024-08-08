@@ -7,18 +7,18 @@
 #include "includes/util.h"
 #include "includes/artwork.h"
 #include "includes/menu.h"
-
-
+#include <filesystem>
+namespace fs = std::filesystem;
 int main()
 {
-    // Store the name of the app
-    //const std::string APP_NAME;
-    // store the path to the app
-    //const char APP_PATH; 
-    get_app_path(); 
-    // std::cout << get_app_path() << '\n';
-    /* print out the current directory */
 
+    fs::path appDir = get_app_path();
+    std::cout << "dir is: " << appDir << std::endl;
+    
+    fs::path deckDir = appDir.append("Decks");
+    load_decks(deckDir);
+    /* print out the current directory */
+    // create_card();
     return 0;
 }
 

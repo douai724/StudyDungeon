@@ -29,3 +29,4 @@ std::filesystem::path get_app_path()
 
     return exeDir;
 };
+

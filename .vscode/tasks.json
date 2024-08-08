@@ -22,7 +22,6 @@
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}",
                 "includes/*.cpp"
-
             ],
             "options": {
                 "cwd": "${fileDirname}"

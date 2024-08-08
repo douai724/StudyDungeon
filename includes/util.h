@@ -26,6 +26,4 @@
  * @return std::filesystem::path 
  */
 std::filesystem::path get_app_path();
-
-
 #endif

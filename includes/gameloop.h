@@ -48,6 +48,6 @@ void gameloop();
 /**
  * Generates a hand of size numCards
  */
-std::vector<PlayingCard> generateHand(int numCards);
+std::list<PlayingCard> generateHand(int numCards);
 
 #endif

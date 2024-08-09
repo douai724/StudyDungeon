@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <vector>
+#include <list>
 #include "playing_card.h"
 
 /** 
@@ -13,12 +13,12 @@ class Player {
     private:
         int hitPoints;
         int maxHitPoints;
-        std::vector<PlayingCard> hand;
+        std::list<PlayingCard> hand;
     public:
         /**
          * Constructor
          */
-        Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
+        Player(int hitPoints, int maxHitPoints, std::list<PlayingCard> hand);
 
         /** \brief Selects the card to play.
          * 
@@ -53,12 +53,12 @@ class Player {
         /** \brief Returns the current hand of the player.
          * 
          */
-        std::vector<PlayingCard> getHand();
+        std::list<PlayingCard> getHand();
 
         /** \brief Sets the hand of the player.
          * 
          */
-        void setHand(std::vector<PlayingCard> hand);
+        void setHand(std::list<PlayingCard> hand);
 
         /** \brief Removes a specified card from the player's hand.
          * 

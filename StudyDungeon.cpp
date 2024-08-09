@@ -17,7 +17,7 @@ int main()
     std::cout << "dir is: " << appDir << std::endl;
     
     fs::path deckDir = appDir.append("Decks");
-    load_decks(deckDir);
+    load_flashcard_decks(deckDir);
     /* print out the current directory */
     // create_card();
     return 0;

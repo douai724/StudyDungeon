@@ -40,4 +40,13 @@ struct Card {
  */
 void load_decks(std::filesystem::path deck_path);
 
+
+/**
+ * @brief Reads the contents of the deck file to create cards and returns the deck
+ * 
+ * @param deck_file 
+ */
+void read_deck(std::filesystem::path deck_file);
+
+
 #endif

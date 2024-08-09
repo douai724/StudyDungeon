@@ -1,3 +1,7 @@
+## Style guide
+
+https://google.github.io/styleguide/cppguide.html
+
 ## VScode config
 
 extensions:

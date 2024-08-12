@@ -11,6 +11,8 @@
 #include "includes/menu.h"
 
 
+
+
 namespace fs = std::filesystem;
 
 /*examples of setting up a menu */
@@ -57,6 +59,7 @@ void exitProgram() {
 /* end of examples*/
 
 int main() {
+
 
     // testing loading of cards from all available decks
     fs::path appDir = get_app_path();

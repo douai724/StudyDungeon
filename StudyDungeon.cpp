@@ -12,16 +12,6 @@
 #include <filesystem>
 
 namespace fs = std::filesystem;
-#include <iostream>
-#include <string>
-#include "includes/deck.h"
-#include "includes/util.h"
-#include "includes/artwork.h"
-#include "includes/menu.h"
-#include <filesystem>
-#include <memory>
-
-namespace fs = std::filesystem;
 
 void addFlashcard() {
     system("cls");
@@ -65,6 +55,9 @@ void exitProgram() {
 }
 
 int main() {
+
+    
+
     auto mainMenu = std::make_shared<Menu>("Flashcard Application");
     auto editMenu = std::make_shared<Menu>("Edit Flashcards");
 

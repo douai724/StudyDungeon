@@ -24,7 +24,7 @@ void write_flashcard_deck();
 
 /**
  * @brief 
- * 
+ * TODO document
  */
 struct FlashCard {
     std::string question;
@@ -42,14 +42,14 @@ class FlashCardDeck{
 
 /**
  * @brief Load the decks from files stored with the ".deck" extension inside decks/
- * 
+ * TODO document
  */
 void load_flashcard_decks(std::filesystem::path deck_path);
 
 
 /**
  * @brief Reads the contents of the deck file to create cards and returns the deck
- * 
+ * TODO document
  * @param deck_file 
  */
 FlashCardDeck read_flashcard_deck(std::filesystem::path deck_file);

@@ -7,28 +7,77 @@
 #include "includes/util.h"
 #include "includes/artwork.h"
 #include "includes/menu.h"
-#include <filesystem>
-namespace fs = std::filesystem;
-int main()
-{
 
-    fs::path appDir = get_app_path();
-    std::cout << "dir is: " << appDir << std::endl;
-    
-    fs::path deckDir = appDir.append("Decks");
-    load_decks(deckDir);
-    /* print out the current directory */
-    // create_card();
-    return 0;
+#include <memory>
+#include <filesystem>
+
+namespace fs = std::filesystem;
+#include <iostream>
+#include <string>
+#include "includes/deck.h"
+#include "includes/util.h"
+#include "includes/artwork.h"
+#include "includes/menu.h"
+#include <filesystem>
+#include <memory>
+
+namespace fs = std::filesystem;
+
+void addFlashcard() {
+    system("cls");
+    std::cout << "Adding a new flashcard...\n";
+    // Implement flashcard addition logic here
+    system("pause");
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void reviewFlashcards() {
+    system("cls");
+    std::cout << "Reviewing flashcards...\n";
+    // Implement flashcard review logic here
+    system("pause");
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void deleteFlashcard() {
+    system("cls");
+    std::cout << "Deleting a flashcard...\n";
+    // Implement flashcard deletion logic here
+    system("pause");
+}
+
+void browseDeck() {
+    system("cls");
+    std::cout << "Browsing the deck...\n";
+    // Implement deck browsing logic here
+    system("pause");
+}
+
+void editCard() {
+    system("cls");
+    std::cout << "Editing a card...\n";
+    // Implement card editing logic here
+    system("pause");
+}
+
+void exitProgram() {
+    system("cls");
+    std::cout << "Exiting...\n";
+    exit(0);
+}
+
+int main() {
+    auto mainMenu = std::make_shared<Menu>("Flashcard Application");
+    auto editMenu = std::make_shared<Menu>("Edit Flashcards");
+
+    editMenu->addItem("Delete Flashcard", deleteFlashcard);
+    editMenu->addItem("Browse Deck", browseDeck);
+    editMenu->addItem("Edit Card", editCard);
+
+    mainMenu->addItem("Add Flashcard", addFlashcard);
+    mainMenu->addItem("Review Flashcards", reviewFlashcards);
+    mainMenu->addItem("Edit Flashcards", editMenu);
+    mainMenu->addItem("Exit", exitProgram);
+
+    mainMenu->run();
+
+    return 0;
+}

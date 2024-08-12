@@ -3,6 +3,9 @@
 extensions:
 - C/C++ Extension Pack
 - TODO Tree
+- Doxygen Document Generator
+- CMake
+- CMake Tools
 
 ## Building
 

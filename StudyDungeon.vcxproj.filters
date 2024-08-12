@@ -18,18 +18,30 @@
     <ClCompile Include="StudyDungeon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="deck.cpp">
+    <ClCompile Include="includes/artwork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="artwork.cpp">
+    <ClCompile Include="includes/deck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="includes/menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="includes/util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="includes/menu.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <CLCompile Include="includes/util.h">
+      <Filter>Header Files</Filter>
+    </CLCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="deck.h">
+    <ClInclude Include="includes/artwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="artwork.h">
+    <ClInclude Include="includes/deck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

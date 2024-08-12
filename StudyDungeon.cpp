@@ -2,12 +2,24 @@
 //
 
 #include <iostream>
-#include "includes/artwork.h"
+#include <string>
 #include "includes/deck.h"
-
+#include "includes/util.h"
+#include "includes/artwork.h"
+#include "includes/menu.h"
+#include <filesystem>
+namespace fs = std::filesystem;
 int main()
 {
-    std::cout << "Hello World!\n";
+
+    fs::path appDir = get_app_path();
+    std::cout << "dir is: " << appDir << std::endl;
+    
+    fs::path deckDir = appDir.append("Decks");
+    load_decks(deckDir);
+    /* print out the current directory */
+    // create_card();
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

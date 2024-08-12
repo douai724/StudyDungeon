@@ -1,18 +1,21 @@
 // StudyDungeon.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include <filesystem>
 #include <iostream>
+#include <memory>
 #include <string>
 #include "includes/deck.h"
 #include "includes/util.h"
 #include "includes/artwork.h"
 #include "includes/menu.h"
 
-#include <memory>
-#include <filesystem>
+
+
 
 namespace fs = std::filesystem;
 
+/*examples of setting up a menu */
 void addFlashcard() {
     system("cls");
     std::cout << "Adding a new flashcard...\n";
@@ -53,11 +56,19 @@ void exitProgram() {
     std::cout << "Exiting...\n";
     exit(0);
 }
+/* end of examples*/
 
 int main() {
 
-    
 
+    // testing loading of cards from all available decks
+    fs::path appDir = get_app_path();
+    std::cout << "dir is: " << appDir << std::endl;
+    
+    fs::path deckDir = appDir.append("Decks");
+    load_flashcard_decks(deckDir);
+
+    // Menu system
     auto mainMenu = std::make_shared<Menu>("Flashcard Application");
     auto editMenu = std::make_shared<Menu>("Edit Flashcards");
 

@@ -24,9 +24,9 @@ struct FlashCard {
 
 
 /**
+ * @brief A deck of flashcards
  * 
  */
-//TODO define the Deck class
 class FlashCardDeck {
     public: 
         std::vector<FlashCard> cards {};
@@ -43,8 +43,11 @@ class FlashCardDeck {
         }
 };
 
+
 /**
- * TODO document
+ * @brief Create a flashcard object
+ * 
+ * @return FlashCard 
  */
 FlashCard create_flashcard(){
     //TODO

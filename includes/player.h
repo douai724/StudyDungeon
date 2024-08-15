@@ -16,11 +16,16 @@ class Player {
         std::vector<PlayingCard> hand;
     public:
         /**
-         * Constructor
+         * Default constructor
          */
         Player();
 
+        /**
+         * Constructor
+         */
         Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
+
+        Player operator==(Player &other);
         
         /** \brief Selects the card to play.
          * 

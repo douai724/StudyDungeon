@@ -1,38 +1,24 @@
 #ifndef PLAYING_CARD_H
 #define PLAYING_CARD_H
 
-#include "player.h"
 #include <string>
+#include "card_types.h"
 
 class PlayingCard {
     private:
         bool target; // 0 for player that possesses this card, 1 for the enemy
-        std::string description;
+        int value;
     public:
+        enum Type cardType;
 
-        /**
-         * Constructor
-         */
-        PlayingCard(bool target, std::string description);
+        PlayingCard();
 
-        /** \brief Apply the effects of the card to the target
-         * 
-         */
-        void playCard(Player target);
+        PlayingCard(bool target, enum Type cardType, int value);
+
+        int getValue();
+
+        bool getTarget();
+
+        std::string toString();
 };
-
-class DamageCard: public PlayingCard {
-    private:
-        int damageValue;
-};
-
-class HealCard: public PlayingCard {
-    private:
-        int healValue;
-};
-
-class SwapHandCard: public PlayingCard {
-    
-};
-
 #endif

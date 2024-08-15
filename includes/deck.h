@@ -23,18 +23,22 @@ void read_flashcard_deck();
 void write_flashcard_deck();
 
 /**
- * @brief 
+ * @brief Class that defines the properties of a flashcard
  * 
  */
 struct FlashCard {
-    std::string question;
-    std::string answer;
-    int difficulty;
-    int n_times;
+    std::string question; /** Flashcard question */
+    std::string answer; /** Flashcard answer */
+    int difficulty; /** User suppiled difficulty rating  */
+    int n_times_answered; /** How many times has the user answered the card */
 
 };
 
-// TODO make struct Deck
+/**
+ * @brief Class that defines a "deck" of flashcards
+ * @class 
+ * 
+ */
 class FlashCardDeck{
     std::string name;
     std::vector<FlashCard> cards;
@@ -42,14 +46,14 @@ class FlashCardDeck{
 
 /**
  * @brief Load the decks from files stored with the ".deck" extension inside decks/
- * 
+ * TODO document
  */
 void load_flashcard_decks(std::filesystem::path deck_path);
 
 
 /**
  * @brief Reads the contents of the deck file to create cards and returns the deck
- * 
+ * TODO document
  * @param deck_file 
  */
 FlashCardDeck read_flashcard_deck(std::filesystem::path deck_file);

@@ -1,11 +1,10 @@
 ## VScode config
 
 extensions:
-- C/C++ Extension Pack
-- TODO Tree
-- Doxygen Document Generator
-- CMake
-- CMake Tools
+- franneck94.vscode-c-cpp-dev-extension-pack
+- github.vscode-github-actions
+- Gruntfuggly.todo-tree
+
 
 ## Building
 

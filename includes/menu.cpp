@@ -2,29 +2,26 @@
 #include <iostream>
 #include <conio.h>
 
+// TODO document
 MenuItem::MenuItem(const std::string& label, void (*action)()) : label(label), action(action), subMenu(nullptr) {}
 MenuItem::MenuItem(const std::string& label, std::shared_ptr<Menu> subMenu) : label(label), action(nullptr), subMenu(subMenu) {}
 
-
+// TODO Document
 Menu::Menu(const std::string& title) : title(title), selectedIndex(0) {
     consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
+//TODO document
 void Menu::addItem(const std::string& label, void (*action)()) {
     items.emplace_back(label, action);
 }
 
-
-/**
- * @brief 
- * 
- * @param label 
- * @param subMenu 
- */
+//TODO document
 void Menu::addItem(const std::string& label, std::shared_ptr<Menu> subMenu) {
     items.emplace_back(label, subMenu);
 }
 
+//TODO document
 void Menu::moveCursor(SHORT x, SHORT y) {
     COORD coord;
     coord.X = x;
@@ -32,10 +29,12 @@ void Menu::moveCursor(SHORT x, SHORT y) {
     SetConsoleCursorPosition(consoleHandle, coord);
 }
 
+//TODO document
 void Menu::setColor(WORD foreground, WORD background) {
     SetConsoleTextAttribute(consoleHandle, foreground | (background << 4));
 }
 
+// TODO document
 void Menu::display() {
     system("cls");
     std::cout << title << "\n\n";
@@ -50,6 +49,7 @@ void Menu::display() {
     setColor(15, 0); // Reset to default colors
 }
 
+// TODO document
 int Menu::getArrowKeyNavigation() {
     int ch = _getch();
     if (ch == 0 || ch == 224) { // Arrow key pressed
@@ -65,6 +65,7 @@ int Menu::getArrowKeyNavigation() {
     return 0;
 }
 
+// TODO document
 void Menu::run() {
     while (true) {
         display();

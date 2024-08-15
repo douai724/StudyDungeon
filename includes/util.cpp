@@ -8,7 +8,7 @@ namespace fs = std::filesystem;
 
 /**
  * @brief Get the app path object
- * 
+ * TODO better documentation
  * @return std::filesystem::path 
  */
 std::filesystem::path get_app_path()

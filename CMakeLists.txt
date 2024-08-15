@@ -13,3 +13,18 @@ add_executable(StudyDungeon ${SOURCE_FILES} )
 include(CTest)
 enable_testing()
 
+option(BUILD_DOC "Build documentation" ON)
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+    # set location of doxyfile
+    set(DOXYFILE ${CMAKE_SOURCE_DIR}/Doxyfile)
+
+    message("Doxygen build started")
+
+    add_custom_target( doc_doxygen ALL COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Generating API documentation with Doxygen"
+    VERBATIM )
+else (DOXYGEN_FOUND)
+    message("Doxygen not found")
+endif (DOXYGEN_FOUND)

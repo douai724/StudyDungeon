@@ -24,9 +24,9 @@ struct FlashCard {
 
 
 /**
+ * @brief A deck of flashcards
  * 
  */
-//TODO define the Deck class
 class FlashCardDeck {
     public: 
         std::vector<FlashCard> cards {};
@@ -43,8 +43,11 @@ class FlashCardDeck {
         }
 };
 
+
 /**
+ * @brief Create a flashcard object
  * 
+ * @return FlashCard 
  */
 FlashCard create_flashcard(){
     //TODO
@@ -54,7 +57,7 @@ FlashCard create_flashcard(){
 
 /**
  * @brief For a given deck file, read the contents in a create all the cards
- * 
+ * TODO document
  * @param deck_file 
  */
 FlashCardDeck read_flashcard_deck(fs::path deck_file){
@@ -111,7 +114,7 @@ FlashCardDeck read_flashcard_deck(fs::path deck_file){
 
 /**
  * 
- * 
+ * TODO document
  */
 void write_flashcard_deck(){
     // open file for writing
@@ -122,7 +125,7 @@ void write_flashcard_deck(){
 
 /**
  * @brief Function that will scan the deck directory and read in all the deck files found
- * 
+ * TODO document
  * @param deck_path 
  */
 void load_flashcard_decks(fs::path deck_path){

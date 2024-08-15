@@ -83,6 +83,11 @@ class Player {
          */
         void heal(int amount);
 
+        /** \brief Represents the player as a string
+         * 
+         */
+        std::string toString();
+
 };
 
 #endif

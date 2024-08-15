@@ -78,7 +78,7 @@ int main() {
     auto flashcardMenu = std::make_shared<Menu>("Flashcard Menu" + controls);
 
     editMenu->addItem("Delete Flashcard", deleteFlashcard);
-    editMenu->addItem("Browse Deck", browseDeck);
+    editMenu->addItem("Browse Decks", browseDeck);
     editMenu->addItem("Edit Card", editCard);
     editMenu->addItem("Back to Main Menu", mainMenu);
     editMenu->addItem("Exit", exitProgram);

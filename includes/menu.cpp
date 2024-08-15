@@ -14,6 +14,13 @@ void Menu::addItem(const std::string& label, void (*action)()) {
     items.emplace_back(label, action);
 }
 
+
+/**
+ * @brief 
+ * 
+ * @param label 
+ * @param subMenu 
+ */
 void Menu::addItem(const std::string& label, std::shared_ptr<Menu> subMenu) {
     items.emplace_back(label, subMenu);
 }

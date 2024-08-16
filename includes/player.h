@@ -24,8 +24,6 @@ class Player {
          * Constructor
          */
         Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
-
-        Player operator==(Player &other);
         
         /** \brief Selects the card to play.
          * 
@@ -70,12 +68,12 @@ class Player {
         /** \brief Removes a specified card from the player's hand.
          * 
          */
-        void removeCard(PlayingCard card);
+        void removeCard(PlayingCard &card);
 
         /** \brief Adds a card to the player's hand.
          * 
          */
-        void addCard(PlayingCard card);
+        void addCard(PlayingCard &card);
         
         /** \brief Applies damage to the player.
          * 

@@ -8,6 +8,15 @@ PlayingCard::PlayingCard(bool target, enum Type cardType, int value){
 
 PlayingCard::PlayingCard(){}
 
+bool PlayingCard::operator==(PlayingCard &other){
+    if(this->target == other.target 
+    && this->value == other.value
+    && this->cardType == other.cardType){
+        return true;
+    }
+    return false;
+}
+
 bool PlayingCard::getTarget(){
     return PlayingCard::target;
 }

@@ -15,6 +15,8 @@ class PlayingCard {
 
         PlayingCard(bool target, enum Type cardType, int value);
 
+        bool operator==(PlayingCard &other);
+
         int getValue();
 
         bool getTarget();

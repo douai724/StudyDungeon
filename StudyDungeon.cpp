@@ -1,12 +1,12 @@
 /**
  * @file StudyDungeon.cpp
  * @author your name (you@domain.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2024-08-15
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <filesystem>
@@ -66,13 +66,19 @@ void exitProgram() {
 }
 /* end of examples*/
 
+void print_stuff(){
+    system("cls");
+    load_flashcard_decks(get_app_path().append("Decks"));
+    system("pause");
+}
+
 int main() {
 
 
     // testing loading of cards from all available decks
     fs::path appDir = get_app_path();
     std::cout << "dir is: " << appDir << std::endl;
-    
+
     fs::path deckDir = appDir.append("Decks");
     load_flashcard_decks(deckDir);
 
@@ -87,6 +93,7 @@ int main() {
     mainMenu->addItem("Add Flashcard", addFlashcard);
     mainMenu->addItem("Review Flashcards", reviewFlashcards);
     mainMenu->addItem("Edit Flashcards", editMenu);
+    mainMenu->addItem("PRINT STUFF", print_stuff);
     mainMenu->addItem("Exit", exitProgram);
 
     mainMenu->run();

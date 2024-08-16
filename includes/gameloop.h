@@ -3,51 +3,50 @@
 
 #include "player.h"
 #include "playing_card.h"
+#include "card_types.h"
+#include <iostream>
 
-class GameState {
+class Game {
     private:
-        bool turn = 0; // 0 for user, 1 for enemy
-        Player player;
-        Player enemy;
+        short turn; // 1 for p1, 2 for p2
+        Player p1;
+        Player p2;
+
+        /**
+         * Apply the damage effect to a player based on the damage card that is played
+         */
+        void damageEffect(PlayingCard &card);
+
     public:
 
         /**
          * Constructor
          */
-        GameState(Player player, Player enemy);
-
-        /** \brief Checks if a player has lost by losing all Hit Points
-         * 
+        Game(Player p1, Player p2);
+        
+        /**
+         * 1. Get the card input
+         * 2. Apply the effect
+         * 3. Switch turns
          */
-        bool didPlayerLose(Player player);
-
-        /** \brief Game is a draw if neither of the players have any cards left
-         * 
-         */
-        bool isGameDraw();
+        void nextTurn();
 
         /**
-         * Player selects card
-         * Card is executed and its effects applied
-         * Next players turn
+         * Check if the game is over
          */
-        void nextTurn(Player player, PlayingCard card);
+        bool isGameOver();
 
 };
 
 
 /**
- * The actual gameloop
- * 1. Sets up the players
- * 2. Sets up their hands
- * 3. Creates the game object
- * 4. Plays the game until win condition
+ * Set up and start the game
  */
-void gameloop();
+void start();
 
 /**
- * Generates a hand of size numCards
+ * Generate a random hand
  */
-std::list<PlayingCard> generateHand(int numCards);
+std::vector<PlayingCard> generateHand(int numCards);
 
 #endif

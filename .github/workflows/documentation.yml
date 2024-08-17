@@ -11,8 +11,8 @@ jobs:
     name: Build and publish documentation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v4.1.7
+    - uses: actions/setup-python@v5.1.1
     - name: Install Docs
       run: |
         sudo apt-get install doxygen
@@ -27,7 +27,7 @@ jobs:
       run: |
         cmake --build build --config Debug --target docs -j4
     - name: Deploy to GitHub Pages
-      uses: Cecilapp/GitHub-Pages-deploy@v3
+      uses: Cecilapp/GitHub-Pages-deploy@v3.2.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:

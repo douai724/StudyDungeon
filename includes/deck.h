@@ -26,10 +26,27 @@ void read_flashcard_deck();
 void write_flashcard_deck();
 
 /**
- * @brief Class that defines the properties of a flashcard
+ * @brief This structure holds the information for each flashcard
+ * A flashcard consists of a question, answer and difficulty. The number of times
+ * the question has been answered is kept track of.
+ *
+ * @struct
  *
  */
-struct FlashCard;
+struct FlashCard
+{
+    /** The flashcard question */
+    std::string question;
+
+    /** The flashcard answer */
+    std::string answer;
+
+    /** The user defined difficulty */
+    int difficulty;
+
+    /** The number of times the question has been answered */
+    int n_times_answered;
+};
 
 
 /**
@@ -37,7 +54,31 @@ struct FlashCard;
  * @class
  *
  */
-class FlashCardDeck;
+class FlashCardDeck
+{
+public:
+    /** The name of the flashcard deck */
+    std::string name{};
+
+    /** Vector containing 0 or more flashcards */
+    std::vector<FlashCard> cards{};
+
+    /**
+     * @brief Prints flashcard deck information and then each card
+     *
+     */
+    void print_deck()
+    {
+        std::cout << name << std::endl;
+        std::cout << "size: " << cards.size() << '\n';
+        for (FlashCard card : cards)
+        {
+            std::cout << card.question << '\n';
+            std::cout << card.answer << '\n';
+            std::cout << "---\n";
+        }
+    }
+};
 
 /**
  * @brief Load the decks from files stored with the ".deck" extension inside decks/

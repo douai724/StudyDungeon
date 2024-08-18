@@ -4,44 +4,6 @@
 namespace fs = std::filesystem;
 
 
-// TODO define the Card class
-/**
- * @brief Stores the data for a flashcard
- *
- */
-struct FlashCard
-{
-    std::string question;
-    std::string answer;
-    int difficulty;
-    int n_times_answered;
-};
-
-
-/**
- * @brief A deck of flashcards
- *
- */
-class FlashCardDeck
-{
-public:
-    std::vector<FlashCard> cards{};
-    std::string name{};
-
-    void print_deck()
-    {
-        std::cout << name << std::endl;
-        std::cout << "size: " << cards.size() << '\n';
-        for (FlashCard card : cards)
-        {
-            std::cout << card.question << '\n';
-            std::cout << card.answer << '\n';
-            std::cout << "---\n";
-        }
-    }
-};
-
-
 /**
  * @brief Create a flashcard object
  *

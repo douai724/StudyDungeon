@@ -12,7 +12,7 @@ namespace fs = std::filesystem;
 // TODO define the Card class
 /**
  * @brief Stores the data for a flashcard
- * 
+ *
  */
 struct FlashCard {
     std::string question;
@@ -25,10 +25,10 @@ struct FlashCard {
 
 /**
  * @brief A deck of flashcards
- * 
+ *
  */
 class FlashCardDeck {
-    public: 
+    public:
         std::vector<FlashCard> cards {};
         std::string name {};
 
@@ -46,8 +46,8 @@ class FlashCardDeck {
 
 /**
  * @brief Create a flashcard object
- * 
- * @return FlashCard 
+ *
+ * @return FlashCard
  */
 FlashCard create_flashcard(){
     //TODO
@@ -56,28 +56,30 @@ FlashCard create_flashcard(){
 };
 
 /**
- * @brief For a given deck file, read the contents in a create all the cards
+ * @brief For a given deck file, read the contents in to create all the cards
  * TODO document
- * @param deck_file 
+ * @param deck_file
  */
 FlashCardDeck read_flashcard_deck(fs::path deck_file){
     // TODO: take the path to a deck file and read the contents to create cards
     FlashCardDeck deck;
-    
+
     // Open file for reading
     std::ifstream inf {deck_file};
     int lineCount {0};
-    std::string deck_name {}; 
+    std::string deck_name {""};
     std::string strInput{};
     int cardNum {0}; // keep track of current card in deck
     FlashCard fc{};
     deck.cards.push_back(fc);
     //
+    // TODO need to acount for final - in deck file
+    // shuold look fto see if card is blank
     while (std::getline(inf, strInput)){
         if(lineCount == 0){
             deck.name = strInput;
         } else {
-            
+
         }
         if (strInput.starts_with("-")){
             cardNum++;
@@ -90,21 +92,21 @@ FlashCardDeck read_flashcard_deck(fs::path deck_file){
         if(strInput.starts_with("A:")){
             deck.cards.at(cardNum).answer = strInput;
         }
-        
+
         // parse line
         // if Q -> fc.question
         // if A -> fc.answer
         // if D -> fc.difficulty
         // if N -> fc.num_times
 
-        std::cout << strInput << '\n';
+        // std::cout << strInput << '\n';
         lineCount++;
     }
-    cardNum ++;
-    std::cout << "name of deck: " << deck_name << '\n';
-    std::cout << "number of lines read: " << lineCount << '\n';
-    std::cout << fc.question << '\n';
-    deck.print_deck();
+
+    // std::cout << "name of deck: " << deck_name << '\n';
+    // std::cout << "number of lines read: " << lineCount << '\n';
+    // std::cout << fc.question << '\n';
+    // deck.print_deck();
     // first line is the name of the deck
     // loop through in blocks of N to create a card
     // store cards in a deck
@@ -113,7 +115,7 @@ FlashCardDeck read_flashcard_deck(fs::path deck_file){
 
 
 /**
- * 
+ *
  * TODO document
  */
 void write_flashcard_deck(){
@@ -126,12 +128,12 @@ void write_flashcard_deck(){
 /**
  * @brief Function that will scan the deck directory and read in all the deck files found
  * TODO document
- * @param deck_path 
+ * @param deck_path
  */
 void load_flashcard_decks(fs::path deck_path){
     // TODO create an array of Decks to store eacn deck in
     std::cout << deck_path << std::endl;
-
+    std::vector<FlashCardDeck> deck_array;
     // Check the deck directory exists
     if (fs::exists(deck_path) && fs::is_directory(deck_path)){
         std::cout << deck_path << " is a directory" << std::endl;
@@ -140,15 +142,17 @@ void load_flashcard_decks(fs::path deck_path){
             std::cout << (entry.is_directory() ? "[DIR] " : "[FILE] ") << entry.path().filename().string() << std::endl;
             // TODO for each "<file>.deck" files, call read_deck() and add into the Deck array
             if (entry.is_regular_file()){
-                read_flashcard_deck(entry);
+                // read_flashcard_deck(entry);
+                deck_array.push_back(read_flashcard_deck(entry));
             }
         }
     } else {
         std::cerr << "Directory does not exist, or is not a directory";
         //TODO deal with error
     }
-
+    for(FlashCardDeck d : deck_array){
+        d.print_deck();
+    }
     //return deck_array;
 
 };
-

@@ -10,8 +10,11 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v4.1.7
 
+      - name: "Install doxygen"
+        uses:  ssciwr/doxygen-install@v1.5
+
       - name: Build Project
         uses: threeal/cmake-action@v2.0.0
         with:
-            build: build
+            build-dir: build
             generator: "Visual Studio 17 2022"

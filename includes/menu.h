@@ -1,24 +1,31 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <conio.h>
+#include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 #include <windows.h>
-#include <memory>
 
 class Menu;
 
-class MenuItem {
+class MenuItem
+{
 public:
-    MenuItem(const std::string& label, void (*action)());
-    MenuItem(const std::string& label, std::shared_ptr<Menu> subMenu);
+    MenuItem(const std::string &label, void (*action)());
+    MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu);
     std::string label;
     void (*action)();
     std::shared_ptr<Menu> subMenu;
-    bool isSubMenu() const { return subMenu != nullptr; }
+    bool isSubMenu() const
+    {
+        return subMenu != nullptr;
+    }
 };
 
-class Menu {
+class Menu
+{
 private:
     std::vector<MenuItem> items;
     std::string title;
@@ -30,10 +37,10 @@ private:
     int getArrowKeyNavigation();
 
 public:
-    Menu(const std::string& title);
-    void addItem(const std::string& label, void (*action)());
-    void addItem(const std::string& label, std::shared_ptr<Menu> subMenu);
-    void centerText(const std::string& label);
+    Menu(const std::string &title);
+    void addItem(const std::string &label, void (*action)());
+    void addItem(const std::string &label, std::shared_ptr<Menu> subMenu);
+    void centerText(const std::string &label);
     void display();
     void run();
 };

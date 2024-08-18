@@ -9,10 +9,10 @@
  *
  */
 
-#include "includes/artwork.h"
-#include "includes/deck.h"
-#include "includes/menu.h"
-#include "includes/util.h"
+#include "artwork.h"
+#include "deck.h"
+#include "menu.h"
+#include "util.h"
 #include <filesystem>
 #include <iostream>
 #include <memory>

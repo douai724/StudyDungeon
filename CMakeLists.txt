@@ -21,6 +21,7 @@ if (DOXYGEN_FOUND)
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/
         COMMENT "Generating HTML documentation with Doxygen"
     )
+    message("DIrectory " ${CMAKE_CURRENT_SOURCE_DIR}/docs/)
     else (DOXYGEN_FOUND)
     message("Doxygen not found")
 endif (DOXYGEN_FOUND)

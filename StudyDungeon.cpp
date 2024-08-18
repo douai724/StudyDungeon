@@ -9,70 +9,76 @@
  *
  */
 
+#include "includes/artwork.h"
+#include "includes/deck.h"
+#include "includes/menu.h"
+#include "includes/util.h"
 #include <filesystem>
 #include <iostream>
 #include <memory>
 #include <string>
-#include "includes/deck.h"
-#include "includes/util.h"
-#include "includes/artwork.h"
-#include "includes/menu.h"
-
-
 
 
 namespace fs = std::filesystem;
 
 /*examples of setting up a menu */
-void addFlashcard() {
+void addFlashcard()
+{
     system("cls");
     std::cout << "Adding a new flashcard...\n";
     // Implement flashcard addition logic here
     system("pause");
 }
 
-void reviewFlashcards() {
+void reviewFlashcards()
+{
     system("cls");
     std::cout << "Reviewing flashcards...\n";
     // Implement flashcard review logic here
     system("pause");
 }
 
-void deleteFlashcard() {
+void deleteFlashcard()
+{
     system("cls");
     std::cout << "Deleting a flashcard...\n";
     // Implement flashcard deletion logic here
     system("pause");
 }
 
-void browseDeck() {
+void browseDeck()
+{
     system("cls");
     std::cout << "Browsing the deck...\n";
     // Implement deck browsing logic here
     system("pause");
 }
 
-void editCard() {
+void editCard()
+{
     system("cls");
     std::cout << "Editing a card...\n";
     // Implement card editing logic here
     system("pause");
 }
 
-void exitProgram() {
+void exitProgram()
+{
     system("cls");
     std::cout << "Exiting...\n";
     exit(0);
 }
 /* end of examples*/
 
-void print_stuff(){
+void print_stuff()
+{
     system("cls");
     load_flashcard_decks(get_app_path().append("Decks"));
     system("pause");
 }
 
-int main() {
+int main()
+{
 
 
     // testing loading of cards from all available decks

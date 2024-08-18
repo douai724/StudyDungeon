@@ -14,9 +14,10 @@ add_executable(StudyDungeon ${SOURCE_FILES} )
 
 option(BUILD_DOC "Build documentation" ON)
 find_package(Doxygen)
+set(DOXYFILE ${CMAKE_SOURCE_DIR}/Doxyfile)
 if (DOXYGEN_FOUND)
     add_custom_target(docs
-        COMMAND ${DOXYGEN_EXECUTABLE}
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/
         COMMENT "Generating HTML documentation with Doxygen"
     )

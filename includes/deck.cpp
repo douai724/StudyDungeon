@@ -23,59 +23,62 @@ FlashCard create_flashcard()
  */
 FlashCardDeck read_flashcard_deck(fs::path deck_file)
 {
-    // TODO: take the path to a deck file and read the contents to create cards
+
+    /** The flashcard deck to store the flashcards in as read from the file */
     FlashCardDeck deck;
 
     // Open file for reading
     std::ifstream inf{deck_file};
+    // temporary variables to use for reading data
     int lineCount{0};
-    std::string deck_name{};
     std::string strInput{};
-    int cardNum{0}; // keep track of current card in deck
+    // keep track of current card in deck
+    int cardNum{0};
+
+    /** blank flashcard to begin filling in */
     FlashCard fc{};
     deck.cards.push_back(fc);
-    //
+
+    // Read each line of the deck file and process to make flashcards
     while (std::getline(inf, strInput))
     {
+        // First line of the file is the deck name
         if (lineCount == 0)
         {
             deck.name = strInput;
         }
         else
         {
-        }
-        if (strInput.starts_with("-"))
-        {
-            cardNum++;
-            deck.cards.push_back(fc);
-            std::cout << "NEW CARD" << '\n';
-        }
-        if (strInput.starts_with("Q:"))
-        {
-            deck.cards.at(cardNum).question = strInput;
-        }
-        if (strInput.starts_with("A:"))
-        {
-            deck.cards.at(cardNum).answer = strInput;
+            // parse line
+            // if Q -> fc.question
+            // if A -> fc.answer
+            // if D -> fc.difficulty
+            // if N -> fc.num_times
+            // if '-' indicates the start of a new card
+            if (strInput.starts_with("-"))
+            {
+                cardNum++;
+                deck.cards.push_back(fc);
+                std::cout << "NEW CARD" << '\n';
+            }
+            if (strInput.starts_with("Q:"))
+            {
+                deck.cards.at(cardNum).question = strInput;
+            }
+            if (strInput.starts_with("A:"))
+            {
+                deck.cards.at(cardNum).answer = strInput;
+            }
         }
 
-        // parse line
-        // if Q -> fc.question
-        // if A -> fc.answer
-        // if D -> fc.difficulty
-        // if N -> fc.num_times
-
-        // std::cout << strInput << '\n';
         lineCount++;
     }
-    cardNum++;
-    std::cout << "name of deck: " << deck_name << '\n';
+
+    //TODO remove these debugging steps
+    std::cout << "name of deck: " << deck.name << '\n';
     std::cout << "number of lines read: " << lineCount << '\n';
-    std::cout << fc.question << '\n';
     deck.print_deck();
-    // first line is the name of the deck
-    // loop through in blocks of N to create a card
-    // store cards in a deck
+
     return deck;
 };
 

@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4.1.7
 
       - name: "Install doxygen"
-        uses:  ssciwr/doxygen-install@v1.5
+        uses:  ssciwr/doxygen-install@v1
 
       - name: Build Project
         uses: threeal/cmake-action@v2.0.0

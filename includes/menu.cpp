@@ -319,11 +319,29 @@ bool GridMenu::isValidGridItem(int row, int col) const {
 std::pair<int, int> GridMenu::findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const {
     int row = startRow;
     int col = startCol;
+    
+    // Find the current item
+    auto currentItem = std::find_if(gridItems.begin(), gridItems.end(),
+        [row, col](const GridItem& item) {
+            return row >= item.row && row < item.row + item.height &&
+                   col >= item.col && col < item.col + item.width;
+        });
+
+    if (currentItem != gridItems.end()) {
+        // Adjust starting position based on the current item's size
+        if (colDelta > 0) col = currentItem->col + currentItem->width - 1;
+        else if (colDelta < 0) col = currentItem->col;
+        if (rowDelta > 0) row = currentItem->row + currentItem->height - 1;
+        else if (rowDelta < 0) row = currentItem->row;
+    }
+
     do {
+        // Move to the next cell in the specified direction
         row = (row + rowDelta + gridHeight) % gridHeight;
         col = (col + colDelta + gridWidth) % gridWidth;
+
+        // Check if the current cell is valid
         if (isValidGridItem(row, col)) {
-            // Find the top-left corner of the button
             auto it = std::find_if(gridItems.begin(), gridItems.end(),
                 [row, col](const GridItem& item) {
                     return row >= item.row && row < item.row + item.height &&
@@ -333,7 +351,15 @@ std::pair<int, int> GridMenu::findNextValidItem(int startRow, int startCol, int 
                 return {it->row, it->col};
             }
         }
-    } while (row != startRow || col != startCol);
+
+        // If we've made a complete loop and haven't found a valid item, break
+        if (row == startRow && col == startCol) {
+            break;
+        }
+
+    } while (true);
+
+    // If no valid item is found, return the starting position
     return {startRow, startCol};
 }
 

@@ -86,13 +86,13 @@ int main()
     auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 2, 3);
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);
-    auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 2);
+    auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 3);
 
-    testMenu->addGridItem("Large Button", []() { system("cls"); std::cout << "large button clicked\n"; system("pause");}, 0, 0, 2, 1);
+    testMenu->addGridItem("Large Button", []() { system("cls"); std::cout << "large button clicked\n"; system("pause");}, 0, 0, 2, 2);
 
     testMenu->addGridItem("Button 1", []() { system("cls"); std::cout << "Button 1 clicked\n"; system("pause");}, 0, 2);
-    testMenu->addGridItem("Button 2", []() { system("cls"); std::cout << "Button 2 clicked\n"; system("pause");}, 1, 1);
-    testMenu->addGridItem("Button 3", []() { system("cls"); std::cout << "Button 3 clicked\n"; system("pause");}, 1, 0);
+    testMenu->addGridItem("Button 2", []() { system("cls"); std::cout << "Button 2 clicked\n"; system("pause");}, 2, 1);
+    testMenu->addGridItem("Button 3", []() { system("cls"); std::cout << "Button 3 clicked\n"; system("pause");}, 2, 0);
     testMenu->addGridItem("Button 4", []() { system("cls"); std::cout << "Button 4 clicked\n"; system("pause");}, 1, 2);
 
     reviewMenu->addGridItem("Easy", reviewEasy, 0, 0);

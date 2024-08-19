@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <vector>
+#include <iostream>
 #include "playing_card.h"
 
 /** 
@@ -24,13 +25,9 @@ class Player {
          * Constructor
          */
         Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
-        
-        /** \brief Selects the card to play.
-         * 
-         * Selects a card from the available hand to play. Returns the card object 
-         * and removes the card from the hand.
-         */
-        PlayingCard selectCard(int cardNum);
+
+        // picks a card to play.
+        virtual PlayingCard play();
 
         /** \brief Returns the Hit Points of the player.
          * 
@@ -75,6 +72,9 @@ class Player {
          */
         void addCard(PlayingCard &card);
         
+        // returns a pointer to a playing card
+        PlayingCard getCard(int index);
+
         /** \brief Applies damage to the player.
          * 
          */
@@ -91,6 +91,22 @@ class Player {
          */
         std::string toString();
 
+        void printHand();
+
+};
+
+class User : public Player {
+       // picks a card to play.
+       public:
+        PlayingCard play();
+        User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
+};
+
+class Bot : public Player {
+       // picks a card to play.
+       public:
+        PlayingCard play();
+        Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
 };
 
 #endif

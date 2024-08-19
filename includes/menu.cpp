@@ -1,6 +1,5 @@
 #include "menu.h"
-#include <iostream>
-#include <conio.h>
+
 #include <algorithm>
 #include <iomanip>
 
@@ -11,8 +10,10 @@
  * @param label is the text label of the menu item
  * @param action is the function to be executed when the menu item is selected
  */
-MenuItem::MenuItem(const std::string& label, std::function<void()> action)
-    : label(label), action(action), subMenu(nullptr) {}
+MenuItem::MenuItem(const std::string &label, std::function<void()> action)
+    : label(label), action(action), subMenu(nullptr)
+{
+}
 
 /**
  * @brief Construct a new Menu Item:: Menu Item object that has a submenu
@@ -20,15 +21,19 @@ MenuItem::MenuItem(const std::string& label, std::function<void()> action)
  * @param label is the text label of the menu item
  * @param subMenu is the submenu to be displayed when the menu item is selected
  */
-MenuItem::MenuItem(const std::string& label, std::shared_ptr<Menu> subMenu)
-    : label(label), action(nullptr), subMenu(subMenu) {}
+MenuItem::MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu)
+   
+    : label(label), action(nullptr), subMenu(subMenu)
+{
+}
 
 /**
  * @brief Construct a new Menu:: Menu object that has a title.
  * 
  * @param title is the text title of the menu
  */
-Menu::Menu(const std::string& title) : title(title), selectedIndex(0) {
+Menu::Menu(const std::string &title) : title(title), selectedIndex(0)
+{
     consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
@@ -48,7 +53,8 @@ void Menu::addItem(const std::string& label, std::function<void()> action) {
  * @param label is the text label of the menu item
  * @param subMenu is the submenu to be displayed when the menu item is selected
  */
-void Menu::addItem(const std::string& label, std::shared_ptr<Menu> subMenu) {
+void Menu::addItem(const std::string &label, std::shared_ptr<Menu> subMenu)
+{
     items.emplace_back(label, subMenu);
 }
 
@@ -68,7 +74,8 @@ void Menu::setColor(WORD foreground, WORD background) {
  * @param x is the x-coordinate of the cursor
  * @param y is the y-coordinate of the cursor
  */
-void Menu::moveCursor(SHORT x, SHORT y) {
+void Menu::moveCursor(SHORT x, SHORT y)
+{
     COORD coord;
     coord.X = x;
     coord.Y = y;
@@ -89,9 +96,13 @@ int Menu::getArrowKeyNavigation() {
             case 75: return 4;  // Left arrow
             case 77: return 5;  // Right arrow
         }
-    } else if (ch == 13) { // Enter key
+    }
+    else if (ch == 13)
+    { // Enter key
         return 2;
-    } else if (ch == 27) { // Esc key
+    }
+    else if (ch == 27)
+    { // Esc key
         return 3;
     }
     return 0;

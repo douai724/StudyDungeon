@@ -4,16 +4,15 @@
  * @brief Contains useful helper functions
  * @version 0.1
  * @date 2024-08-08
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 #pragma once
-#include <string>
-#include <windows.h>
+#include <filesystem>
 #include <iostream>
 #include <string>
-#include <filesystem>
+#include <windows.h>
 
 
 #ifndef UTIL_H_
@@ -22,8 +21,8 @@
 
 /**
  * @brief Get the app path
- * 
- * @return std::filesystem::path 
+ *
+ * @return std::filesystem::path
  */
 std::filesystem::path get_app_path();
 #endif

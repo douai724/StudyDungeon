@@ -5,17 +5,16 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include "includes/deck.h"
-#include "includes/util.h"
-#include "includes/artwork.h"
+#include <vector>
+#include <functional>
+#include <windows.h>
 #include "includes/menu.h"
-
-
 
 
 namespace fs = std::filesystem;
 
-void addFlashcard() {
+void addFlashcard()
+{
     system("cls");
     std::cout << "Adding a new flashcard...\n";
     system("pause");
@@ -45,13 +44,15 @@ void editCard() {
     system("pause");
 }
 
-void deleteCard() {
+void deleteCard()
+{
     system("cls");
     std::cout << "Deleting a flashcard...\n";
     system("pause");
 }
 
-void browseDeck() {
+void browseDeck()
+{
     system("cls");
     std::cout << "Browsing the deck...\n";
     system("pause");
@@ -62,7 +63,8 @@ void exitApp() {
     exit(0);
 }
 
-void about() {
+void about()
+{
     system("cls");
     std::cout << "Study Dungeon\n";
     std::cout << "Version 1.0\n";
@@ -70,7 +72,8 @@ void about() {
     system("pause");
 }
 
-void controls() {
+void controls()
+{
     system("cls");
     std::cout << "Esc to go back (exits app when on main menu)\n";
     std::cout << "Arrow keys to navigate menu items\n";
@@ -78,7 +81,8 @@ void controls() {
     system("pause");
 }
 
-int main() {
+int main()
+{
     auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 2, 3);
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);

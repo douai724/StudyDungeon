@@ -1,6 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <conio.h>
+#include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 #include <memory>
@@ -9,7 +12,8 @@
 
 class Menu;
 
-class MenuItem {
+class MenuItem
+{
 public:
     std::string label;
     std::function<void()> action;

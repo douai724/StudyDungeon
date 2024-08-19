@@ -71,11 +71,11 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afcc9fb03c21a84b9f82b877dc3600b7f"><td class="memItemLeft" align="right" valign="top"><a id="afcc9fb03c21a84b9f82b877dc3600b7f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;label, void(*action)())</td></tr>
-<tr class="separator:afcc9fb03c21a84b9f82b877dc3600b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memItemLeft" align="right" valign="top"><a id="a4e74a174a8b2e3254fb8a8942ec857c8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;label, std::shared_ptr&lt; <a class="el" href="classMenu.html">Menu</a> &gt; subMenu)</td></tr>
+<tr class="memitem:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItem.html#a9fc7ba8a1611f65d02fcbca5c8cc3255">MenuItem</a> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
+<tr class="memdesc:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classMenu.html">Menu</a> Item:: <a class="el" href="classMenu.html">Menu</a> Item object that has an action.  <a href="classMenuItem.html#a9fc7ba8a1611f65d02fcbca5c8cc3255">More...</a><br /></td></tr>
+<tr class="separator:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItem.html#a4e74a174a8b2e3254fb8a8942ec857c8">MenuItem</a> (const std::string &amp;label, std::shared_ptr&lt; <a class="el" href="classMenu.html">Menu</a> &gt; subMenu)</td></tr>
+<tr class="memdesc:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classMenu.html">Menu</a> Item:: <a class="el" href="classMenu.html">Menu</a> Item object that has a submenu.  <a href="classMenuItem.html#a4e74a174a8b2e3254fb8a8942ec857c8">More...</a><br /></td></tr>
 <tr class="separator:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f1c3643d315606e72c7cde276a1e7d1"><td class="memItemLeft" align="right" valign="top"><a id="a6f1c3643d315606e72c7cde276a1e7d1"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSubMenu</b> () const</td></tr>
@@ -86,13 +86,88 @@ Data Fields</h2></td></tr>
 <tr class="memitem:af07137902c2c02dd299a8b6b8c362b9a"><td class="memItemLeft" align="right" valign="top"><a id="af07137902c2c02dd299a8b6b8c362b9a"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>label</b></td></tr>
 <tr class="separator:af07137902c2c02dd299a8b6b8c362b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afafceb100112364d437de1a48c7add45"><td class="memItemLeft" align="right" valign="top"><a id="afafceb100112364d437de1a48c7add45"></a>
-void(*&#160;</td><td class="memItemRight" valign="bottom"><b>action</b> )()</td></tr>
-<tr class="separator:afafceb100112364d437de1a48c7add45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9fb022d5006f1fecfa734044d2bca5e"><td class="memItemLeft" align="right" valign="top"><a id="ae9fb022d5006f1fecfa734044d2bca5e"></a>
+std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>action</b></td></tr>
+<tr class="separator:ae9fb022d5006f1fecfa734044d2bca5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf428aa10cbd8f85d338abcd07c5d7d3"><td class="memItemLeft" align="right" valign="top"><a id="acf428aa10cbd8f85d338abcd07c5d7d3"></a>
 std::shared_ptr&lt; <a class="el" href="classMenu.html">Menu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>subMenu</b></td></tr>
 <tr class="separator:acf428aa10cbd8f85d338abcd07c5d7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9fc7ba8a1611f65d02fcbca5c8cc3255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc7ba8a1611f65d02fcbca5c8cc3255">&#9670;&nbsp;</a></span>MenuItem() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MenuItem::MenuItem </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classMenu.html">Menu</a> Item:: <a class="el" href="classMenu.html">Menu</a> Item object that has an action. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>is the text label of the menu item </td></tr>
+    <tr><td class="paramname">action</td><td>is the function to be executed when the menu item is selected </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4e74a174a8b2e3254fb8a8942ec857c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e74a174a8b2e3254fb8a8942ec857c8">&#9670;&nbsp;</a></span>MenuItem() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MenuItem::MenuItem </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classMenu.html">Menu</a> &gt;&#160;</td>
+          <td class="paramname"><em>subMenu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classMenu.html">Menu</a> Item:: <a class="el" href="classMenu.html">Menu</a> Item object that has a submenu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>is the text label of the menu item </td></tr>
+    <tr><td class="paramname">subMenu</td><td>is the submenu to be displayed when the menu item is selected </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/menu.cpp</li>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['n_5ftimes_5fanswered_10',['n_times_answered',['../structFlashCard.html#aae02597613e37585b21bbeedc05c1d1e',1,'FlashCard']]],
-  ['name_11',['name',['../classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454',1,'FlashCardDeck']]]
+  ['isgameover_21',['isGameOver',['../classGame.html#a102ce6e5a222e403aa7a0465ff6281dc',1,'Game']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['write_5fflashcard_5fdeck_17',['write_flashcard_deck',['../deck_8h.html#a595c924658e718b16a40fbb6e368eaaa',1,'deck.cpp']]]
+  ['read_5fflashcard_5fdeck_33',['read_flashcard_deck',['../deck_8h.html#a940cf604511bf087a3772bf108648d61',1,'deck.h']]],
+  ['removecard_34',['removeCard',['../classPlayer.html#a3a8fc78d07cdfc32452f1ad5075bbef7',1,'Player']]],
+  ['run_35',['run',['../classGridMenu.html#adede5ccb4b583793d0e15ef3e008efaa',1,'GridMenu']]]
 ];

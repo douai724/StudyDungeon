@@ -88,11 +88,26 @@ void Player::printHand(){
 User::User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) 
         : Player(hitPoints, maxHitPoints, hand){}
 
+// could change the return type to an integer so that -1 can be sent in return
 PlayingCard User::play(){
     std::cout << "This is the USER class." << std::endl;
-    PlayingCard selectedCard = getCard(1);
-    removeCard(selectedCard);
-    return selectedCard;
+
+    std::vector<PlayingCard> currentHand = Player::getHand();
+
+
+    for(int i = 0; i < (int)currentHand.size(); i++){
+        std::cout << i << ": " << currentHand[i].toString() << std::endl;
+    }
+    try{
+        std::cout << "Please pick a card by entering its number:" << std::endl;
+        int input;
+        std::cin >> input;
+        PlayingCard selectedCard = getCard(input);
+        removeCard(selectedCard);
+        return selectedCard;
+    } catch(int e){
+        throw e;
+    }
 }
 
 Bot::Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) 
@@ -100,7 +115,12 @@ Bot::Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand)
 
 PlayingCard Bot::play(){
     std::cout << "This is the BOT class." << std::endl;
-    PlayingCard selectedCard = getCard(getHand().size()-1);
-    removeCard(selectedCard);
-    return selectedCard;
+
+    try{
+         PlayingCard selectedCard = getCard(getHand().size()-1);
+        removeCard(selectedCard);
+        return selectedCard;
+    } catch(int e){
+        throw e;
+    }
 }

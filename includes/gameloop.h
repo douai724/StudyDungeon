@@ -5,13 +5,16 @@
 #include "playing_card.h"
 #include "card_types.h"
 #include <iostream>
+#include <string>
 
 class Game {
     private:
         short turn; // 1 for p1, 2 for p2
-        Player p1;
-        Player p2;
+        Player* p1;
+        Player* p2;
 
+
+        
         /**
          * Apply the damage effect to a player based on the damage card that is played
          */
@@ -22,7 +25,7 @@ class Game {
         /**
          * Constructor
          */
-        Game(Player p1, Player p2);
+        Game(Player* p1, Player* p2);
         
         /**
          * 1. Get the card input

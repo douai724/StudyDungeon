@@ -10,6 +10,7 @@
  */
 
 #include "artwork.h"
+#include "config.hpp"
 #include "deck.h"
 #include "menu.h"
 #include "util.h"
@@ -80,9 +81,8 @@ void exitApp()
 void about()
 {
     system("cls");
-    std::cout << "Study Dungeon\n";
-    std::cout << "Version 1.0\n";
-    std::cout << "Developed by: Frank\n";
+    std::cout << project_name << '\n';
+    std::cout << project_version << '\n';
     system("pause");
 }
 

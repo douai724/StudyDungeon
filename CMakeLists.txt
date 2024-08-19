@@ -4,7 +4,14 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(LIBRARY_NAME Library)
+
+option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
+option(ENABLE_WARNINGS "Enable to add warnings to a target." ON)
+option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." OFF)
+
+set(LIBRARY_NAME "Library")
+set(EXECUTABLE_NAME "StudyDungeon")
+
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 include(Docs)
 include(FetchContent)
@@ -19,7 +26,6 @@ if(ENABLE_TESTING)
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 endif()
 
-
 add_subdirectory(configured)
 add_subdirectory(src)
 add_subdirectory(app)
@@ -31,7 +37,3 @@ if(ENABLE_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
-
-
-include(CTest)
-enable_testing()

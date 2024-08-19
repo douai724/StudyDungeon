@@ -2,15 +2,15 @@ name: Windows CI Test
 
 on:
     push:
-        branches: [main, master, dev]
+        branches: [main, master, cmake_dev]
     pull_request:
-        branches: [main, master, dev]
+        branches: [main, master, cmake_dev]
 
 jobs:
     build:
         runs-on: windows-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4.1.7
             - name: prepare
               run: |
                   make prepare

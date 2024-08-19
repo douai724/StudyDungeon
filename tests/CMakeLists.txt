@@ -1,7 +1,7 @@
 include(Catch)
 
 set(TEST_MAIN "unit_tests")
-set(TEST_SOURCES "main.cc")
+set(TEST_SOURCES "tests.cpp")
 set(TEST_INCLUDES "./")
 
 add_executable(${TEST_MAIN} ${TEST_SOURCES})

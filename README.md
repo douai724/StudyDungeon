@@ -32,6 +32,10 @@ For debug building there are two main presets:
 
 The exe from the build process gets put into [`build/Visual Studio Community 2022 Release - x86_amd64/app/Debug/StudyDungeon.exe`](<build/Visual Studio Community 2022 Release - x86_amd64/app/Debug/StudyDungeon.exe>)
 
+
+Choosing the `install` target should build the exe and then place it (plus `Deck/*`) into `bin/` at the project root.
+
+
 ## Pre-commit
 
 Pre-commit checks files for conformity to various stylings.

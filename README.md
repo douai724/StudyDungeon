@@ -20,8 +20,17 @@ code .
 ```
 
 In VScode to build:
-<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>B</kbd>
 
+A build task for `cmake` is defined in `.vscode/tasks.json`. `CMakePresets.json` contains a list of cmake presets that will populate the CMake extension with preset build options.
+
+<kbd>Shift</kbd> + <kbd>F7</kbd> should be the shortcut key for triggering a build. You will be prompted to select a "Target" - Choose "ALL_BUILD".
+
+For debug building there are two main presets:
+
+- Configure preset: "Visual Studio Community 2022 Release - x86_amd64"
+- Build preset: "Debug: Visual Studio Community 2022 Release - x86_amd64"
+
+The exe from the build process gets put into [`build/Visual Studio Community 2022 Release - x86_amd64/app/Debug/StudyDungeon.exe`](<build/Visual Studio Community 2022 Release - x86_amd64/app/Debug/StudyDungeon.exe>)
 
 ## Pre-commit
 

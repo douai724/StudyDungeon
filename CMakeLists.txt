@@ -30,7 +30,7 @@ add_subdirectory(configured)
 add_subdirectory(src)
 add_subdirectory(app)
 
-
+# TODO Create a post-build command that will copy the Deck directory to where the exe is
 
 if(ENABLE_TESTING)
     include(CTest)

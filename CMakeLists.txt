@@ -8,6 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
 option(ENABLE_WARNINGS "Enable to add warnings to a target." ON)
 option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." OFF)
+option(ENABLE_SANITIZE_ADDR "Enable address sanitizer" OFF)
+option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitizer" OFF)
 
 set(LIBRARY_NAME "Library")
 set(EXECUTABLE_NAME "StudyDungeon")
@@ -30,7 +32,10 @@ if(ENABLE_WARNINGS)
     include(Warnings)
 endif()
 
-
+if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
+    include(Sanitizers)
+    add_sanitizer_flags(ENABLE_SANITIZE_ADDR ENABLE_SANITIZE_UNDEF)
+endif()
 
 add_subdirectory(configured)
 add_subdirectory(src)

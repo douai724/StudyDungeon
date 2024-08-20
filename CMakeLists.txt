@@ -37,3 +37,6 @@ if(ENABLE_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+install(TARGETS ${EXECUTABLE_NAME} DESTINATION "${PROJECT_SOURCE_DIR}/bin")
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/Decks" DESTINATION "${PROJECT_SOURCE_DIR}/bin" )

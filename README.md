@@ -1,7 +1,7 @@
-[![pre-commit](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml)
-[![Documentation](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml)
-[![MSBuild](https://github.com/douai724/StudyDungeon/actions/workflows/msbuild.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/msbuild.yml)
-[![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml)
+[![pre-commit](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml)
+[![Documentation](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml)
+[![MSBuild](https://github.com/douai724/StudyDungeon/actions/workflows/msbuild.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/msbuild.yml)
+[![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml)
 
 ## VScode config
 
@@ -24,6 +24,8 @@ In VScode to build:
 
 
 ## Pre-commit
+
+Pre-commit checks files for conformity to various stylings.
 
 1. install python (https://www.python.org/downloads/release/python-3125/)
     - add to your path (https://realpython.com/add-python-to-path/) plus the `Scripts` dir

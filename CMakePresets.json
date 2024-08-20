@@ -13,7 +13,7 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_CXX_FLAGS_INIT": "/Zc:wchar_t /Zc:forScope /Zc:inline /Zi /EHsc /nologo /permissive- /W4 /WX /w44364 /external:W3 /sdl /Od /std:c++20"
+                "CMAKE_CXX_FLAGS_INIT": "/Zc:wchar_t /Zc:forScope /Zc:inline /Zi /EHsc /nologo /sdl /Od"
             }
         }
     ],

@@ -31,3 +31,11 @@ add_library(${LIBRARY_NAME} STATIC
 
 target_include_directories(${LIBRARY_NAME} PUBLIC
     ${LIBRARY_INCLUDES})
+
+    if (ENABLE_WARNINGS)
+    target_set_warnings(
+        ${LIBRARY_NAME}
+        ON
+        OFF
+    )
+endif()

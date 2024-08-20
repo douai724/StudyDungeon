@@ -26,6 +26,12 @@ if(ENABLE_TESTING)
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 endif()
 
+if(ENABLE_WARNINGS)
+    include(Warnings)
+endif()
+
+
+
 add_subdirectory(configured)
 add_subdirectory(src)
 add_subdirectory(app)

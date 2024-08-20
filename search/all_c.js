@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['question_32',['question',['../structFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e',1,'FlashCard']]]
+  ['removecard_31',['removeCard',['../classPlayer.html#a3a8fc78d07cdfc32452f1ad5075bbef7',1,'Player']]],
+  ['run_32',['run',['../classGridMenu.html#adede5ccb4b583793d0e15ef3e008efaa',1,'GridMenu']]]
 ];

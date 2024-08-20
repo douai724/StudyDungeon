@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n_5ftimes_5fanswered_26',['n_times_answered',['../structFlashCard.html#aae02597613e37585b21bbeedc05c1d1e',1,'FlashCard']]],
-  ['name_27',['name',['../classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454',1,'FlashCardDeck']]],
-  ['nextturn_28',['nextTurn',['../classGame.html#a801658c7cef474bc1d9a830f4a79034c',1,'Game']]]
+  ['player_27',['Player',['../classPlayer.html',1,'Player'],['../classPlayer.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()'],['../classPlayer.html#a88eabd4181896530c79c3eab59a754b9',1,'Player::Player(int hitPoints, int maxHitPoints, std::vector&lt; PlayingCard &gt; hand)']]],
+  ['playingcard_28',['PlayingCard',['../classPlayingCard.html',1,'']]],
+  ['print_5fdeck_29',['print_deck',['../classFlashCardDeck.html#acb78d318b2d0733b75a06976359b7816',1,'FlashCardDeck']]]
 ];

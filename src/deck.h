@@ -56,6 +56,8 @@ struct FlashCard
  */
 class FlashCardDeck
 {
+    // TODO: add constructor
+    // TODO add destructor
 public:
     /** The name of the flashcard deck */
     std::string name{};
@@ -82,6 +84,7 @@ public:
 
 /**
  * @brief Load the decks from files stored with the ".deck" extension inside decks/
+ * @fn
  * TODO document
  */
 void load_flashcard_decks(std::filesystem::path deck_path);
@@ -89,6 +92,7 @@ void load_flashcard_decks(std::filesystem::path deck_path);
 
 /**
  * @brief Reads the contents of the deck file to create cards and returns the deck
+ * @fn
  * TODO document
  * @param deck_file
  */

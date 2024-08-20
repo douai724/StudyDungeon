@@ -20,9 +20,9 @@
 
 
 /**
- * @brief Get the app path
- *
- * @return std::filesystem::path
+ * @brief Get the app path object
+ * @fn get the path of the application
+ * @return std::filesystem::path The path to the executable
  */
 std::filesystem::path get_app_path();
 #endif

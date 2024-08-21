@@ -16,3 +16,9 @@ if (ENABLE_WARNINGS)
         OFF
     )
 endif()
+
+add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${PROJECT_SOURCE_DIR}/Decks $<TARGET_FILE_DIR:${EXECUTABLE_NAME}>/Decks
+    COMMENT "Copying Decks/ from ${PROJECT_SOURCE_DIR}/Decks to $<TARGET_FILE_DIR:${EXECUTABLE_NAME}>/Decks"
+)

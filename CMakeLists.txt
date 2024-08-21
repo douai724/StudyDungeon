@@ -42,6 +42,15 @@ add_subdirectory(src)
 add_subdirectory(app)
 
 # TODO Create a post-build command that will copy the Deck directory to where the exe is
+set(DECK_TEMPLATE_DIR ${CMAKE_SOURCE_DIR}/Decks)
+set(DECK_DEST EXECUTABLE_OUTPUT_PATH)
+
+add_custom_target(TARGET ${EXECUTABLE_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${DECK_TEMPLATE_DIR} ${DECK_DEST}
+    COMMENT "Copy deck directory to be located with executable"
+)
+
 
 if(ENABLE_TESTING)
     include(CTest)

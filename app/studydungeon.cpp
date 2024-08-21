@@ -97,6 +97,27 @@ void controls()
 
 int main()
 {
+    /** path to where the executable is */
+    fs::path app_path = get_app_path();
+    /** path to where Decks should be located */
+    fs::path decks_dir = app_path;
+    decks_dir.append("Decks");
+    if (!fs::exists(decks_dir))
+    {
+        fs::create_directory(decks_dir);
+        std::cerr << "Decks/ did not exist" << std::endl;
+    }
+    std::vector<FlashCardDeck> all_flashcard_decks = loadFlashCardDecks(decks_dir);
+
+    /**A pointer to the current flashcard deck */
+    FlashCardDeck currentDeck;
+    currentDeck = all_flashcard_decks.front();
+    // TODO protect against there being no decks
+    // TODO would it make more sense to make currentDeck an index?
+
+    currentDeck.printDeck();
+
+
     auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 2, 3);
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);

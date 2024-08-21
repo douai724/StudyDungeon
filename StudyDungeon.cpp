@@ -1,5 +1,13 @@
-// StudyDungeon.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/**
+ * @file StudyDungeon.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2024-08-15
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 
 #include <filesystem>
 #include <iostream>
@@ -32,13 +40,15 @@ void reviewMedium() {
     system("pause");
 }
 
-void reviewHard() {
+void reviewHard()
+{
     system("cls");
     std::cout << "Reviewing hard flashcards...\n";
     system("pause");
 }
 
-void editCard() {
+void editCard()
+{
     system("cls");
     std::cout << "Editing a flashcard...\n";
     system("pause");
@@ -58,7 +68,8 @@ void browseDeck()
     system("pause");
 }
 
-void exitApp() {
+void exitApp()
+{
     system("cls");
     exit(0);
 }
@@ -115,7 +126,7 @@ int main()
     mainMenu->addGridItem("Edit Flashcards", editMenu, 1, 0);
     mainMenu->addGridItem("About", about, 1, 1);
     mainMenu->addGridItem("test menu", testMenu, 2, 0);
-    
+
     mainMenu->addGridItem("Exit", exitApp, 2, 1);
 
     mainMenu->run();

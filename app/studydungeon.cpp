@@ -74,6 +74,7 @@ void browseDeck()
     std::cout << "Browsing the deck...\n";
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
+        fc.printCard();
     }
     system("pause");
 }

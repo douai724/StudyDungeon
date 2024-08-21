@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['flashcard_43',['FlashCard',['../structFlashCard.html',1,'']]],
-  ['flashcarddeck_44',['FlashCardDeck',['../classFlashCardDeck.html',1,'']]]
+  ['flashcard_46',['FlashCard',['../classFlashCard.html',1,'']]],
+  ['flashcarddeck_47',['FlashCardDeck',['../classFlashCardDeck.html',1,'']]]
 ];

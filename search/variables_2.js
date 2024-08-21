@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['difficulty_84',['difficulty',['../structFlashCard.html#aa743657939010f26d41a6713003906c6',1,'FlashCard']]]
+  ['difficulty_90',['difficulty',['../classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d',1,'FlashCard']]]
 ];

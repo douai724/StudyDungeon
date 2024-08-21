@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['setcolor_76',['setColor',['../classMenu.html#aedb90573151fa18332d9eb05c90b1c07',1,'Menu']]],
-  ['sethand_77',['setHand',['../classPlayer.html#ab3075dfec0540bfed4db7c1c059e029a',1,'Player']]],
-  ['sethitpoints_78',['setHitPoints',['../classPlayer.html#a389b9865ee167e58de339e83d16250d0',1,'Player']]],
-  ['setmaxhitpoints_79',['setMaxHitPoints',['../classPlayer.html#ad6aeb2075eb5376d9512023e1754be0b',1,'Player']]]
+  ['removecard_80',['removeCard',['../classPlayer.html#a3a8fc78d07cdfc32452f1ad5075bbef7',1,'Player']]],
+  ['run_81',['run',['../classGridMenu.html#adede5ccb4b583793d0e15ef3e008efaa',1,'GridMenu']]]
 ];

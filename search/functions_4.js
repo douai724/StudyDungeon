@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['isgameover_67',['isGameOver',['../classGame.html#a102ce6e5a222e403aa7a0465ff6281dc',1,'Game']]]
+  ['handlenavigation_69',['handleNavigation',['../classGridMenu.html#a4b9bc3cc8d2a574504673189e2aaf4e4',1,'GridMenu']]],
+  ['heal_70',['heal',['../classPlayer.html#aa7eae982673d2d8027ac5f45e6b5b4f7',1,'Player']]]
 ];

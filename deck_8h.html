@@ -68,6 +68,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">deck.h File Reference</div>  </div>
@@ -83,27 +84,33 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFlashCard.html">FlashCard</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCard.html">FlashCard</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCardDeck.html">FlashCardDeck</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:abb990f45a98cd7c14e01df00bbae7500"><td class="memItemLeft" align="right" valign="top"><a id="abb990f45a98cd7c14e01df00bbae7500"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>CardDifficulty</b> { <b>LOW</b> = 1
+, <b>MEDIUM</b>
+, <b>HIGH</b>
+ }</td></tr>
+<tr class="separator:abb990f45a98cd7c14e01df00bbae7500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aef75d7100e485d1e2c83d63e6aa00777"><td class="memItemLeft" align="right" valign="top"><a id="aef75d7100e485d1e2c83d63e6aa00777"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>create_flash_card</b> ()</td></tr>
-<tr class="separator:aef75d7100e485d1e2c83d63e6aa00777"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a144627c601db5857fc73d09541a7922b"><td class="memItemLeft" align="right" valign="top"><a id="a144627c601db5857fc73d09541a7922b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>read_flashcard_deck</b> ()</td></tr>
-<tr class="separator:a144627c601db5857fc73d09541a7922b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a595c924658e718b16a40fbb6e368eaaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8h.html#a595c924658e718b16a40fbb6e368eaaa">write_flashcard_deck</a> ()</td></tr>
-<tr class="separator:a595c924658e718b16a40fbb6e368eaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02eeb49346c0a55b4ef0f86f70b18ff3"><td class="memItemLeft" align="right" valign="top"><a id="a02eeb49346c0a55b4ef0f86f70b18ff3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>load_flashcard_decks</b> (std::filesystem::path deck_path)</td></tr>
-<tr class="separator:a02eeb49346c0a55b4ef0f86f70b18ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a940cf604511bf087a3772bf108648d61"><td class="memItemLeft" align="right" valign="top"><a id="a940cf604511bf087a3772bf108648d61"></a>
-<a class="el" href="classFlashCardDeck.html">FlashCardDeck</a>&#160;</td><td class="memItemRight" valign="bottom"><b>read_flashcard_deck</b> (std::filesystem::path deck_file)</td></tr>
-<tr class="separator:a940cf604511bf087a3772bf108648d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFlashCard.html">FlashCard</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a> (std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)</td></tr>
+<tr class="memdesc:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a flashcard object.  <a href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">More...</a><br /></td></tr>
+<tr class="separator:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae42b5c6cbd6cfb46c14b0dcbe310edc4"><td class="memItemLeft" align="right" valign="top"><a id="ae42b5c6cbd6cfb46c14b0dcbe310edc4"></a>
+std::vector&lt; <a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>loadFlashCardDecks</b> (std::filesystem::path deck_path)</td></tr>
+<tr class="separator:ae42b5c6cbd6cfb46c14b0dcbe310edc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51117ea428770097e56c24159c9af509"><td class="memItemLeft" align="right" valign="top"><a id="a51117ea428770097e56c24159c9af509"></a>
+<a class="el" href="classFlashCardDeck.html">FlashCardDeck</a>&#160;</td><td class="memItemRight" valign="bottom"><b>readFlashCardDeck</b> (std::filesystem::path deck_file)</td></tr>
+<tr class="separator:a51117ea428770097e56c24159c9af509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d1e709ef7541c0a3f6cbf83b885bcc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8">writeFlashCardDeck</a> (<a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> deck, std::filesystem::path filename)</td></tr>
+<tr class="memdesc:a3d1e709ef7541c0a3f6cbf83b885bcc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a deck of flashcards to disk The standard location will be in Decks/ located with the executable and use a suffix of ".deck".  <a href="deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8">More...</a><br /></td></tr>
+<tr class="separator:a3d1e709ef7541c0a3f6cbf83b885bcc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>your name (<a href="#" onclick="location.href='mai'+'lto:'+'you'+'@d'+'oma'+'in'+'.co'+'m'; return false;">you@d<span style="display: none;">.nosp@m.</span>omai<span style="display: none;">.nosp@m.</span>n.com</a>) </dd></dl>
@@ -111,21 +118,94 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>load_flashcard_decks<
 <dl class="section date"><dt>Date</dt><dd>2024-08-07</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a595c924658e718b16a40fbb6e368eaaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a595c924658e718b16a40fbb6e368eaaa">&#9670;&nbsp;</a></span>write_flashcard_deck()</h2>
+<a id="a7957b37b71aa9dc54c7eec04384dd8f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7957b37b71aa9dc54c7eec04384dd8f5">&#9670;&nbsp;</a></span>createFlashCard()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void write_flashcard_deck </td>
+          <td class="memname"><a class="el" href="classFlashCard.html">FlashCard</a> createFlashCard </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>question</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>answer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CardDifficulty&#160;</td>
+          <td class="paramname"><em>difficulty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_times_answered</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>TODO document </p>
+
+<p>Create a flashcard object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">question</td><td>The card question </td></tr>
+    <tr><td class="paramname">answer</td><td>The card answer </td></tr>
+    <tr><td class="paramname">difficulty</td><td>The card difficulty </td></tr>
+    <tr><td class="paramname">n_times_answered</td><td>The number of time the card has been answered </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFlashCard.html">FlashCard</a></dd></dl>
+<p>Create a flashcard object.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFlashCard.html">FlashCard</a> </dd></dl>
+
+</div>
+</div>
+<a id="a3d1e709ef7541c0a3f6cbf83b885bcc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d1e709ef7541c0a3f6cbf83b885bcc8">&#9670;&nbsp;</a></span>writeFlashCardDeck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void writeFlashCardDeck </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFlashCardDeck.html">FlashCardDeck</a>&#160;</td>
+          <td class="paramname"><em>deck</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::filesystem::path&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write a deck of flashcards to disk The standard location will be in Decks/ located with the executable and use a suffix of ".deck". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deck</td><td>The <a class="el" href="classFlashCard.html">FlashCard</a> deck to be written to file </td></tr>
+    <tr><td class="paramname">filename</td><td>The file path for the deck file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

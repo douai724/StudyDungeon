@@ -1,7 +1,8 @@
 #ifndef CARD_TYPES_H
 #define CARD_TYPES_H
 
-enum Type {
+enum Type
+{
     damage,
     heal,
     block,

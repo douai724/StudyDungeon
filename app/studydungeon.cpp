@@ -9,6 +9,11 @@
  *
  */
 
+#include "artwork.h"
+#include "config.hpp"
+#include "deck.h"
+#include "menu.h"
+#include "util.h"
 #include <filesystem>
 #include <iostream>
 #include <memory>
@@ -16,11 +21,14 @@
 #include <vector>
 #include <functional>
 #include <windows.h>
-#include "includes/menu.h"
 
 
 namespace fs = std::filesystem;
 
+/** Holds the current flashcard deck */
+FlashCardDeck currentFlashCardDeck;
+
+/*examples of setting up a menu */
 void addFlashcard()
 {
     system("cls");
@@ -65,6 +73,9 @@ void browseDeck()
 {
     system("cls");
     std::cout << "Browsing the deck...\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+    }
     system("pause");
 }
 
@@ -77,9 +88,8 @@ void exitApp()
 void about()
 {
     system("cls");
-    std::cout << "Study Dungeon\n";
-    std::cout << "Version 1.0\n";
-    std::cout << "Developed by: Frank\n";
+    std::cout << project_name << '\n';
+    std::cout << project_version << '\n';
     system("pause");
 }
 
@@ -94,6 +104,28 @@ void controls()
 
 int main()
 {
+    splashScreen();
+    /** path to where the executable is */
+    fs::path app_path = get_app_path();
+    /** path to where Decks should be located */
+    fs::path decks_dir = app_path;
+    decks_dir.append("Decks");
+    if (!fs::exists(decks_dir))
+    {
+        fs::create_directory(decks_dir);
+        std::cerr << "Decks/ did not exist" << std::endl;
+    }
+    std::vector<FlashCardDeck> all_flashcard_decks = loadFlashCardDecks(decks_dir);
+
+    /**A pointer to the current flashcard deck */
+
+    currentFlashCardDeck = all_flashcard_decks.front();
+    // FIXME protect against there being no decks
+    // TODO would it make more sense to make currentDeck an index?
+
+    currentFlashCardDeck.printDeck();
+
+
     auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 2, 3);
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);

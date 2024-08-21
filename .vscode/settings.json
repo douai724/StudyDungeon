@@ -67,6 +67,22 @@
         "numeric": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "xhash": "cpp"
-    }
+        "xhash": "cpp",
+        "array": "cpp",
+        "condition_variable": "cpp",
+        "deque": "cpp",
+        "coroutine": "cpp",
+        "map": "cpp",
+        "resumable": "cpp",
+        "set": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "random": "cpp",
+        "ranges": "cpp",
+        "regex": "cpp",
+        "span": "cpp",
+        "stack": "cpp",
+        "variant": "cpp",
+        "xtree": "cpp"
+}
 }

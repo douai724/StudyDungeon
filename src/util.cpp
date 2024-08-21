@@ -37,3 +37,14 @@ void create_dir(std::filesystem::path dir_path)
     // TODO: implement function
     std::cout << "Directory to be created" << dir_path << std::endl;
 };
+
+
+/**
+ * @brief starts a countdown timer for a specified number of minutes
+ *
+ * @param minutes
+ */
+void timer(int minutes)
+{
+    // TODO: implement function
+}

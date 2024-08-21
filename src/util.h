@@ -26,4 +26,11 @@
  */
 std::filesystem::path get_app_path();
 
+/**
+ * @brief starts a countdown timer for a specified number of minutes
+ *
+ * @param minutes
+ */
+void timer(int minutes);
+
 #endif

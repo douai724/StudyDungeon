@@ -22,6 +22,9 @@
 
 namespace fs = std::filesystem;
 
+/** Holds the current flashcard deck */
+FlashCardDeck currentFlashCardDeck;
+
 /*examples of setting up a menu */
 void addFlashcard()
 {
@@ -69,6 +72,7 @@ void browseDeck()
 {
     system("cls");
     std::cout << "Browsing the deck...\n";
+    currentFlashCardDeck.printDeck();
     system("pause");
 }
 
@@ -110,12 +114,12 @@ int main()
     std::vector<FlashCardDeck> all_flashcard_decks = loadFlashCardDecks(decks_dir);
 
     /**A pointer to the current flashcard deck */
-    FlashCardDeck currentDeck;
-    currentDeck = all_flashcard_decks.front();
-    // TODO protect against there being no decks
+
+    currentFlashCardDeck = all_flashcard_decks.front();
+    // FIXME protect against there being no decks
     // TODO would it make more sense to make currentDeck an index?
 
-    currentDeck.printDeck();
+    currentFlashCardDeck.printDeck();
 
 
     auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 2, 3);

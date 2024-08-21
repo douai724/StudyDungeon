@@ -5,14 +5,17 @@ namespace fs = std::filesystem;
 
 
 /**
- * @brief Create a flashcard object
+ * @brief Create a flashcard and fill in the card contents
  *
  * @return FlashCard
  */
-FlashCard create_flashcard()
+FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)
 {
-    //TODO
-    FlashCard card;
+    FlashCard card{};
+    card.question = question;
+    card.answer = answer;
+    card.difficulty = difficulty;
+    card.n_times_answered = n_times_answered;
     return card;
 };
 
@@ -21,7 +24,7 @@ FlashCard create_flashcard()
  * TODO document
  * @param deck_file
  */
-FlashCardDeck read_flashcard_deck(fs::path deck_file)
+FlashCardDeck readFlashCardDeck(fs::path deck_file)
 {
 
     /** The flashcard deck to store the flashcards in as read from the file */
@@ -77,17 +80,23 @@ FlashCardDeck read_flashcard_deck(fs::path deck_file)
     //TODO remove these debugging steps
     std::cout << "name of deck: " << deck.name << '\n';
     std::cout << "number of lines read: " << lineCount << '\n';
-    deck.print_deck();
+    deck.printDeck();
 
     return deck;
 };
 
 
 /**
+ * @brief Write a deck of flashcards to disk
+ * The standard location will be in Decks/ located with the executable
+ * and use a suffix of ".deck"
  *
- * TODO document
+ * @param deck The FlashCard deck to be written to file
+ * @param filename The file path for the deck file
  */
-void write_flashcard_deck() {
+void writeFlashCardDeck(FlashCardDeck deck, fs::path filename) {
+    // check Decks/ exists
+    // check for existance of
     // open file for writing
     // write name of deck to file
     // loop through each card in the deck
@@ -97,9 +106,9 @@ void write_flashcard_deck() {
 /**
  * @brief Function that will scan the deck directory and read in all the deck files found
  * TODO document
- * @param deck_path
+ * @param deck_path the path to look for ".deck" suffixed files
  */
-void load_flashcard_decks(fs::path deck_path)
+std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_path)
 {
     // TODO create an array of Decks to store eacn deck in
     std::cout << deck_path << std::endl;
@@ -114,8 +123,11 @@ void load_flashcard_decks(fs::path deck_path)
             std::cout << (entry.is_directory() ? "[DIR] " : "[FILE] ") << entry.path().filename().string() << std::endl;
             // TODO for each "<file>.deck" files, call read_deck() and add into the Deck array
             if (entry.is_regular_file())
+            // TODO ensure file has .deck extension
             {
-                read_flashcard_deck(entry);
+                FlashCardDeck fd{};
+                fd = readFlashCardDeck(entry);
+                deck_array.push_back(fd);
             }
         }
     }
@@ -124,9 +136,9 @@ void load_flashcard_decks(fs::path deck_path)
         std::cerr << "Directory does not exist, or is not a directory";
         //TODO deal with error
     }
-    for (FlashCardDeck d : deck_array)
-    {
-        d.print_deck();
-    }
-    //return deck_array;
+    // for (FlashCardDeck d : deck_array)
+    // {
+    //     d.printDeck();
+    // }
+    return deck_array;
 };

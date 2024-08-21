@@ -4,8 +4,8 @@ namespace fs = std::filesystem;
 
 /**
  * @brief Get the app path object
- * TODO better documentation
- * @return std::filesystem::path
+ * @fn get the path of the application
+ * @return std::filesystem::path The path to the executable
  */
 std::filesystem::path get_app_path()
 {
@@ -26,3 +26,25 @@ std::filesystem::path get_app_path()
 
     return exeDir;
 };
+
+/**
+ * @brief Create a directory
+ *
+ * @param dir_path
+ */
+void create_dir(std::filesystem::path dir_path)
+{
+    // TODO: implement function
+    std::cout << "Directory to be created" << dir_path << std::endl;
+};
+
+
+/**
+ * @brief starts a countdown timer for a specified number of minutes
+ *
+ * @param minutes
+ */
+void timer(int minutes)
+{
+    // TODO: implement function
+}

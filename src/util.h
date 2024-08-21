@@ -25,10 +25,5 @@
  * @return std::filesystem::path The path to the executable
  */
 std::filesystem::path get_app_path();
-#endif
 
-/**
- * @brief Displays an ascii art title
- *
- */
-void splashScreen();
+#endif

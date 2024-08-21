@@ -1,7 +1,6 @@
-[![pre-commit](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml)
-[![Documentation](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml)
-[![MSBuild](https://github.com/douai724/StudyDungeon/actions/workflows/msbuild.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/msbuild.yml)
-[![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml/badge.svg?branch=cmake_dev)](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml)
+[![pre-commit](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml)
+[![Documentation](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml)
+[![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml)
 
 ## VScode config
 

@@ -26,3 +26,9 @@
  */
 std::filesystem::path get_app_path();
 #endif
+
+/**
+ * @brief Displays an ascii art title
+ *
+ */
+void splashScreen();

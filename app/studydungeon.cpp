@@ -72,7 +72,9 @@ void browseDeck()
 {
     system("cls");
     std::cout << "Browsing the deck...\n";
-    currentFlashCardDeck.printDeck();
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+    }
     system("pause");
 }
 
@@ -101,6 +103,7 @@ void controls()
 
 int main()
 {
+    splashScreen();
     /** path to where the executable is */
     fs::path app_path = get_app_path();
     /** path to where Decks should be located */

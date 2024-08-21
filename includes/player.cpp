@@ -117,7 +117,7 @@ PlayingCard Bot::play(){
     std::cout << "This is the BOT class." << std::endl;
 
     try{
-         PlayingCard selectedCard = getCard(getHand().size()-1);
+         PlayingCard selectedCard = getCard((int)getHand().size()-1);
         removeCard(selectedCard);
         return selectedCard;
     } catch(int e){

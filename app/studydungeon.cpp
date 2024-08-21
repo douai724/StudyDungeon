@@ -15,9 +15,12 @@
 #include "menu.h"
 #include "util.h"
 #include <filesystem>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
+#include <vector>
+#include <windows.h>
 
 
 namespace fs = std::filesystem;

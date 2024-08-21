@@ -20,13 +20,17 @@ public:
     std::function<void()> action;
     std::shared_ptr<Menu> subMenu;
 
-    MenuItem(const std::string& label, std::function<void()> action);
-    MenuItem(const std::string& label, std::shared_ptr<Menu> subMenu);
+    MenuItem(const std::string &label, std::function<void()> action);
+    MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu);
 
-    bool isSubMenu() const { return subMenu != nullptr; }
+    bool isSubMenu() const
+    {
+        return subMenu != nullptr;
+    }
 };
 
-class Menu {
+class Menu
+{
 protected:
     std::string title;
     std::vector<MenuItem> items;
@@ -38,7 +42,7 @@ protected:
     int getArrowKeyNavigation();
 
 public:
-    Menu(const std::string& title);
+    Menu(const std::string &title);
     virtual ~Menu() = default;
 
     void addItem(const std::string &label, std::function<void()> action);

@@ -5,7 +5,7 @@
 
 /**
  * @brief Construct a new Menu Item:: Menu Item object that has an action
- * 
+ *
  * @param label is the text label of the menu item
  * @param action is the function to be executed when the menu item is selected
  */
@@ -48,7 +48,7 @@ void Menu::addItem(const std::string &label, std::function<void()> action)
 
 /**
  * @brief Add a new menu item to the menu
- * 
+ *
  *
  * @param label is the text label of the menu item
  * @param subMenu is the submenu to be displayed when the menu item is selected
@@ -85,17 +85,24 @@ void Menu::moveCursor(SHORT x, SHORT y)
 
 /**
  * @brief Get the navigation input from the user
- * 
+ *
  * @return int is the navigation input
  */
-int Menu::getArrowKeyNavigation() {
+int Menu::getArrowKeyNavigation()
+{
     int ch = _getch();
-    if (ch == 0 || ch == 224) { // Arrow key pressed
-        switch (_getch()) {
-            case 72: return -1; // Up arrow
-            case 80: return 1;  // Down arrow
-            case 75: return 4;  // Left arrow
-            case 77: return 5;  // Right arrow
+    if (ch == 0 || ch == 224)
+    { // Arrow key pressed
+        switch (_getch())
+        {
+        case 72:
+            return -1; // Up arrow
+        case 80:
+            return 1; // Down arrow
+        case 75:
+            return 4; // Left arrow
+        case 77:
+            return 5; // Right arrow
         }
     }
     else if (ch == 13)
@@ -348,41 +355,47 @@ std::pair<int, int> GridMenu::findNextValidItem(int startRow, int startCol, int 
 {
     int row = startRow;
     int col = startCol;
-    
-    // Find the current item
-    auto currentItem = std::find_if(gridItems.begin(), gridItems.end(),
-        [row, col](const GridItem& item) {
-            return row >= item.row && row < item.row + item.height &&
-                   col >= item.col && col < item.col + item.width;
-        });
 
-    if (currentItem != gridItems.end()) {
+    // Find the current item
+    auto currentItem = std::find_if(gridItems.begin(), gridItems.end(), [row, col](const GridItem &item) {
+        return row >= item.row && row < item.row + item.height && col >= item.col && col < item.col + item.width;
+    });
+
+    if (currentItem != gridItems.end())
+    {
         // Adjust starting position based on the current item's size
-        if (colDelta > 0) col = currentItem->col + currentItem->width - 1;
-        else if (colDelta < 0) col = currentItem->col;
-        if (rowDelta > 0) row = currentItem->row + currentItem->height - 1;
-        else if (rowDelta < 0) row = currentItem->row;
+        if (colDelta > 0)
+            col = currentItem->col + currentItem->width - 1;
+        else if (colDelta < 0)
+            col = currentItem->col;
+        if (rowDelta > 0)
+            row = currentItem->row + currentItem->height - 1;
+        else if (rowDelta < 0)
+            row = currentItem->row;
     }
 
-    do {
+    do
+    {
         // Move to the next cell in the specified direction
         row = (row + rowDelta + gridHeight) % gridHeight;
         col = (col + colDelta + gridWidth) % gridWidth;
 
         // Check if the current cell is valid
-        if (isValidGridItem(row, col)) {
-            auto it = std::find_if(gridItems.begin(), gridItems.end(),
-                [row, col](const GridItem& item) {
-                    return row >= item.row && row < item.row + item.height &&
-                           col >= item.col && col < item.col + item.width;
-                });
-            if (it != gridItems.end()) {
+        if (isValidGridItem(row, col))
+        {
+            auto it = std::find_if(gridItems.begin(), gridItems.end(), [row, col](const GridItem &item) {
+                return row >= item.row && row < item.row + item.height && col >= item.col &&
+                       col < item.col + item.width;
+            });
+            if (it != gridItems.end())
+            {
                 return {it->row, it->col};
             }
         }
 
         // If we've made a complete loop and haven't found a valid item, break
-        if (row == startRow && col == startCol) {
+        if (row == startRow && col == startCol)
+        {
             break;
         }
 
@@ -464,7 +477,4 @@ void GridMenu::executeSelectedItem()
             it->item.action();
         }
     }
-
 }
-
-

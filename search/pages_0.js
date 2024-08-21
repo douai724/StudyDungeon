@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['studydungeon_94',['StudyDungeon',['../index.html',1,'']]]
+  ['studydungeon_96',['StudyDungeon',['../index.html',1,'']]]
 ];

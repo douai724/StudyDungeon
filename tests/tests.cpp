@@ -3,8 +3,14 @@
 // EXAMPLE OF HOW TESTS WORK
 
 
+#include "artwork.h"
 #include "deck.h"
 #include "example_test.h"
+#include "gameloop.h"
+#include "menu.h"
+#include "player.h"
+#include "playing_card.h"
+#include "util.h"
 
 
 TEST_CASE("deck_h enum converters")

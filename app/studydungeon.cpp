@@ -1,14 +1,3 @@
-/**
- * @file StudyDungeon.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2024-08-15
- *
- * @copyright Copyright (c) 2024
- *
- */
-
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
@@ -16,20 +5,17 @@
 #include "util.h"
 #include "gameloop.h"
 #include <filesystem>
-#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
 #include <vector>
+#include <functional>
 #include <windows.h>
-
 
 namespace fs = std::filesystem;
 
-/** Holds the current flashcard deck */
 FlashCardDeck currentFlashCardDeck;
 
-/*examples of setting up a menu */
 void addFlashcard()
 {
     system("cls");
@@ -116,12 +102,40 @@ void controls()
     system("pause");
 }
 
+void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
+{
+    int row = 0;
+    int col = 0;
+    bool positionFound = false;
+
+    for (row = 0; row < mainMenu->getGridHeight(); ++row)
+    {
+        for (col = 0; col < mainMenu->getGridWidth(); ++col)
+        {
+            if (!mainMenu->isValidGridItem(row, col))
+            {
+                positionFound = true;
+                break;
+            }
+        }
+        if (positionFound)
+            break;
+    }
+
+    if (positionFound)
+    {
+        mainMenu->addGridItem("New Button", []() {
+            system("cls");
+            std::cout << "New button clicked!\n";
+            system("pause");
+        }, row, col, 1, 1);
+    }
+}
+
 int main()
 {
     splashScreen();
-    /** path to where the executable is */
     fs::path app_path = get_app_path();
-    /** path to where Decks should be located */
     fs::path decks_dir = app_path;
     decks_dir.append("Decks");
     if (!fs::exists(decks_dir))
@@ -131,16 +145,11 @@ int main()
     }
     std::vector<FlashCardDeck> all_flashcard_decks = loadFlashCardDecks(decks_dir);
 
-    /**A pointer to the current flashcard deck */
-
     currentFlashCardDeck = all_flashcard_decks.front();
-    // FIXME protect against there being no decks
-    // TODO would it make more sense to make currentDeck an index?
 
     currentFlashCardDeck.printDeck();
 
-
-    auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 2, 3);
+    auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 3, 3);
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);
     auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 2);
@@ -154,54 +163,31 @@ int main()
     //gameMenu->addItem();
 
 
-    testMenu->addGridItem(
-        "Large Button",
-        []() {
-            system("cls");
-            std::cout << "large button clicked\n";
-            system("pause");
-        },
-        0,
-        0,
-        2,
-        1);
 
     testMenu->addGridItem(
-        "Button 1",
-        []() {
-            system("cls");
-            std::cout << "Button 1 clicked\n";
-            system("pause");
+        "Add Button",
+        [testMenu]() {
+            addButtonFunction(testMenu);
         },
         0,
-        2);
-    testMenu->addGridItem(
-        "Button 2",
-        []() {
-            system("cls");
-            std::cout << "Button 2 clicked\n";
-            system("pause");
-        },
-        1,
-        1);
-    testMenu->addGridItem(
-        "Button 3",
-        []() {
-            system("cls");
-            std::cout << "Button 3 clicked\n";
-            system("pause");
-        },
-        1,
         0);
+
     testMenu->addGridItem(
-        "Button 4",
-        []() {
+        "Change Grid Size",
+        [testMenu]() {
             system("cls");
-            std::cout << "Button 4 clicked\n";
-            system("pause");
+            int newWidth, newHeight;
+            std::cout << "Enter new grid width: ";
+            std::cin >> newWidth;
+            std::cout << "Enter new grid height: ";
+            std::cin >> newHeight;
+            testMenu->setGridWidth(newWidth);
+            testMenu->setGridHeight(newHeight);
         },
-        1,
-        2);
+        0,
+        1);
+
+    testMenu->addGridItem("Back", mainMenu, 2, 2);
 
 
     reviewMenu->addGridItem("Easy", reviewEasy, 0, 0);
@@ -211,8 +197,8 @@ int main()
 
     editMenu->addGridItem("Edit Card", editCard, 0, 0);
     editMenu->addGridItem("Delete Card", deleteCard, 0, 1);
-    editMenu->addGridItem("Browse Deck", browseDeck, 1, 0);
-    editMenu->addGridItem("Back", mainMenu, 1, 1);
+    editMenu->addGridItem("Browse Deck", browseDeck, 0, 2);
+    editMenu->addGridItem("Back", mainMenu, 2, 2);
 
     mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
     //mainMenu->addGridItem("Review Flashcards", reviewMenu, 0, 1);
@@ -221,7 +207,13 @@ int main()
     mainMenu->addGridItem("About", about, 1, 1);
     mainMenu->addGridItem("test menu", testMenu, 2, 0);
 
-    mainMenu->addGridItem("Exit", exitApp, 2, 1);
+    mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
+    mainMenu->addGridItem("Review Flashcardsajsdkasdnakbdkasdbkakjaskjhdaksadjka", reviewMenu, 0, 1);
+    mainMenu->addGridItem("Edit Flashcards", editMenu, 0, 2);
+    mainMenu->addGridItem("About", about, 1, 0);
+    mainMenu->addGridItem("Controls", controls, 1, 1);
+    mainMenu->addGridItem("Test Menu", testMenu, 1, 2);
+    mainMenu->addGridItem("Exit", exitApp, 2, 2);
 
     mainMenu->run();
 

@@ -1,36 +1,24 @@
-#ifndef MENU_H
-#define MENU_H
+#pragma once
 
-#include <algorithm>
-#include <conio.h>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <memory>
 #include <string>
 #include <vector>
+#include <functional>
+#include <memory>
 #include <windows.h>
 
-class Menu;
-
-class MenuItem
-{
+class MenuItem {
 public:
     std::string label;
     std::function<void()> action;
-    std::shared_ptr<Menu> subMenu;
+    std::shared_ptr<class Menu> subMenu;
 
-    MenuItem(const std::string &label, std::function<void()> action);
-    MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu);
+    MenuItem(const std::string& label, std::function<void()> action);
+    MenuItem(const std::string& label, std::shared_ptr<Menu> subMenu);
 
-    bool isSubMenu() const
-    {
-        return subMenu != nullptr;
-    }
+    bool isSubMenu() const { return subMenu != nullptr; }
 };
 
-class Menu
-{
+class Menu {
 protected:
     std::string title;
     std::vector<MenuItem> items;
@@ -39,68 +27,58 @@ protected:
 
     void setColor(WORD foreground, WORD background);
     void moveCursor(SHORT x, SHORT y);
-    int getArrowKeyNavigation();
 
 public:
-    Menu(const std::string &title);
+    Menu(const std::string& title);
     virtual ~Menu() = default;
 
-    void addItem(const std::string &label, std::function<void()> action);
-    void addItem(const std::string &label, std::shared_ptr<Menu> subMenu);
+    void addItem(const std::string& label, std::function<void()> action);
+    void addItem(const std::string& label, std::shared_ptr<Menu> subMenu);
 
     virtual void display() = 0;
     virtual void run() = 0;
+
+    int getArrowKeyNavigation();
 };
 
-class GridMenu : public Menu
-{
+struct GridItem {
+    MenuItem item;
+    int row;
+    int col;
+    int width;
+    int height;
+
+    GridItem(const MenuItem& item, int row, int col, int width, int height)
+        : item(item), row(row), col(col), width(width), height(height) {}
+};
+
+class GridMenu : public Menu {
 private:
     int gridWidth;
     int gridHeight;
     int selectedRow;
     int selectedCol;
-
-    struct GridItem
-    {
-        MenuItem item;
-        int row;
-        int col;
-        int width;
-        int height;
-
-        GridItem(const MenuItem &item, int row, int col, int width = 1, int height = 1)
-            : item(item), row(row), col(col), width(width), height(height)
-        {
-        }
-    };
-
     std::vector<GridItem> gridItems;
 
     void drawBorder(int width, int height);
-    void drawGridItem(const GridItem &item, int startX, int startY, int width, int height);
-    void executeSelectedItem();
-    bool isValidGridItem(int row, int col) const;
+    void drawGridItem(const GridItem& item, int startX, int startY, int width, int height);
     std::pair<int, int> findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const;
+    void executeSelectedItem();
 
 public:
-    GridMenu(const std::string &title, int width, int height);
+    GridMenu(const std::string& title, int width, int height);
 
-    void addGridItem(const std::string &label,
-                     std::function<void()> action,
-                     int row,
-                     int col,
-                     int width = 1,
-                     int height = 1);
-    void addGridItem(const std::string &label,
-                     std::shared_ptr<Menu> subMenu,
-                     int row,
-                     int col,
-                     int width = 1,
-                     int height = 1);
+    void addGridItem(const std::string& label, std::function<void()> action, int row, int col, int width = 1, int height = 1);
+    void addGridItem(const std::string& label, std::shared_ptr<Menu> subMenu, int row, int col, int width = 1, int height = 1);
 
     void display() override;
     void run() override;
     void handleNavigation(int navigation);
-};
 
-#endif // MENU_H
+    bool isValidGridItem(int row, int col) const;
+    int getGridWidth() const;
+    int getGridHeight() const;
+    void setGridWidth(int width);
+    void setGridHeight(int height);
+    void deleteSelectedItem();
+};

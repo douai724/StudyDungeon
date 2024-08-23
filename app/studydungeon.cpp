@@ -151,7 +151,7 @@ int main()
 
     auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 3, 3);
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
-    auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);
+    auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 3, 3);
     auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 2);
     
     auto gameMenu = std::make_shared<GridMenu>("Game", 2, 1);
@@ -189,7 +189,6 @@ int main()
 
     testMenu->addGridItem("Back", mainMenu, 2, 2);
 
-
     reviewMenu->addGridItem("Easy", reviewEasy, 0, 0);
     reviewMenu->addGridItem("Medium", reviewMedium, 0, 1);
     reviewMenu->addGridItem("Hard", reviewHard, 1, 0);
@@ -200,12 +199,12 @@ int main()
     editMenu->addGridItem("Browse Deck", browseDeck, 0, 2);
     editMenu->addGridItem("Back", mainMenu, 2, 2);
 
-    mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
-    //mainMenu->addGridItem("Review Flashcards", reviewMenu, 0, 1);
-    mainMenu->addGridItem("Play game", gameMenu, 0, 1);
-    mainMenu->addGridItem("Edit Flashcards", editMenu, 1, 0);
-    mainMenu->addGridItem("About", about, 1, 1);
-    mainMenu->addGridItem("test menu", testMenu, 2, 0);
+    // mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
+    // //mainMenu->addGridItem("Review Flashcards", reviewMenu, 0, 1);
+    // mainMenu->addGridItem("Play game", gameMenu, 0, 1);
+    // mainMenu->addGridItem("Edit Flashcards", editMenu, 1, 0);
+    // mainMenu->addGridItem("About", about, 1, 1);
+    // mainMenu->addGridItem("test menu", testMenu, 2, 0);
 
     mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
     mainMenu->addGridItem("Review Flashcardsajsdkasdnakbdkasdbkakjaskjhdaksadjka", reviewMenu, 0, 1);

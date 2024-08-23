@@ -73,10 +73,21 @@ void deleteCard()
 
 void browseDeck()
 {
+    int difficulty{0};
     system("cls");
     std::cout << "Browsing the deck...\n";
+    system("pause");
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
+        system("cls");
+        std::cout << fc.question << std::endl;
+        std::cout << "Ready for answer?" << std::endl;
+        std::getchar();
+        std::cout << "What was the difficulty?" << std::endl;
+        std::cin >> difficulty;
+        std::cout << "You said difficulty of " << difficulty << std::endl;
+        std::cout << "\n\nNEXT CARD?" << std::endl;
+        system("pause");
     }
     system("pause");
 }
@@ -133,6 +144,7 @@ int main()
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 2, 2);
     auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 2);
 
+
     testMenu->addGridItem(
         "Large Button",
         []() {
@@ -181,6 +193,7 @@ int main()
         },
         1,
         2);
+
 
     reviewMenu->addGridItem("Easy", reviewEasy, 0, 0);
     reviewMenu->addGridItem("Medium", reviewMedium, 0, 1);

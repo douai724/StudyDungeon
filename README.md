@@ -2,18 +2,20 @@
 [![Documentation](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml)
 [![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2908ef35da3345f295e479b0a0af2026)](https://app.codacy.com/gh/douai724/StudyDungeon/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ## VScode config
 
 extensions:
+
 - franneck94.vscode-c-cpp-dev-extension-pack
 - github.vscode-github-actions
 - Gruntfuggly.todo-tree
 
-
 ## Building
 
 Open vscode using the "Developer Command Prompt"
-```
+
+```bash
 cd <path to StudyDungeon>
 code .
 ```
@@ -31,9 +33,30 @@ For debug building there are two main presets:
 
 The exe from the build process gets put into [`build/Visual Studio Community 2022 Release - x86_amd64/app/Debug/StudyDungeon.exe`](<build/Visual Studio Community 2022 Release - x86_amd64/app/Debug/StudyDungeon.exe>)
 
-
 Choosing the `install` target should build the exe and then place it (plus `Deck/*`) into `bin/` at the project root.
 
+### Manual/CLI method
+
+```bash
+mkdir -p build
+cd build
+```
+
+Run the cmake generator for MSVC which will set up the workflow:
+
+```
+cmake -S ../ -B ./ -G "Visual Studio Community 2022"
+```
+
+Building:
+
+```bash
+# debug build
+cmake -DCMAKE_BUILD_TYPE=Debug ../
+
+# release build
+cmake -DCMAKE_BUILD_TYPE=Release ../
+```
 
 ## Pre-commit
 

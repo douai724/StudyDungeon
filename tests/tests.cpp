@@ -2,15 +2,12 @@
 
 // EXAMPLE OF HOW TESTS WORK
 
-#include "artwork.h"
-#include "config.hpp"
+
 #include "deck.h"
 #include "example_test.h"
-#include "menu.h"
-#include "util.h"
 
 
-TEST_CASE("enum converters")
+TEST_CASE("deck_h enum converters")
 {
     REQUIRE(strToCardDifficulty("") == UNKNOWN);
     REQUIRE(strToCardDifficulty("SOMETHING") == UNKNOWN);

@@ -1,6 +1,6 @@
 /**
  * @file deck.h
- * @author your name (you@domain.com)
+ * @author Green Alligators
  * @brief
  * @version 0.1
  * @date 2024-08-07
@@ -28,11 +28,16 @@
  */
 enum CardDifficulty
 {
+    UNKNOWN = 0,
     LOW = 1,
-    MEDIUM,
-    HIGH
+    MEDIUM = 2,
+    HIGH = 3
 };
 
+
+CardDifficulty strToCardDifficulty(std::string s);
+
+std::string cardDifficultyToStr(CardDifficulty d);
 
 /**
  * @brief This structure holds the information for each flashcard

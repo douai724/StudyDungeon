@@ -8,4 +8,6 @@ add_executable(${TEST_MAIN} ${TEST_SOURCES})
 target_include_directories(${TEST_MAIN} PUBLIC ${TEST_INCLUDES})
 target_link_libraries(${TEST_MAIN} PUBLIC ${LIBRARY_NAME} Catch2::Catch2WithMain)
 
+# add_test(NAME ${TEST_MAIN}
+# COMMAND ${TEST_MAIN})
 catch_discover_tests(${TEST_MAIN})

@@ -1,8 +1,52 @@
+/**
+ * @file deck.cpp
+ * @author Green Alligators
+ * @brief
+ * @version 0.1
+ * @date 2024-08-23
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 
 #include "deck.h"
 
 namespace fs = std::filesystem;
 
+
+CardDifficulty strToCardDifficulty(std::string s)
+{
+    if (s == "LOW")
+    {
+        return LOW;
+    }
+    else if (s == "MEDIUM")
+    {
+        return MEDIUM;
+    }
+    else if (s == "HIGH")
+    {
+        return HIGH;
+    }
+    else
+    {
+        return UNKNOWN;
+    }
+}
+
+std::string cardDifficultyToStr(CardDifficulty d)
+{
+    switch (d)
+    {
+    case (LOW):
+        return "LOW";
+    case (MEDIUM):
+        return "MEDIUM";
+    case (HIGH):
+        return "HIGH";
+    };
+    return "UNKNOWN";
+}
 
 /**
  * @brief Create a flashcard and fill in the card contents
@@ -21,8 +65,9 @@ FlashCard createFlashCard(std::string question, std::string answer, CardDifficul
 
 /**
  * @brief For a given deck file, read the contents in to create all the cards
- * TODO document
- * @param deck_file
+ *
+ * @param deck_file The path to the file containing the deck information
+ * @return A FlashCardDeck after parsing the file.
  */
 FlashCardDeck readFlashCardDeck(fs::path deck_file)
 {
@@ -71,6 +116,10 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
             if (strInput.starts_with("A:"))
             {
                 deck.cards.at(cardNum).answer = strInput;
+            }
+            if (strInput.starts_with("D:"))
+            {
+                //deck.cards.at(cardNum).difficulty = strToCardDifficulty(strInput);
             }
         }
 

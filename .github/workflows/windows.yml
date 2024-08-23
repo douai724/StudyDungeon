@@ -34,7 +34,7 @@ jobs:
 
             - name: Generate Coverage Report
               shell: cmd
-              run: OpenCppCoverage --modules Debug --export_type cobertura:winci.xml -- "cmake" --build build --config Debug --target unit_tests -j4
+              run: OpenCppCoverage --modules Debug --export_type cobertura:winci.xml -- build\tests\Debug\unit_tests.exe
 
             - name: Upload Report to Codecov
               uses: codecov/codecov-action@v4

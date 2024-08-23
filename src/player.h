@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "playing_card.h"
+#include "menu.h"
 #include <iostream>
 #include <stdio.h>
 #include <string.h>

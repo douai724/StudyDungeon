@@ -114,31 +114,59 @@ User::User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Pla
 }
 
 // could change the return type to an integer so that -1 can be sent in return
+// PlayingCard User::play()
+// {
+//     std::cout << "This is the USER class." << std::endl;
+
+//     std::vector<PlayingCard> currentHand = Player::getHand();
+
+
+//     for (int i = 0; i < (int)currentHand.size(); i++)
+//     {
+//         std::cout << i << ": " << currentHand[i].toString() << std::endl;
+//     }
+//     try
+//     {
+//         std::cout << "Please pick a card by entering its number:" << std::endl;
+//         int input;
+//         std::cin >> input;
+//         PlayingCard selectedCard = getCard(input);
+//         removeCard(selectedCard);
+//         return selectedCard;
+//     }
+//     catch (int e)
+//     {
+//         throw e;
+//     }
+// }
+
 PlayingCard User::play()
 {
     std::cout << "This is the USER class." << std::endl;
 
     std::vector<PlayingCard> currentHand = Player::getHand();
+    int handSize = (int) currentHand.size();
+    PlayingCard selectedCard = PlayingCard();
+    // probably need to free this up somehow
+    auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
+    for(int i = 0; i < handSize; i++){
 
-
-    for (int i = 0; i < (int)currentHand.size(); i++)
-    {
-        std::cout << i << ": " << currentHand[i].toString() << std::endl;
+        cardsMenu->addGridItem(currentHand[i].toString(), [this, i, currentHand, &selectedCard](){
+            system("cls");
+            std::cout << "Helo" << std::endl;
+            selectedCard = currentHand[i];
+            system("pause");
+            throw "continue";
+            
+        }, i, 0);
     }
-    try
-    {
-        std::cout << "Please pick a card by entering its number:" << std::endl;
-        int input;
-        std::cin >> input;
-        PlayingCard selectedCard = getCard(input);
-        removeCard(selectedCard);
-        return selectedCard;
-    }
-    catch (int e)
-    {
-        throw e;
-    }
+    
+    cardsMenu->run();
+    removeCard(selectedCard);
+    std::cout << "return" << std::endl;
+    return selectedCard; 
 }
+
 
 Bot::Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Player(hitPoints, maxHitPoints, hand)
 {

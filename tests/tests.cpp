@@ -2,7 +2,17 @@
 
 // EXAMPLE OF HOW TESTS WORK
 
+#include "deck.h"
 #include "example_test.h"
+
+TEST_CASE("enum converters")
+{
+    REQUIRE(strToCardDifficulty("") == UNKNOWN);
+    REQUIRE(strToCardDifficulty("SOMETHING") == UNKNOWN);
+    REQUIRE(strToCardDifficulty("LOW") == LOW);
+    REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
+    REQUIRE(strToCardDifficulty("HIGH") == HIGH);
+}
 
 TEST_CASE("factorial1")
 {

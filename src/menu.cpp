@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <conio.h>
 #include <iostream>
+#include <sstream>
+
 
 MenuItem::MenuItem(const std::string &label, std::function<void()> action)
     : label(label), action(action), subMenu(nullptr)
@@ -243,6 +245,7 @@ void GridMenu::drawBorder(int width, int height)
     std::cout << static_cast<char>(192) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(217);
 }
 
+
 void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int width, int height)
 {
     bool isSelected = (item.row == selectedRow && item.col == selectedCol);
@@ -256,23 +259,63 @@ void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int wi
         setColor(15, 0);
     }
 
-    for (int i = 0; i < height; ++i)
+    // Draw top border
+    moveCursor(static_cast<SHORT>(startX), static_cast<SHORT>(startY));
+    std::cout << static_cast<char>(218) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(191);
+
+    // Prepare the text content
+    std::vector<std::string> lines;
+    int maxLineWidth = width - 4; // -4 for borders and padding
+    int lineCount = 0;
+    bool overflow = false;
+
+    for (size_t i = 0; i < item.item.label.length(); i += maxLineWidth)
+    {
+        if (lineCount >= height - 2)
+        {
+            overflow = true;
+            break;
+        }
+        lines.push_back(item.item.label.substr(i, maxLineWidth));
+        lineCount++;
+    }
+
+    // Draw side borders and content
+    int contentHeight = height - 2;
+    int startLine = (contentHeight - lineCount) / 2;
+
+    for (int i = 1; i < height - 1; ++i)
     {
         moveCursor(static_cast<SHORT>(startX), static_cast<SHORT>(startY + i));
-        if (i == height / 2)
+        std::cout << static_cast<char>(179);
+
+        if (i - 1 >= startLine && i - 1 < startLine + lineCount && !overflow)
         {
-            int labelLength = static_cast<int>(item.item.label.length());
-            int padding = (width - labelLength) / 2;
-            std::cout << std::setw(padding) << "" << item.item.label << std::setw(width - padding - labelLength) << "";
+            std::string &line = lines[i - 1 - startLine];
+            int padding = (width - 2 - line.length()) / 2;
+            std::cout << std::string(padding, ' ') << line << std::string(width - 2 - padding - line.length(), ' ');
+        }
+        else if (overflow && i == height / 2)
+        {
+            std::string errorMsg = "Error!";
+            int padding = (width - 2 - errorMsg.length()) / 2;
+            std::cout << std::string(padding, ' ') << errorMsg << std::string(width - 2 - padding - errorMsg.length(), ' ');
         }
         else
         {
-            std::cout << std::string(width, ' ');
+            std::cout << std::string(width - 2, ' ');
         }
+
+        std::cout << static_cast<char>(179);
     }
+
+    // Draw bottom border
+    moveCursor(static_cast<SHORT>(startX), static_cast<SHORT>(startY + height - 1));
+    std::cout << static_cast<char>(192) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(217);
 
     setColor(15, 0);
 }
+
 
 bool GridMenu::isValidGridItem(int row, int col) const
 {

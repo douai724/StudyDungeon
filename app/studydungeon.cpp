@@ -177,8 +177,9 @@ int main()
     editMenu->addGridItem("Browse Deck", browseDeck, 0, 2);
     editMenu->addGridItem("Back", mainMenu, 2, 2);
 
+
     mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
-    mainMenu->addGridItem("Review Flashcards", reviewMenu, 0, 1);
+    mainMenu->addGridItem("Review Flashcardsajsdkasdnakbdkasdbkakjaskjhdaksadjka", reviewMenu, 0, 1);
     mainMenu->addGridItem("Edit Flashcards", editMenu, 0, 2);
     mainMenu->addGridItem("About", about, 1, 0);
     mainMenu->addGridItem("Controls", controls, 1, 1);

@@ -1,0 +1,25 @@
+name: Windows CI Build App
+
+on:
+    push:
+        branches: [main, master, cmake_dev]
+    pull_request:
+        branches: [main, master, cmake_dev]
+
+jobs:
+    build:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v4.1.7
+            - name: prepare
+              run: |
+                  make prepare
+
+
+            - name: configure
+              run: |
+                  cmake -H"." -Bbuild -T host=x86 -A x64 -DCMAKE_BUILD_TYPE="Debug"
+
+            - name: "building app"
+              run: |
+                        cmake --build build --config Debug --target StudyDungeon -j4

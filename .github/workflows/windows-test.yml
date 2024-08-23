@@ -1,4 +1,4 @@
-name: Windows CI Test
+name: Windows CI Test and Coverage
 
 on:
     push:
@@ -20,19 +20,15 @@ jobs:
               run: |
                   cmake -H"." -Bbuild -T host=x86 -A x64 -DCMAKE_BUILD_TYPE="Debug"
 
-            # - name: "building app"
-            #   run: |
-            #             cmake --build build --config Debug --target StudyDungeon -j4
 
-            - name: "building tests"
+            - name: "Build tests"
               run: |
                   cmake --build build --config Debug --target unit_tests -j4
-            # - name: testing
-            #   run: |
-            #       cd build
-            #       cd tests
-            #       cd Debug
-            #       .\unit_tests.exe
+
+
+            - name: Run tests
+              run: |
+                  build\tests\Debug\unit_tests.exe
 
             - name: Install OpenCppCoverage
               run: |

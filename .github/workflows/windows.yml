@@ -14,16 +14,18 @@ jobs:
             - name: prepare
               run: |
                   make prepare
+
+            - name: Install OpenCppCoverage
+              run: |
+                        choco install OpenCppCoverage
+                        echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
             - name: configure
               run: |
                   cmake -H"." -Bbuild -T host=x86 -A x64 -DCMAKE_BUILD_TYPE="Debug"
-            - name: Install OpenCppCoverage
-              run: |
-                    choco install OpenCppCoverage
-                    echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+
             - name: "building app"
               run: |
-                        cmake --build build --config Debug --target studydungeon -j4
+                        cmake --build build --config Debug --target StudyDungeon -j4
 
             - name: "building tests"
               run: |

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['player_53',['Player',['../classPlayer.html',1,'']]],
-  ['playingcard_54',['PlayingCard',['../classPlayingCard.html',1,'']]]
+  ['player_56',['Player',['../classPlayer.html',1,'']]],
+  ['playingcard_57',['PlayingCard',['../classPlayingCard.html',1,'']]]
 ];

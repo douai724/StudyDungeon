@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['writeflashcarddeck_89',['writeFlashCardDeck',['../deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8',1,'deck.h']]]
+  ['timer_93',['timer',['../util_8h.html#a211897e8868606c97636147527d722eb',1,'util.cpp']]],
+  ['tostring_94',['toString',['../classPlayer.html#af26b9335d328ead7f0912b2cb38340bb',1,'Player']]]
 ];

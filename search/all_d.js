@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['setcolor_36',['setColor',['../classMenu.html#aedb90573151fa18332d9eb05c90b1c07',1,'Menu']]],
-  ['sethand_37',['setHand',['../classPlayer.html#ab3075dfec0540bfed4db7c1c059e029a',1,'Player']]],
-  ['sethitpoints_38',['setHitPoints',['../classPlayer.html#a389b9865ee167e58de339e83d16250d0',1,'Player']]],
-  ['setmaxhitpoints_39',['setMaxHitPoints',['../classPlayer.html#ad6aeb2075eb5376d9512023e1754be0b',1,'Player']]],
-  ['studydungeon_40',['StudyDungeon',['../index.html',1,'']]]
+  ['readflashcarddeck_36',['readFlashCardDeck',['../deck_8cpp.html#abea54d12b8b52601bf6cbd4f9c477771',1,'deck.cpp']]],
+  ['removecard_37',['removeCard',['../classPlayer.html#a3a8fc78d07cdfc32452f1ad5075bbef7',1,'Player']]],
+  ['run_38',['run',['../classGridMenu.html#adede5ccb4b583793d0e15ef3e008efaa',1,'GridMenu']]]
 ];

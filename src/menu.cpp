@@ -224,14 +224,19 @@ void GridMenu::run()
 {
     while (true)
     {
-        display();
-        int navigation = getArrowKeyNavigation();
-        handleNavigation(navigation);
-        if (navigation == 3)
-        { // Esc
-            system("cls");
-            break; // Exit the menu
+        try{
+            display();
+            int navigation = getArrowKeyNavigation();
+            handleNavigation(navigation);
+            if (navigation == 3)
+            { // Esc
+                system("cls");
+                break; // Exit the menu
+            }
+        } catch(...){
+            break;
         }
+        
     }
 }
 

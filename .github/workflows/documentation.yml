@@ -1,0 +1,37 @@
+name: Documentation
+
+on:
+  push:
+    tags:
+      - "*"
+    branches: [ main, master, cmake_dev ]
+
+jobs:
+    build:
+        name: Build and publish documentation
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4.1.7
+            - uses: actions/setup-python@v5.1.1
+              with:
+                  python-version: "3.10"
+            - name: Install Docs
+              run: |
+                  sudo apt-get install doxygen
+                  pip install jinja2 Pygments
+            - name: prepare
+              run: |
+                  rm -rf build && mkdir build && cd build
+            - name: configure
+              run: |
+                  cmake -H. -Bbuild -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug"
+            - name: building
+              run: |
+                  cmake --build build --config Debug --target docs -j4
+            - name: Deploy to GitHub Pages
+              uses: Cecilapp/GitHub-Pages-deploy@v3
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  build_dir: docs/html
+                  email: cadmu661@student.otago.ac.nz

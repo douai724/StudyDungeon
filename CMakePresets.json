@@ -8,20 +8,29 @@
             "generator": "Visual Studio 17 2022",
             "toolset": "host=x86",
             "architecture": "x64",
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe"
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_CXX_FLAGS_INIT": "/Zc:wchar_t /Zc:forScope /Zc:inline /Zi /EHsc /nologo /sdl /Od"
             }
         }
     ],
     "buildPresets": [
         {
             "name": "Visual Studio Community 2022 Release - x86_amd64-debug",
-            "displayName": "Visual Studio Community 2022 Release - x86_amd64 - Debug",
+            "displayName": "Debug: Visual Studio Community 2022 Release - x86_amd64",
             "configurePreset": "Visual Studio Community 2022 Release - x86_amd64",
-            "configuration": "Debug"
+            "configuration": "Debug",
+            "cleanFirst": false
+        },
+        {
+            "name": "Visual Studio Community 2022 Release - x86_amd64",
+            "displayName": "Release: Visual Studio Community 2022 Release - x86_amd64",
+            "configurePreset": "Visual Studio Community 2022 Release - x86_amd64",
+            "configuration": "Release",
+            "cleanFirst": true
         }
     ]
 }

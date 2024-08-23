@@ -1,6 +1,8 @@
 #include "menu.h"
 #include <algorithm>
 #include <iomanip>
+#include <conio.h>
+#include <iostream>
 
 MenuItem::MenuItem(const std::string &label, std::function<void()> action)
     : label(label), action(action), subMenu(nullptr)
@@ -109,7 +111,7 @@ void GridMenu::display()
     int cellWidth = (consoleWidth - 2) / gridWidth;
     int cellHeight = (consoleHeight - 4) / gridHeight;
 
-    for (const auto &gridItem : gridItems)
+    for (const auto& gridItem : gridItems)
     {
         int startX = 1 + gridItem.col * cellWidth;
         int startY = 3 + gridItem.row * cellHeight;
@@ -119,19 +121,108 @@ void GridMenu::display()
         drawGridItem(gridItem, startX, startY, itemWidth, itemHeight);
     }
 }
-
 void GridMenu::run()
 {
     while (true)
     {
         display();
-        int navigation = getArrowKeyNavigation();
-        handleNavigation(navigation);
-        if (navigation == 3)
+        int key = _getch();
+        if (key == 224 || key == 0) // Arrow key pressed
+        {
+            key = _getch(); // Get the second byte of the key code
+            switch (key)
+            {
+            case 72: // Up arrow
+                handleNavigation(-1);
+                break;
+            case 80: // Down arrow
+                handleNavigation(1);
+                break;
+            case 75: // Left arrow
+                handleNavigation(4);
+                break;
+            case 77: // Right arrow
+                handleNavigation(5);
+                break;
+            }
+        }
+        else if (key == 13) // Enter key
+        {
+            executeSelectedItem();
+        }
+        else if (key == 27) // Escape key
         {
             system("cls");
             break;
         }
+        else if (key == 83 || key == 115) // 'S' or 's' key
+        {
+            deleteSelectedItem();
+        }
+    }
+}
+
+void GridMenu::handleNavigation(int navigation)
+{
+    int newRow = selectedRow;
+    int newCol = selectedCol;
+
+    switch (navigation)
+    {
+    case -1: // Up
+        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, -1, 0);
+        break;
+    case 1: // Down
+        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 1, 0);
+        break;
+    case 4: // Left
+        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 0, -1);
+        break;
+    case 5: // Right
+        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 0, 1);
+        break;
+    }
+
+    if (newRow != selectedRow || newCol != selectedCol)
+    {
+        selectedRow = newRow;
+        selectedCol = newCol;
+    }
+}
+
+void GridMenu::deleteSelectedItem()
+{
+    auto it = std::find_if(gridItems.begin(), gridItems.end(), [this](const GridItem& item) {
+        return selectedRow >= item.row && selectedRow < item.row + item.height &&
+               selectedCol >= item.col && selectedCol < item.col + item.width;
+    });
+
+    if (it != gridItems.end())
+    {
+        std::string deletedItemLabel = it->item.label;
+        gridItems.erase(it);
+        
+        // Find the next valid item to select
+        if (!gridItems.empty())
+        {
+            auto nextItem = findNextValidItem(selectedRow, selectedCol, 0, 0);
+            selectedRow = nextItem.first;
+            selectedCol = nextItem.second;
+        }
+        else
+        {
+            // If no items left, reset selection
+            selectedRow = 0;
+            selectedCol = 0;
+        }
+        
+        // Clear the screen and redraw the menu
+        system("cls");
+        display();
+
+        // Show confirmation message
+        std::cout << "\nButton '" << deletedItemLabel << "' has been deleted." << std::endl;
+        system("pause");
     }
 }
 
@@ -236,36 +327,6 @@ std::pair<int, int> GridMenu::findNextValidItem(int startRow, int startCol, int 
     } while (true);
 
     return std::make_pair(startRow, startCol);
-}
-
-void GridMenu::handleNavigation(int navigation)
-{
-    int newRow = selectedRow;
-    int newCol = selectedCol;
-
-    switch (navigation)
-    {
-    case -1:
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, -1, 0);
-        break;
-    case 1:
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 1, 0);
-        break;
-    case 4:
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 0, -1);
-        break;
-    case 5:
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 0, 1);
-        break;
-    case 2:
-        executeSelectedItem();
-        return;
-    }
-    if (newRow != selectedRow || newCol != selectedCol)
-    {
-        selectedRow = newRow;
-        selectedCol = newCol;
-    }
 }
 
 void GridMenu::executeSelectedItem()

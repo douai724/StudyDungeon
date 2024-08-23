@@ -26,3 +26,19 @@ jobs:
                   cd tests
                   cd Debug
                   .\unit_tests.exe
+
+            - name: Install OpenCppCoverage
+              run: |
+                choco install OpenCppCoverage
+                echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+
+            - name: Generate Coverage Report
+              shell: cmd
+              run: OpenCppCoverage --modules Debug --export_type cobertura:winci.xml -- "cmake --build build --config Debug --target unit_tests -j4" x64\Debug\winci-tests.dll
+
+            - name: Upload Report to Codecov
+              uses: codecov/codecov-action@v4
+              with:
+                fail_ci_if_error: true
+                files: winci.xml
+                token: ${{ secrets.CODECOV_TOKEN }}

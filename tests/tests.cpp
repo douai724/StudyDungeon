@@ -20,7 +20,14 @@ TEST_CASE("deck_h enum converters")
     REQUIRE(strToCardDifficulty("LOW") == LOW);
     REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
     REQUIRE(strToCardDifficulty("HIGH") == HIGH);
+
+    REQUIRE(cardDifficultyToStr(UNKNOWN) == "UNKNOWN");
+    REQUIRE(cardDifficultyToStr(LOW) == "LOW");
+    REQUIRE(cardDifficultyToStr(MEDIUM) == "MEDIUM");
+    REQUIRE(cardDifficultyToStr(HIGH) == "HIGH");
 }
+
+
 TEST_CASE("factorial1")
 {
     REQUIRE(factorial(0) == 1);

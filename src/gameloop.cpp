@@ -51,7 +51,7 @@ void Game::nextTurn()
     
 
     // apply effect
-    switch (card.cardType)
+    switch (card.getType())
     {
     case 0:
         damageEffect(card);

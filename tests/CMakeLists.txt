@@ -5,6 +5,7 @@ set(TEST_SOURCES
     "tests.cpp"
     "player_test.cpp"
     "playing_card_test.cpp"
+    "gameloop_test.cpp"
 )
 set(TEST_INCLUDES "./")
 

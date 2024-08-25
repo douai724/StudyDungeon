@@ -100,11 +100,11 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4f1ec42ba3c1e5bba6b6181a65f6bba4"><td class="memItemLeft" align="right" valign="top"><a id="a4f1ec42ba3c1e5bba6b6181a65f6bba4"></a>
-CardDifficulty&#160;</td><td class="memItemRight" valign="bottom"><b>strToCardDifficulty</b> (std::string s)</td></tr>
+<tr class="memitem:a4f1ec42ba3c1e5bba6b6181a65f6bba4"><td class="memItemLeft" align="right" valign="top">CardDifficulty&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8h.html#a4f1ec42ba3c1e5bba6b6181a65f6bba4">strToCardDifficulty</a> (std::string s)</td></tr>
+<tr class="memdesc:a4f1ec42ba3c1e5bba6b6181a65f6bba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string into the CardDifficulty enum. "LOW" -&gt; LOW "MEDIUM" -&gt; MEDIUM "HIGH" -&gt; HIGH Anything else is converted to UNKNOWN.  <a href="deck_8h.html#a4f1ec42ba3c1e5bba6b6181a65f6bba4">More...</a><br /></td></tr>
 <tr class="separator:a4f1ec42ba3c1e5bba6b6181a65f6bba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a565affb5ede5e1c2b63a83d72599bbc2"><td class="memItemLeft" align="right" valign="top"><a id="a565affb5ede5e1c2b63a83d72599bbc2"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>cardDifficultyToStr</b> (CardDifficulty d)</td></tr>
+<tr class="memitem:a565affb5ede5e1c2b63a83d72599bbc2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8h.html#a565affb5ede5e1c2b63a83d72599bbc2">cardDifficultyToStr</a> (CardDifficulty d)</td></tr>
+<tr class="memdesc:a565affb5ede5e1c2b63a83d72599bbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the card difficulty from enum to a string.  <a href="deck_8h.html#a565affb5ede5e1c2b63a83d72599bbc2">More...</a><br /></td></tr>
 <tr class="separator:a565affb5ede5e1c2b63a83d72599bbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFlashCard.html">FlashCard</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a> (std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)</td></tr>
 <tr class="memdesc:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a flashcard object.  <a href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">More...</a><br /></td></tr>
@@ -125,6 +125,33 @@ std::vector&lt; <a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> &
 <dl class="section date"><dt>Date</dt><dd>2024-08-07</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a565affb5ede5e1c2b63a83d72599bbc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565affb5ede5e1c2b63a83d72599bbc2">&#9670;&nbsp;</a></span>cardDifficultyToStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string cardDifficultyToStr </td>
+          <td>(</td>
+          <td class="paramtype">CardDifficulty&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts the card difficulty from enum to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>The CardDifficulty </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+</div>
+</div>
 <a id="a7957b37b71aa9dc54c7eec04384dd8f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7957b37b71aa9dc54c7eec04384dd8f5">&#9670;&nbsp;</a></span>createFlashCard()</h2>
 
@@ -176,6 +203,33 @@ std::vector&lt; <a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> &
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFlashCard.html">FlashCard</a></dd></dl>
 <p>Create a flashcard object.</p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFlashCard.html">FlashCard</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4f1ec42ba3c1e5bba6b6181a65f6bba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f1ec42ba3c1e5bba6b6181a65f6bba4">&#9670;&nbsp;</a></span>strToCardDifficulty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CardDifficulty strToCardDifficulty </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string into the CardDifficulty enum. "LOW" -&gt; LOW "MEDIUM" -&gt; MEDIUM "HIGH" -&gt; HIGH Anything else is converted to UNKNOWN. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The card difficulty as a string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>CardDifficulty </dd></dl>
 
 </div>
 </div>

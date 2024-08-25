@@ -36,6 +36,7 @@ int Player::getMaxHitPoints()
 
 void Player::setMaxHitPoints(int value)
 {
+    if(value <= 0) return;
     Player::maxHitPoints = value;
 }
 

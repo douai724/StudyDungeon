@@ -77,12 +77,15 @@ PlayingCard Player::getCard(int index)
 }
 
 void Player::damage(int amount)
-{
-    Player::hitPoints -= amount;
+{   
+    if(amount >= 0){
+        Player::hitPoints -= amount;
+    }
 }
 
 void Player::heal(int amount)
-{
+{   
+    if(amount <= 0) return;
     if (Player::hitPoints + amount >= Player::maxHitPoints)
     {
         Player::hitPoints = Player::maxHitPoints;

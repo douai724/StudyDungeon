@@ -35,8 +35,24 @@ enum CardDifficulty
 };
 
 
+/**
+ * @brief Converts a string into the CardDifficulty enum.
+ * "LOW" -> LOW
+ * "MEDIUM" -> MEDIUM
+ * "HIGH" -> HIGH
+ * Anything else is converted to UNKNOWN
+ *
+ * @param s The card difficulty as a string
+ * @return CardDifficulty
+ */
 CardDifficulty strToCardDifficulty(std::string s);
 
+/**
+ * @brief Converts the card difficulty from enum to a string
+ *
+ * @param d The CardDifficulty
+ * @return std::string
+ */
 std::string cardDifficultyToStr(CardDifficulty d);
 
 /**
@@ -51,16 +67,16 @@ class FlashCard
 {
 public:
     /** The flashcard question */
-    std::string question;
+    std::string question{};
 
     /** The flashcard answer */
-    std::string answer;
+    std::string answer{};
 
     /** The user defined difficulty */
-    CardDifficulty difficulty;
+    CardDifficulty difficulty = UNKNOWN;
 
     /** The number of times the question has been answered */
-    int n_times_answered;
+    int n_times_answered{};
 
     /**
          * @brief Prints the card question and answer

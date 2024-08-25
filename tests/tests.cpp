@@ -17,6 +17,7 @@ TEST_CASE("deck_h enum converters")
 {
     REQUIRE(strToCardDifficulty("") == UNKNOWN);
     REQUIRE(strToCardDifficulty("SOMETHING") == UNKNOWN);
+    REQUIRE(strToCardDifficulty("UNKNOWN") == UNKNOWN);
     REQUIRE(strToCardDifficulty("LOW") == LOW);
     REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
     REQUIRE(strToCardDifficulty("HIGH") == HIGH);
@@ -27,6 +28,27 @@ TEST_CASE("deck_h enum converters")
     REQUIRE(cardDifficultyToStr(HIGH) == "HIGH");
 }
 
+TEST_CASE("FlashCard Creation")
+{
+    FlashCard fc{};
+
+    REQUIRE(fc.question == "");
+    REQUIRE(fc.answer == "");
+    REQUIRE(fc.difficulty == UNKNOWN);
+    REQUIRE(fc.n_times_answered == 0);
+
+    fc.question = "question";
+    fc.answer = "answer";
+    fc.difficulty = MEDIUM;
+    fc.n_times_answered = 0;
+
+    FlashCard fc_test = createFlashCard("question", "answer", MEDIUM, 0);
+
+    REQUIRE(fc.question == fc_test.question);
+    REQUIRE(fc.answer == fc_test.answer);
+    REQUIRE(fc.difficulty == fc_test.difficulty);
+    REQUIRE(fc.n_times_answered == fc_test.n_times_answered);
+}
 
 TEST_CASE("factorial1")
 {

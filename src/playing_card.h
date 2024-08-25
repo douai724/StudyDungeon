@@ -21,12 +21,12 @@ private:
      */
     int value;
 
-public:
     /**
-     * The effect of the card.
+     * The effect/type of the card, e.g. damage, heal
      */
     enum Type cardType;
-
+    
+public:
     /**
      * @brief Construct a new Playing Card object.
      * 
@@ -71,6 +71,13 @@ public:
      * @return false 
      */
     bool getTarget();
+
+    /**
+     * @brief Get the type of the card
+     * 
+     * @return enum Type the type
+     */
+    enum Type getType();
 
     /**
      * @brief Converts this PlayingCard object to string.

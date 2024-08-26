@@ -4,43 +4,52 @@
 #include "playing_card.h"
 #include <vector>
 
-TEST_CASE("Hit points are updated and retrieved"){
+TEST_CASE("Hit points are updated and retrieved")
+{
     Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
 
-    SECTION("Retrieving hit points"){
+    SECTION("Retrieving hit points")
+    {
         REQUIRE( testPlayer.getHitPoints() == 100 );
     }
 
-    SECTION("Updating hit points with positive int"){
+    SECTION("Updating hit points with positive int")
+    {
         testPlayer.setHitPoints(50);
         REQUIRE( testPlayer.getHitPoints() == 50 );
     }
 
-    SECTION("Updating hit points with negative int"){
+    SECTION("Updating hit points with negative int")
+    {
         testPlayer.setHitPoints(-100);
         REQUIRE( testPlayer.getHitPoints() == -100);
     }
 }
 
-TEST_CASE("MAXIMUM hit points are updated and retrieved"){
+TEST_CASE("MAXIMUM hit points are updated and retrieved")
+{
     Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
 
-    SECTION("Retrieving MAXIMUM hit points"){
+    SECTION("Retrieving MAXIMUM hit points")
+    {
         REQUIRE( testPlayer.getMaxHitPoints() == 100 );
     }
 
-    SECTION("Updating MAXIMUM hit points with positive int"){
+    SECTION("Updating MAXIMUM hit points with positive int")
+    {
         testPlayer.setMaxHitPoints(50);
         REQUIRE( testPlayer.getMaxHitPoints() == 50);
     }
 
-    SECTION("MAXIMUM hit points that are negative are not accepted"){
+    SECTION("MAXIMUM hit points that are negative are not accepted")
+    {
         testPlayer.setMaxHitPoints(-1);
         REQUIRE( testPlayer.getMaxHitPoints() == 100);
     }
 }
 
-TEST_CASE("Player hand is updated and retrieved"){
+TEST_CASE("Player hand is updated and retrieved")
+{
     // set up cards
     PlayingCard card1 = PlayingCard(1, (enum Type) 0, 5);
     PlayingCard card2 = PlayingCard(1, (enum Type) 0, 10);
@@ -55,7 +64,8 @@ TEST_CASE("Player hand is updated and retrieved"){
     
     REQUIRE( testPlayer.getHand().size() == 0 );
 
-    SECTION("Update and retrieve hand"){
+    SECTION("Update and retrieve hand")
+    {
         testPlayer.setHand(testHand);
 
         REQUIRE( testPlayer.getHand()[0] == card1 );
@@ -63,7 +73,8 @@ TEST_CASE("Player hand is updated and retrieved"){
         REQUIRE( testPlayer.getHand().size() == (int) 2 );
     }
 
-    SECTION("Remove a card from hand"){
+    SECTION("Remove a card from hand")
+    {
         testPlayer.setHand(testHand);
         testPlayer.removeCard(card1);
 
@@ -71,7 +82,8 @@ TEST_CASE("Player hand is updated and retrieved"){
         REQUIRE( testPlayer.getHand()[0] == card2);
     }
 
-    SECTION("Add card to hand"){
+    SECTION("Add card to hand")
+    {
         PlayingCard card3 = PlayingCard(1, (enum Type) 0, 25);
         testPlayer.setHand(testHand);
         testPlayer.addCard(card3);
@@ -83,7 +95,8 @@ TEST_CASE("Player hand is updated and retrieved"){
 
     }
 
-    SECTION("Get the card that corresponds with the index"){
+    SECTION("Get the card that corresponds with the index")
+    {
         testPlayer.setHand(testHand);
 
         // within bounds
@@ -96,12 +109,14 @@ TEST_CASE("Player hand is updated and retrieved"){
 
     }
 }
-TEST_CASE("Effects are applied"){
+TEST_CASE("Effects are applied")
+{
     Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
 
     REQUIRE( testPlayer.getHitPoints() == 100 );
 
-    SECTION("Positive value damage is applied"){
+    SECTION("Positive value damage is applied")
+    {
         testPlayer.damage(10);
 
         REQUIRE( testPlayer.getHitPoints() == 90 );
@@ -111,13 +126,15 @@ TEST_CASE("Effects are applied"){
         REQUIRE( testPlayer.getHitPoints() == 75 );
     }
     
-    SECTION("Negative value damage is not applied"){
+    SECTION("Negative value damage is not applied")
+    {
         testPlayer.damage(-10);
 
         REQUIRE( testPlayer.getHitPoints() == 100 );
     }
 
-    SECTION("Positive value healing is applied"){
+    SECTION("Positive value healing is applied")
+    {
         testPlayer.setHitPoints(50);
 
         testPlayer.heal(10);
@@ -129,7 +146,8 @@ TEST_CASE("Effects are applied"){
         REQUIRE( testPlayer.getHitPoints() == 75);
     }
 
-    SECTION("Negative value healing is not applied"){
+    SECTION("Negative value healing is not applied")
+    {
         testPlayer.setHitPoints(50);
 
         testPlayer.heal(-10);
@@ -137,7 +155,8 @@ TEST_CASE("Effects are applied"){
         REQUIRE( testPlayer.getHitPoints() == 50);
     }
 
-    SECTION("Healing amount surpasses max hit points"){
+    SECTION("Healing amount surpasses max hit points")
+    {
         testPlayer.setHitPoints(90);
 
         testPlayer.heal(20);
@@ -145,7 +164,8 @@ TEST_CASE("Effects are applied"){
         REQUIRE( testPlayer.getHitPoints() == 100 );
     }
 
-    SECTION("Healing at full hit points"){
+    SECTION("Healing at full hit points")
+    {
         testPlayer.heal(10);
 
         REQUIRE( testPlayer.getHitPoints() == 100 );

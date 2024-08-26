@@ -3,23 +3,28 @@
 #include "card_types.h"
 #include "playing_card.h"
 
-TEST_CASE("Retrieve members"){
+TEST_CASE("Retrieve members")
+{
     PlayingCard testCard = PlayingCard(1, (enum Type) 0, 10);
 
-    SECTION("Get target"){
+    SECTION("Get target")
+    {
         REQUIRE( testCard.getTarget() == 1 );
     }
 
-    SECTION("Get value"){
+    SECTION("Get value")
+    {
         REQUIRE( testCard.getValue() == 10 );
     }
 
-    SECTION("Get type"){
+    SECTION("Get type")
+    {
         REQUIRE( testCard.getType() == (enum Type) 0 );
     }
 }
 
-TEST_CASE("Equality is correct"){
+TEST_CASE("Equality is correct")
+{
     PlayingCard card1 = PlayingCard(1, (enum Type) 0, 15);
     PlayingCard cardRef = card1;
     PlayingCard* cardPtr = &card1;

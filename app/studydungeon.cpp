@@ -68,7 +68,7 @@ void reviseDeck()
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
         // FIXME to make it work properly
-        system("cls");
+        clearScreen();
         std::cout << fc.question << std::endl;
         std::cout << "Ready for answer?" << std::endl;
         pause();
@@ -143,7 +143,7 @@ void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
             []() {
                 clearScreen();
                 std::cout << "New button clicked!\n";
-                system("pause");
+                pause();
             },
             row,
             col,

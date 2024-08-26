@@ -225,7 +225,7 @@ void GridMenu::deleteSelectedItem()
 
         // Show confirmation message
         std::cout << "\nButton '" << deletedItemLabel << "' has been deleted." << std::endl;
-        system("pause");
+        pause();
     }
 }
 

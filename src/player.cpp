@@ -162,10 +162,10 @@ PlayingCard User::play()
         cardsMenu->addGridItem(
             currentHand[i].toString(),
             [this, i, currentHand, &selectedCard]() {
-                system("cls");
+                clearScreen();
                 std::cout << "Helo" << std::endl;
                 selectedCard = currentHand[i];
-                system("pause");
+                pause();
                 throw "continue";
             },
             i,

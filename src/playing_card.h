@@ -1,3 +1,14 @@
+/**
+ * @file playing_card.h
+ * @author Green Aligators
+ * @brief
+ * @version 0.1
+ * @date 2024-08-27
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+#pragma once
 #ifndef PLAYING_CARD_H
 #define PLAYING_CARD_H
 

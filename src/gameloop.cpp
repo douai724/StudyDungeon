@@ -61,7 +61,7 @@ void Game::nextTurn()
     std::cout << "Card played: " + card.toString() + "\n";
     std::cout << "Health: P1=" << p1->getHitPoints() << ", P2=" << p2->getHitPoints() << std::endl;
     std::cout << "Hand size: P1=" << p1->getHand().size() << " P2=" << p2->getHand().size() << std::endl;
-    system("pause");
+    pause();
 
     // switch turns
     if (Game::turn == 1)

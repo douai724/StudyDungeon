@@ -1,8 +1,20 @@
+/**
+ * @file player.h
+ * @author Green Aligators
+ * @brief
+ * @version 0.1
+ * @date 2024-08-27
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+#pragma once
 #ifndef PLAYER_H
 #define PLAYER_H
 
 #include "menu.h"
 #include "playing_card.h"
+#include "util.h"
 #include <iostream>
 #include <stdio.h>
 #include <string.h>

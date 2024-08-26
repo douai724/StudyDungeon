@@ -1,9 +1,21 @@
+/**
+ * @file gameloop.h
+ * @author Green Aligators
+ * @brief
+ * @version 0.1
+ * @date 2024-08-27
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+#pragma once
 #ifndef GAMELOOP_H
 #define GAMELOOP_H
 
 #include "card_types.h"
 #include "player.h"
 #include "playing_card.h"
+#include "util.h"
 #include <iostream>
 #include <string>
 

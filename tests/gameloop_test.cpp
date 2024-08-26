@@ -1,9 +1,9 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "card_types.h"
-#include "playing_card.h"
-#include "player.h"
 #include "gameloop.h"
+#include "player.h"
+#include "playing_card.h"
 #include <vector>
 
 TEST_CASE("Win condition")
@@ -12,9 +12,9 @@ TEST_CASE("Win condition")
     Player p2 = Player(100, 100, std::vector<PlayingCard>());
 
     Player *ptr1 = &p1;
-    Player *ptr2 = &p2; 
+    Player *ptr2 = &p2;
 
-    PlayingCard testCard = PlayingCard(1, (enum Type) 0, 10);
+    PlayingCard testCard = PlayingCard(1, (enum Type)0, 10);
 
     ptr1->addCard(testCard);
     ptr2->addCard(testCard);
@@ -23,26 +23,26 @@ TEST_CASE("Win condition")
 
     SECTION("Player 1 drops to 0 hp")
     {
-        REQUIRE( testGame.isGameOver() == false );
+        REQUIRE(testGame.isGameOver() == false);
 
         ptr1->setHitPoints(0);
 
-        REQUIRE( testGame.isGameOver() == true );
+        REQUIRE(testGame.isGameOver() == true);
     }
 
     SECTION("Player 2 drops to 0 hp")
     {
-        REQUIRE( testGame.isGameOver() == false );
+        REQUIRE(testGame.isGameOver() == false);
 
         ptr2->setHitPoints(0);
 
-        REQUIRE( testGame.isGameOver() == true );
+        REQUIRE(testGame.isGameOver() == true);
     }
 
     SECTION("Players are out of cards")
     {
         ptr1->removeCard(testCard);
         ptr2->removeCard(testCard);
-        REQUIRE( testGame.isGameOver() == true );
+        REQUIRE(testGame.isGameOver() == true);
     }
 }

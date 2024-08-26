@@ -3,7 +3,7 @@
 
 /**
  * @brief All possible effects that a playing card could have.
- * 
+ *
  */
 enum Type
 {

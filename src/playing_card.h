@@ -5,8 +5,8 @@
 #include <string>
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 class PlayingCard
 {
@@ -25,19 +25,19 @@ private:
      * The effect/type of the card, e.g. damage, heal
      */
     enum Type cardType;
-    
+
 public:
     /**
      * @brief Construct a new Playing Card object.
-     * 
+     *
      * Default Constructor.
-     * 
+     *
      */
     PlayingCard();
 
     /**
      * @brief Construct a new Playing Card object.
-     * 
+     *
      * @param target the target of the card
      * @param cardType the effect of the card
      * @param value the value modifier of the card
@@ -46,42 +46,42 @@ public:
 
     /**
      * @brief Compares another PlayingCard object to this.
-     * 
+     *
      * Comparas another PlayingCard object to this. Returns true if both
-     * PlayingCard objects possess the same member values. Returns false 
+     * PlayingCard objects possess the same member values. Returns false
      * otherwise.
-     * 
+     *
      * @param other The card to compare this to.
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
     bool operator==(PlayingCard &other);
 
     /**
      * @brief Returns the value of the card.
-     * 
+     *
      * @return int the value of the card.
      */
     int getValue();
 
     /**
      * @brief Returns the target of the card.
-     * 
-     * @return true 
-     * @return false 
+     *
+     * @return true
+     * @return false
      */
     bool getTarget();
 
     /**
      * @brief Get the type of the card
-     * 
+     *
      * @return enum Type the type
      */
     enum Type getType();
 
     /**
      * @brief Converts this PlayingCard object to string.
-     * 
+     *
      * @return std::string the string version of this PlayingCard.
      */
     std::string toString();

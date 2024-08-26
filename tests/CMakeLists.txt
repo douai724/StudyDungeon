@@ -1,7 +1,7 @@
 include(Catch)
 
 set(TEST_MAIN "unit_tests")
-set(TEST_SOURCES 
+set(TEST_SOURCES
     "tests.cpp"
     "player_test.cpp"
     "playing_card_test.cpp"

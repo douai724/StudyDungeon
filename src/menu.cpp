@@ -1,7 +1,7 @@
 #include "menu.h"
 #include <algorithm>
-#include <iomanip>
 #include <conio.h>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 
@@ -113,7 +113,7 @@ void GridMenu::display()
     int cellWidth = (consoleWidth - 2) / gridWidth;
     int cellHeight = (consoleHeight - 4) / gridHeight;
 
-    for (const auto& gridItem : gridItems)
+    for (const auto &gridItem : gridItems)
     {
         int startX = 1 + gridItem.col * cellWidth;
         int startY = 3 + gridItem.row * cellHeight;
@@ -127,42 +127,45 @@ void GridMenu::run()
 {
     while (true)
     {
-        try{
+        try
+        {
             display();
             int key = _getch();
             if (key == 224 || key == 0) // Arrow key pressed
+            {
+                key = _getch(); // Get the second byte of the key code
+                switch (key)
                 {
-                    key = _getch(); // Get the second byte of the key code
-                    switch (key)
-                    {
-                    case 72: // Up arrow
-                        handleNavigation(-1);
-                        break;
-                    case 80: // Down arrow
-                        handleNavigation(1);
-                        break;
-                    case 75: // Left arrow
-                        handleNavigation(4);
-                        break;
-                    case 77: // Right arrow
-                        handleNavigation(5);
-                        break;
-                    }
-                }
-                else if (key == 13) // Enter key
-                {
-                    executeSelectedItem();
-                }
-                else if (key == 27) // Escape key
-                {
-                    system("cls");
+                case 72: // Up arrow
+                    handleNavigation(-1);
+                    break;
+                case 80: // Down arrow
+                    handleNavigation(1);
+                    break;
+                case 75: // Left arrow
+                    handleNavigation(4);
+                    break;
+                case 77: // Right arrow
+                    handleNavigation(5);
                     break;
                 }
-                else if (key == 83 || key == 115) // 'S' or 's' key
-                {
-                    deleteSelectedItem();
-                }
-        } catch(...){
+            }
+            else if (key == 13) // Enter key
+            {
+                executeSelectedItem();
+            }
+            else if (key == 27) // Escape key
+            {
+                system("cls");
+                break;
+            }
+            else if (key == 83 || key == 115) // 'S' or 's' key
+            {
+                deleteSelectedItem();
+            }
+        }
+        catch (...)
+        {
             break;
         }
     }
@@ -198,16 +201,16 @@ void GridMenu::handleNavigation(int navigation)
 
 void GridMenu::deleteSelectedItem()
 {
-    auto it = std::find_if(gridItems.begin(), gridItems.end(), [this](const GridItem& item) {
-        return selectedRow >= item.row && selectedRow < item.row + item.height &&
-               selectedCol >= item.col && selectedCol < item.col + item.width;
+    auto it = std::find_if(gridItems.begin(), gridItems.end(), [this](const GridItem &item) {
+        return selectedRow >= item.row && selectedRow < item.row + item.height && selectedCol >= item.col &&
+               selectedCol < item.col + item.width;
     });
 
     if (it != gridItems.end())
     {
         std::string deletedItemLabel = it->item.label;
         gridItems.erase(it);
-        
+
         // Find the next valid item to select
         if (!gridItems.empty())
         {
@@ -221,7 +224,7 @@ void GridMenu::deleteSelectedItem()
             selectedRow = 0;
             selectedCol = 0;
         }
-        
+
         // Clear the screen and redraw the menu
         system("cls");
         display();
@@ -303,7 +306,8 @@ void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int wi
         {
             std::string errorMsg = "Error!";
             int padding = (width - 2 - errorMsg.length()) / 2;
-            std::cout << std::string(padding, ' ') << errorMsg << std::string(width - 2 - padding - errorMsg.length(), ' ');
+            std::cout << std::string(padding, ' ') << errorMsg
+                      << std::string(width - 2 - padding - errorMsg.length(), ' ');
         }
         else
         {

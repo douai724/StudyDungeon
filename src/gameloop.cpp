@@ -48,7 +48,6 @@ void Game::nextTurn()
         }
     }
 
-    
 
     // apply effect
     switch (card.getType())
@@ -63,7 +62,7 @@ void Game::nextTurn()
     std::cout << "Health: P1=" << p1->getHitPoints() << ", P2=" << p2->getHitPoints() << std::endl;
     std::cout << "Hand size: P1=" << p1->getHand().size() << " P2=" << p2->getHand().size() << std::endl;
     system("pause");
-    
+
     // switch turns
     if (Game::turn == 1)
     {

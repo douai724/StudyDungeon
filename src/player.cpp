@@ -36,7 +36,8 @@ int Player::getMaxHitPoints()
 
 void Player::setMaxHitPoints(int value)
 {
-    if(value <= 0) return;
+    if (value <= 0)
+        return;
     Player::maxHitPoints = value;
 }
 
@@ -77,15 +78,17 @@ PlayingCard Player::getCard(int index)
 }
 
 void Player::damage(int amount)
-{   
-    if(amount >= 0){
+{
+    if (amount >= 0)
+    {
         Player::hitPoints -= amount;
     }
 }
 
 void Player::heal(int amount)
-{   
-    if(amount <= 0) return;
+{
+    if (amount <= 0)
+        return;
     if (Player::hitPoints + amount >= Player::maxHitPoints)
     {
         Player::hitPoints = Player::maxHitPoints;
@@ -149,26 +152,30 @@ PlayingCard User::play()
     std::cout << "This is the USER class." << std::endl;
 
     std::vector<PlayingCard> currentHand = Player::getHand();
-    int handSize = (int) currentHand.size();
+    int handSize = (int)currentHand.size();
     PlayingCard selectedCard = PlayingCard();
     // probably need to free this up somehow
     auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
-    for(int i = 0; i < handSize; i++){
+    for (int i = 0; i < handSize; i++)
+    {
 
-        cardsMenu->addGridItem(currentHand[i].toString(), [this, i, currentHand, &selectedCard](){
-            system("cls");
-            std::cout << "Helo" << std::endl;
-            selectedCard = currentHand[i];
-            system("pause");
-            throw "continue";
-            
-        }, i, 0);
+        cardsMenu->addGridItem(
+            currentHand[i].toString(),
+            [this, i, currentHand, &selectedCard]() {
+                system("cls");
+                std::cout << "Helo" << std::endl;
+                selectedCard = currentHand[i];
+                system("pause");
+                throw "continue";
+            },
+            i,
+            0);
     }
-    
+
     cardsMenu->run();
     removeCard(selectedCard);
     std::cout << "return" << std::endl;
-    return selectedCard; 
+    return selectedCard;
 }
 
 

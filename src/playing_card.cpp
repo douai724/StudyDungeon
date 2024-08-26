@@ -30,7 +30,8 @@ int PlayingCard::getValue()
     return PlayingCard::value;
 }
 
-enum Type PlayingCard::getType(){
+enum Type PlayingCard::getType()
+{
     return PlayingCard::cardType;
 }
 

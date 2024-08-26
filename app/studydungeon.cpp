@@ -1,15 +1,15 @@
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
+#include "gameloop.h"
 #include "menu.h"
 #include "util.h"
-#include "gameloop.h"
 #include <filesystem>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
 #include <vector>
-#include <functional>
 #include <windows.h>
 
 namespace fs = std::filesystem;
@@ -125,11 +125,17 @@ void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
 
     if (positionFound)
     {
-        mainMenu->addGridItem("New Button", []() {
-            system("cls");
-            std::cout << "New button clicked!\n";
-            system("pause");
-        }, row, col, 1, 1);
+        mainMenu->addGridItem(
+            "New Button",
+            []() {
+                system("cls");
+                std::cout << "New button clicked!\n";
+                system("pause");
+            },
+            row,
+            col,
+            1,
+            1);
     }
 }
 
@@ -154,24 +160,17 @@ int main()
     auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 2);
     auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 3, 3);
     auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 2);
-    
+
     auto gameMenu = std::make_shared<GridMenu>("Game", 2, 1);
     auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, 10);
-    
+
     gameMenu->addGridItem("Start", start, 0, 0);
     gameMenu->addGridItem("Exit", exitApp, 0, 1);
 
     //gameMenu->addItem();
 
 
-
-    testMenu->addGridItem(
-        "Add Button",
-        [testMenu]() {
-            addButtonFunction(testMenu);
-        },
-        0,
-        0);
+    testMenu->addGridItem("Add Button", [testMenu]() { addButtonFunction(testMenu); }, 0, 0);
 
     testMenu->addGridItem(
         "Change Grid Size",

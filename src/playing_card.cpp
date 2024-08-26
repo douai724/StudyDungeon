@@ -30,6 +30,10 @@ int PlayingCard::getValue()
     return PlayingCard::value;
 }
 
+enum Type PlayingCard::getType(){
+    return PlayingCard::cardType;
+}
+
 std::string PlayingCard::toString()
 {
     std::string type;

@@ -79,6 +79,7 @@ void browseDeck()
     system("pause");
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
+        // FIXME to make it work properly
         system("cls");
         std::cout << fc.question << std::endl;
         std::cout << "Ready for answer?" << std::endl;

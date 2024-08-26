@@ -69,43 +69,52 @@ $(function() {
 <div class="title">gameloop.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GAMELOOP_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define GAMELOOP_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;card_types.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;player.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;playing_card.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classGame.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">short</span> turn;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classPlayer.html">Player</a> *p1;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classPlayer.html">Player</a> *p2;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> damageEffect(<a class="code" href="classPlayingCard.html">PlayingCard</a> &amp;card);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classGame.html#a7b1463ed9fbadac2e16453d04e7ec4c9">Game</a>(<a class="code" href="classPlayer.html">Player</a> *p1, <a class="code" href="classPlayer.html">Player</a> *p2);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGame.html#a801658c7cef474bc1d9a830f4a79034c">nextTurn</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGame.html#a102ce6e5a222e403aa7a0465ff6281dc">isGameOver</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> start();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;std::vector&lt;PlayingCard&gt; generateHand(<span class="keywordtype">int</span> numCards);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Represents a Game.</div><div class="ttdef"><b>Definition:</b> gameloop.h:15</div></div>
+<a href="gameloop_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef GAMELOOP_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define GAMELOOP_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="card__types_8h.html">card_types.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="player_8h.html">player.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="playing__card_8h.html">playing_card.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classGame.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGame.html">Game</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">short</span> turn;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classPlayer.html">Player</a> *p1;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classPlayer.html">Player</a> *p2;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> damageEffect(<a class="code" href="classPlayingCard.html">PlayingCard</a> &amp;card);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classGame.html#a7b1463ed9fbadac2e16453d04e7ec4c9">Game</a>(<a class="code" href="classPlayer.html">Player</a> *p1, <a class="code" href="classPlayer.html">Player</a> *p2);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGame.html#a801658c7cef474bc1d9a830f4a79034c">nextTurn</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGame.html#a102ce6e5a222e403aa7a0465ff6281dc">isGameOver</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gameloop_8h.html#a60de64d75454385b23995437f1d72669">start</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;std::vector&lt;PlayingCard&gt; <a class="code" href="gameloop_8h.html#ad1fbb2db7e8757a770de62bf03730c5e">generateHand</a>(<span class="keywordtype">int</span> numCards);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acard__types_8h_html"><div class="ttname"><a href="card__types_8h.html">card_types.h</a></div></div>
+<div class="ttc" id="aclassGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdoc">Represents a Game.</div><div class="ttdef"><b>Definition:</b> gameloop.h:27</div></div>
 <div class="ttc" id="aclassGame_html_a102ce6e5a222e403aa7a0465ff6281dc"><div class="ttname"><a href="classGame.html#a102ce6e5a222e403aa7a0465ff6281dc">Game::isGameOver</a></div><div class="ttdeci">bool isGameOver()</div><div class="ttdoc">Checks if the game is over.</div><div class="ttdef"><b>Definition:</b> gameloop.cpp:77</div></div>
 <div class="ttc" id="aclassGame_html_a7b1463ed9fbadac2e16453d04e7ec4c9"><div class="ttname"><a href="classGame.html#a7b1463ed9fbadac2e16453d04e7ec4c9">Game::Game</a></div><div class="ttdeci">Game(Player *p1, Player *p2)</div><div class="ttdoc">Construct a new Game object.</div><div class="ttdef"><b>Definition:</b> gameloop.cpp:3</div></div>
 <div class="ttc" id="aclassGame_html_a801658c7cef474bc1d9a830f4a79034c"><div class="ttname"><a href="classGame.html#a801658c7cef474bc1d9a830f4a79034c">Game::nextTurn</a></div><div class="ttdeci">void nextTurn()</div><div class="ttdoc">Plays the next turn of the game.</div><div class="ttdef"><b>Definition:</b> gameloop.cpp:10</div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">Class that represents a Player.</div><div class="ttdef"><b>Definition:</b> player.h:18</div></div>
-<div class="ttc" id="aclassPlayingCard_html"><div class="ttname"><a href="classPlayingCard.html">PlayingCard</a></div><div class="ttdef"><b>Definition:</b> playing_card.h:12</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">Class that represents a Player.</div><div class="ttdef"><b>Definition:</b> player.h:30</div></div>
+<div class="ttc" id="aclassPlayingCard_html"><div class="ttname"><a href="classPlayingCard.html">PlayingCard</a></div><div class="ttdef"><b>Definition:</b> playing_card.h:23</div></div>
+<div class="ttc" id="agameloop_8h_html_a60de64d75454385b23995437f1d72669"><div class="ttname"><a href="gameloop_8h.html#a60de64d75454385b23995437f1d72669">start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Set up and start the game.</div><div class="ttdef"><b>Definition:</b> gameloop.cpp:113</div></div>
+<div class="ttc" id="agameloop_8h_html_ad1fbb2db7e8757a770de62bf03730c5e"><div class="ttname"><a href="gameloop_8h.html#ad1fbb2db7e8757a770de62bf03730c5e">generateHand</a></div><div class="ttdeci">std::vector&lt; PlayingCard &gt; generateHand(int numCards)</div><div class="ttdoc">Generates a hand.</div><div class="ttdef"><b>Definition:</b> gameloop.cpp:128</div></div>
+<div class="ttc" id="aplayer_8h_html"><div class="ttname"><a href="player_8h.html">player.h</a></div></div>
+<div class="ttc" id="aplaying__card_8h_html"><div class="ttname"><a href="playing__card_8h.html">playing_card.h</a></div></div>
+<div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Contains useful helper functions.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

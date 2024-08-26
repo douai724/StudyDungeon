@@ -126,11 +126,6 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
         lineCount++;
     }
 
-    //TODO remove these debugging steps
-    std::cout << "name of deck: " << deck.name << '\n';
-    std::cout << "number of lines read: " << lineCount << '\n';
-    deck.printDeck();
-
     return deck;
 };
 
@@ -159,7 +154,6 @@ void writeFlashCardDeck(FlashCardDeck deck, fs::path filename) {
  */
 std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_path)
 {
-    // TODO create an array of Decks to store eacn deck in
     std::cout << deck_path << std::endl;
     std::vector<FlashCardDeck> deck_array;
     // Check the deck directory exists
@@ -170,9 +164,8 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_path)
         for (const auto &entry : fs::directory_iterator(deck_path))
         {
             std::cout << (entry.is_directory() ? "[DIR] " : "[FILE] ") << entry.path().filename().string() << std::endl;
-            // TODO for each "<file>.deck" files, call read_deck() and add into the Deck array
-            if (entry.is_regular_file())
-            // TODO ensure file has .deck extension
+
+            if (entry.is_regular_file() && entry.path().string().ends_with(".deck"))
             {
                 FlashCardDeck fd{};
                 fd = readFlashCardDeck(entry);
@@ -185,9 +178,6 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_path)
         std::cerr << "Directory does not exist, or is not a directory";
         //TODO deal with error
     }
-    // for (FlashCardDeck d : deck_array)
-    // {
-    //     d.printDeck();
-    // }
+
     return deck_array;
 };

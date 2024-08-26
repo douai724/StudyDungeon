@@ -48,3 +48,11 @@ void timer(int minutes)
 {
     // TODO: implement function
 }
+
+
+void pause()
+{
+    std::string line;
+    std::cout << "Press ENTER to continue..." << std::endl;
+    std::getline(std::cin, line);
+}

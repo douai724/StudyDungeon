@@ -20,42 +20,42 @@ void addFlashcard()
 {
     system("cls");
     std::cout << "Adding a new flashcard...\n";
-    system("pause");
+    pause();
 }
 
 void reviewEasy()
 {
     system("cls");
     std::cout << "Reviewing easy flashcards...\n";
-    system("pause");
+    pause();
 }
 
 void reviewMedium()
 {
     system("cls");
     std::cout << "Reviewing medium flashcards...\n";
-    system("pause");
+    pause();
 }
 
 void reviewHard()
 {
     system("cls");
     std::cout << "Reviewing hard flashcards...\n";
-    system("pause");
+    pause();
 }
 
 void editCard()
 {
     system("cls");
     std::cout << "Editing a flashcard...\n";
-    system("pause");
+    pause();
 }
 
 void deleteCard()
 {
     system("cls");
     std::cout << "Deleting a flashcard...\n";
-    system("pause");
+    pause();
 }
 
 void browseDeck()
@@ -63,21 +63,22 @@ void browseDeck()
     int difficulty{0};
     system("cls");
     std::cout << "Browsing the deck...\n";
-    system("pause");
+    pause();
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
         // FIXME to make it work properly
         system("cls");
         std::cout << fc.question << std::endl;
         std::cout << "Ready for answer?" << std::endl;
-        std::getchar();
+        pause();
         std::cout << "What was the difficulty?" << std::endl;
+        // FIXME this isn't right
         std::cin >> difficulty;
         std::cout << "You said difficulty of " << difficulty << std::endl;
         std::cout << "\n\nNEXT CARD?" << std::endl;
-        system("pause");
+        pause();
     }
-    system("pause");
+    pause();
 }
 
 void exitApp()
@@ -91,7 +92,7 @@ void about()
     system("cls");
     std::cout << project_name << '\n';
     std::cout << project_version << '\n';
-    system("pause");
+    pause();
 }
 
 void controls()
@@ -100,7 +101,7 @@ void controls()
     std::cout << "Esc to go back (exits app when on main menu)\n";
     std::cout << "Arrow keys to navigate menu items\n";
     std::cout << "------------------------------------------------\n";
-    system("pause");
+    pause();
 }
 
 void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
@@ -130,7 +131,7 @@ void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
             []() {
                 system("cls");
                 std::cout << "New button clicked!\n";
-                system("pause");
+                pause();
             },
             row,
             col,

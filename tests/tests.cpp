@@ -30,24 +30,31 @@ TEST_CASE("deck_h enum converters")
 
 TEST_CASE("FlashCard Creation")
 {
-    FlashCard fc{};
+    SECTION("Initialise object")
+    {
+        FlashCard fc{};
+        REQUIRE(fc.question == "");
+        REQUIRE(fc.answer == "");
+        REQUIRE(fc.difficulty == UNKNOWN);
+        REQUIRE(fc.n_times_answered == 0);
 
-    REQUIRE(fc.question == "");
-    REQUIRE(fc.answer == "");
-    REQUIRE(fc.difficulty == UNKNOWN);
-    REQUIRE(fc.n_times_answered == 0);
+        FlashCard fc1 = FlashCard("question", "answer", MEDIUM, 1);
+        REQUIRE(fc1.question == "question");
+        REQUIRE(fc1.answer == "answer");
+        REQUIRE(fc1.difficulty == MEDIUM);
+        REQUIRE(fc1.n_times_answered == 1);
+    }
 
-    fc.question = "question";
-    fc.answer = "answer";
-    fc.difficulty = MEDIUM;
-    fc.n_times_answered = 0;
+    SECTION("FlashCard creation through method")
+    {
 
-    FlashCard fc_test = createFlashCard("question", "answer", MEDIUM, 0);
+        FlashCard fc_test = createFlashCard("question", "answer", MEDIUM, 1);
 
-    REQUIRE(fc.question == fc_test.question);
-    REQUIRE(fc.answer == fc_test.answer);
-    REQUIRE(fc.difficulty == fc_test.difficulty);
-    REQUIRE(fc.n_times_answered == fc_test.n_times_answered);
+        REQUIRE(fc_test.question == "question");
+        REQUIRE(fc_test.answer == "answer");
+        REQUIRE(fc_test.difficulty == MEDIUM);
+        REQUIRE(fc_test.n_times_answered == 1);
+    }
 }
 
 TEST_CASE("factorial1")

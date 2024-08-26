@@ -33,4 +33,10 @@ std::filesystem::path get_app_path();
  */
 void timer(int minutes);
 
+/**
+ * @brief An alternative to system('pause')
+ * @details implementation based on from https://thelinuxcode.com/system-pause-c/
+ *
+ */
+void pause();
 #endif

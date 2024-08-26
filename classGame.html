@@ -67,17 +67,28 @@ $(function() {
 <div class="title">Game Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a <a class="el" href="classGame.html" title="Represents a Game.">Game</a>.  
+ <a href="classGame.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="gameloop_8h_source.html">gameloop.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b1463ed9fbadac2e16453d04e7ec4c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a7b1463ed9fbadac2e16453d04e7ec4c9">Game</a> (<a class="el" href="classPlayer.html">Player</a> *p1, <a class="el" href="classPlayer.html">Player</a> *p2)</td></tr>
+<tr class="memdesc:a7b1463ed9fbadac2e16453d04e7ec4c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classGame.html" title="Represents a Game.">Game</a> object.  <a href="classGame.html#a7b1463ed9fbadac2e16453d04e7ec4c9">More...</a><br /></td></tr>
 <tr class="separator:a7b1463ed9fbadac2e16453d04e7ec4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a801658c7cef474bc1d9a830f4a79034c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a801658c7cef474bc1d9a830f4a79034c">nextTurn</a> ()</td></tr>
+<tr class="memitem:a801658c7cef474bc1d9a830f4a79034c"><td class="memItemLeft" align="right" valign="top"><a id="a801658c7cef474bc1d9a830f4a79034c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a801658c7cef474bc1d9a830f4a79034c">nextTurn</a> ()</td></tr>
+<tr class="memdesc:a801658c7cef474bc1d9a830f4a79034c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays the next turn of the game. <br /></td></tr>
 <tr class="separator:a801658c7cef474bc1d9a830f4a79034c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a102ce6e5a222e403aa7a0465ff6281dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGame.html#a102ce6e5a222e403aa7a0465ff6281dc">isGameOver</a> ()</td></tr>
+<tr class="memdesc:a102ce6e5a222e403aa7a0465ff6281dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the game is over.  <a href="classGame.html#a102ce6e5a222e403aa7a0465ff6281dc">More...</a><br /></td></tr>
 <tr class="separator:a102ce6e5a222e403aa7a0465ff6281dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a <a class="el" href="classGame.html" title="Represents a Game.">Game</a>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7b1463ed9fbadac2e16453d04e7ec4c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b1463ed9fbadac2e16453d04e7ec4c9">&#9670;&nbsp;</a></span>Game()</h2>
 
@@ -103,7 +114,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor </p>
+
+<p>Construct a new <a class="el" href="classGame.html" title="Represents a Game.">Game</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p1</td><td><a class="el" href="classPlayer.html" title="Class that represents a Player.">Player</a> 1 </td></tr>
+    <tr><td class="paramname">p2</td><td><a class="el" href="classPlayer.html" title="Class that represents a Player.">Player</a> 2 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -122,29 +141,12 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if the game is over </p>
 
-</div>
-</div>
-<a id="a801658c7cef474bc1d9a830f4a79034c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a801658c7cef474bc1d9a830f4a79034c">&#9670;&nbsp;</a></span>nextTurn()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Game::nextTurn </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<ol type="1">
-<li>Get the card input</li>
-<li>Apply the effect</li>
-<li>Switch turns </li>
-</ol>
+<p>Checks if the game is over. </p>
+<p>Checks whether the game is over. Returns true if the game is over by either one player reaching 0 hit points, or neither player having any playing cards left. Returns false if none of these conditions are met.</p>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
 
 </div>
 </div>

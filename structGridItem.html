@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: MenuItem Class Reference</title>
+<title>My Project: GridItem Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -65,37 +65,36 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">MenuItem Class Reference</div>  </div>
+<div class="title">GridItem Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="memItemLeft" align="right" valign="top"><a id="a9fc7ba8a1611f65d02fcbca5c8cc3255"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
-<tr class="separator:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memItemLeft" align="right" valign="top"><a id="a4e74a174a8b2e3254fb8a8942ec857c8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;label, std::shared_ptr&lt; <a class="el" href="classMenu.html">Menu</a> &gt; subMenu)</td></tr>
-<tr class="separator:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f1c3643d315606e72c7cde276a1e7d1"><td class="memItemLeft" align="right" valign="top"><a id="a6f1c3643d315606e72c7cde276a1e7d1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSubMenu</b> () const</td></tr>
-<tr class="separator:a6f1c3643d315606e72c7cde276a1e7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3224078325f11ec7c2329948b88135"><td class="memItemLeft" align="right" valign="top"><a id="aeb3224078325f11ec7c2329948b88135"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>GridItem</b> (const <a class="el" href="classMenuItem.html">MenuItem</a> &amp;item, int row, int col, int width, int height)</td></tr>
+<tr class="separator:aeb3224078325f11ec7c2329948b88135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:af07137902c2c02dd299a8b6b8c362b9a"><td class="memItemLeft" align="right" valign="top"><a id="af07137902c2c02dd299a8b6b8c362b9a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>label</b></td></tr>
-<tr class="separator:af07137902c2c02dd299a8b6b8c362b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9fb022d5006f1fecfa734044d2bca5e"><td class="memItemLeft" align="right" valign="top"><a id="ae9fb022d5006f1fecfa734044d2bca5e"></a>
-std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>action</b></td></tr>
-<tr class="separator:ae9fb022d5006f1fecfa734044d2bca5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4b138e6ab805d037ae4b27d3c7ffe11"><td class="memItemLeft" align="right" valign="top"><a id="ac4b138e6ab805d037ae4b27d3c7ffe11"></a>
-std::shared_ptr&lt; class <a class="el" href="classMenu.html">Menu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>subMenu</b></td></tr>
-<tr class="separator:ac4b138e6ab805d037ae4b27d3c7ffe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14124aec07c4dbf98b8459d066abc3a1"><td class="memItemLeft" align="right" valign="top"><a id="a14124aec07c4dbf98b8459d066abc3a1"></a>
+<a class="el" href="classMenuItem.html">MenuItem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>item</b></td></tr>
+<tr class="separator:a14124aec07c4dbf98b8459d066abc3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5e421f89c4867ecc9e9a41bbc59f17"><td class="memItemLeft" align="right" valign="top"><a id="aeb5e421f89c4867ecc9e9a41bbc59f17"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>row</b></td></tr>
+<tr class="separator:aeb5e421f89c4867ecc9e9a41bbc59f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5bc3d3db84f2f2834a78cbf966e9c79"><td class="memItemLeft" align="right" valign="top"><a id="aa5bc3d3db84f2f2834a78cbf966e9c79"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>col</b></td></tr>
+<tr class="separator:aa5bc3d3db84f2f2834a78cbf966e9c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e1feda5526288367f694d1ea39f4e7c"><td class="memItemLeft" align="right" valign="top"><a id="a5e1feda5526288367f694d1ea39f4e7c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>width</b></td></tr>
+<tr class="separator:a5e1feda5526288367f694d1ea39f4e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e000baa4295e630a771fa78523c290"><td class="memItemLeft" align="right" valign="top"><a id="aa5e000baa4295e630a771fa78523c290"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
+<tr class="separator:aa5e000baa4295e630a771fa78523c290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>
-<li>/home/runner/work/StudyDungeon/StudyDungeon/src/menu.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -12,11 +12,18 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include "util.h"
+#include <algorithm>
+#include <conio.h>
 #include <functional>
+#include <iomanip>
+#include <iostream>
 #include <memory>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <windows.h>
+
 
 class MenuItem
 {

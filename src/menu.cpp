@@ -1,10 +1,4 @@
 #include "menu.h"
-#include "util.h"
-#include <algorithm>
-#include <conio.h>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
 
 
 MenuItem::MenuItem(const std::string &label, std::function<void()> action)

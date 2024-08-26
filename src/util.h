@@ -39,4 +39,14 @@ void timer(int minutes);
  *
  */
 void pause();
+
+/*
+ * @brief Clears the screen.
+ *
+ * @details Credit: SirEnder125 on cplusplus.com
+ *
+ */
+void clearScreen();
+
+
 #endif

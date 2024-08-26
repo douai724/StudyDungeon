@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "util.h"
 #include <algorithm>
 #include <iomanip>
 #include <conio.h>
@@ -104,7 +105,7 @@ void GridMenu::display()
     int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 
-    system("cls");
+    clearScreen();
     drawBorder(consoleWidth, consoleHeight);
 
     moveCursor(static_cast<SHORT>((consoleWidth - title.length()) / 2), 1);
@@ -154,7 +155,7 @@ void GridMenu::run()
         }
         else if (key == 27) // Escape key
         {
-            system("cls");
+            clearScreen();
             break;
         }
         else if (key == 83 || key == 115) // 'S' or 's' key
@@ -219,7 +220,7 @@ void GridMenu::deleteSelectedItem()
         }
         
         // Clear the screen and redraw the menu
-        system("cls");
+        clearScreen();
         display();
 
         // Show confirmation message

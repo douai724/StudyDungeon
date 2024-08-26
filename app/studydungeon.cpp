@@ -17,49 +17,49 @@ FlashCardDeck currentFlashCardDeck;
 
 void addFlashcard()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Adding a new flashcard...\n";
     system("pause");
 }
 
 void reviewEasy()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Reviewing easy flashcards...\n";
     system("pause");
 }
 
 void reviewMedium()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Reviewing medium flashcards...\n";
     system("pause");
 }
 
 void reviewHard()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Reviewing hard flashcards...\n";
     system("pause");
 }
 
 void editCard()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Editing a flashcard...\n";
     system("pause");
 }
 
 void deleteCard()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Deleting a flashcard...\n";
     system("pause");
 }
 
 void browseDeck()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Browsing the deck...\n";
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
@@ -69,13 +69,13 @@ void browseDeck()
 
 void exitApp()
 {
-    system("cls");
+    clearScreen();
     exit(0);
 }
 
 void about()
 {
-    system("cls");
+    clearScreen();
     std::cout << project_name << '\n';
     std::cout << project_version << '\n';
     system("pause");
@@ -83,7 +83,7 @@ void about()
 
 void controls()
 {
-    system("cls");
+    clearScreen();
     std::cout << "Esc to go back (exits app when on main menu)\n";
     std::cout << "Arrow keys to navigate menu items\n";
     std::cout << "------------------------------------------------\n";
@@ -113,7 +113,7 @@ void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
     if (positionFound)
     {
         mainMenu->addGridItem("New Button", []() {
-            system("cls");
+            clearScreen();
             std::cout << "New button clicked!\n";
             system("pause");
         }, row, col, 1, 1);
@@ -153,7 +153,7 @@ int main()
     testMenu->addGridItem(
         "Change Grid Size",
         [testMenu]() {
-            system("cls");
+            clearScreen();
             int newWidth, newHeight;
             std::cout << "Enter new grid width: ";
             std::cin >> newWidth;

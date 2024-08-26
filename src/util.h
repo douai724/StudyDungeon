@@ -33,4 +33,12 @@ std::filesystem::path get_app_path();
  */
 void timer(int minutes);
 
+/**
+ * @brief Clears the screen.
+ * 
+ * @details Credit: SirEnder125 on cplusplus.com  
+ * 
+ */
+void clearScreen();
+
 #endif

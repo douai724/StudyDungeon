@@ -1,6 +1,6 @@
 /**
  * @file deck.h
- * @author your name (you@domain.com)
+ * @author Green Alligators
  * @brief
  * @version 0.1
  * @date 2024-08-07
@@ -10,8 +10,8 @@
  */
 
 #pragma once
-#ifndef DECK_H_
-#define DECK_H_
+#ifndef DECK_H
+#define DECK_H
 
 
 #include <filesystem>
@@ -28,11 +28,32 @@
  */
 enum CardDifficulty
 {
+    UNKNOWN = 0,
     LOW = 1,
-    MEDIUM,
-    HIGH
+    MEDIUM = 2,
+    HIGH = 3
 };
 
+
+/**
+ * @brief Converts a string into the CardDifficulty enum.
+ * "LOW" -> LOW
+ * "MEDIUM" -> MEDIUM
+ * "HIGH" -> HIGH
+ * Anything else is converted to UNKNOWN
+ *
+ * @param s The card difficulty as a string
+ * @return CardDifficulty
+ */
+CardDifficulty strToCardDifficulty(std::string s);
+
+/**
+ * @brief Converts the card difficulty from enum to a string
+ *
+ * @param d The CardDifficulty
+ * @return std::string
+ */
+std::string cardDifficultyToStr(CardDifficulty d);
 
 /**
  * @brief This structure holds the information for each flashcard
@@ -46,16 +67,16 @@ class FlashCard
 {
 public:
     /** The flashcard question */
-    std::string question;
+    std::string question{};
 
     /** The flashcard answer */
-    std::string answer;
+    std::string answer{};
 
     /** The user defined difficulty */
-    CardDifficulty difficulty;
+    CardDifficulty difficulty = UNKNOWN;
 
     /** The number of times the question has been answered */
-    int n_times_answered;
+    int n_times_answered{};
 
     /**
          * @brief Prints the card question and answer

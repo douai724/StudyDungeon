@@ -1,6 +1,6 @@
 /**
  * @file util.h
- * @author your name (you@domain.com)
+ * @author Green Aligators
  * @brief Contains useful helper functions
  * @version 0.1
  * @date 2024-08-08
@@ -9,14 +9,12 @@
  *
  */
 #pragma once
+#ifndef UTIL_H
+#define UTIL_H
 #include <filesystem>
 #include <iostream>
 #include <string>
 #include <windows.h>
-
-
-#ifndef UTIL_H_
-#define UTIL_H_
 
 
 /**
@@ -32,5 +30,21 @@ std::filesystem::path get_app_path();
  * @param minutes
  */
 void timer(int minutes);
+
+/**
+ * @brief An alternative to system('pause')
+ * @details implementation based on from https://thelinuxcode.com/system-pause-c/
+ *
+ */
+void pause();
+
+/*
+ * @brief Clears the screen.
+ *
+ * @details Credit: SirEnder125 on cplusplus.com
+ *
+ */
+void clearScreen();
+
 
 #endif

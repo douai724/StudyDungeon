@@ -1,4 +1,4 @@
-name: Windows CI Test
+name: Windows CI Build App
 
 on:
     push:
@@ -14,15 +14,12 @@ jobs:
             - name: prepare
               run: |
                   make prepare
+
+
             - name: configure
               run: |
                   cmake -H"." -Bbuild -T host=x86 -A x64 -DCMAKE_BUILD_TYPE="Debug"
-            - name: building
+
+            - name: "building app"
               run: |
-                  cmake --build build --config Debug --target unit_tests -j4
-            - name: testing
-              run: |
-                  cd build
-                  cd tests
-                  cd Debug
-                  .\unit_tests.exe
+                        cmake --build build --config Debug --target StudyDungeon -j4

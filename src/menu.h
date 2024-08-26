@@ -1,24 +1,36 @@
+/**
+ * @file menu.h
+ * @author Green Aligators
+ * @brief
+ * @version 0.1
+ * @date 2024-08-27
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+#pragma once
 #ifndef MENU_H
 #define MENU_H
 
+#include "util.h"
 #include <algorithm>
 #include <conio.h>
 #include <functional>
 #include <iomanip>
 #include <iostream>
 #include <memory>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <windows.h>
 
-class Menu;
 
 class MenuItem
 {
 public:
     std::string label;
     std::function<void()> action;
-    std::shared_ptr<Menu> subMenu;
+    std::shared_ptr<class Menu> subMenu;
 
     MenuItem(const std::string &label, std::function<void()> action);
     MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu);
@@ -39,7 +51,6 @@ protected:
 
     void setColor(WORD foreground, WORD background);
     void moveCursor(SHORT x, SHORT y);
-    int getArrowKeyNavigation();
 
 public:
     Menu(const std::string &title);
@@ -50,6 +61,22 @@ public:
 
     virtual void display() = 0;
     virtual void run() = 0;
+
+    int getArrowKeyNavigation();
+};
+
+struct GridItem
+{
+    MenuItem item;
+    int row;
+    int col;
+    int width;
+    int height;
+
+    GridItem(const MenuItem &item, int row, int col, int width, int height)
+        : item(item), row(row), col(col), width(width), height(height)
+    {
+    }
 };
 
 class GridMenu : public Menu
@@ -59,28 +86,12 @@ private:
     int gridHeight;
     int selectedRow;
     int selectedCol;
-
-    struct GridItem
-    {
-        MenuItem item;
-        int row;
-        int col;
-        int width;
-        int height;
-
-        GridItem(const MenuItem &item, int row, int col, int width = 1, int height = 1)
-            : item(item), row(row), col(col), width(width), height(height)
-        {
-        }
-    };
-
     std::vector<GridItem> gridItems;
 
     void drawBorder(int width, int height);
     void drawGridItem(const GridItem &item, int startX, int startY, int width, int height);
-    void executeSelectedItem();
-    bool isValidGridItem(int row, int col) const;
     std::pair<int, int> findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const;
+    void executeSelectedItem();
 
 public:
     GridMenu(const std::string &title, int width, int height);
@@ -101,6 +112,13 @@ public:
     void display() override;
     void run() override;
     void handleNavigation(int navigation);
+
+    bool isValidGridItem(int row, int col) const;
+    int getGridWidth() const;
+    int getGridHeight() const;
+    void setGridWidth(int width);
+    void setGridHeight(int height);
+    void deleteSelectedItem();
 };
 
-#endif // MENU_H
+#endif

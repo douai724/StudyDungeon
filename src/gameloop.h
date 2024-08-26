@@ -1,52 +1,90 @@
+/**
+ * @file gameloop.h
+ * @author Green Aligators
+ * @brief
+ * @version 0.1
+ * @date 2024-08-27
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+#pragma once
 #ifndef GAMELOOP_H
 #define GAMELOOP_H
 
 #include "card_types.h"
 #include "player.h"
 #include "playing_card.h"
+#include "util.h"
 #include <iostream>
 #include <string>
 
+/**
+ * @brief Represents a Game.
+ *
+ */
 class Game
 {
 private:
-    short turn; // 1 for p1, 2 for p2
+    /**
+      * The current turn. 1 for Player 1; 2 for Player 2.
+      */
+    short turn;
+    /**
+      * Pointer to Player 1
+      */
     Player *p1;
+    /**
+      * Pointer to Player 2
+      */
     Player *p2;
 
-
     /**
-         * Apply the damage effect to a player based on the damage card that is played
-         */
+      * @brief Apply the damage effect to the player specified in the card.
+      *
+      * @param card the PlayingCard object.
+      */
     void damageEffect(PlayingCard &card);
 
 public:
     /**
-         * Constructor
-         */
+     * @brief Construct a new Game object.
+     *
+     * @param p1 Player 1
+     * @param p2 Player 2
+     */
     Game(Player *p1, Player *p2);
 
     /**
-         * 1. Get the card input
-         * 2. Apply the effect
-         * 3. Switch turns
-         */
+      * @brief Plays the next turn of the game.
+      *
+      */
     void nextTurn();
 
     /**
-         * Check if the game is over
-         */
+      * @brief Checks if the game is over.
+      *
+      * Checks whether the game is over. Returns true if the game is over
+      * by either one player reaching 0 hit points, or neither player having
+      * any playing cards left. Returns false if none of these conditions are met.
+      *
+      * @return true
+      * @return false
+      */
     bool isGameOver();
 };
 
-
 /**
- * Set up and start the game
+ * @brief Set up and start the game.
+ *
  */
 void start();
 
 /**
- * Generate a random hand
+ * @brief Generates a hand.
+ *
+ * @param numCards the number of cards to add to the hand.
+ * @return std::vector<PlayingCard> the generated hand.
  */
 std::vector<PlayingCard> generateHand(int numCards);
 

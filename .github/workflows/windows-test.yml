@@ -1,0 +1,47 @@
+name: Windows CI Test and Coverage
+
+on:
+    push:
+        branches: [main, master, cmake_dev]
+    pull_request:
+        branches: [main, master, cmake_dev]
+
+jobs:
+    build:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@v4.1.7
+            - name: prepare
+              run: |
+                  make prepare
+
+
+            - name: configure
+              run: |
+                  cmake -H"." -Bbuild -T host=x86 -A x64 -DCMAKE_BUILD_TYPE="Debug"
+
+
+            - name: "Build tests"
+              run: |
+                  cmake --build build --config Debug --target unit_tests -j4
+
+
+            - name: Run tests
+              run: |
+                  build\tests\Debug\unit_tests.exe
+
+            - name: Install OpenCppCoverage
+              run: |
+                      choco install OpenCppCoverage
+                      echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+
+            - name: Generate Coverage Report
+              shell: cmd
+              run: OpenCppCoverage --modules Debug --export_type cobertura:winci.xml -- build\tests\Debug\unit_tests.exe
+
+            - name: Upload Report to Codecov
+              uses: codecov/codecov-action@v4
+              with:
+                fail_ci_if_error: true
+                files: winci.xml
+                token: ${{ secrets.CODECOV_TOKEN }}

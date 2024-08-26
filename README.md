@@ -1,6 +1,9 @@
 [![pre-commit](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml)
 [![Documentation](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/documentation.yml)
-[![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/windows.yml)
+[![Windows CI Build App](https://github.com/douai724/StudyDungeon/actions/workflows/windows-build.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/windows-build.yml)
+[![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows-test.yml/badge.svg)](https://github.com/douai724/StudyDungeon/actions/workflows/windows-test.yml)
+
+[![codecov](https://codecov.io/gh/douai724/StudyDungeon/graph/badge.svg?token=J8X7NTCMTC)](https://codecov.io/gh/douai724/StudyDungeon)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2908ef35da3345f295e479b0a0af2026)](https://app.codacy.com/gh/douai724/StudyDungeon/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 ## VScode config

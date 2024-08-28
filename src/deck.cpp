@@ -14,7 +14,7 @@
 namespace fs = std::filesystem;
 
 
-CardDifficulty strToCardDifficulty(std::string difficultyStr)
+CardDifficulty strToCardDifficulty(const std::string &difficultyStr)
 {
     if (difficultyStr == "LOW")
     {
@@ -34,7 +34,7 @@ CardDifficulty strToCardDifficulty(std::string difficultyStr)
     }
 }
 
-std::string cardDifficultyToStr(CardDifficulty difficulty)
+std::string cardDifficultyToStr(const CardDifficulty &difficulty)
 {
     switch (difficulty)
     {
@@ -121,7 +121,7 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
 };
 
 
-bool writeFlashCardDeck(FlashCardDeck deck, fs::path filename)
+bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
 {
     // check filename ends with .deck
     if (!filename.string().ends_with(".deck"))
@@ -141,12 +141,14 @@ bool writeFlashCardDeck(FlashCardDeck deck, fs::path filename)
         else
         {
             std::cout << "Path " << filename << " already exists, Overwrite file? Y/N\n";
+            // DOUBLE CHECK WITH USER!
             bool overwrite = yesNoInput();
             if (!overwrite)
             {
                 return false;
             }
-            // DOUBLE CHECK WITH USER!
+
+
             // open file
             // write contents to file
             // close file
@@ -228,7 +230,7 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
         invalid = isValidDeckFileName(input);
     } while (invalid);
 
-    deck_dir.append(input);
+    deck_dir.append(input).concat(".deck");
 
     return deck_dir;
 }

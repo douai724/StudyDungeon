@@ -46,7 +46,7 @@ enum CardDifficulty
  * @param difficultyStr The card difficulty as a string
  * @return CardDifficulty
  */
-CardDifficulty strToCardDifficulty(std::string difficultyStr);
+CardDifficulty strToCardDifficulty(const std::string &difficultyStr);
 
 /**
  * @brief Converts the card difficulty from enum to a string
@@ -54,7 +54,7 @@ CardDifficulty strToCardDifficulty(std::string difficultyStr);
  * @param difficulty The CardDifficulty
  * @return std::string
  */
-std::string cardDifficultyToStr(CardDifficulty difficulty);
+std::string cardDifficultyToStr(const CardDifficulty &difficulty);
 
 /**
  * @brief This structure holds the information for each flashcard
@@ -189,7 +189,7 @@ FlashCardDeck readFlashCardDeck(std::filesystem::path deck_file);
  * @param filename The file path for the deck file
  * @return true if successfully writes deck to file.
  */
-bool writeFlashCardDeck(FlashCardDeck deck, std::filesystem::path filename);
+bool writeFlashCardDeck(const FlashCardDeck &deck, std::filesystem::path filename);
 
 
 /**

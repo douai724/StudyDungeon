@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['n_5ftimes_5fanswered_124',['n_times_answered',['../classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e',1,'FlashCard']]],
-  ['name_125',['name',['../classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454',1,'FlashCardDeck']]]
+  ['filename_137',['filename',['../classFlashCardDeck.html#afd107ed3bd39c6d479f2891b1e96ef19',1,'FlashCardDeck']]]
 ];

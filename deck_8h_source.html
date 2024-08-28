@@ -74,101 +74,129 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef DECK_H</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define DECK_H</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">enum</span> CardDifficulty</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    UNKNOWN = 0,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    LOW = 1,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    MEDIUM = 2,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    HIGH = 3</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">enum</span> CardDifficulty</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    UNKNOWN = 0,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    EASY = 1,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    MEDIUM = 2,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    HIGH = 3</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;CardDifficulty <a class="code" href="deck_8h.html#a4f1ec42ba3c1e5bba6b6181a65f6bba4">strToCardDifficulty</a>(std::string s);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;std::string <a class="code" href="deck_8h.html#a565affb5ede5e1c2b63a83d72599bbc2">cardDifficultyToStr</a>(CardDifficulty d);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classFlashCard.html">   66</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashCard.html">FlashCard</a></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">   70</a></span>&#160;    std::string <a class="code" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">question</a>{};</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">   73</a></span>&#160;    std::string <a class="code" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a>{};</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">   76</a></span>&#160;    CardDifficulty <a class="code" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">difficulty</a> = UNKNOWN;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">   79</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">n_times_answered</a>{};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classFlashCard.html#a82165ddd8f141d1a171960b366179d7c">   85</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCard.html#a82165ddd8f141d1a171960b366179d7c">printCard</a>()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">question</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">   96</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">printCardAsTemplate</a>()</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Q: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">question</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span> &lt;&lt; <span class="stringliteral">&quot;A: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;D: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">difficulty</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span> &lt;&lt; <span class="stringliteral">&quot;N: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">n_times_answered</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;-&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;CardDifficulty <a class="code" href="deck_8h.html#a6e4ad1bdbb9764c9291a9da1872265e8">strToCardDifficulty</a>(<span class="keyword">const</span> std::string &amp;difficultyStr);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;std::string <a class="code" href="deck_8h.html#a86bf6016f9556419d98f7c566f5f30ae">cardDifficultyToStr</a>(<span class="keyword">const</span> CardDifficulty &amp;difficulty);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classFlashCard.html">   67</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashCard.html">FlashCard</a></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">   71</a></span>&#160;    std::string <a class="code" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">question</a>{};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">   74</a></span>&#160;    std::string <a class="code" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a>{};</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">   77</a></span>&#160;    CardDifficulty <a class="code" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">difficulty</a> = UNKNOWN;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">   80</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">n_times_answered</a>{};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classFlashCard.html#a82165ddd8f141d1a171960b366179d7c">   86</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCard.html#a82165ddd8f141d1a171960b366179d7c">printCard</a>()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">question</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">   97</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">printCardAsTemplate</a>()</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Q: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">question</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span> &lt;&lt; <span class="stringliteral">&quot;A: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;D: &quot;</span> &lt;&lt; <a class="code" href="deck_8h.html#a86bf6016f9556419d98f7c566f5f30ae">cardDifficultyToStr</a>(<a class="code" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">difficulty</a>) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span> &lt;&lt; <span class="stringliteral">&quot;N: &quot;</span> &lt;&lt; <a class="code" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">n_times_answered</a> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;-&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html">  110</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashCardDeck.html">FlashCardDeck</a></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// TODO: add constructor</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// TODO add destructor</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">  116</a></span>&#160;    std::string <a class="code" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">name</a>{};</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">  119</a></span>&#160;    std::vector&lt;FlashCard&gt; <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>{};</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a13d7c276d5255add2383a6c0e1ed6642">  125</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCardDeck.html#a13d7c276d5255add2383a6c0e1ed6642">printDeck</a>()</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">name</a> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;size: &quot;</span> &lt;&lt; <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>.size() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classFlashCard.html">FlashCard</a> card : <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            card.printCard();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<a class="code" href="classFlashCard.html">FlashCard</a> <a class="code" href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a>(std::string question, std::string answer, CardDifficulty difficulty, <span class="keywordtype">int</span> n_times_answered);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;std::vector&lt;FlashCardDeck&gt; <a class="code" href="deck_8cpp.html#af5108b64d7c7fef6a29eac7617e982ac">loadFlashCardDecks</a>(std::filesystem::path deck_path);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> <a class="code" href="deck_8cpp.html#abea54d12b8b52601bf6cbd4f9c477771">readFlashCardDeck</a>(std::filesystem::path deck_file);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html">  111</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashCardDeck.html">FlashCardDeck</a></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// TODO: add constructor</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">// TODO add destructor</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">  117</a></span>&#160;    std::string <a class="code" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">name</a>{};</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#afd107ed3bd39c6d479f2891b1e96ef19">  119</a></span>&#160;    std::filesystem::path <a class="code" href="classFlashCardDeck.html#afd107ed3bd39c6d479f2891b1e96ef19">filename</a>{};</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">  121</a></span>&#160;    std::vector&lt;FlashCard&gt; <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>{};</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a13d7c276d5255add2383a6c0e1ed6642">  127</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCardDeck.html#a13d7c276d5255add2383a6c0e1ed6642">printDeck</a>()</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">name</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;File location: &quot;</span> &lt;&lt; <a class="code" href="classFlashCardDeck.html#afd107ed3bd39c6d479f2891b1e96ef19">filename</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Deck size: &quot;</span> &lt;&lt; <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>.size() &lt;&lt; <span class="stringliteral">&quot; cards&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classFlashCard.html">FlashCard</a> card : <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            card.printCard();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classFlashCardDeck.html#a563b6258f6befaf1d28aa1ddc777d353">  142</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashCardDeck.html#a563b6258f6befaf1d28aa1ddc777d353">printDeckAsTemplate</a>()</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        std::cout &lt;&lt; <a class="code" href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">name</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="classFlashCard.html">FlashCard</a> card : <a class="code" href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">cards</a>)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            card.printCardAsTemplate();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;};</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<a class="code" href="classFlashCard.html">FlashCard</a> <a class="code" href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a>(std::string question, std::string answer, CardDifficulty difficulty, <span class="keywordtype">int</span> n_times_answered);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8">  170</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8">writeFlashCardDeck</a>(<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> deck, std::filesystem::path filename);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassFlashCardDeck_html"><div class="ttname"><a href="classFlashCardDeck.html">FlashCardDeck</a></div><div class="ttdef"><b>Definition:</b> deck.h:111</div></div>
-<div class="ttc" id="aclassFlashCardDeck_html_a13d7c276d5255add2383a6c0e1ed6642"><div class="ttname"><a href="classFlashCardDeck.html#a13d7c276d5255add2383a6c0e1ed6642">FlashCardDeck::printDeck</a></div><div class="ttdeci">void printDeck()</div><div class="ttdoc">Prints flashcard deck information and then each card.</div><div class="ttdef"><b>Definition:</b> deck.h:125</div></div>
-<div class="ttc" id="aclassFlashCardDeck_html_a6a4d5f691a0514a2f21c75160823d454"><div class="ttname"><a href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">FlashCardDeck::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> deck.h:116</div></div>
-<div class="ttc" id="aclassFlashCardDeck_html_a965e252310c8ea651f145f1ed781b4e5"><div class="ttname"><a href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">FlashCardDeck::cards</a></div><div class="ttdeci">std::vector&lt; FlashCard &gt; cards</div><div class="ttdef"><b>Definition:</b> deck.h:119</div></div>
-<div class="ttc" id="aclassFlashCard_html"><div class="ttname"><a href="classFlashCard.html">FlashCard</a></div><div class="ttdef"><b>Definition:</b> deck.h:67</div></div>
-<div class="ttc" id="aclassFlashCard_html_a11e2ca24073aaf6bb29113ff5d0ea1d1"><div class="ttname"><a href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">FlashCard::printCardAsTemplate</a></div><div class="ttdeci">void printCardAsTemplate()</div><div class="ttdoc">Used to.</div><div class="ttdef"><b>Definition:</b> deck.h:96</div></div>
-<div class="ttc" id="aclassFlashCard_html_a16e6c0d06046cfe05bf4bc055c1e6c4a"><div class="ttname"><a href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">FlashCard::answer</a></div><div class="ttdeci">std::string answer</div><div class="ttdef"><b>Definition:</b> deck.h:73</div></div>
-<div class="ttc" id="aclassFlashCard_html_a6f593ae9a34a62a46eb54bca2917270d"><div class="ttname"><a href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">FlashCard::difficulty</a></div><div class="ttdeci">CardDifficulty difficulty</div><div class="ttdef"><b>Definition:</b> deck.h:76</div></div>
-<div class="ttc" id="aclassFlashCard_html_a82165ddd8f141d1a171960b366179d7c"><div class="ttname"><a href="classFlashCard.html#a82165ddd8f141d1a171960b366179d7c">FlashCard::printCard</a></div><div class="ttdeci">void printCard()</div><div class="ttdoc">Prints the card question and answer.</div><div class="ttdef"><b>Definition:</b> deck.h:85</div></div>
-<div class="ttc" id="aclassFlashCard_html_aae02597613e37585b21bbeedc05c1d1e"><div class="ttname"><a href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">FlashCard::n_times_answered</a></div><div class="ttdeci">int n_times_answered</div><div class="ttdef"><b>Definition:</b> deck.h:79</div></div>
-<div class="ttc" id="aclassFlashCard_html_ac0a6f4c179b89d67629d10d1679ece8e"><div class="ttname"><a href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">FlashCard::question</a></div><div class="ttdeci">std::string question</div><div class="ttdef"><b>Definition:</b> deck.h:70</div></div>
-<div class="ttc" id="adeck_8cpp_html_abea54d12b8b52601bf6cbd4f9c477771"><div class="ttname"><a href="deck_8cpp.html#abea54d12b8b52601bf6cbd4f9c477771">readFlashCardDeck</a></div><div class="ttdeci">FlashCardDeck readFlashCardDeck(fs::path deck_file)</div><div class="ttdoc">For a given deck file, read the contents in to create all the cards.</div><div class="ttdef"><b>Definition:</b> deck.cpp:72</div></div>
-<div class="ttc" id="adeck_8cpp_html_af5108b64d7c7fef6a29eac7617e982ac"><div class="ttname"><a href="deck_8cpp.html#af5108b64d7c7fef6a29eac7617e982ac">loadFlashCardDecks</a></div><div class="ttdeci">std::vector&lt; FlashCardDeck &gt; loadFlashCardDecks(fs::path deck_path)</div><div class="ttdoc">Function that will scan the deck directory and read in all the deck files found TODO document.</div><div class="ttdef"><b>Definition:</b> deck.cpp:155</div></div>
-<div class="ttc" id="adeck_8h_html_a3d1e709ef7541c0a3f6cbf83b885bcc8"><div class="ttname"><a href="deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8">writeFlashCardDeck</a></div><div class="ttdeci">void writeFlashCardDeck(FlashCardDeck deck, std::filesystem::path filename)</div><div class="ttdoc">Write a deck of flashcards to disk The standard location will be in Decks/ located with the executabl...</div></div>
-<div class="ttc" id="adeck_8h_html_a4f1ec42ba3c1e5bba6b6181a65f6bba4"><div class="ttname"><a href="deck_8h.html#a4f1ec42ba3c1e5bba6b6181a65f6bba4">strToCardDifficulty</a></div><div class="ttdeci">CardDifficulty strToCardDifficulty(std::string s)</div><div class="ttdoc">Converts a string into the CardDifficulty enum. &quot;LOW&quot; -&gt; LOW &quot;MEDIUM&quot; -&gt; MEDIUM &quot;HIGH&quot; -&gt; HIGH Anythi...</div><div class="ttdef"><b>Definition:</b> deck.cpp:17</div></div>
-<div class="ttc" id="adeck_8h_html_a565affb5ede5e1c2b63a83d72599bbc2"><div class="ttname"><a href="deck_8h.html#a565affb5ede5e1c2b63a83d72599bbc2">cardDifficultyToStr</a></div><div class="ttdeci">std::string cardDifficultyToStr(CardDifficulty d)</div><div class="ttdoc">Converts the card difficulty from enum to a string.</div><div class="ttdef"><b>Definition:</b> deck.cpp:37</div></div>
-<div class="ttc" id="adeck_8h_html_a7957b37b71aa9dc54c7eec04384dd8f5"><div class="ttname"><a href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a></div><div class="ttdeci">FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)</div><div class="ttdoc">Create a flashcard object.</div><div class="ttdef"><b>Definition:</b> deck.cpp:56</div></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="deck_8h.html#a6f4f0e13d12bfaea40f74c94e093aa5a">  172</a></span>&#160;std::vector&lt;FlashCardDeck&gt; <a class="code" href="deck_8h.html#a6f4f0e13d12bfaea40f74c94e093aa5a">loadFlashCardDecks</a>(std::filesystem::path deck_dir_path);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="deck_8h.html#a51117ea428770097e56c24159c9af509">  181</a></span>&#160;<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> <a class="code" href="deck_8h.html#a51117ea428770097e56c24159c9af509">readFlashCardDeck</a>(std::filesystem::path deck_file);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756">  192</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756">writeFlashCardDeck</a>(<span class="keyword">const</span> <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;deck, std::filesystem::path filename);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;std::vector&lt;FlashCardDeck&gt; <a class="code" href="deck_8h.html#ac2ae4147f7100c31d1dc283f57c0870d">createExampleDecks</a>();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;std::filesystem::path <a class="code" href="deck_8h.html#a8d1bd86906f6289f92426ffa5cbfe9fd">createDeckFilename</a>(std::filesystem::path deck_dir);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keywordtype">void</span> answerCard(<a class="code" href="classFlashCard.html">FlashCard</a> &amp;fc);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="deck_8h.html#a9131aec89f24346a9a64614a30448864">updateDeckFile</a>(<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;deck_to_update);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassFlashCardDeck_html"><div class="ttname"><a href="classFlashCardDeck.html">FlashCardDeck</a></div><div class="ttdef"><b>Definition:</b> deck.h:112</div></div>
+<div class="ttc" id="aclassFlashCardDeck_html_a13d7c276d5255add2383a6c0e1ed6642"><div class="ttname"><a href="classFlashCardDeck.html#a13d7c276d5255add2383a6c0e1ed6642">FlashCardDeck::printDeck</a></div><div class="ttdeci">void printDeck()</div><div class="ttdoc">Prints flashcard deck information and then each card.</div><div class="ttdef"><b>Definition:</b> deck.h:127</div></div>
+<div class="ttc" id="aclassFlashCardDeck_html_a563b6258f6befaf1d28aa1ddc777d353"><div class="ttname"><a href="classFlashCardDeck.html#a563b6258f6befaf1d28aa1ddc777d353">FlashCardDeck::printDeckAsTemplate</a></div><div class="ttdeci">void printDeckAsTemplate()</div><div class="ttdoc">Prints flashcard deck name and then each card as template for a deck file.</div><div class="ttdef"><b>Definition:</b> deck.h:142</div></div>
+<div class="ttc" id="aclassFlashCardDeck_html_a6a4d5f691a0514a2f21c75160823d454"><div class="ttname"><a href="classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454">FlashCardDeck::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition:</b> deck.h:117</div></div>
+<div class="ttc" id="aclassFlashCardDeck_html_a965e252310c8ea651f145f1ed781b4e5"><div class="ttname"><a href="classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5">FlashCardDeck::cards</a></div><div class="ttdeci">std::vector&lt; FlashCard &gt; cards</div><div class="ttdef"><b>Definition:</b> deck.h:121</div></div>
+<div class="ttc" id="aclassFlashCardDeck_html_afd107ed3bd39c6d479f2891b1e96ef19"><div class="ttname"><a href="classFlashCardDeck.html#afd107ed3bd39c6d479f2891b1e96ef19">FlashCardDeck::filename</a></div><div class="ttdeci">std::filesystem::path filename</div><div class="ttdef"><b>Definition:</b> deck.h:119</div></div>
+<div class="ttc" id="aclassFlashCard_html"><div class="ttname"><a href="classFlashCard.html">FlashCard</a></div><div class="ttdef"><b>Definition:</b> deck.h:68</div></div>
+<div class="ttc" id="aclassFlashCard_html_a11e2ca24073aaf6bb29113ff5d0ea1d1"><div class="ttname"><a href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">FlashCard::printCardAsTemplate</a></div><div class="ttdeci">void printCardAsTemplate()</div><div class="ttdoc">Used to.</div><div class="ttdef"><b>Definition:</b> deck.h:97</div></div>
+<div class="ttc" id="aclassFlashCard_html_a16e6c0d06046cfe05bf4bc055c1e6c4a"><div class="ttname"><a href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">FlashCard::answer</a></div><div class="ttdeci">std::string answer</div><div class="ttdef"><b>Definition:</b> deck.h:74</div></div>
+<div class="ttc" id="aclassFlashCard_html_a6f593ae9a34a62a46eb54bca2917270d"><div class="ttname"><a href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">FlashCard::difficulty</a></div><div class="ttdeci">CardDifficulty difficulty</div><div class="ttdef"><b>Definition:</b> deck.h:77</div></div>
+<div class="ttc" id="aclassFlashCard_html_a82165ddd8f141d1a171960b366179d7c"><div class="ttname"><a href="classFlashCard.html#a82165ddd8f141d1a171960b366179d7c">FlashCard::printCard</a></div><div class="ttdeci">void printCard()</div><div class="ttdoc">Prints the card question and answer.</div><div class="ttdef"><b>Definition:</b> deck.h:86</div></div>
+<div class="ttc" id="aclassFlashCard_html_aae02597613e37585b21bbeedc05c1d1e"><div class="ttname"><a href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">FlashCard::n_times_answered</a></div><div class="ttdeci">int n_times_answered</div><div class="ttdef"><b>Definition:</b> deck.h:80</div></div>
+<div class="ttc" id="aclassFlashCard_html_ac0a6f4c179b89d67629d10d1679ece8e"><div class="ttname"><a href="classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e">FlashCard::question</a></div><div class="ttdeci">std::string question</div><div class="ttdef"><b>Definition:</b> deck.h:71</div></div>
+<div class="ttc" id="adeck_8h_html_a1000161378f28bd3bf9fdbaa347bf756"><div class="ttname"><a href="deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756">writeFlashCardDeck</a></div><div class="ttdeci">bool writeFlashCardDeck(const FlashCardDeck &amp;deck, std::filesystem::path filename)</div><div class="ttdoc">Write a deck of flashcards to disk The standard location will be in Decks/ located with the executabl...</div></div>
+<div class="ttc" id="adeck_8h_html_a51117ea428770097e56c24159c9af509"><div class="ttname"><a href="deck_8h.html#a51117ea428770097e56c24159c9af509">readFlashCardDeck</a></div><div class="ttdeci">FlashCardDeck readFlashCardDeck(std::filesystem::path deck_file)</div><div class="ttdoc">For a given deck file, read the contents in to create all the cards.</div></div>
+<div class="ttc" id="adeck_8h_html_a6e4ad1bdbb9764c9291a9da1872265e8"><div class="ttname"><a href="deck_8h.html#a6e4ad1bdbb9764c9291a9da1872265e8">strToCardDifficulty</a></div><div class="ttdeci">CardDifficulty strToCardDifficulty(const std::string &amp;difficultyStr)</div><div class="ttdoc">Converts a string into the CardDifficulty enum. &quot;EASY&quot; -&gt; EASY &quot;MEDIUM&quot; -&gt; MEDIUM &quot;HIGH&quot; -&gt; HIGH Anyt...</div><div class="ttdef"><b>Definition:</b> deck.cpp:17</div></div>
+<div class="ttc" id="adeck_8h_html_a6f4f0e13d12bfaea40f74c94e093aa5a"><div class="ttname"><a href="deck_8h.html#a6f4f0e13d12bfaea40f74c94e093aa5a">loadFlashCardDecks</a></div><div class="ttdeci">std::vector&lt; FlashCardDeck &gt; loadFlashCardDecks(std::filesystem::path deck_dir_path)</div><div class="ttdoc">Load the decks from files stored with the &quot;.deck&quot; extension inside decks/.</div></div>
+<div class="ttc" id="adeck_8h_html_a7957b37b71aa9dc54c7eec04384dd8f5"><div class="ttname"><a href="deck_8h.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a></div><div class="ttdeci">FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)</div><div class="ttdoc">Create a flashcard object.</div><div class="ttdef"><b>Definition:</b> deck.cpp:52</div></div>
+<div class="ttc" id="adeck_8h_html_a86bf6016f9556419d98f7c566f5f30ae"><div class="ttname"><a href="deck_8h.html#a86bf6016f9556419d98f7c566f5f30ae">cardDifficultyToStr</a></div><div class="ttdeci">std::string cardDifficultyToStr(const CardDifficulty &amp;difficulty)</div><div class="ttdoc">Converts the card difficulty from enum to a string.</div><div class="ttdef"><b>Definition:</b> deck.cpp:37</div></div>
+<div class="ttc" id="adeck_8h_html_a8d1bd86906f6289f92426ffa5cbfe9fd"><div class="ttname"><a href="deck_8h.html#a8d1bd86906f6289f92426ffa5cbfe9fd">createDeckFilename</a></div><div class="ttdeci">std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)</div><div class="ttdoc">Prompt the user for name of the file to save the deckfile to.</div><div class="ttdef"><b>Definition:</b> deck.cpp:230</div></div>
+<div class="ttc" id="adeck_8h_html_a9131aec89f24346a9a64614a30448864"><div class="ttname"><a href="deck_8h.html#a9131aec89f24346a9a64614a30448864">updateDeckFile</a></div><div class="ttdeci">bool updateDeckFile(FlashCardDeck &amp;deck_to_update)</div><div class="ttdoc">Updates an existing FlashCardDeck on file.</div><div class="ttdef"><b>Definition:</b> deck.cpp:301</div></div>
+<div class="ttc" id="adeck_8h_html_ac2ae4147f7100c31d1dc283f57c0870d"><div class="ttname"><a href="deck_8h.html#ac2ae4147f7100c31d1dc283f57c0870d">createExampleDecks</a></div><div class="ttdeci">std::vector&lt; FlashCardDeck &gt; createExampleDecks()</div><div class="ttdoc">Create example deck files.</div><div class="ttdef"><b>Definition:</b> deck.cpp:216</div></div>
+<div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Contains useful helper functions.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

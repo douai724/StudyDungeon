@@ -75,7 +75,8 @@ $(function() {
 
 <p>Contains useful helper functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;filesystem&gt;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;windows.h&gt;</code><br />
@@ -84,9 +85,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a27d219739a4d0a2547b573d4b5834682"><td class="memItemLeft" align="right" valign="top"><a id="a27d219739a4d0a2547b573d4b5834682"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>get_app_path</b> ()</td></tr>
-<tr class="separator:a27d219739a4d0a2547b573d4b5834682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a224e5626fbbab2a7d160e57af7246f9b"><td class="memItemLeft" align="right" valign="top"><a id="a224e5626fbbab2a7d160e57af7246f9b"></a>
+std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getAppPath</b> ()</td></tr>
+<tr class="separator:a224e5626fbbab2a7d160e57af7246f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a211897e8868606c97636147527d722eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a211897e8868606c97636147527d722eb">timer</a> (int minutes)</td></tr>
 <tr class="memdesc:a211897e8868606c97636147527d722eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts a countdown timer for a specified number of minutes  <a href="util_8h.html#a211897e8868606c97636147527d722eb">More...</a><br /></td></tr>
 <tr class="separator:a211897e8868606c97636147527d722eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -96,6 +97,12 @@ std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>get_
 <tr class="memitem:a9d7e8af417b6d543da691e9c0e2f6f9f"><td class="memItemLeft" align="right" valign="top"><a id="a9d7e8af417b6d543da691e9c0e2f6f9f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</td></tr>
 <tr class="separator:a9d7e8af417b6d543da691e9c0e2f6f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44b530801f49c81b3f065ced260f6f0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a> ()</td></tr>
+<tr class="memdesc:a44b530801f49c81b3f065ced260f6f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompts the user to enter [Yy] for yes and [Nn] for no.  <a href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">More...</a><br /></td></tr>
+<tr class="separator:a44b530801f49c81b3f065ced260f6f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa7202e3936e1663f0e361cace941194"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#afa7202e3936e1663f0e361cace941194">isValidDeckFileName</a> (std::string name)</td></tr>
+<tr class="memdesc:afa7202e3936e1663f0e361cace941194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if name for deckfile meets naming requirements.  <a href="util_8h.html#afa7202e3936e1663f0e361cace941194">More...</a><br /></td></tr>
+<tr class="separator:afa7202e3936e1663f0e361cace941194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains useful helper functions. </p>
@@ -104,6 +111,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</t
 <dl class="section date"><dt>Date</dt><dd>2024-08-08</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="afa7202e3936e1663f0e361cace941194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa7202e3936e1663f0e361cace941194">&#9670;&nbsp;</a></span>isValidDeckFileName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isValidDeckFileName </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if name for deckfile meets naming requirements. </p>
+<p>Deck filenames should only contain [A-Za-z0-9] characters</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+</div>
+</div>
 <a id="a7167f5c196fc5e167bfabde1a730e81d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7167f5c196fc5e167bfabde1a730e81d">&#9670;&nbsp;</a></span>pause()</h2>
 
@@ -147,6 +184,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</t
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a44b530801f49c81b3f065ced260f6f0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44b530801f49c81b3f065ced260f6f0b">&#9670;&nbsp;</a></span>yesNoPrompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool yesNoPrompt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prompts the user to enter [Yy] for yes and [Nn] for no. </p>
+<dl class="section return"><dt>Returns</dt><dd>true for [Yy] </dd>
+<dd>
+false for [Nn] </dd></dl>
 
 </div>
 </div>

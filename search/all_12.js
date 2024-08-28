@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writeflashcarddeck_61',['writeFlashCardDeck',['../deck_8cpp.html#a3fbc05ca2fb1edf0b910091291b7deb0',1,'writeFlashCardDeck(FlashCardDeck deck, fs::path filename):&#160;deck.cpp'],['../deck_8h.html#a3d1e709ef7541c0a3f6cbf83b885bcc8',1,'writeFlashCardDeck(FlashCardDeck deck, std::filesystem::path filename):&#160;deck.h']]]
+  ['writeflashcarddeck_67',['writeFlashCardDeck',['../deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756',1,'deck.h']]]
 ];

@@ -115,7 +115,8 @@ class FlashCardDeck
 public:
     /** The name of the flashcard deck */
     std::string name{};
-
+    /** The path to the deckfile */
+    std::filesystem::path filename{};
     /** Vector containing 0 or more flashcards */
     std::vector<FlashCard> cards{};
 
@@ -126,7 +127,8 @@ public:
     void printDeck()
     {
         std::cout << name << std::endl;
-        std::cout << "size: " << cards.size() << '\n';
+        std::cout << "File location: " << filename << std::endl;
+        std::cout << "Deck size: " << cards.size() << " cards" << std::endl;
         for (FlashCard card : cards)
         {
             card.printCard();

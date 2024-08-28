@@ -183,6 +183,7 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
             {
                 FlashCardDeck fd{};
                 fd = readFlashCardDeck(entry);
+                fd.filename = entry;
                 deck_array.push_back(fd);
             }
         }
@@ -200,11 +201,11 @@ std::vector<FlashCardDeck> createExampleDecks()
 {
     FlashCard f1 = createFlashCard("question 1", "answer 1", LOW, 0);
     FlashCard f2 = createFlashCard("question 2", "answer 2", MEDIUM, 1);
-    FlashCardDeck d1{"Example Deck 1", std::vector<FlashCard>{f1, f2}};
+    FlashCardDeck d1{"Example Deck 1", "", std::vector<FlashCard>{f1, f2}};
 
     FlashCard f3 = createFlashCard("question 3", "answer 3", HIGH, 2);
     FlashCard f4 = createFlashCard("question 4", "answer 4", UNKNOWN, 1);
-    FlashCardDeck d2{"Example Deck 2", std::vector<FlashCard>{f3, f4}};
+    FlashCardDeck d2{"Example Deck 2", "", std::vector<FlashCard>{f3, f4}};
 
     return std::vector<FlashCardDeck>{d1, d2};
 };

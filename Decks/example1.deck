@@ -1,9 +1,9 @@
 example deck 1
 Q: What colour is #FFFFFF?
 A: White
-D: 4
+D: HIGH
 -
 Q: What colour is #000000?
 A: Black
-D: LOW
+D: EASY
 N: 3

@@ -29,7 +29,7 @@ jobs:
               run: |
                   cmake --build build --config Debug --target docs -j4
             - name: Deploy to GitHub Pages
-              uses: Cecilapp/GitHub-Pages-deploy@v3
+              uses: Cecilapp/GitHub-Pages-deploy@18b21493b3b92508912541cad41d189a050fd4cd #v3.2.2
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:

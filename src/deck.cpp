@@ -14,17 +14,17 @@
 namespace fs = std::filesystem;
 
 
-CardDifficulty strToCardDifficulty(std::string s)
+CardDifficulty strToCardDifficulty(const std::string &difficultyStr)
 {
-    if (s == "LOW")
+    if (difficultyStr == "EASY")
     {
-        return LOW;
+        return EASY;
     }
-    else if (s == "MEDIUM")
+    else if (difficultyStr == "MEDIUM")
     {
         return MEDIUM;
     }
-    else if (s == "HIGH")
+    else if (difficultyStr == "HIGH")
     {
         return HIGH;
     }
@@ -34,12 +34,12 @@ CardDifficulty strToCardDifficulty(std::string s)
     }
 }
 
-std::string cardDifficultyToStr(CardDifficulty d)
+std::string cardDifficultyToStr(const CardDifficulty &difficulty)
 {
-    switch (d)
+    switch (difficulty)
     {
-    case (LOW):
-        return "LOW";
+    case (EASY):
+        return "EASY";
     case (MEDIUM):
         return "MEDIUM";
     case (HIGH):
@@ -48,11 +48,7 @@ std::string cardDifficultyToStr(CardDifficulty d)
     return "UNKNOWN";
 }
 
-/**
- * @brief Create a flashcard and fill in the card contents
- *
- * @return FlashCard
- */
+
 FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)
 {
     FlashCard card{};
@@ -63,12 +59,7 @@ FlashCard createFlashCard(std::string question, std::string answer, CardDifficul
     return card;
 };
 
-/**
- * @brief For a given deck file, read the contents in to create all the cards
- *
- * @param deck_file The path to the file containing the deck information
- * @return A FlashCardDeck after parsing the file.
- */
+
 FlashCardDeck readFlashCardDeck(fs::path deck_file)
 {
 
@@ -130,45 +121,85 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
 };
 
 
-/**
- * @brief Write a deck of flashcards to disk
- * The standard location will be in Decks/ located with the executable
- * and use a suffix of ".deck"
- *
- * @param deck The FlashCard deck to be written to file
- * @param filename The file path for the deck file
- */
-void writeFlashCardDeck(FlashCardDeck deck, fs::path filename) {
-    // check Decks/ exists
-    // check for existance of
-    // open file for writing
-    // write name of deck to file
-    // loop through each card in the deck
+bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
+{
+    //FIXME this function is not complete and so doesn't work properly....
+    // check filename ends with .deck
+    if (!filename.string().ends_with(".deck"))
+    {
+        return false;
+    }
+
+    // TODO
+    if (fs::exists(filename))
+    {
+        if (!fs::is_regular_file(filename))
+        {
+            // path exists but is not a file
+            //TODO throw exception
+            return false;
+        }
+        else
+        {
+            std::cout << "Path " << filename << " already exists, Overwrite file? Y/N\n";
+            // DOUBLE CHECK WITH USER!
+            bool overwrite = yesNoPrompt();
+            if (!overwrite)
+            {
+                std::cout << "Choose new filename?" << std::endl;
+                bool create_new_path = yesNoPrompt();
+
+                if (!create_new_path)
+                {
+                    return false;
+                }
+
+                filename = createDeckFilename(filename.parent_path());
+                //TODO finish this path for a different file
+            }
+
+
+            // open file
+            // write contents to file
+            std::cout << deck.name << std::endl;
+            for (FlashCard fc : deck.cards)
+            {
+                // TODO send this to the file
+                fc.printCardAsTemplate();
+            }
+            // close file
+            return true;
+        }
+    }
+    else
+    {
+        // ensure parent directory exists
+        // check Decks/ exists
+        // check for existance of
+        // open file for writing
+        // write name of deck to file
+        // loop through each card in the deck
+        return false;
+    }
 };
 
 
-/**
- * @brief Function that will scan the deck directory and read in all the deck files found
- * TODO document
- * @param deck_path the path to look for ".deck" suffixed files
- */
-std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_path)
+std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
 {
-    std::cout << deck_path << std::endl;
+    std::cout << deck_dir_path << std::endl;
     std::vector<FlashCardDeck> deck_array;
     // Check the deck directory exists
-    if (fs::exists(deck_path) && fs::is_directory(deck_path))
+    if (fs::exists(deck_dir_path) && fs::is_directory(deck_dir_path))
     {
-        std::cout << deck_path << " is a directory" << std::endl;
+        std::cout << deck_dir_path << " is a directory" << std::endl;
         // list out the contents of the directory
-        for (const auto &entry : fs::directory_iterator(deck_path))
+        for (const auto &entry : fs::directory_iterator(deck_dir_path))
         {
-            std::cout << (entry.is_directory() ? "[DIR] " : "[FILE] ") << entry.path().filename().string() << std::endl;
-
             if (entry.is_regular_file() && entry.path().string().ends_with(".deck"))
             {
                 FlashCardDeck fd{};
                 fd = readFlashCardDeck(entry);
+                fd.filename = entry;
                 deck_array.push_back(fd);
             }
         }
@@ -181,3 +212,110 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_path)
 
     return deck_array;
 };
+
+std::vector<FlashCardDeck> createExampleDecks()
+{
+    FlashCard f1 = createFlashCard("question 1", "answer 1", EASY, 0);
+    FlashCard f2 = createFlashCard("question 2", "answer 2", MEDIUM, 1);
+    FlashCardDeck d1{"Example Deck 1", "", std::vector<FlashCard>{f1, f2}};
+
+    FlashCard f3 = createFlashCard("question 3", "answer 3", HIGH, 2);
+    FlashCard f4 = createFlashCard("question 4", "answer 4", UNKNOWN, 1);
+    FlashCardDeck d2{"Example Deck 2", "", std::vector<FlashCard>{f3, f4}};
+
+    return std::vector<FlashCardDeck>{d1, d2};
+};
+
+
+std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
+{
+    if (!fs::is_directory(deck_dir))
+    {
+        // TODO throw exception - path not a directory
+    }
+    std::string input{};
+    std::cout
+        << "Please enter a name to save your deck file to. (Alphanumeric characters only and maximum of 20 characters)"
+        << std::endl;
+    bool invalid{true};
+    do
+    {
+        std::getline(std::cin, input);
+        invalid = isValidDeckFileName(input);
+    } while (invalid);
+
+    deck_dir.append(input).concat(".deck");
+
+    return deck_dir;
+}
+
+
+bool answerCard(FlashCard &fc)
+{
+    bool card_correct{false};
+    CardDifficulty difficulty{};
+    clearScreen();
+    std::cout << fc.question << std::endl;
+    std::cout << "Ready for answer?" << std::endl;
+    pause();
+    std::cout << "The answer was:\n" << fc.answer << std::endl;
+    std::cout << "Did you get the answer correct?" << std::endl;
+    card_correct = yesNoPrompt();
+    std::string input{};
+    bool unset{true};
+    while (unset)
+    {
+        std::cout << "What was the difficulty? (E)ASY (M)EDIUM (H)IGH (U)NKOWN" << std::endl;
+        std::getline(std::cin, input);
+        if (input.length() == 1)
+        {
+            int c = input.at(0);
+            c = toupper(c);
+            switch (c)
+            {
+            case ('E'):
+                difficulty = EASY;
+                unset = false;
+                break;
+            case ('M'):
+                difficulty = MEDIUM;
+                unset = false;
+                break;
+            case ('H'):
+                difficulty = HIGH;
+                unset = false;
+                break;
+            case ('U'):
+                difficulty = UNKNOWN;
+                unset = false;
+                break;
+            }
+        }
+    }
+
+    std::cout << "You said difficulty of " << cardDifficultyToStr(difficulty) << std::endl;
+    std::cout << "The existing difficulty was " << cardDifficultyToStr(fc.difficulty) << std::endl;
+    fc.difficulty = difficulty;
+    std::cout << "card difficulty now " << cardDifficultyToStr(fc.difficulty) << std::endl;
+    fc.n_times_answered++;
+    return card_correct;
+}
+
+
+bool updateDeckFile(FlashCardDeck &deck_to_update)
+{
+    std::cout << "Save card updates?" << std::endl;
+
+    if (yesNoPrompt())
+    {
+        if (writeFlashCardDeck(deck_to_update, deck_to_update.filename))
+        {
+            return true;
+        }
+        else
+        {
+            std::cout << "Issue in writing file. Cards were not updated." << std::endl;
+        }
+    }
+    return false;
+}

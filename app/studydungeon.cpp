@@ -23,25 +23,104 @@ void addFlashcard()
     pause();
 }
 
+void reviewUnknown()
+{
+    clearScreen();
+    std::cout << "Reviewing unknown difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == UNKNOWN)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
+}
+
 void reviewEasy()
 {
     clearScreen();
-    std::cout << "Reviewing easy flashcards...\n";
-    pause();
+    std::cout << "Reviewing easy difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == EASY)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void reviewMedium()
 {
     clearScreen();
-    std::cout << "Reviewing medium flashcards...\n";
-    pause();
+    std::cout << "Reviewing medium difficulyy flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == MEDIUM)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void reviewHard()
 {
     clearScreen();
-    std::cout << "Reviewing hard flashcards...\n";
-    pause();
+    std::cout << "Reviewing hard difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == HIGH)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void editCard()
@@ -59,30 +138,30 @@ void deleteCard()
 }
 
 // Loop through the cards of a deck to answer them
-void reviseDeck()
+void reviseEntireDeck()
 {
-    int difficulty{0};
+    int n_correct{0};
     clearScreen();
-    std::cout << "Using the current deck to revise...\n";
+    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << "deck.\n";
     pause();
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
-        // FIXME to make it work properly
-        clearScreen();
-        std::cout << fc.question << std::endl;
-        std::cout << "Ready for answer?" << std::endl;
-        pause();
-        std::cout << "What was the difficulty? LOW MEDIUM HIGH" << std::endl;
-        // FIXME this isn't right
-        std::cin >> difficulty;
-        std::cout << "You said difficulty of " << difficulty << std::endl;
-        std::cout << "The existing difficulty was " << fc.difficulty << std::endl;
-        //TODO update difficulty of card
-        fc.n_times_answered++;
+        n_correct += answerCard(fc);
         std::cout << "\n\nNEXT CARD?" << std::endl;
         pause();
     }
-    // TODO Upon completion the deck should be written out so the difficulties and n_times_answered is updated.
+    std::cout << "You answered " << n_correct << " cards correctly this round." << std::endl;
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
+    pause();
 }
 
 void viewDeck()
@@ -155,7 +234,7 @@ void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
 int main()
 {
     splashScreen();
-    fs::path app_path = get_app_path();
+    fs::path app_path = getAppPath();
     fs::path decks_dir = app_path;
     decks_dir.append("Decks");
     if (!fs::exists(decks_dir))
@@ -169,64 +248,35 @@ int main()
 
     currentFlashCardDeck.printDeck();
 
-    auto mainMenu = std::make_shared<GridMenu>("Flashcard Application", 3, 3);
-    auto reviewMenu = std::make_shared<GridMenu>("Review Flashcards", 2, 3);
-    auto editMenu = std::make_shared<GridMenu>("Edit Flashcards", 3, 3);
-    auto testMenu = std::make_shared<GridMenu>("Test buttons", 3, 2);
+    auto mainMenu = std::make_shared<GridMenu>("Study Dungeon", 3, 1);
+    auto aboutMenu = std::make_shared<GridMenu>("About & How to use", 1, 1);
+    aboutMenu->addGridItem("Use arrow keys to navigate menu. Press esc to go back or exit.", []() {}, 0, 0);
 
-    auto gameMenu = std::make_shared<GridMenu>("Game", 2, 1);
-    auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, 10);
+    auto deckMenu = std::make_shared<GridMenu>("Flashcard decks", 1, (int)all_flashcard_decks.size());
 
-    gameMenu->addGridItem("Start", start, 0, 0);
-    gameMenu->addGridItem("Exit", exitApp, 0, 1);
+    for (int i = 0; i < (int)all_flashcard_decks.size(); i++)
+    {
+        std::string deckName = all_flashcard_decks[i].name;
+        FlashCardDeck curr = all_flashcard_decks[i];
+        auto flashcardMenu = std::make_shared<GridMenu>(deckName, 3, 1);
+        deckMenu->addGridItem(
+            deckName,
+            [flashcardMenu, deckName, curr]() {
+                currentFlashCardDeck = curr;
+                auto editMenu = std::make_shared<GridMenu>("Edit", 1, 1);
 
-    //gameMenu->addItem();
+                flashcardMenu->addGridItem("Play", reviseEntireDeck, 0, 0);
+                flashcardMenu->addGridItem("Edit", editMenu, 0, 1);
+                flashcardMenu->addGridItem("Exit", exitApp, 0, 2);
+                flashcardMenu->run();
+            },
+            i,
+            0);
+    }
 
-
-    testMenu->addGridItem("Add Button", [testMenu]() { addButtonFunction(testMenu); }, 0, 0);
-
-    testMenu->addGridItem(
-        "Change Grid Size",
-        [testMenu]() {
-            clearScreen();
-            int newWidth, newHeight;
-            std::cout << "Enter new grid width: ";
-            std::cin >> newWidth;
-            std::cout << "Enter new grid height: ";
-            std::cin >> newHeight;
-            testMenu->setGridWidth(newWidth);
-            testMenu->setGridHeight(newHeight);
-        },
-        0,
-        1);
-
-    testMenu->addGridItem("Back", mainMenu, 2, 2);
-
-    reviewMenu->addGridItem("Revise Deck", reviseDeck, 0, 0);
-    reviewMenu->addGridItem("Easy", reviewEasy, 0, 1);
-    reviewMenu->addGridItem("Medium", reviewMedium, 1, 0);
-    reviewMenu->addGridItem("Hard", reviewHard, 1, 1);
-    reviewMenu->addGridItem("Back", mainMenu, 2, 1);
-
-    editMenu->addGridItem("Edit Card", editCard, 0, 0);
-    editMenu->addGridItem("Delete Card", deleteCard, 0, 1);
-    editMenu->addGridItem("View Deck", viewDeck, 0, 2);
-    editMenu->addGridItem("Back", mainMenu, 2, 2);
-
-    // mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
-    // //mainMenu->addGridItem("Review Flashcards", reviewMenu, 0, 1);
-    // mainMenu->addGridItem("Play game", gameMenu, 0, 1);
-    // mainMenu->addGridItem("Edit Flashcards", editMenu, 1, 0);
-    // mainMenu->addGridItem("About", about, 1, 1);
-    // mainMenu->addGridItem("test menu", testMenu, 2, 0);
-
-    mainMenu->addGridItem("Add Flashcard", addFlashcard, 0, 0);
-    mainMenu->addGridItem("Review Flashcards", reviewMenu, 0, 1);
-    mainMenu->addGridItem("Edit Flashcards", editMenu, 0, 2);
-    mainMenu->addGridItem("About", about, 1, 0);
-    mainMenu->addGridItem("Controls", controls, 1, 1);
-    mainMenu->addGridItem("Test Menu", testMenu, 1, 2);
-    mainMenu->addGridItem("Exit", exitApp, 2, 2);
+    mainMenu->addGridItem("PLAY", deckMenu, 0, 0);
+    mainMenu->addGridItem("ABOUT", aboutMenu, 0, 1);
+    mainMenu->addGridItem("EXIT", exitApp, 0, 2);
 
     mainMenu->run();
 

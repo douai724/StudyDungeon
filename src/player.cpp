@@ -127,7 +127,7 @@ PlayingCard User::play()
     std::vector<PlayingCard> currentHand = Player::getHand();
     int handSize = (int)currentHand.size();
     PlayingCard selectedCard = PlayingCard();
-    
+
     // probably need to free this up somehow
     auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
     for (int i = 0; i < handSize; i++)

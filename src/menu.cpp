@@ -122,43 +122,45 @@ void GridMenu::run()
 {
     while (true)
     {
-    try{
-        display();
-        int key = _getch();
-        if (key == 224 || key == 0) // Arrow key pressed
+        try
         {
-            key = _getch(); // Get the second byte of the key code
-            switch (key)
+            display();
+            int key = _getch();
+            if (key == 224 || key == 0) // Arrow key pressed
             {
-            case 72: // Up arrow
-                handleNavigation(-1);
-                break;
-            case 80: // Down arrow
-                handleNavigation(1);
-                break;
-            case 75: // Left arrow
-                handleNavigation(4);
-                break;
-            case 77: // Right arrow
-                handleNavigation(5);
+                key = _getch(); // Get the second byte of the key code
+                switch (key)
+                {
+                case 72: // Up arrow
+                    handleNavigation(-1);
+                    break;
+                case 80: // Down arrow
+                    handleNavigation(1);
+                    break;
+                case 75: // Left arrow
+                    handleNavigation(4);
+                    break;
+                case 77: // Right arrow
+                    handleNavigation(5);
+                    break;
+                }
+            }
+            else if (key == 13) // Enter key
+            {
+                executeSelectedItem();
+            }
+            else if (key == 27) // Escape key
+            {
+                clearScreen();
                 break;
             }
+            else if (key == 83 || key == 115) // 'S' or 's' key
+            {
+                deleteSelectedItem();
+            }
         }
-        else if (key == 13) // Enter key
+        catch (...)
         {
-            executeSelectedItem();
-        }
-        else if (key == 27) // Escape key
-        {
-            clearScreen();
-            break;
-        }
-        else if (key == 83 || key == 115) // 'S' or 's' key
-        {
-            deleteSelectedItem();
-        }
-        }
-        catch(...){
             break;
         }
     }

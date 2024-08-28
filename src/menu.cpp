@@ -1,6 +1,5 @@
 #include "menu.h"
 
-
 MenuItem::MenuItem(const std::string &label, std::function<void()> action)
     : label(label), action(action), subMenu(nullptr)
 {
@@ -118,6 +117,7 @@ void GridMenu::display()
         drawGridItem(gridItem, startX, startY, itemWidth, itemHeight);
     }
 }
+
 void GridMenu::run()
 {
     while (true)
@@ -240,7 +240,6 @@ void GridMenu::drawBorder(int width, int height)
     std::cout << static_cast<char>(192) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(217);
 }
 
-
 void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int width, int height)
 {
     bool isSelected = (item.row == selectedRow && item.col == selectedCol);
@@ -311,7 +310,6 @@ void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int wi
 
     setColor(15, 0);
 }
-
 
 bool GridMenu::isValidGridItem(int row, int col) const
 {

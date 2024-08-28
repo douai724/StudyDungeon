@@ -13,7 +13,8 @@
 #ifndef DECK_H
 #define DECK_H
 
-
+#include "util.h"
+#include <algorithm>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -42,18 +43,18 @@ enum CardDifficulty
  * "HIGH" -> HIGH
  * Anything else is converted to UNKNOWN
  *
- * @param s The card difficulty as a string
+ * @param difficultyStr The card difficulty as a string
  * @return CardDifficulty
  */
-CardDifficulty strToCardDifficulty(std::string s);
+CardDifficulty strToCardDifficulty(std::string difficultyStr);
 
 /**
  * @brief Converts the card difficulty from enum to a string
  *
- * @param d The CardDifficulty
+ * @param difficulty The CardDifficulty
  * @return std::string
  */
-std::string cardDifficultyToStr(CardDifficulty d);
+std::string cardDifficultyToStr(CardDifficulty difficulty);
 
 /**
  * @brief This structure holds the information for each flashcard
@@ -131,6 +132,19 @@ public:
             card.printCard();
         }
     }
+
+    /**
+     * @brief Prints flashcard deck name and then each card as template for a deck file.
+     *
+     */
+    void printDeckAsTemplate()
+    {
+        std::cout << name << std::endl;
+        for (FlashCard card : cards)
+        {
+            card.printCardAsTemplate();
+        }
+    }
 };
 
 /**
@@ -143,19 +157,24 @@ public:
  */
 FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered);
 
+
 /**
  * @brief Load the decks from files stored with the ".deck" extension inside decks/
- * @fn
- * TODO document
+ * @details Will iterate through all files within the path directory that have a .deck suffix.
+ * each deck file will be parsed and turned into a FlashCardDeck. All FlashCardDecks are added into
+ * a vector and returned.
+ *
+ * @param deck_path Path on the file system to a directory where the deck files are located.
+ * @return std::vector<FlashCardDeck>
  */
-std::vector<FlashCardDeck> loadFlashCardDecks(std::filesystem::path deck_path);
+std::vector<FlashCardDeck> loadFlashCardDecks(std::filesystem::path deck_dir_path);
 
 
 /**
- * @brief Reads the contents of the deck file to create cards and returns the deck
- * @fn
- * TODO document
- * @param deck_file
+ * @brief For a given deck file, read the contents in to create all the cards
+ *
+ * @param deck_file The path to the file containing the deck information
+ * @return A FlashCardDeck after parsing the file.
  */
 FlashCardDeck readFlashCardDeck(std::filesystem::path deck_file);
 
@@ -166,7 +185,25 @@ FlashCardDeck readFlashCardDeck(std::filesystem::path deck_file);
  *
  * @param deck The FlashCard deck to be written to file
  * @param filename The file path for the deck file
+ * @return true if successfully writes deck to file.
  */
-void writeFlashCardDeck(FlashCardDeck deck, std::filesystem::path filename);
+bool writeFlashCardDeck(FlashCardDeck deck, std::filesystem::path filename);
+
+
+/**
+ * @brief Create example deck files
+ * @details A helper function that will create some example deck files if no decks exist.
+ * @return A vector of the example FlashCardDecks
+ */
+std::vector<FlashCardDeck> createExampleDecks();
+
+/**
+ * @brief Prompt the user for name of the file to save the deckfile to
+ *
+ * @param deck_dir Directory to append the filename to
+ * @return std::filesystem::path
+ */
+std::filesystem::path createDeckFilename(std::filesystem::path deck_dir);
+
 
 #endif

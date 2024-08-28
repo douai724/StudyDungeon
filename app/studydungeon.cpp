@@ -155,7 +155,7 @@ void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
 int main()
 {
     splashScreen();
-    fs::path app_path = get_app_path();
+    fs::path app_path = getAppPath();
     fs::path decks_dir = app_path;
     decks_dir.append("Decks");
     if (!fs::exists(decks_dir))

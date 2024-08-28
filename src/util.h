@@ -11,6 +11,8 @@
 #pragma once
 #ifndef UTIL_H
 #define UTIL_H
+
+#include <algorithm>
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -22,7 +24,8 @@
  * @fn get the path of the application
  * @return std::filesystem::path The path to the executable
  */
-std::filesystem::path get_app_path();
+std::filesystem::path getAppPath();
+
 
 /**
  * @brief starts a countdown timer for a specified number of minutes
@@ -46,5 +49,21 @@ void pause();
  */
 void clearScreen();
 
+/**
+ * @brief Prompts the user to enter [Yy] for yes and [Nn] for no
+ * @return true for [Yy]
+ * @return false for [Nn]
+ */
+bool yesNoPrompt();
+
+/**
+ * @brief Checks if name for deckfile meets naming requirements
+ * @details Deck filenames should only contain [A-Za-z0-9] characters
+ *
+ * @param name
+ * @return true
+ * @return false
+ */
+bool isValidDeckFileName(std::string name);
 
 #endif

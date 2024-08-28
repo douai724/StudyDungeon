@@ -1,5 +1,6 @@
 #include "util.h"
 
+
 namespace fs = std::filesystem;
 
 /**
@@ -7,7 +8,7 @@ namespace fs = std::filesystem;
  * @fn get the path of the application
  * @return std::filesystem::path The path to the executable
  */
-std::filesystem::path get_app_path()
+std::filesystem::path getAppPath()
 {
     // Buffer to store the path of the executable
     char exePath[MAX_PATH];
@@ -25,17 +26,6 @@ std::filesystem::path get_app_path()
     fs::path exeDir = exeFsPath.parent_path();
 
     return exeDir;
-};
-
-/**
- * @brief Create a directory
- *
- * @param dir_path
- */
-void create_dir(std::filesystem::path dir_path)
-{
-    // TODO: implement function
-    std::cout << "Directory to be created" << dir_path << std::endl;
 };
 
 
@@ -84,4 +74,53 @@ void clearScreen()
 
     /* Move the cursor home */
     SetConsoleCursorPosition(hStdOut, homeCoords);
+}
+
+bool yesNoPrompt()
+{
+    std::string input{};
+
+    while (true)
+    {
+
+        std::cout << "Press Y/N to continue...\n" << std::endl;
+        std::getline(std::cin, input);
+        transform(input.begin(), input.end(), input.begin(), ::toupper);
+        // std::cout << "Input now: " << input << std::endl;
+        if (input == "Y")
+        {
+            return true;
+        }
+        else if (input == "N")
+        {
+            return false;
+        }
+    }
+}
+
+
+bool isValidDeckFileName(std::string name)
+{
+    int max_length{20};
+    if (name == "")
+    {
+        std::cout << "Name must not be empty" << std::endl;
+        return false;
+    }
+    if (name.length() > max_length)
+    {
+        std::cout << "'" << name << "' exceeds maximum length of " << max_length << " characters." << std::endl;
+        return false;
+    }
+
+    // check to see if ASCII value is outside of alphanumeric range
+    for (char c : name)
+    {
+        if (!(('0' <= c && c <= '9') || ('A' <= c && c <= 'Z') || (('a' <= c && c <= 'z'))))
+        {
+            std::cout << "'" << name << "' contains non-alphanumeric characters" << std::endl;
+            return false;
+        }
+    }
+    return true;
 }

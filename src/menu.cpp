@@ -122,6 +122,7 @@ void GridMenu::run()
 {
     while (true)
     {
+    try{
         display();
         int key = _getch();
         if (key == 224 || key == 0) // Arrow key pressed
@@ -155,6 +156,10 @@ void GridMenu::run()
         else if (key == 83 || key == 115) // 'S' or 's' key
         {
             deleteSelectedItem();
+        }
+        }
+        catch(...){
+            break;
         }
     }
 }

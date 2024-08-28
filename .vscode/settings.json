@@ -83,6 +83,8 @@
         "span": "cpp",
         "stack": "cpp",
         "variant": "cpp",
-        "xtree": "cpp"
-}
+        "xtree": "cpp",
+        "*.tcc": "cpp",
+        "cwctype": "cpp"
+    }
 }

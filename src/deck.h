@@ -211,7 +211,7 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir);
  * @brief
  *
  */
-void answerCard(FlashCard &fc);
+bool answerCard(FlashCard &fc);
 
 
 /**

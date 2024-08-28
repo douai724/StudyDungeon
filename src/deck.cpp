@@ -250,14 +250,17 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
 }
 
 
-void answerCard(FlashCard &fc)
+bool answerCard(FlashCard &fc)
 {
+    bool card_correct{false};
     CardDifficulty difficulty{};
     clearScreen();
     std::cout << fc.question << std::endl;
     std::cout << "Ready for answer?" << std::endl;
     pause();
-
+    std::cout << "The answer was:\n" << fc.answer << std::endl;
+    std::cout << "Did you get the answer correct?" << std::endl;
+    card_correct = yesNoPrompt();
     std::string input{};
     bool unset{true};
     while (unset)
@@ -295,6 +298,7 @@ void answerCard(FlashCard &fc)
     fc.difficulty = difficulty;
     std::cout << "card difficulty now " << cardDifficultyToStr(fc.difficulty) << std::endl;
     fc.n_times_answered++;
+    return card_correct;
 }
 
 

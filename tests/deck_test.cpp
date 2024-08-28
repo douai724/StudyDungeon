@@ -7,12 +7,12 @@ TEST_CASE("deck_h enum converters")
     REQUIRE(strToCardDifficulty("") == UNKNOWN);
     REQUIRE(strToCardDifficulty("SOMETHING") == UNKNOWN);
     REQUIRE(strToCardDifficulty("UNKNOWN") == UNKNOWN);
-    REQUIRE(strToCardDifficulty("LOW") == LOW);
+    REQUIRE(strToCardDifficulty("EASY") == EASY);
     REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
     REQUIRE(strToCardDifficulty("HIGH") == HIGH);
 
     REQUIRE(cardDifficultyToStr(UNKNOWN) == "UNKNOWN");
-    REQUIRE(cardDifficultyToStr(LOW) == "LOW");
+    REQUIRE(cardDifficultyToStr(EASY) == "EASY");
     REQUIRE(cardDifficultyToStr(MEDIUM) == "MEDIUM");
     REQUIRE(cardDifficultyToStr(HIGH) == "HIGH");
 }
@@ -50,7 +50,7 @@ TEST_CASE("enum converters")
 {
     REQUIRE(strToCardDifficulty("") == UNKNOWN);
     REQUIRE(strToCardDifficulty("SOMETHING") == UNKNOWN);
-    REQUIRE(strToCardDifficulty("LOW") == LOW);
+    REQUIRE(strToCardDifficulty("EASY") == EASY);
     REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
     REQUIRE(strToCardDifficulty("HIGH") == HIGH);
 }

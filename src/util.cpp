@@ -1,5 +1,5 @@
 #include "util.h"
-#include <algorithm>
+
 
 namespace fs = std::filesystem;
 
@@ -76,7 +76,7 @@ void clearScreen()
     SetConsoleCursorPosition(hStdOut, homeCoords);
 }
 
-bool yesNoInput()
+bool yesNoPrompt()
 {
     std::string input{};
 

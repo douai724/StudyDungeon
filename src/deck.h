@@ -24,13 +24,13 @@
 
 /**
  * @brief The possible difficulties for a flashcard
- * @enum possible values: LOW (1), MEDIUM (2), and HIGH (3)
+ * @enum possible values: EASY (1), MEDIUM (2), and HIGH (3)
  *
  */
 enum CardDifficulty
 {
     UNKNOWN = 0,
-    LOW = 1,
+    EASY = 1,
     MEDIUM = 2,
     HIGH = 3
 };
@@ -38,7 +38,7 @@ enum CardDifficulty
 
 /**
  * @brief Converts a string into the CardDifficulty enum.
- * "LOW" -> LOW
+ * "EASY" -> EASY
  * "MEDIUM" -> MEDIUM
  * "HIGH" -> HIGH
  * Anything else is converted to UNKNOWN
@@ -97,7 +97,7 @@ public:
     void printCardAsTemplate()
     {
         std::cout << "Q: " << question << '\n' << "A: " << answer << '\n';
-        std::cout << "D: " << difficulty << '\n' << "N: " << n_times_answered << '\n';
+        std::cout << "D: " << cardDifficultyToStr(difficulty) << '\n' << "N: " << n_times_answered << '\n';
         std::cout << "-" << '\n';
     }
 };
@@ -207,5 +207,20 @@ std::vector<FlashCardDeck> createExampleDecks();
  */
 std::filesystem::path createDeckFilename(std::filesystem::path deck_dir);
 
+/**
+ * @brief
+ *
+ */
+void answerCard(FlashCard &fc);
+
+
+/**
+ * @brief Updates an existing FlashCardDeck on file
+ *
+ * @param deck_to_update FlashCardDeck to write to file
+ * @return true update was successful
+ * @return false update was unsuccesssful
+ */
+bool updateDeckFile(FlashCardDeck &deck_to_update);
 
 #endif

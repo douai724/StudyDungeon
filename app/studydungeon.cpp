@@ -23,25 +23,104 @@ void addFlashcard()
     pause();
 }
 
+void reviewUnknown()
+{
+    clearScreen();
+    std::cout << "Reviewing unknown difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == UNKNOWN)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
+}
+
 void reviewEasy()
 {
     clearScreen();
-    std::cout << "Reviewing easy flashcards...\n";
-    pause();
+    std::cout << "Reviewing easy difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == EASY)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void reviewMedium()
 {
     clearScreen();
-    std::cout << "Reviewing medium flashcards...\n";
-    pause();
+    std::cout << "Reviewing medium difficulyy flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == MEDIUM)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void reviewHard()
 {
     clearScreen();
-    std::cout << "Reviewing hard flashcards...\n";
-    pause();
+    std::cout << "Reviewing hard difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
+    for (FlashCard fc : currentFlashCardDeck.cards)
+    {
+        if (fc.difficulty == HIGH)
+        {
+            answerCard(fc);
+            std::cout << "\n\nNEXT CARD?" << std::endl;
+            pause();
+        }
+    }
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void editCard()
@@ -59,30 +138,28 @@ void deleteCard()
 }
 
 // Loop through the cards of a deck to answer them
-void reviseDeck()
+void reviseEntireDeck()
 {
-    int difficulty{0};
+
     clearScreen();
-    std::cout << "Using the current deck to revise...\n";
+    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << "deck.\n";
     pause();
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
-        // FIXME to make it work properly
-        clearScreen();
-        std::cout << fc.question << std::endl;
-        std::cout << "Ready for answer?" << std::endl;
-        pause();
-        std::cout << "What was the difficulty? LOW MEDIUM HIGH" << std::endl;
-        // FIXME this isn't right
-        std::cin >> difficulty;
-        std::cout << "You said difficulty of " << difficulty << std::endl;
-        std::cout << "The existing difficulty was " << fc.difficulty << std::endl;
-        //TODO update difficulty of card
-        fc.n_times_answered++;
+        answerCard(fc);
         std::cout << "\n\nNEXT CARD?" << std::endl;
         pause();
     }
-    // TODO Upon completion the deck should be written out so the difficulties and n_times_answered is updated.
+    std::cout << "End of flashcard deck..." << std::endl;
+
+    if (updateDeckFile(currentFlashCardDeck))
+    {
+        std::cout << "Cards were updated." << std::endl;
+    }
+    else
+    {
+        std::cout << "Cards were not updated." << std::endl;
+    }
 }
 
 void viewDeck()
@@ -202,10 +279,11 @@ int main()
 
     testMenu->addGridItem("Back", mainMenu, 2, 2);
 
-    reviewMenu->addGridItem("Revise Deck", reviseDeck, 0, 0);
-    reviewMenu->addGridItem("Easy", reviewEasy, 0, 1);
-    reviewMenu->addGridItem("Medium", reviewMedium, 1, 0);
-    reviewMenu->addGridItem("Hard", reviewHard, 1, 1);
+    reviewMenu->addGridItem("Entire Deck", reviseEntireDeck, 0, 0);
+    reviewMenu->addGridItem("Easy Cards", reviewEasy, 0, 1);
+    reviewMenu->addGridItem("Medium Cards", reviewMedium, 1, 0);
+    reviewMenu->addGridItem("Hard Cards", reviewHard, 1, 1);
+    reviewMenu->addGridItem("Unknown Cards", reviewUnknown, 2, 0);
     reviewMenu->addGridItem("Back", mainMenu, 2, 1);
 
     editMenu->addGridItem("Edit Card", editCard, 0, 0);

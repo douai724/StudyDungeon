@@ -54,7 +54,7 @@ void clearScreen();
  * @return true for [Yy]
  * @return false for [Nn]
  */
-bool yesNoInput();
+bool yesNoPrompt();
 
 /**
  * @brief Checks if name for deckfile meets naming requirements

@@ -1,8 +1,8 @@
 example deck 2
 Q: Can you read this card?
 A: Yes
-D: 0
+D: EASY
 -
 Q: Another question?
 A: Sure
-D: 0
+D: MEDIUM

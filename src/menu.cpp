@@ -1,5 +1,6 @@
 #include "menu.h"
 
+
 MenuItem::MenuItem(const std::string &label, std::function<void()> action)
     : label(label), action(action), subMenu(nullptr)
 {
@@ -210,8 +211,11 @@ void GridMenu::deleteSelectedItem()
         if (!gridItems.empty())
         {
             auto nextItem = findNextValidItem(selectedRow, selectedCol, 0, 0);
-            selectedRow = nextItem.first;
-            selectedCol = nextItem.second;
+            if (nextItem.first != -1 && nextItem.second != -1)
+            {
+                selectedRow = nextItem.first;
+                selectedCol = nextItem.second;
+            }
         }
         else
         {
@@ -224,9 +228,11 @@ void GridMenu::deleteSelectedItem()
         clearScreen();
         display();
 
-        // Show confirmation message
-        std::cout << "\nButton '" << deletedItemLabel << "' has been deleted." << std::endl;
-        pause();
+        // Show confirmation message only if there are still items in the grid
+        if (!gridItems.empty())
+        {
+            pause();
+        }
     }
 }
 
@@ -293,13 +299,13 @@ void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int wi
         if (i - 1 >= startLine && i - 1 < startLine + lineCount && !overflow)
         {
             std::string &line = lines[i - 1 - startLine];
-            int padding = (width - 2 - line.length()) / 2;
+            int padding = (int)(width - 2 - line.length()) / 2;
             std::cout << std::string(padding, ' ') << line << std::string(width - 2 - padding - line.length(), ' ');
         }
         else if (overflow && i == height / 2)
         {
             std::string errorMsg = "Error!";
-            int padding = (width - 2 - errorMsg.length()) / 2;
+            int padding = (int)(width - 2 - errorMsg.length()) / 2;
             std::cout << std::string(padding, ' ') << errorMsg
                       << std::string(width - 2 - padding - errorMsg.length(), ' ');
         }

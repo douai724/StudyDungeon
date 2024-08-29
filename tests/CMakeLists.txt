@@ -8,6 +8,7 @@ set(TEST_SOURCES
     "playing_card_test.cpp"
     "gameloop_test.cpp"
     "util_test.cpp"
+    "menu_test.cpp"
 )
 set(TEST_INCLUDES "./")
 

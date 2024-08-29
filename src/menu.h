@@ -57,7 +57,7 @@ public:
      * @brief checks if a button calls an action or a submenu
      * 
      * @return true the menu calls a submenu
-     * @return false 
+     * @return false the menu calls an action
      */
     bool isSubMenu() const
     {
@@ -74,10 +74,12 @@ class Menu
 protected:
     std::string title;
     std::vector<MenuItem> items;
+    /*cursor location*/
     int selectedIndex;
     HANDLE consoleHandle;
-
+    /*changes colour of foreground/background to either black or white*/
     void setColor(WORD foreground, WORD background);
+    /*move cursor to  a specific location on the console*/
     void moveCursor(SHORT x, SHORT y);
 
 public:
@@ -87,8 +89,8 @@ public:
     void addItem(const std::string &label, std::function<void()> action);
     void addItem(const std::string &label, std::shared_ptr<Menu> subMenu);
 
-    virtual void display() = 0;
-    virtual void run() = 0;
+    virtual void display()=0;
+    virtual void run()=0;
 
     int getArrowKeyNavigation();
 
@@ -136,6 +138,10 @@ struct GridItem
  */
 class GridMenu : public Menu
 {
+public:
+    std::pair<int, int> findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const;
+    void executeSelectedItem();
+
 private:
     int gridWidth;
     int gridHeight;
@@ -164,9 +170,6 @@ private:
      */
     void drawGridItem(const GridItem &item, int startX, int startY, int width, int height);
 
-    std::pair<int, int> findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const;
-    void executeSelectedItem();
-
 public:
     GridMenu(const std::string &title, int width, int height);
 
@@ -187,6 +190,7 @@ public:
     void run() override;
     void handleNavigation(int navigation);
 
+    void logError(const std::string& message);
     bool isValidGridItem(int row, int col) const;
     int getGridWidth() const;
     int getGridHeight() const;

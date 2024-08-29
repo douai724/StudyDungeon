@@ -47,13 +47,13 @@ void Game::nextTurn()
         }
     }
 
-    
+
     // apply effect
     switch (card.getType())
     {
     case 0:
         damageEffect(card);
-        if(turn == 1)
+        if (turn == 1)
         {
             std::cout << "You dealt " << card.getValue() << " damage!\n";
         }

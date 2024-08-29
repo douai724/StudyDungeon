@@ -100,6 +100,16 @@ public:
         std::cout << "D: " << cardDifficultyToStr(difficulty) << '\n' << "N: " << n_times_answered << '\n';
         std::cout << "-" << '\n';
     }
+
+    std::string stringCardAsTemplate()
+    {
+        std::stringstream card_contents{};
+        card_contents << "Q: " << question << "\nA: " << answer + '\n';
+        card_contents << "D: " << cardDifficultyToStr(difficulty);
+        card_contents << "\nN: " << std::to_string(n_times_answered) << "\n";
+        card_contents << "-\n";
+        return card_contents.str();
+    }
 };
 
 

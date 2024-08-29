@@ -155,19 +155,21 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
                 }
 
                 filename = createDeckFilename(filename.parent_path());
-                //TODO finish this path for a different file
             }
 
-
+            std::cout << "Filename: " << filename << std::endl;
+            pause();
             // open file
+            std::ofstream outf{filename, std::ios::trunc};
             // write contents to file
-            std::cout << deck.name << std::endl;
+            outf << deck.name << std::endl;
             for (FlashCard fc : deck.cards)
             {
                 // TODO send this to the file
-                fc.printCardAsTemplate();
+                outf << fc.stringCardAsTemplate();
             }
             // close file
+            outf.close();
             return true;
         }
     }

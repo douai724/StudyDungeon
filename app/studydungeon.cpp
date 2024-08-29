@@ -171,7 +171,7 @@ int reviseEntireDeck()
 void viewDeck()
 {
     clearScreen();
-    std::cout << "Current cards int the " << currentFlashCardDeck.name << " deck:\n\n";
+    std::cout << "Current cards in the " << currentFlashCardDeck.name << " deck:\n\n";
     currentFlashCardDeck.printDeck();
     pause();
 }
@@ -265,9 +265,9 @@ int main()
         auto flashcardMenu = std::make_shared<GridMenu>(deckName, 3, 1);
         deckMenu->addGridItem(
             deckName,
-            [flashcardMenu, deckName, curr]() {
+            [flashcardMenu, deckName, curr, mainMenu]() {
                 currentFlashCardDeck = curr;
-                auto editMenu = std::make_shared<GridMenu>("Edit", 1, 1);
+                auto viewMenu = std::make_shared<GridMenu>("View", 1, 1);
 
                 flashcardMenu->addGridItem(
                     "Play",
@@ -277,8 +277,8 @@ int main()
                     },
                     0,
                     0);
-                flashcardMenu->addGridItem("Edit", editMenu, 0, 1);
-                flashcardMenu->addGridItem("Exit", exitApp, 0, 2);
+                flashcardMenu->addGridItem("View", viewDeck, 0, 1);
+                flashcardMenu->addGridItem("Back", mainMenu, 0, 2);
                 flashcardMenu->run();
             },
             i,

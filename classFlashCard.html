@@ -68,6 +68,11 @@ $(function() {
 <div class="title">FlashCard Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This structure holds the information for each flashcard.  
+ <a href="classFlashCard.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="deck_8h_source.html">deck.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -79,6 +84,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCard.html#a11e2ca24073aaf6bb29113ff5d0ea1d1">printCardAsTemplate</a> ()</td></tr>
 <tr class="memdesc:a11e2ca24073aaf6bb29113ff5d0ea1d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to. <br /></td></tr>
 <tr class="separator:a11e2ca24073aaf6bb29113ff5d0ea1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59124a95fe6b027d98657a3791c06a5d"><td class="memItemLeft" align="right" valign="top"><a id="a59124a95fe6b027d98657a3791c06a5d"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>stringCardAsTemplate</b> ()</td></tr>
+<tr class="separator:a59124a95fe6b027d98657a3791c06a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -86,12 +94,15 @@ Data Fields</h2></td></tr>
 <tr class="separator:ac0a6f4c179b89d67629d10d1679ece8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16e6c0d06046cfe05bf4bc055c1e6c4a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a">answer</a> {}</td></tr>
 <tr class="separator:a16e6c0d06046cfe05bf4bc055c1e6c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f593ae9a34a62a46eb54bca2917270d"><td class="memItemLeft" align="right" valign="top">CardDifficulty&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">difficulty</a> = UNKNOWN</td></tr>
+<tr class="memitem:a6f593ae9a34a62a46eb54bca2917270d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d">difficulty</a> = UNKNOWN</td></tr>
 <tr class="separator:a6f593ae9a34a62a46eb54bca2917270d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae02597613e37585b21bbeedc05c1d1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e">n_times_answered</a> {}</td></tr>
 <tr class="separator:aae02597613e37585b21bbeedc05c1d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This structure holds the information for each flashcard. </p>
+<p>A flashcard consists of a question, answer and difficulty. The number of times the question has been answered is kept track of. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a16e6c0d06046cfe05bf4bc055c1e6c4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16e6c0d06046cfe05bf4bc055c1e6c4a">&#9670;&nbsp;</a></span>answer</h2>
 
@@ -114,7 +125,7 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CardDifficulty FlashCard::difficulty = UNKNOWN</td>
+          <td class="memname"><a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a> FlashCard::difficulty = UNKNOWN</td>
         </tr>
       </table>
 </div><div class="memdoc">

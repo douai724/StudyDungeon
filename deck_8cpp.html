@@ -75,13 +75,13 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6e4ad1bdbb9764c9291a9da1872265e8"><td class="memItemLeft" align="right" valign="top">CardDifficulty&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8">strToCardDifficulty</a> (const std::string &amp;difficultyStr)</td></tr>
-<tr class="memdesc:a6e4ad1bdbb9764c9291a9da1872265e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string into the CardDifficulty enum. "EASY" -&gt; EASY "MEDIUM" -&gt; MEDIUM "HIGH" -&gt; HIGH Anything else is converted to UNKNOWN.  <a href="deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8">More...</a><br /></td></tr>
+<tr class="memitem:a6e4ad1bdbb9764c9291a9da1872265e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8">strToCardDifficulty</a> (const std::string &amp;difficultyStr)</td></tr>
+<tr class="memdesc:a6e4ad1bdbb9764c9291a9da1872265e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string into the CardDifficulty enum.  <a href="deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8">More...</a><br /></td></tr>
 <tr class="separator:a6e4ad1bdbb9764c9291a9da1872265e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86bf6016f9556419d98f7c566f5f30ae"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a86bf6016f9556419d98f7c566f5f30ae">cardDifficultyToStr</a> (const CardDifficulty &amp;difficulty)</td></tr>
+<tr class="memitem:a86bf6016f9556419d98f7c566f5f30ae"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a86bf6016f9556419d98f7c566f5f30ae">cardDifficultyToStr</a> (const <a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a> &amp;difficulty)</td></tr>
 <tr class="memdesc:a86bf6016f9556419d98f7c566f5f30ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the card difficulty from enum to a string.  <a href="deck_8cpp.html#a86bf6016f9556419d98f7c566f5f30ae">More...</a><br /></td></tr>
 <tr class="separator:a86bf6016f9556419d98f7c566f5f30ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFlashCard.html">FlashCard</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a> (std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)</td></tr>
+<tr class="memitem:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFlashCard.html">FlashCard</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a7957b37b71aa9dc54c7eec04384dd8f5">createFlashCard</a> (std::string question, std::string answer, <a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a> difficulty, int n_times_answered)</td></tr>
 <tr class="memdesc:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a flashcard object.  <a href="deck_8cpp.html#a7957b37b71aa9dc54c7eec04384dd8f5">More...</a><br /></td></tr>
 <tr class="separator:a7957b37b71aa9dc54c7eec04384dd8f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea54d12b8b52601bf6cbd4f9c477771"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFlashCardDeck.html">FlashCardDeck</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#abea54d12b8b52601bf6cbd4f9c477771">readFlashCardDeck</a> (fs::path deck_file)</td></tr>
@@ -98,11 +98,11 @@ std::vector&lt; <a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> &
 <tr class="memitem:a8d1bd86906f6289f92426ffa5cbfe9fd"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a8d1bd86906f6289f92426ffa5cbfe9fd">createDeckFilename</a> (std::filesystem::path deck_dir)</td></tr>
 <tr class="memdesc:a8d1bd86906f6289f92426ffa5cbfe9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt the user for name of the file to save the deckfile to.  <a href="deck_8cpp.html#a8d1bd86906f6289f92426ffa5cbfe9fd">More...</a><br /></td></tr>
 <tr class="separator:a8d1bd86906f6289f92426ffa5cbfe9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fd45509461f868e7b83c2a369c9f4dc"><td class="memItemLeft" align="right" valign="top"><a id="a3fd45509461f868e7b83c2a369c9f4dc"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a class="el" href="classFlashCard.html">FlashCard</a> &amp;fc)</td></tr>
+<tr class="memitem:a3fd45509461f868e7b83c2a369c9f4dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a3fd45509461f868e7b83c2a369c9f4dc">answerCard</a> (<a class="el" href="classFlashCard.html">FlashCard</a> &amp;fc)</td></tr>
+<tr class="memdesc:a3fd45509461f868e7b83c2a369c9f4dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">For a given flashcard prompt the user to answer the card.  <a href="deck_8cpp.html#a3fd45509461f868e7b83c2a369c9f4dc">More...</a><br /></td></tr>
 <tr class="separator:a3fd45509461f868e7b83c2a369c9f4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9131aec89f24346a9a64614a30448864"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deck_8cpp.html#a9131aec89f24346a9a64614a30448864">updateDeckFile</a> (<a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;deck_to_update)</td></tr>
-<tr class="memdesc:a9131aec89f24346a9a64614a30448864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates an existing <a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> on file.  <a href="deck_8cpp.html#a9131aec89f24346a9a64614a30448864">More...</a><br /></td></tr>
+<tr class="memdesc:a9131aec89f24346a9a64614a30448864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates an existing <a class="el" href="classFlashCardDeck.html" title="Class that defines a &quot;deck&quot; of flashcards.">FlashCardDeck</a> on file.  <a href="deck_8cpp.html#a9131aec89f24346a9a64614a30448864">More...</a><br /></td></tr>
 <tr class="separator:a9131aec89f24346a9a64614a30448864"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -111,6 +111,29 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
 <dl class="section date"><dt>Date</dt><dd>2024-08-23</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a3fd45509461f868e7b83c2a369c9f4dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fd45509461f868e7b83c2a369c9f4dc">&#9670;&nbsp;</a></span>answerCard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool answerCard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFlashCard.html">FlashCard</a> &amp;&#160;</td>
+          <td class="paramname"><em>fc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>For a given flashcard prompt the user to answer the card. </p>
+<dl class="section return"><dt>Returns</dt><dd>true the card was answered correctly </dd>
+<dd>
+false the card was answered incorrectly </dd></dl>
+
+</div>
+</div>
 <a id="a86bf6016f9556419d98f7c566f5f30ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86bf6016f9556419d98f7c566f5f30ae">&#9670;&nbsp;</a></span>cardDifficultyToStr()</h2>
 
@@ -120,7 +143,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
         <tr>
           <td class="memname">std::string cardDifficultyToStr </td>
           <td>(</td>
-          <td class="paramtype">const CardDifficulty &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a> &amp;&#160;</td>
           <td class="paramname"><em>difficulty</em></td><td>)</td>
           <td></td>
         </tr>
@@ -206,7 +229,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">CardDifficulty&#160;</td>
+          <td class="paramtype"><a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a>&#160;</td>
           <td class="paramname"><em>difficulty</em>, </td>
         </tr>
         <tr>
@@ -233,7 +256,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFlashCard.html">FlashCard</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classFlashCard.html" title="This structure holds the information for each flashcard.">FlashCard</a> </dd></dl>
 
 </div>
 </div>
@@ -264,7 +287,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CardDifficulty strToCardDifficulty </td>
+          <td class="memname"><a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a> strToCardDifficulty </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>difficultyStr</em></td><td>)</td>
@@ -273,7 +296,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
       </table>
 </div><div class="memdoc">
 
-<p>Converts a string into the CardDifficulty enum. "EASY" -&gt; EASY "MEDIUM" -&gt; MEDIUM "HIGH" -&gt; HIGH Anything else is converted to UNKNOWN. </p>
+<p>Converts a string into the CardDifficulty enum. </p>
+<p>"EASY" -&gt; EASY "MEDIUM" -&gt; MEDIUM "HIGH" -&gt; HIGH Anything else is converted to UNKNOWN</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">difficultyStr</td><td>The card difficulty as a string </td></tr>
@@ -300,10 +324,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>answerCard</b> (<a cl
       </table>
 </div><div class="memdoc">
 
-<p>Updates an existing <a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> on file. </p>
+<p>Updates an existing <a class="el" href="classFlashCardDeck.html" title="Class that defines a &quot;deck&quot; of flashcards.">FlashCardDeck</a> on file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">deck_to_update</td><td><a class="el" href="classFlashCardDeck.html">FlashCardDeck</a> to write to file </td></tr>
+    <tr><td class="paramname">deck_to_update</td><td><a class="el" href="classFlashCardDeck.html" title="Class that defines a &quot;deck&quot; of flashcards.">FlashCardDeck</a> to write to file </td></tr>
   </table>
   </dd>
 </dl>

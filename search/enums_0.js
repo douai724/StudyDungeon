@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_141',['Type',['../card__types_8h.html#a1d1cfd8ffb84e947f82999c682b666a7',1,'card_types.h']]]
+  ['carddifficulty_144',['CardDifficulty',['../deck_8h.html#abb990f45a98cd7c14e01df00bbae7500',1,'deck.h']]]
 ];

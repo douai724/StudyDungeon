@@ -114,9 +114,11 @@ void Game::damageEffect(PlayingCard &card)
 }
 
 
-void start()
+void start(int numCards)
 {
-    User u1 = User(100, 100, generateHand(7));
+    std::cout << "BEGIN GAME" << std::endl;
+    pause();
+    User u1 = User(100, 100, generateHand(numCards));
     Bot u2 = Bot(100, 100, generateHand(12));
     Player *p1 = &u1;
     Player *p2 = &u2;

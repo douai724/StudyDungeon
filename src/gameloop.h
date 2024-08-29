@@ -1,6 +1,6 @@
 /**
  * @file gameloop.h
- * @author Green Aligators
+ * @author Green Alligators
  * @brief
  * @version 0.1
  * @date 2024-08-27

@@ -160,13 +160,13 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
             std::cout << "Filename: " << filename << std::endl;
             pause();
             // open file
-            std::ofstream outf{filename, std::ios::trunc};
+            std::ofstream outf{filename.string(), std::ios::trunc};
             // write contents to file
             outf << deck.name << std::endl;
             for (FlashCard fc : deck.cards)
             {
-                // TODO send this to the file
                 outf << fc.stringCardAsTemplate();
+                outf << "-" << std::endl;
             }
             // close file
             outf.close();
@@ -175,6 +175,7 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
     }
     else
     {
+        // TODO
         // ensure parent directory exists
         // check Decks/ exists
         // check for existance of
@@ -236,7 +237,7 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
         // TODO throw exception - path not a directory
     }
     std::string input{};
-    std::cout
+    std::cerr
         << "Please enter a name to save your deck file to. (Alphanumeric characters only and maximum of 20 characters)"
         << std::endl;
     bool invalid{true};

@@ -139,13 +139,13 @@ void deleteCard()
 
 /**
  * @brief Revision loop
- * 
+ *
  */
 int reviseEntireDeck()
 {
     int n_correct{0};
     clearScreen();
-    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << "deck.\n";
+    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << " deck.\n";
     pause();
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
@@ -269,10 +269,14 @@ int main()
                 currentFlashCardDeck = curr;
                 auto editMenu = std::make_shared<GridMenu>("Edit", 1, 1);
 
-                flashcardMenu->addGridItem("Play", [](){
-                    int numCorrect = reviseEntireDeck();
-                    start(numCorrect);
-                }, 0, 0);
+                flashcardMenu->addGridItem(
+                    "Play",
+                    []() {
+                        int numCorrect = reviseEntireDeck();
+                        start(numCorrect);
+                    },
+                    0,
+                    0);
                 flashcardMenu->addGridItem("Edit", editMenu, 0, 1);
                 flashcardMenu->addGridItem("Exit", exitApp, 0, 2);
                 flashcardMenu->run();

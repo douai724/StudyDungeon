@@ -78,7 +78,7 @@ public:
  * @brief Set up and start the game.
  *
  */
-void start();
+void start(int numCards);
 
 /**
  * @brief Generates a hand.

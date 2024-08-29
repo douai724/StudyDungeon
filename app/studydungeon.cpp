@@ -137,8 +137,11 @@ void deleteCard()
     pause();
 }
 
-// Loop through the cards of a deck to answer them
-void reviseEntireDeck()
+/**
+ * @brief Revision loop
+ * 
+ */
+int reviseEntireDeck()
 {
     int n_correct{0};
     clearScreen();
@@ -162,6 +165,7 @@ void reviseEntireDeck()
         std::cout << "Cards were not updated." << std::endl;
     }
     pause();
+    return n_correct;
 }
 
 void viewDeck()
@@ -265,7 +269,10 @@ int main()
                 currentFlashCardDeck = curr;
                 auto editMenu = std::make_shared<GridMenu>("Edit", 1, 1);
 
-                flashcardMenu->addGridItem("Play", reviseEntireDeck, 0, 0);
+                flashcardMenu->addGridItem("Play", [](){
+                    int numCorrect = reviseEntireDeck();
+                    start(numCorrect);
+                }, 0, 0);
                 flashcardMenu->addGridItem("Edit", editMenu, 0, 1);
                 flashcardMenu->addGridItem("Exit", exitApp, 0, 2);
                 flashcardMenu->run();

@@ -35,10 +35,10 @@ std::filesystem::path getAppPath()
  *
  * @param minutes
  */
-void timer(int minutes)
-{
-    // TODO: implement function
-}
+// void timer(int minutes)
+// {
+//     // TODO: implement function
+// }
 
 
 void pause()

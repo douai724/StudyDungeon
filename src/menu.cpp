@@ -294,13 +294,13 @@ void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int wi
         if (i - 1 >= startLine && i - 1 < startLine + lineCount && !overflow)
         {
             std::string &line = lines[i - 1 - startLine];
-            int padding = (width - 2 - line.length()) / 2;
+            size_t padding = (width - 2 - line.length()) / 2;
             std::cout << std::string(padding, ' ') << line << std::string(width - 2 - padding - line.length(), ' ');
         }
         else if (overflow && i == height / 2)
         {
             std::string errorMsg = "Error!";
-            int padding = (width - 2 - errorMsg.length()) / 2;
+            size_t padding = (width - 2 - errorMsg.length()) / 2;
             std::cout << std::string(padding, ' ') << errorMsg
                       << std::string(width - 2 - padding - errorMsg.length(), ' ');
         }

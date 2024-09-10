@@ -1,6 +1,6 @@
 /**
  * @file gameloop.h
- * @author Green Aligators
+ * @author Green Alligators
  * @brief
  * @version 0.1
  * @date 2024-08-27
@@ -78,7 +78,7 @@ public:
  * @brief Set up and start the game.
  *
  */
-void start();
+void start(int numCards);
 
 /**
  * @brief Generates a hand.

@@ -137,19 +137,23 @@ void deleteCard()
     pause();
 }
 
-// Loop through the cards of a deck to answer them
-void reviseEntireDeck()
+/**
+ * @brief Revision loop
+ *
+ */
+int reviseEntireDeck()
 {
-
+    int n_correct{0};
     clearScreen();
-    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << "deck.\n";
+    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << " deck.\n";
     pause();
     for (FlashCard fc : currentFlashCardDeck.cards)
     {
-        answerCard(fc);
+        n_correct += answerCard(fc);
         std::cout << "\n\nNEXT CARD?" << std::endl;
         pause();
     }
+    std::cout << "You answered " << n_correct << " cards correctly this round." << std::endl;
     std::cout << "End of flashcard deck..." << std::endl;
 
     if (updateDeckFile(currentFlashCardDeck))
@@ -160,12 +164,14 @@ void reviseEntireDeck()
     {
         std::cout << "Cards were not updated." << std::endl;
     }
+    pause();
+    return n_correct;
 }
 
 void viewDeck()
 {
     clearScreen();
-    std::cout << "Current cards int the " << currentFlashCardDeck.name << " deck:\n\n";
+    std::cout << "Current cards in the " << currentFlashCardDeck.name << " deck:\n\n";
     currentFlashCardDeck.printDeck();
     pause();
 }
@@ -259,13 +265,20 @@ int main()
         auto flashcardMenu = std::make_shared<GridMenu>(deckName, 3, 1);
         deckMenu->addGridItem(
             deckName,
-            [flashcardMenu, deckName, curr]() {
+            [flashcardMenu, deckName, curr, mainMenu]() {
                 currentFlashCardDeck = curr;
-                auto editMenu = std::make_shared<GridMenu>("Edit", 1, 1);
+                auto viewMenu = std::make_shared<GridMenu>("View", 1, 1);
 
-                flashcardMenu->addGridItem("Play", start, 0, 0);
-                flashcardMenu->addGridItem("Edit", editMenu, 0, 1);
-                flashcardMenu->addGridItem("Exit", exitApp, 0, 2);
+                flashcardMenu->addGridItem(
+                    "Play",
+                    []() {
+                        int numCorrect = reviseEntireDeck();
+                        start(numCorrect);
+                    },
+                    0,
+                    0);
+                flashcardMenu->addGridItem("View", viewDeck, 0, 1);
+                flashcardMenu->addGridItem("Back", mainMenu, 0, 2);
                 flashcardMenu->run();
             },
             i,

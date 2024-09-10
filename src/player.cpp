@@ -122,8 +122,6 @@ User::User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Pla
 
 PlayingCard User::play()
 {
-    std::cout << "This is the USER class." << std::endl;
-
     std::vector<PlayingCard> currentHand = Player::getHand();
     int handSize = (int)currentHand.size();
     PlayingCard selectedCard = PlayingCard();
@@ -138,7 +136,7 @@ PlayingCard User::play()
             [this, i, currentHand, &selectedCard]() {
                 clearScreen();
                 selectedCard = currentHand[i];
-                pause();
+                //pause();
                 throw "continue";
             },
             i,
@@ -147,7 +145,6 @@ PlayingCard User::play()
 
     cardsMenu->run();
     removeCard(selectedCard);
-    std::cout << "return" << std::endl;
     return selectedCard;
 }
 
@@ -158,8 +155,6 @@ Bot::Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Playe
 
 PlayingCard Bot::play()
 {
-    std::cout << "This is the BOT class." << std::endl;
-
     try
     {
         PlayingCard selectedCard = getCard((int)getHand().size() - 1);

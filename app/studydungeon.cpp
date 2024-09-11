@@ -1,3 +1,4 @@
+#include "console_templates.h"
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
@@ -13,62 +14,60 @@
 #include <windows.h>
 #include <conio.h>
 
+class MainMenuScene : public ConsoleUI::Scene
+{
+public:
+    MainMenuScene(ConsoleUI::UIManager& uiManager, std::function<void()> openFibonacciScene) 
+        : m_uiManager(uiManager)
+    {
+        auto& menu = m_uiManager.createMenu("main", false);
+        menu.addButton("Fibonacci Sequence", openFibonacciScene);
+        menu.addButton("Exit", []() { exit(0); });
+    }
+
+    void update() override {}
+
+    void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override {
+        window->clear();
+        window->drawBorder();
+        window->drawCenteredText("Main Menu", 2);
+        m_uiManager.getMenu("main").draw(5, 4);
+    }
+
+    void handleInput() override {
+        m_uiManager.getMenu("main").handleInput();
+    }
+
+private:
+    ConsoleUI::UIManager& m_uiManager;
+};
+
 int main()
 {
-    ConsoleUI::ConsoleWindow window;
-    ConsoleUI::Menu mainMenu(false);  // Vertical menu
-    ConsoleUI::Menu subMenu(true);    // Horizontal menu
-    bool backPressed = false;
+    ConsoleUI::UIManager uiManager;
 
-    mainMenu.addButton("Play", [&window, &mainMenu, &subMenu, &backPressed]() {
-        // Switch to sub-menu
-        mainMenu.pushPage();
-        while (true)
-        {
-            window.clear();
-            window.drawBorder();
-            window.drawText("Study Dungeon", 5, 2);
-            window.drawTextBox(5, 4, 70, 15);
-            subMenu.draw(5, window.getSize().Y - 3);
-            subMenu.handleInput();
-            if (backPressed)
-            {
-                backPressed = false;
-                mainMenu.popPage();
-                break;
-            }
-        }
-    });
-    mainMenu.addButton("About", [&window]() {
-        window.clear();
-        window.drawBorder();
-        window.drawText("About Study Dungeon", 5, 2);
-        window.drawText("Press any key to return", 5, 4);
-        _getch();
-    });
-    mainMenu.addButton("Exit", []() { clearScreen(); exit(0); });
+    std::shared_ptr<MainMenuScene> mainMenuScene;
+    std::shared_ptr<FibonacciScene> fibonacciScene;
 
-    subMenu.addButton("Option 1", [&window]() {
-        window.addTextToBox("Option 1 selected");
-    });
-    subMenu.addButton("Option 2", [&window]() {
-        window.addTextToBox("Option 2 selected");
-    });
-    subMenu.addButton("Option 3", [&window]() {
-        window.addTextToBox("Option 3 selected");
-    });
-    subMenu.addButton("Back", [&backPressed]() {
-        // Set the flag to indicate back button press
-        backPressed = true;
+    // Create FibonacciScene
+    fibonacciScene = std::make_shared<FibonacciScene>(uiManager, [&]() {
+        uiManager.setCurrentScene(mainMenuScene);
     });
 
+    // Create MainMenuScene
+    mainMenuScene = std::make_shared<MainMenuScene>(uiManager, [&]() {
+        uiManager.setCurrentScene(fibonacciScene);
+    });
+
+    // Set initial scene
+    uiManager.setCurrentScene(mainMenuScene);
+
+    // Main game loop
     while (true)
     {
-        window.clear();
-        window.drawBorder();
-        window.drawText("Study Dungeon", 5, 2);
-        mainMenu.draw(5, 4);
-        mainMenu.handleInput();
+        uiManager.update();
+        uiManager.render();
+        uiManager.handleInput();
     }
 
     return 0;

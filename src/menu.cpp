@@ -285,4 +285,4 @@ Menu& UIManager::getMenu(const std::string& name)
     return m_menus.at(name);
 }
 
-}  // namespace ConsoleUI
+} 

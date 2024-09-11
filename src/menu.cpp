@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "util.h"
 #include <iostream>
 #include <algorithm>
 #include <conio.h>
@@ -91,7 +92,7 @@ void ConsoleWindow::drawCenteredText(const std::string& text, int y)
 
 void ConsoleWindow::clear()
 {
-    system("cls");
+    clearScreen();
 }
 
 COORD ConsoleWindow::getSize() const

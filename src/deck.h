@@ -24,7 +24,8 @@
 
 /**
  * @brief The possible difficulties for a flashcard
- * @enum possible values: EASY (1), MEDIUM (2), and HIGH (3)
+ * @details possible values: EASY (1), MEDIUM (2), and HIGH (3)
+ * \showenumvalues
  *
  */
 enum CardDifficulty
@@ -38,7 +39,7 @@ enum CardDifficulty
 
 /**
  * @brief Converts a string into the CardDifficulty enum.
- * "EASY" -> EASY
+ * @details "EASY" -> EASY
  * "MEDIUM" -> MEDIUM
  * "HIGH" -> HIGH
  * Anything else is converted to UNKNOWN
@@ -58,10 +59,11 @@ std::string cardDifficultyToStr(const CardDifficulty &difficulty);
 
 /**
  * @brief This structure holds the information for each flashcard
+ *
  * A flashcard consists of a question, answer and difficulty. The number of times
  * the question has been answered is kept track of.
  *
- * @class
+ *
  *
  */
 class FlashCard
@@ -100,12 +102,21 @@ public:
         std::cout << "D: " << cardDifficultyToStr(difficulty) << '\n' << "N: " << n_times_answered << '\n';
         std::cout << "-" << '\n';
     }
+
+    std::string stringCardAsTemplate()
+    {
+        std::stringstream card_contents{};
+        card_contents << "Q: " << question << "\nA: " << answer + '\n';
+        card_contents << "D: " << cardDifficultyToStr(difficulty);
+        card_contents << "\nN: " << std::to_string(n_times_answered) << "\n";
+        return card_contents.str();
+    }
 };
 
 
 /**
  * @brief Class that defines a "deck" of flashcards
- * @class
+ *
  *
  */
 class FlashCardDeck
@@ -182,7 +193,7 @@ FlashCardDeck readFlashCardDeck(std::filesystem::path deck_file);
 
 /**
  * @brief Write a deck of flashcards to disk
- * The standard location will be in Decks/ located with the executable
+ * @details The standard location will be in Decks/ located with the executable
  * and use a suffix of ".deck"
  *
  * @param deck The FlashCard deck to be written to file
@@ -194,6 +205,7 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, std::filesystem::path filenam
 
 /**
  * @brief Create example deck files
+ *
  * @details A helper function that will create some example deck files if no decks exist.
  * @return A vector of the example FlashCardDecks
  */
@@ -208,8 +220,10 @@ std::vector<FlashCardDeck> createExampleDecks();
 std::filesystem::path createDeckFilename(std::filesystem::path deck_dir);
 
 /**
- * @brief
+ * @brief For a given flashcard prompt the user to answer the card.
  *
+ * @return true the card was answered correctly
+ * @return false the card was answered incorrectly
  */
 bool answerCard(FlashCard &fc);
 

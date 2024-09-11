@@ -1,6 +1,6 @@
 /**
  * @file util.h
- * @author Green Aligators
+ * @author Green Alligators
  * @brief Contains useful helper functions
  * @version 0.1
  * @date 2024-08-08

@@ -1,4 +1,4 @@
-#include "console_templates.h"
+#include "test_scene.h"
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
@@ -22,7 +22,7 @@ public:
     {
         auto& menu = m_uiManager.createMenu("main", false);
         menu.addButton("Fibonacci Sequence", openFibonacciScene);
-        menu.addButton("Exit", []() { exit(0); });
+        menu.addButton("Exit", []() { clearScreen();exit(0); });
     }
 
     void update() override {}

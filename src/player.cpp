@@ -26,9 +26,12 @@ PlayingCard Player::play()
 
 void Player::drawCard()
 {
-    PlayingCard first = Player::deck.front();
-    Player::deck.erase(Player::deck.begin());
-    Player::hand.push_back(first);
+    if ((int)Player::deck.size() != 0)
+    {
+        PlayingCard first = Player::deck.front();
+        Player::deck.erase(Player::deck.begin());
+        Player::hand.push_back(first);
+    }
 }
 
 int Player::getHitPoints()

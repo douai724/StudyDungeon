@@ -114,9 +114,46 @@ void ConsoleWindow::drawTextBox(int x, int y, int width, int height)
     drawBox(x, y, width, height);
     for (size_t i = 0; i < m_textBox.size() && i < static_cast<size_t>(height - 2); ++i)
     {
-        drawText(m_textBox[i].substr(0, width - 2), x + 1, y + i + 1);
+        drawText(m_textBox[i].substr(0, width - 2), static_cast<size_t>(x + 1), static_cast<size_t>(y + i + 1));
     }
 }
+
+void ConsoleWindow::drawAsciiArt(const std::vector<std::string>& art, int x, int y)
+{
+    for (size_t i = 0; i < art.size(); ++i)
+    {
+        drawText(art[i], x, y + static_cast<int>(i));
+    }
+}
+
+AsciiArt::AsciiArt(const char* artString) : m_width(0), m_height(0)
+{
+    std::istringstream stream(artString);
+    std::string line;
+    while (std::getline(stream, line))
+    {
+        m_art.push_back(line);
+        m_width = max(m_width, static_cast<int>(line.length()));
+    }
+    m_height = static_cast<int>(m_art.size());
+}
+
+const std::vector<std::string>& AsciiArt::getArt() const
+{
+    return m_art;
+}
+
+int AsciiArt::getWidth() const
+{
+    return m_width;
+}
+
+int AsciiArt::getHeight() const
+{
+    return m_height;
+}
+
+
 
 // Button implementation
 Button::Button(const std::string& label, std::function<void()> action)
@@ -238,6 +275,45 @@ void Menu::popPage()
     }
 }
 
+size_t Menu::getButtonCount() const
+{
+    return m_buttons.size();
+}
+
+int Menu::getButtonWidth(size_t index) const
+{
+    if (index < m_buttons.size()) {
+        return m_buttons[index].getWidth();
+    }
+    return 0;
+}
+
+void Menu::selectPreviousButton() {
+    if (m_selectedIndex > 0) {
+        m_selectedIndex--;
+    }
+}
+
+void Menu::selectNextButton() {
+    if (m_selectedIndex < m_buttons.size() - 1) {
+        m_selectedIndex++;
+    }
+}
+
+void Menu::activateSelectedButton() {
+    if (m_selectedIndex < m_buttons.size()) {
+        m_buttons[m_selectedIndex].performAction();
+    }
+}
+
+int Menu::getTotalWidth() const {
+    int totalWidth = 0;
+    for (const auto& button : m_buttons) {
+        totalWidth += button.getWidth() + 1; // +1 for spacing
+    }
+    return totalWidth > 0 ? totalWidth - 1 : 0; // Remove last spacing
+}
+
 // UIManager implementation
 UIManager::UIManager() : m_window(std::make_shared<ConsoleWindow>()) {}
 
@@ -283,6 +359,27 @@ Menu& UIManager::createMenu(const std::string& name, bool horizontal)
 Menu& UIManager::getMenu(const std::string& name)
 {
     return m_menus.at(name);
+}
+
+void UIManager::clearMenu(const std::string& name) {
+    if (m_menus.find(name) != m_menus.end()) {
+        m_menus[name].clear();
+    }
+}
+
+void UIManager::clearAllMenus() {
+    for (auto& [name, menu] : m_menus) {
+
+        if (name != "Browse Decks" || "Fibonacci Sequence" || "Exit") {
+            menu.clear();
+        }
+    }
+
+}
+
+AsciiArt UIManager::createAsciiArt(const char* artString)
+{
+    return AsciiArt(artString);
 }
 
 } 

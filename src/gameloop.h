@@ -40,11 +40,24 @@ private:
     Player *p2;
 
     /**
-      * @brief Apply the damage effect to the player specified in the card.
+      * @brief Apply the damage effect to the player whose turn it is.
       *
       * @param card the PlayingCard object.
       */
     void damageEffect(PlayingCard &card);
+
+    /**
+     * @brief Apply the heal effect to the player whose turn it is.
+     *
+     * @param card the PlayingCard object
+     */
+    void healEffect(PlayingCard &card);
+
+    /**
+     * @brief Swap the hands between the players
+     *
+     */
+    void swapHandEffect();
 
 public:
     /**

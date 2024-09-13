@@ -51,8 +51,8 @@ TEST_CASE("MAXIMUM hit points are updated and retrieved")
 TEST_CASE("Player hand is updated and retrieved")
 {
     // set up cards
-    PlayingCard card1 = PlayingCard(1, (enum Type)0, 5);
-    PlayingCard card2 = PlayingCard(1, (enum Type)0, 10);
+    PlayingCard card1 = PlayingCard((enum Type)0, 5);
+    PlayingCard card2 = PlayingCard((enum Type)0, 10);
 
     // set up hand
     std::vector<PlayingCard> testHand;
@@ -84,7 +84,7 @@ TEST_CASE("Player hand is updated and retrieved")
 
     SECTION("Add card to hand")
     {
-        PlayingCard card3 = PlayingCard(1, (enum Type)0, 25);
+        PlayingCard card3 = PlayingCard((enum Type)0, 25);
         testPlayer.setHand(testHand);
         testPlayer.addCard(card3);
 

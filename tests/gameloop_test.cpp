@@ -14,7 +14,7 @@ TEST_CASE("Win condition")
     Player *ptr1 = &p1;
     Player *ptr2 = &p2;
 
-    PlayingCard testCard = PlayingCard(1, (enum Type)0, 10);
+    PlayingCard testCard = PlayingCard((enum Type)0, 10);
 
     ptr1->addCard(testCard);
     ptr2->addCard(testCard);

@@ -37,6 +37,7 @@ std::filesystem::path getAppPath()
 void timer(int minutes)
 {
     // TODO: implement function
+    std::cout << "length of timer is " << minutes << " minutes.";
 }
 
 

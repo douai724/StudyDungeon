@@ -2,3 +2,4 @@
 exclude_paths:
   - "tools/**"
   - ".github/**"
+  - ".vscode/**"

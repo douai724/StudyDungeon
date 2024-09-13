@@ -63,6 +63,26 @@ void Player::setHand(std::vector<PlayingCard> playerHand)
     Player::hand = playerHand;
 }
 
+int Player::getHandSize()
+{
+    return Player::handSize;
+}
+
+void Player::setHandSize(int handSize)
+{
+    Player::handSize = handSize;
+}
+
+std::vector<PlayingCard> Player::getDeck()
+{
+    return Player::deck;
+}
+
+void Player::setDeck(std::vector<PlayingCard> deck)
+{
+    Player::deck = deck;
+}
+
 void Player::removeCard(PlayingCard &card)
 {
     std::vector<PlayingCard>::iterator it = hand.begin();

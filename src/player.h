@@ -123,6 +123,10 @@ public:
      */
     void setHandSize(int handSize);
 
+    std::vector<PlayingCard> getDeck();
+
+    void setDeck(std::vector<PlayingCard> deck);
+
     /**
      * @brief Draws a card from the player's deck and adds it to the player's hand
      *

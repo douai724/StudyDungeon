@@ -6,7 +6,7 @@
 
 TEST_CASE("Hit points are updated and retrieved")
 {
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     SECTION("Retrieving hit points")
     {
@@ -28,7 +28,7 @@ TEST_CASE("Hit points are updated and retrieved")
 
 TEST_CASE("MAXIMUM hit points are updated and retrieved")
 {
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     SECTION("Retrieving MAXIMUM hit points")
     {
@@ -60,7 +60,7 @@ TEST_CASE("Player hand is updated and retrieved")
     testHand.push_back(card2);
 
     // set up player with empty hand
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     REQUIRE(testPlayer.getHand().size() == 0);
 
@@ -109,7 +109,7 @@ TEST_CASE("Player hand is updated and retrieved")
 }
 TEST_CASE("Effects are applied")
 {
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     REQUIRE(testPlayer.getHitPoints() == 100);
 

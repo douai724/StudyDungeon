@@ -31,6 +31,8 @@ class Player
 private:
     int hitPoints;
     int maxHitPoints;
+    int handSize;
+    std::vector<PlayingCard> deck;
     std::vector<PlayingCard> hand;
 
 public:
@@ -47,7 +49,7 @@ public:
      * @param maxHitPoints the maximum hit points of the player
      * @param hand the hand (list of cards) of the player
      */
-    Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
+    Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
 
     /**
      * @brief Returns the playing card picked by the player.
@@ -106,6 +108,26 @@ public:
       * @param hand the vector of playing cards to set as the player's hand
       */
     void setHand(std::vector<PlayingCard> hand);
+
+    /**
+     * @brief Returns the hand size of the player
+     *
+     * @return int the hand size
+     */
+    int getHandSize();
+
+    /**
+     * @brief Sets the hand size of the player
+     *
+     * @param handSize the hand size to set too
+     */
+    void setHandSize(int handSize);
+
+    /**
+     * @brief Draws a card from the player's deck and adds it to the player's hand
+     *
+     */
+    void drawCard();
 
     /**
       * @brief Removes the given card from the player's hand.
@@ -181,7 +203,7 @@ public:
       * @param maxHitPoints the max hit points of the User-Player
       * @param hand the hand of the User-Player
       */
-    User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
+    User(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
 };
 
 /**
@@ -208,7 +230,7 @@ public:
       * @param maxHitPoints the max hit points of the Bot-Player
       * @param hand the hand of the Bot-Player
       */
-    Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand);
+    Bot(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
 };
 
 #endif

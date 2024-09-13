@@ -273,7 +273,7 @@ int main()
                     "Play",
                     []() {
                         int numCorrect = reviseEntireDeck();
-                        start(numCorrect);
+                        start();
                     },
                     0,
                     0);

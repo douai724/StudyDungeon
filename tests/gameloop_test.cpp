@@ -8,8 +8,8 @@
 
 TEST_CASE("Win condition")
 {
-    Player p1 = Player(100, 100, std::vector<PlayingCard>());
-    Player p2 = Player(100, 100, std::vector<PlayingCard>());
+    Player p1 = Player(100, 100, 5, std::vector<PlayingCard>());
+    Player p2 = Player(100, 100, 5, std::vector<PlayingCard>());
 
     Player *ptr1 = &p1;
     Player *ptr2 = &p2;

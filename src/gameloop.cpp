@@ -53,15 +53,6 @@ void Game::nextTurn()
     {
     case 0:
         damageEffect(card);
-        if (turn == 1)
-        {
-            std::cout << "You dealt " << card.getValue() << " damage!\n";
-        }
-        else
-        {
-            std::cout << "The enemy dealt " << card.getValue() << " damage!\n";
-        }
-        break;
     case 1:
         healEffect(card);
         break;
@@ -72,8 +63,29 @@ void Game::nextTurn()
         std::cout << "Valid card does not exist." << std::endl;
     }
 
+    if (turn == 1)
+    {
+        std::cout << "Turn: Player 1" << std::endl;
+    }
+    else
+    {
+        std::cout << "Turn: Player 2" << std::endl;
+    }
+
+    std::cout << "Played: " << card.toString() << std::endl;
     std::cout << "Health: P1=" << p1->getHitPoints() << "\t\t\t\t\t\t\t P2=" << p2->getHitPoints() << std::endl;
     pause();
+
+    // draw a card
+    if (turn == 1)
+    {
+        p1->drawCard();
+    }
+    else
+    {
+        p2->drawCard();
+    }
+
 
     // switch turns
     if (Game::turn == 1)
@@ -127,12 +139,12 @@ void Game::damageEffect(PlayingCard &card)
 }
 
 
-void start(int numCards)
+void start()
 {
     std::cout << "BEGIN GAME" << std::endl;
     pause();
-    User u1 = User(100, 100, generateHand(numCards));
-    Bot u2 = Bot(100, 100, generateHand(12));
+    User u1 = User(100, 100, 5, generateDeck(20));
+    Bot u2 = Bot(100, 100, 5, generateDeck(20));
     Player *p1 = &u1;
     Player *p2 = &u2;
 
@@ -146,7 +158,7 @@ void start(int numCards)
     pause();
 }
 
-std::vector<PlayingCard> generateHand(int numCards)
+std::vector<PlayingCard> generateDeck(int numCards)
 {
     std::vector<PlayingCard> hand;
     for (int i = 0; i < numCards; i++)

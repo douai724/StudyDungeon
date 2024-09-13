@@ -91,7 +91,7 @@ public:
  * @brief Set up and start the game.
  *
  */
-void start(int numCards);
+void start();
 
 /**
  * @brief Generates a hand.
@@ -99,6 +99,6 @@ void start(int numCards);
  * @param numCards the number of cards to add to the hand.
  * @return std::vector<PlayingCard> the generated hand.
  */
-std::vector<PlayingCard> generateHand(int numCards);
+std::vector<PlayingCard> generateDeck(int numCards);
 
 #endif

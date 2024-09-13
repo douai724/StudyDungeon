@@ -4,11 +4,16 @@ Player::Player()
 {
 }
 
-Player::Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand)
+Player::Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
 {
     Player::hitPoints = hitPoints;
     Player::maxHitPoints = maxHitPoints;
-    Player::hand = hand;
+    Player::deck = deck;
+
+    for (int i = 0; i < handSize; i++)
+    {
+        Player::drawCard();
+    }
 }
 
 PlayingCard Player::play()
@@ -17,6 +22,13 @@ PlayingCard Player::play()
     PlayingCard selected = getCard(1);
     removeCard(selected);
     return selected;
+}
+
+void Player::drawCard()
+{
+    PlayingCard first = Player::deck.front();
+    Player::deck.erase(Player::deck.begin());
+    Player::hand.push_back(first);
 }
 
 int Player::getHitPoints()
@@ -116,7 +128,8 @@ void Player::printHand()
     std::cout << output << std::endl;
 }
 
-User::User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Player(hitPoints, maxHitPoints, hand)
+User::User(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
+    : Player(hitPoints, maxHitPoints, handSize, deck)
 {
 }
 
@@ -149,7 +162,8 @@ PlayingCard User::play()
 }
 
 
-Bot::Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Player(hitPoints, maxHitPoints, hand)
+Bot::Bot(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
+    : Player(hitPoints, maxHitPoints, handSize, deck)
 {
 }
 

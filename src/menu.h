@@ -12,7 +12,10 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <algorithm>
+#include <conio.h>
 #include <functional>
+#include <iostream>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -166,28 +169,69 @@ private:
     std::function<void()> m_action;
 };
 
+/**
+ * @brief Constructs a menu system
+ *
+ */
 class Menu
 {
 public:
+    /** Contructs the menu  */
     Menu(bool horizontal = false);
+
+    /**
+     * @brief Creates a menu button
+     *
+     * @param label Text for the button
+     * @param action fucntion to be called on submission
+     */
     void addButton(const std::string &label, std::function<void()> action);
+
+    /**
+     * @brief Draws all items in the menu
+     *
+     * @param x number of characters from left to begin drawing
+     * @param y number of lines from top to begin drawing
+     */
     void draw(int x, int y);
+
+    /**
+     * @brief Processes keyboard input
+     *
+     */
     void handleInput();
+
+    /**
+     * @brief checks if the "back" button has been selected and submitted
+     *
+     * @return true
+     * @return false
+     */
     bool isBackButtonPressed() const;
+
+    // TODO remove
     void pushPage();
+    // TODO remove
     void popPage();
 
 private:
+    /** Vector of all the menu buttons */
     std::vector<Button> m_buttons;
+    /** index of selected button */
     size_t m_selectedIndex;
-    bool m_horizontal;
+
+    /** controls layout -> true = horizontal, false = vertical */
+    bool horizontal_layout;
+
+    // TODO remove?
     std::vector<std::vector<Button>> m_pageHistory;
 };
 
+
 /**
-     * @brief
-     *
-     */
+ * @brief Defines a consoleWindow visual interface/layout
+ *
+ */
 class Scene
 {
 public:
@@ -197,10 +241,11 @@ public:
     virtual void handleInput() = 0;
 };
 
+
 /**
-     * @brief
-     *
-     */
+ * @brief Manages the displaying of scenes
+ *
+ */
 class UIManager
 {
 public:

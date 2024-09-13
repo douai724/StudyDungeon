@@ -1,10 +1,11 @@
-#include "console_templates.h"
+
+#include "test_scene.h"
 #include <string>
 
-FibonacciScene::FibonacciScene(ConsoleUI::UIManager& uiManager, std::function<void()> goBack)
+FibonacciScene::FibonacciScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack)
     : m_uiManager(uiManager), m_goBack(goBack), m_fibNumber1(0), m_fibNumber2(1)
 {
-    auto& menu = m_uiManager.createMenu("fibonacci", true);  // Horizontal menu
+    auto &menu = m_uiManager.createMenu("fibonacci", true); // Horizontal menu
     menu.addButton("Reset", [this]() { resetFibonacci(); });
     menu.addButton("Update", [this]() { updateFibonacci(); });
     menu.addButton("Back", [this]() { m_goBack(); });
@@ -26,7 +27,8 @@ void FibonacciScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
-    m_uiManager.getMenu("fibonacci").draw((windowSize.X - 30) / 2, windowSize.Y - 4);  // Adjust 30 based on your menu width
+    m_uiManager.getMenu("fibonacci")
+        .draw((windowSize.X - 30) / 2, windowSize.Y - 4); // Adjust 30 based on your menu width
 }
 
 void FibonacciScene::handleInput()

@@ -1,8 +1,6 @@
 #include "menu.h"
 #include "util.h"
-#include <algorithm>
-#include <conio.h>
-#include <iostream>
+
 
 namespace ConsoleUI
 {
@@ -158,7 +156,7 @@ const std::string &Button::getLabel() const
 }
 
 // Menu implementation
-Menu::Menu(bool horizontal) : m_selectedIndex(0), m_horizontal(horizontal)
+Menu::Menu(bool horizontal) : m_selectedIndex(0), horizontal_layout(horizontal)
 {
 }
 
@@ -174,7 +172,7 @@ void Menu::draw(int x, int y)
     for (size_t i = 0; i < m_buttons.size(); ++i)
     {
         m_buttons[i].draw(currentX, currentY, i == m_selectedIndex);
-        if (m_horizontal)
+        if (horizontal_layout)
         {
             currentX += m_buttons[i].getWidth() + 1;
         }
@@ -191,7 +189,7 @@ void Menu::handleInput()
     if (key == 224) // Arrow key
     {
         key = _getch();
-        if (m_horizontal)
+        if (horizontal_layout)
         {
             switch (key)
             {

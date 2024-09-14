@@ -18,6 +18,7 @@
 #include <string>
 #include <windows.h>
 
+extern bool isTestMode;
 
 /**
  * @brief Get the app path object

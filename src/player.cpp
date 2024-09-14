@@ -163,23 +163,23 @@ PlayingCard User::play()
     PlayingCard selectedCard = PlayingCard();
 
     // probably need to free this up somehow
-    auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
+    //auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
     for (int i = 0; i < handSize; i++)
     {
 
-        cardsMenu->addGridItem(
-            currentHand[i].toString(),
-            [this, i, currentHand, &selectedCard]() {
-                clearScreen();
-                selectedCard = currentHand[i];
-                //pause();
-                throw "continue";
-            },
-            i,
-            0);
+        // cardsMenu->addGridItem(
+        //     currentHand[i].toString(),
+        //     [this, i, currentHand, &selectedCard]() {
+        //         clearScreen();
+        //         selectedCard = currentHand[i];
+        //         //pause();
+        //         throw "continue";
+        //     },
+        //     i,
+        //     0);
     }
 
-    cardsMenu->run();
+    //cardsMenu->run();
     removeCard(selectedCard);
     return selectedCard;
 }

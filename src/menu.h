@@ -12,113 +12,147 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "util.h"
-#include <algorithm>
-#include <conio.h>
 #include <functional>
-#include <iomanip>
-#include <iostream>
 #include <memory>
-#include <sstream>
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include <windows.h>
 
 
-class MenuItem
+/**
+ * @brief Namespace for the consol functions
+ *
+ */
+namespace ConsoleUI
+{
+/**
+     * @brief Set the Console Cursor Position object to a location on the console
+     *
+     * @param x axis
+     * @param y axis
+     */
+void setConsoleCursorPosition(int x, int y);
+COORD getConsoleWindowSize();
+
+class ConsoleWindow
 {
 public:
-    std::string label;
-    std::function<void()> action;
-    std::shared_ptr<class Menu> subMenu;
+    ConsoleWindow();
+    void updateSize();
+    void drawBorder();
+    void drawBox(int x, int y, int width, int height);
+    void drawHorizontalLine(int x, int y, int length);
+    void drawVerticalLine(int x, int y, int length);
+    void drawCharacter(int x, int y, char ch);
+    void drawText(const std::string &text, int x, int y, bool highlight = false);
+    void drawCenteredText(const std::string &text, int y);
+    void clear();
+    COORD getSize() const;
+    void addTextToBox(const std::string &text);
+    void drawTextBox(int x, int y, int width, int height);
+    void drawAsciiArt(const std::vector<std::string> &art, int x, int y);
 
-    MenuItem(const std::string &label, std::function<void()> action);
-    MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu);
+private:
+    int m_width;
+    int m_height;
+    std::vector<std::string> m_textBox;
+    int m_textBoxCapacity;
+};
 
-    bool isSubMenu() const
-    {
-        return subMenu != nullptr;
-    }
+class AsciiArt
+{
+public:
+    AsciiArt() = default;
+    AsciiArt(const char *artString);
+    const std::vector<std::string> &getArt() const;
+    int getWidth() const;
+    int getHeight() const;
+
+private:
+    std::vector<std::string> m_art;
+    int m_width;
+    int m_height;
+};
+
+class Button
+{
+public:
+    Button(const std::string &label, std::function<void()> action);
+    void draw(int x, int y, bool selected);
+    void performAction() const;
+    int getWidth() const;
+    const std::string &getLabel() const;
+
+private:
+    std::string m_label;
+    std::function<void()> m_action;
 };
 
 class Menu
 {
-protected:
-    std::string title;
-    std::vector<MenuItem> items;
-    int selectedIndex;
-    HANDLE consoleHandle;
-
-    void setColor(WORD foreground, WORD background);
-    void moveCursor(SHORT x, SHORT y);
-
 public:
-    Menu(const std::string &title);
-    virtual ~Menu() = default;
+    Menu(bool horizontal = false);
+    void addButton(const std::string &label, std::function<void()> action);
+    void draw(int x, int y);
+    void handleInput();
+    bool isBackButtonPressed() const;
+    void pushPage();
+    void popPage();
 
-    void addItem(const std::string &label, std::function<void()> action);
-    void addItem(const std::string &label, std::shared_ptr<Menu> subMenu);
-
-    virtual void display() = 0;
-    virtual void run() = 0;
-
-    int getArrowKeyNavigation();
-};
-
-struct GridItem
-{
-    MenuItem item;
-    int row;
-    int col;
-    int width;
-    int height;
-
-    GridItem(const MenuItem &item, int row, int col, int width, int height)
-        : item(item), row(row), col(col), width(width), height(height)
+    size_t getButtonCount() const;
+    int getButtonWidth(size_t index) const;
+    size_t getSelectedIndex() const
     {
+        return m_selectedIndex;
     }
-};
+    void selectPreviousButton();
+    void selectNextButton();
+    int getTotalWidth() const;
+    void activateSelectedButton();
+    void clear()
+    {
+        m_buttons.clear();
+        m_selectedIndex = 0;
+    }
 
-class GridMenu : public Menu
-{
+
 private:
-    int gridWidth;
-    int gridHeight;
-    int selectedRow;
-    int selectedCol;
-    std::vector<GridItem> gridItems;
-
-    void drawBorder(int width, int height);
-    void drawGridItem(const GridItem &item, int startX, int startY, int width, int height);
-    std::pair<int, int> findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const;
-    void executeSelectedItem();
-
-public:
-    GridMenu(const std::string &title, int width, int height);
-
-    void addGridItem(const std::string &label,
-                     std::function<void()> action,
-                     int row,
-                     int col,
-                     int width = 1,
-                     int height = 1);
-    void addGridItem(const std::string &label,
-                     std::shared_ptr<Menu> subMenu,
-                     int row,
-                     int col,
-                     int width = 1,
-                     int height = 1);
-
-    void display() override;
-    void run() override;
-    void handleNavigation(int navigation);
-
-    bool isValidGridItem(int row, int col) const;
-    int getGridWidth() const;
-    int getGridHeight() const;
-    void setGridWidth(int width);
-    void setGridHeight(int height);
-    void deleteSelectedItem();
+    std::vector<Button> m_buttons;
+    size_t m_selectedIndex;
+    bool m_horizontal;
+    std::vector<std::vector<Button>> m_pageHistory;
 };
 
-#endif
+class Scene
+{
+public:
+    virtual ~Scene() = default;
+    virtual void update() = 0;
+    virtual void render(std::shared_ptr<ConsoleWindow> window) = 0;
+    virtual void handleInput() = 0;
+};
+
+class UIManager
+{
+public:
+    UIManager();
+    std::shared_ptr<ConsoleWindow> getWindow();
+    void setCurrentScene(std::shared_ptr<Scene> scene);
+    void update();
+    void render();
+    void handleInput();
+    Menu &createMenu(const std::string &name, bool horizontal = false);
+    Menu &getMenu(const std::string &name);
+    void clearMenu(const std::string &name);
+    void clearAllMenus();
+    AsciiArt createAsciiArt(const char *artString);
+
+private:
+    std::shared_ptr<ConsoleWindow> m_window;
+    std::shared_ptr<Scene> m_currentScene;
+    std::unordered_map<std::string, Menu> m_menus;
+};
+} // namespace ConsoleUI
+
+#endif // MENU_H

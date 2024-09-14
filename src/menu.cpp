@@ -1,415 +1,404 @@
 #include "menu.h"
+#include "util.h"
+#include <algorithm>
+#include <conio.h>
+#include <iostream>
 
-
-MenuItem::MenuItem(const std::string &label, std::function<void()> action)
-    : label(label), action(action), subMenu(nullptr)
+namespace ConsoleUI
 {
-}
 
-MenuItem::MenuItem(const std::string &label, std::shared_ptr<Menu> subMenu)
-    : label(label), action(nullptr), subMenu(subMenu)
-{
-}
-
-Menu::Menu(const std::string &title) : title(title), selectedIndex(0)
-{
-    consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-}
-
-void Menu::addItem(const std::string &label, std::function<void()> action)
-{
-    items.emplace_back(label, action);
-}
-
-void Menu::addItem(const std::string &label, std::shared_ptr<Menu> subMenu)
-{
-    items.emplace_back(label, subMenu);
-}
-
-void Menu::setColor(WORD foreground, WORD background)
-{
-    SetConsoleTextAttribute(consoleHandle, foreground | (background << 4));
-}
-
-void Menu::moveCursor(SHORT x, SHORT y)
+void setConsoleCursorPosition(int x, int y)
 {
     COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(consoleHandle, coord);
+    coord.X = static_cast<short>(x);
+    coord.Y = static_cast<short>(y);
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-int Menu::getArrowKeyNavigation()
+COORD getConsoleWindowSize()
 {
-    int ch = _getch();
-    if (ch == 0 || ch == 224)
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    return {static_cast<short>(csbi.srWindow.Right - csbi.srWindow.Left + 1),
+            static_cast<short>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)};
+}
+
+// ConsoleWindow implementation
+ConsoleWindow::ConsoleWindow() : m_width(0), m_height(0), m_textBoxCapacity(14)
+{
+    updateSize();
+}
+
+void ConsoleWindow::updateSize()
+{
+    COORD size = getConsoleWindowSize();
+    m_width = size.X;
+    m_height = size.Y;
+}
+
+void ConsoleWindow::drawBorder()
+{
+    drawBox(0, 0, m_width, m_height);
+}
+
+void ConsoleWindow::drawBox(int x, int y, int width, int height)
+{
+    drawHorizontalLine(x, y, width);
+    drawHorizontalLine(x, y + height - 1, width);
+    drawVerticalLine(x, y, height);
+    drawVerticalLine(x + width - 1, y, height);
+}
+
+void ConsoleWindow::drawHorizontalLine(int x, int y, int length)
+{
+    setConsoleCursorPosition(x, y);
+    std::cout << std::string(length, '-');
+}
+
+void ConsoleWindow::drawVerticalLine(int x, int y, int length)
+{
+    for (int i = 0; i < length; ++i)
     {
-        switch (_getch())
+        setConsoleCursorPosition(x, y + i);
+        std::cout << '|';
+    }
+}
+
+void ConsoleWindow::drawCharacter(int x, int y, char ch)
+{
+    setConsoleCursorPosition(x, y);
+    std::cout << ch;
+}
+
+void ConsoleWindow::drawText(const std::string &text, int x, int y, bool highlight)
+{
+    setConsoleCursorPosition(x, y);
+    if (highlight)
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
+                                FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    }
+    std::cout << text;
+    if (highlight)
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+    }
+}
+
+void ConsoleWindow::drawCenteredText(const std::string &text, int y)
+{
+    int x = static_cast<int>((m_width - text.length()) / 2);
+    drawText(text, x, y);
+}
+
+void ConsoleWindow::clear()
+{
+    clearScreen();
+}
+
+COORD ConsoleWindow::getSize() const
+{
+    return {static_cast<SHORT>(m_width), static_cast<SHORT>(m_height)};
+}
+
+void ConsoleWindow::addTextToBox(const std::string &text)
+{
+    m_textBox.push_back(text);
+    if (m_textBox.size() > m_textBoxCapacity)
+    {
+        m_textBox.erase(m_textBox.begin());
+    }
+}
+
+void ConsoleWindow::drawTextBox(int x, int y, int width, int height)
+{
+    drawBox(x, y, width, height);
+    for (size_t i = 0; i < m_textBox.size() && i < static_cast<size_t>(height - 2); ++i)
+    {
+        drawText(m_textBox[i].substr(0, width - 2), static_cast<size_t>(x + 1), static_cast<size_t>(y + i + 1));
+    }
+}
+
+void ConsoleWindow::drawAsciiArt(const std::vector<std::string> &art, int x, int y)
+{
+    for (size_t i = 0; i < art.size(); ++i)
+    {
+        drawText(art[i], x, y + static_cast<int>(i));
+    }
+}
+
+AsciiArt::AsciiArt(const char *artString) : m_width(0), m_height(0)
+{
+    std::istringstream stream(artString);
+    std::string line;
+    while (std::getline(stream, line))
+    {
+        m_art.push_back(line);
+        m_width = max(m_width, static_cast<int>(line.length()));
+    }
+    m_height = static_cast<int>(m_art.size());
+}
+
+const std::vector<std::string> &AsciiArt::getArt() const
+{
+    return m_art;
+}
+
+int AsciiArt::getWidth() const
+{
+    return m_width;
+}
+
+int AsciiArt::getHeight() const
+{
+    return m_height;
+}
+
+
+// Button implementation
+Button::Button(const std::string &label, std::function<void()> action) : m_label(label), m_action(action)
+{
+}
+
+void Button::draw(int x, int y, bool selected)
+{
+    std::string border = selected ? "+" : " ";
+    setConsoleCursorPosition(x, y);
+    if (selected)
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
+                                FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+    }
+    std::cout << border << "[" << m_label << "]" << border;
+    if (selected)
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+    }
+}
+
+void Button::performAction() const
+{
+    if (m_action)
+        m_action();
+}
+
+int Button::getWidth() const
+{
+    return static_cast<int>(m_label.length() + 4);
+}
+
+const std::string &Button::getLabel() const
+{
+    return m_label;
+}
+
+// Menu implementation
+Menu::Menu(bool horizontal) : m_selectedIndex(0), m_horizontal(horizontal)
+{
+}
+
+void Menu::addButton(const std::string &label, std::function<void()> action)
+{
+    m_buttons.emplace_back(label, action);
+}
+
+void Menu::draw(int x, int y)
+{
+    int currentX = x;
+    int currentY = y;
+    for (size_t i = 0; i < m_buttons.size(); ++i)
+    {
+        m_buttons[i].draw(currentX, currentY, i == m_selectedIndex);
+        if (m_horizontal)
         {
-        case 72:
-            return -1;
-        case 80:
-            return 1;
-        case 75:
-            return 4;
-        case 77:
-            return 5;
+            currentX += m_buttons[i].getWidth() + 1;
+        }
+        else
+        {
+            currentY += 1;
         }
     }
-    else if (ch == 13)
+}
+
+void Menu::handleInput()
+{
+    int key = _getch();
+    if (key == 224) // Arrow key
     {
-        return 2;
+        key = _getch();
+        if (m_horizontal)
+        {
+            switch (key)
+            {
+            case 75: // Left arrow
+                m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
+                break;
+            case 77: // Right arrow
+                m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
+                break;
+            }
+        }
+        else
+        {
+            switch (key)
+            {
+            case 72: // Up arrow
+                m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
+                break;
+            case 80: // Down arrow
+                m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
+                break;
+            }
+        }
     }
-    else if (ch == 27)
+    else if (key == 13) // Enter key
     {
-        return 3;
+        m_buttons[m_selectedIndex].performAction();
+    }
+}
+
+bool Menu::isBackButtonPressed() const
+{
+    return m_buttons[m_selectedIndex].getLabel() == "Back";
+}
+
+void Menu::pushPage()
+{
+    m_pageHistory.push_back(m_buttons);
+    m_buttons.clear();
+    m_selectedIndex = 0;
+}
+
+void Menu::popPage()
+{
+    if (!m_pageHistory.empty())
+    {
+        m_buttons = m_pageHistory.back();
+        m_pageHistory.pop_back();
+        m_selectedIndex = 0;
+    }
+}
+
+size_t Menu::getButtonCount() const
+{
+    return m_buttons.size();
+}
+
+int Menu::getButtonWidth(size_t index) const
+{
+    if (index < m_buttons.size())
+    {
+        return m_buttons[index].getWidth();
     }
     return 0;
 }
 
-GridMenu::GridMenu(const std::string &title, int width, int height)
-    : Menu(title), gridWidth(width), gridHeight(height), selectedRow(0), selectedCol(0)
+void Menu::selectPreviousButton()
 {
-}
-
-void GridMenu::addGridItem(const std::string &label,
-                           std::function<void()> action,
-                           int row,
-                           int col,
-                           int width,
-                           int height)
-{
-    gridItems.emplace_back(MenuItem(label, action), row, col, width, height);
-}
-
-void GridMenu::addGridItem(const std::string &label,
-                           std::shared_ptr<Menu> subMenu,
-                           int row,
-                           int col,
-                           int width,
-                           int height)
-{
-    gridItems.emplace_back(MenuItem(label, subMenu), row, col, width, height);
-}
-
-void GridMenu::display()
-{
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(consoleHandle, &csbi);
-    int consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-
-    clearScreen();
-    drawBorder(consoleWidth, consoleHeight);
-
-    moveCursor(static_cast<SHORT>((consoleWidth - title.length()) / 2), 1);
-    std::cout << title;
-
-    int cellWidth = (consoleWidth - 2) / gridWidth;
-    int cellHeight = (consoleHeight - 4) / gridHeight;
-
-    for (const auto &gridItem : gridItems)
+    if (m_selectedIndex > 0)
     {
-        int startX = 1 + gridItem.col * cellWidth;
-        int startY = 3 + gridItem.row * cellHeight;
-        int itemWidth = gridItem.width * cellWidth;
-        int itemHeight = gridItem.height * cellHeight;
-
-        drawGridItem(gridItem, startX, startY, itemWidth, itemHeight);
-    }
-}
-void GridMenu::run()
-{
-    while (true)
-    {
-        try
-        {
-            display();
-            int key = _getch();
-            if (key == 224 || key == 0) // Arrow key pressed
-            {
-                key = _getch(); // Get the second byte of the key code
-                switch (key)
-                {
-                case 72: // Up arrow
-                    handleNavigation(-1);
-                    break;
-                case 80: // Down arrow
-                    handleNavigation(1);
-                    break;
-                case 75: // Left arrow
-                    handleNavigation(4);
-                    break;
-                case 77: // Right arrow
-                    handleNavigation(5);
-                    break;
-                }
-            }
-            else if (key == 13) // Enter key
-            {
-                executeSelectedItem();
-            }
-            else if (key == 27) // Escape key
-            {
-                clearScreen();
-                break;
-            }
-            else if (key == 83 || key == 115) // 'S' or 's' key
-            {
-                deleteSelectedItem();
-            }
-        }
-        catch (...)
-        {
-            break;
-        }
+        m_selectedIndex--;
     }
 }
 
-void GridMenu::handleNavigation(int navigation)
+void Menu::selectNextButton()
 {
-    int newRow = selectedRow;
-    int newCol = selectedCol;
-
-    switch (navigation)
+    if (m_selectedIndex < m_buttons.size() - 1)
     {
-    case -1: // Up
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, -1, 0);
-        break;
-    case 1: // Down
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 1, 0);
-        break;
-    case 4: // Left
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 0, -1);
-        break;
-    case 5: // Right
-        std::tie(newRow, newCol) = findNextValidItem(selectedRow, selectedCol, 0, 1);
-        break;
-    }
-
-    if (newRow != selectedRow || newCol != selectedCol)
-    {
-        selectedRow = newRow;
-        selectedCol = newCol;
+        m_selectedIndex++;
     }
 }
 
-void GridMenu::deleteSelectedItem()
+void Menu::activateSelectedButton()
 {
-    auto it = std::find_if(gridItems.begin(), gridItems.end(), [this](const GridItem &item) {
-        return selectedRow >= item.row && selectedRow < item.row + item.height && selectedCol >= item.col &&
-               selectedCol < item.col + item.width;
-    });
-
-    if (it != gridItems.end())
+    if (m_selectedIndex < m_buttons.size())
     {
-        std::string deletedItemLabel = it->item.label;
-        gridItems.erase(it);
-
-        // Find the next valid item to select
-        if (!gridItems.empty())
-        {
-            auto nextItem = findNextValidItem(selectedRow, selectedCol, 0, 0);
-            selectedRow = nextItem.first;
-            selectedCol = nextItem.second;
-        }
-        else
-        {
-            // If no items left, reset selection
-            selectedRow = 0;
-            selectedCol = 0;
-        }
-
-        // Clear the screen and redraw the menu
-        clearScreen();
-        display();
-
-        // Show confirmation message
-        std::cout << "\nButton '" << deletedItemLabel << "' has been deleted." << std::endl;
-        pause();
+        m_buttons[m_selectedIndex].performAction();
     }
 }
 
-void GridMenu::drawBorder(int width, int height)
+int Menu::getTotalWidth() const
 {
-    moveCursor(0, 0);
-    std::cout << static_cast<char>(218) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(191);
-
-    for (int i = 1; i < height - 1; ++i)
+    int totalWidth = 0;
+    for (const auto &button : m_buttons)
     {
-        moveCursor(0, static_cast<SHORT>(i));
-        std::cout << static_cast<char>(179);
-        moveCursor(static_cast<SHORT>(width - 1), static_cast<SHORT>(i));
-        std::cout << static_cast<char>(179);
+        totalWidth += button.getWidth() + 1; // +1 for spacing
     }
-
-    moveCursor(0, static_cast<SHORT>(height - 1));
-    std::cout << static_cast<char>(192) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(217);
+    return totalWidth > 0 ? totalWidth - 1 : 0; // Remove last spacing
 }
 
-
-void GridMenu::drawGridItem(const GridItem &item, int startX, int startY, int width, int height)
+// UIManager implementation
+UIManager::UIManager() : m_window(std::make_shared<ConsoleWindow>())
 {
-    bool isSelected = (item.row == selectedRow && item.col == selectedCol);
-
-    if (isSelected)
-    {
-        setColor(0, 15);
-    }
-    else
-    {
-        setColor(15, 0);
-    }
-
-    // Draw top border
-    moveCursor(static_cast<SHORT>(startX), static_cast<SHORT>(startY));
-    std::cout << static_cast<char>(218) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(191);
-
-    // Prepare the text content
-    std::vector<std::string> lines;
-    int maxLineWidth = width - 4; // -4 for borders and padding
-    int lineCount = 0;
-    bool overflow = false;
-
-    for (size_t i = 0; i < item.item.label.length(); i += maxLineWidth)
-    {
-        if (lineCount >= height - 2)
-        {
-            overflow = true;
-            break;
-        }
-        lines.push_back(item.item.label.substr(i, maxLineWidth));
-        lineCount++;
-    }
-
-    // Draw side borders and content
-    int contentHeight = height - 2;
-    int startLine = (contentHeight - lineCount) / 2;
-
-    for (int i = 1; i < height - 1; ++i)
-    {
-        moveCursor(static_cast<SHORT>(startX), static_cast<SHORT>(startY + i));
-        std::cout << static_cast<char>(179);
-
-        if (i - 1 >= startLine && i - 1 < startLine + lineCount && !overflow)
-        {
-            std::string &line = lines[i - 1 - startLine];
-            size_t padding = (width - 2 - line.length()) / 2;
-            std::cout << std::string(padding, ' ') << line << std::string(width - 2 - padding - line.length(), ' ');
-        }
-        else if (overflow && i == height / 2)
-        {
-            std::string errorMsg = "Error!";
-            size_t padding = (width - 2 - errorMsg.length()) / 2;
-            std::cout << std::string(padding, ' ') << errorMsg
-                      << std::string(width - 2 - padding - errorMsg.length(), ' ');
-        }
-        else
-        {
-            std::cout << std::string(width - 2, ' ');
-        }
-
-        std::cout << static_cast<char>(179);
-    }
-
-    // Draw bottom border
-    moveCursor(static_cast<SHORT>(startX), static_cast<SHORT>(startY + height - 1));
-    std::cout << static_cast<char>(192) << std::string(width - 2, static_cast<char>(196)) << static_cast<char>(217);
-
-    setColor(15, 0);
 }
 
-
-bool GridMenu::isValidGridItem(int row, int col) const
+std::shared_ptr<ConsoleWindow> UIManager::getWindow()
 {
-    return std::any_of(gridItems.begin(), gridItems.end(), [row, col](const GridItem &item) {
-        return row >= item.row && row < item.row + item.height && col >= item.col && col < item.col + item.width;
-    });
+    return m_window;
 }
 
-std::pair<int, int> GridMenu::findNextValidItem(int startRow, int startCol, int rowDelta, int colDelta) const
+void UIManager::setCurrentScene(std::shared_ptr<Scene> scene)
 {
-    int row = startRow;
-    int col = startCol;
+    m_currentScene = scene;
+}
 
-    auto currentItem = std::find_if(gridItems.begin(), gridItems.end(), [row, col](const GridItem &item) {
-        return row >= item.row && row < item.row + item.height && col >= item.col && col < item.col + item.width;
-    });
-
-    if (currentItem != gridItems.end())
+void UIManager::update()
+{
+    if (m_currentScene)
     {
-        if (colDelta > 0)
-            col = currentItem->col + currentItem->width - 1;
-        else if (colDelta < 0)
-            col = currentItem->col;
-        if (rowDelta > 0)
-            row = currentItem->row + currentItem->height - 1;
-        else if (rowDelta < 0)
-            row = currentItem->row;
+        m_currentScene->update();
     }
-
-    do
-    {
-        row = (row + rowDelta + gridHeight) % gridHeight;
-        col = (col + colDelta + gridWidth) % gridWidth;
-
-        if (isValidGridItem(row, col))
-        {
-            auto it = std::find_if(gridItems.begin(), gridItems.end(), [row, col](const GridItem &item) {
-                return row >= item.row && row < item.row + item.height && col >= item.col &&
-                       col < item.col + item.width;
-            });
-            if (it != gridItems.end())
-            {
-                return std::make_pair(it->row, it->col);
-            }
-        }
-
-        if (row == startRow && col == startCol)
-        {
-            break;
-        }
-
-    } while (true);
-
-    return std::make_pair(startRow, startCol);
 }
 
-void GridMenu::executeSelectedItem()
+void UIManager::render()
 {
-    auto it = std::find_if(gridItems.begin(), gridItems.end(), [this](const GridItem &item) {
-        return selectedRow >= item.row && selectedRow < item.row + item.height && selectedCol >= item.col &&
-               selectedCol < item.col + item.width;
-    });
-    if (it != gridItems.end())
+    if (m_currentScene)
     {
-        if (it->item.isSubMenu())
+        m_currentScene->render(m_window);
+    }
+}
+
+void UIManager::handleInput()
+{
+    if (m_currentScene)
+    {
+        m_currentScene->handleInput();
+    }
+}
+
+Menu &UIManager::createMenu(const std::string &name, bool horizontal)
+{
+    return m_menus.emplace(name, Menu(horizontal)).first->second;
+}
+
+Menu &UIManager::getMenu(const std::string &name)
+{
+    return m_menus.at(name);
+}
+
+void UIManager::clearMenu(const std::string &name)
+{
+    if (m_menus.find(name) != m_menus.end())
+    {
+        m_menus[name].clear();
+    }
+}
+
+void UIManager::clearAllMenus()
+{
+    for (auto &[name, menu] : m_menus)
+    {
+
+        if (name != "Browse Decks" || "Fibonacci Sequence" || "Exit")
         {
-            it->item.subMenu->run();
-        }
-        else if (it->item.action)
-        {
-            it->item.action();
+            menu.clear();
         }
     }
 }
 
-int GridMenu::getGridWidth() const
+AsciiArt UIManager::createAsciiArt(const char *artString)
 {
-    return gridWidth;
+    return AsciiArt(artString);
 }
 
-int GridMenu::getGridHeight() const
-{
-    return gridHeight;
-}
-
-void GridMenu::setGridWidth(int width)
-{
-    gridWidth = width;
-}
-
-void GridMenu::setGridHeight(int height)
-{
-    gridHeight = height;
-}
+} // namespace ConsoleUI

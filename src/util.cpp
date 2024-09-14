@@ -2,6 +2,7 @@
 
 
 namespace fs = std::filesystem;
+bool isTestMode = false;
 
 /**
  * @brief Get the app path object
@@ -45,7 +46,14 @@ void pause()
 {
     std::string line;
     std::cout << "Press ENTER to continue..." << std::endl;
-    std::getline(std::cin, line);
+    if (!isTestMode)
+    {
+        std::getline(std::cin, line); // Wait for user input in production
+    }
+    else
+    {
+        std::cout << "[Simulated ENTER]" << std::endl; // Simulate "ENTER" press in test mode
+    }
 }
 
 void clearScreen()

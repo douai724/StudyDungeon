@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - "*"
-    branches: [ main, master, cmake_dev ]
+    branches: [ main ]
 
 jobs:
     build:

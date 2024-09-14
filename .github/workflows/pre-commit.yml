@@ -2,9 +2,9 @@ name: pre-commit
 
 on:
     push:
-        branches: [main, master, cmake_dev]
+        branches: [main]
     pull_request:
-        branches: [main, master, cmake_dev]
+        branches: [main]
 
 jobs:
     pre-commit:

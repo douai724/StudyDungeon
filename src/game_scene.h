@@ -7,6 +7,7 @@ class GameScene : public ConsoleUI::Scene
 {
 private:
     ConsoleUI::UIManager &m_uiManager;
+    bool m_needsRedraw = true;
 
 public:
     GameScene(ConsoleUI::UIManager &uiManager);

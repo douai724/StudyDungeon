@@ -389,7 +389,7 @@ void UIManager::clearAllMenus()
     for (auto &[name, menu] : m_menus)
     {
 
-        if (name != "Browse Decks" || "Fibonacci Sequence" || "Exit")
+        if (name != "Browse Decks" || "Fibonacci Sequence" || "Game" || "Exit")
         {
             menu.clear();
         }

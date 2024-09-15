@@ -10,6 +10,7 @@ set(LIBRARY_SOURCES
     "player.cpp"
     "playing_card.cpp"
     "example_test.cpp"
+    "game_scene.cpp"
 )
 
 set(LIBRARY_HEADERS
@@ -23,7 +24,9 @@ set(LIBRARY_HEADERS
     "gameloop.h"
     "player.h"
     "playing_card.h"
-    "example_test.h")
+    "example_test.h"
+    "game_scene.h"
+    )
 
 set(LIBRARY_INCLUDES
     "./"

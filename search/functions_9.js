@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d_3d_115',['operator==',['../classPlayingCard.html#a81e99ade0b6ea349ca2a1d7de62881af',1,'PlayingCard']]]
+  ['nextturn_165',['nextTurn',['../classGame.html#a801658c7cef474bc1d9a830f4a79034c',1,'Game']]]
 ];

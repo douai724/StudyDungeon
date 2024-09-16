@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bot_72',['Bot',['../classBot.html',1,'']]]
+  ['asciiart_98',['AsciiArt',['../classConsoleUI_1_1AsciiArt.html',1,'ConsoleUI']]]
 ];

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['sethand_57',['setHand',['../classPlayer.html#ab3075dfec0540bfed4db7c1c059e029a',1,'Player']]],
-  ['sethitpoints_58',['setHitPoints',['../classPlayer.html#a389b9865ee167e58de339e83d16250d0',1,'Player']]],
-  ['setmaxhitpoints_59',['setMaxHitPoints',['../classPlayer.html#ad6aeb2075eb5376d9512023e1754be0b',1,'Player']]],
-  ['splashscreen_60',['splashScreen',['../artwork_8h.html#a6a9ebf5fc23776639a05c6da2e050f02',1,'artwork.cpp']]],
-  ['start_61',['start',['../gameloop_8h.html#a29c24ed84d3e4996ea32efc961c65f84',1,'gameloop.cpp']]],
-  ['strtocarddifficulty_62',['strToCardDifficulty',['../deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp'],['../deck_8h.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp']]],
-  ['studydungeon_63',['StudyDungeon',['../index.html',1,'']]]
+  ['readflashcarddeck_76',['readFlashCardDeck',['../deck_8cpp.html#abea54d12b8b52601bf6cbd4f9c477771',1,'readFlashCardDeck(fs::path deck_file):&#160;deck.cpp'],['../deck_8h.html#a51117ea428770097e56c24159c9af509',1,'readFlashCardDeck(std::filesystem::path deck_file):&#160;deck.h']]],
+  ['removecard_77',['removeCard',['../classPlayer.html#a3a8fc78d07cdfc32452f1ad5075bbef7',1,'Player']]],
+  ['resultsscene_78',['ResultsScene',['../classFlashcardApp_1_1ResultsScene.html',1,'FlashcardApp']]]
 ];

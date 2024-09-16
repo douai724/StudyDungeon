@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: MenuItem Class Reference</title>
+<title>My Project: ConsoleUI::Button Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,39 +59,36 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceConsoleUI.html">ConsoleUI</a></li><li class="navelem"><a class="el" href="classConsoleUI_1_1Button.html">Button</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Data Fields</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">MenuItem Class Reference</div>  </div>
+<div class="title">ConsoleUI::Button Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="memItemLeft" align="right" valign="top"><a id="a9fc7ba8a1611f65d02fcbca5c8cc3255"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
-<tr class="separator:a9fc7ba8a1611f65d02fcbca5c8cc3255"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memItemLeft" align="right" valign="top"><a id="a4e74a174a8b2e3254fb8a8942ec857c8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MenuItem</b> (const std::string &amp;label, std::shared_ptr&lt; <a class="el" href="classMenu.html">Menu</a> &gt; subMenu)</td></tr>
-<tr class="separator:a4e74a174a8b2e3254fb8a8942ec857c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f1c3643d315606e72c7cde276a1e7d1"><td class="memItemLeft" align="right" valign="top"><a id="a6f1c3643d315606e72c7cde276a1e7d1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSubMenu</b> () const</td></tr>
-<tr class="separator:a6f1c3643d315606e72c7cde276a1e7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Data Fields</h2></td></tr>
-<tr class="memitem:af07137902c2c02dd299a8b6b8c362b9a"><td class="memItemLeft" align="right" valign="top"><a id="af07137902c2c02dd299a8b6b8c362b9a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>label</b></td></tr>
-<tr class="separator:af07137902c2c02dd299a8b6b8c362b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9fb022d5006f1fecfa734044d2bca5e"><td class="memItemLeft" align="right" valign="top"><a id="ae9fb022d5006f1fecfa734044d2bca5e"></a>
-std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>action</b></td></tr>
-<tr class="separator:ae9fb022d5006f1fecfa734044d2bca5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4b138e6ab805d037ae4b27d3c7ffe11"><td class="memItemLeft" align="right" valign="top"><a id="ac4b138e6ab805d037ae4b27d3c7ffe11"></a>
-std::shared_ptr&lt; class <a class="el" href="classMenu.html">Menu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>subMenu</b></td></tr>
-<tr class="separator:ac4b138e6ab805d037ae4b27d3c7ffe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa7102cef5f6fe4a8cace8df352acccf"><td class="memItemLeft" align="right" valign="top"><a id="aaa7102cef5f6fe4a8cace8df352acccf"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Button</b> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
+<tr class="separator:aaa7102cef5f6fe4a8cace8df352acccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e680809119ee0300e3229e32f9f92ed"><td class="memItemLeft" align="right" valign="top"><a id="a6e680809119ee0300e3229e32f9f92ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (int x, int y, bool selected)</td></tr>
+<tr class="separator:a6e680809119ee0300e3229e32f9f92ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6298e8a8e32982b4eb1ba339cdd4a86"><td class="memItemLeft" align="right" valign="top"><a id="aa6298e8a8e32982b4eb1ba339cdd4a86"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>performAction</b> () const</td></tr>
+<tr class="separator:aa6298e8a8e32982b4eb1ba339cdd4a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a6a6747f8d20fd14771bc8c8d9f3f7"><td class="memItemLeft" align="right" valign="top"><a id="a91a6a6747f8d20fd14771bc8c8d9f3f7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> () const</td></tr>
+<tr class="separator:a91a6a6747f8d20fd14771bc8c8d9f3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6117eeb447cd025aaa759a49ef7d1f5f"><td class="memItemLeft" align="right" valign="top"><a id="a6117eeb447cd025aaa759a49ef7d1f5f"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLabel</b> () const</td></tr>
+<tr class="separator:a6117eeb447cd025aaa759a49ef7d1f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>

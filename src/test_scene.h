@@ -8,14 +8,14 @@
 class FibonacciScene : public ConsoleUI::Scene
 {
 public:
-    FibonacciScene(ConsoleUI::UIManager& uiManager, std::function<void()> goBack);
-    
+    FibonacciScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);
+
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
 
 private:
-    ConsoleUI::UIManager& m_uiManager;
+    ConsoleUI::UIManager &m_uiManager;
     std::function<void()> m_goBack;
     unsigned long long m_fibNumber1;
     unsigned long long m_fibNumber2;

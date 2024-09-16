@@ -24,7 +24,9 @@ jobs:
             - name: "Build tests"
               run: |
                   cmake --build build --config Debug --target unit_tests -j4
-
+            - name : "check dirs"
+              run: |
+                      dir
 
             - name: Run tests
               run: |

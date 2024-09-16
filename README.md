@@ -7,7 +7,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2908ef35da3345f295e479b0a0af2026)](https://app.codacy.com/gh/douai724/StudyDungeon/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 
-Alpha released 
+Alpha released
 
 ## VScode config
 

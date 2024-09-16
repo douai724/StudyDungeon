@@ -1,4 +1,3 @@
-
 #include "test_scene.h"
 #include <string>
 

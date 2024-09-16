@@ -74,7 +74,7 @@ public:
          * @param width width of box
          * @param height height of box
          */
-    void drawBox(int x, int y, int width, int height);
+    void drawBox(int x, int y, size_t width, size_t height);
 
     /**
          * @brief Draws a horizontal line of defined length using a character
@@ -84,7 +84,7 @@ public:
          * @param length length of the line
          * @param ch character to use for the line
          */
-    void drawHorizontalLine(int x, int y, int length, char ch = '-');
+    void drawHorizontalLine(int x, int y, size_t length, char ch = '-');
 
     /**
          * @brief  Draws a vertical line of defined length using a character
@@ -156,10 +156,10 @@ public:
 
 private:
     /** max width of console */
-    int m_width;
+    size_t m_width;
 
     /** max height of console */
-    int m_height;
+    size_t m_height;
 
     /** vector of strings to be printed in a text box */
     std::vector<std::string> m_textBox;
@@ -168,18 +168,49 @@ private:
     int m_textBoxCapacity;
 };
 
+/**
+ * @brief Defines an ascii art object
+ *
+ */
 class AsciiArt
 {
 public:
     AsciiArt() = default;
+
+    /**
+     * @brief Construct a new Ascii Art object
+     *
+     * @param artString
+     */
     AsciiArt(const char *artString);
+
+    /**
+     * @brief Get the Art object as a string
+     *
+     * @return const std::vector<std::string>&
+     */
     const std::vector<std::string> &getArt() const;
+
+    /**
+     * @brief Get the width of the ascii art
+     *
+     * @return int
+     */
     int getWidth() const;
+
+    /**
+     * @brief Get the height of the ascii art
+     *
+     * @return int
+     */
     int getHeight() const;
 
 private:
+    /** a vector of strings that make up the art*/
     std::vector<std::string> m_art;
+    /** the maximum number of characters wide */
     int m_width;
+    /** how many lines the art occupies */
     int m_height;
 };
 

@@ -1,16 +1,27 @@
 #pragma once
 
+#ifndef FLASHCARD_SCENE
+#define FLASHCARD_SCENE
+
 #include "deck.h"
 #include "menu.h"
+#include <algorithm>
 #include <chrono>
+#include <conio.h>
 #include <functional>
 #include <memory>
+#include <numeric>
 #include <random>
+#include <sstream>
 #include <vector>
 
 namespace FlashcardApp
 {
 
+/**
+ * @brief Defines the Scene for browsing the card decks
+ *
+ */
 class BrowseDecksScene : public ConsoleUI::Scene
 {
 public:
@@ -25,18 +36,26 @@ public:
                          const std::string &text,
                          int x,
                          int y,
-                         int width);
+                         size_t width);
     void loadDecks();
 
 private:
+    /** the UI manager for the scene */
     ConsoleUI::UIManager &m_uiManager;
+    /** all available decks */
     std::vector<FlashCardDeck> m_decks;
+    /** the index of the selected deck */
     size_t m_selectedDeckIndex = 0;
+    /** the scene to return to */
     std::function<void()> m_goBack;
+    /** the current deck of flash cards */
     std::function<void(const FlashCardDeck &)> m_openDeck;
+    /** determines if the scene needs redrawn */
     bool m_needsRedraw = true;
+    /** the current page of cards */
     int m_currentPage = 0;
-    int m_maxCardsPerPage = 0;
+    /** the maximum nuber of cards per 'page' */
+    size_t m_maxCardsPerPage = 0;
 };
 
 class EditDecksScene : public ConsoleUI::Scene
@@ -53,7 +72,7 @@ public:
                          const std::string &text,
                          int x,
                          int y,
-                         int width);
+                         size_t width);
     void loadDecks();
 
 private:
@@ -64,7 +83,7 @@ private:
     std::function<void(const FlashCardDeck &)> m_openDeck;
     bool m_needsRedraw = true;
     int m_currentPage = 0;
-    int m_maxCardsPerPage = 0;
+    size_t m_maxCardsPerPage = 0;
 };
 
 
@@ -83,7 +102,7 @@ public:
                          const std::string &text,
                          int x,
                          int y,
-                         int width);
+                         size_t width);
 
 private:
     // void selectDifficulty(int difficulty);
@@ -117,7 +136,7 @@ public:
                          const std::string &text,
                          int x,
                          int y,
-                         int width);
+                         size_t width);
 
 private:
     void selectDifficulty(int difficulty);
@@ -156,3 +175,5 @@ private:
 };
 
 } // namespace FlashcardApp
+
+#endif

@@ -1,9 +1,5 @@
 #include "flashcard_scene.h"
-#include <algorithm>
-#include <conio.h>
-#include <numeric>
-#include <random>
-#include <sstream>
+
 
 namespace FlashcardApp
 {
@@ -41,7 +37,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     // Draw deck list
     int deckListY = 4;
-    for (size_t i = 0; i < m_decks.size(); ++i)
+    for (int i = 0; i < m_decks.size(); ++i)
     {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
         window->drawText(deckText, 2, deckListY + i);
@@ -54,7 +50,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         int cardListX = window->getSize().X / 2;
         int cardListY = 4;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
-        int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+        size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
                              "):",
@@ -66,7 +62,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
              ++i)
         {
             const auto &card = selectedDeck.cards[i];
-            int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
+            int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
             drawWrappedText(window, "Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
             drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 2, window->getSize().X - cardListX - 2);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 4);
@@ -110,7 +106,7 @@ void BrowseDecksScene::handleInput()
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
-                    int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+                    size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                     if (m_currentPage < totalPages - 1)
                         m_currentPage++;
                 }
@@ -149,7 +145,7 @@ void BrowseDecksScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow>
                                        const std::string &text,
                                        int x,
                                        int y,
-                                       int width)
+                                       size_t width)
 {
     std::istringstream words(text);
     std::string word;
@@ -210,7 +206,7 @@ void EditDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     // Draw deck list
     int deckListY = 4;
-    for (size_t i = 0; i < m_decks.size(); ++i)
+    for (int i = 0; i < m_decks.size(); ++i)
     {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
         window->drawText(deckText, 2, deckListY + i);
@@ -223,7 +219,7 @@ void EditDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         int cardListX = window->getSize().X / 2;
         int cardListY = 4;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
-        int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+        size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
                              "):",
@@ -235,7 +231,7 @@ void EditDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
              ++i)
         {
             const auto &card = selectedDeck.cards[i];
-            int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
+            int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
             drawWrappedText(window, "Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
             drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 2, window->getSize().X - cardListX - 2);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 4);
@@ -279,7 +275,7 @@ void EditDecksScene::handleInput()
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
-                    int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+                    size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                     if (m_currentPage < totalPages - 1)
                         m_currentPage++;
                 }
@@ -318,7 +314,7 @@ void EditDecksScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> w
                                      const std::string &text,
                                      int x,
                                      int y,
-                                     int width)
+                                     size_t width)
 {
     std::istringstream words(text);
     std::string word;
@@ -357,11 +353,8 @@ EditFlashcardScene::EditFlashcardScene(ConsoleUI::UIManager &uiManager,
                                        const FlashCardDeck &deck,
                                        std::function<void()> goBack,
                                        std::function<void(const std::vector<int> &)> showResults)
-    : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack),
-      //  m_showResults(showResults),
-      //   m_needsRedraw(true),
-      m_currentCardIndex(0) //,
-                            //    m_showAnswer(false)
+    : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_currentCardIndex(0) //,
+                                                                                    //    m_showAnswer(false)
 {
 
     m_uiManager.clearMenu("difficulty");
@@ -395,8 +388,15 @@ void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window
     {
         // const auto& card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
         const auto &card = m_deck.cards[m_currentCardIndex];
-        window->drawCenteredText("Question:", 4);
-        drawWrappedText(window, card.question, 2, 6, window->getSize().X - 4);
+        int y_start{4};
+        window->drawCenteredText("Question:", y_start);
+        drawWrappedText(window, card.question, 2, 6, window->getSize().X - ++y_start);
+        window->drawCenteredText("Answer:", y_start);
+        drawWrappedText(window, card.answer, 2, 6, window->getSize().X - ++y_start);
+        window->drawCenteredText("Difficulty:", y_start);
+        drawWrappedText(window, cardDifficultyToStr(card.difficulty), 2, 6, window->getSize().X - ++y_start);
+        window->drawCenteredText("N times answered:", y_start);
+        drawWrappedText(window, std::to_string(card.n_times_answered), 2, 6, window->getSize().X - ++y_start);
 
         // if (m_showAnswer) {
         //     window->drawCenteredText("Answer:", window->getSize().Y / 2 - 1);
@@ -458,17 +458,17 @@ void EditFlashcardScene::handleInput()
         {
             switch (key)
             {
-            // case 32:  // Spacebar
-            //     if (!m_showAnswer) {
-            //         m_showAnswer = true;
-            //     }
-            //     break;
-            // case 13: // Enter
-            //     if (m_showAnswer) {
-            //         auto& menu = m_uiManager.getMenu("difficulty");
-            //         menu.activateSelectedButton();
-            //     }
-            //     break;
+                // case 32:  // Spacebar
+                //     if (!m_showAnswer) {
+                //         m_showAnswer = true;
+                //     }
+                //     break;
+            case 13: // Enter
+                     //     if (m_showAnswer) {
+                     //         auto& menu = m_uiManager.getMenu("difficulty");
+                     //         menu.activateSelectedButton();
+                     //     }
+                break;
             case 27: // Escape key
                 endSession();
                 break;
@@ -510,7 +510,7 @@ void EditFlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindo
                                          const std::string &text,
                                          int x,
                                          int y,
-                                         int width)
+                                         size_t width)
 {
     std::istringstream words(text);
     std::string word;
@@ -704,7 +704,7 @@ void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> w
                                      const std::string &text,
                                      int x,
                                      int y,
-                                     int width)
+                                     size_t width)
 {
     std::istringstream words(text);
     std::string word;
@@ -730,6 +730,7 @@ void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> w
     }
 }
 
+/* ---- RESULTS SCENE ------- */
 ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,
                            std::function<void()> goToMainMenu,
@@ -783,5 +784,7 @@ void ResultsScene::handleInput()
         m_needsRedraw = true;
     }
 }
+
+/* ----- END RESULTS SCENE------*/
 
 } // namespace FlashcardApp

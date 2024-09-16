@@ -79,14 +79,14 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classFibonacciScene.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFibonacciScene.html">FibonacciScene</a> : <span class="keyword">public</span> ConsoleUI::Scene</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classFibonacciScene.html">FibonacciScene</a>(ConsoleUI::UIManager&amp; uiManager, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classFibonacciScene.html">FibonacciScene</a>(ConsoleUI::UIManager &amp;uiManager, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ConsoleUI::UIManager&amp; m_uiManager;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ConsoleUI::UIManager &amp;m_uiManager;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::function&lt;void()&gt; m_goBack;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber1;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber2;</div>

@@ -19,8 +19,6 @@ COORD getConsoleWindowSize()
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     return {static_cast<short>(csbi.srWindow.Right - csbi.srWindow.Left + 1),
             static_cast<short>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)};
-    return {static_cast<short>(csbi.srWindow.Right - csbi.srWindow.Left + 1),
-            static_cast<short>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)};
 }
 
 // ConsoleWindow implementation
@@ -42,7 +40,7 @@ void ConsoleWindow::drawBorder()
     drawBox(0, 0, m_width, m_height);
 }
 
-void ConsoleWindow::drawBox(int x, int y, int width, int height)
+void ConsoleWindow::drawBox(int x, int y, size_t width, size_t height)
 {
     drawHorizontalLine(x, y, width);
     drawHorizontalLine(x, y + height - 1, width);
@@ -50,7 +48,7 @@ void ConsoleWindow::drawBox(int x, int y, int width, int height)
     drawVerticalLine(x + width - 1, y, height);
 }
 
-void ConsoleWindow::drawHorizontalLine(int x, int y, int length, char ch)
+void ConsoleWindow::drawHorizontalLine(int x, int y, size_t length, char ch)
 {
     setConsoleCursorPosition(x, y);
     std::cout << std::string(length, ch);

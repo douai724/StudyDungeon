@@ -90,6 +90,8 @@ int main()
 {
     try
     {
+
+
         ConsoleUI::UIManager uiManager;
 
         std::shared_ptr<MainMenuScene> mainMenuScene;

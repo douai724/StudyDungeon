@@ -2,6 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <sstream>
 
+
 struct cout_redirect
 {
     cout_redirect(std::streambuf *new_buffer) : old(std::cout.rdbuf(new_buffer))
@@ -104,19 +105,30 @@ TEST_CASE("Deck reading and writing")
 
     SECTION("writing")
     {
-        if (std::filesystem::exists("TEST_decks/new.deck"))
+        std::filesystem::path app_path = getAppPath();
+        std::filesystem::path decks_dir = app_path;
+        decks_dir.append("TEST_Decks");
+        std::filesystem::path new_deck = decks_dir;
+        new_deck.append("new.deck");
+        // std::cerr << "new deck path:" << new_deck << std::endl;
+
+        if (std::filesystem::exists(new_deck))
         {
             std::cerr << "REMOVING FILE TEST_decks/new.deck" << std::endl;
-            std::filesystem::remove("TEST_decks/new.deck");
+            std::filesystem::remove(new_deck);
         }
-        REQUIRE(writeFlashCardDeck(example_decks.at(1), "TEST_decks/new.deck"));
+        REQUIRE(writeFlashCardDeck(example_decks.at(1), new_deck));
     }
 
     SECTION("reading")
     {
-        std::filesystem::path p = std::filesystem::path("TEST_decks/example1.deck");
-        FlashCardDeck example1 = readFlashCardDeck(p);
-        std::cerr << "EXample deck name:" << example1.name << std::endl;
+        std::filesystem::path app_path = getAppPath();
+        std::filesystem::path decks_dir = app_path;
+        decks_dir.append("TEST_Decks");
+        std::filesystem::path example1_deck = decks_dir;
+        example1_deck.append("example1.deck");
+        FlashCardDeck example1 = readFlashCardDeck(example1_deck);
+        // std::cerr << "EXample deck name:" << example1.name << std::endl;
         REQUIRE(example1.name == "example deck 1");
 
         auto stdoutBuffer = std::cout.rdbuf();

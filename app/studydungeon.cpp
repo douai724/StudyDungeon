@@ -2,6 +2,7 @@
 #include "config.hpp"
 #include "deck.h"
 #include "flashcard_scene.h" // Include the new flashcard scenes
+#include "edit_flashcard.h"
 #include "gameloop.h"
 #include "menu.h"
 #include "test_scene.h"
@@ -94,7 +95,7 @@ int main()
 
         std::shared_ptr<MainMenuScene> mainMenuScene;
         std::shared_ptr<FibonacciScene> fibonacciScene;
-        std::shared_ptr<FlashcardApp::EditDecksScene> editDecksScene;
+        std::shared_ptr<FlashcardEdit::EditDeckScene> editDecksScene;
         std::shared_ptr<FlashcardApp::BrowseDecksScene> browseDecksScene;
         std::shared_ptr<FlashcardApp::FlashcardScene> flashcardScene;
         std::shared_ptr<FlashcardApp::ResultsScene> resultsScene;
@@ -127,26 +128,18 @@ int main()
             });
 
         // Create editDecksScene
-        editDecksScene = std::make_shared<FlashcardApp::EditDecksScene>(
+        editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
             uiManager,
             [&]() { uiManager.setCurrentScene(mainMenuScene); },
-            [&](const FlashCardDeck &deck) {
-                // this needs to become the editScene
-                flashcardScene = std::make_shared<FlashcardApp::FlashcardScene>(
+            [&](FlashCardDeck &deck) { // Note: Changed to non-const reference
+                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(
                     uiManager,
                     deck,
-                    [&]() { uiManager.setCurrentScene(editDecksScene); },
-                    [&](const std::vector<int> &difficultyCount) {
-                        resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
-                            uiManager,
-                            difficultyCount,
-                            [&]() { uiManager.setCurrentScene(mainMenuScene); },
-                            [&]() { uiManager.setCurrentScene(editDecksScene); });
-                        uiManager.setCurrentScene(resultsScene);
-                    });
-                // replace with editScene
-                uiManager.setCurrentScene(flashcardScene);
-            });
+                    [&]() { uiManager.setCurrentScene(editDecksScene); }
+                );
+                uiManager.setCurrentScene(editFlashcardScene);
+            }
+        );
 
         // Create FibonacciScene
         fibonacciScene =

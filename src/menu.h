@@ -33,6 +33,11 @@ namespace ConsoleUI
      * @param y axis
      */
     void setConsoleCursorPosition(int x, int y);
+    /**
+     * @brief Get the Console Window Size object by converting the csbi values to COORD (two short axis)
+     * 
+     * @return COORD 
+     */
     COORD getConsoleWindowSize();
 
     class ConsoleWindow

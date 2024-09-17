@@ -36,7 +36,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) 
 
     // Draw deck list
     int deckListY = 4;
-    for (size_t i = 0; i < m_decks.size(); ++i) {
+    for (int i = 0; i < m_decks.size(); ++i) {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
         window->drawText(deckText, 2, deckListY + i);
     }

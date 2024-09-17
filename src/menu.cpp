@@ -258,6 +258,7 @@ bool Menu::isBackButtonPressed() const
     return m_buttons[m_selectedIndex].getLabel() == "Back";
 }
 
+
 void Menu::pushPage()
 {
     m_pageHistory.push_back(m_buttons);
@@ -274,6 +275,8 @@ void Menu::popPage()
         m_selectedIndex = 0;
     }
 }
+
+
 
 size_t Menu::getButtonCount() const
 {

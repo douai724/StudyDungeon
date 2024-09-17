@@ -19,8 +19,6 @@ COORD getConsoleWindowSize()
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     return {static_cast<short>(csbi.srWindow.Right - csbi.srWindow.Left + 1),
             static_cast<short>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)};
-    return {static_cast<short>(csbi.srWindow.Right - csbi.srWindow.Left + 1),
-            static_cast<short>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1)};
 }
 
 // ConsoleWindow implementation
@@ -116,7 +114,7 @@ void ConsoleWindow::drawTextBox(int x, int y, int width, int height)
     drawBox(x, y, width, height);
     for (size_t i = 0; i < m_textBox.size() && i < static_cast<size_t>(height - 2); ++i)
     {
-        drawText(m_textBox[i].substr(0, width - 2), static_cast<size_t>(x + 1), static_cast<size_t>(y + i + 1));
+        drawText(m_textBox[i].substr(0, width - 2), static_cast<int>(x + 1), static_cast<int>(y + i + 1));
     }
 }
 

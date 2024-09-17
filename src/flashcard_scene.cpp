@@ -44,7 +44,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     for (size_t i = 0; i < m_decks.size(); ++i)
     {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
-        window->drawText(deckText, 2, deckListY + i);
+        window->drawText(deckText, 2, deckListY + static_cast<int>(i));
     }
 
     // Draw selected deck contents with paging
@@ -54,7 +54,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         int cardListX = window->getSize().X / 2;
         int cardListY = 4;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
-        int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+        int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
                              "):",
@@ -110,7 +110,7 @@ void BrowseDecksScene::handleInput()
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
-                    int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+                    int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                     if (m_currentPage < totalPages - 1)
                         m_currentPage++;
                 }
@@ -213,7 +213,7 @@ void EditDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     for (size_t i = 0; i < m_decks.size(); ++i)
     {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
-        window->drawText(deckText, 2, deckListY + i);
+        window->drawText(deckText, 2, deckListY + static_cast<int>(i));
     }
 
     // Draw selected deck contents with paging
@@ -223,7 +223,7 @@ void EditDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         int cardListX = window->getSize().X / 2;
         int cardListY = 4;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
-        int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+        int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
                              "):",
@@ -279,7 +279,7 @@ void EditDecksScene::handleInput()
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
-                    int totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+                    int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                     if (m_currentPage < totalPages - 1)
                         m_currentPage++;
                 }

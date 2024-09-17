@@ -46,10 +46,13 @@ void pause()
 {
     std::string line;
     std::cout << "Press ENTER to continue..." << std::endl;
-    if (!isTestMode) {
-        std::getline(std::cin, line);  // Wait for user input in production
-    } else {
-        std::cout << "[Simulated ENTER]" << std::endl;  // Simulate "ENTER" press in test mode
+    if (!isTestMode)
+    {
+        std::getline(std::cin, line); // Wait for user input in production
+    }
+    else
+    {
+        std::cout << "[Simulated ENTER]" << std::endl; // Simulate "ENTER" press in test mode
     }
 }
 

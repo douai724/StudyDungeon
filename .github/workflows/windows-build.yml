@@ -2,9 +2,9 @@ name: Windows CI Build App
 
 on:
     push:
-        branches: [main, master, cmake_dev]
+        branches: [main, dev, cmake_dev]
     pull_request:
-        branches: [main, master, cmake_dev]
+        branches: [main, dev, cmake_dev]
 
 jobs:
     build:

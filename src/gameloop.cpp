@@ -1,10 +1,14 @@
 #include "gameloop.h"
 
-Game::Game(Player *p1, Player *p2)
+Game::Game(Player p1, Player p2)
 {
     Game::p1 = p1;
     Game::p2 = p2;
     Game::turn = 1;
+}
+
+Game::Game()
+{
 }
 
 void Game::nextTurn(PlayingCard nextCard)
@@ -25,18 +29,14 @@ void Game::nextTurn(PlayingCard nextCard)
         std::cout << "Valid card does not exist." << std::endl;
     }
 
-    // std::cout << "Played: " << card.toString() << std::endl;
-    // std::cout << "Health: P1=" << p1->getHitPoints() << "\t\t\t\t\t\t\t P2=" << p2->getHitPoints() << std::endl;
-    //pause();
-
     // draw a card
     if (turn == 1)
     {
-        p1->drawCard();
+        p1.drawCard();
     }
     else
     {
-        p2->drawCard();
+        p2.drawCard();
     }
 
 
@@ -53,7 +53,7 @@ void Game::nextTurn(PlayingCard nextCard)
 
 bool Game::isGameOver()
 {
-    if (p1->getHitPoints() <= 0 || p2->getHitPoints() <= 0 || (p1->getHand().size() == 0 && p2->getHand().size() == 0))
+    if (p1.getHitPoints() <= 0 || p2.getHitPoints() <= 0 || (p1.getHand().size() == 0 && p2.getHand().size() == 0))
     {
         return true;
     }
@@ -62,20 +62,20 @@ bool Game::isGameOver()
 
 void Game::swapHandEffect()
 {
-    std::vector<PlayingCard> temp = Game::p1->getHand();
-    p1->setHand(p2->getHand());
-    p2->setHand(temp);
+    std::vector<PlayingCard> temp = Game::p1.getHand();
+    p1.setHand(p2.getHand());
+    p2.setHand(temp);
 }
 
 void Game::healEffect(PlayingCard &card)
 {
     if (turn == 1)
     {
-        Game::p1->heal(card.getValue());
+        Game::p1.heal(card.getValue());
     }
     else
     {
-        Game::p2->heal(card.getValue());
+        Game::p2.heal(card.getValue());
     }
 }
 
@@ -83,15 +83,15 @@ void Game::damageEffect(PlayingCard &card)
 {
     if (turn == 1)
     {
-        Game::p2->damage(card.getValue());
+        Game::p2.damage(card.getValue());
     }
     else
     {
-        Game::p1->damage(card.getValue());
+        Game::p1.damage(card.getValue());
     }
 }
 
-Game setUp(Player *p1, Player *p2)
+Game setUp(Player p1, Player p2)
 {
     return Game(p1, p2);
 }

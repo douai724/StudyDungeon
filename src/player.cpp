@@ -17,14 +17,6 @@ Player::Player(int hitPoints, int maxHitPoints, int handSize, std::vector<Playin
     }
 }
 
-PlayingCard Player::play()
-{
-    std::cout << "This is the base class." << std::endl;
-    PlayingCard selected = getCard(1);
-    removeCard(selected);
-    return selected;
-}
-
 void Player::drawCard()
 {
     if ((int)Player::deck.size() != 0)
@@ -150,57 +142,4 @@ void Player::printHand()
         output += add;
     }
     std::cout << output << std::endl;
-}
-
-User::User(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
-    : Player(hitPoints, maxHitPoints, handSize, deck)
-{
-}
-
-PlayingCard User::play()
-{
-    std::vector<PlayingCard> currentHand = Player::getHand();
-    int handSize = (int)currentHand.size();
-    PlayingCard selectedCard = PlayingCard();
-
-    // probably need to free this up somehow
-    //auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
-    for (int i = 0; i < handSize; i++)
-    {
-
-        // cardsMenu->addGridItem(
-        //     currentHand[i].toString(),
-        //     [this, i, currentHand, &selectedCard]() {
-        //         clearScreen();
-        //         selectedCard = currentHand[i];
-        //         //pause();
-        //         throw "continue";
-        //     },
-        //     i,
-        //     0);
-    }
-
-    //cardsMenu->run();
-    removeCard(selectedCard);
-    return selectedCard;
-}
-
-
-Bot::Bot(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
-    : Player(hitPoints, maxHitPoints, handSize, deck)
-{
-}
-
-PlayingCard Bot::play()
-{
-    try
-    {
-        PlayingCard selectedCard = getCard((int)getHand().size() - 1);
-        removeCard(selectedCard);
-        return selectedCard;
-    }
-    catch (int e)
-    {
-        throw e;
-    }
 }

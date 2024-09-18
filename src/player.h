@@ -23,8 +23,6 @@
 /**
  * @brief Class that represents a Player.
  *
- * Classes that inherit the Player class must implement the virtual function play().
- *
  */
 class Player
 {
@@ -50,13 +48,6 @@ public:
      * @param hand the hand (list of cards) of the player
      */
     Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
-
-    /**
-     * @brief Returns the playing card picked by the player.
-     *
-     * @return PlayingCard the playing card selected by the player
-     */
-    virtual PlayingCard play();
 
     /**
      * @brief Returns the current hit points of the player.
@@ -181,60 +172,6 @@ public:
       *
       */
     void printHand();
-};
-
-/**
- * @brief Inherits the Player class to take user input through the game menu.
- *
- */
-class User : public Player
-{
-public:
-    /**
-      * @brief Returns a PlayingCard object picked by the user.
-      *
-      * Returns a PlayingCard object picked by the player for the
-      * turn.
-      *
-      * @return PlayingCard the card picked by the player.
-      */
-    PlayingCard play();
-
-    /**
-      * @brief Construct a new User object
-      *
-      * @param hitPoints the hit points of the User-Player
-      * @param maxHitPoints the max hit points of the User-Player
-      * @param hand the hand of the User-Player
-      */
-    User(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
-};
-
-/**
- * @brief Inherits the Player class to play as a basic bot.
- *
- */
-class Bot : public Player
-{
-public:
-    /**
-      * @brief Returns a PlayingCard object picked by the bot.
-      *
-      * Returns a PlayingCard object picked by the bot for the
-      * turn.
-      *
-      * @return PlayingCard the card picked by the bot.
-      */
-    PlayingCard play();
-
-    /**
-      * @brief Construct a new Bot object
-      *
-      * @param hitPoints the hit points of the Bot-Player
-      * @param maxHitPoints the max hit points of the Bot-Player
-      * @param hand the hand of the Bot-Player
-      */
-    Bot(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
 };
 
 #endif

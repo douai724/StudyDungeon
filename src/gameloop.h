@@ -31,13 +31,13 @@ public:
       */
     short turn;
     /**
-      * Pointer to Player 1
+      * Player 1
       */
-    Player *p1;
+    Player p1;
     /**
-      * Pointer to Player 2
+      * Player 2
       */
-    Player *p2;
+    Player p2;
 
     /**
       * @brief Apply the damage effect to the player whose turn it is.
@@ -65,7 +65,9 @@ public:
      * @param p1 Player 1
      * @param p2 Player 2
      */
-    Game(Player *p1, Player *p2);
+    Game(Player p1, Player p2);
+
+    Game();
 
     /**
       * @brief Plays the next turn of the game.
@@ -92,7 +94,7 @@ public:
  */
 void start(Game game);
 
-Game setUp(Player *p1, Player *p2);
+Game setUp(Player p1, Player p2);
 
 /**
  * @brief Generates a hand.

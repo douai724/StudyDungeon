@@ -6,6 +6,11 @@ GameScene::GameScene(ConsoleUI::UIManager &uiManager) : m_uiManager(uiManager)
     Player bot = Player(100, 100, 5, generateDeck(20));
 
     GameScene::game = setUp(user, bot);
+    auto &menu = m_uiManager.createMenu("playerHand", false);
+    for (int i = 0; i < (int)user.getHand().size(); i++)
+    {
+        menu.addButton(user.getHand()[i].toString(), []() {});
+    }
 }
 
 void GameScene::update()
@@ -27,19 +32,13 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     std::vector<PlayingCard> hand = user.getHand();
 
-    auto &menu = m_uiManager.createMenu("playerHand", false);
-    for (int i = 0; i < (int)hand.size(); i++)
-    {
-        menu.addButton(hand[i].toString(), []() {});
-    }
-
-    // wait for player to press enter on a card
-    // once the card is selected, play the next turn of the game.
+    auto &menu = m_uiManager.getMenu("playerHand");
     menu.draw(10, 20);
-    m_needsRedraw = false;
+    //m_needsRedraw = false;
 }
 
 void GameScene::handleInput()
 {
-    // TO DO
+    m_uiManager.getMenu("playerHand").handleInput();
+    m_needsRedraw = true;
 }

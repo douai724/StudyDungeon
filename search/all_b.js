@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n_5ftimes_5fanswered_64',['n_times_answered',['../classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e',1,'FlashCard']]],
-  ['name_65',['name',['../classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454',1,'FlashCardDeck']]],
-  ['nextturn_66',['nextTurn',['../classGame.html#a801658c7cef474bc1d9a830f4a79034c',1,'Game']]]
+  ['n_5ftimes_5fanswered_67',['n_times_answered',['../classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e',1,'FlashCard']]],
+  ['name_68',['name',['../classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454',1,'FlashCardDeck']]],
+  ['nextturn_69',['nextTurn',['../classGame.html#a976c1a460f61317f6b82c298da5c2bbf',1,'Game']]]
 ];

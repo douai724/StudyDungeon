@@ -9,6 +9,7 @@ Player::Player(int hitPoints, int maxHitPoints, int handSize, std::vector<Playin
     Player::hitPoints = hitPoints;
     Player::maxHitPoints = maxHitPoints;
     Player::deck = deck;
+    Player::handSize = handSize;
 
     for (int i = 0; i < handSize; i++)
     {

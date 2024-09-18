@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['operator_3d_3d_42',['operator==',['../classPlayingCard.html#a81e99ade0b6ea349ca2a1d7de62881af',1,'PlayingCard']]]
+  ['n_5ftimes_5fanswered_64',['n_times_answered',['../classFlashCard.html#aae02597613e37585b21bbeedc05c1d1e',1,'FlashCard']]],
+  ['name_65',['name',['../classFlashCardDeck.html#a6a4d5f691a0514a2f21c75160823d454',1,'FlashCardDeck']]],
+  ['nextturn_66',['nextTurn',['../classGame.html#a801658c7cef474bc1d9a830f4a79034c',1,'Game']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nextturn_114',['nextTurn',['../classGame.html#a801658c7cef474bc1d9a830f4a79034c',1,'Game']]]
+  ['menu_175',['Menu',['../classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef',1,'ConsoleUI::Menu']]]
 ];

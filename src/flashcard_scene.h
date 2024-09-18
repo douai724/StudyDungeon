@@ -20,23 +20,50 @@ namespace FlashcardApp
 
 /**
  * @brief Defines the Scene for browsing the card decks
+ * @details This scene shows which decks can be selected
  *
  */
 class BrowseDecksScene : public ConsoleUI::Scene
 {
 public:
+    /**
+     * @brief Construct a new Browse Decks Scene object
+     *
+     * @param uiManager
+     * @param goBack action to take when the back button is pressed
+     * @param openDeck action to take when the openDeck button pressed
+     */
     BrowseDecksScene(ConsoleUI::UIManager &uiManager,
                      std::function<void()> goBack,
                      std::function<void(const FlashCardDeck &)> openDeck);
-
+    /**
+     * @brief called each frame to update the scene's state or perform any necessary logic
+     *
+     */
     void update() override;
+
+    /**
+     * @brief Called every farme to render the scenes UI elements using the provided ConsoleWindow instance
+     *
+     * @param window
+     */
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
+
+    /**
+     * @brief Handles the user input for the scene
+     *
+     */
     void handleInput() override;
+
     void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
                          const std::string &text,
                          int x,
                          int y,
                          size_t width);
+    /**
+     * @brief Loads the available decks to be displayed
+     *
+     */
     void loadDecks();
 
 private:
@@ -93,7 +120,7 @@ public:
     EditFlashcardScene(ConsoleUI::UIManager &uiManager,
                        const FlashCardDeck &deck,
                        std::function<void()> goBack,
-                       std::function<void(const std::vector<int> &)> showResults);
+                       std::function<void(const std::vector<int> &)> editFlashcardScene);
 
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;

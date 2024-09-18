@@ -90,6 +90,67 @@ void ConsoleWindow::drawCenteredText(const std::string &text, int y)
     drawText(text, x, y);
 }
 
+#include <string>
+#include <iostream>
+#include <conio.h>
+#include <windows.h>
+
+std::string ConsoleWindow::getLine(int x, int y, int maxLength)
+{
+    std::string input;
+    int cursorPos = 0;
+
+    while (true)
+    {
+        // Clear the input area
+        setConsoleCursorPosition(x, y);
+        std::cout << std::string(maxLength, ' ');
+
+        // Display the current input
+        setConsoleCursorPosition(x, y);
+        std::cout << input;
+
+        // Set the cursor position
+        setConsoleCursorPosition(x + cursorPos, y);
+
+        // Get user input
+        int ch = _getch();
+
+        if (ch == 224) // Arrow key prefix
+        {
+            ch = _getch();
+            switch (ch)
+            {
+                case 75: // Left arrow
+                    if (cursorPos > 0) cursorPos--;
+                    break;
+                case 77: // Right arrow
+                    if (cursorPos < input.length()) cursorPos++;
+                    break;
+            }
+        }
+        else if (ch == 13) // Enter key
+        {
+            break;
+        }
+        else if (ch == 8) // Backspace
+        {
+            if (cursorPos > 0)
+            {
+                input.erase(cursorPos - 1, 1);
+                cursorPos--;
+            }
+        }
+        else if (ch >= 32 && ch <= 126 && input.length() < maxLength) // Printable characters
+        {
+            input.insert(cursorPos, 1, static_cast<char>(ch));
+            cursorPos++;
+        }
+    }
+
+    return input;
+}
+
 void ConsoleWindow::clear()
 {
     clearScreen();

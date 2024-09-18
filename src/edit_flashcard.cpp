@@ -127,56 +127,51 @@ void EditFlashcardScene::editSelectedCard()
     if (m_selectedCardIndex >= m_deck.cards.size()) return;
 
     auto& card = m_deck.cards[m_selectedCardIndex];
+    auto window = m_uiManager.getWindow();
     
-    // Clear the screen
-    clearScreen();
-    
-    std::cout << "Editing card " << m_selectedCardIndex + 1 << " of " << m_deck.cards.size() << std::endl;
-    std::cout << "----------------------------------------" << std::endl;
+    window->clear();
+    window->drawBorder();
+    window->drawCenteredText("Edit Flashcard", 2);
+
+    // Display current card info
+    window->drawText("Editing card " + std::to_string(m_selectedCardIndex + 1) + " of " + std::to_string(m_deck.cards.size()), 2, 4);
+    window->drawText("----------------------------------------", 2, 5);
 
     // Edit question
-    std::cout << "Current question: " << card.question << std::endl;
-    std::cout << "Enter new question (or press Enter to keep current): ";
-    std::string newQuestion;
-    std::getline(std::cin, newQuestion);
+    window->drawText("Current question: " + card.question, 2, 7);
+    window->drawText("Enter new question (or press Enter to keep current):", 2, 8);
+    std::string newQuestion = window->getLine(2, 9, window->getSize().X - 4);
     if (!newQuestion.empty()) card.question = newQuestion;
 
-    std::cout << std::endl;
-
     // Edit answer
-    std::cout << "Current answer: " << card.answer << std::endl;
-    std::cout << "Enter new answer (or press Enter to keep current): ";
-    std::string newAnswer;
-    std::getline(std::cin, newAnswer);
+    window->drawText("Current answer: " + card.answer, 2, 11);
+    window->drawText("Enter new answer (or press Enter to keep current):", 2, 12);
+    std::string newAnswer = window->getLine(2, 13, window->getSize().X - 4);
     if (!newAnswer.empty()) card.answer = newAnswer;
 
-    std::cout << std::endl;
-
     // Edit difficulty
-    std::cout << "Current difficulty: " << cardDifficultyToStr(card.difficulty) << std::endl;
-    std::cout << "Enter new difficulty (0: Easy, 1: Medium, 2: Hard, or press Enter to keep current): ";
-    std::string newDifficultyStr;
-    std::getline(std::cin, newDifficultyStr);
+    window->drawText("Current difficulty: " + cardDifficultyToStr(card.difficulty), 2, 15);
+    window->drawText("Enter new difficulty (0: Easy, 1: Medium, 2: Hard, or press Enter to keep current):", 2, 16);
+    std::string newDifficultyStr = window->getLine(2, 17, window->getSize().X - 4);
     if (!newDifficultyStr.empty()) {
         try {
             int newDifficulty = std::stoi(newDifficultyStr);
             if (newDifficulty >= 0 && newDifficulty <= 2) {
                 card.difficulty = static_cast<CardDifficulty>(newDifficulty);
             } else {
-                std::cout << "Invalid difficulty. Keeping current difficulty." << std::endl;
+                window->drawText("Invalid difficulty. Keeping current difficulty.", 2, 19);
             }
         } catch (const std::invalid_argument&) {
-            std::cout << "Invalid input. Keeping current difficulty." << std::endl;
+            window->drawText("Invalid input. Keeping current difficulty.", 2, 19);
         }
     }
 
-    std::cout << std::endl;
-    std::cout << "Card updated successfully!" << std::endl;
-    std::cout << "Press any key to continue...";
+    window->drawText("Card updated successfully!", 2, 21);
+    window->drawText("Press any key to continue...", 2, 22);
     _getch(); // Wait for a key press
 
     // Save changes to file
-    //saveFlashCardDeck(m_deck, "Decks/" + m_deck.name + ".deck");
+    // saveFlashCardDeck(m_deck, "Decks/" + m_deck.name + ".deck");
     
     m_needsRedraw = true;
 }
@@ -287,7 +282,7 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
 
     // Draw instructions
-    window->drawText("Up/Down: Navigate Decks, Enter: Edit Deck, A: Add Deck, D: Delete Deck, R: Rename Deck, Backspace: Go Back", 2, window->getSize().Y - 2);
+    window->drawText("Up/Down: Navigate Decks, Enter: Edit Deck, A: Add Deck, D: Delete Deck, R: Rename Deck, Escape: Go Back", 2, window->getSize().Y - 2);
 
     m_needsRedraw = false;
 }
@@ -351,7 +346,7 @@ void EditDeckScene::handleInput()
             case 'r':
                 renameDeck();
                 break;
-            case 8: // Backspace
+            case 27: // Backspace
                 m_goBack();
                 break;
             default:

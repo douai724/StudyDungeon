@@ -123,6 +123,17 @@ public:
          */
     void drawCenteredText(const std::string &text, int y);
 
+     /**
+      * @brief Like the windows implementation it gets a users input and returns it as a string.
+      * 
+      * @param x coordinate for cursor position
+      * @param y coordinate for cursor position
+      * @param maxLength optional max length parameter to limit the number of characters entered (default is 0 meaning no limit)
+      * @param delimiter character that indicates end of input (default is '\n', meaning pressing ENTER will return the input)
+      * @return std::string the users input
+      */
+    std::string getLine(int x, int y, int maxLength = 0);
+
     /**
          * @brief Clears the screen
          *

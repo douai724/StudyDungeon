@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['game_113',['Game',['../classGame.html',1,'']]]
+  ['user_83',['User',['../classUser.html',1,'']]]
 ];

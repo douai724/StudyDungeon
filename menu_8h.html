@@ -67,20 +67,20 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">menu.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="util_8h_source.html">util.h</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;conio.h&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;windows.h&gt;</code><br />
 </div>
@@ -88,38 +88,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleUI::ConsoleWindow</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up and controls the console window.  <a href="classConsoleUI_1_1ConsoleWindow.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenuItem.html">MenuItem</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1AsciiArt.html">ConsoleUI::AsciiArt</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines an ascii art object.  <a href="classConsoleUI_1_1AsciiArt.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html">Menu</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Button.html">ConsoleUI::Button</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGridItem.html">GridItem</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html">ConsoleUI::Menu</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a menu system.  <a href="classConsoleUI_1_1Menu.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGridMenu.html">GridMenu</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a consoleWindow visual interface/layout.  <a href="classConsoleUI_1_1Scene.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manages the displaying of scenes.  <a href="classConsoleUI_1_1UIManager.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespaceConsoleUI"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConsoleUI.html">ConsoleUI</a></td></tr>
-<tr class="memdesc:namespaceConsoleUI"><td class="mdescLeft">&#160;</td><td class="mdescRight">UI manager -&gt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html" title="Sets up and controls the console window.">ConsoleWindow</a> -&gt; Scenes. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a97c7a3eab1fb33599b6d756fb6866b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConsoleUI.html#a97c7a3eab1fb33599b6d756fb6866b53">ConsoleUI::setConsoleCursorPosition</a> (int x, int y)</td></tr>
-<tr class="memdesc:a97c7a3eab1fb33599b6d756fb6866b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Console Cursor Position object to a location on the console.  <a href="namespaceConsoleUI.html#a97c7a3eab1fb33599b6d756fb6866b53">More...</a><br /></td></tr>
-<tr class="separator:a97c7a3eab1fb33599b6d756fb6866b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1a0a11f2388e9aaf13fdf548fc8d399"><td class="memItemLeft" align="right" valign="top"><a id="ac1a0a11f2388e9aaf13fdf548fc8d399"></a>
-COORD&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleUI::getConsoleWindowSize</b> ()</td></tr>
-<tr class="separator:ac1a0a11f2388e9aaf13fdf548fc8d399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Green Alligators </dd></dl>

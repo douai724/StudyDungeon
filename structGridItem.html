@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: FlashcardApp::ResultsScene Class Reference</title>
+<title>My Project: GridItem Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,46 +59,42 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>FlashcardApp</b></li><li class="navelem"><a class="el" href="classFlashcardApp_1_1ResultsScene.html">ResultsScene</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">FlashcardApp::ResultsScene Class Reference</div>  </div>
+<div class="title">GridItem Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for FlashcardApp::ResultsScene:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classFlashcardApp_1_1ResultsScene.png" usemap="#FlashcardApp::ResultsScene_map" alt=""/>
-  <map id="FlashcardApp::ResultsScene_map" name="FlashcardApp::ResultsScene_map">
-<area href="classConsoleUI_1_1Scene.html" title="Defines a consoleWindow visual interface/layout." alt="ConsoleUI::Scene" shape="rect" coords="0,0,174,24"/>
-  </map>
-</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a12fd86d00c62998bdc0323bf310cb78f"><td class="memItemLeft" align="right" valign="top"><a id="a12fd86d00c62998bdc0323bf310cb78f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ResultsScene</b> (<a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, const std::vector&lt; int &gt; &amp;difficultyCount, std::function&lt; void()&gt; goToMainMenu, std::function&lt; void()&gt; goToDeckSelection)</td></tr>
-<tr class="separator:a12fd86d00c62998bdc0323bf310cb78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01283258758d03ac9ef60e5f42355fcd"><td class="memItemLeft" align="right" valign="top"><a id="a01283258758d03ac9ef60e5f42355fcd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> () override</td></tr>
-<tr class="separator:a01283258758d03ac9ef60e5f42355fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a928c1cbcadf2dd9357267c1afb0dc468"><td class="memItemLeft" align="right" valign="top"><a id="a928c1cbcadf2dd9357267c1afb0dc468"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleUI::ConsoleWindow</a> &gt; window) override</td></tr>
-<tr class="separator:a928c1cbcadf2dd9357267c1afb0dc468"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b9da732f2453d78791ccffd4813b2dd"><td class="memItemLeft" align="right" valign="top"><a id="a7b9da732f2453d78791ccffd4813b2dd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleInput</b> () override</td></tr>
-<tr class="separator:a7b9da732f2453d78791ccffd4813b2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3224078325f11ec7c2329948b88135"><td class="memItemLeft" align="right" valign="top"><a id="aeb3224078325f11ec7c2329948b88135"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>GridItem</b> (const <a class="el" href="classMenuItem.html">MenuItem</a> &amp;item, int row, int col, int width, int height)</td></tr>
+<tr class="separator:aeb3224078325f11ec7c2329948b88135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:a14124aec07c4dbf98b8459d066abc3a1"><td class="memItemLeft" align="right" valign="top"><a id="a14124aec07c4dbf98b8459d066abc3a1"></a>
+<a class="el" href="classMenuItem.html">MenuItem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>item</b></td></tr>
+<tr class="separator:a14124aec07c4dbf98b8459d066abc3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5e421f89c4867ecc9e9a41bbc59f17"><td class="memItemLeft" align="right" valign="top"><a id="aeb5e421f89c4867ecc9e9a41bbc59f17"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>row</b></td></tr>
+<tr class="separator:aeb5e421f89c4867ecc9e9a41bbc59f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5bc3d3db84f2f2834a78cbf966e9c79"><td class="memItemLeft" align="right" valign="top"><a id="aa5bc3d3db84f2f2834a78cbf966e9c79"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>col</b></td></tr>
+<tr class="separator:aa5bc3d3db84f2f2834a78cbf966e9c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e1feda5526288367f694d1ea39f4e7c"><td class="memItemLeft" align="right" valign="top"><a id="a5e1feda5526288367f694d1ea39f4e7c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>width</b></td></tr>
+<tr class="separator:a5e1feda5526288367f694d1ea39f4e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e000baa4295e630a771fa78523c290"><td class="memItemLeft" align="right" valign="top"><a id="aa5e000baa4295e630a771fa78523c290"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
+<tr class="separator:aa5e000baa4295e630a771fa78523c290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="flashcard__scene_8h_source.html">flashcard_scene.h</a></li>
-<li>/home/runner/work/StudyDungeon/StudyDungeon/src/flashcard_scene.cpp</li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

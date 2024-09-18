@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['updatedeckfile_196',['updateDeckFile',['../deck_8cpp.html#a9131aec89f24346a9a64614a30448864',1,'updateDeckFile(FlashCardDeck &amp;deck_to_update):&#160;deck.cpp'],['../deck_8h.html#a9131aec89f24346a9a64614a30448864',1,'updateDeckFile(FlashCardDeck &amp;deck_to_update):&#160;deck.cpp']]],
-  ['updatesize_197',['updateSize',['../classConsoleUI_1_1ConsoleWindow.html#a54cdfcc106d1e58464bd563e7bc347ac',1,'ConsoleUI::ConsoleWindow']]],
-  ['user_198',['User',['../classUser.html#ab747430184498dc777d396f6372af77a',1,'User']]]
+  ['writeflashcarddeck_137',['writeFlashCardDeck',['../deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756',1,'deck.h']]]
 ];

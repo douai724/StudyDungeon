@@ -76,17 +76,17 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="menu_8h.html">menu.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classFibonacciScene.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFibonacciScene.html">FibonacciScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classFibonacciScene.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFibonacciScene.html">FibonacciScene</a> : <span class="keyword">public</span> ConsoleUI::Scene</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classFibonacciScene.html">FibonacciScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classFibonacciScene.html">FibonacciScene</a>(ConsoleUI::UIManager &amp;uiManager, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    ConsoleUI::UIManager &amp;m_uiManager;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::function&lt;void()&gt; m_goBack;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber1;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber2;</div>
@@ -96,8 +96,6 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// FIBONACCI_SCENE_H</span></div>
-<div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdoc">Defines a consoleWindow visual interface/layout.</div><div class="ttdef"><b>Definition:</b> menu.h:310</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdoc">Manages the displaying of scenes.</div><div class="ttdef"><b>Definition:</b> menu.h:324</div></div>
 <div class="ttc" id="aclassFibonacciScene_html"><div class="ttname"><a href="classFibonacciScene.html">FibonacciScene</a></div><div class="ttdef"><b>Definition:</b> test_scene.h:9</div></div>
 <div class="ttc" id="amenu_8h_html"><div class="ttname"><a href="menu_8h.html">menu.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

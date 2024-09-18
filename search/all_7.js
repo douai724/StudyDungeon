@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['handleinput_54',['handleInput',['../classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82',1,'ConsoleUI::Menu']]],
-  ['heal_55',['heal',['../classPlayer.html#aa7eae982673d2d8027ac5f45e6b5b4f7',1,'Player']]]
+  ['isgameover_33',['isGameOver',['../classGame.html#a102ce6e5a222e403aa7a0465ff6281dc',1,'Game']]],
+  ['isvaliddeckfilename_34',['isValidDeckFileName',['../util_8h.html#afa7202e3936e1663f0e361cace941194',1,'util.cpp']]]
 ];

@@ -43,8 +43,6 @@ namespace ConsoleUI
      */
 void setConsoleCursorPosition(int x, int y);
 COORD getConsoleWindowSize();
-void setConsoleCursorPosition(int x, int y);
-COORD getConsoleWindowSize();
 
 /**
      * @brief Sets up and controls the console window

@@ -1,7 +1,11 @@
 /**
  * @file deck.h
  * @author Green Alligators
- * @brief
+ * @brief Functions and classes relating to flashcards.
+ *
+ * @details These functions are involved with the parsing of files to create flashcards which
+ * are then converted into a deck. Cards are also parsed to text and written to file to save them.
+ *
  * @version 0.1
  * @date 2024-08-07
  *
@@ -36,6 +40,7 @@ enum CardDifficulty
     HIGH = 3
 };
 
+namespace fs = std::filesystem;
 
 /**
  * @brief Converts a string into the CardDifficulty enum.
@@ -82,9 +87,9 @@ public:
     int n_times_answered{};
 
     /**
-         * @brief Prints the card question and answer
-         *
-         */
+    * @brief Prints the card question and answer
+    *
+    */
     void printCard()
     {
         std::cout << question << '\n';
@@ -93,9 +98,9 @@ public:
     }
 
     /**
-         * @brief Used to
-         *
-         */
+    * @brief Used to
+    *
+    */
     void printCardAsTemplate()
     {
         std::cout << "Q: " << question << '\n' << "A: " << answer << '\n';
@@ -103,6 +108,11 @@ public:
         std::cout << "-" << '\n';
     }
 
+    /**
+     * @brief Returns the card in template form as a string
+     *
+     * @return std::string
+     */
     std::string stringCardAsTemplate()
     {
         std::stringstream card_contents{};

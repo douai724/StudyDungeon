@@ -1,8 +1,7 @@
 #include "playing_card.h"
 
-PlayingCard::PlayingCard(bool target, enum Type cardType, int value)
+PlayingCard::PlayingCard(enum Type cardType, int value)
 {
-    PlayingCard::target = target;
     PlayingCard::cardType = cardType;
     PlayingCard::value = value;
 }
@@ -13,16 +12,11 @@ PlayingCard::PlayingCard()
 
 bool PlayingCard::operator==(PlayingCard &other)
 {
-    if (this->target == other.target && this->value == other.value && this->cardType == other.cardType)
+    if (this->value == other.value && this->cardType == other.cardType)
     {
         return true;
     }
     return false;
-}
-
-bool PlayingCard::getTarget()
-{
-    return PlayingCard::target;
 }
 
 int PlayingCard::getValue()
@@ -41,9 +35,12 @@ std::string PlayingCard::toString()
     switch (PlayingCard::cardType)
     {
     case 0:
-        type = "damage";
-        break;
+        return "Deal " + std::to_string(PlayingCard::value) + " damage.";
+    case 1:
+        return "Heal " + std::to_string(PlayingCard::value) + " hit points.";
+    case 2:
+        return "Swap hands with the enemy player.";
+    default:
+        return "Unknown ability";
     }
-
-    return type + " " + std::to_string(value);
 }

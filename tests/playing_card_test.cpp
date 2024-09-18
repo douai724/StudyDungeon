@@ -5,12 +5,7 @@
 
 TEST_CASE("Retrieve members")
 {
-    PlayingCard testCard = PlayingCard(1, (enum Type)0, 10);
-
-    SECTION("Get target")
-    {
-        REQUIRE(testCard.getTarget() == 1);
-    }
+    PlayingCard testCard = PlayingCard((enum Type)0, 10);
 
     SECTION("Get value")
     {
@@ -25,11 +20,11 @@ TEST_CASE("Retrieve members")
 
 TEST_CASE("Equality is correct")
 {
-    PlayingCard card1 = PlayingCard(1, (enum Type)0, 15);
+    PlayingCard card1 = PlayingCard((enum Type)0, 15);
     PlayingCard cardRef = card1;
     PlayingCard *cardPtr = &card1;
 
-    PlayingCard card2 = PlayingCard(1, (enum Type)0, 15);
+    PlayingCard card2 = PlayingCard((enum Type)0, 15);
 
     REQUIRE(card1 == cardRef);
     REQUIRE(card1 == *cardPtr);

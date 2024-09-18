@@ -1,9 +1,14 @@
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
+#include "edit_flashcard.h"
+#include "flashcard_scene.h" // Include the new flashcard scenes
+#include "game_scene.h"
 #include "gameloop.h"
 #include "menu.h"
+#include "test_scene.h"
 #include "util.h"
+#include <conio.h>
 #include <filesystem>
 #include <functional>
 #include <iostream>
@@ -12,284 +17,187 @@
 #include <vector>
 #include <windows.h>
 
-namespace fs = std::filesystem;
-
-FlashCardDeck currentFlashCardDeck;
-
-void addFlashcard()
+class MainMenuScene : public ConsoleUI::Scene
 {
-    clearScreen();
-    std::cout << "Adding a new flashcard...\n";
-    pause();
-}
+public:
+    MainMenuScene(ConsoleUI::UIManager &uiManager,
+                  std::function<void()> openFibonacciScene,
+                  std::function<void()> openBrowseDecks,
+                  std::function<void()> openEditDecks,
+                  std::function<void()> openGameScene)
 
-void reviewUnknown()
-{
-    clearScreen();
-    std::cout << "Reviewing unknown difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
-    for (FlashCard fc : currentFlashCardDeck.cards)
+        : m_uiManager(uiManager)
     {
-        if (fc.difficulty == UNKNOWN)
+        auto &menu = m_uiManager.createMenu("main", false);
+        menu.addButton("Browse Decks", openBrowseDecks);
+        menu.addButton("Edit Decks", openEditDecks);
+        menu.addButton("Fibonacci Sequence", openFibonacciScene);
+        menu.addButton("Game", openGameScene);
+
+        menu.addButton("Exit", []() {
+            clearScreen();
+            exit(0);
+        });
+
+        // Create ASCII art
+        m_asciiArt = m_uiManager.createAsciiArt(R"(
+
+ (`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
+ ( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
+(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
+/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
+\_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
+.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
+\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
+ `-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
+
+        )");
+    }
+
+    void update() override
+    {
+    }
+
+    void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override
+    {
+        window->clear();
+        window->drawBorder();
+
+        int artX = (window->getSize().X - m_asciiArt.getWidth()) / 2;
+        window->drawAsciiArt(m_asciiArt.getArt(), artX, 2);
+
+        // Calculate total width of menu buttons
+        auto &menu = m_uiManager.getMenu("main");
+        int totalMenuWidth = 0;
+        for (size_t i = 0; i < menu.getButtonCount(); ++i)
         {
-            answerCard(fc);
-            std::cout << "\n\nNEXT CARD?" << std::endl;
-            pause();
+            totalMenuWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing between buttons
         }
-    }
-    std::cout << "End of flashcard deck..." << std::endl;
+        totalMenuWidth -= 1;
 
-    if (updateDeckFile(currentFlashCardDeck))
+        // Calculate starting X position for centered menu
+        int menuX = (window->getSize().X - totalMenuWidth) / 2;
+        int menuY = m_asciiArt.getHeight() + 5;
+
+        menu.draw(menuX, menuY);
+    }
+
+    void handleInput() override
     {
-        std::cout << "Cards were updated." << std::endl;
-    }
-    else
-    {
-        std::cout << "Cards were not updated." << std::endl;
-    }
-}
-
-void reviewEasy()
-{
-    clearScreen();
-    std::cout << "Reviewing easy difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
-    for (FlashCard fc : currentFlashCardDeck.cards)
-    {
-        if (fc.difficulty == EASY)
-        {
-            answerCard(fc);
-            std::cout << "\n\nNEXT CARD?" << std::endl;
-            pause();
-        }
-    }
-    std::cout << "End of flashcard deck..." << std::endl;
-
-    if (updateDeckFile(currentFlashCardDeck))
-    {
-        std::cout << "Cards were updated." << std::endl;
-    }
-    else
-    {
-        std::cout << "Cards were not updated." << std::endl;
-    }
-}
-
-void reviewMedium()
-{
-    clearScreen();
-    std::cout << "Reviewing medium difficulyy flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
-    for (FlashCard fc : currentFlashCardDeck.cards)
-    {
-        if (fc.difficulty == MEDIUM)
-        {
-            answerCard(fc);
-            std::cout << "\n\nNEXT CARD?" << std::endl;
-            pause();
-        }
-    }
-    std::cout << "End of flashcard deck..." << std::endl;
-
-    if (updateDeckFile(currentFlashCardDeck))
-    {
-        std::cout << "Cards were updated." << std::endl;
-    }
-    else
-    {
-        std::cout << "Cards were not updated." << std::endl;
-    }
-}
-
-void reviewHard()
-{
-    clearScreen();
-    std::cout << "Reviewing hard difficulty flashcards from the '" << currentFlashCardDeck.name << "' deck.\n";
-    for (FlashCard fc : currentFlashCardDeck.cards)
-    {
-        if (fc.difficulty == HIGH)
-        {
-            answerCard(fc);
-            std::cout << "\n\nNEXT CARD?" << std::endl;
-            pause();
-        }
-    }
-    std::cout << "End of flashcard deck..." << std::endl;
-
-    if (updateDeckFile(currentFlashCardDeck))
-    {
-        std::cout << "Cards were updated." << std::endl;
-    }
-    else
-    {
-        std::cout << "Cards were not updated." << std::endl;
-    }
-}
-
-void editCard()
-{
-    clearScreen();
-    std::cout << "Editing a flashcard...\n";
-    pause();
-}
-
-void deleteCard()
-{
-    clearScreen();
-    std::cout << "Deleting a flashcard...\n";
-    pause();
-}
-
-/**
- * @brief Revision loop
- *
- */
-int reviseEntireDeck()
-{
-    int n_correct{0};
-    clearScreen();
-    std::cout << "Reviewing all flashcards from the " << currentFlashCardDeck.name << " deck.\n";
-    pause();
-    for (FlashCard fc : currentFlashCardDeck.cards)
-    {
-        n_correct += answerCard(fc);
-        std::cout << "\n\nNEXT CARD?" << std::endl;
-        pause();
-    }
-    std::cout << "You answered " << n_correct << " cards correctly this round." << std::endl;
-    std::cout << "End of flashcard deck..." << std::endl;
-
-    if (updateDeckFile(currentFlashCardDeck))
-    {
-        std::cout << "Cards were updated." << std::endl;
-    }
-    else
-    {
-        std::cout << "Cards were not updated." << std::endl;
-    }
-    pause();
-    return n_correct;
-}
-
-void viewDeck()
-{
-    clearScreen();
-    std::cout << "Current cards in the " << currentFlashCardDeck.name << " deck:\n\n";
-    currentFlashCardDeck.printDeck();
-    pause();
-}
-
-void exitApp()
-{
-    clearScreen();
-    exit(0);
-}
-
-void about()
-{
-    clearScreen();
-    std::cout << project_name << '\n';
-    std::cout << project_version << '\n';
-    pause();
-}
-
-void controls()
-{
-    clearScreen();
-    std::cout << "Esc to go back (exits app when on main menu)\n";
-    std::cout << "Arrow keys to navigate menu items\n";
-    std::cout << "------------------------------------------------\n";
-    pause();
-}
-
-void addButtonFunction(std::shared_ptr<GridMenu> mainMenu)
-{
-    int row = 0;
-    int col = 0;
-    bool positionFound = false;
-
-    for (row = 0; row < mainMenu->getGridHeight(); ++row)
-    {
-        for (col = 0; col < mainMenu->getGridWidth(); ++col)
-        {
-            if (!mainMenu->isValidGridItem(row, col))
-            {
-                positionFound = true;
-                break;
-            }
-        }
-        if (positionFound)
-            break;
+        m_uiManager.getMenu("main").handleInput();
     }
 
-    if (positionFound)
-    {
-        mainMenu->addGridItem(
-            "New Button",
-            []() {
-                clearScreen();
-                std::cout << "New button clicked!\n";
-                pause();
-            },
-            row,
-            col,
-            1,
-            1);
-    }
-}
+private:
+    ConsoleUI::UIManager &m_uiManager;
+    ConsoleUI::AsciiArt m_asciiArt;
+};
 
 int main()
 {
-    splashScreen();
-    fs::path app_path = getAppPath();
-    fs::path decks_dir = app_path;
-    decks_dir.append("Decks");
-    if (!fs::exists(decks_dir))
+    try
     {
-        fs::create_directory(decks_dir);
-        std::cerr << "Decks/ did not exist" << std::endl;
+        ConsoleUI::UIManager uiManager;
+
+        std::shared_ptr<MainMenuScene> mainMenuScene;
+        std::shared_ptr<FibonacciScene> fibonacciScene;
+        std::shared_ptr<FlashcardEdit::EditDeckScene> editDecksScene;
+        std::shared_ptr<FlashcardApp::BrowseDecksScene> browseDecksScene;
+        std::shared_ptr<FlashcardApp::FlashcardScene> flashcardScene;
+        std::shared_ptr<FlashcardApp::ResultsScene> resultsScene;
+        std::shared_ptr<GameScene> gameScene;
+
+        // Create ResultsScene
+        resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
+            uiManager,
+            std::vector<int>{0, 0, 0}, // Initial difficulty count
+            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+            [&]() { uiManager.setCurrentScene(browseDecksScene); });
+
+        // Create BrowseDecksScene
+        browseDecksScene = std::make_shared<FlashcardApp::BrowseDecksScene>(
+            uiManager,
+            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+            [&](const FlashCardDeck &deck) {
+                flashcardScene = std::make_shared<FlashcardApp::FlashcardScene>(
+                    uiManager,
+                    deck,
+                    [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                    [&](const std::vector<int> &difficultyCount) {
+                        resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
+                            uiManager,
+                            difficultyCount,
+                            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+                            [&]() { uiManager.setCurrentScene(browseDecksScene); });
+                        uiManager.setCurrentScene(resultsScene);
+                    });
+                uiManager.setCurrentScene(flashcardScene);
+            });
+
+        // Create editDecksScene
+        editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
+            uiManager,
+            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+            [&](FlashCardDeck &deck) { // Note: Changed to non-const reference
+                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
+                    uiManager.setCurrentScene(editDecksScene);
+                });
+                uiManager.setCurrentScene(editFlashcardScene);
+            });
+
+        // Create FibonacciScene
+        fibonacciScene =
+            std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
+
+        // Create GameScene
+        gameScene = std::make_shared<GameScene>(uiManager);
+
+        // Create MainMenuScene
+        mainMenuScene = std::make_shared<MainMenuScene>(
+            uiManager,
+            [&]() { uiManager.setCurrentScene(fibonacciScene); },
+            [&]() { uiManager.setCurrentScene(browseDecksScene); },
+            [&]() { uiManager.setCurrentScene(editDecksScene); },
+            [&]() { uiManager.setCurrentScene(gameScene); });
+
+
+        // Set initial scene
+        uiManager.setCurrentScene(mainMenuScene);
+
+        // Main game loop
+        bool running = true;
+        while (running)
+        {
+            try
+            {
+                uiManager.update();
+                uiManager.render();
+                uiManager.handleInput();
+
+                // Check for exit condition (e.g., a specific key press)
+                if (_kbhit())
+                {
+                    int ch = _getch();
+                    if (ch == 27)
+                    { // ESC key
+                        running = false;
+                    }
+                }
+
+                Sleep(10);
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << "Error in game loop: " << e.what() << std::endl;
+            }
+        }
+
+        std::cout << "Exiting application..." << std::endl;
     }
-    std::vector<FlashCardDeck> all_flashcard_decks = loadFlashCardDecks(decks_dir);
-
-    currentFlashCardDeck = all_flashcard_decks.front();
-
-    currentFlashCardDeck.printDeck();
-
-    auto mainMenu = std::make_shared<GridMenu>("Study Dungeon", 3, 1);
-    auto aboutMenu = std::make_shared<GridMenu>("About & How to use", 1, 1);
-    aboutMenu->addGridItem("Use arrow keys to navigate menu. Press esc to go back or exit.", []() {}, 0, 0);
-
-    auto deckMenu = std::make_shared<GridMenu>("Flashcard decks", 1, (int)all_flashcard_decks.size());
-
-    for (int i = 0; i < (int)all_flashcard_decks.size(); i++)
+    catch (const std::exception &e)
     {
-        std::string deckName = all_flashcard_decks[i].name;
-        FlashCardDeck curr = all_flashcard_decks[i];
-        auto flashcardMenu = std::make_shared<GridMenu>(deckName, 3, 1);
-        deckMenu->addGridItem(
-            deckName,
-            [flashcardMenu, deckName, curr, mainMenu]() {
-                currentFlashCardDeck = curr;
-                auto viewMenu = std::make_shared<GridMenu>("View", 1, 1);
-
-                flashcardMenu->addGridItem(
-                    "Play",
-                    []() {
-                        int numCorrect = reviseEntireDeck();
-                        start(numCorrect);
-                    },
-                    0,
-                    0);
-                flashcardMenu->addGridItem("View", viewDeck, 0, 1);
-                flashcardMenu->addGridItem("Back", mainMenu, 0, 2);
-                flashcardMenu->run();
-            },
-            i,
-            0);
+        std::cerr << "Fatal error: " << e.what() << std::endl;
+        return 1;
     }
-
-    mainMenu->addGridItem("PLAY", deckMenu, 0, 0);
-    mainMenu->addGridItem("ABOUT", aboutMenu, 0, 1);
-    mainMenu->addGridItem("EXIT", exitApp, 0, 2);
-
-    mainMenu->run();
 
     return 0;
 }

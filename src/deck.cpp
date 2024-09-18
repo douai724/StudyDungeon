@@ -1,7 +1,9 @@
 /**
  * @file deck.cpp
  * @author Green Alligators
- * @brief
+ * @brief Functions and classes relating to flashcards
+ *
+ *
  * @version 0.1
  * @date 2024-08-23
  *
@@ -10,8 +12,6 @@
  */
 
 #include "deck.h"
-
-namespace fs = std::filesystem;
 
 
 CardDifficulty strToCardDifficulty(const std::string &difficultyStr)
@@ -100,17 +100,21 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
                 deck.cards.push_back(fc);
                 std::cout << "NEW CARD" << '\n';
             }
-            if (strInput.starts_with("Q:"))
+            if (strInput.starts_with("Q: "))
             {
-                deck.cards.at(cardNum).question = strInput;
+                deck.cards.at(cardNum).question = strInput.substr(2);
             }
-            if (strInput.starts_with("A:"))
+            if (strInput.starts_with("A: "))
             {
-                deck.cards.at(cardNum).answer = strInput;
+                deck.cards.at(cardNum).answer = strInput.substr(2);
             }
-            if (strInput.starts_with("D:"))
+            if (strInput.starts_with("D: "))
             {
-                //deck.cards.at(cardNum).difficulty = strToCardDifficulty(strInput);
+                deck.cards.at(cardNum).difficulty = strToCardDifficulty(strInput.substr(2));
+            }
+            if (strInput.starts_with("N: "))
+            {
+                deck.cards.at(cardNum).n_times_answered = std::stoi(strInput.substr(2));
             }
         }
 
@@ -177,11 +181,21 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
     {
         // TODO
         // ensure parent directory exists
-        // check Decks/ exists
-        // check for existance of
-        // open file for writing
-        // write name of deck to file
-        // loop through each card in the deck
+        if (fs::is_directory(filename.parent_path()))
+        {
+            // open file
+            std::ofstream outf{filename.string(), std::ios::trunc};
+            // write contents to file
+            outf << deck.name << std::endl;
+            for (FlashCard fc : deck.cards)
+            {
+                outf << fc.stringCardAsTemplate();
+                outf << "-" << std::endl;
+            }
+            // close file
+            outf.close();
+            return true;
+        }
         return false;
     }
 };
@@ -218,6 +232,8 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
 
 std::vector<FlashCardDeck> createExampleDecks()
 {
+
+
     FlashCard f1 = createFlashCard("question 1", "answer 1", EASY, 0);
     FlashCard f2 = createFlashCard("question 2", "answer 2", MEDIUM, 1);
     FlashCardDeck d1{"Example Deck 1", "", std::vector<FlashCard>{f1, f2}};

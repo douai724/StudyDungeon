@@ -18,6 +18,7 @@
 #include <string>
 #include <windows.h>
 
+extern bool isTestMode;
 
 /**
  * @brief Get the app path object
@@ -65,5 +66,12 @@ bool yesNoPrompt();
  * @return false
  */
 bool isValidDeckFileName(std::string name);
+
+
+/**
+ * @brief hides or shows the cursor icon in the console
+ * 
+ */
+void ShowConsoleCursor(bool showflag);
 
 #endif

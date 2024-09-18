@@ -2,6 +2,7 @@
 
 
 namespace fs = std::filesystem;
+bool isTestMode = false;
 
 /**
  * @brief Get the app path object
@@ -45,7 +46,14 @@ void pause()
 {
     std::string line;
     std::cout << "Press ENTER to continue..." << std::endl;
-    std::getline(std::cin, line);
+    if (!isTestMode)
+    {
+        std::getline(std::cin, line); // Wait for user input in production
+    }
+    else
+    {
+        std::cout << "[Simulated ENTER]" << std::endl; // Simulate "ENTER" press in test mode
+    }
 }
 
 void clearScreen()
@@ -124,4 +132,15 @@ bool isValidDeckFileName(std::string name)
         }
     }
     return true;
+}
+
+void ShowConsoleCursor(bool showFlag)
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    CONSOLE_CURSOR_INFO     cursorInfo;
+    cursorInfo.dwSize = 1;
+    GetConsoleCursorInfo(out, &cursorInfo);
+    cursorInfo.bVisible = showFlag; // set the cursor visibility
+    SetConsoleCursorInfo(out, &cursorInfo);
 }

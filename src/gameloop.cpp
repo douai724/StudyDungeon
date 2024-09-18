@@ -7,54 +7,16 @@ Game::Game(Player *p1, Player *p2)
     Game::turn = 1;
 }
 
-void Game::nextTurn()
+void Game::nextTurn(PlayingCard nextCard)
 {
-    clearScreen();
-    PlayingCard card = PlayingCard();
-
-    if (turn == 1)
-    {
-        if ((int)p1->getHand().size() == 0)
-        {
-            Game::turn = 2;
-            return;
-        }
-        try
-        {
-            card = p1->play();
-        }
-        catch (int e)
-        {
-            std::cout << "Invalid card selection, please try again." << e << std::endl;
-            return;
-        }
-    }
-    else
-    {
-        if ((int)p2->getHand().size() == 0)
-        {
-            Game::turn = 1;
-            return;
-        }
-        try
-        {
-            card = p2->play();
-        }
-        catch (int e)
-        {
-            std::cout << "Invalid card selection." << e << std::endl;
-            return;
-        }
-    }
-
 
     // apply effect
-    switch (card.getType())
+    switch (nextCard.getType())
     {
     case 0:
-        damageEffect(card);
+        damageEffect(nextCard);
     case 1:
-        healEffect(card);
+        healEffect(nextCard);
         break;
     case 2:
         swapHandEffect();
@@ -63,18 +25,9 @@ void Game::nextTurn()
         std::cout << "Valid card does not exist." << std::endl;
     }
 
-    if (turn == 1)
-    {
-        std::cout << "Turn: Player 1" << std::endl;
-    }
-    else
-    {
-        std::cout << "Turn: Player 2" << std::endl;
-    }
-
-    std::cout << "Played: " << card.toString() << std::endl;
-    std::cout << "Health: P1=" << p1->getHitPoints() << "\t\t\t\t\t\t\t P2=" << p2->getHitPoints() << std::endl;
-    pause();
+    // std::cout << "Played: " << card.toString() << std::endl;
+    // std::cout << "Health: P1=" << p1->getHitPoints() << "\t\t\t\t\t\t\t P2=" << p2->getHitPoints() << std::endl;
+    //pause();
 
     // draw a card
     if (turn == 1)
@@ -138,24 +91,9 @@ void Game::damageEffect(PlayingCard &card)
     }
 }
 
-
-void start()
+Game setUp(Player *p1, Player *p2)
 {
-    std::cout << "BEGIN GAME" << std::endl;
-    pause();
-    User u1 = User(100, 100, 5, generateDeck(20));
-    Bot u2 = Bot(100, 100, 5, generateDeck(20));
-    Player *p1 = &u1;
-    Player *p2 = &u2;
-
-    Game game = Game(p1, p2);
-
-    while (!game.isGameOver())
-    {
-        game.nextTurn();
-    }
-    std::cout << "The game is over!" << std::endl;
-    pause();
+    return Game(p1, p2);
 }
 
 std::vector<PlayingCard> generateDeck(int numCards)

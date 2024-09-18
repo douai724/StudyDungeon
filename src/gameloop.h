@@ -25,7 +25,7 @@
  */
 class Game
 {
-private:
+public:
     /**
       * The current turn. 1 for Player 1; 2 for Player 2.
       */
@@ -59,7 +59,6 @@ private:
      */
     void swapHandEffect();
 
-public:
     /**
      * @brief Construct a new Game object.
      *
@@ -72,7 +71,7 @@ public:
       * @brief Plays the next turn of the game.
       *
       */
-    void nextTurn();
+    void nextTurn(PlayingCard nextCard);
 
     /**
       * @brief Checks if the game is over.
@@ -91,7 +90,9 @@ public:
  * @brief Set up and start the game.
  *
  */
-void start();
+void start(Game game);
+
+Game setUp(Player *p1, Player *p2);
 
 /**
  * @brief Generates a hand.

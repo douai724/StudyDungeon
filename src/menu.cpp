@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <iostream>
 
+
 namespace ConsoleUI
 {
 
@@ -29,6 +30,7 @@ ConsoleWindow::ConsoleWindow() : m_width(0), m_height(0), m_textBoxCapacity(14)
     updateSize();
 }
 
+
 void ConsoleWindow::updateSize()
 {
     COORD size = getConsoleWindowSize();
@@ -41,7 +43,7 @@ void ConsoleWindow::drawBorder()
     drawBox(0, 0, m_width, m_height);
 }
 
-void ConsoleWindow::drawBox(int x, int y, int width, int height)
+void ConsoleWindow::drawBox(int x, int y, size_t width, size_t height)
 {
     drawHorizontalLine(x, y, width);
     drawHorizontalLine(x, y + height - 1, width);
@@ -49,18 +51,18 @@ void ConsoleWindow::drawBox(int x, int y, int width, int height)
     drawVerticalLine(x + width - 1, y, height);
 }
 
-void ConsoleWindow::drawHorizontalLine(int x, int y, int length)
+void ConsoleWindow::drawHorizontalLine(int x, int y, size_t length, char ch)
 {
     setConsoleCursorPosition(x, y);
-    std::cout << std::string(length, '-');
+    std::cout << std::string(length, ch);
 }
 
-void ConsoleWindow::drawVerticalLine(int x, int y, int length)
+void ConsoleWindow::drawVerticalLine(int x, int y, int length, char ch)
 {
     for (int i = 0; i < length; ++i)
     {
         setConsoleCursorPosition(x, y + i);
-        std::cout << '|';
+        std::cout << ch;
     }
 }
 
@@ -91,6 +93,69 @@ void ConsoleWindow::drawCenteredText(const std::string &text, int y)
     drawText(text, x, y);
 }
 
+#include <conio.h>
+#include <iostream>
+#include <string>
+#include <windows.h>
+
+std::string ConsoleWindow::getLine(int x, int y, int maxLength)
+{
+    std::string input;
+    int cursorPos = 0;
+
+    while (true)
+    {
+        // Clear the input area
+        setConsoleCursorPosition(x, y);
+        std::cout << std::string(maxLength, ' ');
+
+        // Display the current input
+        setConsoleCursorPosition(x, y);
+        std::cout << input;
+
+        // Set the cursor position
+        setConsoleCursorPosition(x + cursorPos, y);
+
+        // Get user input
+        int ch = _getch();
+
+        if (ch == 224) // Arrow key prefix
+        {
+            ch = _getch();
+            switch (ch)
+            {
+            case 75: // Left arrow
+                if (cursorPos > 0)
+                    cursorPos--;
+                break;
+            case 77: // Right arrow
+                if (cursorPos < input.length())
+                    cursorPos++;
+                break;
+            }
+        }
+        else if (ch == 13) // Enter key
+        {
+            break;
+        }
+        else if (ch == 8) // Backspace
+        {
+            if (cursorPos > 0)
+            {
+                input.erase(cursorPos - 1, 1);
+                cursorPos--;
+            }
+        }
+        else if (ch >= 32 && ch <= 126 && input.length() < maxLength) // Printable characters
+        {
+            input.insert(cursorPos, 1, static_cast<char>(ch));
+            cursorPos++;
+        }
+    }
+
+    return input;
+}
+
 void ConsoleWindow::clear()
 {
     clearScreen();
@@ -115,7 +180,7 @@ void ConsoleWindow::drawTextBox(int x, int y, int width, int height)
     drawBox(x, y, width, height);
     for (size_t i = 0; i < m_textBox.size() && i < static_cast<size_t>(height - 2); ++i)
     {
-        drawText(m_textBox[i].substr(0, width - 2), static_cast<size_t>(x + 1), static_cast<size_t>(y + i + 1));
+        drawText(m_textBox[i].substr(0, width - 2), static_cast<int>(x + 1), static_cast<int>(y + i + 1));
     }
 }
 
@@ -193,7 +258,7 @@ const std::string &Button::getLabel() const
 }
 
 // Menu implementation
-Menu::Menu(bool horizontal) : m_selectedIndex(0), m_horizontal(horizontal)
+Menu::Menu(bool horizontal) : m_selectedIndex(0), horizontal_layout(horizontal)
 {
 }
 
@@ -209,7 +274,7 @@ void Menu::draw(int x, int y)
     for (size_t i = 0; i < m_buttons.size(); ++i)
     {
         m_buttons[i].draw(currentX, currentY, i == m_selectedIndex);
-        if (m_horizontal)
+        if (horizontal_layout)
         {
             currentX += m_buttons[i].getWidth() + 1;
         }
@@ -226,7 +291,7 @@ void Menu::handleInput()
     if (key == 224) // Arrow key
     {
         key = _getch();
-        if (m_horizontal)
+        if (horizontal_layout)
         {
             switch (key)
             {
@@ -262,6 +327,7 @@ bool Menu::isBackButtonPressed() const
     return m_buttons[m_selectedIndex].getLabel() == "Back";
 }
 
+
 void Menu::pushPage()
 {
     m_pageHistory.push_back(m_buttons);
@@ -278,6 +344,7 @@ void Menu::popPage()
         m_selectedIndex = 0;
     }
 }
+
 
 size_t Menu::getButtonCount() const
 {

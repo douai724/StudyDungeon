@@ -2,9 +2,9 @@ name: Windows CI Test and Coverage
 
 on:
     push:
-        branches: [main, master, cmake_dev]
+        branches: [main, dev, cmake_dev]
     pull_request:
-        branches: [main, master, cmake_dev]
+        branches: [main, dev, cmake_dev]
 
 jobs:
     build:
@@ -24,7 +24,6 @@ jobs:
             - name: "Build tests"
               run: |
                   cmake --build build --config Debug --target unit_tests -j4
-
 
             - name: Run tests
               run: |

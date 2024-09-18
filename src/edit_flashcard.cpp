@@ -2,6 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include "util.h"
+#include "deck.h"
 #include <algorithm>
 #include <sstream>
 #include <limits>
@@ -170,8 +171,8 @@ void EditFlashcardScene::editSelectedCard()
     window->drawText("Press any key to continue...", 2, 22);
     _getch(); // Wait for a key press
 
-    // Save changes to file
-    // saveFlashCardDeck(m_deck, "Decks/" + m_deck.name + ".deck");
+    //Save changes to file
+    writeFlashCardDeck(m_deck, "Decks/" + m_deck.name + ".deck");
     
     m_needsRedraw = true;
 }

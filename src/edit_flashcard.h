@@ -10,6 +10,8 @@
 namespace FlashcardEdit {
 
 class EditDeckScene : public ConsoleUI::Scene {
+
+    
 public:
     EditDeckScene(ConsoleUI::UIManager& uiManager, 
                   std::function<void()> goBack,

@@ -11,7 +11,6 @@
 
 #include "deck.h"
 
-namespace fs = std::filesystem;
 
 
 CardDifficulty strToCardDifficulty(const std::string &difficultyStr)

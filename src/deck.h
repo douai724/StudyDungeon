@@ -40,6 +40,7 @@ enum CardDifficulty
     HIGH = 3
 };
 
+namespace fs = std::filesystem;
 
 /**
  * @brief Converts a string into the CardDifficulty enum.

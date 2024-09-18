@@ -1,6 +1,7 @@
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
+#include "edit_flashcard.h"
 #include "flashcard_scene.h" // Include the new flashcard scenes
 #include "gameloop.h"
 #include "menu.h"
@@ -35,14 +36,16 @@ public:
 
         // Create ASCII art
         m_asciiArt = m_uiManager.createAsciiArt(R"(
- (`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_ 
+
+ (`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
  ( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
 (_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
 /    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
 \_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
-.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    | 
-\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   | 
- `-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--' 
+.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
+\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
+ `-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
+
         )");
     }
 
@@ -88,16 +91,13 @@ int main()
 {
     try
     {
-
-
         ConsoleUI::UIManager uiManager;
 
         std::shared_ptr<MainMenuScene> mainMenuScene;
         std::shared_ptr<FibonacciScene> fibonacciScene;
-        std::shared_ptr<FlashcardApp::EditDecksScene> editDecksScene;
+        std::shared_ptr<FlashcardEdit::EditDeckScene> editDecksScene;
         std::shared_ptr<FlashcardApp::BrowseDecksScene> browseDecksScene;
         std::shared_ptr<FlashcardApp::FlashcardScene> flashcardScene;
-        std::shared_ptr<FlashcardApp::EditFlashcardScene> editFlashcardScene;
         std::shared_ptr<FlashcardApp::ResultsScene> resultsScene;
 
         // Create ResultsScene
@@ -128,25 +128,14 @@ int main()
             });
 
         // Create editDecksScene
-        editDecksScene = std::make_shared<FlashcardApp::EditDecksScene>(
+        editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
             uiManager,
             [&]() { uiManager.setCurrentScene(mainMenuScene); },
-            [&](const FlashCardDeck &deck) {
-                // this needs to become the editFlashcardScene
-                // editFlashcardScene = std::make_shared<FlashcardApp::EditFlashcardScene>(
-                //     uiManager,
-                //     deck,
-                //     [&]() { uiManager.setCurrentScene(editDecksScene); },
-                //     [&](const std::vector<int> &difficultyCount) {
-                //         resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
-                //             uiManager,
-                //             difficultyCount,
-                //             [&]() { uiManager.setCurrentScene(mainMenuScene); },
-                //             [&]() { uiManager.setCurrentScene(editDecksScene); });
-                //         uiManager.setCurrentScene(resultsScene);
-                //     });
-                // // replace with editScene
-                // uiManager.setCurrentScene(editFlashcardScene);
+            [&](FlashCardDeck &deck) { // Note: Changed to non-const reference
+                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
+                    uiManager.setCurrentScene(editDecksScene);
+                });
+                uiManager.setCurrentScene(editFlashcardScene);
             });
 
         // Create FibonacciScene

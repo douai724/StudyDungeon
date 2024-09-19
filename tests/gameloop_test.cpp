@@ -8,13 +8,19 @@
 
 TEST_CASE("Win condition")
 {
-    Player p1 = Player(100, 100, 5, std::vector<PlayingCard>());
-    Player p2 = Player(100, 100, 5, std::vector<PlayingCard>());
+    std::vector<PlayingCard> deck1;
+    std::vector<PlayingCard> deck2;
 
     PlayingCard testCard = PlayingCard((enum Type)0, 10);
 
-    p1.addCard(testCard);
-    p2.addCard(testCard);
+    deck1.push_back(testCard);
+    deck1.push_back(testCard);
+
+    deck2.push_back(testCard);
+    deck2.push_back(testCard);
+
+    Player p1 = Player(100, 100, 1, deck1);
+    Player p2 = Player(100, 100, 1, deck2);
 
     Game testGame = Game(p1, p2);
 
@@ -24,7 +30,7 @@ TEST_CASE("Win condition")
 
         testGame.p1.setHitPoints(0);
 
-        REQUIRE(testGame.isGameOver() == true); // here
+        REQUIRE(testGame.isGameOver() == true);
     }
 
     SECTION("Player 2 drops to 0 hp")
@@ -33,13 +39,13 @@ TEST_CASE("Win condition")
 
         testGame.p2.setHitPoints(0);
 
-        REQUIRE(testGame.isGameOver() == true); // here
+        REQUIRE(testGame.isGameOver() == true);
     }
 
     SECTION("Players are out of cards")
     {
-        testGame.p1.removeCard(testCard);
-        testGame.p2.removeCard(testCard);
-        REQUIRE(testGame.isGameOver() == true); // here
+        testGame.p1.drawCard();
+        testGame.p2.drawCard();
+        REQUIRE(testGame.isGameOver() == true);
     }
 }

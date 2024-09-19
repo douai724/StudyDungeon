@@ -24,6 +24,16 @@ Game::Game()
 void Game::nextTurn(PlayingCard nextCard)
 {
 
+    // draw a card
+    if (turn == 1)
+    {
+        p1.drawCard();
+    }
+    else
+    {
+        p2.drawCard();
+    }
+
     // apply effect
     switch ((int)nextCard.getType())
     {
@@ -40,17 +50,6 @@ void Game::nextTurn(PlayingCard nextCard)
         throw -1;
     }
 
-    // draw a card
-    if (turn == 1)
-    {
-        p1.drawCard();
-    }
-    else
-    {
-        p2.drawCard();
-    }
-
-
     // switch turns
     if (Game::turn == 1)
     {
@@ -64,7 +63,11 @@ void Game::nextTurn(PlayingCard nextCard)
 
 bool Game::isGameOver()
 {
-    if (p1.getHitPoints() <= 0 || p2.getHitPoints() <= 0 || (p1.getHand().size() == 0 && p2.getHand().size() == 0))
+    if (p1.getHitPoints() <= 0 || p2.getHitPoints() <= 0)
+    {
+        return true;
+    }
+    if (p1.getDeck().size() == 0 || p2.getDeck().size() == 0)
     {
         return true;
     }

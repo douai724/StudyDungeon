@@ -100,24 +100,24 @@ void BrowseDecksScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == 224)
+        if (key == _arrow_prefix)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)
             {
-            case 72: // Up arrow
+            case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                     m_selectedDeckIndex--;
                 break;
-            case 80: // Down arrow
+            case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                     m_selectedDeckIndex++;
                 break;
-            case 75: // Left arrow
+            case _key_left: // Left arrow
                 if (m_currentPage > 0)
                     m_currentPage--;
                 break;
-            case 77: // Right arrow
+            case _key_right: // Right arrow
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
@@ -135,13 +135,13 @@ void BrowseDecksScene::handleInput()
         {
             switch (key)
             {
-            case 13: // Enter
+            case _key_enter: // Enter
                 if (!m_decks.empty())
                 {
                     m_openDeck(m_decks[m_selectedDeckIndex]);
                 }
                 break;
-            case 27: // Backspace
+            case _key_backspace: // Backspace
                 m_goBack();
                 break;
             default:
@@ -275,7 +275,7 @@ void FlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == 224)
+        if (key == _arrow_prefix)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             if (m_showAnswer)
@@ -283,10 +283,10 @@ void FlashcardScene::handleInput()
                 auto &menu = m_uiManager.getMenu("difficulty");
                 switch (key)
                 {
-                case 75: // Left arrow
+                case _key_left: // Left arrow
                     menu.selectPreviousButton();
                     break;
-                case 77: // Right arrow
+                case _key_right: // Right arrow
                     menu.selectNextButton();
                     break;
                 default:
@@ -302,20 +302,20 @@ void FlashcardScene::handleInput()
         {
             switch (key)
             {
-            case 32: // Spacebar
+            case _key_space: // Spacebar
                 if (!m_showAnswer)
                 {
                     m_showAnswer = true;
                 }
                 break;
-            case 13: // Enter
+            case _key_enter: // Enter
                 if (m_showAnswer)
                 {
                     auto &menu = m_uiManager.getMenu("difficulty");
                     menu.activateSelectedButton();
                 }
                 break;
-            case 27: // Escape key
+            case _key_esc: // Escape key
                 endSession();
                 break;
             default:
@@ -386,14 +386,16 @@ void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> w
 ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,
                            std::function<void()> goToMainMenu,
-                           std::function<void()> goToDeckSelection)
+                           std::function<void()> goToDeckSelection,
+                           std::function<void()> goToGame)
     : m_uiManager(uiManager), m_difficultyCount(difficultyCount), m_goToMainMenu(goToMainMenu),
-      m_goToDeckSelection(goToDeckSelection), m_needsRedraw(true)
+      m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true)
 {
     m_uiManager.clearMenu("results");
     auto &menu = m_uiManager.createMenu("results", false);
     menu.addButton("Main Menu", m_goToMainMenu);
     menu.addButton("Deck Selection", m_goToDeckSelection);
+    menu.addButton("Start game", m_goToGame);
 }
 
 void ResultsScene::update()

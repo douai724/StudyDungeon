@@ -82,24 +82,24 @@ void EditFlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == 224) // Arrow key prefix
+        if (key == _arrow_prefix) // Arrow key prefix
         {
             key = _getch(); // Get the actual arrow key code
             switch (key)
             {
-            case 72: // Up arrow
+            case _key_up: // Up arrow
                 if (m_selectedCardIndex > 0)
                     m_selectedCardIndex--;
                 break;
-            case 80: // Down arrow
+            case _key_down: // Down arrow
                 if (m_selectedCardIndex < m_deck.cards.size() - 1)
                     m_selectedCardIndex++;
                 break;
-            case 75: // Left arrow
+            case _key_left: // Left arrow
                 if (m_currentPage > 0)
                     m_currentPage--;
                 break;
-            case 77: // Right arrow
+            case _key_right: // Right arrow
             {
                 int totalPages = (static_cast<int>(m_deck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                 if (m_currentPage < totalPages - 1)
@@ -114,7 +114,7 @@ void EditFlashcardScene::handleInput()
         {
             switch (key)
             {
-            case 13: // Enter
+            case _key_enter: // Enter
                 if (!m_deck.cards.empty())
                     editSelectedCard();
                 break;
@@ -126,7 +126,7 @@ void EditFlashcardScene::handleInput()
             case 'd':
                 deleteSelectedCard();
                 break;
-            case 27: // Esc
+            case _key_esc: // Esc
                 m_goBack();
                 break;
             default:
@@ -405,24 +405,24 @@ void EditDeckScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == 224)
+        if (key == _arrow_prefix)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)
             {
-            case 72: // Up arrow
+            case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                     m_selectedDeckIndex--;
                 break;
-            case 80: // Down arrow
+            case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                     m_selectedDeckIndex++;
                 break;
-            case 75: // Left arrow
+            case _key_left: // Left arrow
                 if (m_currentPage > 0)
                     m_currentPage--;
                 break;
-            case 77: // Right arrow
+            case _key_right: // Right arrow
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
@@ -440,7 +440,7 @@ void EditDeckScene::handleInput()
         {
             switch (key)
             {
-            case 13: // Enter
+            case _key_enter: // Enter
                 if (!m_decks.empty())
                 {
                     m_openEditFlashcardScene(m_decks[m_selectedDeckIndex]);
@@ -458,7 +458,7 @@ void EditDeckScene::handleInput()
             case 'r':
                 renameDeck();
                 break;
-            case 27: // Backspace
+            case _key_backspace: // Backspace
                 m_goBack();
                 break;
             default:

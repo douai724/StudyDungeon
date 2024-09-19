@@ -76,18 +76,18 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 void GameScene::handleInput()
 {
     int key = _getch();
-    if (key == 224) // Arrow key
+    if (key == _arrow_prefix) // Arrow key
     {
         key = _getch();
         switch (key)
         {
-        case 72: // Up arrow
+        case _key_up: // Up arrow
             if (m_selectedIndex > 0)
             {
                 m_selectedIndex--;
             }
             break;
-        case 80: // Down arrow
+        case _key_down: // Down arrow
             if (m_selectedIndex < GameScene::game.p1.getHand().size() - 1)
             {
                 m_selectedIndex++;
@@ -95,20 +95,44 @@ void GameScene::handleInput()
             break;
         }
     }
-    else if (key == 13) // Enter key
+    else if (key == _key_enter) // Enter key
     {
         // Player turn
-        PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
-        GameScene::game.p1.removeCard(playerCard);
-        GameScene::game.nextTurn(playerCard);
+        if (GameScene::game.p1.getHand().size() == 0)
+        {
+            GameScene::game.turn = 2; // skip turn
+        }
+        else
+        {
+            PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
+            GameScene::game.p1.removeCard(playerCard);
+            GameScene::game.nextTurn(playerCard);
+            if (GameScene::game.isGameOver())
+            {
+                m_goBack();
+            }
+        }
 
         // Bot turn
-        PlayingCard botCard = GameScene::game.p2.getHand()[0];
-        GameScene::game.p2.removeCard(botCard);
-        GameScene::game.nextTurn(botCard);
+        if (GameScene::game.p2.getHand().size() == 0)
+        {
+            GameScene::game.turn = 1; // skip turn
+        }
+        else
+        {
+            PlayingCard botCard = GameScene::game.p2.getHand()[0];
+            GameScene::game.p2.removeCard(botCard);
+            GameScene::game.nextTurn(botCard);
+            if (GameScene::game.isGameOver())
+            {
+                m_goBack();
+            }
+        }
+
+
         m_selectedIndex = 0;
     }
-    else if (key == 27)
+    else if (key == _key_esc)
     { // Escape key
         m_goBack();
     }

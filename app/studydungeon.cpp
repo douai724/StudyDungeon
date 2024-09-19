@@ -23,11 +23,10 @@ public:
     MainMenuScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> openFibonacciScene,
                   std::function<void()> openBrowseDecks,
-                  std::function<void()> openEditDecks,
-                  std::function<void()> openGameScene)
+                  std::function<void()> openEditDecks)
         : m_uiManager(uiManager)
     {
-        createMainMenu(openFibonacciScene, openBrowseDecks, openEditDecks, openGameScene);
+        createMainMenu(openFibonacciScene, openBrowseDecks, openEditDecks);
 
         // Create ASCII art
         m_asciiArt = m_uiManager.createAsciiArt(R"(
@@ -46,14 +45,13 @@ public:
 
     void createMainMenu(std::function<void()> openFibonacciScene,
                         std::function<void()> openBrowseDecks,
-                        std::function<void()> openEditDecks,
-                        std::function<void()> openGameScene)
+                        std::function<void()> openEditDecks)
+
     {
         auto &menu = m_uiManager.createMenu("main", false);
         menu.addButton("Browse Decks", openBrowseDecks);
         menu.addButton("Edit Decks", openEditDecks);
         menu.addButton("Fibonacci Sequence", openFibonacciScene);
-        menu.addButton("Game", openGameScene);
         menu.addButton("Exit", []() {
             clearScreen();
             exit(0);
@@ -112,12 +110,16 @@ int main()
         std::shared_ptr<FlashcardApp::ResultsScene> resultsScene;
         std::shared_ptr<GameScene> gameScene;
 
+        // Create GameScene
+        gameScene = std::make_shared<GameScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
+
         // Create ResultsScene
         resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
             uiManager,
             std::vector<int>{0, 0, 0}, // Initial difficulty count
             [&]() { uiManager.setCurrentScene(mainMenuScene); },
-            [&]() { uiManager.setCurrentScene(browseDecksScene); });
+            [&]() { uiManager.setCurrentScene(browseDecksScene); },
+            [&]() { uiManager.setCurrentScene(gameScene); });
 
         // Create BrowseDecksScene
         auto createBrowseDecksScene = [&]() {
@@ -134,7 +136,8 @@ int main()
                                 uiManager,
                                 difficultyCount,
                                 [&]() { uiManager.setCurrentScene(mainMenuScene); },
-                                [&]() { uiManager.setCurrentScene(browseDecksScene); });
+                                [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                                [&]() { uiManager.setCurrentScene(gameScene); });
                             uiManager.setCurrentScene(resultsScene);
                         });
                     uiManager.setCurrentScene(flashcardScene);
@@ -151,8 +154,7 @@ int main()
                 mainMenuScene->createMainMenu( // Recreate main menu buttons
                     [&]() { uiManager.setCurrentScene(fibonacciScene); },
                     [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                    [&]() { uiManager.setCurrentScene(editDecksScene); },
-                    [&]() { uiManager.setCurrentScene(gameScene); });
+                    [&]() { uiManager.setCurrentScene(editDecksScene); });
                 uiManager.setCurrentScene(mainMenuScene);
             },
             [&](FlashCardDeck &deck) {
@@ -166,16 +168,13 @@ int main()
         fibonacciScene =
             std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
 
-        // Create GameScene
-        gameScene = std::make_shared<GameScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
 
         // Create MainMenuScene
         mainMenuScene = std::make_shared<MainMenuScene>(
             uiManager,
             [&]() { uiManager.setCurrentScene(fibonacciScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
-            [&]() { uiManager.setCurrentScene(editDecksScene); },
-            [&]() { uiManager.setCurrentScene(gameScene); });
+            [&]() { uiManager.setCurrentScene(editDecksScene); });
 
         // Set initial scene
         uiManager.setCurrentScene(mainMenuScene);
@@ -194,7 +193,7 @@ int main()
                 if (_kbhit())
                 {
                     int ch = _getch();
-                    if (ch == 27)
+                    if (ch == _key_esc)
                     { // ESC key
                         running = false;
                     }

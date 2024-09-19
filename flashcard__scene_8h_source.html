@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">e2b693d</span>
+   &#160;<span id="projectnumber">702ae2e</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -153,21 +153,23 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classFlashcardApp_1_1ResultsScene.html">ResultsScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager,</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                 <span class="keyword">const</span> std::vector&lt;int&gt; &amp;difficultyCount,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                 std::function&lt;<span class="keywordtype">void</span>()&gt; goToMainMenu,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                 std::function&lt;<span class="keywordtype">void</span>()&gt; goToDeckSelection);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::vector&lt;int&gt; m_difficultyCount;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::function&lt;void()&gt; m_goToMainMenu;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::function&lt;void()&gt; m_goToDeckSelection;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">// namespace FlashcardApp</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                 std::function&lt;<span class="keywordtype">void</span>()&gt; goToDeckSelection,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                 std::function&lt;<span class="keywordtype">void</span>()&gt; goToGame);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::vector&lt;int&gt; m_difficultyCount;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::function&lt;void()&gt; m_goToMainMenu;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::function&lt;void()&gt; m_goToDeckSelection;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::function&lt;void()&gt; m_goToGame;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace FlashcardApp</span></div>
 <div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdoc">Defines a consoleWindow visual interface/layout.</div><div class="ttdef"><b>Definition:</b> menu.h:322</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdoc">Manages the displaying of scenes.</div><div class="ttdef"><b>Definition:</b> menu.h:336</div></div>
 <div class="ttc" id="aclassFlashCardDeck_html"><div class="ttname"><a href="classFlashCardDeck.html">FlashCardDeck</a></div><div class="ttdoc">Class that defines a &quot;deck&quot; of flashcards.</div><div class="ttdef"><b>Definition:</b> deck.h:112</div></div>

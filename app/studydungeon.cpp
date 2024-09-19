@@ -147,13 +147,12 @@ int main()
         editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
             uiManager,
             [&]() {
-                createBrowseDecksScene(); // Reload BrowseDecksScene when going back from EditDeckScene
-                mainMenuScene->createMainMenu(  // Recreate main menu buttons
+                createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
+                mainMenuScene->createMainMenu( // Recreate main menu buttons
                     [&]() { uiManager.setCurrentScene(fibonacciScene); },
                     [&]() { uiManager.setCurrentScene(browseDecksScene); },
                     [&]() { uiManager.setCurrentScene(editDecksScene); },
-                    [&]() { uiManager.setCurrentScene(gameScene); }
-                );
+                    [&]() { uiManager.setCurrentScene(gameScene); });
                 uiManager.setCurrentScene(mainMenuScene);
             },
             [&](FlashCardDeck &deck) {

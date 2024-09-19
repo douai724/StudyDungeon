@@ -78,7 +78,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
 
     // Draw instructions
-    window->drawText("Up/Down to navigate, Enter to select, Backspace to go back", 2, window->getSize().Y - 2);
+    window->drawText("Up/Down to navigate, Enter to select, Escape to go back", 2, window->getSize().Y - 2);
 
     m_needsRedraw = false;
 }
@@ -131,7 +131,7 @@ void BrowseDecksScene::handleInput()
                     m_openDeck(m_decks[m_selectedDeckIndex]);
                 }
                 break;
-            case 8: // Backspace
+            case 27: // Backspace
                 m_goBack();
                 break;
             default:

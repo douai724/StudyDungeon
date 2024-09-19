@@ -100,7 +100,7 @@ void BrowseDecksScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix)
+        if (key == _arrow_prefix || key == 0)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)
@@ -141,7 +141,7 @@ void BrowseDecksScene::handleInput()
                     m_openDeck(m_decks[m_selectedDeckIndex]);
                 }
                 break;
-            case _key_backspace: // Backspace
+            case _key_esc:
                 m_goBack();
                 break;
             default:
@@ -275,7 +275,7 @@ void FlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix)
+        if (key == _arrow_prefix || key == 0)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             if (m_showAnswer)

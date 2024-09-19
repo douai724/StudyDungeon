@@ -79,7 +79,7 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 void GameScene::handleInput()
 {
     int key = _getch();
-    if (key == _arrow_prefix) // Arrow key
+    if (key == _arrow_prefix || key == 0) // Arrow key
     {
         key = _getch();
         switch (key)

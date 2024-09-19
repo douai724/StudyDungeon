@@ -90,7 +90,8 @@ public:
     ResultsScene(ConsoleUI::UIManager &uiManager,
                  const std::vector<int> &difficultyCount,
                  std::function<void()> goToMainMenu,
-                 std::function<void()> goToDeckSelection);
+                 std::function<void()> goToDeckSelection,
+                 std::function<void()> goToGame);
 
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
@@ -101,6 +102,7 @@ private:
     std::vector<int> m_difficultyCount;
     std::function<void()> m_goToMainMenu;
     std::function<void()> m_goToDeckSelection;
+    std::function<void()> m_goToGame;
     bool m_needsRedraw;
 };
 

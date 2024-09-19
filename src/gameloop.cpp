@@ -63,7 +63,11 @@ void Game::nextTurn(PlayingCard nextCard)
 
 bool Game::isGameOver()
 {
-    if (p1.getHitPoints() <= 0 || p2.getHitPoints() <= 0 || (p1.getHand().size() == 0 && p2.getHand().size() == 0))
+    if (p1.getHitPoints() <= 0 || p2.getHitPoints() <= 0)
+    {
+        return true;
+    }
+    if (p1.getDeck().size() == 0 || p2.getDeck().size() == 0)
     {
         return true;
     }

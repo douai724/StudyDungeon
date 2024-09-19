@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['isbackbuttonpressed_177',['isBackButtonPressed',['../classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e',1,'ConsoleUI::Menu']]],
-  ['isgameover_178',['isGameOver',['../classGame.html#a102ce6e5a222e403aa7a0465ff6281dc',1,'Game']]],
-  ['isvaliddeckfilename_179',['isValidDeckFileName',['../util_8h.html#afa7202e3936e1663f0e361cace941194',1,'util.cpp']]]
+  ['handleinput_178',['handleInput',['../classFlashcardEdit_1_1EditDeckScene.html#ac235de3255b97e47bc29f06e28338dec',1,'FlashcardEdit::EditDeckScene::handleInput()'],['../classFlashcardEdit_1_1EditFlashcardScene.html#a2a4f71feaa605faf6bf5a5c691078248',1,'FlashcardEdit::EditFlashcardScene::handleInput()'],['../classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82',1,'ConsoleUI::Menu::handleInput()']]],
+  ['heal_179',['heal',['../classPlayer.html#aa7eae982673d2d8027ac5f45e6b5b4f7',1,'Player']]],
+  ['healeffect_180',['healEffect',['../classGame.html#a89bacc3510fea9654a65544f053775a0',1,'Game']]]
 ];

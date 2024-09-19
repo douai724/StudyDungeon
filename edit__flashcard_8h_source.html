@@ -69,88 +69,105 @@ $(function() {
 <div class="title">edit_flashcard.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef EDIT_DECK_SCENE_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define EDIT_DECK_SCENE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="deck_8h.html">deck.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="menu_8h.html">menu.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>FlashcardEdit</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classFlashcardEdit_1_1EditDeckScene.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashcardEdit_1_1EditDeckScene.html">EditDeckScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef EDIT_DECK_SCENE_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define EDIT_DECK_SCENE_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="deck_8h.html">deck.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="menu_8h.html">menu.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>FlashcardEdit {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classFlashcardEdit_1_1EditDeckScene.html">EditDeckScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; goBack,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;)&gt; openEditFlashcardScene);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::function&lt;void()&gt; m_goBack;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::function&lt;void(<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;)&gt; m_openEditFlashcardScene;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::vector&lt;FlashCardDeck&gt; m_decks;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">size_t</span> m_selectedDeckIndex;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> m_currentPage;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> m_maxCardsPerPage;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> loadDecks();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> addNewDeck();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> deleteDeck();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> renameDeck();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> drawWrappedText(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                         <span class="keyword">const</span> std::string &amp;text,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                         <span class="keywordtype">int</span> x,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                         <span class="keywordtype">int</span> y,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                         <span class="keywordtype">int</span> width);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classFlashcardEdit_1_1EditFlashcardScene.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html">EditFlashcardScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html">EditFlashcardScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;deck, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;m_deck;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::function&lt;void()&gt; m_goBack;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">size_t</span> m_selectedCardIndex;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> m_currentPage;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> m_maxCardsPerPage;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> editSelectedCard();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> addNewCard();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> deleteSelectedCard();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> drawWrappedText(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                         <span class="keyword">const</span> std::string &amp;text,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                         <span class="keywordtype">int</span> x,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                         <span class="keywordtype">int</span> y,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                         <span class="keywordtype">int</span> width);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <span class="comment">// namespace FlashcardEdit</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// EDIT_DECK_SCENE_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classFlashcardEdit_1_1EditDeckScene.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashcardEdit_1_1EditDeckScene.html">EditDeckScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classFlashcardEdit_1_1EditDeckScene.html#a3612a9938b412d83dcb809da38b39217">EditDeckScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a>&amp; uiManager, </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; goBack,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a>&amp;)&gt; openEditFlashcardScene);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardEdit_1_1EditDeckScene.html#a1f69b7fc47fc5942abcd7ffa312d0786">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardEdit_1_1EditDeckScene.html#a39a5f8d3839719c2bea3cdf4f7b9e590">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardEdit_1_1EditDeckScene.html#ac235de3255b97e47bc29f06e28338dec">handleInput</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a>&amp; m_uiManager; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::function&lt;void()&gt; m_goBack; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::function&lt;void(<a class="code" href="classFlashCardDeck.html">FlashCardDeck</a>&amp;)&gt; m_openEditFlashcardScene; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::vector&lt;FlashCardDeck&gt; m_decks; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">size_t</span> m_selectedDeckIndex; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> m_currentPage; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> m_maxCardsPerPage; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> loadDecks();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> addNewDeck();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> deleteDeck();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> renameDeck();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> drawWrappedText(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                         <span class="keyword">const</span> std::string&amp; text,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                         <span class="keywordtype">int</span> x,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                         <span class="keywordtype">int</span> y,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                         <span class="keywordtype">int</span> width);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classFlashcardEdit_1_1EditFlashcardScene.html">   96</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html">EditFlashcardScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a> {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html#ae002049f47802c38a73ec3e330929380">EditFlashcardScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a>&amp; uiManager, </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                       <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a>&amp; deck,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                       std::function&lt;<span class="keywordtype">void</span>()&gt; goBack);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html#aa7d8b2b7ab661ee32fd72a5f968fc302">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html#a4666f8b94b80c772c70d6e1428dce77e">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardEdit_1_1EditFlashcardScene.html#a2a4f71feaa605faf6bf5a5c691078248">handleInput</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a>&amp; m_uiManager; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a>&amp; m_deck; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::function&lt;void()&gt; m_goBack; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">size_t</span> m_selectedCardIndex; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">int</span> m_currentPage; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">int</span> m_maxCardsPerPage; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> editSelectedCard();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">void</span> addNewCard();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> deleteSelectedCard();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">void</span> drawWrappedText(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window,</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                         <span class="keyword">const</span> std::string&amp; text,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                         <span class="keywordtype">int</span> x,</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                         <span class="keywordtype">int</span> y,</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                         <span class="keywordtype">int</span> width);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;};</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;} <span class="comment">// namespace FlashcardApp</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// EDIT_DECK_SCENE_H</span></div>
 <div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdoc">Defines a consoleWindow visual interface/layout.</div><div class="ttdef"><b>Definition:</b> menu.h:322</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdoc">Manages the displaying of scenes.</div><div class="ttdef"><b>Definition:</b> menu.h:336</div></div>
 <div class="ttc" id="aclassFlashCardDeck_html"><div class="ttname"><a href="classFlashCardDeck.html">FlashCardDeck</a></div><div class="ttdoc">Class that defines a &quot;deck&quot; of flashcards.</div><div class="ttdef"><b>Definition:</b> deck.h:112</div></div>
-<div class="ttc" id="aclassFlashcardEdit_1_1EditDeckScene_html"><div class="ttname"><a href="classFlashcardEdit_1_1EditDeckScene.html">FlashcardEdit::EditDeckScene</a></div><div class="ttdef"><b>Definition:</b> edit_flashcard.h:14</div></div>
-<div class="ttc" id="aclassFlashcardEdit_1_1EditFlashcardScene_html"><div class="ttname"><a href="classFlashcardEdit_1_1EditFlashcardScene.html">FlashcardEdit::EditFlashcardScene</a></div><div class="ttdef"><b>Definition:</b> edit_flashcard.h:48</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditDeckScene_html"><div class="ttname"><a href="classFlashcardEdit_1_1EditDeckScene.html">FlashcardEdit::EditDeckScene</a></div><div class="ttdoc">The EditDeckScene class represents the scene for editing flashcard decks.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.h:20</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditDeckScene_html_a1f69b7fc47fc5942abcd7ffa312d0786"><div class="ttname"><a href="classFlashcardEdit_1_1EditDeckScene.html#a1f69b7fc47fc5942abcd7ffa312d0786">FlashcardEdit::EditDeckScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Updates the EditDeckScene.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:332</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditDeckScene_html_a3612a9938b412d83dcb809da38b39217"><div class="ttname"><a href="classFlashcardEdit_1_1EditDeckScene.html#a3612a9938b412d83dcb809da38b39217">FlashcardEdit::EditDeckScene::EditDeckScene</a></div><div class="ttdeci">EditDeckScene(ConsoleUI::UIManager &amp;uiManager, std::function&lt; void()&gt; goBack, std::function&lt; void(FlashCardDeck &amp;)&gt; openEditFlashcardScene)</div><div class="ttdoc">Constructor for the EditDeckScene class.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:315</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditDeckScene_html_a39a5f8d3839719c2bea3cdf4f7b9e590"><div class="ttname"><a href="classFlashcardEdit_1_1EditDeckScene.html#a39a5f8d3839719c2bea3cdf4f7b9e590">FlashcardEdit::EditDeckScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">Renders the EditDeckScene.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:337</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditDeckScene_html_ac235de3255b97e47bc29f06e28338dec"><div class="ttname"><a href="classFlashcardEdit_1_1EditDeckScene.html#ac235de3255b97e47bc29f06e28338dec">FlashcardEdit::EditDeckScene::handleInput</a></div><div class="ttdeci">void handleInput() override</div><div class="ttdoc">Handles input for the EditDeckScene.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:391</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditFlashcardScene_html"><div class="ttname"><a href="classFlashcardEdit_1_1EditFlashcardScene.html">FlashcardEdit::EditFlashcardScene</a></div><div class="ttdoc">The EditFlashcardScene class represents the scene for editing flashcards.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.h:96</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditFlashcardScene_html_a2a4f71feaa605faf6bf5a5c691078248"><div class="ttname"><a href="classFlashcardEdit_1_1EditFlashcardScene.html#a2a4f71feaa605faf6bf5a5c691078248">FlashcardEdit::EditFlashcardScene::handleInput</a></div><div class="ttdeci">void handleInput() override</div><div class="ttdoc">Handles input for the EditFlashcardScene.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:68</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditFlashcardScene_html_a4666f8b94b80c772c70d6e1428dce77e"><div class="ttname"><a href="classFlashcardEdit_1_1EditFlashcardScene.html#a4666f8b94b80c772c70d6e1428dce77e">FlashcardEdit::EditFlashcardScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">Renders the EditFlashcardScene.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:29</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditFlashcardScene_html_aa7d8b2b7ab661ee32fd72a5f968fc302"><div class="ttname"><a href="classFlashcardEdit_1_1EditFlashcardScene.html#aa7d8b2b7ab661ee32fd72a5f968fc302">FlashcardEdit::EditFlashcardScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Updates the EditFlashcardScene.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:24</div></div>
+<div class="ttc" id="aclassFlashcardEdit_1_1EditFlashcardScene_html_ae002049f47802c38a73ec3e330929380"><div class="ttname"><a href="classFlashcardEdit_1_1EditFlashcardScene.html#ae002049f47802c38a73ec3e330929380">FlashcardEdit::EditFlashcardScene::EditFlashcardScene</a></div><div class="ttdeci">EditFlashcardScene(ConsoleUI::UIManager &amp;uiManager, FlashCardDeck &amp;deck, std::function&lt; void()&gt; goBack)</div><div class="ttdoc">Constructor for the EditFlashcardScene class.</div><div class="ttdef"><b>Definition:</b> edit_flashcard.cpp:15</div></div>
 <div class="ttc" id="adeck_8h_html"><div class="ttname"><a href="deck_8h.html">deck.h</a></div><div class="ttdoc">Functions and classes relating to flashcards.</div></div>
 <div class="ttc" id="amenu_8h_html"><div class="ttname"><a href="menu_8h.html">menu.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

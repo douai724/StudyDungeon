@@ -49,6 +49,50 @@ std::string cardDifficultyToStr(const CardDifficulty &difficulty)
 }
 
 
+void FlashCard::printCard()
+{
+    std::cout << question << '\n';
+    std::cout << answer << '\n';
+    std::cout << "\n";
+}
+
+void FlashCard::printCardAsTemplate()
+{
+    std::cout << "Q: " << question << '\n' << "A: " << answer << '\n';
+    std::cout << "D: " << cardDifficultyToStr(difficulty) << '\n' << "N: " << n_times_answered << '\n';
+    std::cout << "-" << '\n';
+}
+
+std::string FlashCard::stringCardAsTemplate()
+{
+    std::stringstream card_contents{};
+    card_contents << "Q: " << question << "\nA: " << answer + '\n';
+    card_contents << "D: " << cardDifficultyToStr(difficulty);
+    card_contents << "\nN: " << std::to_string(n_times_answered) << "\n";
+    return card_contents.str();
+}
+
+void FlashCardDeck::printDeck()
+{
+    std::cout << name << std::endl;
+    std::cout << "File location: " << filename << std::endl;
+    std::cout << "Deck size: " << cards.size() << " cards" << std::endl;
+    for (FlashCard card : cards)
+    {
+        card.printCard();
+    }
+}
+
+
+void FlashCardDeck::printDeckAsTemplate()
+{
+    std::cout << name << std::endl;
+    for (FlashCard card : cards)
+    {
+        card.printCardAsTemplate();
+    }
+}
+
 FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)
 {
     FlashCard card{};
@@ -59,7 +103,7 @@ FlashCard createFlashCard(std::string question, std::string answer, CardDifficul
     return card;
 };
 
-
+// parses a deck file to convert it to a Flashcard deck object
 FlashCardDeck readFlashCardDeck(fs::path deck_file)
 {
 
@@ -74,7 +118,7 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
     // keep track of current card in deck
     int cardNum{0};
 
-    /** blank flashcard to begin filling in */
+    // Create a blank card and push it onto the deck ready to be filled
     FlashCard fc{};
     deck.cards.push_back(fc);
 
@@ -98,7 +142,6 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
             {
                 cardNum++;
                 deck.cards.push_back(fc);
-                //std::cout << "NEW CARD" << '\n';
             }
             if (strInput.starts_with("Q: "))
             {
@@ -121,11 +164,43 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
         lineCount++;
     }
 
+    // TODO replace the below with a method that will remove any empty cards in the deck
+    // remove the empty card that should be at the end of the deck after reading in the files
+    if (deck.cards.at(cardNum).question == "" && deck.cards.at(cardNum).answer == "")
+    {
+        deck.cards.pop_back();
+    }
+
+
     return deck;
 };
 
-
 bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
+{
+    //TODO this needs a try block
+    if (fs::is_directory(filename.parent_path()))
+    {
+        // open file
+        std::ofstream outf{filename.string(), std::ios::trunc};
+        // write contents to file
+        outf << deck.name << std::endl;
+        for (FlashCard fc : deck.cards)
+        {
+            outf << fc.stringCardAsTemplate();
+            outf << "-" << std::endl;
+        }
+        // close file
+        outf.close();
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// write the FlashCardDeck to a file but will first check if file exists and if so should be overwritten
+bool writeFlashCardDeckWithChecks(const FlashCardDeck &deck, fs::path filename, bool force_overwrite = false)
 {
     //FIXME this function is not complete and so doesn't work properly....
     // check filename ends with .deck
@@ -134,7 +209,6 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
         return false;
     }
 
-    // TODO
     if (fs::exists(filename))
     {
         if (!fs::is_regular_file(filename))
@@ -145,21 +219,26 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
         }
         else
         {
-
-            //std::cout << "Filename: " << filename << std::endl;
-            //pause();
-            // open file
-            std::ofstream outf{filename.string(), std::ios::trunc};
-            // write contents to file
-            outf << deck.name << std::endl;
-            for (FlashCard fc : deck.cards)
+            if (!force_overwrite)
             {
-                outf << fc.stringCardAsTemplate();
-                outf << "-" << std::endl;
+                std::cout << "Path " << filename << " already exists, Overwrite file? Y/N\n";
+                // DOUBLE CHECK WITH USER!
+                bool overwrite = yesNoPrompt();
+                if (!overwrite)
+                {
+                    std::cout << "Choose new filename?" << std::endl;
+                    bool create_new_path = yesNoPrompt();
+
+                    if (!create_new_path)
+                    {
+                        return false;
+                    }
+
+                    filename = createDeckFilename(filename.parent_path());
+                }
             }
-            // close file
-            outf.close();
-            return true;
+
+            return writeFlashCardDeck(deck, filename);
         }
     }
     else
@@ -168,18 +247,7 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
         // ensure parent directory exists
         if (fs::is_directory(filename.parent_path()))
         {
-            // open file
-            std::ofstream outf{filename.string(), std::ios::trunc};
-            // write contents to file
-            outf << deck.name << std::endl;
-            for (FlashCard fc : deck.cards)
-            {
-                outf << fc.stringCardAsTemplate();
-                outf << "-" << std::endl;
-            }
-            // close file
-            outf.close();
-            return true;
+            return writeFlashCardDeck(deck, filename);
         }
         return false;
     }
@@ -215,10 +283,10 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
     return deck_array;
 };
 
+// This is used to create some eample decks if the decks directory doesn't exits
+// or can be used in tests.
 std::vector<FlashCardDeck> createExampleDecks()
 {
-
-
     FlashCard f1 = createFlashCard("question 1", "answer 1", EASY, 0);
     FlashCard f2 = createFlashCard("question 2", "answer 2", MEDIUM, 1);
     FlashCardDeck d1{"Example Deck 1", "", std::vector<FlashCard>{f1, f2}};
@@ -230,7 +298,7 @@ std::vector<FlashCardDeck> createExampleDecks()
     return std::vector<FlashCardDeck>{d1, d2};
 };
 
-
+// given a directory, will prompt user for a deck name and ensure that it is a valid name
 std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
 {
     if (!fs::is_directory(deck_dir))
@@ -254,65 +322,14 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
 }
 
 
-// bool answerCard(FlashCard &fc)
-// {
-//     bool card_correct{false};
-//     CardDifficulty difficulty{};
-//     clearScreen();
-//     std::cout << fc.question << std::endl;
-//     std::cout << "Ready for answer?" << std::endl;
-//     pause();
-//     std::cout << "The answer was:\n" << fc.answer << std::endl;
-//     std::cout << "Did you get the answer correct?" << std::endl;
-//     card_correct = yesNoPrompt();
-//     std::string input{};
-//     bool unset{true};
-//     while (unset)
-//     {
-//         std::cout << "What was the difficulty? (E)ASY (M)EDIUM (H)IGH (U)NKOWN" << std::endl;
-//         std::getline(std::cin, input);
-//         if (input.length() == 1)
-//         {
-//             int c = input.at(0);
-//             c = toupper(c);
-//             switch (c)
-//             {
-//             case ('E'):
-//                 difficulty = EASY;
-//                 unset = false;
-//                 break;
-//             case ('M'):
-//                 difficulty = MEDIUM;
-//                 unset = false;
-//                 break;
-//             case ('H'):
-//                 difficulty = HIGH;
-//                 unset = false;
-//                 break;
-//             case ('U'):
-//                 difficulty = UNKNOWN;
-//                 unset = false;
-//                 break;
-//             }
-//         }
-//     }
-
-//     std::cout << "You said difficulty of " << cardDifficultyToStr(difficulty) << std::endl;
-//     //std::cout << "The existing difficulty was " << cardDifficultyToStr(fc.difficulty) << std::endl;
-//     fc.difficulty = difficulty;
-//     //std::cout << "card difficulty now " << cardDifficultyToStr(fc.difficulty) << std::endl;
-//     fc.n_times_answered++;
-//     return card_correct;
-// }
-
-
+// provides a prompt to double check updating of deck
 bool updateDeckFile(FlashCardDeck &deck_to_update)
 {
     //std::cout << "Save card updates?" << std::endl;
 
     if (yesNoPrompt())
     {
-        if (writeFlashCardDeck(deck_to_update, deck_to_update.filename))
+        if (writeFlashCardDeckWithChecks(deck_to_update, deck_to_update.filename, true))
         {
             return true;
         }

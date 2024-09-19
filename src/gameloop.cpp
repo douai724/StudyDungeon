@@ -26,7 +26,7 @@ void Game::nextTurn(PlayingCard nextCard)
         swapHandEffect();
         break;
     default:
-        std::cout << "Valid card does not exist." << std::endl;
+        throw -1;
     }
 
     // draw a card

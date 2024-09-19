@@ -1,0 +1,36 @@
+The Stack
+Q: What might a crash when a function returns indicate?
+A: The return address on the stack might be corrupt
+D: UNKNOWN
+N: 0
+-
+Q: A passed parameter is different from that passed indicates?
+A: The paramter might have been overwritten
+D: UNKNOWN
+N: 0
+-
+Q: Variables changing values without reason indicates?
+A: A dangling pointer might be altering in
+D: UNKNOWN
+N: 0
+-
+Q: A Crash in (otherwise reliable) system routine indicates?
+A: Stack overflow might be occurring
+D: UNKNOWN
+N: 0
+-
+Q: Memory allocation has side-effects indicates?
+A: Corruption in heap can trickle down to the stack
+D: UNKNOWN
+N: 0
+-
+Q: Bugs that go away in the debugger indicates?
+A: The stack will (probably) be different
+D: UNKNOWN
+N: 0
+-
+Q: What is a buffer-overrun?
+A: Corrupting nearby memory addresses by overflowing the buffer due to improper bounds checking
+D: UNKNOWN
+N: 0
+-

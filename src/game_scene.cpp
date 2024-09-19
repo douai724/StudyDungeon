@@ -107,6 +107,10 @@ void GameScene::handleInput()
             PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
             GameScene::game.p1.removeCard(playerCard);
             GameScene::game.nextTurn(playerCard);
+            if (GameScene::game.isGameOver())
+            {
+                m_goBack();
+            }
         }
 
         // Bot turn
@@ -119,6 +123,10 @@ void GameScene::handleInput()
             PlayingCard botCard = GameScene::game.p2.getHand()[0];
             GameScene::game.p2.removeCard(botCard);
             GameScene::game.nextTurn(botCard);
+            if (GameScene::game.isGameOver())
+            {
+                m_goBack();
+            }
         }
 
 

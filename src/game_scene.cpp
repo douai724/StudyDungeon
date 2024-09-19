@@ -98,14 +98,30 @@ void GameScene::handleInput()
     else if (key == 13) // Enter key
     {
         // Player turn
-        PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
-        GameScene::game.p1.removeCard(playerCard);
-        GameScene::game.nextTurn(playerCard);
+        if (GameScene::game.p1.getHand().size() == 0)
+        {
+            GameScene::game.turn = 2; // skip turn
+        }
+        else
+        {
+            PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
+            GameScene::game.p1.removeCard(playerCard);
+            GameScene::game.nextTurn(playerCard);
+        }
 
         // Bot turn
-        PlayingCard botCard = GameScene::game.p2.getHand()[0];
-        GameScene::game.p2.removeCard(botCard);
-        GameScene::game.nextTurn(botCard);
+        if (GameScene::game.p2.getHand().size() == 0)
+        {
+            GameScene::game.turn = 1; // skip turn
+        }
+        else
+        {
+            PlayingCard botCard = GameScene::game.p2.getHand()[0];
+            GameScene::game.p2.removeCard(botCard);
+            GameScene::game.nextTurn(botCard);
+        }
+
+
         m_selectedIndex = 0;
     }
     else if (key == 27)

@@ -117,6 +117,8 @@ TEST_CASE("Deck reading and writing")
             std::cerr << "REMOVING FILE TEST_decks/new.deck" << std::endl;
             std::filesystem::remove(new_deck);
         }
+        REQUIRE(writeFlashCardDeckWithChecks(example_decks.at(1), new_deck, false));
+        // force overwrite
         REQUIRE(writeFlashCardDeck(example_decks.at(1), new_deck));
     }
 

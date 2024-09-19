@@ -80,3 +80,5 @@ Pre-commit checks files for conformity to various stylings.
 5. run pre-commit on all files initially
     - `pre-commit run --all-files`
 6. pre-commit will then run automatically on each commit checking the commited files for styling and auto fixing where it can.
+
+.

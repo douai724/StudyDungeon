@@ -386,14 +386,16 @@ void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> w
 ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,
                            std::function<void()> goToMainMenu,
-                           std::function<void()> goToDeckSelection)
+                           std::function<void()> goToDeckSelection,
+                           std::function<void()> goToGame)
     : m_uiManager(uiManager), m_difficultyCount(difficultyCount), m_goToMainMenu(goToMainMenu),
-      m_goToDeckSelection(goToDeckSelection), m_needsRedraw(true)
+      m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true)
 {
     m_uiManager.clearMenu("results");
     auto &menu = m_uiManager.createMenu("results", false);
     menu.addButton("Main Menu", m_goToMainMenu);
     menu.addButton("Deck Selection", m_goToDeckSelection);
+    menu.addButton("Start game", m_goToGame);
 }
 
 void ResultsScene::update()

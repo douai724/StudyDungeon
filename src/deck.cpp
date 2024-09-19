@@ -98,7 +98,7 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
             {
                 cardNum++;
                 deck.cards.push_back(fc);
-                std::cout << "NEW CARD" << '\n';
+                //std::cout << "NEW CARD" << '\n';
             }
             if (strInput.starts_with("Q: "))
             {
@@ -145,24 +145,9 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
         }
         else
         {
-            std::cout << "Path " << filename << " already exists, Overwrite file? Y/N\n";
-            // DOUBLE CHECK WITH USER!
-            bool overwrite = yesNoPrompt();
-            if (!overwrite)
-            {
-                std::cout << "Choose new filename?" << std::endl;
-                bool create_new_path = yesNoPrompt();
 
-                if (!create_new_path)
-                {
-                    return false;
-                }
-
-                filename = createDeckFilename(filename.parent_path());
-            }
-
-            std::cout << "Filename: " << filename << std::endl;
-            pause();
+            //std::cout << "Filename: " << filename << std::endl;
+            //pause();
             // open file
             std::ofstream outf{filename.string(), std::ios::trunc};
             // write contents to file
@@ -269,61 +254,61 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
 }
 
 
-bool answerCard(FlashCard &fc)
-{
-    bool card_correct{false};
-    CardDifficulty difficulty{};
-    clearScreen();
-    std::cout << fc.question << std::endl;
-    std::cout << "Ready for answer?" << std::endl;
-    pause();
-    std::cout << "The answer was:\n" << fc.answer << std::endl;
-    std::cout << "Did you get the answer correct?" << std::endl;
-    card_correct = yesNoPrompt();
-    std::string input{};
-    bool unset{true};
-    while (unset)
-    {
-        std::cout << "What was the difficulty? (E)ASY (M)EDIUM (H)IGH (U)NKOWN" << std::endl;
-        std::getline(std::cin, input);
-        if (input.length() == 1)
-        {
-            int c = input.at(0);
-            c = toupper(c);
-            switch (c)
-            {
-            case ('E'):
-                difficulty = EASY;
-                unset = false;
-                break;
-            case ('M'):
-                difficulty = MEDIUM;
-                unset = false;
-                break;
-            case ('H'):
-                difficulty = HIGH;
-                unset = false;
-                break;
-            case ('U'):
-                difficulty = UNKNOWN;
-                unset = false;
-                break;
-            }
-        }
-    }
+// bool answerCard(FlashCard &fc)
+// {
+//     bool card_correct{false};
+//     CardDifficulty difficulty{};
+//     clearScreen();
+//     std::cout << fc.question << std::endl;
+//     std::cout << "Ready for answer?" << std::endl;
+//     pause();
+//     std::cout << "The answer was:\n" << fc.answer << std::endl;
+//     std::cout << "Did you get the answer correct?" << std::endl;
+//     card_correct = yesNoPrompt();
+//     std::string input{};
+//     bool unset{true};
+//     while (unset)
+//     {
+//         std::cout << "What was the difficulty? (E)ASY (M)EDIUM (H)IGH (U)NKOWN" << std::endl;
+//         std::getline(std::cin, input);
+//         if (input.length() == 1)
+//         {
+//             int c = input.at(0);
+//             c = toupper(c);
+//             switch (c)
+//             {
+//             case ('E'):
+//                 difficulty = EASY;
+//                 unset = false;
+//                 break;
+//             case ('M'):
+//                 difficulty = MEDIUM;
+//                 unset = false;
+//                 break;
+//             case ('H'):
+//                 difficulty = HIGH;
+//                 unset = false;
+//                 break;
+//             case ('U'):
+//                 difficulty = UNKNOWN;
+//                 unset = false;
+//                 break;
+//             }
+//         }
+//     }
 
-    std::cout << "You said difficulty of " << cardDifficultyToStr(difficulty) << std::endl;
-    std::cout << "The existing difficulty was " << cardDifficultyToStr(fc.difficulty) << std::endl;
-    fc.difficulty = difficulty;
-    std::cout << "card difficulty now " << cardDifficultyToStr(fc.difficulty) << std::endl;
-    fc.n_times_answered++;
-    return card_correct;
-}
+//     std::cout << "You said difficulty of " << cardDifficultyToStr(difficulty) << std::endl;
+//     //std::cout << "The existing difficulty was " << cardDifficultyToStr(fc.difficulty) << std::endl;
+//     fc.difficulty = difficulty;
+//     //std::cout << "card difficulty now " << cardDifficultyToStr(fc.difficulty) << std::endl;
+//     fc.n_times_answered++;
+//     return card_correct;
+// }
 
 
 bool updateDeckFile(FlashCardDeck &deck_to_update)
 {
-    std::cout << "Save card updates?" << std::endl;
+    //std::cout << "Save card updates?" << std::endl;
 
     if (yesNoPrompt())
     {
@@ -333,7 +318,7 @@ bool updateDeckFile(FlashCardDeck &deck_to_update)
         }
         else
         {
-            std::cout << "Issue in writing file. Cards were not updated." << std::endl;
+            //std::cout << "Issue in writing file. Cards were not updated." << std::endl;
         }
     }
     return false;

@@ -6,7 +6,7 @@
  * @details These functions are involved with the parsing of files to create flashcards which
  * are then converted into a deck. Cards are also parsed to text and written to file to save them.
  *
- * @version 0.1
+ * @version 0.2
  * @date 2024-08-07
  *
  * @copyright Copyright (c) 2024

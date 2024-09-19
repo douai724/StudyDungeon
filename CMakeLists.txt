@@ -5,6 +5,19 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Get the current Git commit SHA
+execute_process(
+    COMMAND git rev-parse --short HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_SHA
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+# Print the commit SHA
+message(STATUS "Git commit SHA: ${GIT_COMMIT_SHA}")
+
+# Optionally, set it as a definition for later use in your project
+add_definitions(-DGIT_COMMIT_SHA=\"${GIT_COMMIT_SHA}\")
 
 option(ENABLE_TESTING "Enable a Unit Testing Build" ON)
 option(ENABLE_WARNINGS "Enable to add warnings to a target." ON)

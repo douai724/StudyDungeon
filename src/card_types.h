@@ -2,7 +2,7 @@
  * @file card_types.h
  * @author Green Alligators
  * @brief
- * @version 0.1
+ * @version 0.2
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024

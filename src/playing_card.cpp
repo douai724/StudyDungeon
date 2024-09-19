@@ -1,3 +1,13 @@
+/**
+ * @file playing_card.cpp
+ * @author Green Alligators
+ * @brief
+ * @version 0.2
+ * @date 2024-09-19
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "playing_card.h"
 
 PlayingCard::PlayingCard(enum Type cardType, int value)

@@ -82,7 +82,7 @@ void EditFlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix) // Arrow key prefix
+        if (key == _arrow_prefix || key == 0) // Arrow key prefix
         {
             key = _getch(); // Get the actual arrow key code
             switch (key)
@@ -405,7 +405,7 @@ void EditDeckScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix)
+        if (key == _arrow_prefix || key == 0)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)

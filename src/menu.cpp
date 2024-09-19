@@ -129,7 +129,7 @@ std::string ConsoleWindow::getLine(int x, int y, int maxLength)
         // Get user input
         int ch = _getch();
 
-        if (ch == _arrow_prefix) // Arrow key prefix
+        if (ch == _arrow_prefix || ch == 0) // Arrow key prefix
         {
             ch = _getch();
             switch (ch)
@@ -298,7 +298,7 @@ void Menu::draw(int x, int y)
 void Menu::handleInput()
 {
     int key = _getch();
-    if (key == _arrow_prefix) // Arrow key
+    if (key == _arrow_prefix || key == 0) // Arrow key
     {
         key = _getch();
         if (horizontal_layout)
@@ -326,9 +326,25 @@ void Menu::handleInput()
             }
         }
     }
-    else if (key == _key_enter) // Enter key
+    else 
     {
-        m_buttons[m_selectedIndex].performAction();
+        switch (key)
+        {
+            case _key_enter:
+                m_buttons[m_selectedIndex].performAction();
+                break;
+            case ('I'): // up
+            case ('i'):
+                m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
+                break;
+            case ('K'): // down
+            case ('k'):
+                m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
+                break;
+
+        }
+     
+        
     }
 }
 

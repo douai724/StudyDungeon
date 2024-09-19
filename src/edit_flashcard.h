@@ -1,3 +1,7 @@
+/**
+ * @file edit_deck_scene.h
+ * @brief Header file for the EditDeckScene and EditFlashcardScene classes.
+ */
 
 #ifndef EDIT_DECK_SCENE_H
 #define EDIT_DECK_SCENE_H

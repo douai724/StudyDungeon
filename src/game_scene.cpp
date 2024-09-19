@@ -34,14 +34,11 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->drawBorder();
     COORD size = window->getSize();
 
+    std::vector<PlayingCard> hand = GameScene::game.p1.getHand();
 
-    Game thisGame = GameScene::game;
-    Player user = thisGame.p1;
-    std::vector<PlayingCard> hand = user.getHand();
-
-    window->drawText("Turn: " + std::to_string(game.turn), 2, 1);
-    window->drawText("You: " + std::to_string(user.getHitPoints()), 1, 2);
-    window->drawText("Enemy: " + std::to_string(game.p2.getHitPoints()), 10, 2);
+    window->drawText("Turn: " + std::to_string(GameScene::game.turn), 2, 1);
+    window->drawText("You: " + std::to_string(GameScene::game.p1.getHitPoints()), 1, 2);
+    window->drawText("Enemy: " + std::to_string(GameScene::game.p2.getHitPoints()), 10, 2);
 
 
     if (hand.size() == 0)
@@ -50,22 +47,28 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
+        int cardWidth = size.X / hand.size();
         for (int i = 0; i < (int)hand.size(); i++)
         {
-            std::string border = " "; //= m_selectedIndex == i ? "+" : " ";
             std::string option = hand[i].toString();
+            std::string cardText = "";
+            window->drawBox(size.X / hand.size() * i, 3 * size.Y / 5, size.X / 5, 2 * size.Y / 5);
             if (m_selectedIndex == i)
             {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-                window->drawCenteredText("+ [" + option + "] + ", i * 2);
+                cardText = "+ [" + option + "] + ";
+                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
 
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
             }
             else
             {
-                window->drawCenteredText(" [" + option + "] ", i * 2);
+                cardText = " [" + option + "]  ";
+                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
             }
         }
     }
@@ -81,13 +84,13 @@ void GameScene::handleInput()
         key = _getch();
         switch (key)
         {
-        case _key_up: // Up arrow
+        case _key_left:
             if (m_selectedIndex > 0)
             {
                 m_selectedIndex--;
             }
             break;
-        case _key_down: // Down arrow
+        case _key_right: // Down arrow
             if (m_selectedIndex < GameScene::game.p1.getHand().size() - 1)
             {
                 m_selectedIndex++;

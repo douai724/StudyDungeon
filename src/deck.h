@@ -68,8 +68,6 @@ std::string cardDifficultyToStr(const CardDifficulty &difficulty);
  * A flashcard consists of a question, answer and difficulty. The number of times
  * the question has been answered is kept track of.
  *
- *
- *
  */
 class FlashCard
 {
@@ -88,39 +86,20 @@ public:
 
     /**
     * @brief Prints the card question and answer
-    *
     */
-    void printCard()
-    {
-        std::cout << question << '\n';
-        std::cout << answer << '\n';
-        std::cout << "\n";
-    }
+    void printCard();
 
     /**
     * @brief Used to
-    *
     */
-    void printCardAsTemplate()
-    {
-        std::cout << "Q: " << question << '\n' << "A: " << answer << '\n';
-        std::cout << "D: " << cardDifficultyToStr(difficulty) << '\n' << "N: " << n_times_answered << '\n';
-        std::cout << "-" << '\n';
-    }
+    void printCardAsTemplate();
 
     /**
      * @brief Returns the card in template form as a string
      *
      * @return std::string
      */
-    std::string stringCardAsTemplate()
-    {
-        std::stringstream card_contents{};
-        card_contents << "Q: " << question << "\nA: " << answer + '\n';
-        card_contents << "D: " << cardDifficultyToStr(difficulty);
-        card_contents << "\nN: " << std::to_string(n_times_answered) << "\n";
-        return card_contents.str();
-    }
+    std::string stringCardAsTemplate();
 };
 
 
@@ -143,31 +122,14 @@ public:
 
     /**
      * @brief Prints flashcard deck information and then each card
-     *
      */
-    void printDeck()
-    {
-        std::cout << name << std::endl;
-        std::cout << "File location: " << filename << std::endl;
-        std::cout << "Deck size: " << cards.size() << " cards" << std::endl;
-        for (FlashCard card : cards)
-        {
-            card.printCard();
-        }
-    }
+    void printDeck();
+
 
     /**
      * @brief Prints flashcard deck name and then each card as template for a deck file.
-     *
      */
-    void printDeckAsTemplate()
-    {
-        std::cout << name << std::endl;
-        for (FlashCard card : cards)
-        {
-            card.printCardAsTemplate();
-        }
-    }
+    void printDeckAsTemplate();
 };
 
 /**
@@ -203,14 +165,27 @@ FlashCardDeck readFlashCardDeck(std::filesystem::path deck_file);
 
 /**
  * @brief Write a deck of flashcards to disk
- * @details The standard location will be in Decks/ located with the executable
- * and use a suffix of ".deck"
+ * @details This will check the parent directory exists and write to a file. It does
+ * perform the additional checks on the filename that writeFlashCardWithChecks does
  *
  * @param deck The FlashCard deck to be written to file
  * @param filename The file path for the deck file
  * @return true if successfully writes deck to file.
  */
 bool writeFlashCardDeck(const FlashCardDeck &deck, std::filesystem::path filename);
+
+
+/**
+ * @brief Write a deck of flashcards to disk
+ * @details The standard location will be in Decks/ located with the executable
+ * and use a suffix of ".deck". This method checks
+ *
+ * @param deck The FlashCard deck to be written to file
+ * @param filename The file path for the deck file
+ * @param force_overwrite (default false) skip the overwrite confimration prompt
+ * @return true if successfully writes deck to file.
+ */
+bool writeFlashCardDeckWithChecks(const FlashCardDeck &deck, std::filesystem::path filename, bool force_overwrite);
 
 
 /**
@@ -228,14 +203,6 @@ std::vector<FlashCardDeck> createExampleDecks();
  * @return std::filesystem::path
  */
 std::filesystem::path createDeckFilename(std::filesystem::path deck_dir);
-
-/**
- * @brief For a given flashcard prompt the user to answer the card.
- *
- * @return true the card was answered correctly
- * @return false the card was answered incorrectly
- */
-bool answerCard(FlashCard &fc);
 
 
 /**

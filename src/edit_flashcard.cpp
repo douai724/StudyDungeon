@@ -196,7 +196,7 @@ void EditFlashcardScene::editSelectedCard()
 
 
     //Save changes to file
-    writeFlashCardDeck(m_deck, m_deck.filename);
+    writeFlashCardDeckWithChecks(m_deck, m_deck.filename, false);
 
     m_needsRedraw = true;
 }
@@ -226,7 +226,7 @@ void EditFlashcardScene::addNewCard()
     m_deck.cards.push_back(newCard);
 
     // Write the updated deck to the file
-    if (writeFlashCardDeck(m_deck, m_deck.filename))
+    if (writeFlashCardDeckWithChecks(m_deck, m_deck.filename, false))
     {
         window->drawText("New card added successfully!", 2, 16);
     }
@@ -260,7 +260,7 @@ void EditFlashcardScene::deleteSelectedCard()
             m_selectedCardIndex = m_deck.cards.size() - 1;
 
         // Write the updated deck to the file
-        if (writeFlashCardDeck(m_deck, m_deck.filename))
+        if (writeFlashCardDeckWithChecks(m_deck, m_deck.filename, false))
         {
             window->drawText("Card deleted successfully!", 2, 6);
         }
@@ -480,7 +480,7 @@ void EditDeckScene::addNewDeck()
     fs::path deckPath = "Decks/" + deckFilename + ".deck";
     FlashCardDeck newDeck{deckName, "", std::vector<FlashCard>{}};
     newDeck.filename = deckPath;
-    writeFlashCardDeck(newDeck, deckPath);
+    writeFlashCardDeckWithChecks(newDeck, deckPath, false);
     m_decks.push_back(newDeck);
     window->drawText("New deck added successfully!", 2, 8);
 

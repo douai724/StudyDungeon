@@ -22,24 +22,24 @@ TEST_CASE("Win condition")
     {
         REQUIRE(testGame.isGameOver() == false);
 
-        p1.setHitPoints(0);
+        testGame.p1.setHitPoints(0);
 
-        REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.isGameOver() == true); // here
     }
 
     SECTION("Player 2 drops to 0 hp")
     {
         REQUIRE(testGame.isGameOver() == false);
 
-        p2.setHitPoints(0);
+        testGame.p2.setHitPoints(0);
 
-        REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.isGameOver() == true); // here
     }
 
     SECTION("Players are out of cards")
     {
-        p1.removeCard(testCard);
-        p2.removeCard(testCard);
-        REQUIRE(testGame.isGameOver() == true);
+        testGame.p1.removeCard(testCard);
+        testGame.p2.removeCard(testCard);
+        REQUIRE(testGame.isGameOver() == true); // here
     }
 }

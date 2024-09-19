@@ -149,7 +149,7 @@ int main()
             std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
 
         // Create GameScene
-        gameScene = std::make_shared<GameScene>(uiManager);
+        gameScene = std::make_shared<GameScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
 
         // Create MainMenuScene
         mainMenuScene = std::make_shared<MainMenuScene>(

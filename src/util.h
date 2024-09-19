@@ -70,7 +70,7 @@ bool isValidDeckFileName(std::string name);
 
 /**
  * @brief hides or shows the cursor icon in the console
- * 
+ *
  */
 void ShowConsoleCursor(bool showflag);
 

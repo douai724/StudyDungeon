@@ -21,6 +21,7 @@ public:
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
+    PlayingCard bot(Player &player);
 };
 
 #endif

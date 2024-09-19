@@ -81,6 +81,22 @@ void GameScene::handleInput()
     }
     else if (key == 13) // Enter key
     {
+        // get the current card
+        PlayingCard currentCard = GameScene::game.p1.getHand()[m_selectedIndex];
+        Player botP = GameScene::game.p2;
+        PlayingCard botCard = bot(botP);
+        GameScene::game.p1.removeCard(currentCard);
+        GameScene::game.p2.removeCard(botCard);
+        try
+        {
+            GameScene::game.nextTurn(currentCard);
+
+            GameScene::game.nextTurn(botCard);
+        }
+        catch (...)
+        {
+            // handle error
+        }
     }
     else if (key == 27)
     { // Escape key
@@ -95,4 +111,12 @@ void GameScene::handleInput()
     // the player hand needs to be redrawn
     // nextTurn?
     m_needsRedraw = true;
+}
+
+PlayingCard GameScene::bot(Player &player)
+{
+    std::vector<PlayingCard> hand = player.getHand();
+    PlayingCard selected = hand[0];
+    player.removeCard(selected);
+    return selected;
 }

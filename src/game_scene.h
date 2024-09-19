@@ -14,7 +14,7 @@ private:
     int m_selectedIndex = 0;
     std::function<void()> m_goBack;
     Game game;
-
+    std::vector<PlayingCard> playlist;
 
 public:
     GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">702ae2e</span>
+   &#160;<span id="projectnumber">d50c62b</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -84,29 +84,39 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> isTestMode;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;std::filesystem::path getAppPath();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a211897e8868606c97636147527d722eb">timer</a>(<span class="keywordtype">int</span> minutes);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * @brief Clears the screen.</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @details Credit: SirEnder125 on cplusplus.com</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> clearScreen();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#afa7202e3936e1663f0e361cace941194">isValidDeckFileName</a>(std::string name);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_enter{13};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_backspace{8};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_esc{27};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_space{32};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _arrow_prefix{224};</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_up{72};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_down{80};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_left{75};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> _key_right{77};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;std::filesystem::path getAppPath();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a211897e8868606c97636147527d722eb">timer</a>(<span class="keywordtype">int</span> minutes);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * @brief Clears the screen.</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * @details Credit: SirEnder125 on cplusplus.com</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> clearScreen();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a>();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a>(<span class="keywordtype">bool</span> showflag);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#afa7202e3936e1663f0e361cace941194">isValidDeckFileName</a>(std::string name);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a>(<span class="keywordtype">bool</span> showflag);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="autil_8h_html_a211897e8868606c97636147527d722eb"><div class="ttname"><a href="util_8h.html#a211897e8868606c97636147527d722eb">timer</a></div><div class="ttdeci">void timer(int minutes)</div><div class="ttdoc">starts a countdown timer for a specified number of minutes</div><div class="ttdef"><b>Definition:</b> util.cpp:48</div></div>
 <div class="ttc" id="autil_8h_html_a44b530801f49c81b3f065ced260f6f0b"><div class="ttname"><a href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a></div><div class="ttdeci">bool yesNoPrompt()</div><div class="ttdoc">Prompts the user to enter [Yy] for yes and [Nn] for no.</div><div class="ttdef"><b>Definition:</b> util.cpp:98</div></div>
 <div class="ttc" id="autil_8h_html_a7167f5c196fc5e167bfabde1a730e81d"><div class="ttname"><a href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">An alternative to system('pause')</div><div class="ttdef"><b>Definition:</b> util.cpp:55</div></div>

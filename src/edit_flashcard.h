@@ -7,24 +7,26 @@
 #include <memory>
 #include <vector>
 
-namespace FlashcardEdit {
+namespace FlashcardEdit
+{
 
-class EditDeckScene : public ConsoleUI::Scene {
+class EditDeckScene : public ConsoleUI::Scene
+{
 
-    
+
 public:
-    EditDeckScene(ConsoleUI::UIManager& uiManager, 
+    EditDeckScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> goBack,
-                  std::function<void(FlashCardDeck&)> openEditFlashcardScene);
+                  std::function<void(FlashCardDeck &)> openEditFlashcardScene);
 
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
 
 private:
-    ConsoleUI::UIManager& m_uiManager;
+    ConsoleUI::UIManager &m_uiManager;
     std::function<void()> m_goBack;
-    std::function<void(FlashCardDeck&)> m_openEditFlashcardScene;
+    std::function<void(FlashCardDeck &)> m_openEditFlashcardScene;
     std::vector<FlashCardDeck> m_decks;
     size_t m_selectedDeckIndex;
     int m_currentPage;
@@ -36,25 +38,24 @@ private:
     void deleteDeck();
     void renameDeck();
     void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                         const std::string& text,
+                         const std::string &text,
                          int x,
                          int y,
                          int width);
 };
 
-class EditFlashcardScene : public ConsoleUI::Scene {
+class EditFlashcardScene : public ConsoleUI::Scene
+{
 public:
-    EditFlashcardScene(ConsoleUI::UIManager& uiManager, 
-                       FlashCardDeck& deck,
-                       std::function<void()> goBack);
+    EditFlashcardScene(ConsoleUI::UIManager &uiManager, FlashCardDeck &deck, std::function<void()> goBack);
 
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
 
 private:
-    ConsoleUI::UIManager& m_uiManager;
-    FlashCardDeck& m_deck;
+    ConsoleUI::UIManager &m_uiManager;
+    FlashCardDeck &m_deck;
     std::function<void()> m_goBack;
     size_t m_selectedCardIndex;
     int m_currentPage;
@@ -65,12 +66,12 @@ private:
     void addNewCard();
     void deleteSelectedCard();
     void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                         const std::string& text,
+                         const std::string &text,
                          int x,
                          int y,
                          int width);
 };
 
-} // namespace FlashcardApp
+} // namespace FlashcardEdit
 
 #endif // EDIT_DECK_SCENE_H

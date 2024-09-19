@@ -1,3 +1,13 @@
+/**
+ * @file menu.cpp
+ * @author Green Alligators
+ * @brief
+ * @version 0.2
+ * @date 2024-09-19
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "menu.h"
 #include "util.h"
 #include <algorithm>

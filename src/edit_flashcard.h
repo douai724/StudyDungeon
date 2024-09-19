@@ -1,3 +1,13 @@
+/**
+ * @file edit_flashcard.h
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.2
+ * @date 2024-09-19
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #ifndef EDIT_DECK_SCENE_H
 #define EDIT_DECK_SCENE_H
 
@@ -10,6 +20,10 @@
 namespace FlashcardEdit
 {
 
+/**
+ * @brief This scene defines the UI for editing cards in a deck
+ *
+ */
 class EditDeckScene : public ConsoleUI::Scene
 {
 

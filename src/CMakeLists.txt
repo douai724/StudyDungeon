@@ -10,7 +10,6 @@ set(LIBRARY_SOURCES
     "gameloop.cpp"
     "player.cpp"
     "playing_card.cpp"
-    "example_test.cpp"
     "game_scene.cpp"
 )
 
@@ -26,7 +25,6 @@ set(LIBRARY_HEADERS
     "gameloop.h"
     "player.h"
     "playing_card.h"
-    "example_test.h"
     "game_scene.h"
     )
 

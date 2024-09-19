@@ -1,3 +1,14 @@
+/**
+ * @file flashcard_scene.h
+ * @author Green ALligators
+ * @brief
+ * @version 0.2
+ * @date 2024-09-19
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+
 #pragma once
 
 #include "deck.h"

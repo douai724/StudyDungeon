@@ -24,6 +24,16 @@ Game::Game()
 void Game::nextTurn(PlayingCard nextCard)
 {
 
+    // draw a card
+    if (turn == 1)
+    {
+        p1.drawCard();
+    }
+    else
+    {
+        p2.drawCard();
+    }
+
     // apply effect
     switch ((int)nextCard.getType())
     {
@@ -39,17 +49,6 @@ void Game::nextTurn(PlayingCard nextCard)
     default:
         throw -1;
     }
-
-    // draw a card
-    if (turn == 1)
-    {
-        p1.drawCard();
-    }
-    else
-    {
-        p2.drawCard();
-    }
-
 
     // switch turns
     if (Game::turn == 1)

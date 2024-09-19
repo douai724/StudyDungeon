@@ -14,6 +14,7 @@
 #include "gameloop.h"
 #include "menu.h"
 #include "player.h"
+#include "util.h"
 #include <conio.h>
 
 class GameScene : public ConsoleUI::Scene

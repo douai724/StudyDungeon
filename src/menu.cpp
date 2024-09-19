@@ -129,26 +129,26 @@ std::string ConsoleWindow::getLine(int x, int y, int maxLength)
         // Get user input
         int ch = _getch();
 
-        if (ch == 224) // Arrow key prefix
+        if (ch == _arrow_prefix) // Arrow key prefix
         {
             ch = _getch();
             switch (ch)
             {
-            case 75: // Left arrow
+            case _key_left: // Left arrow
                 if (cursorPos > 0)
                     cursorPos--;
                 break;
-            case 77: // Right arrow
+            case _key_right: // Right arrow
                 if (cursorPos < input.length())
                     cursorPos++;
                 break;
             }
         }
-        else if (ch == 13) // Enter key
+        else if (ch == _key_enter) // Enter key
         {
             break;
         }
-        else if (ch == 8) // Backspace
+        else if (ch == _key_backspace) // Backspace
         {
             if (cursorPos > 0)
             {
@@ -298,17 +298,17 @@ void Menu::draw(int x, int y)
 void Menu::handleInput()
 {
     int key = _getch();
-    if (key == 224) // Arrow key
+    if (key == _arrow_prefix) // Arrow key
     {
         key = _getch();
         if (horizontal_layout)
         {
             switch (key)
             {
-            case 75: // Left arrow
+            case _key_left: // Left arrow
                 m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
                 break;
-            case 77: // Right arrow
+            case _key_right: // Right arrow
                 m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
                 break;
             }
@@ -317,16 +317,16 @@ void Menu::handleInput()
         {
             switch (key)
             {
-            case 72: // Up arrow
+            case _key_up: // Up arrow
                 m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
                 break;
-            case 80: // Down arrow
+            case _key_down: // Down arrow
                 m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
                 break;
             }
         }
     }
-    else if (key == 13) // Enter key
+    else if (key == _key_enter) // Enter key
     {
         m_buttons[m_selectedIndex].performAction();
     }

@@ -194,7 +194,7 @@ int main()
                 if (_kbhit())
                 {
                     int ch = _getch();
-                    if (ch == 27)
+                    if (ch == _key_esc)
                     { // ESC key
                         running = false;
                     }

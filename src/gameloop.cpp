@@ -25,10 +25,11 @@ void Game::nextTurn(PlayingCard nextCard)
 {
 
     // apply effect
-    switch (nextCard.getType())
+    switch ((int)nextCard.getType())
     {
     case 0:
         damageEffect(nextCard);
+        break;
     case 1:
         healEffect(nextCard);
         break;

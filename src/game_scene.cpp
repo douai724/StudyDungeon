@@ -26,20 +26,6 @@ void GameScene::update()
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
-    if (GameScene::game.turn != 1)
-    {
-        Player botP = GameScene::game.p2;
-        try
-        {
-            PlayingCard botCard = bot(botP);
-            GameScene::game.nextTurn(botCard);
-            playlist.push_back(botCard);
-        }
-        catch (...)
-        {
-            window->drawCenteredText("Bot skipped turn.", 5);
-        }
-    }
     if (!m_needsRedraw)
     {
         return;
@@ -84,20 +70,7 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         }
     }
 
-    // if(playlist.size() >= 2){
-    //     window->drawText(playlist[playlist.size()-2].toString(), 100, 1);
-    //     window->drawText(playlist[playlist.size()-1].toString(), 100, 2);
-    // }
-
-
-    // for(int i = 0; i < int(GameScene::playlist.size()); i++){
-    //     int yValue = i == 0 ? 0 : i*2-1;
-    //     window->drawText(playlist[i].toString(), 100, yValue);
-    // }
     m_needsRedraw = false;
-    // auto &menu = m_uiManager.getMenu("playerHand");
-    // menu.draw(10, 20);
-    //m_needsRedraw = false;
 }
 
 void GameScene::handleInput()
@@ -124,49 +97,21 @@ void GameScene::handleInput()
     }
     else if (key == 13) // Enter key
     {
-        // get the current card
-        PlayingCard currentCard = GameScene::game.p1.getHand()[m_selectedIndex];
+        // Player turn
+        PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
+        GameScene::game.p1.removeCard(playerCard);
+        GameScene::game.nextTurn(playerCard);
+
+        // Bot turn
+        PlayingCard botCard = GameScene::game.p2.getHand()[0];
+        GameScene::game.p2.removeCard(botCard);
+        GameScene::game.nextTurn(botCard);
         m_selectedIndex = 0;
-        // Player botP = GameScene::game.p2;
-        //  PlayingCard botCard = bot(botP);
-        GameScene::game.p1.removeCard(currentCard);
-        //  GameScene::game.p2.removeCard(botCard);
-        try
-        {
-            GameScene::game.nextTurn(currentCard);
-            playlist.push_back(currentCard);
-            //render(m_uiManager.getWindow());
-            //     GameScene::game.nextTurn(botCard);
-            //     playlist.push_back(botCard);
-        }
-        catch (...)
-        {
-            // handle error
-        }
     }
     else if (key == 27)
     { // Escape key
         m_goBack();
     }
 
-    //m_uiManager.getMenu("playerHand").handleInput();
-    // if enter key pressed
-    // get the current selected card
-    // play the card
-    // remove the card from the player's hand
-    // the player hand needs to be redrawn
-    // nextTurn?
     m_needsRedraw = true;
-}
-
-PlayingCard GameScene::bot(Player &player)
-{
-    std::vector<PlayingCard> hand = player.getHand();
-    if (hand.size() == 0)
-    {
-        throw -1;
-    }
-    PlayingCard selected = hand[0];
-    player.removeCard(selected);
-    return selected;
 }

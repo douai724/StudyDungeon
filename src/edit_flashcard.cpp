@@ -50,6 +50,7 @@ void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window
         drawWrappedText(window, "  A: " + card.answer, 2, yOffset + 1, window->getSize().X - 4);
         window->drawText("  D: " + cardDifficultyToStr(card.difficulty), 2, yOffset + 2);
     }
+    
 
     // Draw instructions
     window->drawText("Up/Down: Navigate Cards, Left/Right: Change Page, Enter: Edit Card, A: Add Card, D: Delete Card, Esc: Back to Decks", 2, window->getSize().Y - 2);
@@ -171,18 +172,88 @@ void EditFlashcardScene::editSelectedCard()
     window->drawText("Press any key to continue...", 2, 22);
     _getch(); // Wait for a key press
 
+
     //Save changes to file
-    writeFlashCardDeck(m_deck, "Decks/" + m_deck.name + ".deck");
+    writeFlashCardDeck(m_deck, m_deck.filename);
     
     m_needsRedraw = true;
 }
 
 void EditFlashcardScene::addNewCard()
 {
+    auto window = m_uiManager.getWindow();
+    window->clear();
+    window->drawBorder();
+    window->drawCenteredText("Add New Card", 2);
+
+    FlashCard newCard;
+
+    window->drawText("Enter the question:", 2, 4);
+    newCard.question = window->getLine(2, 6, window->getSize().X - 4);
+
+    window->drawText("Enter the answer:", 2, 8);
+    newCard.answer = window->getLine(2, 10, window->getSize().X - 4);
+
+    window->drawText("Enter the difficulty (0: Easy, 1: Medium, 2: Hard):", 2, 12);
+    std::string difficultyStr = window->getLine(2, 14, window->getSize().X - 4);
+    int difficulty = std::stoi(difficultyStr);
+    newCard.difficulty = static_cast<CardDifficulty>(difficulty);
+
+    newCard.n_times_answered = 0;
+
+    m_deck.cards.push_back(newCard);
+
+    // Write the updated deck to the file
+    if (writeFlashCardDeck(m_deck, m_deck.filename))
+    {
+        window->drawText("New card added successfully!", 2, 16);
+    }
+    else
+    {
+        window->drawText("Failed to update the deck file.", 2, 16);
+    }
+
+    window->drawText("Press any key to continue...", 2, 18);
+    _getch();
+
+    m_needsRedraw = true;
 }
 
 void EditFlashcardScene::deleteSelectedCard()
 {
+    if (m_deck.cards.empty()) return;
+
+    auto window = m_uiManager.getWindow();
+    window->clear();
+    window->drawBorder();
+    window->drawCenteredText("Delete Card", 2);
+
+    window->drawText("Are you sure you want to delete the selected card? (Y/N)", 2, 4);
+    int key = _getch();
+    if (key == 'Y' || key == 'y')
+    {
+        m_deck.cards.erase(m_deck.cards.begin() + m_selectedCardIndex);
+        if (m_selectedCardIndex >= m_deck.cards.size()) m_selectedCardIndex = m_deck.cards.size() - 1;
+
+        // Write the updated deck to the file
+        if (writeFlashCardDeck(m_deck, m_deck.filename))
+        {
+            window->drawText("Card deleted successfully!", 2, 6);
+        }
+        else
+        {
+            window->drawText("Failed to update the deck file.", 2, 6);
+        }
+    }
+    else
+    {
+        window->drawText("Card deletion canceled.", 2, 6);
+    }
+
+    window->drawText("Press any key to continue...", 2, 8);
+    _getch();
+
+    m_needsRedraw = true;
 }
 
 void EditFlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
@@ -362,16 +433,89 @@ void EditDeckScene::handleInput()
     }
 }
 
-void EditDeckScene::addNewDeck() 
+void EditDeckScene::addNewDeck()
 {
+    auto window = m_uiManager.getWindow();
+    window->clear();
+    window->drawBorder();
+    window->drawCenteredText("Add New Deck", 2);
+
+    window->drawText("Enter the name for the new deck (max 30 characters):", 2, 4);
+    std::string deckName = window->getLine(2, 6, 30);
+
+    // Replace spaces with underscores in the filename
+    std::string deckFilename = deckName;
+    std::replace(deckFilename.begin(), deckFilename.end(), ' ', '_');
+
+    fs::path deckPath = "Decks/" + deckFilename + ".deck";
+    FlashCardDeck newDeck{deckName, "", std::vector<FlashCard>{}};
+    newDeck.filename = deckPath;
+    writeFlashCardDeck(newDeck, deckPath);
+    m_decks.push_back(newDeck);
+    window->drawText("New deck added successfully!", 2, 8);
+
+    window->drawText("Press any key to continue...", 2, 10);
+    _getch();
+
+    m_needsRedraw = true;
 }
 
 void EditDeckScene::deleteDeck()
 {
+    if (m_decks.empty()) return;
+
+    auto window = m_uiManager.getWindow();
+    window->clear();
+    window->drawBorder();
+    window->drawCenteredText("Delete Deck", 2);
+
+    window->drawText("Are you sure you want to delete the deck '" + m_decks[m_selectedDeckIndex].name + "'? (Y/N)", 2, 4);
+    int key = _getch();
+    if (key == 'Y' || key == 'y')
+    {
+        fs::remove(m_decks[m_selectedDeckIndex].filename);
+        m_decks.erase(m_decks.begin() + m_selectedDeckIndex);
+        if (m_selectedDeckIndex >= m_decks.size()) m_selectedDeckIndex = m_decks.size() - 1;
+        window->drawText("Deck deleted successfully!", 2, 6);
+    }
+    else
+    {
+        window->drawText("Deck deletion canceled.", 2, 6);
+    }
+
+    window->drawText("Press any key to continue...", 2, 8);
+    _getch();
+
+    m_needsRedraw = true;
 }
 
 void EditDeckScene::renameDeck()
 {
+    if (m_decks.empty()) return;
+
+    auto window = m_uiManager.getWindow();
+    window->clear();
+    window->drawBorder();
+    window->drawCenteredText("Rename Deck", 2);
+
+    window->drawText("Enter the new name for the deck '" + m_decks[m_selectedDeckIndex].name + "' (max 30 characters):", 2, 4);
+    std::string newDeckName = window->getLine(2, 6, 30);
+
+    // Replace spaces with underscores in the filename
+    std::string newDeckFilename = newDeckName;
+    std::replace(newDeckFilename.begin(), newDeckFilename.end(), ' ', '_');
+
+    fs::path oldFilename = m_decks[m_selectedDeckIndex].filename;
+    fs::path newFilename = oldFilename.parent_path() / (newDeckFilename + ".deck");
+    fs::rename(oldFilename, newFilename);
+    m_decks[m_selectedDeckIndex].name = newDeckName;
+    m_decks[m_selectedDeckIndex].filename = newFilename;
+    window->drawText("Deck renamed successfully!", 2, 8);
+
+    window->drawText("Press any key to continue...", 2, 10);
+    _getch();
+
+    m_needsRedraw = true;
 }
 
 void EditDeckScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,

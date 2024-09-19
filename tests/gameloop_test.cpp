@@ -8,41 +8,38 @@
 
 TEST_CASE("Win condition")
 {
-    Player p1 = Player(100, 100, std::vector<PlayingCard>());
-    Player p2 = Player(100, 100, std::vector<PlayingCard>());
+    Player p1 = Player(100, 100, 5, std::vector<PlayingCard>());
+    Player p2 = Player(100, 100, 5, std::vector<PlayingCard>());
 
-    Player *ptr1 = &p1;
-    Player *ptr2 = &p2;
+    PlayingCard testCard = PlayingCard((enum Type)0, 10);
 
-    PlayingCard testCard = PlayingCard(1, (enum Type)0, 10);
+    p1.addCard(testCard);
+    p2.addCard(testCard);
 
-    ptr1->addCard(testCard);
-    ptr2->addCard(testCard);
-
-    Game testGame = Game(ptr1, ptr2);
+    Game testGame = Game(p1, p2);
 
     SECTION("Player 1 drops to 0 hp")
     {
         REQUIRE(testGame.isGameOver() == false);
 
-        ptr1->setHitPoints(0);
+        testGame.p1.setHitPoints(0);
 
-        REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.isGameOver() == true); // here
     }
 
     SECTION("Player 2 drops to 0 hp")
     {
         REQUIRE(testGame.isGameOver() == false);
 
-        ptr2->setHitPoints(0);
+        testGame.p2.setHitPoints(0);
 
-        REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.isGameOver() == true); // here
     }
 
     SECTION("Players are out of cards")
     {
-        ptr1->removeCard(testCard);
-        ptr2->removeCard(testCard);
-        REQUIRE(testGame.isGameOver() == true);
+        testGame.p1.removeCard(testCard);
+        testGame.p2.removeCard(testCard);
+        REQUIRE(testGame.isGameOver() == true); // here
     }
 }

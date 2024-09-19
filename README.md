@@ -9,7 +9,6 @@
 DEV BRANCH: [![pre-commit](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml/badge.svg?branch=dev)](https://github.com/douai724/StudyDungeon/actions/workflows/pre-commit.yml) [![Windows CI Build App](https://github.com/douai724/StudyDungeon/actions/workflows/windows-build.yml/badge.svg?branch=dev)](https://github.com/douai724/StudyDungeon/actions/workflows/windows-build.yml)
 [![Windows CI Test](https://github.com/douai724/StudyDungeon/actions/workflows/windows-test.yml/badge.svg?branch=dev)](https://github.com/douai724/StudyDungeon/actions/workflows/windows-test.yml)
 
-
 Alpha released
 
 ## VScode config

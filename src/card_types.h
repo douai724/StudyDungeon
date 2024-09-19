@@ -20,7 +20,6 @@ enum Type
 {
     damage,
     heal,
-    block,
     swapHand
 };
 

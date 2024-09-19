@@ -6,7 +6,7 @@
 
 TEST_CASE("Hit points are updated and retrieved")
 {
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     SECTION("Retrieving hit points")
     {
@@ -28,7 +28,7 @@ TEST_CASE("Hit points are updated and retrieved")
 
 TEST_CASE("MAXIMUM hit points are updated and retrieved")
 {
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     SECTION("Retrieving MAXIMUM hit points")
     {
@@ -51,8 +51,8 @@ TEST_CASE("MAXIMUM hit points are updated and retrieved")
 TEST_CASE("Player hand is updated and retrieved")
 {
     // set up cards
-    PlayingCard card1 = PlayingCard(1, (enum Type)0, 5);
-    PlayingCard card2 = PlayingCard(1, (enum Type)0, 10);
+    PlayingCard card1 = PlayingCard((enum Type)0, 5);
+    PlayingCard card2 = PlayingCard((enum Type)0, 10);
 
     // set up hand
     std::vector<PlayingCard> testHand;
@@ -60,7 +60,7 @@ TEST_CASE("Player hand is updated and retrieved")
     testHand.push_back(card2);
 
     // set up player with empty hand
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     REQUIRE(testPlayer.getHand().size() == 0);
 
@@ -84,7 +84,7 @@ TEST_CASE("Player hand is updated and retrieved")
 
     SECTION("Add card to hand")
     {
-        PlayingCard card3 = PlayingCard(1, (enum Type)0, 25);
+        PlayingCard card3 = PlayingCard((enum Type)0, 25);
         testPlayer.setHand(testHand);
         testPlayer.addCard(card3);
 
@@ -109,7 +109,7 @@ TEST_CASE("Player hand is updated and retrieved")
 }
 TEST_CASE("Effects are applied")
 {
-    Player testPlayer = Player(100, 100, std::vector<PlayingCard>());
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
 
     REQUIRE(testPlayer.getHitPoints() == 100);
 

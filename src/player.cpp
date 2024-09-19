@@ -4,19 +4,27 @@ Player::Player()
 {
 }
 
-Player::Player(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand)
+Player::Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
 {
     Player::hitPoints = hitPoints;
     Player::maxHitPoints = maxHitPoints;
-    Player::hand = hand;
+    Player::deck = deck;
+    Player::handSize = handSize;
+
+    for (int i = 0; i < handSize; i++)
+    {
+        Player::drawCard();
+    }
 }
 
-PlayingCard Player::play()
+void Player::drawCard()
 {
-    std::cout << "This is the base class." << std::endl;
-    PlayingCard selected = getCard(1);
-    removeCard(selected);
-    return selected;
+    if ((int)Player::deck.size() != 0)
+    {
+        PlayingCard first = Player::deck.front();
+        Player::deck.erase(Player::deck.begin());
+        Player::hand.push_back(first);
+    }
 }
 
 int Player::getHitPoints()
@@ -49,6 +57,26 @@ std::vector<PlayingCard> Player::getHand()
 void Player::setHand(std::vector<PlayingCard> playerHand)
 {
     Player::hand = playerHand;
+}
+
+int Player::getHandSize()
+{
+    return Player::handSize;
+}
+
+void Player::setHandSize(int handSize)
+{
+    Player::handSize = handSize;
+}
+
+std::vector<PlayingCard> Player::getDeck()
+{
+    return Player::deck;
+}
+
+void Player::setDeck(std::vector<PlayingCard> deck)
+{
+    Player::deck = deck;
 }
 
 void Player::removeCard(PlayingCard &card)
@@ -114,55 +142,4 @@ void Player::printHand()
         output += add;
     }
     std::cout << output << std::endl;
-}
-
-User::User(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Player(hitPoints, maxHitPoints, hand)
-{
-}
-
-PlayingCard User::play()
-{
-    std::vector<PlayingCard> currentHand = Player::getHand();
-    int handSize = (int)currentHand.size();
-    PlayingCard selectedCard = PlayingCard();
-
-    // probably need to free this up somehow
-    //auto cardsMenu = std::make_shared<GridMenu>("Select a card", 1, handSize);
-    for (int i = 0; i < handSize; i++)
-    {
-
-        // cardsMenu->addGridItem(
-        //     currentHand[i].toString(),
-        //     [this, i, currentHand, &selectedCard]() {
-        //         clearScreen();
-        //         selectedCard = currentHand[i];
-        //         //pause();
-        //         throw "continue";
-        //     },
-        //     i,
-        //     0);
-    }
-
-    //cardsMenu->run();
-    removeCard(selectedCard);
-    return selectedCard;
-}
-
-
-Bot::Bot(int hitPoints, int maxHitPoints, std::vector<PlayingCard> hand) : Player(hitPoints, maxHitPoints, hand)
-{
-}
-
-PlayingCard Bot::play()
-{
-    try
-    {
-        PlayingCard selectedCard = getCard((int)getHand().size() - 1);
-        removeCard(selectedCard);
-        return selectedCard;
-    }
-    catch (int e)
-    {
-        throw e;
-    }
 }

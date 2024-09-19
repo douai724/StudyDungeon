@@ -3,6 +3,7 @@
 #include "deck.h"
 #include "edit_flashcard.h"
 #include "flashcard_scene.h" // Include the new flashcard scenes
+#include "game_scene.h"
 #include "gameloop.h"
 #include "menu.h"
 #include "test_scene.h"
@@ -21,14 +22,18 @@ class MainMenuScene : public ConsoleUI::Scene
 public:
     MainMenuScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> openFibonacciScene,
+                  std::function<void()> openBrowseDecks,
                   std::function<void()> openEditDecks,
-                  std::function<void()> openBrowseDecks)
+                  std::function<void()> openGameScene)
+
         : m_uiManager(uiManager)
     {
         auto &menu = m_uiManager.createMenu("main", false);
         menu.addButton("Browse Decks", openBrowseDecks);
         menu.addButton("Edit Decks", openEditDecks);
         menu.addButton("Fibonacci Sequence", openFibonacciScene);
+        menu.addButton("Game", openGameScene);
+
         menu.addButton("Exit", []() {
             clearScreen();
             exit(0);
@@ -99,6 +104,7 @@ int main()
         std::shared_ptr<FlashcardApp::BrowseDecksScene> browseDecksScene;
         std::shared_ptr<FlashcardApp::FlashcardScene> flashcardScene;
         std::shared_ptr<FlashcardApp::ResultsScene> resultsScene;
+        std::shared_ptr<GameScene> gameScene;
 
         // Create ResultsScene
         resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
@@ -142,12 +148,17 @@ int main()
         fibonacciScene =
             std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
 
+        // Create GameScene
+        gameScene = std::make_shared<GameScene>(uiManager);
+
         // Create MainMenuScene
         mainMenuScene = std::make_shared<MainMenuScene>(
             uiManager,
             [&]() { uiManager.setCurrentScene(fibonacciScene); },
+            [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(editDecksScene); },
-            [&]() { uiManager.setCurrentScene(browseDecksScene); });
+            [&]() { uiManager.setCurrentScene(gameScene); });
+
 
         // Set initial scene
         uiManager.setCurrentScene(mainMenuScene);

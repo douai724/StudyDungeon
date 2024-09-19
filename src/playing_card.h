@@ -23,11 +23,6 @@ class PlayingCard
 {
 private:
     /**
-     * The target of the card's effect. 0 is for the player that possesses this card.
-     * 1 is for the enemy player.
-     */
-    bool target;
-    /**
      * The value modifier that goes with the card effect.
      */
     int value;
@@ -53,7 +48,7 @@ public:
      * @param cardType the effect of the card
      * @param value the value modifier of the card
      */
-    PlayingCard(bool target, enum Type cardType, int value);
+    PlayingCard(/*bool target,*/ enum Type cardType, int value);
 
     /**
      * @brief Compares another PlayingCard object to this.
@@ -81,7 +76,7 @@ public:
      * @return true
      * @return false
      */
-    bool getTarget();
+    //   bool getTarget();
 
     /**
      * @brief Get the type of the card

@@ -25,41 +25,55 @@
  */
 class Game
 {
-private:
+public:
     /**
       * The current turn. 1 for Player 1; 2 for Player 2.
       */
     short turn;
     /**
-      * Pointer to Player 1
+      * Player 1
       */
-    Player *p1;
+    Player p1;
     /**
-      * Pointer to Player 2
+      * Player 2
       */
-    Player *p2;
+    Player p2;
 
     /**
-      * @brief Apply the damage effect to the player specified in the card.
+      * @brief Apply the damage effect to the player whose turn it is.
       *
       * @param card the PlayingCard object.
       */
     void damageEffect(PlayingCard &card);
 
-public:
+    /**
+     * @brief Apply the heal effect to the player whose turn it is.
+     *
+     * @param card the PlayingCard object
+     */
+    void healEffect(PlayingCard &card);
+
+    /**
+     * @brief Swap the hands between the players
+     *
+     */
+    void swapHandEffect();
+
     /**
      * @brief Construct a new Game object.
      *
      * @param p1 Player 1
      * @param p2 Player 2
      */
-    Game(Player *p1, Player *p2);
+    Game(Player p1, Player p2);
+
+    Game();
 
     /**
       * @brief Plays the next turn of the game.
       *
       */
-    void nextTurn();
+    void nextTurn(PlayingCard nextCard);
 
     /**
       * @brief Checks if the game is over.
@@ -78,7 +92,9 @@ public:
  * @brief Set up and start the game.
  *
  */
-void start(int numCards);
+void start(Game game);
+
+Game setUp(Player p1, Player p2);
 
 /**
  * @brief Generates a hand.
@@ -86,6 +102,6 @@ void start(int numCards);
  * @param numCards the number of cards to add to the hand.
  * @return std::vector<PlayingCard> the generated hand.
  */
-std::vector<PlayingCard> generateHand(int numCards);
+std::vector<PlayingCard> generateDeck(int numCards);
 
 #endif

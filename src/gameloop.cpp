@@ -74,6 +74,40 @@ bool Game::isGameOver()
     return false;
 }
 
+bool Game::isWinner()
+{
+    if (turn == 1)
+    {
+        if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
+        {
+            return false;
+        }
+        else if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    if (turn == 2)
+    {
+        if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
+        {
+            return false;
+        }
+        else if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
 void Game::swapHandEffect()
 {
     std::vector<PlayingCard> temp = Game::p1.getHand();

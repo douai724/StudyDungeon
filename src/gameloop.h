@@ -86,6 +86,9 @@ public:
       * @return false
       */
     bool isGameOver();
+
+
+    bool isWinner();
 };
 
 /**

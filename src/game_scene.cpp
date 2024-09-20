@@ -34,15 +34,29 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->drawBorder();
     COORD size = window->getSize();
 
+    std::vector<PlayingCard> hand = GameScene::game.p1.getHand();
 
-    Game thisGame = GameScene::game;
-    Player user = thisGame.p1;
-    std::vector<PlayingCard> hand = user.getHand();
+    window->drawText("YOU", size.X / 5, 2, true);
+    window->drawText("HP: " + std::to_string(GameScene::game.p1.getHitPoints()) + "/" +
+                         std::to_string(GameScene::game.p1.getMaxHitPoints()),
+                     size.X / 5,
+                     3,
+                     true);
+    window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p1.getDeck().size()), size.X / 5, 4, true);
 
-    window->drawText("Turn: " + std::to_string(game.turn), 2, 1);
-    window->drawText("You: " + std::to_string(user.getHitPoints()), 1, 2);
-    window->drawText("Enemy: " + std::to_string(game.p2.getHitPoints()), 10, 2);
+    window->drawText("ENEMY", 4 * size.X / 5, 2, true);
+    window->drawText("HP: " + std::to_string(GameScene::game.p2.getHitPoints()) + "/" +
+                         std::to_string(GameScene::game.p2.getMaxHitPoints()),
+                     4 * size.X / 5,
+                     3,
+                     true);
+    window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p2.getDeck().size()), 4 * size.X / 5, 4, true);
 
+    if (GameScene::playlist.size() > 1)
+    {
+        window->drawCenteredText("You played: " + playlist[playlist.size() - 2].toString(), 9);
+        window->drawCenteredText("Enemy played: " + playlist[playlist.size() - 1].toString(), 10);
+    }
 
     if (hand.size() == 0)
     {
@@ -50,22 +64,28 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
+        int cardWidth = size.X / hand.size();
         for (int i = 0; i < (int)hand.size(); i++)
         {
-            std::string border = " "; //= m_selectedIndex == i ? "+" : " ";
             std::string option = hand[i].toString();
+            std::string cardText = "";
+            window->drawBox(size.X / hand.size() * i, 3 * size.Y / 5, size.X / 5, 2 * size.Y / 5);
             if (m_selectedIndex == i)
             {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-                window->drawCenteredText("+ [" + option + "] + ", i * 2);
+                cardText = "+ [" + option + "] + ";
+                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
 
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
             }
             else
             {
-                window->drawCenteredText(" [" + option + "] ", i * 2);
+                cardText = " [" + option + "]  ";
+                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
             }
         }
     }
@@ -81,13 +101,13 @@ void GameScene::handleInput()
         key = _getch();
         switch (key)
         {
-        case _key_up: // Up arrow
+        case _key_left:
             if (m_selectedIndex > 0)
             {
                 m_selectedIndex--;
             }
             break;
-        case _key_down: // Down arrow
+        case _key_right: // Down arrow
             if (m_selectedIndex < GameScene::game.p1.getHand().size() - 1)
             {
                 m_selectedIndex++;
@@ -107,8 +127,14 @@ void GameScene::handleInput()
             PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
             GameScene::game.p1.removeCard(playerCard);
             GameScene::game.nextTurn(playerCard);
-            if (GameScene::game.isGameOver())
+            GameScene::playlist.push_back(playerCard);
+            if (GameScene::game.isWinner())
             {
+                std::shared_ptr<ConsoleUI::ConsoleWindow> window = m_uiManager.getWindow();
+                window->clear();
+                window->drawBorder();
+                window->drawCenteredText("You won! :)", window->getSize().Y / 2);
+                Sleep(1000);
                 m_goBack();
             }
         }
@@ -123,8 +149,14 @@ void GameScene::handleInput()
             PlayingCard botCard = GameScene::game.p2.getHand()[0];
             GameScene::game.p2.removeCard(botCard);
             GameScene::game.nextTurn(botCard);
-            if (GameScene::game.isGameOver())
+            GameScene::playlist.push_back(botCard);
+            if (GameScene::game.isWinner())
             {
+                std::shared_ptr<ConsoleUI::ConsoleWindow> window = m_uiManager.getWindow();
+                window->clear();
+                window->drawBorder();
+                window->drawCenteredText("Enemy won :()", window->getSize().Y / 2);
+                Sleep(1000);
                 m_goBack();
             }
         }

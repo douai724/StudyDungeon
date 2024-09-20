@@ -10,11 +10,8 @@
  */
 #include "gameloop.h"
 
-Game::Game(Player p1, Player p2)
+Game::Game(Player p1, Player p2) : p1(p1), p2(p2), turn(1)
 {
-    Game::p1 = p1;
-    Game::p2 = p2;
-    Game::turn = 1;
 }
 
 Game::Game()

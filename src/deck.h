@@ -140,7 +140,7 @@ public:
  * @param n_times_answered The number of time the card has been answered
  * @return FlashCard
  */
-FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered);
+FlashCard createFlashCard(const std::string question, const std::string answer, const CardDifficulty difficulty, const int n_times_answered);
 
 
 /**

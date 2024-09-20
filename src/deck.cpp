@@ -93,7 +93,7 @@ void FlashCardDeck::printDeckAsTemplate()
     }
 }
 
-FlashCard createFlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)
+FlashCard createFlashCard(const std::string question, const std::string answer, const CardDifficulty difficulty, const int n_times_answered)
 {
     FlashCard card{};
     card.question = question;

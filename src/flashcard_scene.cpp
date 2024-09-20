@@ -79,9 +79,10 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
             drawWrappedText(window, "Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 2, window->getSize().X - cardListX - 2);
-            window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 4);
-            window->drawText("Times answered: " + std::to_string(card.n_times_answered), cardListX + 20, yOffset + 4);
+            drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+            window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
+            window->drawText("Times answered: " + std::to_string(card.n_times_answered), cardListX + 20, yOffset + 2);
+            window->drawText("---", cardListX + 20, yOffset + 3);
         }
 
         window->drawText("Use Left/Right arrows to change pages", cardListX, window->getSize().Y - 3);
@@ -100,7 +101,7 @@ void BrowseDecksScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == 0)
+        if (key == _arrow_prefix || key == _numlock)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)
@@ -202,6 +203,7 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 
     m_uiManager.clearMenu("difficulty");
 
+    // Menu for the card difficulty
     auto &menu = m_uiManager.createMenu("difficulty", true);
     menu.addButton("Easy", [this]() { selectDifficulty(0); });
     menu.addButton("Medium", [this]() { selectDifficulty(1); });
@@ -275,7 +277,7 @@ void FlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == 0)
+        if (key == _arrow_prefix || key == _numlock)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             if (m_showAnswer)

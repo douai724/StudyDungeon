@@ -63,6 +63,7 @@ void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window
         drawWrappedText(window, prefix + "Q: " + card.question, 2, yOffset, window->getSize().X - 4);
         drawWrappedText(window, "  A: " + card.answer, 2, yOffset + 1, window->getSize().X - 4);
         window->drawText("  D: " + cardDifficultyToStr(card.difficulty), 2, yOffset + 2);
+        window->drawText("---", 2, yOffset + 3);
     }
 
 
@@ -82,7 +83,7 @@ void EditFlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == 0) // Arrow key prefix
+        if (key == _arrow_prefix || key == _numlock) // Arrow key prefix
         {
             key = _getch(); // Get the actual arrow key code
             switch (key)
@@ -382,8 +383,9 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
             drawWrappedText(window, "Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 2, window->getSize().X - cardListX - 2);
-            window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 4);
+            drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+            window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
+            window->drawText("---", cardListX, yOffset + 3);
         }
 
         window->drawText("Use Left/Right arrows to change pages", cardListX, window->getSize().Y - 3);
@@ -458,7 +460,7 @@ void EditDeckScene::handleInput()
             case 'r':
                 renameDeck();
                 break;
-            case _key_backspace: // Backspace
+            case _key_esc:
                 m_goBack();
                 break;
             default:

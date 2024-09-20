@@ -129,7 +129,7 @@ std::string ConsoleWindow::getLine(int x, int y, int maxLength)
         // Get user input
         int ch = _getch();
 
-        if (ch == _arrow_prefix || ch == 0) // Arrow key prefix
+        if (ch == _arrow_prefix || ch == _numlock) // Arrow key prefix
         {
             ch = _getch();
             switch (ch)
@@ -326,25 +326,9 @@ void Menu::handleInput()
             }
         }
     }
-    else 
+    else if (key == _key_enter)
     {
-        switch (key)
-        {
-            case _key_enter:
-                m_buttons[m_selectedIndex].performAction();
-                break;
-            case ('I'): // up
-            case ('i'):
-                m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
-                break;
-            case ('K'): // down
-            case ('k'):
-                m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
-                break;
-
-        }
-     
-        
+        m_buttons[m_selectedIndex].performAction();
     }
 }
 

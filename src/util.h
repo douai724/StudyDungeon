@@ -25,6 +25,7 @@ const int _key_backspace{8};
 const int _key_esc{27};
 const int _key_space{32};
 const int _arrow_prefix{224};
+const int _numlock{0};
 const int _key_up{72};
 const int _key_down{80};
 const int _key_left{75};

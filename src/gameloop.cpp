@@ -78,11 +78,11 @@ bool Game::isWinner()
 {
     if (turn == 1)
     {
-        if (p1.getHitPoints() < 0 || p1.getDeck().size() == 0)
+        if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
         {
             return false;
         }
-        else if (p2.getHitPoints() < 0 || p2.getDeck().size() == 0)
+        else if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
         {
             return true;
         }
@@ -93,11 +93,11 @@ bool Game::isWinner()
     }
     if (turn == 2)
     {
-        if (p2.getHitPoints() < 0 || p2.getDeck().size() == 0)
+        if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
         {
             return false;
         }
-        else if (p1.getHitPoints() < 0 || p1.getDeck().size() == 0)
+        else if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
         {
             return true;
         }

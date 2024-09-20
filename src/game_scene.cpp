@@ -36,9 +36,21 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     std::vector<PlayingCard> hand = GameScene::game.p1.getHand();
 
-    window->drawText("Turn: " + std::to_string(GameScene::game.turn), 2, 1);
-    window->drawText("You: " + std::to_string(GameScene::game.p1.getHitPoints()), 1, 2);
-    window->drawText("Enemy: " + std::to_string(GameScene::game.p2.getHitPoints()), 10, 2);
+    window->drawText("YOU", size.X / 5, 2, true);
+    window->drawText("HP: " + std::to_string(GameScene::game.p1.getHitPoints()) + "/" +
+                         std::to_string(GameScene::game.p1.getMaxHitPoints()),
+                     size.X / 5,
+                     3,
+                     true);
+    window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p1.getDeck().size()), size.X / 5, 4, true);
+
+    window->drawText("ENEMY", 4 * size.X / 5, 2, true);
+    window->drawText("HP: " + std::to_string(GameScene::game.p2.getHitPoints()) + "/" +
+                         std::to_string(GameScene::game.p2.getMaxHitPoints()),
+                     4 * size.X / 5,
+                     3,
+                     true);
+    window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p2.getDeck().size()), 4 * size.X / 5, 4, true);
 
 
     if (hand.size() == 0)

@@ -326,25 +326,22 @@ void Menu::handleInput()
             }
         }
     }
-    else 
+    else
     {
         switch (key)
         {
-            case _key_enter:
-                m_buttons[m_selectedIndex].performAction();
-                break;
-            case ('I'): // up
-            case ('i'):
-                m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
-                break;
-            case ('K'): // down
-            case ('k'):
-                m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
-                break;
-
+        case _key_enter:
+            m_buttons[m_selectedIndex].performAction();
+            break;
+        case ('I'): // up
+        case ('i'):
+            m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
+            break;
+        case ('K'): // down
+        case ('k'):
+            m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
+            break;
         }
-     
-        
     }
 }
 

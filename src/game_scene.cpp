@@ -110,8 +110,13 @@ void GameScene::handleInput()
             PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
             GameScene::game.p1.removeCard(playerCard);
             GameScene::game.nextTurn(playerCard);
-            if (GameScene::game.isGameOver())
+            if (GameScene::game.isWinner())
             {
+                std::shared_ptr<ConsoleUI::ConsoleWindow> window = m_uiManager.getWindow();
+                window->clear();
+                window->drawBorder();
+                window->drawCenteredText("You won! :)", window->getSize().Y / 2);
+                Sleep(1000);
                 m_goBack();
             }
         }
@@ -126,8 +131,13 @@ void GameScene::handleInput()
             PlayingCard botCard = GameScene::game.p2.getHand()[0];
             GameScene::game.p2.removeCard(botCard);
             GameScene::game.nextTurn(botCard);
-            if (GameScene::game.isGameOver())
+            if (GameScene::game.isWinner())
             {
+                std::shared_ptr<ConsoleUI::ConsoleWindow> window = m_uiManager.getWindow();
+                window->clear();
+                window->drawBorder();
+                window->drawCenteredText("Enemy won :()", window->getSize().Y / 2);
+                Sleep(1000);
                 m_goBack();
             }
         }

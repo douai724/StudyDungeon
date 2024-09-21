@@ -1,10 +1,3 @@
-/**
- * @file main.cpp
- * @brief Main entry point for the Flashcard application.
- * @author Your Name
- * @date 2024-09-22
- */
-
 #include "artwork.h"
 #include "config.hpp"
 #include "deck.h"
@@ -24,70 +17,91 @@
 #include <vector>
 #include <windows.h>
 
-/**
- * @class MainMenuScene
- * @brief Represents the main menu of the application.
- * 
- * This class manages the main menu interface, including the ASCII art logo
- * and navigation options to different parts of the application.
- */
 class MainMenuScene : public ConsoleUI::Scene
 {
 public:
-    /**
-     * @brief Constructs a MainMenuScene object.
-     * @param uiManager Reference to the UIManager for handling UI operations.
-     * @param openFibonacciScene Function to open the Fibonacci sequence scene.
-     * @param openBrowseDecks Function to open the deck browsing scene.
-     * @param openEditDecks Function to open the deck editing scene.
-     */
     MainMenuScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> openFibonacciScene,
                   std::function<void()> openBrowseDecks,
-                  std::function<void()> openEditDecks);
+                  std::function<void()> openEditDecks)
+        : m_uiManager(uiManager)
+    {
+        createMainMenu(openFibonacciScene, openBrowseDecks, openEditDecks);
 
-    /**
-     * @brief Creates the main menu with navigation options.
-     * @param openFibonacciScene Function to open the Fibonacci sequence scene.
-     * @param openBrowseDecks Function to open the deck browsing scene.
-     * @param openEditDecks Function to open the deck editing scene.
-     */
+        // Create ASCII art
+        m_asciiArt = m_uiManager.createAsciiArt(R"(
+
+ (`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
+ ( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
+(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
+/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
+\_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
+.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
+\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
+ `-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
+
+        )");
+    }
+
     void createMainMenu(std::function<void()> openFibonacciScene,
                         std::function<void()> openBrowseDecks,
-                        std::function<void()> openEditDecks);
+                        std::function<void()> openEditDecks)
 
-    /**
-     * @brief Updates the scene state (currently empty).
-     */
-    void update() override;
+    {
+        auto &menu = m_uiManager.createMenu("main", false);
+        menu.addButton("Browse Decks", openBrowseDecks);
+        menu.addButton("Edit Decks", openEditDecks);
+        menu.addButton("Fibonacci Sequence", openFibonacciScene);
+        menu.addButton("Exit", []() {
+            clearScreen();
+            exit(0);
+        });
+    }
 
-    /**
-     * @brief Renders the main menu scene.
-     * @param window Shared pointer to the ConsoleWindow to render on.
-     */
-    void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
+    void update() override
+    {
+    }
 
-    /**
-     * @brief Handles user input for the main menu.
-     */
-    void handleInput() override;
+    void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override
+    {
+        window->clear();
+        window->drawBorder();
+
+        int artX = (window->getSize().X - m_asciiArt.getWidth()) / 2;
+        window->drawAsciiArt(m_asciiArt.getArt(), artX, 2);
+
+        // Calculate total width of menu buttons
+        auto &menu = m_uiManager.getMenu("main");
+        int totalMenuWidth = 0;
+        for (size_t i = 0; i < menu.getButtonCount(); ++i)
+        {
+            totalMenuWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing between buttons
+        }
+        totalMenuWidth -= 1;
+
+        // Calculate starting X position for centered menu
+        int menuX = (window->getSize().X - totalMenuWidth) / 2;
+        int menuY = m_asciiArt.getHeight() + 5;
+
+        menu.draw(menuX, menuY);
+    }
+
+    void handleInput() override
+    {
+        m_uiManager.getMenu("main").handleInput();
+    }
 
 private:
-    ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
-    ConsoleUI::AsciiArt m_asciiArt;    ///< ASCII art logo for the main menu.
+    ConsoleUI::UIManager &m_uiManager;
+    ConsoleUI::AsciiArt m_asciiArt;
 };
 
-/**
- * @brief Main function and entry point of the application.
- * @return 0 on successful execution, 1 on error.
- */
 int main()
 {
     try
     {
         ConsoleUI::UIManager uiManager;
 
-        // Declare shared pointers for all scenes
         std::shared_ptr<MainMenuScene> mainMenuScene;
         std::shared_ptr<FibonacciScene> fibonacciScene;
         std::shared_ptr<FlashcardEdit::EditDeckScene> editDecksScene;
@@ -107,7 +121,7 @@ int main()
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(gameScene); });
 
-        // Lambda function to create BrowseDecksScene
+        // Create BrowseDecksScene
         auto createBrowseDecksScene = [&]() {
             browseDecksScene = std::make_shared<FlashcardApp::BrowseDecksScene>(
                 uiManager,
@@ -153,6 +167,7 @@ int main()
         // Create FibonacciScene
         fibonacciScene =
             std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
+
 
         // Create MainMenuScene
         mainMenuScene = std::make_shared<MainMenuScene>(

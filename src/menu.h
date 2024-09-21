@@ -2,7 +2,7 @@
  * @file menu.h
  * @author Green Alligators
  * @brief
- * @version 0.2
+ * @version 0.1
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -11,7 +11,6 @@
 #pragma once
 #ifndef MENU_H
 #define MENU_H
-
 
 #include <algorithm>
 #include <conio.h>
@@ -239,246 +238,118 @@ private:
 };
 
 /**
- * @class Menu
- * @brief Represents a menu system with buttons and navigation capabilities.
+ * @brief Constructs a menu system
  *
- * The Menu class provides functionality to create and manage a menu with 
- * selectable buttons. It supports both horizontal and vertical layouts,
- * and handles user input for navigation and button activation.
  */
 class Menu
 {
 public:
-    /**
-     * @brief Construct a new Menu object.
-     * @param horizontal If true, creates a horizontal menu layout. If false (default), creates a vertical layout.
-     */
+    /** Contructs the menu  */
     Menu(bool horizontal = false);
 
     /**
-     * @brief Add a new button to the menu.
-     * @param label The text label for the button.
-     * @param action The function to be called when the button is activated.
+     * @brief Creates a menu button
+     *
+     * @param label Text for the button
+     * @param action fucntion to be called on submission
      */
     void addButton(const std::string &label, std::function<void()> action);
 
     /**
-     * @brief Draw the menu at the specified position.
-     * @param x The x-coordinate to start drawing the menu.
-     * @param y The y-coordinate to start drawing the menu.
+     * @brief Draws all items in the menu
+     *
+     * @param x number of characters from left to begin drawing
+     * @param y number of lines from top to begin drawing
      */
     void draw(int x, int y);
 
     /**
-     * @brief Handle user input for menu navigation and button activation.
+     * @brief Processes keyboard input
+     *
      */
     void handleInput();
 
     /**
-     * @brief Check if the "Back" button is currently selected and pressed.
-     * @return true if the "Back" button is pressed, false otherwise.
+     * @brief checks if the "back" button has been selected and submitted
+     *
+     * @return true
+     * @return false
      */
     bool isBackButtonPressed() const;
 
-    /**
-     * @brief Save the current menu state and clear the buttons.
-     * This function is used for creating sub-menus or nested menu structures.
-     */
+    // TODO remove
     void pushPage();
-
-    /**
-     * @brief Restore the previous menu state.
-     * This function is used to return from a sub-menu to the parent menu.
-     */
+    // TODO remove
     void popPage();
 
-    /**
-     * @brief Get the total number of buttons in the menu.
-     * @return The number of buttons in the menu.
-     */
     size_t getButtonCount() const;
-
-    /**
-     * @brief Get the width of a specific button.
-     * @param index The index of the button.
-     * @return The width of the button at the specified index.
-     */
     int getButtonWidth(size_t index) const;
-
-    /**
-     * @brief Get the index of the currently selected button.
-     * @return The index of the selected button.
-     */
-    size_t getSelectedIndex() const;
-
-    /**
-     * @brief Select the previous button in the menu.
-     */
+    size_t getSelectedIndex() const
+    {
+        return m_selectedIndex;
+    }
     void selectPreviousButton();
-
-    /**
-     * @brief Select the next button in the menu.
-     */
     void selectNextButton();
-
-    /**
-     * @brief Get the total width of all buttons in the menu.
-     * @return The total width of the menu.
-     */
     int getTotalWidth() const;
-
-    /**
-     * @brief Activate the currently selected button.
-     */
     void activateSelectedButton();
+    void clear()
+    {
+        m_buttons.clear();
+        m_selectedIndex = 0;
+    }
 
-    /**
-     * @brief Clear all buttons from the menu.
-     */
-    void clear();
 
 private:
-    std::vector<Button> m_buttons; /**< Vector containing all menu buttons. */
-    size_t m_selectedIndex; /**< Index of the currently selected button. */
-    bool horizontal_layout; /**< Flag indicating if the menu is horizontal (true) or vertical (false). */
-    std::vector<std::vector<Button>> m_pageHistory; /**< Stack of previous menu states for nested menus. */
+    /** Vector of all the menu buttons */
+    std::vector<Button> m_buttons;
+    /** index of selected button */
+    size_t m_selectedIndex;
+
+    /** controls layout -> true = horizontal, false = vertical */
+    bool horizontal_layout;
+
+    // TODO remove?
+    std::vector<std::vector<Button>> m_pageHistory;
 };
 
+
 /**
- * @class Scene
- * @brief Abstract base class representing a visual interface/layout for the console window.
+ * @brief Defines a consoleWindow visual interface/layout
  *
- * The Scene class defines the interface for different visual layouts or states
- * in the console application. It provides pure virtual functions for updating,
- * rendering, and handling input, which derived classes must implement.
  */
 class Scene
 {
 public:
-    /**
-     * @brief Virtual destructor to ensure proper cleanup of derived classes.
-     */
     virtual ~Scene() = default;
-
-    /**
-     * @brief Pure virtual function to update the scene's state.
-     *
-     * This function should be implemented by derived classes to update
-     * any internal state or logic of the scene.
-     */
     virtual void update() = 0;
-
-    /**
-     * @brief Pure virtual function to render the scene.
-     *
-     * @param window A shared pointer to the ConsoleWindow object used for rendering.
-     *
-     * This function should be implemented by derived classes to draw
-     * the scene's content to the provided console window.
-     */
     virtual void render(std::shared_ptr<ConsoleWindow> window) = 0;
-
-    /**
-     * @brief Pure virtual function to handle user input for the scene.
-     *
-     * This function should be implemented by derived classes to process
-     * and respond to user input specific to the scene.
-     */
     virtual void handleInput() = 0;
 };
 
+
 /**
- * @class UIManager
- * @brief Manages the user interface, including scenes, menus, and the console window.
+ * @brief Manages the displaying of scenes
  *
- * The UIManager class is responsible for coordinating the different components
- * of the user interface. It manages the current scene, handles menu creation
- * and management, and provides access to the console window. This class serves
- * as the central point for UI-related operations in the application.
  */
 class UIManager
 {
 public:
-    /**
-     * @brief Construct a new UIManager object.
-     *
-     * Initializes the UIManager with a new ConsoleWindow.
-     */
     UIManager();
-
-    /**
-     * @brief Get the shared pointer to the ConsoleWindow object.
-     * @return std::shared_ptr<ConsoleWindow> The console window used for rendering.
-     */
     std::shared_ptr<ConsoleWindow> getWindow();
-
-    /**
-     * @brief Set the current active scene.
-     * @param scene A shared pointer to the Scene object to be set as current.
-     */
     void setCurrentScene(std::shared_ptr<Scene> scene);
-
-    /**
-     * @brief Update the current scene.
-     *
-     * Calls the update method of the current scene if one is set.
-     */
     void update();
-
-    /**
-     * @brief Render the current scene.
-     *
-     * Calls the render method of the current scene if one is set.
-     */
     void render();
-
-    /**
-     * @brief Handle input for the current scene.
-     *
-     * Calls the handleInput method of the current scene if one is set.
-     */
     void handleInput();
-
-    /**
-     * @brief Create a new menu with the specified name.
-     * @param name The name of the menu to create.
-     * @param horizontal If true, creates a horizontal menu. If false, creates a vertical menu.
-     * @return Menu& A reference to the newly created menu.
-     */
-    Menu& createMenu(const std::string& name, bool horizontal = false);
-
-    /**
-     * @brief Get a reference to an existing menu.
-     * @param name The name of the menu to retrieve.
-     * @return Menu& A reference to the requested menu.
-     * @throw std::out_of_range if the menu doesn't exist.
-     */
-    Menu& getMenu(const std::string& name);
-
-    /**
-     * @brief Clear all buttons from a specific menu.
-     * @param name The name of the menu to clear.
-     */
-    void clearMenu(const std::string& name);
-
-    /**
-     * @brief Clear all buttons from all menus except specific ones.
-     *
-     * Clears all menus except "Browse Decks", "Fibonacci Sequence", "Game", and "Exit".
-     */
+    Menu &createMenu(const std::string &name, bool horizontal = false);
+    Menu &getMenu(const std::string &name);
+    void clearMenu(const std::string &name);
     void clearAllMenus();
-
-    /**
-     * @brief Create a new AsciiArt object.
-     * @param artString A string containing the ASCII art.
-     * @return AsciiArt The created AsciiArt object.
-     */
-    AsciiArt createAsciiArt(const char* artString);
+    AsciiArt createAsciiArt(const char *artString);
 
 private:
-    std::shared_ptr<ConsoleWindow> m_window; /**< The main console window used for rendering. */
-    std::shared_ptr<Scene> m_currentScene; /**< The currently active scene. */
-    std::unordered_map<std::string, Menu> m_menus; /**< Map of menu names to Menu objects. */
+    std::shared_ptr<ConsoleWindow> m_window;
+    std::shared_ptr<Scene> m_currentScene;
+    std::unordered_map<std::string, Menu> m_menus;
 };
 } // namespace ConsoleUI
 

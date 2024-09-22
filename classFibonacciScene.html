@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">55eb8bf</span>
+   &#160;<span id="projectnumber">4dda767</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -69,6 +69,11 @@ $(function() {
 <div class="title">FibonacciScene Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for a scene which the user can simulate the fibonacci sequence.  
+ <a href="classFibonacciScene.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="test__scene_8h_source.html">test_scene.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FibonacciScene:</div>
 <div class="dyncontent">
@@ -81,14 +86,15 @@ Inheritance diagram for FibonacciScene:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a442e5bd252f791715d2b54496613749c"><td class="memItemLeft" align="right" valign="top"><a id="a442e5bd252f791715d2b54496613749c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FibonacciScene</b> (<a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, std::function&lt; void()&gt; goBack)</td></tr>
+<tr class="memitem:a442e5bd252f791715d2b54496613749c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFibonacciScene.html#a442e5bd252f791715d2b54496613749c">FibonacciScene</a> (<a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, std::function&lt; void()&gt; goBack)</td></tr>
+<tr class="memdesc:a442e5bd252f791715d2b54496613749c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Fibonacci Scene object.  <a href="classFibonacciScene.html#a442e5bd252f791715d2b54496613749c">More...</a><br /></td></tr>
 <tr class="separator:a442e5bd252f791715d2b54496613749c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59e8011a9948f0a8c89de440ea715e52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFibonacciScene.html#a59e8011a9948f0a8c89de440ea715e52">update</a> () override</td></tr>
-<tr class="memdesc:a59e8011a9948f0a8c89de440ea715e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual function to update the scene's state.  <a href="classFibonacciScene.html#a59e8011a9948f0a8c89de440ea715e52">More...</a><br /></td></tr>
+<tr class="memitem:a59e8011a9948f0a8c89de440ea715e52"><td class="memItemLeft" align="right" valign="top"><a id="a59e8011a9948f0a8c89de440ea715e52"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFibonacciScene.html#a59e8011a9948f0a8c89de440ea715e52">update</a> () override</td></tr>
+<tr class="memdesc:a59e8011a9948f0a8c89de440ea715e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for continuous updates to the program state seperate from rendering and input handling <br /></td></tr>
 <tr class="separator:a59e8011a9948f0a8c89de440ea715e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eaa90ab8d38edd5b284ba8b75158e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b">render</a> (std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleUI::ConsoleWindow</a> &gt; window) override</td></tr>
-<tr class="memdesc:a6eaa90ab8d38edd5b284ba8b75158e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual function to render the scene.  <a href="classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b">More...</a><br /></td></tr>
+<tr class="memdesc:a6eaa90ab8d38edd5b284ba8b75158e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">renders the scene on the console window  <a href="classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b">More...</a><br /></td></tr>
 <tr class="separator:a6eaa90ab8d38edd5b284ba8b75158e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72ea10d15af2493322a20874f8793407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFibonacciScene.html#a72ea10d15af2493322a20874f8793407">handleInput</a> () override</td></tr>
 <tr class="memdesc:a72ea10d15af2493322a20874f8793407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual function to handle user input for the scene.  <a href="classFibonacciScene.html#a72ea10d15af2493322a20874f8793407">More...</a><br /></td></tr>
@@ -99,6 +105,47 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:a1bad644bbc948894ea57244347196c89 inherit pub_methods_classConsoleUI_1_1Scene"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor to ensure proper cleanup of derived classes. <br /></td></tr>
 <tr class="separator:a1bad644bbc948894ea57244347196c89 inherit pub_methods_classConsoleUI_1_1Scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for a scene which the user can simulate the fibonacci sequence. </p>
+<p>!!! This scene is was a test for the Menu.h console UI System and will most likely not make it to the final release !!! </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a442e5bd252f791715d2b54496613749c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a442e5bd252f791715d2b54496613749c">&#9670;&nbsp;</a></span>FibonacciScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FibonacciScene::FibonacciScene </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>uiManager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>goBack</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Fibonacci Scene object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uiManager</td><td>reference to the current UI mananger object </td></tr>
+    <tr><td class="paramname">goBack</td><td>a function to go back a scene </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a72ea10d15af2493322a20874f8793407"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72ea10d15af2493322a20874f8793407">&#9670;&nbsp;</a></span>handleInput()</h2>
@@ -154,46 +201,16 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </table>
 </div><div class="memdoc">
 
-<p>Pure virtual function to render the scene. </p>
+<p>renders the scene on the console window </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">window</td><td>A shared pointer to the ConsoleWindow object used for rendering.</td></tr>
+    <tr><td class="paramname">window</td><td>shared pointer to the console window that is rendered on</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function should be implemented by derived classes to draw the scene's content to the provided console window. </p>
+<p>draws the title of the scene, sets up a counter for the current number of the fib sequence and draws the buttons: reset, update and back. </p>
 
 <p>Implements <a class="el" href="classConsoleUI_1_1Scene.html#acf0bb88b3b68f33efd5042696fb0e46b">ConsoleUI::Scene</a>.</p>
-
-</div>
-</div>
-<a id="a59e8011a9948f0a8c89de440ea715e52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59e8011a9948f0a8c89de440ea715e52">&#9670;&nbsp;</a></span>update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void FibonacciScene::update </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Pure virtual function to update the scene's state. </p>
-<p>This function should be implemented by derived classes to update any internal state or logic of the scene. </p>
-
-<p>Implements <a class="el" href="classConsoleUI_1_1Scene.html#a64b73c34b5df8e109ffc2b08764cd62e">ConsoleUI::Scene</a>.</p>
 
 </div>
 </div>

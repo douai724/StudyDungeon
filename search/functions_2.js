@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['damage_178',['damage',['../classPlayer.html#acaa54e06b5751051dd86ccb67ad2194c',1,'Player']]],
-  ['damageeffect_179',['damageEffect',['../classGame.html#a9f6b9fcb80e350f35d9845bad25d12db',1,'Game']]],
-  ['draw_180',['draw',['../classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1',1,'ConsoleUI::Menu']]],
-  ['drawborder_181',['drawBorder',['../classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawbox_182',['drawBox',['../classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawcard_183',['drawCard',['../classPlayer.html#afc2318d0712899c3cf309c14d452e422',1,'Player']]],
-  ['drawcenteredtext_184',['drawCenteredText',['../classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawcharacter_185',['drawCharacter',['../classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawhorizontalline_186',['drawHorizontalLine',['../classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawtext_187',['drawText',['../classConsoleUI_1_1ConsoleWindow.html#a87d1064c93ddc50864095de56c50c40a',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawtextbox_188',['drawTextBox',['../classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de',1,'ConsoleUI::ConsoleWindow']]],
-  ['drawverticalline_189',['drawVerticalLine',['../classConsoleUI_1_1ConsoleWindow.html#a95b393ebeae13ad8ce6547d34579c882',1,'ConsoleUI::ConsoleWindow']]]
+  ['carddifficultytostr_194',['cardDifficultyToStr',['../deck_8cpp.html#a86bf6016f9556419d98f7c566f5f30ae',1,'cardDifficultyToStr(const CardDifficulty &amp;difficulty):&#160;deck.cpp'],['../deck_8h.html#a86bf6016f9556419d98f7c566f5f30ae',1,'cardDifficultyToStr(const CardDifficulty &amp;difficulty):&#160;deck.cpp']]],
+  ['clear_195',['clear',['../classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0',1,'ConsoleUI::ConsoleWindow::clear()'],['../classConsoleUI_1_1Menu.html#acf81c6529ae2b90b02d2b472f26f5b1f',1,'ConsoleUI::Menu::clear()']]],
+  ['clearallmenus_196',['clearAllMenus',['../classConsoleUI_1_1UIManager.html#aafbcbe5137a85bb4360638e85e1cd6c2',1,'ConsoleUI::UIManager']]],
+  ['clearmenu_197',['clearMenu',['../classConsoleUI_1_1UIManager.html#aec7b1558face6be47afe0c611c4d57c9',1,'ConsoleUI::UIManager']]],
+  ['createasciiart_198',['createAsciiArt',['../classConsoleUI_1_1UIManager.html#abbe732de2fe60742e44c1634fa9b06ee',1,'ConsoleUI::UIManager']]],
+  ['createdeckfilename_199',['createDeckFilename',['../deck_8cpp.html#a8d1bd86906f6289f92426ffa5cbfe9fd',1,'createDeckFilename(std::filesystem::path deck_dir):&#160;deck.cpp'],['../deck_8h.html#a8d1bd86906f6289f92426ffa5cbfe9fd',1,'createDeckFilename(std::filesystem::path deck_dir):&#160;deck.cpp']]],
+  ['createexampledecks_200',['createExampleDecks',['../deck_8cpp.html#ac2ae4147f7100c31d1dc283f57c0870d',1,'createExampleDecks():&#160;deck.cpp'],['../deck_8h.html#ac2ae4147f7100c31d1dc283f57c0870d',1,'createExampleDecks():&#160;deck.cpp']]],
+  ['createflashcard_201',['createFlashCard',['../deck_8cpp.html#af743fc8b1c052ab066649556d855e23b',1,'createFlashCard(const std::string question, const std::string answer, const CardDifficulty difficulty, const int n_times_answered):&#160;deck.cpp'],['../deck_8h.html#af743fc8b1c052ab066649556d855e23b',1,'createFlashCard(const std::string question, const std::string answer, const CardDifficulty difficulty, const int n_times_answered):&#160;deck.cpp']]],
+  ['createmenu_202',['createMenu',['../classConsoleUI_1_1UIManager.html#a798ddd9c6f71fa755042d861018e5cd0',1,'ConsoleUI::UIManager']]]
 ];

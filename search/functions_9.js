@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['nextturn_214',['nextTurn',['../classGame.html#a976c1a460f61317f6b82c298da5c2bbf',1,'Game']]]
+  ['loaddecks_245',['loadDecks',['../classFlashcardApp_1_1BrowseDecksScene.html#a97982bbe2ef89a678d8612b5c0a24708',1,'FlashcardApp::BrowseDecksScene']]],
+  ['loadflashcarddecks_246',['loadFlashCardDecks',['../deck_8h.html#a6f4f0e13d12bfaea40f74c94e093aa5a',1,'deck.h']]]
 ];

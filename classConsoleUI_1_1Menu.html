@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">889ce2f</span>
+   &#160;<span id="projectnumber">55eb8bf</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Constructs a menu system.  
+<p>Represents a menu system with buttons and navigation capabilities.  
  <a href="classConsoleUI_1_1Menu.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="menu_8h_source.html">menu.h</a>&gt;</code></p>
@@ -82,53 +82,61 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac6e578bd04e52005a58867010aa4eeef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef">Menu</a> (bool horizontal=false)</td></tr>
+<tr class="memdesc:ac6e578bd04e52005a58867010aa4eeef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classConsoleUI_1_1Menu.html" title="Represents a menu system with buttons and navigation capabilities.">Menu</a> object.  <a href="classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef">More...</a><br /></td></tr>
 <tr class="separator:ac6e578bd04e52005a58867010aa4eeef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae61f13b5bf49dc74b7f75e46927e076d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">addButton</a> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
-<tr class="memdesc:ae61f13b5bf49dc74b7f75e46927e076d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a menu button.  <a href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">More...</a><br /></td></tr>
+<tr class="memdesc:ae61f13b5bf49dc74b7f75e46927e076d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new button to the menu.  <a href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">More...</a><br /></td></tr>
 <tr class="separator:ae61f13b5bf49dc74b7f75e46927e076d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afff304eb42a56e23359c6e22eb5c4ce1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">draw</a> (int x, int y)</td></tr>
-<tr class="memdesc:afff304eb42a56e23359c6e22eb5c4ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws all items in the menu.  <a href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">More...</a><br /></td></tr>
+<tr class="memdesc:afff304eb42a56e23359c6e22eb5c4ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw the menu at the specified position.  <a href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">More...</a><br /></td></tr>
 <tr class="separator:afff304eb42a56e23359c6e22eb5c4ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45edd985d586e6ecc5432571a5c40e82"><td class="memItemLeft" align="right" valign="top"><a id="a45edd985d586e6ecc5432571a5c40e82"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82">handleInput</a> ()</td></tr>
-<tr class="memdesc:a45edd985d586e6ecc5432571a5c40e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes keyboard input. <br /></td></tr>
+<tr class="memdesc:a45edd985d586e6ecc5432571a5c40e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle user input for menu navigation and button activation. <br /></td></tr>
 <tr class="separator:a45edd985d586e6ecc5432571a5c40e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6397689bdcabe64990f3426a86a83e1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">isBackButtonPressed</a> () const</td></tr>
-<tr class="memdesc:a6397689bdcabe64990f3426a86a83e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the "back" button has been selected and submitted  <a href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">More...</a><br /></td></tr>
+<tr class="memdesc:a6397689bdcabe64990f3426a86a83e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the "Back" button is currently selected and pressed.  <a href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">More...</a><br /></td></tr>
 <tr class="separator:a6397689bdcabe64990f3426a86a83e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10ca243c51e63b348a8eb01ae1cd6c44"><td class="memItemLeft" align="right" valign="top"><a id="a10ca243c51e63b348a8eb01ae1cd6c44"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushPage</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a10ca243c51e63b348a8eb01ae1cd6c44">pushPage</a> ()</td></tr>
+<tr class="memdesc:a10ca243c51e63b348a8eb01ae1cd6c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the current menu state and clear the buttons. This function is used for creating sub-menus or nested menu structures. <br /></td></tr>
 <tr class="separator:a10ca243c51e63b348a8eb01ae1cd6c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a5d2cedf8ab2ab2efb828c6bee171e5"><td class="memItemLeft" align="right" valign="top"><a id="a8a5d2cedf8ab2ab2efb828c6bee171e5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>popPage</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a8a5d2cedf8ab2ab2efb828c6bee171e5">popPage</a> ()</td></tr>
+<tr class="memdesc:a8a5d2cedf8ab2ab2efb828c6bee171e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restore the previous menu state. This function is used to return from a sub-menu to the parent menu. <br /></td></tr>
 <tr class="separator:a8a5d2cedf8ab2ab2efb828c6bee171e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5d3f450b9a206f0fc7f4692e20947ee"><td class="memItemLeft" align="right" valign="top"><a id="ab5d3f450b9a206f0fc7f4692e20947ee"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getButtonCount</b> () const</td></tr>
+<tr class="memitem:ab5d3f450b9a206f0fc7f4692e20947ee"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#ab5d3f450b9a206f0fc7f4692e20947ee">getButtonCount</a> () const</td></tr>
+<tr class="memdesc:ab5d3f450b9a206f0fc7f4692e20947ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of buttons in the menu.  <a href="classConsoleUI_1_1Menu.html#ab5d3f450b9a206f0fc7f4692e20947ee">More...</a><br /></td></tr>
 <tr class="separator:ab5d3f450b9a206f0fc7f4692e20947ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae06e70311079d4774d491d9c9484b551"><td class="memItemLeft" align="right" valign="top"><a id="ae06e70311079d4774d491d9c9484b551"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getButtonWidth</b> (size_t index) const</td></tr>
+<tr class="memitem:ae06e70311079d4774d491d9c9484b551"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#ae06e70311079d4774d491d9c9484b551">getButtonWidth</a> (size_t index) const</td></tr>
+<tr class="memdesc:ae06e70311079d4774d491d9c9484b551"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the width of a specific button.  <a href="classConsoleUI_1_1Menu.html#ae06e70311079d4774d491d9c9484b551">More...</a><br /></td></tr>
 <tr class="separator:ae06e70311079d4774d491d9c9484b551"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a5d7533b648b5380a1644d95f6703a"><td class="memItemLeft" align="right" valign="top"><a id="a42a5d7533b648b5380a1644d95f6703a"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getSelectedIndex</b> () const</td></tr>
+<tr class="memitem:a42a5d7533b648b5380a1644d95f6703a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a42a5d7533b648b5380a1644d95f6703a">getSelectedIndex</a> () const</td></tr>
+<tr class="memdesc:a42a5d7533b648b5380a1644d95f6703a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the currently selected button.  <a href="classConsoleUI_1_1Menu.html#a42a5d7533b648b5380a1644d95f6703a">More...</a><br /></td></tr>
 <tr class="separator:a42a5d7533b648b5380a1644d95f6703a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf730e009c51d5057772dc88e3ed4512"><td class="memItemLeft" align="right" valign="top"><a id="adf730e009c51d5057772dc88e3ed4512"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>selectPreviousButton</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#adf730e009c51d5057772dc88e3ed4512">selectPreviousButton</a> ()</td></tr>
+<tr class="memdesc:adf730e009c51d5057772dc88e3ed4512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the previous button in the menu. <br /></td></tr>
 <tr class="separator:adf730e009c51d5057772dc88e3ed4512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a657817dea083ee5d5911d587b8d9d883"><td class="memItemLeft" align="right" valign="top"><a id="a657817dea083ee5d5911d587b8d9d883"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>selectNextButton</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a657817dea083ee5d5911d587b8d9d883">selectNextButton</a> ()</td></tr>
+<tr class="memdesc:a657817dea083ee5d5911d587b8d9d883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the next button in the menu. <br /></td></tr>
 <tr class="separator:a657817dea083ee5d5911d587b8d9d883"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab11983eed87adb6f9adcd95b9659600d"><td class="memItemLeft" align="right" valign="top"><a id="ab11983eed87adb6f9adcd95b9659600d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getTotalWidth</b> () const</td></tr>
+<tr class="memitem:ab11983eed87adb6f9adcd95b9659600d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#ab11983eed87adb6f9adcd95b9659600d">getTotalWidth</a> () const</td></tr>
+<tr class="memdesc:ab11983eed87adb6f9adcd95b9659600d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total width of all buttons in the menu.  <a href="classConsoleUI_1_1Menu.html#ab11983eed87adb6f9adcd95b9659600d">More...</a><br /></td></tr>
 <tr class="separator:ab11983eed87adb6f9adcd95b9659600d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24e704ea8ba79288ae3bc8066f3cc7c6"><td class="memItemLeft" align="right" valign="top"><a id="a24e704ea8ba79288ae3bc8066f3cc7c6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>activateSelectedButton</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#a24e704ea8ba79288ae3bc8066f3cc7c6">activateSelectedButton</a> ()</td></tr>
+<tr class="memdesc:a24e704ea8ba79288ae3bc8066f3cc7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activate the currently selected button. <br /></td></tr>
 <tr class="separator:a24e704ea8ba79288ae3bc8066f3cc7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf81c6529ae2b90b02d2b472f26f5b1f"><td class="memItemLeft" align="right" valign="top"><a id="acf81c6529ae2b90b02d2b472f26f5b1f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Menu.html#acf81c6529ae2b90b02d2b472f26f5b1f">clear</a> ()</td></tr>
+<tr class="memdesc:acf81c6529ae2b90b02d2b472f26f5b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all buttons from the menu. <br /></td></tr>
 <tr class="separator:acf81c6529ae2b90b02d2b472f26f5b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Constructs a menu system. </p>
+<div class="textblock"><p>Represents a menu system with buttons and navigation capabilities. </p>
+<p>The <a class="el" href="classConsoleUI_1_1Menu.html" title="Represents a menu system with buttons and navigation capabilities.">Menu</a> class provides functionality to create and manage a menu with selectable buttons. It supports both horizontal and vertical layouts, and handles user input for navigation and button activation. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac6e578bd04e52005a58867010aa4eeef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6e578bd04e52005a58867010aa4eeef">&#9670;&nbsp;</a></span>Menu()</h2>
@@ -145,8 +153,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Contructs the menu <br  />
- </p>
+
+<p>Construct a new <a class="el" href="classConsoleUI_1_1Menu.html" title="Represents a menu system with buttons and navigation capabilities.">Menu</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">horizontal</td><td>If true, creates a horizontal menu layout. If false (default), creates a vertical layout. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -177,11 +191,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
       </table>
 </div><div class="memdoc">
 
-<p>Creates a menu button. </p>
+<p>Add a new button to the menu. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">label</td><td>Text for the button </td></tr>
-    <tr><td class="paramname">action</td><td>fucntion to be called on submission </td></tr>
+    <tr><td class="paramname">label</td><td>The text label for the button. </td></tr>
+    <tr><td class="paramname">action</td><td>The function to be called when the button is activated. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,14 +228,101 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
       </table>
 </div><div class="memdoc">
 
-<p>Draws all items in the menu. </p>
+<p>Draw the menu at the specified position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>number of characters from left to begin drawing </td></tr>
-    <tr><td class="paramname">y</td><td>number of lines from top to begin drawing </td></tr>
+    <tr><td class="paramname">x</td><td>The x-coordinate to start drawing the menu. </td></tr>
+    <tr><td class="paramname">y</td><td>The y-coordinate to start drawing the menu. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab5d3f450b9a206f0fc7f4692e20947ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5d3f450b9a206f0fc7f4692e20947ee">&#9670;&nbsp;</a></span>getButtonCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t ConsoleUI::Menu::getButtonCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the total number of buttons in the menu. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of buttons in the menu. </dd></dl>
+
+</div>
+</div>
+<a id="ae06e70311079d4774d491d9c9484b551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae06e70311079d4774d491d9c9484b551">&#9670;&nbsp;</a></span>getButtonWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConsoleUI::Menu::getButtonWidth </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the width of a specific button. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the button. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The width of the button at the specified index. </dd></dl>
+
+</div>
+</div>
+<a id="a42a5d7533b648b5380a1644d95f6703a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a5d7533b648b5380a1644d95f6703a">&#9670;&nbsp;</a></span>getSelectedIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t ConsoleUI::Menu::getSelectedIndex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the index of the currently selected button. </p>
+<dl class="section return"><dt>Returns</dt><dd>The index of the selected button. </dd></dl>
+
+</div>
+</div>
+<a id="ab11983eed87adb6f9adcd95b9659600d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab11983eed87adb6f9adcd95b9659600d">&#9670;&nbsp;</a></span>getTotalWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConsoleUI::Menu::getTotalWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the total width of all buttons in the menu. </p>
+<dl class="section return"><dt>Returns</dt><dd>The total width of the menu. </dd></dl>
 
 </div>
 </div>
@@ -240,10 +341,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
       </table>
 </div><div class="memdoc">
 
-<p>checks if the "back" button has been selected and submitted </p>
-<dl class="section return"><dt>Returns</dt><dd>true </dd>
-<dd>
-false </dd></dl>
+<p>Check if the "Back" button is currently selected and pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the "Back" button is pressed, false otherwise. </dd></dl>
 
 </div>
 </div>

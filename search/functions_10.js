@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['writeflashcarddeck_243',['writeFlashCardDeck',['../deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756',1,'deck.h']]],
-  ['writeflashcarddeckwithchecks_244',['writeFlashCardDeckWithChecks',['../deck_8h.html#ae408e4996fd4d4245bc6276659061b0a',1,'deck.h']]]
+  ['timer_278',['timer',['../util_8cpp.html#a211897e8868606c97636147527d722eb',1,'timer(int minutes):&#160;util.cpp'],['../util_8h.html#a211897e8868606c97636147527d722eb',1,'timer(int minutes):&#160;util.cpp']]],
+  ['tostring_279',['toString',['../classPlayer.html#af26b9335d328ead7f0912b2cb38340bb',1,'Player::toString()'],['../classPlayingCard.html#aea06e402994ae2a69bf11529a62a31c9',1,'PlayingCard::toString()']]]
 ];

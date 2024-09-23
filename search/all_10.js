@@ -8,9 +8,8 @@ var searchData=
   ['setmaxhitpoints_105',['setMaxHitPoints',['../classPlayer.html#ad6aeb2075eb5376d9512023e1754be0b',1,'Player']]],
   ['showconsolecursor_106',['ShowConsoleCursor',['../util_8cpp.html#ab439747e31446222d0260e86d5955a1b',1,'ShowConsoleCursor(bool showFlag):&#160;util.cpp'],['../util_8h.html#a7a2da45e1167a22ea2d5497d1287446b',1,'ShowConsoleCursor(bool showflag):&#160;util.cpp']]],
   ['splashscreen_107',['splashScreen',['../artwork_8cpp.html#a6a9ebf5fc23776639a05c6da2e050f02',1,'splashScreen():&#160;artwork.cpp'],['../artwork_8h.html#a6a9ebf5fc23776639a05c6da2e050f02',1,'splashScreen():&#160;artwork.cpp']]],
-  ['start_108',['start',['../gameloop_8h.html#adb7cc7b6117c34641f028fd41efbb4ee',1,'gameloop.h']]],
-  ['stringcardastemplate_109',['stringCardAsTemplate',['../classFlashCard.html#a59124a95fe6b027d98657a3791c06a5d',1,'FlashCard']]],
-  ['strtocarddifficulty_110',['strToCardDifficulty',['../deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp'],['../deck_8h.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp']]],
-  ['studydungeon_111',['StudyDungeon',['../index.html',1,'']]],
-  ['swaphandeffect_112',['swapHandEffect',['../classGame.html#a7bfba13884115043394df6d029ac539f',1,'Game']]]
+  ['stringcardastemplate_108',['stringCardAsTemplate',['../classFlashCard.html#a59124a95fe6b027d98657a3791c06a5d',1,'FlashCard']]],
+  ['strtocarddifficulty_109',['strToCardDifficulty',['../deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp'],['../deck_8h.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp']]],
+  ['studydungeon_110',['StudyDungeon',['../index.html',1,'']]],
+  ['swaphandeffect_111',['swapHandEffect',['../classGame.html#a7bfba13884115043394df6d029ac539f',1,'Game']]]
 ];

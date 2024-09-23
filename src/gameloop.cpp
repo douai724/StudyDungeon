@@ -102,8 +102,11 @@ bool Game::isWinner()
         {
             return false;
         }
-    } else {return false; /* its saying not all paths return a value*/}
-    
+    }
+    else
+    {
+        return false; /* its saying not all paths return a value*/
+    }
 }
 
 void Game::swapHandEffect()

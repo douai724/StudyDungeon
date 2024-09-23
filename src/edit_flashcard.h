@@ -44,7 +44,7 @@ public:
 
     /**
      * @brief Updates the scene state.
-     * 
+     *
      * This function is called every frame to update the scene's state.
      * Currently, it doesn't perform any operations as the scene doesn't require continuous updates.
      */
@@ -53,7 +53,7 @@ public:
     /**
      * @brief Renders the scene on the console window.
      * @param window Shared pointer to the ConsoleWindow to render on.
-     * 
+     *
      * This function draws the list of decks, the contents of the selected deck,
      * and navigation instructions on the console window.
      */
@@ -61,7 +61,7 @@ public:
 
     /**
      * @brief Handles user input for the scene.
-     * 
+     *
      * This function processes keyboard input to navigate through decks,
      * change pages, and perform actions like adding, deleting, or renaming decks.
      */
@@ -79,7 +79,7 @@ private:
 
     /**
      * @brief Loads all flashcard decks from the file system.
-     * 
+     *
      * This function reads all .deck files from the "Decks/" directory
      * and populates the m_decks vector with the loaded FlashCardDeck objects.
      */
@@ -87,7 +87,7 @@ private:
 
     /**
      * @brief Adds a new flashcard deck.
-     * 
+     *
      * This function prompts the user for a deck name, creates a new .deck file,
      * and adds the new deck to the m_decks vector.
      */
@@ -95,7 +95,7 @@ private:
 
     /**
      * @brief Deletes the currently selected flashcard deck.
-     * 
+     *
      * This function removes the selected deck's .deck file from the file system
      * and removes the deck from the m_decks vector.
      */
@@ -103,7 +103,7 @@ private:
 
     /**
      * @brief Renames the currently selected flashcard deck.
-     * 
+     *
      * This function prompts the user for a new deck name, renames the .deck file,
      * and updates the deck's name in the m_decks vector.
      */
@@ -116,7 +116,7 @@ private:
      * @param x The x-coordinate of the starting position.
      * @param y The y-coordinate of the starting position.
      * @param width The maximum width for text wrapping.
-     * 
+     *
      * This utility function breaks long text into multiple lines to fit within
      * the specified width and draws it on the console window.
      */
@@ -147,7 +147,7 @@ public:
 
     /**
      * @brief Updates the scene state.
-     * 
+     *
      * This function is called every frame to update the scene's state.
      * Currently, it doesn't perform any operations as the scene doesn't require continuous updates.
      */
@@ -156,7 +156,7 @@ public:
     /**
      * @brief Renders the scene on the console window.
      * @param window Shared pointer to the ConsoleWindow to render on.
-     * 
+     *
      * This function draws the list of flashcards in the current deck,
      * displaying the question, answer, and difficulty of each card.
      * It also shows navigation instructions and handles pagination if necessary.
@@ -165,7 +165,7 @@ public:
 
     /**
      * @brief Handles user input for the scene.
-     * 
+     *
      * This function processes keyboard input to navigate through flashcards,
      * change pages, and perform actions like adding, editing, or deleting flashcards.
      */
@@ -182,7 +182,7 @@ private:
 
     /**
      * @brief Edits the currently selected flashcard.
-     * 
+     *
      * This function allows the user to modify the question, answer, and difficulty
      * of the selected flashcard. It updates the flashcard in the deck and saves
      * changes to the file.
@@ -191,7 +191,7 @@ private:
 
     /**
      * @brief Adds a new flashcard to the deck.
-     * 
+     *
      * This function prompts the user for a question, answer, and difficulty level
      * for a new flashcard. It then adds the new card to the deck and saves
      * changes to the file.
@@ -200,7 +200,7 @@ private:
 
     /**
      * @brief Deletes the currently selected flashcard from the deck.
-     * 
+     *
      * This function removes the selected flashcard from the deck after
      * confirming with the user. It then saves the changes to the file.
      */
@@ -213,7 +213,7 @@ private:
      * @param x The x-coordinate of the starting position.
      * @param y The y-coordinate of the starting position.
      * @param width The maximum width for text wrapping.
-     * 
+     *
      * This utility function breaks long text into multiple lines to fit within
      * the specified width and draws it on the console window. It's particularly
      * useful for displaying long questions or answers on flashcards.

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">4729c5d</span>
+   &#160;<span id="projectnumber">8ade035</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -107,14 +107,14 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardApp_1_1BrowseDecksScene.html#a97982bbe2ef89a678d8612b5c0a24708">loadDecks</a>();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::vector&lt;FlashCardDeck&gt; m_decks; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">size_t</span> m_selectedDeckIndex = 0; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::function&lt;void()&gt; m_goBack; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;                     </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::vector&lt;FlashCardDeck&gt; m_decks;                    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">size_t</span> m_selectedDeckIndex = 0;                        </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::function&lt;void()&gt; m_goBack;                        </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::function&lt;void(<span class="keyword">const</span> <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> &amp;)&gt; m_openDeck; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw = <span class="keyword">true</span>; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">int</span> m_currentPage = 0; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">int</span> m_maxCardsPerPage = 0; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw = <span class="keyword">true</span>;                             </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">int</span> m_currentPage = 0;                                 </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">int</span> m_maxCardsPerPage = 0;                             </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classFlashcardApp_1_1FlashcardScene.html">  112</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashcardApp_1_1FlashcardScene.html">FlashcardScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
@@ -144,15 +144,15 @@ $(function() {
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordtype">void</span> endSession();</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> m_deck; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    std::vector&lt;size_t&gt; m_cardOrder; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">size_t</span> m_currentCardIndex = 0; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordtype">bool</span> m_showAnswer = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;              </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="classFlashCardDeck.html">FlashCardDeck</a> m_deck;                           </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    std::vector&lt;size_t&gt; m_cardOrder;                </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">size_t</span> m_currentCardIndex = 0;                  </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordtype">bool</span> m_showAnswer = <span class="keyword">false</span>;                      </div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    std::vector&lt;int&gt; m_difficultyCount = {0, 0, 0}; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    std::function&lt;void()&gt; m_goBack; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    std::function&lt;void()&gt; m_goBack;                 </div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    std::function&lt;void(<span class="keyword">const</span> std::vector&lt;int&gt; &amp;)&gt; m_showResults; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;                                          </div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;};</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
 <div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="classFlashcardApp_1_1ResultsScene.html">  204</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFlashcardApp_1_1ResultsScene.html">ResultsScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
@@ -171,12 +171,12 @@ $(function() {
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFlashcardApp_1_1ResultsScene.html#a7b9da732f2453d78791ccffd4813b2dd">handleInput</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    std::vector&lt;int&gt; m_difficultyCount; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    std::function&lt;void()&gt; m_goToMainMenu; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;         </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    std::vector&lt;int&gt; m_difficultyCount;        </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    std::function&lt;void()&gt; m_goToMainMenu;      </div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    std::function&lt;void()&gt; m_goToDeckSelection; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    std::function&lt;void()&gt; m_goToGame; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    std::function&lt;void()&gt; m_goToGame;          </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;                        </div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;};</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;} <span class="comment">// namespace FlashcardApp</span></div>

@@ -140,10 +140,6 @@ void Game::damageEffect(PlayingCard &card)
     }
 }
 
-Game setUp(Player p1, Player p2)
-{
-    return Game(p1, p2);
-}
 
 std::vector<PlayingCard> generateDeck(int numCards)
 {

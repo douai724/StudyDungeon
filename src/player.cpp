@@ -95,7 +95,7 @@ void Player::removeCard(PlayingCard &card)
             hand.erase(it);
             break;
         }
-        it++;
+        ++it;
     }
 }
 

@@ -1,7 +1,19 @@
 var searchData=
 [
-  ['edit_5fflashcard_2ecpp_35',['edit_flashcard.cpp',['../edit__flashcard_8cpp.html',1,'']]],
-  ['edit_5fflashcard_2eh_36',['edit_flashcard.h',['../edit__flashcard_8h.html',1,'']]],
-  ['editdeckscene_37',['EditDeckScene',['../classFlashcardEdit_1_1EditDeckScene.html#a3612a9938b412d83dcb809da38b39217',1,'FlashcardEdit::EditDeckScene::EditDeckScene()'],['../classFlashcardEdit_1_1EditDeckScene.html',1,'FlashcardEdit::EditDeckScene']]],
-  ['editflashcardscene_38',['EditFlashcardScene',['../classFlashcardEdit_1_1EditFlashcardScene.html#ae002049f47802c38a73ec3e330929380',1,'FlashcardEdit::EditFlashcardScene::EditFlashcardScene()'],['../classFlashcardEdit_1_1EditFlashcardScene.html',1,'FlashcardEdit::EditFlashcardScene']]]
+  ['damage_20',['damage',['../classPlayer.html#acaa54e06b5751051dd86ccb67ad2194c',1,'Player']]],
+  ['damageeffect_21',['damageEffect',['../classGame.html#a9f6b9fcb80e350f35d9845bad25d12db',1,'Game']]],
+  ['deck_2ecpp_22',['deck.cpp',['../deck_8cpp.html',1,'']]],
+  ['deck_2eh_23',['deck.h',['../deck_8h.html',1,'']]],
+  ['difficulty_24',['difficulty',['../classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d',1,'FlashCard']]],
+  ['draw_25',['draw',['../classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1',1,'ConsoleUI::Menu']]],
+  ['drawborder_26',['drawBorder',['../classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawbox_27',['drawBox',['../classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawcard_28',['drawCard',['../classPlayer.html#afc2318d0712899c3cf309c14d452e422',1,'Player']]],
+  ['drawcenteredtext_29',['drawCenteredText',['../classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawcharacter_30',['drawCharacter',['../classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawhorizontalline_31',['drawHorizontalLine',['../classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawtext_32',['drawText',['../classConsoleUI_1_1ConsoleWindow.html#a87d1064c93ddc50864095de56c50c40a',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawtextbox_33',['drawTextBox',['../classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawverticalline_34',['drawVerticalLine',['../classConsoleUI_1_1ConsoleWindow.html#a95b393ebeae13ad8ce6547d34579c882',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawwrappedtext_35',['drawWrappedText',['../classFlashcardApp_1_1BrowseDecksScene.html#a51e39d8b3466fbb86aea206cef5a2fb7',1,'FlashcardApp::BrowseDecksScene::drawWrappedText()'],['../classFlashcardApp_1_1FlashcardScene.html#a165a567f7b4edf9846da6a52d1b8aaa7',1,'FlashcardApp::FlashcardScene::drawWrappedText()']]]
 ];

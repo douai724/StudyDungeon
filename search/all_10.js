@@ -1,15 +1,7 @@
 var searchData=
 [
-  ['scene_100',['Scene',['../classConsoleUI_1_1Scene.html',1,'ConsoleUI']]],
-  ['setconsolecursorposition_101',['setConsoleCursorPosition',['../namespaceConsoleUI.html#a97c7a3eab1fb33599b6d756fb6866b53',1,'ConsoleUI']]],
-  ['sethand_102',['setHand',['../classPlayer.html#ab3075dfec0540bfed4db7c1c059e029a',1,'Player']]],
-  ['sethandsize_103',['setHandSize',['../classPlayer.html#ac5b811a9e470690146f2123d6dadc898',1,'Player']]],
-  ['sethitpoints_104',['setHitPoints',['../classPlayer.html#a389b9865ee167e58de339e83d16250d0',1,'Player']]],
-  ['setmaxhitpoints_105',['setMaxHitPoints',['../classPlayer.html#ad6aeb2075eb5376d9512023e1754be0b',1,'Player']]],
-  ['showconsolecursor_106',['ShowConsoleCursor',['../util_8cpp.html#ab439747e31446222d0260e86d5955a1b',1,'ShowConsoleCursor(bool showFlag):&#160;util.cpp'],['../util_8h.html#a7a2da45e1167a22ea2d5497d1287446b',1,'ShowConsoleCursor(bool showflag):&#160;util.cpp']]],
-  ['splashscreen_107',['splashScreen',['../artwork_8cpp.html#a6a9ebf5fc23776639a05c6da2e050f02',1,'splashScreen():&#160;artwork.cpp'],['../artwork_8h.html#a6a9ebf5fc23776639a05c6da2e050f02',1,'splashScreen():&#160;artwork.cpp']]],
-  ['stringcardastemplate_108',['stringCardAsTemplate',['../classFlashCard.html#a59124a95fe6b027d98657a3791c06a5d',1,'FlashCard']]],
-  ['strtocarddifficulty_109',['strToCardDifficulty',['../deck_8cpp.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp'],['../deck_8h.html#a6e4ad1bdbb9764c9291a9da1872265e8',1,'strToCardDifficulty(const std::string &amp;difficultyStr):&#160;deck.cpp']]],
-  ['studydungeon_110',['StudyDungeon',['../index.html',1,'']]],
-  ['swaphandeffect_111',['swapHandEffect',['../classGame.html#a7bfba13884115043394df6d029ac539f',1,'Game']]]
+  ['readflashcarddeck_98',['readFlashCardDeck',['../deck_8cpp.html#abea54d12b8b52601bf6cbd4f9c477771',1,'readFlashCardDeck(fs::path deck_file):&#160;deck.cpp'],['../deck_8h.html#a51117ea428770097e56c24159c9af509',1,'readFlashCardDeck(std::filesystem::path deck_file):&#160;deck.h']]],
+  ['removecard_99',['removeCard',['../classPlayer.html#a3a8fc78d07cdfc32452f1ad5075bbef7',1,'Player']]],
+  ['render_100',['render',['../classFlashcardEdit_1_1EditDeckScene.html#a39a5f8d3839719c2bea3cdf4f7b9e590',1,'FlashcardEdit::EditDeckScene::render()'],['../classFlashcardEdit_1_1EditFlashcardScene.html#a4666f8b94b80c772c70d6e1428dce77e',1,'FlashcardEdit::EditFlashcardScene::render()'],['../classFlashcardApp_1_1BrowseDecksScene.html#a7aed79a15905ef05e57e0f449435e33a',1,'FlashcardApp::BrowseDecksScene::render()'],['../classFlashcardApp_1_1FlashcardScene.html#a6007accc04ea747646d8e0d91a92a84e',1,'FlashcardApp::FlashcardScene::render()'],['../classFlashcardApp_1_1ResultsScene.html#a928c1cbcadf2dd9357267c1afb0dc468',1,'FlashcardApp::ResultsScene::render()'],['../classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b',1,'FibonacciScene::render()']]],
+  ['resultsscene_101',['ResultsScene',['../classFlashcardApp_1_1ResultsScene.html',1,'FlashcardApp::ResultsScene'],['../classFlashcardApp_1_1ResultsScene.html#a8b9e2108e3e412c0f2f420e6c678cddb',1,'FlashcardApp::ResultsScene::ResultsScene()']]]
 ];

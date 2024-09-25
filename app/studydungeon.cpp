@@ -17,6 +17,7 @@
 #include <vector>
 #include <windows.h>
 
+
 class MainMenuScene : public ConsoleUI::Scene
 {
 public:
@@ -98,6 +99,7 @@ private:
 
 int main()
 {
+    enableVirtualTerminal();
     try
     {
         ConsoleUI::UIManager uiManager;

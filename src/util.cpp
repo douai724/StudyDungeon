@@ -14,6 +14,34 @@
 namespace fs = std::filesystem;
 bool isTestMode = false;
 
+void enableVirtualTerminal()
+{
+    // Get the console handle
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    if (hConsole == INVALID_HANDLE_VALUE)
+    {
+        std::cerr << "Error getting console handle" << std::endl;
+        return;
+    }
+
+    // Get current console mode
+    DWORD consoleMode;
+    if (!GetConsoleMode(hConsole, &consoleMode))
+    {
+        std::cerr << "Error getting console mode" << std::endl;
+        return;
+    }
+
+    // Enable the virtual terminal processing mode
+    consoleMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    if (!SetConsoleMode(hConsole, consoleMode))
+    {
+        std::cerr << "Error setting console mode" << std::endl;
+        return;
+    }
+}
+
 /**
  * @brief Get the app path object
  * @fn get the path of the application

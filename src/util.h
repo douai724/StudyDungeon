@@ -20,6 +20,7 @@
 
 extern bool isTestMode;
 
+// Defines the character code recieved by getch on key press
 const int _key_enter{13};
 const int _key_backspace{8};
 const int _key_esc{27};
@@ -30,6 +31,20 @@ const int _key_up{72};
 const int _key_down{80};
 const int _key_left{75};
 const int _key_right{77};
+
+
+/** escape sequence for virtual terminal sequences */
+const std::string _ESC{"\x1b"};
+// const std::string _ESC {"\033"}; // ansi escape code
+
+/**
+ * @brief enables the virtual terminal processing mode
+ * @details sets the ENABLE_VIRTUAL_TERMINAL_PROCESSING flag so that virtual terminal sequences
+ * will be interpreted by the console to display colour and formatting
+ *
+ */
+void enableVirtualTerminal();
+
 
 /**
  * @brief Get the app path object

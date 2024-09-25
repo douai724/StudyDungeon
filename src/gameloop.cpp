@@ -102,8 +102,11 @@ bool Game::isWinner()
         {
             return false;
         }
-    } else {return false; /* its saying not all paths return a value*/}
-    
+    }
+    else
+    {
+        return false; /* its saying not all paths return a value*/
+    }
 }
 
 void Game::swapHandEffect()
@@ -137,10 +140,6 @@ void Game::damageEffect(PlayingCard &card)
     }
 }
 
-Game setUp(Player p1, Player p2)
-{
-    return Game(p1, p2);
-}
 
 std::vector<PlayingCard> generateDeck(int numCards)
 {

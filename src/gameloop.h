@@ -92,14 +92,6 @@ public:
 };
 
 /**
- * @brief Set up and start the game.
- *
- */
-void start(Game game);
-
-Game setUp(Player p1, Player p2);
-
-/**
  * @brief Generates a hand.
  *
  * @param numCards the number of cards to add to the hand.

@@ -91,14 +91,14 @@ public:
     void loadDecks();
 
 private:
-    ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
-    std::vector<FlashCardDeck> m_decks; ///< Vector of loaded flashcard decks.
-    size_t m_selectedDeckIndex = 0; ///< Index of the currently selected deck.
-    std::function<void()> m_goBack; ///< Function to call when going back.
+    ConsoleUI::UIManager &m_uiManager;                     ///< Reference to the UI manager.
+    std::vector<FlashCardDeck> m_decks;                    ///< Vector of loaded flashcard decks.
+    size_t m_selectedDeckIndex = 0;                        ///< Index of the currently selected deck.
+    std::function<void()> m_goBack;                        ///< Function to call when going back.
     std::function<void(const FlashCardDeck &)> m_openDeck; ///< Function to call when opening a deck.
-    bool m_needsRedraw = true; ///< Flag indicating if the scene needs to be redrawn.
-    int m_currentPage = 0; ///< Current page number when viewing deck contents.
-    int m_maxCardsPerPage = 0; ///< Maximum number of cards that can be displayed per page.
+    bool m_needsRedraw = true;                             ///< Flag indicating if the scene needs to be redrawn.
+    int m_currentPage = 0;                                 ///< Current page number when viewing deck contents.
+    int m_maxCardsPerPage = 0;                             ///< Maximum number of cards that can be displayed per page.
 };
 
 /**
@@ -181,15 +181,15 @@ private:
      */
     void endSession();
 
-    ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
-    FlashCardDeck m_deck; ///< The flashcard deck being studied.
-    std::vector<size_t> m_cardOrder; ///< Randomized order of flashcards for the session.
-    size_t m_currentCardIndex = 0; ///< Index of the current flashcard being shown.
-    bool m_showAnswer = false; ///< Flag indicating whether the answer is currently visible.
+    ConsoleUI::UIManager &m_uiManager;              ///< Reference to the UI manager.
+    FlashCardDeck m_deck;                           ///< The flashcard deck being studied.
+    std::vector<size_t> m_cardOrder;                ///< Randomized order of flashcards for the session.
+    size_t m_currentCardIndex = 0;                  ///< Index of the current flashcard being shown.
+    bool m_showAnswer = false;                      ///< Flag indicating whether the answer is currently visible.
     std::vector<int> m_difficultyCount = {0, 0, 0}; ///< Count of cards rated as Easy, Medium, Hard.
-    std::function<void()> m_goBack; ///< Function to call when going back.
+    std::function<void()> m_goBack;                 ///< Function to call when going back.
     std::function<void(const std::vector<int> &)> m_showResults; ///< Function to call when showing results.
-    bool m_needsRedraw; ///< Flag indicating if the scene needs to be redrawn.
+    bool m_needsRedraw;                                          ///< Flag indicating if the scene needs to be redrawn.
 };
 
 /**
@@ -243,12 +243,12 @@ public:
     void handleInput() override;
 
 private:
-    ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
-    std::vector<int> m_difficultyCount; ///< Count of cards rated as Easy, Medium, Hard.
-    std::function<void()> m_goToMainMenu; ///< Function to call when returning to the main menu.
+    ConsoleUI::UIManager &m_uiManager;         ///< Reference to the UI manager.
+    std::vector<int> m_difficultyCount;        ///< Count of cards rated as Easy, Medium, Hard.
+    std::function<void()> m_goToMainMenu;      ///< Function to call when returning to the main menu.
     std::function<void()> m_goToDeckSelection; ///< Function to call when going to deck selection.
-    std::function<void()> m_goToGame; ///< Function to call when starting a new game.
-    bool m_needsRedraw; ///< Flag indicating if the scene needs to be redrawn.
+    std::function<void()> m_goToGame;          ///< Function to call when starting a new game.
+    bool m_needsRedraw;                        ///< Flag indicating if the scene needs to be redrawn.
 };
 
 } // namespace FlashcardApp

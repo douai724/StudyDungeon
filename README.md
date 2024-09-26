@@ -82,3 +82,25 @@ Pre-commit checks files for conformity to various stylings.
 6. pre-commit will then run automatically on each commit checking the commited files for styling and auto fixing where it can.
 
 .
+
+## Adding decks in github
+
+to add/edit decks in github:
+
+1. Go into the `Decks/` directory
+2. Select `Add file` -> `Create new file`
+3. Name the file ensuring it has a suffix of `.deck`
+4. First line of the file is the deck name visible in the program
+5. add cards using the following template:
+```
+Q: <question>
+A: <answer>
+D: UNKNOWN
+N: 0
+-
+```
+
+Replace `<question>` with your question text and `<answer>` with your answer text. The line with only `-` denotes the end of each card.
+
+- `D:` is the card difficulty, options are `UNKNOWN`, `EASY`, `MEDIUM`, and `HARD`
+- `N:` is the number of times the card has been answered

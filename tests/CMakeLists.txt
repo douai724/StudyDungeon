@@ -23,7 +23,7 @@ set(DECK_DEST EXECUTABLE_OUTPUT_PATH)
 add_custom_command(TARGET ${TEST_MAIN} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${PROJECT_SOURCE_DIR}/Decks $<TARGET_FILE_DIR:${TEST_MAIN}>/TEST_Decks
-    COMMENT "Copying Decks/ from ${PROJECT_SOURCE_DIR}/Decks to $<TARGET_FILE_DIR:${TEST_MAIN}>/TEST_Decks"
+    COMMENT "Copying Decks/ from ${PROJECT_SOURCE_DIR}/tests/Test_decks to $<TARGET_FILE_DIR:${TEST_MAIN}>/TEST_Decks"
 )
 
 # add_test(NAME ${TEST_MAIN}

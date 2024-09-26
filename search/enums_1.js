@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_263',['Type',['../card__types_8h.html#a1d1cfd8ffb84e947f82999c682b666a7',1,'card_types.h']]]
+  ['type_265',['Type',['../card__types_8h.html#a1d1cfd8ffb84e947f82999c682b666a7',1,'card_types.h']]]
 ];

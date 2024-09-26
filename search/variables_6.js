@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['question_260',['question',['../classFlashCard.html#ac0a6f4c179b89d67629d10d1679ece8e',1,'FlashCard']]]
+  ['p1_260',['p1',['../classGame.html#a014f8cd9ca7cf3e0776d37973e74309b',1,'Game']]],
+  ['p2_261',['p2',['../classGame.html#a4e583f57a219c95936dcd9093763b1aa',1,'Game']]]
 ];

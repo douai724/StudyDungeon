@@ -93,18 +93,6 @@ void FlashCardDeck::printDeckAsTemplate()
     }
 }
 
-FlashCard createFlashCard(const std::string question,
-                          const std::string answer,
-                          const CardDifficulty difficulty,
-                          const int n_times_answered)
-{
-    FlashCard card{};
-    card.question = question;
-    card.answer = answer;
-    card.difficulty = difficulty;
-    card.n_times_answered = n_times_answered;
-    return card;
-};
 
 // parses a deck file to convert it to a Flashcard deck object
 FlashCardDeck readFlashCardDeck(fs::path deck_file)
@@ -290,12 +278,12 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
 // or can be used in tests.
 std::vector<FlashCardDeck> createExampleDecks()
 {
-    FlashCard f1 = createFlashCard("question 1", "answer 1", EASY, 0);
-    FlashCard f2 = createFlashCard("question 2", "answer 2", MEDIUM, 1);
+    FlashCard f1 = FlashCard("question 1", "answer 1", EASY, 0);
+    FlashCard f2 = FlashCard("question 2", "answer 2", MEDIUM, 1);
     FlashCardDeck d1{"Example Deck 1", "", std::vector<FlashCard>{f1, f2}};
 
-    FlashCard f3 = createFlashCard("question 3", "answer 3", HIGH, 2);
-    FlashCard f4 = createFlashCard("question 4", "answer 4", UNKNOWN, 1);
+    FlashCard f3 = FlashCard("question 3", "answer 3", HIGH, 2);
+    FlashCard f4 = FlashCard("question 4", "answer 4", UNKNOWN, 1);
     FlashCardDeck d2{"Example Deck 2", "", std::vector<FlashCard>{f3, f4}};
 
     return std::vector<FlashCardDeck>{d1, d2};

@@ -50,16 +50,6 @@ TEST_CASE("FlashCard Creation")
         REQUIRE(fc1.n_times_answered == 1);
     }
 
-    SECTION("FlashCard creation through method")
-    {
-
-        FlashCard fc_test = createFlashCard("question", "answer", MEDIUM, 1);
-
-        REQUIRE(fc_test.question == "question");
-        REQUIRE(fc_test.answer == "answer");
-        REQUIRE(fc_test.difficulty == MEDIUM);
-        REQUIRE(fc_test.n_times_answered == 1);
-    }
 
     SECTION("Card printing methods")
     {
@@ -79,7 +69,7 @@ TEST_CASE("FlashCard Creation")
         // clear out the buffer ready to take next output
         oss.str("");
         oss.clear();
-        FlashCard fc_test = createFlashCard("question", "answer", MEDIUM, 1);
+        FlashCard fc_test = FlashCard("question", "answer", MEDIUM, 1);
         fc_test.printCardAsTemplate();
         REQUIRE(oss.str() == "Q: question\nA: answer\nD: MEDIUM\nN: 1\n-\n");
 
@@ -90,8 +80,8 @@ TEST_CASE("FlashCard Creation")
 TEST_CASE("Deck reading and writing")
 {
 
-    FlashCard fc_test0 = createFlashCard("question0", "answer0", MEDIUM, 1);
-    FlashCard fc_test1 = createFlashCard("question1", "answer1", MEDIUM, 1);
+    FlashCard fc_test0 = FlashCard("question0", "answer0", MEDIUM, 1);
+    FlashCard fc_test1 = FlashCard("question1", "answer1", MEDIUM, 1);
 
     // empty deck
     FlashCardDeck d0{"Example Deck 0", "", std::vector<FlashCard>{}};

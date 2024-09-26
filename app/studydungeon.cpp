@@ -5,6 +5,7 @@
 #include "flashcard_scene.h"
 #include "game_scene.h"
 #include "gameloop.h"
+#include "howto_scene.h"
 #include "menu.h"
 #include "test_scene.h"
 #include "util.h"
@@ -23,11 +24,12 @@ class MainMenuScene : public ConsoleUI::Scene
 public:
     MainMenuScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> openFibonacciScene,
+                  std::function<void()> openHowToScene,
                   std::function<void()> openBrowseDecks,
                   std::function<void()> openEditDecks)
         : m_uiManager(uiManager)
     {
-        createMainMenu(openFibonacciScene, openBrowseDecks, openEditDecks);
+        createMainMenu(openFibonacciScene, openHowToScene, openBrowseDecks, openEditDecks);
 
         // Create ASCII art
         m_asciiArt = m_uiManager.createAsciiArt(R"(
@@ -45,6 +47,7 @@ public:
     }
 
     void createMainMenu(std::function<void()> openFibonacciScene,
+                        std::function<void()> openHowToScene,
                         std::function<void()> openBrowseDecks,
                         std::function<void()> openEditDecks)
 
@@ -52,6 +55,7 @@ public:
         auto &menu = m_uiManager.createMenu("main", false);
         menu.addButton("Browse Decks", openBrowseDecks);
         menu.addButton("Edit Decks", openEditDecks);
+        menu.addButton("How To Play", openHowToScene);
         menu.addButton("Fibonacci Sequence", openFibonacciScene);
         menu.addButton("Exit", []() {
             clearScreen();
@@ -106,6 +110,7 @@ int main()
 
         std::shared_ptr<MainMenuScene> mainMenuScene;
         std::shared_ptr<FibonacciScene> fibonacciScene;
+        std::shared_ptr<HowToScene> howToScene;
         std::shared_ptr<FlashcardEdit::EditDeckScene> editDecksScene;
         std::shared_ptr<FlashcardApp::BrowseDecksScene> browseDecksScene;
         std::shared_ptr<FlashcardApp::FlashcardScene> flashcardScene;
@@ -155,6 +160,7 @@ int main()
                 createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
                 mainMenuScene->createMainMenu( // Recreate main menu buttons
                     [&]() { uiManager.setCurrentScene(fibonacciScene); },
+                    [&]() { uiManager.setCurrentScene(howToScene); },
                     [&]() { uiManager.setCurrentScene(browseDecksScene); },
                     [&]() { uiManager.setCurrentScene(editDecksScene); });
                 uiManager.setCurrentScene(mainMenuScene);
@@ -166,6 +172,9 @@ int main()
                 uiManager.setCurrentScene(editFlashcardScene);
             });
 
+
+        // Create HowToScene
+        howToScene = std::make_shared<HowToScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
         // Create FibonacciScene
         fibonacciScene =
             std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
@@ -175,6 +184,7 @@ int main()
         mainMenuScene = std::make_shared<MainMenuScene>(
             uiManager,
             [&]() { uiManager.setCurrentScene(fibonacciScene); },
+            [&]() { uiManager.setCurrentScene(howToScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(editDecksScene); });
 

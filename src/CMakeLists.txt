@@ -11,6 +11,7 @@ set(LIBRARY_SOURCES
     "player.cpp"
     "playing_card.cpp"
     "game_scene.cpp"
+    "howto_scene.cpp"
 )
 
 set(LIBRARY_HEADERS
@@ -26,6 +27,7 @@ set(LIBRARY_HEADERS
     "player.h"
     "playing_card.h"
     "game_scene.h"
+    "howto_scene.h"
     )
 
 set(LIBRARY_INCLUDES

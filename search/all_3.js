@@ -1,13 +1,19 @@
 var searchData=
 [
-  ['card_5ftypes_2eh_10',['card_types.h',['../card__types_8h.html',1,'']]],
-  ['carddifficulty_11',['CardDifficulty',['../deck_8h.html#abb990f45a98cd7c14e01df00bbae7500',1,'deck.h']]],
-  ['carddifficultytostr_12',['cardDifficultyToStr',['../deck_8cpp.html#a86bf6016f9556419d98f7c566f5f30ae',1,'cardDifficultyToStr(const CardDifficulty &amp;difficulty):&#160;deck.cpp'],['../deck_8h.html#a86bf6016f9556419d98f7c566f5f30ae',1,'cardDifficultyToStr(const CardDifficulty &amp;difficulty):&#160;deck.cpp']]],
-  ['cards_13',['cards',['../classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5',1,'FlashCardDeck']]],
-  ['clear_14',['clear',['../classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0',1,'ConsoleUI::ConsoleWindow']]],
-  ['consoleui_15',['ConsoleUI',['../namespaceConsoleUI.html',1,'']]],
-  ['consolewindow_16',['ConsoleWindow',['../classConsoleUI_1_1ConsoleWindow.html',1,'ConsoleUI']]],
-  ['createdeckfilename_17',['createDeckFilename',['../deck_8cpp.html#a8d1bd86906f6289f92426ffa5cbfe9fd',1,'createDeckFilename(std::filesystem::path deck_dir):&#160;deck.cpp'],['../deck_8h.html#a8d1bd86906f6289f92426ffa5cbfe9fd',1,'createDeckFilename(std::filesystem::path deck_dir):&#160;deck.cpp']]],
-  ['createexampledecks_18',['createExampleDecks',['../deck_8cpp.html#ac2ae4147f7100c31d1dc283f57c0870d',1,'createExampleDecks():&#160;deck.cpp'],['../deck_8h.html#ac2ae4147f7100c31d1dc283f57c0870d',1,'createExampleDecks():&#160;deck.cpp']]],
-  ['createflashcard_19',['createFlashCard',['../deck_8cpp.html#af743fc8b1c052ab066649556d855e23b',1,'createFlashCard(const std::string question, const std::string answer, const CardDifficulty difficulty, const int n_times_answered):&#160;deck.cpp'],['../deck_8h.html#af743fc8b1c052ab066649556d855e23b',1,'createFlashCard(const std::string question, const std::string answer, const CardDifficulty difficulty, const int n_times_answered):&#160;deck.cpp']]]
+  ['damage_19',['damage',['../classPlayer.html#acaa54e06b5751051dd86ccb67ad2194c',1,'Player']]],
+  ['damageeffect_20',['damageEffect',['../classGame.html#a9f6b9fcb80e350f35d9845bad25d12db',1,'Game']]],
+  ['deck_2ecpp_21',['deck.cpp',['../deck_8cpp.html',1,'']]],
+  ['deck_2eh_22',['deck.h',['../deck_8h.html',1,'']]],
+  ['difficulty_23',['difficulty',['../classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d',1,'FlashCard']]],
+  ['draw_24',['draw',['../classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1',1,'ConsoleUI::Menu']]],
+  ['drawborder_25',['drawBorder',['../classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawbox_26',['drawBox',['../classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawcard_27',['drawCard',['../classPlayer.html#afc2318d0712899c3cf309c14d452e422',1,'Player']]],
+  ['drawcenteredtext_28',['drawCenteredText',['../classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawcharacter_29',['drawCharacter',['../classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawhorizontalline_30',['drawHorizontalLine',['../classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawtext_31',['drawText',['../classConsoleUI_1_1ConsoleWindow.html#a87d1064c93ddc50864095de56c50c40a',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawtextbox_32',['drawTextBox',['../classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawverticalline_33',['drawVerticalLine',['../classConsoleUI_1_1ConsoleWindow.html#a95b393ebeae13ad8ce6547d34579c882',1,'ConsoleUI::ConsoleWindow']]],
+  ['drawwrappedtext_34',['drawWrappedText',['../classFlashcardApp_1_1BrowseDecksScene.html#a51e39d8b3466fbb86aea206cef5a2fb7',1,'FlashcardApp::BrowseDecksScene::drawWrappedText()'],['../classFlashcardApp_1_1FlashcardScene.html#a165a567f7b4edf9846da6a52d1b8aaa7',1,'FlashcardApp::FlashcardScene::drawWrappedText()']]]
 ];

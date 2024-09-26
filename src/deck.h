@@ -132,19 +132,6 @@ public:
     void printDeckAsTemplate();
 };
 
-/**
- * @brief Create a flashcard object
- * @param question The card question
- * @param answer The card answer
- * @param difficulty The card difficulty
- * @param n_times_answered The number of time the card has been answered
- * @return FlashCard
- */
-FlashCard createFlashCard(const std::string question,
-                          const std::string answer,
-                          const CardDifficulty difficulty,
-                          const int n_times_answered);
-
 
 /**
  * @brief Load the decks from files stored with the ".deck" extension inside decks/

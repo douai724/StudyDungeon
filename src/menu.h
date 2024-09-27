@@ -2,7 +2,7 @@
  * @file menu.h
  * @author Green Alligators
  * @brief
- * @version 0.2
+ * @version 0.1
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -11,7 +11,6 @@
 #pragma once
 #ifndef MENU_H
 #define MENU_H
-
 
 #include <algorithm>
 #include <conio.h>

@@ -15,13 +15,9 @@ Player::Player()
 }
 
 Player::Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
+    : hitPoints(hitPoints), maxHitPoints(maxHitPoints), handSize(handSize), deck(deck)
 {
-    Player::hitPoints = hitPoints;
-    Player::maxHitPoints = maxHitPoints;
-    Player::deck = deck;
-    Player::handSize = handSize;
-
-    for (int i = 0; i < handSize; i++)
+    for (int i = 0; i < Player::handSize; i++)
     {
         Player::drawCard();
     }
@@ -99,7 +95,7 @@ void Player::removeCard(PlayingCard &card)
             hand.erase(it);
             break;
         }
-        it++;
+        ++it;
     }
 }
 

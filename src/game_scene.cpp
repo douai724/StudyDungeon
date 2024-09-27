@@ -16,7 +16,7 @@ GameScene::GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBa
     Player user = Player(100, 100, 5, generateDeck(20));
     Player bot = Player(100, 100, 5, generateDeck(20));
 
-    GameScene::game = setUp(user, bot);
+    GameScene::game = Game(user, bot);
 }
 
 void GameScene::update()

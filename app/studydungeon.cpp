@@ -103,6 +103,9 @@ private:
 
 int main()
 {
+    // Game settings
+    int session_start{};
+    int fc_hand_limit{15};
     enableVirtualTerminal();
     try
     {

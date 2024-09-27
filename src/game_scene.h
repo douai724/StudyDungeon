@@ -12,10 +12,10 @@
 #define GAME_SCENE_H
 
 #include "gameloop.h"
-//#include "menu.h"
+#include "menu.h"
 #include "player.h"
-//#include "util.h"
-//#include <conio.h>
+#include "util.h"
+#include <conio.h>
 
 class GameScene : public ConsoleUI::Scene
 {

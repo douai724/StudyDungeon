@@ -162,9 +162,6 @@ void BrowseDecksScene::handleInput()
 
 /* -------EDIT -------------*/
 
-
-/* ---------------- */
-
 FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
@@ -177,16 +174,43 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 
     // Menu for the card difficulty
     auto &menu = m_uiManager.createMenu("difficulty", true);
-    menu.addButton("Easy", [this]() { selectDifficulty(0); });
-    menu.addButton("Medium", [this]() { selectDifficulty(1); });
-    menu.addButton("Hard", [this]() { selectDifficulty(2); });
+    menu.addButton("Easy", [this]() { selectDifficulty(1); });
+    menu.addButton("Medium", [this]() { selectDifficulty(2); });
+    menu.addButton("Hard", [this]() { selectDifficulty(3); });
 
-    // Initialize card order
+    initializeCardOrder();
+}
+
+void FlashcardScene::initializeCardOrder()
+{
     m_cardOrder.resize(m_deck.cards.size());
     std::iota(m_cardOrder.begin(), m_cardOrder.end(), 0);
+
+    // Calculate weights for each card
+    std::vector<double> weights(m_deck.cards.size());
+    for (size_t i = 0; i < m_deck.cards.size(); ++i)
+    {
+        const auto &card = m_deck.cards[i];
+        weights[i] = (4 - card.difficulty) * (1 + log(card.n_times_answered + 1));
+    }
+
+    // Normalize weights to create probability distribution
+    double sum = std::accumulate(weights.begin(), weights.end(), 0.0);
+    for (auto &weight : weights)
+    {
+        weight /= sum;
+    }
+
+    // Create discrete_distribution based on weights
+    std::discrete_distribution<> dist(weights.begin(), weights.end());
+
+    // Shuffle card order based on probability distribution
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(m_cardOrder.begin(), m_cardOrder.end(), g);
+    std::shuffle(m_cardOrder.begin(), m_cardOrder.end(), std::default_random_engine(g()));
+    std::sort(m_cardOrder.begin(), m_cardOrder.end(), [&](int a, int b) {
+    return weights[a] > weights[b];
+    });
 }
 
 void FlashcardScene::update()
@@ -307,7 +331,15 @@ void FlashcardScene::handleInput()
 void FlashcardScene::selectDifficulty(int difficulty)
 {
     m_difficultyCount[difficulty]++;
+    updateCardDifficulty(m_cardOrder[m_currentCardIndex], static_cast<CardDifficulty>(difficulty));
     nextCard();
+}
+
+void FlashcardScene::updateCardDifficulty(int cardIndex, CardDifficulty difficulty)
+{
+    auto &card = m_deck.cards[cardIndex];
+    card.difficulty = difficulty;
+    card.n_times_answered++;
 }
 
 void FlashcardScene::nextCard()
@@ -323,9 +355,46 @@ void FlashcardScene::nextCard()
 
 void FlashcardScene::endSession()
 {
+    saveUpdatedDeck();
     m_showResults(m_difficultyCount);
 }
 
+void FlashcardScene::saveUpdatedDeck()
+{
+    writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true);
+}
+
+// Helper function to draw wrapped text
+//TODO get rid of at some point
+void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
+                                     const std::string &text,
+                                     int x,
+                                     int y,
+                                     int width)
+{
+    std::istringstream words(text);
+    std::string word;
+    std::string line;
+    int currentY = y;
+
+    while (words >> word)
+    {
+        if (line.length() + word.length() + 1 > width)
+        {
+            window->drawText(line, x, currentY++);
+            line = word + " ";
+        }
+        else
+        {
+            line += word + " ";
+        }
+    }
+
+    if (!line.empty())
+    {
+        window->drawText(line, x, currentY);
+    }
+}
 
 ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,
@@ -356,9 +425,9 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->drawBorder();
     window->drawCenteredText("Results", 2);
 
-    window->drawCenteredText("Easy: " + std::to_string(m_difficultyCount[0]), window->getSize().Y / 2 - 2);
-    window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[1]), window->getSize().Y / 2);
-    window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[2]), window->getSize().Y / 2 + 2);
+    window->drawCenteredText("Easy: " + std::to_string(m_difficultyCount[1]), window->getSize().Y / 2 - 2);
+    window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[2]), window->getSize().Y / 2);
+    window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[3]), window->getSize().Y / 2 + 2);
 
     auto &menu = m_uiManager.getMenu("results");
     // Calculate total width manually

@@ -66,7 +66,7 @@ void FlashCard::printCardAsTemplate()
 std::string FlashCard::stringCardAsTemplate()
 {
     std::stringstream card_contents{};
-    card_contents << "Q: " << question << "\nA: " << answer + '\n';
+    card_contents << "Q: " << question << "\nA: " << answer << '\n';
     card_contents << "D: " << cardDifficultyToStr(difficulty);
     card_contents << "\nN: " << std::to_string(n_times_answered) << "\n";
     return card_contents.str();
@@ -136,11 +136,13 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
             }
             if (strInput.starts_with("Q: "))
             {
-                deck.cards.at(cardNum).question = strInput.substr(2);
+                size_t pos = strInput.find_first_not_of(" \t", 3);
+                deck.cards.at(cardNum).question = strInput.substr(pos);
             }
             if (strInput.starts_with("A: "))
             {
-                deck.cards.at(cardNum).answer = strInput.substr(2);
+                size_t pos = strInput.find_first_not_of(" \t", 3);
+                deck.cards.at(cardNum).answer = strInput.substr(pos);
             }
             if (strInput.starts_with("D: "))
             {

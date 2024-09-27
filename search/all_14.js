@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['yesnoprompt_126',['yesNoPrompt',['../util_8cpp.html#a44b530801f49c81b3f065ced260f6f0b',1,'yesNoPrompt():&#160;util.cpp'],['../util_8h.html#a44b530801f49c81b3f065ced260f6f0b',1,'yesNoPrompt():&#160;util.cpp']]]
+  ['writeflashcarddeck_128',['writeFlashCardDeck',['../deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756',1,'deck.h']]],
+  ['writeflashcarddeckwithchecks_129',['writeFlashCardDeckWithChecks',['../deck_8h.html#ae408e4996fd4d4245bc6276659061b0a',1,'deck.h']]]
 ];

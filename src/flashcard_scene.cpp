@@ -80,8 +80,8 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         {
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
-            drawWrappedText(window, "Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+            window->drawWrappedText("Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
+            window->drawWrappedText("A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
             window->drawText("Times answered: " + std::to_string(card.n_times_answered), cardListX + 20, yOffset + 2);
             window->drawText("---", cardListX + 20, yOffset + 3);
@@ -159,36 +159,6 @@ void BrowseDecksScene::handleInput()
     }
 }
 
-// Helper function to draw wrapped text
-void BrowseDecksScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                                       const std::string &text,
-                                       int x,
-                                       int y,
-                                       int width)
-{
-    std::istringstream words(text);
-    std::string word;
-    std::string line;
-    int currentY = y;
-
-    while (words >> word)
-    {
-        if (line.length() + word.length() + 1 > width)
-        {
-            window->drawText(line, x, currentY++);
-            line = word + " ";
-        }
-        else
-        {
-            line += word + " ";
-        }
-    }
-
-    if (!line.empty())
-    {
-        window->drawText(line, x, currentY);
-    }
-}
 
 /* -------EDIT -------------*/
 
@@ -260,12 +230,12 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
         window->drawCenteredText("Question:", 4);
-        drawWrappedText(window, card.question, 2, 6, window->getSize().X - 4);
+        window->drawWrappedText(card.question, 2, 6, window->getSize().X - 4);
 
         if (m_showAnswer)
         {
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 1);
-            drawWrappedText(window, card.answer, 2, window->getSize().Y / 2 + 1, window->getSize().X - 4);
+            window->drawWrappedText(card.answer, 2, window->getSize().Y / 2 + 1, window->getSize().X - 4);
             auto &menu = m_uiManager.getMenu("difficulty");
 
             // Calculate total width manually
@@ -395,6 +365,7 @@ void FlashcardScene::saveUpdatedDeck()
 }
 
 // Helper function to draw wrapped text
+//TODO get rid of at some point
 void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
                                      const std::string &text,
                                      int x,

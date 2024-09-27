@@ -162,6 +162,7 @@ public:
          */
     void drawTextBox(int x, int y, int width, int height);
     void drawAsciiArt(const std::vector<std::string> &art, int x, int y);
+    void drawWrappedText(const std::string &text, int x, int y, int width);
 
 private:
     /** max width of console */

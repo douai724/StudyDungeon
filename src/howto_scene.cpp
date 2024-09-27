@@ -14,7 +14,9 @@
 HowToScene::HowToScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack)
     : m_uiManager(uiManager), m_goBack(goBack)
 {
-    auto &menu = m_uiManager.createMenu("How to Play", true); // Horizontal menu
+    auto &menu = m_uiManager.createMenu("howto", true); // Horizontal menu
+    // menu.addButton("Back", [this]() { m_goBack(); });
+    // menu.addButton("Back", [this]() { m_goBack(); });
     menu.addButton("Back", [this]() { m_goBack(); });
 }
 
@@ -32,6 +34,7 @@ void HowToScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     std::string howto_text = "How to Play";
     window->drawCenteredText(howto_text, window->getSize().Y / 2 - 2);
+
 
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();

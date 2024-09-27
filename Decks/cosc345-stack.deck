@@ -1,4 +1,4 @@
-The Stack
+COSC345 - The Stack
 Q: What might a crash when a function returns indicate?
 A: The return address on the stack might be corrupt
 D: UNKNOWN

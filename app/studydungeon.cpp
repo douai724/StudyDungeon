@@ -53,7 +53,7 @@ public:
 
     {
         auto &menu = m_uiManager.createMenu("main", false);
-        menu.addButton("Browse Decks", openBrowseDecks);
+        menu.addButton("Begin Study", openBrowseDecks);
         menu.addButton("Edit Decks", openEditDecks);
         menu.addButton("How To Play", openHowToScene);
         menu.addButton("Fibonacci Sequence", openFibonacciScene);

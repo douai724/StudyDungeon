@@ -229,17 +229,20 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     window->clear();
     window->drawBorder();
+    window->drawBox(10, 6, window->getSize().X - 20, 7);
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
-        window->drawCenteredText("Question:", 4);
-        drawWrappedText(window, card.question, 2, 6, window->getSize().X - 4);
+        window->drawCenteredText("Question:", 8);
+        window->drawCenteredText(card.question, 10);
+        //drawWrappedText(window, card.question, 2, 6, window->getSize().X - 4);
 
         if (m_showAnswer)
         {
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 1);
-            drawWrappedText(window, card.answer, 2, window->getSize().Y / 2 + 1, window->getSize().X - 4);
+            window->drawCenteredText(card.answer, window->getSize().Y / 2 + 1);
+            //drawWrappedText(window, card.answer, 40, window->getSize().Y / 2 + 1, window->getSize().X - 40);
             auto &menu = m_uiManager.getMenu("difficulty");
 
             // Calculate total width manually

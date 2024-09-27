@@ -36,6 +36,12 @@ void BrowseDecksScene::loadDecks()
     m_needsRedraw = true;
 }
 
+void BrowseDecksScene::init()
+{
+    // No init needed
+}
+
+
 void BrowseDecksScene::update()
 {
     // No continuous updates needed
@@ -215,6 +221,11 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(m_cardOrder.begin(), m_cardOrder.end(), g);
+}
+
+void FlashcardScene::init()
+{
+    // No init needed
 }
 
 void FlashcardScene::update()
@@ -398,6 +409,11 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
     menu.addButton("Main Menu", m_goToMainMenu);
     menu.addButton("Deck Selection", m_goToDeckSelection);
     menu.addButton("Start game", m_goToGame);
+}
+
+void ResultsScene::init()
+{
+    // No init needed
 }
 
 void ResultsScene::update()

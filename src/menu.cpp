@@ -417,6 +417,15 @@ std::shared_ptr<ConsoleWindow> UIManager::getWindow()
 void UIManager::setCurrentScene(std::shared_ptr<Scene> scene)
 {
     m_currentScene = scene;
+    if (m_currentScene)
+    {
+        m_currentScene->init();
+    }
+}
+
+void UIManager::init()
+{
+
 }
 
 void UIManager::update()

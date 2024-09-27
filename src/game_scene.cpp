@@ -21,7 +21,15 @@ GameScene::GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBa
 
 void GameScene::update()
 {
-    // TO DO
+
+}
+
+void GameScene::init()
+{
+    Player user = Player(100, 100, 5, generateDeck(20));
+    Player bot = Player(100, 100, 5, generateDeck(20));
+
+    GameScene::game = setUp(user, bot);
 }
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)

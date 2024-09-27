@@ -20,6 +20,7 @@ class FibonacciScene : public ConsoleUI::Scene
 public:
     FibonacciScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);
 
+    void init() override;
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;

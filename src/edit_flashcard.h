@@ -37,6 +37,8 @@ public:
                   std::function<void()> goBack,
                   std::function<void(FlashCardDeck &)> openEditFlashcardScene);
 
+
+    void init() override;
     /**
      * @brief Updates the EditDeckScene.
      */
@@ -111,6 +113,8 @@ public:
      * @param goBack Function to go back to the previous scene.
      */
     EditFlashcardScene(ConsoleUI::UIManager &uiManager, FlashCardDeck &deck, std::function<void()> goBack);
+
+    void init() override;
 
     /**
      * @brief Updates the EditFlashcardScene.

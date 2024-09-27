@@ -29,6 +29,7 @@ public:
                      std::function<void()> goBack,
                      std::function<void(const FlashCardDeck &)> openDeck);
 
+    void init() override;
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
@@ -59,6 +60,7 @@ public:
                    std::function<void()> goBack,
                    std::function<void(const std::vector<int> &)> showResults);
 
+    void init() override;
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
@@ -93,6 +95,7 @@ public:
                  std::function<void()> goToDeckSelection,
                  std::function<void()> goToGame);
 
+    void init() override;
     void update() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;

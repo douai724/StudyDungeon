@@ -31,6 +31,11 @@ EditFlashcardScene::EditFlashcardScene(ConsoleUI::UIManager &uiManager,
     // No need to create a menu here, we'll handle navigation directly
 }
 
+void EditFlashcardScene::init()
+{
+    // No init needed
+}
+
 void EditFlashcardScene::update()
 {
     // No continuous updates needed
@@ -339,6 +344,12 @@ void EditDeckScene::loadDecks()
     m_currentPage = 0;
     m_needsRedraw = true;
 }
+
+void EditDeckScene::init()
+{
+    // No init needed
+}
+
 
 void EditDeckScene::update()
 {

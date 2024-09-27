@@ -323,6 +323,7 @@ class Scene
 public:
     virtual ~Scene() = default;
     virtual void update() = 0;
+    virtual void init() = 0;
     virtual void render(std::shared_ptr<ConsoleWindow> window) = 0;
     virtual void handleInput() = 0;
 };
@@ -338,6 +339,7 @@ public:
     UIManager();
     std::shared_ptr<ConsoleWindow> getWindow();
     void setCurrentScene(std::shared_ptr<Scene> scene);
+    void init();
     void update();
     void render();
     void handleInput();

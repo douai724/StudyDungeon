@@ -171,6 +171,11 @@ private:
      */
     void selectDifficulty(int difficulty);
 
+    void updateCardDifficulty(int cardIndex, CardDifficulty difficulty);
+    void saveUpdatedDeck();
+    void initializeCardOrder();
+
+
     /**
      * @brief Move to the next flashcard in the deck.
      */

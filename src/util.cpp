@@ -182,3 +182,27 @@ void ShowConsoleCursor(bool showFlag)
     cursorInfo.bVisible = showFlag; // set the cursor visibility
     SetConsoleCursorInfo(out, &cursorInfo);
 }
+
+std::string convertFileToANSI(std::string filename)
+{
+    fs::path path = getAppPath().append("artwork").append(filename);
+    std::cout << path << std::endl;
+    std::ifstream inputBuffer{path};
+    std::string inputLine{};
+    std::string img = "";
+
+    while (std::getline(inputBuffer, inputLine))
+    {
+        std::string curr;
+        std::vector<std::string> row;
+        std::stringstream ss;
+        ss << inputLine;
+
+        while (ss >> curr)
+        {
+            img += _ESC + "[48;5;" + curr + "m  " + _ESC + "[0m";
+        }
+        img += "\n";
+    }
+    return img;
+}

@@ -14,7 +14,9 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <windows.h>
 
@@ -99,5 +101,7 @@ bool isValidDeckFileName(std::string name);
  *
  */
 void ShowConsoleCursor(bool showflag);
+
+std::string convertFileToANSI(std::string filename);
 
 #endif

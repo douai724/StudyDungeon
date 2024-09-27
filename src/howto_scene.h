@@ -16,7 +16,7 @@
 #include <functional>
 
 /**
- * @brief Class for a scene which the user can simulate the fibonacci sequence.
+ * @brief Class for a scene to show the program instructions.
  *
  * !!! This scene is was a test for the Menu.h console UI System and will most likely not make it to the final release !!!
  *
@@ -25,7 +25,7 @@ class HowToScene : public ConsoleUI::Scene
 {
 public:
     /**
-     * @brief Construct a new Fibonacci Scene object
+     * @brief Construct a new HowTo Scene object
      *
      * @param uiManager reference to the current UI mananger object
      * @param goBack a function to go back a scene

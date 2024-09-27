@@ -60,8 +60,8 @@ void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window
         const auto &card = m_deck.cards[i];
         int yOffset = cardListY + ((i % m_maxCardsPerPage) * 3);
         std::string prefix = (i == m_selectedCardIndex) ? "> " : "  ";
-        drawWrappedText(window, prefix + "Q: " + card.question, 2, yOffset, window->getSize().X - 4);
-        drawWrappedText(window, "  A: " + card.answer, 2, yOffset + 1, window->getSize().X - 4);
+        window->drawWrappedText(prefix + "Q: " + card.question, 2, yOffset, window->getSize().X - 4);
+        window->drawWrappedText("  A: " + card.answer, 2, yOffset + 1, window->getSize().X - 4);
         window->drawText("  D: " + cardDifficultyToStr(card.difficulty), 2, yOffset + 2);
         window->drawText("---", 2, yOffset + 3);
     }
@@ -291,35 +291,6 @@ void EditFlashcardScene::deleteSelectedCard()
     m_needsRedraw = true;
 }
 
-void EditFlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                                         const std::string &text,
-                                         int x,
-                                         int y,
-                                         int width)
-{
-    std::istringstream words(text);
-    std::string word;
-    std::string line;
-    int currentY = y;
-
-    while (words >> word)
-    {
-        if (line.length() + word.length() + 1 > width)
-        {
-            window->drawText(line, x, currentY++);
-            line = word + " ";
-        }
-        else
-        {
-            line += word + " ";
-        }
-    }
-
-    if (!line.empty())
-    {
-        window->drawText(line, x, currentY);
-    }
-}
 
 /*------EDIT DECK SCENE------*/
 
@@ -382,8 +353,8 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         {
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
-            drawWrappedText(window, "Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            drawWrappedText(window, "A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+            window->drawWrappedText("Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
+            window->drawWrappedText("A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
             window->drawText("---", cardListX, yOffset + 3);
         }
@@ -567,34 +538,5 @@ void EditDeckScene::renameDeck()
     m_needsRedraw = true;
 }
 
-void EditDeckScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                                    const std::string &text,
-                                    int x,
-                                    int y,
-                                    int width)
-{
-    std::istringstream words(text);
-    std::string word;
-    std::string line;
-    int currentY = y;
-
-    while (words >> word)
-    {
-        if (line.length() + word.length() + 1 > width)
-        {
-            window->drawText(line, x, currentY++);
-            line = word + " ";
-        }
-        else
-        {
-            line += word + " ";
-        }
-    }
-
-    if (!line.empty())
-    {
-        window->drawText(line, x, currentY);
-    }
-}
 
 } // namespace FlashcardEdit

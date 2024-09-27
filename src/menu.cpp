@@ -194,6 +194,34 @@ void ConsoleWindow::drawTextBox(int x, int y, int width, int height)
     }
 }
 
+
+void ConsoleWindow::drawWrappedText(const std::string &text, int x, int y, int width)
+{
+    std::istringstream words(text);
+    std::string word;
+    std::string line;
+    int currentY = y;
+
+    while (words >> word)
+    {
+        if (line.length() + word.length() + 1 > width)
+        {
+            drawText(line, x, currentY++);
+            line = word + " ";
+        }
+        else
+        {
+            line += word + " ";
+        }
+    }
+
+    if (!line.empty())
+    {
+        drawText(line, x, currentY);
+    }
+}
+
+
 void ConsoleWindow::drawAsciiArt(const std::vector<std::string> &art, int x, int y)
 {
     for (size_t i = 0; i < art.size(); ++i)
@@ -201,6 +229,7 @@ void ConsoleWindow::drawAsciiArt(const std::vector<std::string> &art, int x, int
         drawText(art[i], x, y + static_cast<int>(i));
     }
 }
+
 
 AsciiArt::AsciiArt(const char *artString) : m_width(0), m_height(0)
 {

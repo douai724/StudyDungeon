@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">f830913</span>
+   &#160;<span id="projectnumber">8ee3840</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -73,25 +73,156 @@ $(function() {
 <div class="title">ConsoleUI::Button Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines the class that represents a button object to be used in a menu.  
+ <a href="classConsoleUI_1_1Button.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="menu_8h_source.html">menu.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaa7102cef5f6fe4a8cace8df352acccf"><td class="memItemLeft" align="right" valign="top"><a id="aaa7102cef5f6fe4a8cace8df352acccf"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Button</b> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
+<tr class="memitem:aaa7102cef5f6fe4a8cace8df352acccf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Button.html#aaa7102cef5f6fe4a8cace8df352acccf">Button</a> (const std::string &amp;label, std::function&lt; void()&gt; action)</td></tr>
+<tr class="memdesc:aaa7102cef5f6fe4a8cace8df352acccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classConsoleUI_1_1Button.html" title="Defines the class that represents a button object to be used in a menu.">Button</a> object.  <a href="classConsoleUI_1_1Button.html#aaa7102cef5f6fe4a8cace8df352acccf">More...</a><br /></td></tr>
 <tr class="separator:aaa7102cef5f6fe4a8cace8df352acccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e680809119ee0300e3229e32f9f92ed"><td class="memItemLeft" align="right" valign="top"><a id="a6e680809119ee0300e3229e32f9f92ed"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (int x, int y, bool selected)</td></tr>
+<tr class="memitem:a6e680809119ee0300e3229e32f9f92ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Button.html#a6e680809119ee0300e3229e32f9f92ed">draw</a> (int x, int y, bool selected)</td></tr>
+<tr class="memdesc:a6e680809119ee0300e3229e32f9f92ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the button.  <a href="classConsoleUI_1_1Button.html#a6e680809119ee0300e3229e32f9f92ed">More...</a><br /></td></tr>
 <tr class="separator:a6e680809119ee0300e3229e32f9f92ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6298e8a8e32982b4eb1ba339cdd4a86"><td class="memItemLeft" align="right" valign="top"><a id="aa6298e8a8e32982b4eb1ba339cdd4a86"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>performAction</b> () const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Button.html#aa6298e8a8e32982b4eb1ba339cdd4a86">performAction</a> () const</td></tr>
+<tr class="memdesc:aa6298e8a8e32982b4eb1ba339cdd4a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">On submission defines how the action is run. <br /></td></tr>
 <tr class="separator:aa6298e8a8e32982b4eb1ba339cdd4a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91a6a6747f8d20fd14771bc8c8d9f3f7"><td class="memItemLeft" align="right" valign="top"><a id="a91a6a6747f8d20fd14771bc8c8d9f3f7"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> () const</td></tr>
+<tr class="memitem:a91a6a6747f8d20fd14771bc8c8d9f3f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Button.html#a91a6a6747f8d20fd14771bc8c8d9f3f7">getWidth</a> () const</td></tr>
+<tr class="memdesc:a91a6a6747f8d20fd14771bc8c8d9f3f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Width of the button.  <a href="classConsoleUI_1_1Button.html#a91a6a6747f8d20fd14771bc8c8d9f3f7">More...</a><br /></td></tr>
 <tr class="separator:a91a6a6747f8d20fd14771bc8c8d9f3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6117eeb447cd025aaa759a49ef7d1f5f"><td class="memItemLeft" align="right" valign="top"><a id="a6117eeb447cd025aaa759a49ef7d1f5f"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLabel</b> () const</td></tr>
+<tr class="memitem:a6117eeb447cd025aaa759a49ef7d1f5f"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Button.html#a6117eeb447cd025aaa759a49ef7d1f5f">getLabel</a> () const</td></tr>
+<tr class="memdesc:a6117eeb447cd025aaa759a49ef7d1f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Label of the button.  <a href="classConsoleUI_1_1Button.html#a6117eeb447cd025aaa759a49ef7d1f5f">More...</a><br /></td></tr>
 <tr class="separator:a6117eeb447cd025aaa759a49ef7d1f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the class that represents a button object to be used in a menu. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aaa7102cef5f6fe4a8cace8df352acccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa7102cef5f6fe4a8cace8df352acccf">&#9670;&nbsp;</a></span>Button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConsoleUI::Button::Button </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classConsoleUI_1_1Button.html" title="Defines the class that represents a button object to be used in a menu.">Button</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>the displayed text of the button </td></tr>
+    <tr><td class="paramname">action</td><td>the action or function to be called when button is activated </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6e680809119ee0300e3229e32f9f92ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e680809119ee0300e3229e32f9f92ed">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::Button::draw </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>selected</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws the button. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>number of characters from the left </td></tr>
+    <tr><td class="paramname">y</td><td>number of lines from the top </td></tr>
+    <tr><td class="paramname">selected</td><td>is the button selected </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6117eeb447cd025aaa759a49ef7d1f5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6117eeb447cd025aaa759a49ef7d1f5f">&#9670;&nbsp;</a></span>getLabel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; ConsoleUI::Button::getLabel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Label of the button. </p>
+<dl class="section return"><dt>Returns</dt><dd>const std::string&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a91a6a6747f8d20fd14771bc8c8d9f3f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91a6a6747f8d20fd14771bc8c8d9f3f7">&#9670;&nbsp;</a></span>getWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConsoleUI::Button::getWidth </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Width of the button. </p>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8cpp.html">menu.cpp</a></li>

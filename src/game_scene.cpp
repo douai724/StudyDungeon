@@ -21,7 +21,6 @@ GameScene::GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBa
 
 void GameScene::update()
 {
-
 }
 
 void GameScene::init()

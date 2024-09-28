@@ -242,7 +242,6 @@ public:
      * This function is called every frame to update the scene's state.
      * Currently, it doesn't perform any actions as the scene doesn't require continuous updates.
      */
-    
     void update() override;
 
     /**

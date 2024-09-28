@@ -29,7 +29,7 @@ void GameScene::init()
     Player user = Player(100, 100, 5, generateDeck(20));
     Player bot = Player(100, 100, 5, generateDeck(20));
 
-    GameScene::game = setUp(user, bot);
+    GameScene::game = Game(user, bot);
 }
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)

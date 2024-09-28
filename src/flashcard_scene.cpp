@@ -36,6 +36,12 @@ void BrowseDecksScene::loadDecks()
     m_needsRedraw = true;
 }
 
+void BrowseDecksScene::init()
+{
+    // No init needed
+}
+
+
 void BrowseDecksScene::update()
 {
     // No continuous updates needed
@@ -217,6 +223,11 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
     std::shuffle(m_cardOrder.begin(), m_cardOrder.end(), g);
 }
 
+void FlashcardScene::init()
+{
+    // No init needed
+}
+
 void FlashcardScene::update()
 {
     // No continuous updates needed
@@ -229,17 +240,20 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     window->clear();
     window->drawBorder();
+    window->drawBox(10, 6, window->getSize().X - 20, 7);
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
-        window->drawCenteredText("Question:", 4);
-        drawWrappedText(window, card.question, 2, 6, window->getSize().X - 4);
+        window->drawCenteredText("Question:", 8);
+        window->drawCenteredText(card.question, 10);
+        //drawWrappedText(window, card.question, 2, 6, window->getSize().X - 4);
 
         if (m_showAnswer)
         {
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 1);
-            drawWrappedText(window, card.answer, 2, window->getSize().Y / 2 + 1, window->getSize().X - 4);
+            window->drawCenteredText(card.answer, window->getSize().Y / 2 + 1);
+            //drawWrappedText(window, card.answer, 40, window->getSize().Y / 2 + 1, window->getSize().X - 40);
             auto &menu = m_uiManager.getMenu("difficulty");
 
             // Calculate total width manually
@@ -398,6 +412,11 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
     menu.addButton("Main Menu", m_goToMainMenu);
     menu.addButton("Deck Selection", m_goToDeckSelection);
     menu.addButton("Start game", m_goToGame);
+}
+
+void ResultsScene::init()
+{
+    // No init needed
 }
 
 void ResultsScene::update()

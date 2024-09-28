@@ -58,6 +58,10 @@ public:
         });
     }
 
+    void init() override
+    {
+    }
+
     void update() override
     {
     }
@@ -75,7 +79,8 @@ public:
         int totalMenuWidth = 0;
         for (size_t i = 0; i < menu.getButtonCount(); ++i)
         {
-            totalMenuWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing between buttons
+            //totalMenuWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing between buttons
+            totalMenuWidth = max(totalMenuWidth, menu.getButtonWidth(i));
         }
         totalMenuWidth -= 1;
 
@@ -189,15 +194,15 @@ int main()
                 uiManager.render();
                 uiManager.handleInput();
 
-                // Check for exit condition (e.g., a specific key press)
-                if (_kbhit())
-                {
-                    int ch = _getch();
-                    if (ch == _key_esc)
-                    { // ESC key
-                        running = false;
-                    }
-                }
+                // // Check for exit condition (e.g., a specific key press)
+                // if (_kbhit())
+                // {
+                //     int ch = _getch();
+                //     if (ch == _key_esc)
+                //     { // ESC key
+                //         running = false;
+                //     }
+                // }
 
                 Sleep(10);
             }
@@ -207,7 +212,7 @@ int main()
             }
         }
 
-        std::cout << "Exiting application..." << std::endl;
+        //std::cout << "Exiting application..." << std::endl;
     }
     catch (const std::exception &e)
     {

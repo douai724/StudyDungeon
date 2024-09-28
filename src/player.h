@@ -1,7 +1,7 @@
 /**
  * @file player.h
  * @author Green Alligators
- * @brief
+ * @brief This file defines the classes and methods for a Player
  * @version 0.2
  * @date 2024-08-27
  *

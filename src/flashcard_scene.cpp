@@ -183,12 +183,13 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 
 void FlashcardScene::initializeCardOrder()
 {
-    m_cardOrder.resize(m_deck.cards.size());
+    int numCardsToStudy = min(static_cast<int>(m_deck.cards.size()), flashcard_limit);
+    m_cardOrder.resize(numCardsToStudy);
     std::iota(m_cardOrder.begin(), m_cardOrder.end(), 0);
 
     // Calculate weights for each card
-    std::vector<double> weights(m_deck.cards.size());
-    for (size_t i = 0; i < m_deck.cards.size(); ++i)
+    std::vector<double> weights(numCardsToStudy);
+    for (int i = 0; i < numCardsToStudy; ++i)
     {
         const auto &card = m_deck.cards[i];
         weights[i] = (4 - card.difficulty) * (1 + log(card.n_times_answered + 1));
@@ -330,7 +331,7 @@ void FlashcardScene::handleInput()
 
 void FlashcardScene::selectDifficulty(int difficulty)
 {
-    m_difficultyCount[difficulty]++;
+    m_difficultyCount[difficulty - 1]++;
     updateCardDifficulty(m_cardOrder[m_currentCardIndex], static_cast<CardDifficulty>(difficulty));
     nextCard();
 }
@@ -425,9 +426,9 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->drawBorder();
     window->drawCenteredText("Results", 2);
 
-    window->drawCenteredText("Easy: " + std::to_string(m_difficultyCount[1]), window->getSize().Y / 2 - 2);
-    window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[2]), window->getSize().Y / 2);
-    window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[3]), window->getSize().Y / 2 + 2);
+    window->drawCenteredText("Easy: " + std::to_string(m_difficultyCount[EASY - 1]), window->getSize().Y / 2 - 2);
+    window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[MEDIUM - 1]), window->getSize().Y / 2);
+    window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[HARD - 1]), window->getSize().Y / 2 + 2);
 
     auto &menu = m_uiManager.getMenu("results");
     // Calculate total width manually

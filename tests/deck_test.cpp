@@ -25,12 +25,12 @@ TEST_CASE("deck_h enum converters")
     REQUIRE(strToCardDifficulty("UNKNOWN") == UNKNOWN);
     REQUIRE(strToCardDifficulty("EASY") == EASY);
     REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
-    REQUIRE(strToCardDifficulty("HIGH") == HIGH);
+    REQUIRE(strToCardDifficulty("HARD") == HARD);
 
     REQUIRE(cardDifficultyToStr(UNKNOWN) == "UNKNOWN");
     REQUIRE(cardDifficultyToStr(EASY) == "EASY");
     REQUIRE(cardDifficultyToStr(MEDIUM) == "MEDIUM");
-    REQUIRE(cardDifficultyToStr(HIGH) == "HIGH");
+    REQUIRE(cardDifficultyToStr(HARD) == "HARD");
 }
 
 TEST_CASE("FlashCard Creation")
@@ -143,5 +143,5 @@ TEST_CASE("enum converters")
     REQUIRE(strToCardDifficulty("SOMETHING") == UNKNOWN);
     REQUIRE(strToCardDifficulty("EASY") == EASY);
     REQUIRE(strToCardDifficulty("MEDIUM") == MEDIUM);
-    REQUIRE(strToCardDifficulty("HIGH") == HIGH);
+    REQUIRE(strToCardDifficulty("HARD") == HARD);
 }

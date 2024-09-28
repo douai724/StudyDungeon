@@ -1,11 +1,11 @@
 COSC345 - Optimisation
 Q: Where can inefficiency arise?
 A: Progamming and hardware levels. Acess to distributed resources.
-D: UNKNOWN
-N: 0
+D: EASY
+N: 2
 -
 Q: What are types of optimisation you can effect automatically?
 A: Compiler options and use of good libraries
-D: UNKNOWN
-N: 0
+D: HARD
+N: 2
 -

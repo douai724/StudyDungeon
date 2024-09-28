@@ -37,7 +37,7 @@ enum CardDifficulty
     UNKNOWN = 0,
     EASY = 1,
     MEDIUM = 2,
-    HIGH = 3
+    HARD = 3
 };
 
 namespace fs = std::filesystem;

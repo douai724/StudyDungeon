@@ -174,6 +174,7 @@ private:
     void updateCardDifficulty(int cardIndex, CardDifficulty difficulty);
     void saveUpdatedDeck();
     void initializeCardOrder();
+    int flashcard_limit = 10;
 
 
     /**

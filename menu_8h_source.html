@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">f90133a</span>
+   &#160;<span id="projectnumber">d79e0f5</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -72,260 +72,211 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="menu_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef MENU_H</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define MENU_H</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;conio.h&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef MENU_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define MENU_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;conio.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceConsoleUI.html">ConsoleUI</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceConsoleUI.html#a97c7a3eab1fb33599b6d756fb6866b53">setConsoleCursorPosition</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;COORD <a class="code" href="namespaceConsoleUI.html#ac1a0a11f2388e9aaf13fdf548fc8d399">getConsoleWindowSize</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1ConsoleWindow.html">   60</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a>();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a54cdfcc106d1e58464bd563e7bc347ac">updateSize</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d">drawBorder</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab">drawBox</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">size_t</span> width, <span class="keywordtype">size_t</span> height);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5">drawHorizontalLine</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">size_t</span> length, <span class="keywordtype">char</span> ch = <span class="charliteral">&#39;-&#39;</span>);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a95b393ebeae13ad8ce6547d34579c882">drawVerticalLine</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> length, <span class="keywordtype">char</span> ch = <span class="charliteral">&#39;|&#39;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceConsoleUI.html">ConsoleUI</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="namespaceConsoleUI.html#a97c7a3eab1fb33599b6d756fb6866b53">setConsoleCursorPosition</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;COORD getConsoleWindowSize();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1ConsoleWindow.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a54cdfcc106d1e58464bd563e7bc347ac">updateSize</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d">drawBorder</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab">drawBox</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">size_t</span> width, <span class="keywordtype">size_t</span> height);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5">drawHorizontalLine</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">size_t</span> length, <span class="keywordtype">char</span> ch = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a95b393ebeae13ad8ce6547d34579c882">drawVerticalLine</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> length, <span class="keywordtype">char</span> ch = <span class="charliteral">&#39;|&#39;</span>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff">drawCharacter</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">char</span> ch);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff">drawCharacter</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">char</span> ch);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a87d1064c93ddc50864095de56c50c40a">drawText</a>(<span class="keyword">const</span> std::string &amp;text, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">bool</span> highlight = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d">drawCenteredText</a>(<span class="keyword">const</span> std::string &amp;text, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    std::string <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#ae80e17a8ae3e6fa99a33dbceacb2f93c">getLine</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> maxLength = 0);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0">clear</a>();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    COORD <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a1979a77dd4480e2aeb4458c8aebb41a7">getSize</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9">addTextToBox</a>(<span class="keyword">const</span> std::string &amp;text);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de">drawTextBox</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#ac1821afe974593d5f03506eb1ded37c6">drawAsciiArt</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;art, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a3955706e05bf034eb0ef43cc60753dfe">drawWrappedText</a>(<span class="keyword">const</span> std::string &amp;text, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">size_t</span> m_width;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">size_t</span> m_height;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    std::vector&lt;std::string&gt; m_textBox;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a87d1064c93ddc50864095de56c50c40a">drawText</a>(<span class="keyword">const</span> std::string &amp;text, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">bool</span> highlight = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d">drawCenteredText</a>(<span class="keyword">const</span> std::string &amp;text, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    std::string <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#ae80e17a8ae3e6fa99a33dbceacb2f93c">getLine</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> maxLength = 0);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0">clear</a>();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    COORD <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#a1979a77dd4480e2aeb4458c8aebb41a7">getSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9">addTextToBox</a>(<span class="keyword">const</span> std::string &amp;text);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de">drawTextBox</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">void</span> drawAsciiArt(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;art, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordtype">size_t</span> m_width;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">size_t</span> m_height;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    std::vector&lt;std::string&gt; m_textBox;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">int</span> m_textBoxCapacity;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;};</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1AsciiArt.html">  184</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *artString);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="classConsoleUI_1_1AsciiArt.html#abdb2e0f14017a79ed7bedd80cb7cd3f1">getArt</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">int</span> m_textBoxCapacity;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;};</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1AsciiArt.html">  211</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;{</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *artString);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="classConsoleUI_1_1AsciiArt.html#abdb2e0f14017a79ed7bedd80cb7cd3f1">getArt</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1AsciiArt.html#a7a53bacf8712a435a683c292cd2e3d71">getWidth</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1AsciiArt.html#a56768feb5d4914f9a9a48c02a8e07bb8">getHeight</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    std::vector&lt;std::string&gt; m_art;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">int</span> m_width;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordtype">int</span> m_height;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;};</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Button.html">  257</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1Button.html">Button</a></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;{</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="classConsoleUI_1_1Button.html#aaa7102cef5f6fe4a8cace8df352acccf">Button</a>(<span class="keyword">const</span> std::string &amp;label, std::function&lt;<span class="keywordtype">void</span>()&gt; action);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Button.html#a6e680809119ee0300e3229e32f9f92ed">draw</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">bool</span> selected);</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Button.html#aa6298e8a8e32982b4eb1ba339cdd4a86">performAction</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1Button.html#a91a6a6747f8d20fd14771bc8c8d9f3f7">getWidth</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keyword">const</span> std::string &amp;<a class="code" href="classConsoleUI_1_1Button.html#a6117eeb447cd025aaa759a49ef7d1f5f">getLabel</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    std::string m_label;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    std::function&lt;void()&gt; m_action;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;};</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Menu.html">  308</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1Menu.html">Menu</a></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;{</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef">Menu</a>(<span class="keywordtype">bool</span> horizontal = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">addButton</a>(<span class="keyword">const</span> std::string &amp;label, std::function&lt;<span class="keywordtype">void</span>()&gt; action);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">draw</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1AsciiArt.html#a7a53bacf8712a435a683c292cd2e3d71">getWidth</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1AsciiArt.html#a56768feb5d4914f9a9a48c02a8e07bb8">getHeight</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    std::vector&lt;std::string&gt; m_art;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordtype">int</span> m_width;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordtype">int</span> m_height;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;};</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Button.html">  226</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1Button.html">Button</a></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="classConsoleUI_1_1Button.html">Button</a>(<span class="keyword">const</span> std::string &amp;label, std::function&lt;<span class="keywordtype">void</span>()&gt; action);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordtype">void</span> draw(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">bool</span> selected);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">void</span> performAction() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">int</span> getWidth() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keyword">const</span> std::string &amp;getLabel() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    std::string m_label;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    std::function&lt;void()&gt; m_action;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;};</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Menu.html">  244</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1Menu.html">Menu</a></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;{</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef">Menu</a>(<span class="keywordtype">bool</span> horizontal = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">addButton</a>(<span class="keyword">const</span> std::string &amp;label, std::function&lt;<span class="keywordtype">void</span>()&gt; action);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">draw</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82">handleInput</a>();</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">isBackButtonPressed</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="comment">// TODO remove</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordtype">void</span> pushPage();</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="comment">// TODO remove</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordtype">void</span> popPage();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordtype">size_t</span> getButtonCount() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">int</span> getButtonWidth(<span class="keywordtype">size_t</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordtype">size_t</span> getSelectedIndex()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">return</span> m_selectedIndex;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordtype">void</span> selectPreviousButton();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">void</span> selectNextButton();</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordtype">int</span> getTotalWidth() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">void</span> activateSelectedButton();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordtype">void</span> clear()</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        m_buttons.clear();</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        m_selectedIndex = 0;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    std::vector&lt;Button&gt; m_buttons;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordtype">size_t</span> m_selectedIndex;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">bool</span> horizontal_layout;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="comment">// TODO remove?</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    std::vector&lt;std::vector&lt;Button&gt;&gt; m_pageHistory;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;};</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Scene.html">  320</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1Scene.html">Scene</a></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;{</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classConsoleUI_1_1Scene.html">Scene</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update() = 0;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> init() = 0;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleWindow&gt; window) = 0;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> handleInput() = 0;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;};</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82">handleInput</a>();</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">isBackButtonPressed</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="comment">// TODO remove</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordtype">void</span> pushPage();</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="comment">// TODO remove</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordtype">void</span> popPage();</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="classConsoleUI_1_1Menu.html#ab5d3f450b9a206f0fc7f4692e20947ee">getButtonCount</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1Menu.html#ae06e70311079d4774d491d9c9484b551">getButtonWidth</a>(<span class="keywordtype">size_t</span> index) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00369"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Menu.html#a42a5d7533b648b5380a1644d95f6703a">  369</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="classConsoleUI_1_1Menu.html#a42a5d7533b648b5380a1644d95f6703a">getSelectedIndex</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">return</span> m_selectedIndex;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#adf730e009c51d5057772dc88e3ed4512">selectPreviousButton</a>();</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#a657817dea083ee5d5911d587b8d9d883">selectNextButton</a>();</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classConsoleUI_1_1Menu.html#ab11983eed87adb6f9adcd95b9659600d">getTotalWidth</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#a24e704ea8ba79288ae3bc8066f3cc7c6">activateSelectedButton</a>();</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Menu.html#acf81c6529ae2b90b02d2b472f26f5b1f">  403</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1Menu.html#acf81c6529ae2b90b02d2b472f26f5b1f">clear</a>()</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    {</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        m_buttons.clear();</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        m_selectedIndex = 0;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    std::vector&lt;Button&gt; m_buttons;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordtype">size_t</span> m_selectedIndex;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordtype">bool</span> horizontal_layout;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="comment">// TODO remove?</span></div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    std::vector&lt;std::vector&lt;Button&gt;&gt; m_pageHistory;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;};</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1Scene.html">  428</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1Scene.html">Scene</a></div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;{</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classConsoleUI_1_1Scene.html">Scene</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> update() = 0;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> render(std::shared_ptr&lt;ConsoleWindow&gt; window) = 0;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> handleInput() = 0;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;};</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00442"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1UIManager.html">  442</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1UIManager.html">UIManager</a></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;{</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">UIManager</a>();</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    std::shared_ptr&lt;ConsoleWindow&gt; <a class="code" href="classConsoleUI_1_1UIManager.html#a214b2426396060648298c4910df40ad0">getWindow</a>();</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1UIManager.html#ae1bf20d9803f298273d754609a17a2e7">setCurrentScene</a>(std::shared_ptr&lt;Scene&gt; scene);</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1UIManager.html#a5d1d601a91b497a794219cd4140beac0">update</a>();</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1UIManager.html#ac166e7aa48c087f94acac7a9cb688ef5">render</a>();</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1UIManager.html#a89bd00803b8baacf1b0181d606599ab6">handleInput</a>();</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    <a class="code" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;<a class="code" href="classConsoleUI_1_1UIManager.html#a798ddd9c6f71fa755042d861018e5cd0">createMenu</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> horizontal = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <a class="code" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;<a class="code" href="classConsoleUI_1_1UIManager.html#ae28f8fa953f9c104fd54624a1cdea0c5">getMenu</a>(<span class="keyword">const</span> std::string &amp;name);</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1UIManager.html#aec7b1558face6be47afe0c611c4d57c9">clearMenu</a>(<span class="keyword">const</span> std::string &amp;name);</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classConsoleUI_1_1UIManager.html#aafbcbe5137a85bb4360638e85e1cd6c2">clearAllMenus</a>();</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> <a class="code" href="classConsoleUI_1_1UIManager.html#abbe732de2fe60742e44c1634fa9b06ee">createAsciiArt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *artString);</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    std::shared_ptr&lt;ConsoleWindow&gt; m_window;</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    std::shared_ptr&lt;Scene&gt; m_currentScene;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    std::unordered_map&lt;std::string, Menu&gt; m_menus;</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;};</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;} <span class="comment">// namespace ConsoleUI</span></div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MENU_H</span></div>
-<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html">ConsoleUI::AsciiArt</a></div><div class="ttdoc">Defines an ascii art object.</div><div class="ttdef"><b>Definition:</b> menu.h:212</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html_a56768feb5d4914f9a9a48c02a8e07bb8"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html#a56768feb5d4914f9a9a48c02a8e07bb8">ConsoleUI::AsciiArt::getHeight</a></div><div class="ttdeci">int getHeight() const</div><div class="ttdoc">Get the height of the ascii art.</div><div class="ttdef"><b>Definition:</b> menu.cpp:256</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html_a7a53bacf8712a435a683c292cd2e3d71"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html#a7a53bacf8712a435a683c292cd2e3d71">ConsoleUI::AsciiArt::getWidth</a></div><div class="ttdeci">int getWidth() const</div><div class="ttdoc">Get the width of the ascii art.</div><div class="ttdef"><b>Definition:</b> menu.cpp:251</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html_abdb2e0f14017a79ed7bedd80cb7cd3f1"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html#abdb2e0f14017a79ed7bedd80cb7cd3f1">ConsoleUI::AsciiArt::getArt</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; getArt() const</div><div class="ttdoc">Get the Art object as a string.</div><div class="ttdef"><b>Definition:</b> menu.cpp:246</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Button_html"><div class="ttname"><a href="classConsoleUI_1_1Button.html">ConsoleUI::Button</a></div><div class="ttdoc">Defines the class that represents a button object to be used in a menu.</div><div class="ttdef"><b>Definition:</b> menu.h:258</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Button_html_a6117eeb447cd025aaa759a49ef7d1f5f"><div class="ttname"><a href="classConsoleUI_1_1Button.html#a6117eeb447cd025aaa759a49ef7d1f5f">ConsoleUI::Button::getLabel</a></div><div class="ttdeci">const std::string &amp; getLabel() const</div><div class="ttdoc">Get the Label of the button.</div><div class="ttdef"><b>Definition:</b> menu.cpp:294</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Button_html_a6e680809119ee0300e3229e32f9f92ed"><div class="ttname"><a href="classConsoleUI_1_1Button.html#a6e680809119ee0300e3229e32f9f92ed">ConsoleUI::Button::draw</a></div><div class="ttdeci">void draw(int x, int y, bool selected)</div><div class="ttdoc">Draws the button.</div><div class="ttdef"><b>Definition:</b> menu.cpp:267</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Button_html_a91a6a6747f8d20fd14771bc8c8d9f3f7"><div class="ttname"><a href="classConsoleUI_1_1Button.html#a91a6a6747f8d20fd14771bc8c8d9f3f7">ConsoleUI::Button::getWidth</a></div><div class="ttdeci">int getWidth() const</div><div class="ttdoc">Get the Width of the button.</div><div class="ttdef"><b>Definition:</b> menu.cpp:289</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Button_html_aa6298e8a8e32982b4eb1ba339cdd4a86"><div class="ttname"><a href="classConsoleUI_1_1Button.html#aa6298e8a8e32982b4eb1ba339cdd4a86">ConsoleUI::Button::performAction</a></div><div class="ttdeci">void performAction() const</div><div class="ttdoc">On submission defines how the action is run.</div><div class="ttdef"><b>Definition:</b> menu.cpp:283</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Button_html_aaa7102cef5f6fe4a8cace8df352acccf"><div class="ttname"><a href="classConsoleUI_1_1Button.html#aaa7102cef5f6fe4a8cace8df352acccf">ConsoleUI::Button::Button</a></div><div class="ttdeci">Button(const std::string &amp;label, std::function&lt; void()&gt; action)</div><div class="ttdoc">Construct a new Button object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:263</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html">ConsoleUI::ConsoleWindow</a></div><div class="ttdoc">Sets up and controls the console window.</div><div class="ttdef"><b>Definition:</b> menu.h:61</div></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="classConsoleUI_1_1UIManager.html">  335</a></span>&#160;<span class="keyword">class </span><a class="code" href="classConsoleUI_1_1UIManager.html">UIManager</a></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;{</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">UIManager</a>();</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    std::shared_ptr&lt;ConsoleWindow&gt; getWindow();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordtype">void</span> setCurrentScene(std::shared_ptr&lt;Scene&gt; scene);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordtype">void</span> init();</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordtype">void</span> update();</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordtype">void</span> render();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordtype">void</span> handleInput();</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;createMenu(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> horizontal = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;getMenu(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordtype">void</span> clearMenu(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">void</span> clearAllMenus();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <a class="code" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> createAsciiArt(<span class="keyword">const</span> <span class="keywordtype">char</span> *artString);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    std::shared_ptr&lt;ConsoleWindow&gt; m_window;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    std::shared_ptr&lt;Scene&gt; m_currentScene;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    std::unordered_map&lt;std::string, Menu&gt; m_menus;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;};</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;} <span class="comment">// namespace ConsoleUI</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// MENU_H</span></div>
+<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html">ConsoleUI::AsciiArt</a></div><div class="ttdoc">Defines an ascii art object.</div><div class="ttdef"><b>Definition:</b> menu.h:185</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html_a56768feb5d4914f9a9a48c02a8e07bb8"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html#a56768feb5d4914f9a9a48c02a8e07bb8">ConsoleUI::AsciiArt::getHeight</a></div><div class="ttdeci">int getHeight() const</div><div class="ttdoc">Get the height of the ascii art.</div><div class="ttdef"><b>Definition:</b> menu.cpp:227</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html_a7a53bacf8712a435a683c292cd2e3d71"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html#a7a53bacf8712a435a683c292cd2e3d71">ConsoleUI::AsciiArt::getWidth</a></div><div class="ttdeci">int getWidth() const</div><div class="ttdoc">Get the width of the ascii art.</div><div class="ttdef"><b>Definition:</b> menu.cpp:222</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1AsciiArt_html_abdb2e0f14017a79ed7bedd80cb7cd3f1"><div class="ttname"><a href="classConsoleUI_1_1AsciiArt.html#abdb2e0f14017a79ed7bedd80cb7cd3f1">ConsoleUI::AsciiArt::getArt</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; getArt() const</div><div class="ttdoc">Get the Art object as a string.</div><div class="ttdef"><b>Definition:</b> menu.cpp:217</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Button_html"><div class="ttname"><a href="classConsoleUI_1_1Button.html">ConsoleUI::Button</a></div><div class="ttdef"><b>Definition:</b> menu.h:227</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html">ConsoleUI::ConsoleWindow</a></div><div class="ttdoc">Sets up and controls the console window.</div><div class="ttdef"><b>Definition:</b> menu.h:52</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a0c4d797703581a0f6c7164b66b19a9ff"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff">ConsoleUI::ConsoleWindow::drawCharacter</a></div><div class="ttdeci">void drawCharacter(int x, int y, char ch)</div><div class="ttdoc">Draws a character as a specific coordinate.</div><div class="ttdef"><b>Definition:</b> menu.cpp:79</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a1979a77dd4480e2aeb4458c8aebb41a7"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a1979a77dd4480e2aeb4458c8aebb41a7">ConsoleUI::ConsoleWindow::getSize</a></div><div class="ttdeci">COORD getSize() const</div><div class="ttdoc">Gets the max width and height of the console.</div><div class="ttdef"><b>Definition:</b> menu.cpp:174</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a2026ef933b34b330407a1282cd358bc5"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5">ConsoleUI::ConsoleWindow::drawHorizontalLine</a></div><div class="ttdeci">void drawHorizontalLine(int x, int y, size_t length, char ch='-')</div><div class="ttdoc">Draws a horizontal line of defined length using a character.</div><div class="ttdef"><b>Definition:</b> menu.cpp:64</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a3955706e05bf034eb0ef43cc60753dfe"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a3955706e05bf034eb0ef43cc60753dfe">ConsoleUI::ConsoleWindow::drawWrappedText</a></div><div class="ttdeci">void drawWrappedText(const std::string &amp;text, int x, int y, int width)</div><div class="ttdoc">Outputs lines of text of desired length, wrapping remaining text into subsequent lines.</div><div class="ttdef"><b>Definition:</b> menu.cpp:198</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a3a55ae4afee50d30f7769e27531c6bab"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab">ConsoleUI::ConsoleWindow::drawBox</a></div><div class="ttdeci">void drawBox(int x, int y, size_t width, size_t height)</div><div class="ttdoc">Draws a box on the console starting from top-left corner.</div><div class="ttdef"><b>Definition:</b> menu.cpp:56</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a54cdfcc106d1e58464bd563e7bc347ac"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a54cdfcc106d1e58464bd563e7bc347ac">ConsoleUI::ConsoleWindow::updateSize</a></div><div class="ttdeci">void updateSize()</div><div class="ttdoc">updates the maximum size of the console window</div><div class="ttdef"><b>Definition:</b> menu.cpp:44</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a7392c45732a07f2a7b544fe8f4e3257d"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d">ConsoleUI::ConsoleWindow::drawCenteredText</a></div><div class="ttdeci">void drawCenteredText(const std::string &amp;text, int y)</div><div class="ttdoc">Centers on X-axis at specific y.</div><div class="ttdef"><b>Definition:</b> menu.cpp:100</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a87d1064c93ddc50864095de56c50c40a"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a87d1064c93ddc50864095de56c50c40a">ConsoleUI::ConsoleWindow::drawText</a></div><div class="ttdeci">void drawText(const std::string &amp;text, int x, int y, bool highlight=false)</div><div class="ttdoc">Prints text to console starting from specific location.</div><div class="ttdef"><b>Definition:</b> menu.cpp:85</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_a95b393ebeae13ad8ce6547d34579c882"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#a95b393ebeae13ad8ce6547d34579c882">ConsoleUI::ConsoleWindow::drawVerticalLine</a></div><div class="ttdeci">void drawVerticalLine(int x, int y, int length, char ch='|')</div><div class="ttdoc">Draws a vertical line of defined length using a character.</div><div class="ttdef"><b>Definition:</b> menu.cpp:70</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_aaa5a385e8ba21388a00520ca7067e9de"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de">ConsoleUI::ConsoleWindow::drawTextBox</a></div><div class="ttdeci">void drawTextBox(int x, int y, int width, int height)</div><div class="ttdoc">Draws a box of specified width and height starting at a specific top-left corner position.</div><div class="ttdef"><b>Definition:</b> menu.cpp:188</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_aaa5a385e8ba21388a00520ca7067e9de"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de">ConsoleUI::ConsoleWindow::drawTextBox</a></div><div class="ttdeci">void drawTextBox(int x, int y, int width, int height)</div><div class="ttdef"><b>Definition:</b> menu.cpp:188</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_abf24d0d1cad6c5fa386d70840d3ebcb0"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0">ConsoleUI::ConsoleWindow::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clears the screen.</div><div class="ttdef"><b>Definition:</b> menu.cpp:169</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_ac1821afe974593d5f03506eb1ded37c6"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#ac1821afe974593d5f03506eb1ded37c6">ConsoleUI::ConsoleWindow::drawAsciiArt</a></div><div class="ttdeci">void drawAsciiArt(const std::vector&lt; std::string &gt; &amp;art, int x, int y)</div><div class="ttdoc">Draws the ascii art onto the screen starting from the specified top left corner.</div><div class="ttdef"><b>Definition:</b> menu.cpp:225</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_ae80e17a8ae3e6fa99a33dbceacb2f93c"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#ae80e17a8ae3e6fa99a33dbceacb2f93c">ConsoleUI::ConsoleWindow::getLine</a></div><div class="ttdeci">std::string getLine(int x, int y, int maxLength=0)</div><div class="ttdoc">Like the windows implementation it gets a users input and returns it as a string.</div><div class="ttdef"><b>Definition:</b> menu.cpp:111</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_afb9f8001b8efe0edb0844a540ad3d54d"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d">ConsoleUI::ConsoleWindow::drawBorder</a></div><div class="ttdeci">void drawBorder()</div><div class="ttdoc">Draws a border around the console.</div><div class="ttdef"><b>Definition:</b> menu.cpp:51</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1ConsoleWindow_html_afc1032310d3d7d0bf917f9994d69a5b9"><div class="ttname"><a href="classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9">ConsoleUI::ConsoleWindow::addTextToBox</a></div><div class="ttdeci">void addTextToBox(const std::string &amp;text)</div><div class="ttdef"><b>Definition:</b> menu.cpp:179</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html"><div class="ttname"><a href="classConsoleUI_1_1Menu.html">ConsoleUI::Menu</a></div><div class="ttdoc">Constructs a menu system.</div><div class="ttdef"><b>Definition:</b> menu.h:309</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a24e704ea8ba79288ae3bc8066f3cc7c6"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a24e704ea8ba79288ae3bc8066f3cc7c6">ConsoleUI::Menu::activateSelectedButton</a></div><div class="ttdeci">void activateSelectedButton()</div><div class="ttdoc">Triggers the button's function.</div><div class="ttdef"><b>Definition:</b> menu.cpp:418</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a42a5d7533b648b5380a1644d95f6703a"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a42a5d7533b648b5380a1644d95f6703a">ConsoleUI::Menu::getSelectedIndex</a></div><div class="ttdeci">size_t getSelectedIndex() const</div><div class="ttdoc">Get the Selected Index object.</div><div class="ttdef"><b>Definition:</b> menu.h:369</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a45edd985d586e6ecc5432571a5c40e82"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82">ConsoleUI::Menu::handleInput</a></div><div class="ttdeci">void handleInput()</div><div class="ttdoc">Processes keyboard input.</div><div class="ttdef"><b>Definition:</b> menu.cpp:327</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a6397689bdcabe64990f3426a86a83e1e"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">ConsoleUI::Menu::isBackButtonPressed</a></div><div class="ttdeci">bool isBackButtonPressed() const</div><div class="ttdoc">checks if the &quot;back&quot; button has been selected and submitted</div><div class="ttdef"><b>Definition:</b> menu.cpp:364</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a657817dea083ee5d5911d587b8d9d883"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a657817dea083ee5d5911d587b8d9d883">ConsoleUI::Menu::selectNextButton</a></div><div class="ttdeci">void selectNextButton()</div><div class="ttdoc">The button after to this is selected in the menu.</div><div class="ttdef"><b>Definition:</b> menu.cpp:410</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ab11983eed87adb6f9adcd95b9659600d"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ab11983eed87adb6f9adcd95b9659600d">ConsoleUI::Menu::getTotalWidth</a></div><div class="ttdeci">int getTotalWidth() const</div><div class="ttdoc">Get the total width of the button.</div><div class="ttdef"><b>Definition:</b> menu.cpp:426</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ab5d3f450b9a206f0fc7f4692e20947ee"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ab5d3f450b9a206f0fc7f4692e20947ee">ConsoleUI::Menu::getButtonCount</a></div><div class="ttdeci">size_t getButtonCount() const</div><div class="ttdoc">Get the Button Count object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:388</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ac6e578bd04e52005a58867010aa4eeef"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef">ConsoleUI::Menu::Menu</a></div><div class="ttdeci">Menu(bool horizontal=false)</div><div class="ttdef"><b>Definition:</b> menu.cpp:300</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_acf81c6529ae2b90b02d2b472f26f5b1f"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#acf81c6529ae2b90b02d2b472f26f5b1f">ConsoleUI::Menu::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">resets the menu and removes all buttons from it</div><div class="ttdef"><b>Definition:</b> menu.h:403</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_adf730e009c51d5057772dc88e3ed4512"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#adf730e009c51d5057772dc88e3ed4512">ConsoleUI::Menu::selectPreviousButton</a></div><div class="ttdeci">void selectPreviousButton()</div><div class="ttdoc">The button prior to this is selected in the menu.</div><div class="ttdef"><b>Definition:</b> menu.cpp:402</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ae06e70311079d4774d491d9c9484b551"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ae06e70311079d4774d491d9c9484b551">ConsoleUI::Menu::getButtonWidth</a></div><div class="ttdeci">int getButtonWidth(size_t index) const</div><div class="ttdoc">Get the Button Width object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:393</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ae61f13b5bf49dc74b7f75e46927e076d"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">ConsoleUI::Menu::addButton</a></div><div class="ttdeci">void addButton(const std::string &amp;label, std::function&lt; void()&gt; action)</div><div class="ttdoc">Creates a menu button.</div><div class="ttdef"><b>Definition:</b> menu.cpp:304</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Menu_html_afff304eb42a56e23359c6e22eb5c4ce1"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">ConsoleUI::Menu::draw</a></div><div class="ttdeci">void draw(int x, int y)</div><div class="ttdoc">Draws all items in the menu.</div><div class="ttdef"><b>Definition:</b> menu.cpp:309</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdoc">Defines a consoleWindow visual interface/layout.</div><div class="ttdef"><b>Definition:</b> menu.h:429</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdoc">Manages the displaying of scenes.</div><div class="ttdef"><b>Definition:</b> menu.h:443</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_a214b2426396060648298c4910df40ad0"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#a214b2426396060648298c4910df40ad0">ConsoleUI::UIManager::getWindow</a></div><div class="ttdeci">std::shared_ptr&lt; ConsoleWindow &gt; getWindow()</div><div class="ttdoc">Get the Window object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:441</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_a5d1d601a91b497a794219cd4140beac0"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#a5d1d601a91b497a794219cd4140beac0">ConsoleUI::UIManager::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">What is performed on the window update.</div><div class="ttdef"><b>Definition:</b> menu.cpp:451</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_a798ddd9c6f71fa755042d861018e5cd0"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#a798ddd9c6f71fa755042d861018e5cd0">ConsoleUI::UIManager::createMenu</a></div><div class="ttdeci">Menu &amp; createMenu(const std::string &amp;name, bool horizontal=false)</div><div class="ttdoc">Create a Menu.</div><div class="ttdef"><b>Definition:</b> menu.cpp:475</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_a89bd00803b8baacf1b0181d606599ab6"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#a89bd00803b8baacf1b0181d606599ab6">ConsoleUI::UIManager::handleInput</a></div><div class="ttdeci">void handleInput()</div><div class="ttdoc">How to handle user input.</div><div class="ttdef"><b>Definition:</b> menu.cpp:467</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_aafbcbe5137a85bb4360638e85e1cd6c2"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#aafbcbe5137a85bb4360638e85e1cd6c2">ConsoleUI::UIManager::clearAllMenus</a></div><div class="ttdeci">void clearAllMenus()</div><div class="ttdoc">reset all menus in the scene</div><div class="ttdef"><b>Definition:</b> menu.cpp:493</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_abbe732de2fe60742e44c1634fa9b06ee"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#abbe732de2fe60742e44c1634fa9b06ee">ConsoleUI::UIManager::createAsciiArt</a></div><div class="ttdeci">AsciiArt createAsciiArt(const char *artString)</div><div class="ttdoc">Create a Ascii Art object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:505</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_ac166e7aa48c087f94acac7a9cb688ef5"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#ac166e7aa48c087f94acac7a9cb688ef5">ConsoleUI::UIManager::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">What components are involved to render the scene.</div><div class="ttdef"><b>Definition:</b> menu.cpp:459</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_ae1bf20d9803f298273d754609a17a2e7"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#ae1bf20d9803f298273d754609a17a2e7">ConsoleUI::UIManager::setCurrentScene</a></div><div class="ttdeci">void setCurrentScene(std::shared_ptr&lt; Scene &gt; scene)</div><div class="ttdoc">Set the Current Scene object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:446</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_ae28f8fa953f9c104fd54624a1cdea0c5"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#ae28f8fa953f9c104fd54624a1cdea0c5">ConsoleUI::UIManager::getMenu</a></div><div class="ttdeci">Menu &amp; getMenu(const std::string &amp;name)</div><div class="ttdoc">Get the Menu object.</div><div class="ttdef"><b>Definition:</b> menu.cpp:480</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html_aec7b1558face6be47afe0c611c4d57c9"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html#aec7b1558face6be47afe0c611c4d57c9">ConsoleUI::UIManager::clearMenu</a></div><div class="ttdeci">void clearMenu(const std::string &amp;name)</div><div class="ttdoc">reset/clear the specified menu in the scene</div><div class="ttdef"><b>Definition:</b> menu.cpp:485</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Menu_html"><div class="ttname"><a href="classConsoleUI_1_1Menu.html">ConsoleUI::Menu</a></div><div class="ttdoc">Constructs a menu system.</div><div class="ttdef"><b>Definition:</b> menu.h:245</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a45edd985d586e6ecc5432571a5c40e82"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a45edd985d586e6ecc5432571a5c40e82">ConsoleUI::Menu::handleInput</a></div><div class="ttdeci">void handleInput()</div><div class="ttdoc">Processes keyboard input.</div><div class="ttdef"><b>Definition:</b> menu.cpp:298</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Menu_html_a6397689bdcabe64990f3426a86a83e1e"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e">ConsoleUI::Menu::isBackButtonPressed</a></div><div class="ttdeci">bool isBackButtonPressed() const</div><div class="ttdoc">checks if the &quot;back&quot; button has been selected and submitted</div><div class="ttdef"><b>Definition:</b> menu.cpp:335</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ac6e578bd04e52005a58867010aa4eeef"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef">ConsoleUI::Menu::Menu</a></div><div class="ttdeci">Menu(bool horizontal=false)</div><div class="ttdef"><b>Definition:</b> menu.cpp:271</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Menu_html_ae61f13b5bf49dc74b7f75e46927e076d"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#ae61f13b5bf49dc74b7f75e46927e076d">ConsoleUI::Menu::addButton</a></div><div class="ttdeci">void addButton(const std::string &amp;label, std::function&lt; void()&gt; action)</div><div class="ttdoc">Creates a menu button.</div><div class="ttdef"><b>Definition:</b> menu.cpp:275</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Menu_html_afff304eb42a56e23359c6e22eb5c4ce1"><div class="ttname"><a href="classConsoleUI_1_1Menu.html#afff304eb42a56e23359c6e22eb5c4ce1">ConsoleUI::Menu::draw</a></div><div class="ttdeci">void draw(int x, int y)</div><div class="ttdoc">Draws all items in the menu.</div><div class="ttdef"><b>Definition:</b> menu.cpp:280</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdoc">Defines a consoleWindow visual interface/layout.</div><div class="ttdef"><b>Definition:</b> menu.h:321</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdoc">Manages the displaying of scenes.</div><div class="ttdef"><b>Definition:</b> menu.h:336</div></div>
 <div class="ttc" id="anamespaceConsoleUI_html"><div class="ttname"><a href="namespaceConsoleUI.html">ConsoleUI</a></div><div class="ttdoc">UI manager -&gt; ConsoleWindow -&gt; Scenes.</div><div class="ttdef"><b>Definition:</b> menu.cpp:19</div></div>
 <div class="ttc" id="anamespaceConsoleUI_html_a97c7a3eab1fb33599b6d756fb6866b53"><div class="ttname"><a href="namespaceConsoleUI.html#a97c7a3eab1fb33599b6d756fb6866b53">ConsoleUI::setConsoleCursorPosition</a></div><div class="ttdeci">void setConsoleCursorPosition(int x, int y)</div><div class="ttdoc">Set the Console Cursor Position object to a location on the console.</div><div class="ttdef"><b>Definition:</b> menu.cpp:21</div></div>
-<div class="ttc" id="anamespaceConsoleUI_html_ac1a0a11f2388e9aaf13fdf548fc8d399"><div class="ttname"><a href="namespaceConsoleUI.html#ac1a0a11f2388e9aaf13fdf548fc8d399">ConsoleUI::getConsoleWindowSize</a></div><div class="ttdeci">COORD getConsoleWindowSize()</div><div class="ttdoc">Get the Console Window Size.</div><div class="ttdef"><b>Definition:</b> menu.cpp:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

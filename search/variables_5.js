@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['istestmode_325',['isTestMode',['../util_8cpp.html#a7e87a78e3cea9942aa08c399036a7c0c',1,'isTestMode():&#160;util.cpp'],['../util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c',1,'isTestMode():&#160;util.cpp']]]
+  ['p1_260',['p1',['../classGame.html#a014f8cd9ca7cf3e0776d37973e74309b',1,'Game']]],
+  ['p2_261',['p2',['../classGame.html#a4e583f57a219c95936dcd9093763b1aa',1,'Game']]]
 ];

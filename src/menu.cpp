@@ -425,7 +425,6 @@ void UIManager::setCurrentScene(std::shared_ptr<Scene> scene)
 
 void UIManager::init()
 {
-
 }
 
 void UIManager::update()

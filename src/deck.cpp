@@ -24,9 +24,9 @@ CardDifficulty strToCardDifficulty(const std::string &difficultyStr)
     {
         return MEDIUM;
     }
-    else if (difficultyStr == "HIGH")
+    else if (difficultyStr == "HARD")
     {
-        return HIGH;
+        return HARD;
     }
     else
     {
@@ -40,12 +40,17 @@ std::string cardDifficultyToStr(const CardDifficulty &difficulty)
     {
     case (EASY):
         return "EASY";
+        break;
     case (MEDIUM):
         return "MEDIUM";
-    case (HIGH):
-        return "HIGH";
+        break;
+    case (HARD):
+        return "HARD";
+        break;
+    default:
+        return "UNKNOWN";
+        break;
     };
-    return "UNKNOWN";
 }
 
 
@@ -146,7 +151,8 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
             }
             if (strInput.starts_with("D: "))
             {
-                deck.cards.at(cardNum).difficulty = strToCardDifficulty(strInput.substr(2));
+                size_t pos = strInput.find_first_not_of(" \t", 3);
+                deck.cards.at(cardNum).difficulty = strToCardDifficulty(strInput.substr(pos));
             }
             if (strInput.starts_with("N: "))
             {
@@ -284,7 +290,7 @@ std::vector<FlashCardDeck> createExampleDecks()
     FlashCard f2 = FlashCard("question 2", "answer 2", MEDIUM, 1);
     FlashCardDeck d1{"Example Deck 1", "", std::vector<FlashCard>{f1, f2}};
 
-    FlashCard f3 = FlashCard("question 3", "answer 3", HIGH, 2);
+    FlashCard f3 = FlashCard("question 3", "answer 3", HARD, 2);
     FlashCard f4 = FlashCard("question 4", "answer 4", UNKNOWN, 1);
     FlashCardDeck d2{"Example Deck 2", "", std::vector<FlashCard>{f3, f4}};
 

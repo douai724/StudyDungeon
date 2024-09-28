@@ -21,6 +21,8 @@
 
 /**
  * @brief Represents a Game.
+ * @details A Game involves 2 Players, which both have a deck of playing cards and a hand of cards
+ *
  *
  */
 class Game

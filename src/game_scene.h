@@ -30,7 +30,7 @@ private:
 public:
     GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);
     void update() override;
-    void init() override;    
+    void init() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
     PlayingCard bot(Player &player);

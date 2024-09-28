@@ -20,6 +20,10 @@ FibonacciScene::FibonacciScene(ConsoleUI::UIManager &uiManager, std::function<vo
     menu.addButton("Back", [this]() { m_goBack(); });
 }
 
+void FibonacciScene::init()
+{
+}
+
 void FibonacciScene::update()
 {
     // No continuous updates needed for this scene

@@ -32,11 +32,19 @@ public:
      */
     FibonacciScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);
 
+
+    /**
+     * @brief function for initialize the Scene
+     *
+     */
+    void init() override;
+
     /**
      * @brief function for continuous updates to the program state seperate from rendering and input handling
      *
      */
     void update() override;
+
     /**
      * @brief renders the scene on the console window
      * @param window shared pointer to the console window that is rendered on

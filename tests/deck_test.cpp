@@ -2,6 +2,12 @@
 #include <catch2/catch_test_macros.hpp>
 #include <sstream>
 
+#include <algorithm>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <windows.h>
 
 struct cout_redirect
 {
@@ -120,19 +126,46 @@ TEST_CASE("Deck reading and writing")
         std::filesystem::path example1_deck = decks_dir;
         example1_deck.append("example1.deck");
         FlashCardDeck example1 = readFlashCardDeck(example1_deck);
+        example1.printDeckAsTemplate();
         // std::cerr << "EXample deck name:" << example1.name << std::endl;
-        REQUIRE(example1.name == "example deck 1");
+        REQUIRE(example1.name == "test example deck 1");
 
         auto stdoutBuffer = std::cout.rdbuf();
         std::ostringstream oss;
         std::cout.rdbuf(oss.rdbuf());
 
         example1.printDeckAsTemplate();
-        std::string c1 = "example deck 1\nQ:  What colour is #FFFFFF?\nA:  White\nD: UNKNOWN\nN: 0\n-\n";
-        c1.append("Q:  What colour is #000000?\nA:  Black\nD: UNKNOWN\nN: 3\n-\n");
-        REQUIRE(oss.str() == c1);
+        FlashCard fc1 = FlashCard{"What colour is #FFFFFF?", "White", HARD, 0};
+        FlashCard fc2 = FlashCard{"What colour is #000000?", "Black", EASY, 3};
+        FlashCard fc3 = FlashCard{"What colour is #FF0000?", "Red", UNKNOWN, 0};
+        FlashCard fc4 = FlashCard{"What colour is #00FF00?", "Green", MEDIUM, 0};
+        FlashCard fc5 = FlashCard{"What colour is #0000FF?", "Blue", UNKNOWN, 5};
+
+        std::string c1 = fc1.stringCardAsTemplate();
+        std::string c2 = fc2.stringCardAsTemplate();
+        std::string c3 = fc3.stringCardAsTemplate();
+        std::string c4 = fc4.stringCardAsTemplate();
+        std::string c5 = fc5.stringCardAsTemplate();
+        FlashCardDeck fd1{"test example deck 1", "", std::vector<FlashCard>{fc1, fc2, fc3, fc4, fc5}};
+        REQUIRE(oss.str() == fd1.name + "\n" + c1 + c2 + c3 + c4 + c5);
         oss.clear();
         oss.str("");
+
+        std::string h1 = "test example deck 1\nFile location: \"\"\nDeck size: 5 cards\n";
+        c1 = "What colour is #FFFFFF?\nWhite\n\n";
+        c2 = "What colour is #000000?\nBlack\n\n";
+        c3 = "What colour is #FF0000?\nRed\n\n";
+        c4 = "What colour is #00FF00?\nGreen\n\n";
+        c5 = "What colour is #0000FF?\nBlue\n\n";
+        std::string d1 = h1 + c1 + c2 + c3 + c4 + c5;
+        example1.printDeck();
+        REQUIRE(oss.str() == d1);
+        oss.clear();
+        oss.str("");
+
+        std::vector<FlashCardDeck> fd = loadFlashCardDecks(decks_dir);
+
+
         std::cout.rdbuf(stdoutBuffer); // reset to original std::cout buffer
     }
 }

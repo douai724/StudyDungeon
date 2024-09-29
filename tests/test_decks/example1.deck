@@ -1,10 +1,22 @@
-example deck 1
+test example deck 1
 Q: What colour is #FFFFFF?
 A: White
-D: HIGH
+D: HARD
 -
 Q: What colour is #000000?
 A: Black
 D: EASY
 N: 3
+-
+Q: What colour is #FF0000?
+A: Red
+-
+Q: What colour is #00FF00?
+D: MEDIUM
+A: Green
+-
+Q: What colour is #0000FF?
+A: Blue
+D: UNKNOWN
+N: 5
 -

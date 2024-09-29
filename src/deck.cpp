@@ -53,6 +53,12 @@ std::string cardDifficultyToStr(const CardDifficulty &difficulty)
     };
 }
 
+FlashCard::FlashCard() : FlashCard{"", "", UNKNOWN, 0}
+{
+}
+
+FlashCard::FlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered)
+    : question(question), answer(answer), difficulty(difficulty), n_times_answered(n_times_answered) {};
 
 void FlashCard::printCard()
 {
@@ -74,6 +80,7 @@ std::string FlashCard::stringCardAsTemplate()
     card_contents << "Q: " << question << "\nA: " << answer << '\n';
     card_contents << "D: " << cardDifficultyToStr(difficulty);
     card_contents << "\nN: " << std::to_string(n_times_answered) << "\n";
+    card_contents << "-\n";
     return card_contents.str();
 }
 

@@ -108,23 +108,6 @@ private:
      * and updates the deck's name in the m_decks vector.
      */
     void renameDeck();
-
-    /**
-     * @brief Draws text wrapped to a specified width on the console window.
-     * @param window Shared pointer to the ConsoleWindow to draw on.
-     * @param text The text to be drawn.
-     * @param x The x-coordinate of the starting position.
-     * @param y The y-coordinate of the starting position.
-     * @param width The maximum width for text wrapping.
-     *
-     * This utility function breaks long text into multiple lines to fit within
-     * the specified width and draws it on the console window.
-     */
-    void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                         const std::string &text,
-                         int x,
-                         int y,
-                         int width);
 };
 
 /**
@@ -205,24 +188,6 @@ private:
      * confirming with the user. It then saves the changes to the file.
      */
     void deleteSelectedCard();
-
-    /**
-     * @brief Draws text wrapped to a specified width on the console window.
-     * @param window Shared pointer to the ConsoleWindow to draw on.
-     * @param text The text to be drawn.
-     * @param x The x-coordinate of the starting position.
-     * @param y The y-coordinate of the starting position.
-     * @param width The maximum width for text wrapping.
-     *
-     * This utility function breaks long text into multiple lines to fit within
-     * the specified width and draws it on the console window. It's particularly
-     * useful for displaying long questions or answers on flashcards.
-     */
-    void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                         const std::string &text,
-                         int x,
-                         int y,
-                         int width);
 };
 
 } // namespace FlashcardEdit

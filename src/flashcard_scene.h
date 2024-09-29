@@ -67,20 +67,6 @@ public:
      */
     void handleInput() override;
 
-    /**
-     * @brief Draw wrapped text within the console window.
-     *
-     * @param window The console window to draw on.
-     * @param text The text to be drawn.
-     * @param x The starting X coordinate.
-     * @param y The starting Y coordinate.
-     * @param width The maximum width for wrapping.
-     */
-    void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                         const std::string &text,
-                         int x,
-                         int y,
-                         int width);
 
     /**
      * @brief Load available flashcard decks from storage.
@@ -147,21 +133,6 @@ public:
      * and navigate through flashcards.
      */
     void handleInput() override;
-
-    /**
-     * @brief Draw wrapped text within the console window.
-     *
-     * @param window The console window to draw on.
-     * @param text The text to be drawn.
-     * @param x The starting X coordinate.
-     * @param y The starting Y coordinate.
-     * @param width The maximum width for wrapping.
-     */
-    void drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                         const std::string &text,
-                         int x,
-                         int y,
-                         int width);
 
 private:
     /**

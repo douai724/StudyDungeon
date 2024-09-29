@@ -209,9 +209,7 @@ void FlashcardScene::initializeCardOrder()
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(m_cardOrder.begin(), m_cardOrder.end(), std::default_random_engine(g()));
-    std::sort(m_cardOrder.begin(), m_cardOrder.end(), [&](int a, int b) {
-    return weights[a] > weights[b];
-    });
+    std::sort(m_cardOrder.begin(), m_cardOrder.end(), [&](int a, int b) { return weights[a] > weights[b]; });
 }
 
 void FlashcardScene::update()
@@ -365,37 +363,6 @@ void FlashcardScene::saveUpdatedDeck()
     writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true);
 }
 
-// Helper function to draw wrapped text
-//TODO get rid of at some point
-void FlashcardScene::drawWrappedText(std::shared_ptr<ConsoleUI::ConsoleWindow> window,
-                                     const std::string &text,
-                                     int x,
-                                     int y,
-                                     int width)
-{
-    std::istringstream words(text);
-    std::string word;
-    std::string line;
-    int currentY = y;
-
-    while (words >> word)
-    {
-        if (line.length() + word.length() + 1 > width)
-        {
-            window->drawText(line, x, currentY++);
-            line = word + " ";
-        }
-        else
-        {
-            line += word + " ";
-        }
-    }
-
-    if (!line.empty())
-    {
-        window->drawText(line, x, currentY);
-    }
-}
 
 ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,

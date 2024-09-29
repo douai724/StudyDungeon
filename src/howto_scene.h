@@ -15,6 +15,7 @@
 #include "menu.h"
 #include <functional>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 /**

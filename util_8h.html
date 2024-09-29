@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">b52372d</span>
+   &#160;<span id="projectnumber">c32bdb6</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -80,7 +80,9 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;windows.h&gt;</code><br />
 </div>
@@ -88,6 +90,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a18435a43a5601b8dfd6f366fb2653608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a18435a43a5601b8dfd6f366fb2653608">enableVirtualTerminal</a> ()</td></tr>
+<tr class="memdesc:a18435a43a5601b8dfd6f366fb2653608"><td class="mdescLeft">&#160;</td><td class="mdescRight">enables the virtual terminal processing mode  <a href="util_8h.html#a18435a43a5601b8dfd6f366fb2653608">More...</a><br /></td></tr>
+<tr class="separator:a18435a43a5601b8dfd6f366fb2653608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a224e5626fbbab2a7d160e57af7246f9b"><td class="memItemLeft" align="right" valign="top"><a id="a224e5626fbbab2a7d160e57af7246f9b"></a>
 std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getAppPath</b> ()</td></tr>
 <tr class="separator:a224e5626fbbab2a7d160e57af7246f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,42 +115,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</t
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a> (bool showflag)</td></tr>
 <tr class="memdesc:a7a2da45e1167a22ea2d5497d1287446b"><td class="mdescLeft">&#160;</td><td class="mdescRight">hides or shows the cursor icon in the console <br /></td></tr>
 <tr class="separator:a7a2da45e1167a22ea2d5497d1287446b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94327ce1292cf4bd069f00e1c4cc81dd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">convertFileToANSI</a> (std::string filename)</td></tr>
+<tr class="memdesc:a94327ce1292cf4bd069f00e1c4cc81dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each.  <a href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">More...</a><br /></td></tr>
+<tr class="separator:a94327ce1292cf4bd069f00e1c4cc81dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a7e87a78e3cea9942aa08c399036a7c0c"><td class="memItemLeft" align="right" valign="top"><a id="a7e87a78e3cea9942aa08c399036a7c0c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isTestMode</b></td></tr>
+<tr class="memitem:a7e87a78e3cea9942aa08c399036a7c0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c">isTestMode</a></td></tr>
 <tr class="separator:a7e87a78e3cea9942aa08c399036a7c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b210114c3cfba535f88360ecb1f5215"><td class="memItemLeft" align="right" valign="top"><a id="a5b210114c3cfba535f88360ecb1f5215"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_enter</b> {13}</td></tr>
+<tr class="memitem:a5b210114c3cfba535f88360ecb1f5215"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a5b210114c3cfba535f88360ecb1f5215">_key_enter</a> {13}</td></tr>
 <tr class="separator:a5b210114c3cfba535f88360ecb1f5215"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b52e02f4c33121f6ed4bce876c1f465"><td class="memItemLeft" align="right" valign="top"><a id="a5b52e02f4c33121f6ed4bce876c1f465"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_backspace</b> {8}</td></tr>
+<tr class="memitem:a5b52e02f4c33121f6ed4bce876c1f465"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a5b52e02f4c33121f6ed4bce876c1f465">_key_backspace</a> {8}</td></tr>
 <tr class="separator:a5b52e02f4c33121f6ed4bce876c1f465"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89f1eda03a4c53844413130a40239f7f"><td class="memItemLeft" align="right" valign="top"><a id="a89f1eda03a4c53844413130a40239f7f"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_esc</b> {27}</td></tr>
+<tr class="memitem:a89f1eda03a4c53844413130a40239f7f"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a89f1eda03a4c53844413130a40239f7f">_key_esc</a> {27}</td></tr>
 <tr class="separator:a89f1eda03a4c53844413130a40239f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3f447306385c257fda0dd4982ab76fa"><td class="memItemLeft" align="right" valign="top"><a id="ad3f447306385c257fda0dd4982ab76fa"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_space</b> {32}</td></tr>
+<tr class="memitem:ad3f447306385c257fda0dd4982ab76fa"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ad3f447306385c257fda0dd4982ab76fa">_key_space</a> {32}</td></tr>
 <tr class="separator:ad3f447306385c257fda0dd4982ab76fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b45baf894ab1686f8fd40d909bb9127"><td class="memItemLeft" align="right" valign="top"><a id="a5b45baf894ab1686f8fd40d909bb9127"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_arrow_prefix</b> {224}</td></tr>
+<tr class="memitem:a5b45baf894ab1686f8fd40d909bb9127"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a5b45baf894ab1686f8fd40d909bb9127">_arrow_prefix</a> {224}</td></tr>
 <tr class="separator:a5b45baf894ab1686f8fd40d909bb9127"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6eb11398dc1edca8d33026c106e4786"><td class="memItemLeft" align="right" valign="top"><a id="aa6eb11398dc1edca8d33026c106e4786"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_numlock</b> {0}</td></tr>
+<tr class="memitem:aa6eb11398dc1edca8d33026c106e4786"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#aa6eb11398dc1edca8d33026c106e4786">_numlock</a> {0}</td></tr>
 <tr class="separator:aa6eb11398dc1edca8d33026c106e4786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afec13bde649713ed34add93441d3a02d"><td class="memItemLeft" align="right" valign="top"><a id="afec13bde649713ed34add93441d3a02d"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_up</b> {72}</td></tr>
+<tr class="memitem:afec13bde649713ed34add93441d3a02d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#afec13bde649713ed34add93441d3a02d">_key_up</a> {72}</td></tr>
 <tr class="separator:afec13bde649713ed34add93441d3a02d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad182ff2b21290c1b2aa16d26e02d9d99"><td class="memItemLeft" align="right" valign="top"><a id="ad182ff2b21290c1b2aa16d26e02d9d99"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_down</b> {80}</td></tr>
+<tr class="memitem:ad182ff2b21290c1b2aa16d26e02d9d99"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ad182ff2b21290c1b2aa16d26e02d9d99">_key_down</a> {80}</td></tr>
 <tr class="separator:ad182ff2b21290c1b2aa16d26e02d9d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad14f2c10895aad2c35b31c024cd1aba9"><td class="memItemLeft" align="right" valign="top"><a id="ad14f2c10895aad2c35b31c024cd1aba9"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_left</b> {75}</td></tr>
+<tr class="memitem:ad14f2c10895aad2c35b31c024cd1aba9"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ad14f2c10895aad2c35b31c024cd1aba9">_key_left</a> {75}</td></tr>
 <tr class="separator:ad14f2c10895aad2c35b31c024cd1aba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9786c183af973fd8b5088123c8baaab2"><td class="memItemLeft" align="right" valign="top"><a id="a9786c183af973fd8b5088123c8baaab2"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_right</b> {77}</td></tr>
+<tr class="memitem:a9786c183af973fd8b5088123c8baaab2"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a9786c183af973fd8b5088123c8baaab2">_key_right</a> {77}</td></tr>
 <tr class="separator:a9786c183af973fd8b5088123c8baaab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac06bf7b23f28c5b7425c87d56868a3"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">_ESC</a> {&quot;\x1b&quot;}</td></tr>
+<tr class="separator:a3ac06bf7b23f28c5b7425c87d56868a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains useful helper functions. </p>
@@ -154,6 +153,53 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>_key_right</b> {
 <dl class="section date"><dt>Date</dt><dd>2024-08-08</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a94327ce1292cf4bd069f00e1c4cc81dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94327ce1292cf4bd069f00e1c4cc81dd">&#9670;&nbsp;</a></span>convertFileToANSI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string convertFileToANSI </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string A string with the ANSI escape sequences embedded </dd></dl>
+
+</div>
+</div>
+<a id="a18435a43a5601b8dfd6f366fb2653608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18435a43a5601b8dfd6f366fb2653608">&#9670;&nbsp;</a></span>enableVirtualTerminal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void enableVirtualTerminal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enables the virtual terminal processing mode </p>
+<p>sets the ENABLE_VIRTUAL_TERMINAL_PROCESSING flag so that virtual terminal sequences will be interpreted by the console to display colour and formatting </p>
+
+</div>
+</div>
 <a id="afa7202e3936e1663f0e361cace941194"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa7202e3936e1663f0e361cace941194">&#9670;&nbsp;</a></span>isValidDeckFileName()</h2>
 
@@ -249,6 +295,195 @@ false </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true for [Yy] </dd>
 <dd>
 false for [Nn] </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a5b45baf894ab1686f8fd40d909bb9127"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b45baf894ab1686f8fd40d909bb9127">&#9670;&nbsp;</a></span>_arrow_prefix</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _arrow_prefix {224}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for if an arrow has been pressed </p>
+
+</div>
+</div>
+<a id="a3ac06bf7b23f28c5b7425c87d56868a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ac06bf7b23f28c5b7425c87d56868a3">&#9670;&nbsp;</a></span>_ESC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string _ESC {&quot;\x1b&quot;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>escape sequence for virtual terminal sequences </p>
+
+</div>
+</div>
+<a id="a5b52e02f4c33121f6ed4bce876c1f465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b52e02f4c33121f6ed4bce876c1f465">&#9670;&nbsp;</a></span>_key_backspace</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_backspace {8}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for backspace </p>
+
+</div>
+</div>
+<a id="ad182ff2b21290c1b2aa16d26e02d9d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad182ff2b21290c1b2aa16d26e02d9d99">&#9670;&nbsp;</a></span>_key_down</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_down {80}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for down arrow </p>
+
+</div>
+</div>
+<a id="a5b210114c3cfba535f88360ecb1f5215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b210114c3cfba535f88360ecb1f5215">&#9670;&nbsp;</a></span>_key_enter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_enter {13}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for enter </p>
+
+</div>
+</div>
+<a id="a89f1eda03a4c53844413130a40239f7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89f1eda03a4c53844413130a40239f7f">&#9670;&nbsp;</a></span>_key_esc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_esc {27}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for escape </p>
+
+</div>
+</div>
+<a id="ad14f2c10895aad2c35b31c024cd1aba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad14f2c10895aad2c35b31c024cd1aba9">&#9670;&nbsp;</a></span>_key_left</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_left {75}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for down arrow </p>
+
+</div>
+</div>
+<a id="a9786c183af973fd8b5088123c8baaab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9786c183af973fd8b5088123c8baaab2">&#9670;&nbsp;</a></span>_key_right</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_right {77}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for right arrow </p>
+
+</div>
+</div>
+<a id="ad3f447306385c257fda0dd4982ab76fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3f447306385c257fda0dd4982ab76fa">&#9670;&nbsp;</a></span>_key_space</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_space {32}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for space </p>
+
+</div>
+</div>
+<a id="afec13bde649713ed34add93441d3a02d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afec13bde649713ed34add93441d3a02d">&#9670;&nbsp;</a></span>_key_up</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _key_up {72}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for up arrow </p>
+
+</div>
+</div>
+<a id="aa6eb11398dc1edca8d33026c106e4786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6eb11398dc1edca8d33026c106e4786">&#9670;&nbsp;</a></span>_numlock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int _numlock {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>key code for if an arrow is pressed but numlock is on </p>
+
+</div>
+</div>
+<a id="a7e87a78e3cea9942aa08c399036a7c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e87a78e3cea9942aa08c399036a7c0c">&#9670;&nbsp;</a></span>isTestMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isTestMode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>used to toggle between simulated input (true) and user input (false) </p>
 
 </div>
 </div>

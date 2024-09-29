@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filename_257',['filename',['../classFlashCardDeck.html#afd107ed3bd39c6d479f2891b1e96ef19',1,'FlashCardDeck']]]
+  ['difficulty_323',['difficulty',['../classFlashCard.html#a6f593ae9a34a62a46eb54bca2917270d',1,'FlashCard']]]
 ];

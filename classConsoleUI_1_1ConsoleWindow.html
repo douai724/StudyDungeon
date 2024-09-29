@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">b52372d</span>
+   &#160;<span id="projectnumber">c32bdb6</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -120,10 +120,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9">addTextToBox</a> (const std::string &amp;text)</td></tr>
 <tr class="separator:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa5a385e8ba21388a00520ca7067e9de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de">drawTextBox</a> (int x, int y, int width, int height)</td></tr>
+<tr class="memdesc:aaa5a385e8ba21388a00520ca7067e9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a box of specified width and height starting at a specific top-left corner position.  <a href="classConsoleUI_1_1ConsoleWindow.html#aaa5a385e8ba21388a00520ca7067e9de">More...</a><br /></td></tr>
 <tr class="separator:aaa5a385e8ba21388a00520ca7067e9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1821afe974593d5f03506eb1ded37c6"><td class="memItemLeft" align="right" valign="top"><a id="ac1821afe974593d5f03506eb1ded37c6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawAsciiArt</b> (const std::vector&lt; std::string &gt; &amp;art, int x, int y)</td></tr>
+<tr class="memitem:ac1821afe974593d5f03506eb1ded37c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#ac1821afe974593d5f03506eb1ded37c6">drawAsciiArt</a> (const std::vector&lt; std::string &gt; &amp;art, int x, int y)</td></tr>
+<tr class="memdesc:ac1821afe974593d5f03506eb1ded37c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the ascii art onto the screen starting from the specified top left corner.  <a href="classConsoleUI_1_1ConsoleWindow.html#ac1821afe974593d5f03506eb1ded37c6">More...</a><br /></td></tr>
 <tr class="separator:ac1821afe974593d5f03506eb1ded37c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3955706e05bf034eb0ef43cc60753dfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a3955706e05bf034eb0ef43cc60753dfe">drawWrappedText</a> (const std::string &amp;text, int x, int y, int width)</td></tr>
+<tr class="memdesc:a3955706e05bf034eb0ef43cc60753dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs lines of text of desired length, wrapping remaining text into subsequent lines.  <a href="classConsoleUI_1_1ConsoleWindow.html#a3955706e05bf034eb0ef43cc60753dfe">More...</a><br /></td></tr>
+<tr class="separator:a3955706e05bf034eb0ef43cc60753dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sets up and controls the console window. </p>
@@ -146,6 +150,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawAsciiArt</b> (con
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">text</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac1821afe974593d5f03506eb1ded37c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1821afe974593d5f03506eb1ded37c6">&#9670;&nbsp;</a></span>drawAsciiArt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawAsciiArt </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>art</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws the ascii art onto the screen starting from the specified top left corner. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">art</td><td>the string representing the ascii art </td></tr>
+    <tr><td class="paramname">x</td><td>number of characters from the left </td></tr>
+    <tr><td class="paramname">y</td><td>number of lines from the top </td></tr>
   </table>
   </dd>
 </dl>
@@ -423,6 +471,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawAsciiArt</b> (con
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draws a box of specified width and height starting at a specific top-left corner position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>number of characters from left </td></tr>
@@ -480,6 +530,57 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawAsciiArt</b> (con
     <tr><td class="paramname">y</td><td>starting number of lines from top </td></tr>
     <tr><td class="paramname">length</td><td>length of the line </td></tr>
     <tr><td class="paramname">ch</td><td>character to use for the line </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3955706e05bf034eb0ef43cc60753dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3955706e05bf034eb0ef43cc60753dfe">&#9670;&nbsp;</a></span>drawWrappedText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawWrappedText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Outputs lines of text of desired length, wrapping remaining text into subsequent lines. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>Text to be displayed </td></tr>
+    <tr><td class="paramname">x</td><td>number of characters from the left </td></tr>
+    <tr><td class="paramname">y</td><td>number of lines from the top </td></tr>
+    <tr><td class="paramname">width</td><td>maximum length of a line </td></tr>
   </table>
   </dd>
 </dl>

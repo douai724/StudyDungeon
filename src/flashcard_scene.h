@@ -109,6 +109,7 @@ public:
     FlashcardScene(ConsoleUI::UIManager &uiManager,
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
+                   std::function<void()> goToDeckSelection,
                    std::function<void(const std::vector<int> &)> showResults);
 
     /**
@@ -146,6 +147,7 @@ private:
     void saveUpdatedDeck();
     void initializeCardOrder();
     int flashcard_limit = 10;
+    bool empty = false;
 
 
     /**

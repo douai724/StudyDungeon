@@ -141,7 +141,25 @@ void BrowseDecksScene::handleInput()
             case _key_enter: // Enter
                 if (!m_decks.empty())
                 {
-                    m_openDeck(m_decks[m_selectedDeckIndex]);
+                    const auto &selectedDeck = m_decks[m_selectedDeckIndex];
+                    if (selectedDeck.cards.empty())
+                    {
+                        // Display error message if the selected deck is empty
+                        m_uiManager.getWindow()->clear();
+                        m_uiManager.getWindow()->drawBorder();
+                        m_uiManager.getWindow()->drawBox((m_uiManager.getWindow()->getSize().X / 2) - 20,
+                                                         (m_uiManager.getWindow()->getSize().Y / 2) - 2,
+                                                         40,
+                                                         5
+                                                        );
+                        m_uiManager.getWindow()->drawCenteredText("Error: Cannot study empty deck.", m_uiManager.getWindow()->getSize().Y / 2);
+                        Sleep(1000);
+                        m_needsRedraw = true;
+                    }
+                    else
+                    {
+                        m_openDeck(selectedDeck);
+                    }
                 }
                 break;
             case _key_esc:
@@ -165,6 +183,7 @@ void BrowseDecksScene::handleInput()
 FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
+                               std::function<void()> goToDeckSelection,
                                std::function<void(const std::vector<int> &)> showResults)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
       m_currentCardIndex(0), m_showAnswer(false)
@@ -219,6 +238,7 @@ void FlashcardScene::update()
 
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    
     if (!m_needsRedraw)
         return;
 
@@ -258,7 +278,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawText(progress, 2, window->getSize().Y - 3);
     }
     else
-    {
+    {   
         window->drawCenteredText("All cards reviewed!", window->getSize().Y / 2);
     }
 

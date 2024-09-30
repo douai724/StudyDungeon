@@ -18,6 +18,11 @@ HowToScene::HowToScene(ConsoleUI::UIManager &uiManager, std::function<void()> go
     menu.addButton("Back", [this]() { m_goBack(); });
 }
 
+void HowToScene::init()
+{
+    // No need for init
+}
+
 void HowToScene::update()
 {
     // No continuous updates needed for this scene

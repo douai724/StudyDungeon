@@ -99,6 +99,10 @@ public:
         });
     }
 
+    void init() override
+    {
+    }
+
     void update() override
     {
     }
@@ -239,15 +243,15 @@ int main()
                 uiManager.render();
                 uiManager.handleInput();
 
-                // Check for exit condition (e.g., a specific key press)
-                if (_kbhit())
-                {
-                    int ch = _getch();
-                    if (ch == _key_esc)
-                    { // ESC key
-                        running = false;
-                    }
-                }
+                // // Check for exit condition (e.g., a specific key press)
+                // if (_kbhit())
+                // {
+                //     int ch = _getch();
+                //     if (ch == _key_esc)
+                //     { // ESC key
+                //         running = false;
+                //     }
+                // }
 
                 Sleep(10);
             }
@@ -257,7 +261,7 @@ int main()
             }
         }
 
-        std::cout << "Exiting application..." << std::endl;
+        //std::cout << "Exiting application..." << std::endl;
     }
     catch (const std::exception &e)
     {

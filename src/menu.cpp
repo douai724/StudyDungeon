@@ -220,37 +220,47 @@ void ConsoleWindow::drawWrappedText(const std::string &text, int x, int y, int w
 }
 
 
-void ConsoleWindow::addAsciiArt(const AsciiArt& art) {
+void ConsoleWindow::addAsciiArt(const AsciiArt &art)
+{
     m_asciiArts.push_back(art);
 }
 
-void ConsoleWindow::drawAsciiArt(const std::string& name, int x, int y) {
-    AsciiArt* art = getAsciiArtByName(name);
-    if (art) {
+void ConsoleWindow::drawAsciiArt(const std::string &name, int x, int y)
+{
+    AsciiArt *art = getAsciiArtByName(name);
+    if (art)
+    {
         int artX = (x != -1) ? x : art->getX();
         int artY = (y != -1) ? y : art->getY();
         int width = art->getWidth();
         int height = art->getHeight();
 
-        if (artX + width > m_width || artY + height > m_height) {
+        if (artX + width > m_width || artY + height > m_height)
+        {
             // Art is too big for the console, display text alternative
             std::string textAlt = art->getName();
             int textX = artX + (width - textAlt.length()) / 2;
             int textY = artY + height / 2;
             drawText(textAlt, textX, textY);
-        } else {
+        }
+        else
+        {
             // Draw the ASCII art
-            const std::vector<std::string>& artLines = art->getArt();
-            for (size_t i = 0; i < artLines.size(); ++i) {
+            const std::vector<std::string> &artLines = art->getArt();
+            for (size_t i = 0; i < artLines.size(); ++i)
+            {
                 drawText(artLines[i], artX, artY + static_cast<int>(i));
             }
         }
     }
 }
 
-AsciiArt* ConsoleWindow::getAsciiArtByName(const std::string& name) {
-    for (auto& art : m_asciiArts) {
-        if (art.getName() == name) {
+AsciiArt *ConsoleWindow::getAsciiArtByName(const std::string &name)
+{
+    for (auto &art : m_asciiArts)
+    {
+        if (art.getName() == name)
+        {
             return &art;
         }
     }
@@ -258,26 +268,32 @@ AsciiArt* ConsoleWindow::getAsciiArtByName(const std::string& name) {
 }
 
 
-AsciiArt::AsciiArt(const std::string& name, const std::vector<std::string>& artLines, int x, int y)
-    : m_name(name), m_art(artLines), m_width(0), m_height(static_cast<int>(artLines.size())), m_x(x), m_y(y) {
-    for (const auto& line : artLines) {
+AsciiArt::AsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x, int y)
+    : m_name(name), m_art(artLines), m_width(0), m_height(static_cast<int>(artLines.size())), m_x(x), m_y(y)
+{
+    for (const auto &line : artLines)
+    {
         m_width = max(m_width, static_cast<int>(line.length()));
     }
 }
 
-const std::string& AsciiArt::getName() const {
+const std::string &AsciiArt::getName() const
+{
     return m_name;
 }
 
-const std::vector<std::string>& AsciiArt::getArt() const {
+const std::vector<std::string> &AsciiArt::getArt() const
+{
     return m_art;
 }
 
-int AsciiArt::getX() const {
+int AsciiArt::getX() const
+{
     return m_x;
 }
 
-int AsciiArt::getY() const {
+int AsciiArt::getY() const
+{
     return m_y;
 }
 
@@ -290,7 +306,6 @@ int AsciiArt::getHeight() const
 {
     return m_height;
 }
-
 
 
 // Button implementation
@@ -536,7 +551,8 @@ void UIManager::clearAllMenus()
     }
 }
 
-AsciiArt UIManager::createAsciiArt(const std::string& name, const std::vector<std::string>& artLines, int x, int y) {
+AsciiArt UIManager::createAsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x, int y)
+{
     return AsciiArt(name, artLines, x, y);
 }
 

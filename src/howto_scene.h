@@ -48,6 +48,7 @@ public:
      * reset, update and back.
      */
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
+    void init();
     void handleInput() override;
 
 private:

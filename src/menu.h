@@ -21,13 +21,13 @@ COORD getConsoleWindowSize();
 class AsciiArt
 {
 public:
-    AsciiArt(const std::string& name, const std::vector<std::string>& artLines, int x, int y);
-    const std::vector<std::string>& getArt() const;
+    AsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x, int y);
+    const std::vector<std::string> &getArt() const;
     int getWidth() const;
     int getHeight() const;
     int getX() const;
     int getY() const;
-    const std::string& getName() const;
+    const std::string &getName() const;
 
 private:
     std::vector<std::string> m_art;
@@ -55,9 +55,9 @@ public:
     COORD getSize() const;
     void addTextToBox(const std::string &text);
     void drawTextBox(int x, int y, int width, int height);
-    void addAsciiArt(const AsciiArt& art);
-    void drawAsciiArt(const std::string& name, int x = -1, int y = -1);
-    AsciiArt* getAsciiArtByName(const std::string& name);
+    void addAsciiArt(const AsciiArt &art);
+    void drawAsciiArt(const std::string &name, int x = -1, int y = -1);
+    AsciiArt *getAsciiArtByName(const std::string &name);
     void drawWrappedText(const std::string &text, int x, int y, int width);
 
 private:
@@ -94,7 +94,10 @@ public:
     void popPage();
     size_t getButtonCount() const;
     int getButtonWidth(size_t index) const;
-    size_t getSelectedIndex() const { return m_selectedIndex; }
+    size_t getSelectedIndex() const
+    {
+        return m_selectedIndex;
+    }
     void selectPreviousButton();
     void selectNextButton();
     int getMaxWidth() const;
@@ -117,6 +120,7 @@ class Scene
 public:
     virtual ~Scene() = default;
     virtual void update() = 0;
+    virtual void init() = 0;
     virtual void render(std::shared_ptr<ConsoleWindow> window) = 0;
     virtual void handleInput() = 0;
 };
@@ -127,6 +131,7 @@ public:
     UIManager();
     std::shared_ptr<ConsoleWindow> getWindow();
     void setCurrentScene(std::shared_ptr<Scene> scene);
+    void init();
     void update();
     void render();
     void handleInput();
@@ -134,7 +139,7 @@ public:
     Menu &getMenu(const std::string &name);
     void clearMenu(const std::string &name);
     void clearAllMenus();
-    AsciiArt createAsciiArt(const std::string& name, const std::vector<std::string>& artLines, int x = -1, int y = -1);
+    AsciiArt createAsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x = -1, int y = -1);
 
 private:
     std::shared_ptr<ConsoleWindow> m_window;

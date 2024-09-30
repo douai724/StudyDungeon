@@ -207,12 +207,14 @@ std::string convertFileToANSI(std::string filename)
     return img;
 }
 
-std::vector<std::string> convertAsciiArtToLines(const std::string& asciiArt) {
+std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
+{
     std::vector<std::string> lines;
     std::istringstream iss(asciiArt);
     std::string line;
 
-    while (std::getline(iss, line)) {
+    while (std::getline(iss, line))
+    {
         lines.push_back(line);
     }
 

@@ -121,6 +121,6 @@ void ShowConsoleCursor(bool showflag);
  */
 std::string convertFileToANSI(std::string filename);
 
-std::vector<std::string> convertAsciiArtToLines(const std::string& asciiArt);
+std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt);
 
 #endif

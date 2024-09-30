@@ -45,6 +45,14 @@ public:
                      std::function<void(const FlashCardDeck &)> openDeck);
 
     /**
+     * @brief Initialize the scene.
+     *
+     * This function is called when the Scene changes to another.
+     * Currently, it doesn't perform any actions as the scene doesn't require initialization.
+     */
+    void init() override;
+
+    /**
      * @brief Update the scene state.
      *
      * This function is called every frame to update the scene's state.
@@ -111,6 +119,13 @@ public:
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
                    std::function<void(const std::vector<int> &)> showResults);
+    /**
+     * @brief Initialize the scene.
+     *
+     * This function is called when the Scene changes to another.
+     * Currently, it doesn't perform any actions as the scene doesn't require initialization.
+     */
+    void init() override;
 
     /**
      * @brief Update the scene state.
@@ -118,6 +133,7 @@ public:
      * This function is called every frame to update the scene's state.
      * Currently, it doesn't perform any actions as the scene doesn't require continuous updates.
      */
+
     void update() override;
 
     /**
@@ -197,6 +213,7 @@ public:
                  std::function<void()> goToMainMenu,
                  std::function<void()> goToDeckSelection,
                  std::function<void()> goToGame);
+    void init() override;
 
     /**
      * @brief Update the scene state.

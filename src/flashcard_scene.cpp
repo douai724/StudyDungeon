@@ -36,6 +36,12 @@ void BrowseDecksScene::loadDecks()
     m_needsRedraw = true;
 }
 
+void BrowseDecksScene::init()
+{
+    // No init needed
+}
+
+
 void BrowseDecksScene::update()
 {
     // No continuous updates needed
@@ -236,6 +242,11 @@ void FlashcardScene::update()
     // No continuous updates needed
 }
 
+void FlashcardScene::init()
+{
+    // No init needed
+}
+
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
     
@@ -244,6 +255,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     window->clear();
     window->drawBorder();
+    window->drawBox(10, 6, window->getSize().X - 20, 7);
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
@@ -397,6 +409,11 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
     menu.addButton("Main Menu", m_goToMainMenu);
     menu.addButton("Deck Selection", m_goToDeckSelection);
     menu.addButton("Start game", m_goToGame);
+}
+
+void ResultsScene::init()
+{
+    // No init needed
 }
 
 void ResultsScene::update()

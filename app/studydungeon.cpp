@@ -33,14 +33,14 @@ public:
 
         // Create ASCII art and add it to the console window
         std::string asciiArtString = R"(
-(`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_ 
+(`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
 ( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
-(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/ 
-/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  | 
+(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
+/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
 \_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
-.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    | 
-\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   | 
-`-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--' 
+.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
+\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
+`-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
 )";
         std::string asciiArtString2 = R"(
                              .-----.
@@ -99,6 +99,10 @@ public:
         });
     }
 
+    void init() override
+    {
+    }
+
     void update() override
     {
     }
@@ -109,8 +113,12 @@ public:
         window->drawBorder();
 
         // Draw the ASCII art
-        window->drawAsciiArt("main_menu", (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2, 0);
-        window->drawAsciiArt("other_menu", 10, window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight());
+        window->drawAsciiArt("main_menu",
+                             (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2,
+                             0);
+        window->drawAsciiArt("other_menu",
+                             10,
+                             window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight());
 
         // Calculate total width of menu buttons
         auto &menu = m_uiManager.getMenu("main");
@@ -236,15 +244,15 @@ int main()
                 uiManager.render();
                 uiManager.handleInput();
 
-                // Check for exit condition (e.g., a specific key press)
-                if (_kbhit())
-                {
-                    int ch = _getch();
-                    if (ch == _key_esc)
-                    { // ESC key
-                        running = false;
-                    }
-                }
+                // // Check for exit condition (e.g., a specific key press)
+                // if (_kbhit())
+                // {
+                //     int ch = _getch();
+                //     if (ch == _key_esc)
+                //     { // ESC key
+                //         running = false;
+                //     }
+                // }
 
                 Sleep(10);
             }
@@ -254,7 +262,7 @@ int main()
             }
         }
 
-        std::cout << "Exiting application..." << std::endl;
+        //std::cout << "Exiting application..." << std::endl;
     }
     catch (const std::exception &e)
     {

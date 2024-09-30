@@ -13,6 +13,8 @@
 #include <algorithm>
 #include <conio.h>
 #include <iostream>
+#include <string>
+#include <windows.h>
 
 
 namespace ConsoleUI
@@ -103,10 +105,6 @@ void ConsoleWindow::drawCenteredText(const std::string &text, int y)
     drawText(text, x, y);
 }
 
-#include <conio.h>
-#include <iostream>
-#include <string>
-#include <windows.h>
 
 std::string ConsoleWindow::getLine(int x, int y, int maxLength)
 {
@@ -222,30 +220,65 @@ void ConsoleWindow::drawWrappedText(const std::string &text, int x, int y, int w
 }
 
 
-void ConsoleWindow::drawAsciiArt(const std::vector<std::string> &art, int x, int y)
-{
-    for (size_t i = 0; i < art.size(); ++i)
-    {
-        drawText(art[i], x, y + static_cast<int>(i));
+void ConsoleWindow::addAsciiArt(const AsciiArt& art) {
+    m_asciiArts.push_back(art);
+}
+
+void ConsoleWindow::drawAsciiArt(const std::string& name, int x, int y) {
+    AsciiArt* art = getAsciiArtByName(name);
+    if (art) {
+        int artX = (x != -1) ? x : art->getX();
+        int artY = (y != -1) ? y : art->getY();
+        int width = art->getWidth();
+        int height = art->getHeight();
+
+        if (artX + width > m_width || artY + height > m_height) {
+            // Art is too big for the console, display text alternative
+            std::string textAlt = art->getName();
+            int textX = artX + (width - textAlt.length()) / 2;
+            int textY = artY + height / 2;
+            drawText(textAlt, textX, textY);
+        } else {
+            // Draw the ASCII art
+            const std::vector<std::string>& artLines = art->getArt();
+            for (size_t i = 0; i < artLines.size(); ++i) {
+                drawText(artLines[i], artX, artY + static_cast<int>(i));
+            }
+        }
     }
 }
 
+AsciiArt* ConsoleWindow::getAsciiArtByName(const std::string& name) {
+    for (auto& art : m_asciiArts) {
+        if (art.getName() == name) {
+            return &art;
+        }
+    }
+    return nullptr;
+}
 
-AsciiArt::AsciiArt(const char *artString) : m_width(0), m_height(0)
-{
-    std::istringstream stream(artString);
-    std::string line;
-    while (std::getline(stream, line))
-    {
-        m_art.push_back(line);
+
+AsciiArt::AsciiArt(const std::string& name, const std::vector<std::string>& artLines, int x, int y)
+    : m_name(name), m_art(artLines), m_width(0), m_height(static_cast<int>(artLines.size())), m_x(x), m_y(y) {
+    for (const auto& line : artLines) {
         m_width = max(m_width, static_cast<int>(line.length()));
     }
-    m_height = static_cast<int>(m_art.size());
 }
 
-const std::vector<std::string> &AsciiArt::getArt() const
-{
+const std::string& AsciiArt::getName() const {
+    return m_name;
+}
+
+const std::vector<std::string>& AsciiArt::getArt() const {
     return m_art;
+}
+
+int AsciiArt::getX() const {
+    return m_x;
+}
+
+int AsciiArt::getY() const {
+    return m_y;
 }
 
 int AsciiArt::getWidth() const
@@ -257,6 +290,7 @@ int AsciiArt::getHeight() const
 {
     return m_height;
 }
+
 
 
 // Button implementation
@@ -423,14 +457,14 @@ void Menu::activateSelectedButton()
     }
 }
 
-int Menu::getTotalWidth() const
+int Menu::getMaxWidth() const
 {
-    int totalWidth = 0;
+    int maxWidth = 0;
     for (const auto &button : m_buttons)
     {
-        totalWidth += button.getWidth() + 1; // +1 for spacing
+        maxWidth = max(button.getWidth(), maxWidth);
     }
-    return totalWidth > 0 ? totalWidth - 1 : 0; // Remove last spacing
+    return maxWidth;
 }
 
 // UIManager implementation
@@ -502,9 +536,8 @@ void UIManager::clearAllMenus()
     }
 }
 
-AsciiArt UIManager::createAsciiArt(const char *artString)
-{
-    return AsciiArt(artString);
+AsciiArt UIManager::createAsciiArt(const std::string& name, const std::vector<std::string>& artLines, int x, int y) {
+    return AsciiArt(name, artLines, x, y);
 }
 
 } // namespace ConsoleUI

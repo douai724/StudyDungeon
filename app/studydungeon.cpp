@@ -31,19 +31,55 @@ public:
     {
         createMainMenu(openFibonacciScene, openHowToScene, openBrowseDecks, openEditDecks);
 
-        // Create ASCII art
-        m_asciiArt = m_uiManager.createAsciiArt(R"(
-
- (`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
- ( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
-(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
-/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
+        // Create ASCII art and add it to the console window
+        std::string asciiArtString = R"(
+(`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_ 
+( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
+(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/ 
+/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  | 
 \_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
-.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
-\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
- `-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
+.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    | 
+\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   | 
+`-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--' 
+)";
+        std::string asciiArtString2 = R"(
+                             .-----.
+                            /7  .  (
+                           /   .-.  \
+                          /   /   \  \
+                         / `  )   (   )
+                        / `   )   ).  \
+                      .'  _.   \_/  . |
+     .--.           .' _.' )`.        |
+    (    `---...._.'   `---.'_)    ..  \
+     \            `----....___    `. \  |
+      `.           _ ----- _   `._  )/  |
+        `.       /"  \   /"  \`.  `._   |
+          `.    ((O)` ) ((O)` ) `.   `._\
+            `-- '`---'   `---' )  `.    `-.
+               /                  ` \      `-.
+             .'                      `.       `.
+            /                     `  ` `.       `-.
+     .--.   \ ===._____.======. `    `   `. .___.--`     .''''.
+    ' .` `-. `.                )`. `   ` ` \          .' . '  8)
+   (8  .  ` `-.`.               ( .  ` `  .`\      .'  '    ' /
+    \  `. `    `-.               ) ` .   ` ` \  .'   ' .  '  /
+     \ ` `.  ` . \`.    .--.     |  ` ) `   .``/   '  // .  /
+      `.  ``. .   \ \   .-- `.  (  ` /_   ` . / ' .  '/   .'
+        `. ` \  `  \ \  '-.   `-'  .'  `-.  `   .  .'/  .'
+          \ `.`.  ` \ \    ) /`._.`       `.  ` .  .'  /
+           |  `.`. . \ \  (.'               `.   .'  .'
+        __/  .. \ \ ` ) \                     \.' .. \__
+ .-._.-'     '"  ) .-'   `.                   (  '"     `-._.--.
+(_________.-====' / .' /\_)`--..__________..-- `====-. _________)
+    )";
 
-        )");
+        std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
+        std::vector<std::string> artLines2 = convertAsciiArtToLines(asciiArtString2);
+        ConsoleUI::AsciiArt asciiArt("main_menu", artLines, 0, 0);
+        ConsoleUI::AsciiArt asciiArt2("other_menu", artLines2, 0, 0);
+        m_uiManager.getWindow()->addAsciiArt(asciiArt);
+        m_uiManager.getWindow()->addAsciiArt(asciiArt2);
     }
 
     void createMainMenu(std::function<void()> openFibonacciScene,
@@ -72,21 +108,17 @@ public:
         window->clear();
         window->drawBorder();
 
-        int artX = (window->getSize().X - m_asciiArt.getWidth()) / 2;
-        window->drawAsciiArt(m_asciiArt.getArt(), artX, 2);
+        // Draw the ASCII art
+        window->drawAsciiArt("main_menu", (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2, 0);
+        window->drawAsciiArt("other_menu", 10, window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight());
 
         // Calculate total width of menu buttons
         auto &menu = m_uiManager.getMenu("main");
-        int totalMenuWidth = 0;
-        for (size_t i = 0; i < menu.getButtonCount(); ++i)
-        {
-            totalMenuWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing between buttons
-        }
-        totalMenuWidth -= 1;
+        int maxMenuWidth = menu.getMaxWidth();
 
         // Calculate starting X position for centered menu
-        int menuX = (window->getSize().X - totalMenuWidth) / 2;
-        int menuY = m_asciiArt.getHeight() + 5;
+        int menuX = (window->getSize().X - maxMenuWidth) / 2;
+        int menuY = 12; // Adjust the Y position as needed
 
         menu.draw(menuX, menuY);
     }
@@ -98,14 +130,13 @@ public:
 
 private:
     ConsoleUI::UIManager &m_uiManager;
-    ConsoleUI::AsciiArt m_asciiArt;
 };
 
 int main()
 {
     // Game settings
     int session_start{};
-    int fc_hand_limit{15};
+    //int fc_hand_limit{15};
     enableVirtualTerminal();
     try
     {

@@ -14,6 +14,9 @@
 
 #include "menu.h"
 #include <functional>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /**
  * @brief Class for a scene to show the program instructions.

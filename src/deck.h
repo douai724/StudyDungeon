@@ -28,7 +28,7 @@
 
 /**
  * @brief The possible difficulties for a flashcard
- * @details possible values: EASY (1), MEDIUM (2), and HIGH (3)
+ * @details possible values: EASY (1), MEDIUM (2), and HARD (3)
  * \showenumvalues
  *
  */
@@ -46,7 +46,7 @@ namespace fs = std::filesystem;
  * @brief Converts a string into the CardDifficulty enum.
  * @details "EASY" -> EASY
  * "MEDIUM" -> MEDIUM
- * "HIGH" -> HIGH
+ * "HARD" -> HARD
  * Anything else is converted to UNKNOWN
  *
  * @param difficultyStr The card difficulty as a string
@@ -72,6 +72,8 @@ std::string cardDifficultyToStr(const CardDifficulty &difficulty);
 class FlashCard
 {
 public:
+    FlashCard();
+    FlashCard(std::string question, std::string answer, CardDifficulty difficulty, int n_times_answered);
     /** The flashcard question */
     std::string question{};
 

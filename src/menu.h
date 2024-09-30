@@ -20,22 +20,24 @@ COORD getConsoleWindowSize();
 
 class AsciiArt
 {
-public:
-    AsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x, int y);
-    const std::vector<std::string> &getArt() const;
-    int getWidth() const;
-    int getHeight() const;
-    int getX() const;
-    int getY() const;
-    const std::string &getName() const;
-
 private:
+    std::string m_name;
     std::vector<std::string> m_art;
     int m_width;
     int m_height;
     int m_x;
     int m_y;
-    std::string m_name;
+
+public:
+    AsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x = 0, int y = 0);
+
+    const std::string &getName() const;
+    const std::vector<std::string> &getArt() const;
+    int getX() const;
+    int getY() const;
+    int getWidth() const;
+    int getHeight() const;
+    void setPosition(int x, int y);
 };
 
 class ConsoleWindow
@@ -50,6 +52,7 @@ public:
     void drawCharacter(int x, int y, char ch);
     void drawText(const std::string &text, int x, int y, bool highlight = false);
     void drawCenteredText(const std::string &text, int y);
+    std::string getLineWithAbort(int x, int y, int maxLength);
     std::string getLine(int x, int y, int maxLength = 0);
     void clear();
     COORD getSize() const;

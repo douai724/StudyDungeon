@@ -220,3 +220,31 @@ std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
 
     return lines;
 }
+
+std::string getRandomPhrase()
+{
+    std::vector<std::pair<std::string, int>> phrases = {
+        {"Farewell, friend", 20},
+        {"Until next time", 20},
+        {"You got this!", 15},
+        {"Safe travels", 15},
+        {"Go away now", 10},
+        {"Patience rewards", 8},
+        {"Where am I?", 6},
+        {"blah blah blah", 4},
+        {"I hate my job", 2}
+    };
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    
+    std::vector<int> weights;
+    for (const auto& pair : phrases)
+    {
+        weights.push_back(pair.second);
+    }
+    
+    std::discrete_distribution<> dist(weights.begin(), weights.end());
+
+    return phrases[dist(gen)].first;
+}

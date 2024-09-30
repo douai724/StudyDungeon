@@ -127,7 +127,11 @@ std::string ConsoleWindow::getLine(int x, int y, int maxLength)
         // Get user input
         int ch = _getch();
 
-        if (ch == _arrow_prefix || ch == _numlock) // Arrow key prefix
+        if (ch == _key_esc) // Escape key
+        {
+            return "\x1B"; // Return the escape character to indicate abort
+        }
+        else if (ch == _arrow_prefix || ch == _numlock) // Arrow key prefix
         {
             ch = _getch();
             switch (ch)
@@ -230,8 +234,10 @@ void ConsoleWindow::drawAsciiArt(const std::string &name, int x, int y)
     AsciiArt *art = getAsciiArtByName(name);
     if (art)
     {
-        int artX = (x != -1) ? x : art->getX();
-        int artY = (y != -1) ? y : art->getY();
+        art->setPosition(x, y);
+
+        int artX = art->getX();
+        int artY = art->getY();
         int width = art->getWidth();
         int height = art->getHeight();
 
@@ -253,6 +259,12 @@ void ConsoleWindow::drawAsciiArt(const std::string &name, int x, int y)
             }
         }
     }
+}
+
+void AsciiArt::setPosition(int x, int y)
+{
+    m_x = x;
+    m_y = y;
 }
 
 AsciiArt *ConsoleWindow::getAsciiArtByName(const std::string &name)

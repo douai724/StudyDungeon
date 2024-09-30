@@ -19,6 +19,8 @@
 #include <sstream>
 #include <string>
 #include <windows.h>
+#include <vector>
+#include <random>
 
 /** used to toggle between simulated input (true) and user input (false) */
 extern bool isTestMode;
@@ -122,5 +124,7 @@ void ShowConsoleCursor(bool showflag);
 std::string convertFileToANSI(std::string filename);
 
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt);
+
+std::string getRandomPhrase();
 
 #endif

@@ -193,7 +193,7 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
         for (FlashCard fc : deck.cards)
         {
             outf << fc.stringCardAsTemplate();
-            outf << "-" << std::endl;
+            //outf << "-" << std::endl;
         }
         // close file
         outf.close();

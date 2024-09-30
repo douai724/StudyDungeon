@@ -43,35 +43,40 @@ public:
 `-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
 )";
         std::string asciiArtString2 = R"(
-                             .-----.
-                            /7  .  (
-                           /   .-.  \
-                          /   /   \  \
-                         / `  )   (   )
-                        / `   )   ).  \
-                      .'  _.   \_/  . |
-     .--.           .' _.' )`.        |
-    (    `---...._.'   `---.'_)    ..  \
-     \            `----....___    `. \  |
-      `.           _ ----- _   `._  )/  |
-        `.       /"  \   /"  \`.  `._   |
-          `.    ((O)` ) ((O)` ) `.   `._\
-            `-- '`---'   `---' )  `.    `-.
-               /                  ` \      `-.
-             .'                      `.       `.
-            /                     `  ` `.       `-.
-     .--.   \ ===._____.======. `    `   `. .___.--`     .''''.
-    ' .` `-. `.                )`. `   ` ` \          .' . '  8)
-   (8  .  ` `-.`.               ( .  ` `  .`\      .'  '    ' /
-    \  `. `    `-.               ) ` .   ` ` \  .'   ' .  '  /
-     \ ` `.  ` . \`.    .--.     |  ` ) `   .``/   '  // .  /
-      `.  ``. .   \ \   .-- `.  (  ` /_   ` . / ' .  '/   .'
-        `. ` \  `  \ \  '-.   `-'  .'  `-.  `   .  .'/  .'
-          \ `.`.  ` \ \    ) /`._.`       `.  ` .  .'  /
-           |  `.`. . \ \  (.'               `.   .'  .'
-        __/  .. \ \ ` ) \                     \.' .. \__
- .-._.-'     '"  ) .-'   `.                   (  '"     `-._.--.
-(_________.-====' / .' /\_)`--..__________..-- `====-. _________)
+                                     /|
+                                    |\|
+                                    |||
+                                    |||
+                                    |||
+                                    |||
+                                    |||
+                                    |||
+                                 ~-[{o}]-~
+                                    |/|
+             ___                    |/|
+            ///~`     |\\_          `0'         =\\\\         . .
+           ,  |='  ,))\_| ~-_                    _)  \      _/_/|
+          / ,' ,;((((((    ~ \                  `~~~\-~-_ /~ (_/\
+        /' -~/~)))))))'\_   _/'                      \_  /'  D   |
+       (       (((((( ~-/ ~-/                          ~-;  /    \--_
+        ~~--|   ))''    ')  `                            `~~\_    \  )
+            :        (_  ~\           ,                    /~~-      /
+             \        \_   )--__  /(_/)                   |    )    )|
+     _       |_     \__/~-__    ~~   ,'      /,_;,   __--(   _/      |
+    ~\`\    /' ~~~----|     ~~~~~~~~'        \-  ((~~    __-~        |
+    ()  `\`\_(_     _-~~-\                      ``~~ ~~~~~~   \_     /
+          ----'   /      \                                   )      )
+           ;`~--'        :                                _-    ,;;(
+           |    `\       |                             _-~    ,;;;;)
+           |    /'`\     ;                          _-~          _/
+          /~   /    |    )                         /;;;''  ,;;:-~
+         |    /     / | /                         |;;'   ,''
+         /   /     |  \\|                         |   ,;(   
+       _/  /'       \  \_)                   .---__\_    \,--.______
+      ( )|'         (~-_|                   (;;'  ;;;~~~/' `;;|  `;;\
+       ) `\_         |-_;;--__               ~~~----__/'    /'______/
+       `----'       (   `~--_ ~~~;;------------~~~~~ ;;;'_/'
+                    `~~~~~~~~'~~~-----....___;;;____---~~
     )";
 
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
@@ -113,12 +118,13 @@ public:
         window->drawBorder();
 
         // Draw the ASCII art
+        window->drawAsciiArt("other_menu",
+                             ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 5,
+                             window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight());
         window->drawAsciiArt("main_menu",
                              (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2,
-                             0);
-        window->drawAsciiArt("other_menu",
-                             10,
-                             window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight());
+                             4);
+
 
         // Calculate total width of menu buttons
         auto &menu = m_uiManager.getMenu("main");
@@ -126,7 +132,7 @@ public:
 
         // Calculate starting X position for centered menu
         int menuX = (window->getSize().X - maxMenuWidth) / 2;
-        int menuY = 12; // Adjust the Y position as needed
+        int menuY = 20; // Adjust the Y position as needed
 
         menu.draw(menuX, menuY);
     }

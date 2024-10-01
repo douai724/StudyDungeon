@@ -143,12 +143,42 @@ void Game::damageEffect(PlayingCard &card)
 
 std::vector<PlayingCard> generateDeck(int numCards)
 {
+    // compute the sum of all possibilities by looping over the cards
+    // place them on a normal distribution
+    float sum = 0.0;
+    float currentDist = 0.0;
+    std::vector<float> distribution = {};
+    std::_Tree_const_iterator it = cardPossibilities.begin();
+    do
+    {
+        sum += it->second;
+        ++it;
+    } while (it != cardPossibilities.end());
+
+    it = cardPossibilities.begin();
+    do
+    {
+        currentDist += it->second / sum;
+        distribution.push_back(currentDist);
+        ++it;
+    } while (it != cardPossibilities.end());
+
     std::vector<PlayingCard> hand;
     for (int i = 0; i < numCards; i++)
     {
-        int type = (int)(std::rand() / (double)RAND_MAX * 3);
+
+        float type = std::rand() / (float)RAND_MAX;
+        int index = -1;
+        for (int i = 0; i < distribution.size(); i++)
+        {
+            if (type <= distribution[i])
+            {
+                index = i;
+                break;
+            }
+        } // add error handling here for -1
         int value = (int)(std::rand() / (double)RAND_MAX * 10);
-        PlayingCard card = PlayingCard((enum Type)type, value);
+        PlayingCard card = PlayingCard((enum Type)index, value);
         hand.push_back(card);
     }
     return hand;

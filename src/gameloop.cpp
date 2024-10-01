@@ -145,6 +145,8 @@ std::vector<PlayingCard> generateDeck(int numCards)
 {
     // compute the sum of all possibilities by looping over the cards
     // place them on a normal distribution
+    // seed the random number generator with the current time
+    std::srand(std::time(NULL));
     float sum = 0.0;
     float currentDist = 0.0;
     std::vector<float> distribution = {};

@@ -650,6 +650,10 @@ void EditDeckScene::addNewDeck()
     newDeck.filename = deckPath;
     writeFlashCardDeckWithChecks(newDeck, deckPath, false);
     m_decks.push_back(newDeck);
+
+    // select this deck
+    m_selectedDeckIndex = (int)m_decks.size() - 1;
+
     window->drawText("New deck added successfully!", 2, 6);
 
     window->drawText("Press any key to continue...", 2, 10);

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">b13f6fc</span>
+   &#160;<span id="projectnumber">ec422ea</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -84,9 +84,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a224e5626fbbab2a7d160e57af7246f9b"><td class="memItemLeft" align="right" valign="top"><a id="a224e5626fbbab2a7d160e57af7246f9b"></a>
 std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getAppPath</b> ()</td></tr>
 <tr class="separator:a224e5626fbbab2a7d160e57af7246f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a211897e8868606c97636147527d722eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a211897e8868606c97636147527d722eb">timer</a> (int minutes)</td></tr>
-<tr class="memdesc:a211897e8868606c97636147527d722eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts a countdown timer for a specified number of minutes  <a href="util_8cpp.html#a211897e8868606c97636147527d722eb">More...</a><br /></td></tr>
-<tr class="separator:a211897e8868606c97636147527d722eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17bedbeaade121b1157c8042c00f5da6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a17bedbeaade121b1157c8042c00f5da6">time_elapsed</a> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, int &amp;duration_secs)</td></tr>
+<tr class="memdesc:a17bedbeaade121b1157c8042c00f5da6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the number of seconds has elapased since a start time.  <a href="util_8cpp.html#a17bedbeaade121b1157c8042c00f5da6">More...</a><br /></td></tr>
+<tr class="separator:a17bedbeaade121b1157c8042c00f5da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7167f5c196fc5e167bfabde1a730e81d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a> ()</td></tr>
 <tr class="memdesc:a7167f5c196fc5e167bfabde1a730e81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alternative to system('pause')  <a href="util_8cpp.html#a7167f5c196fc5e167bfabde1a730e81d">More...</a><br /></td></tr>
 <tr class="separator:a7167f5c196fc5e167bfabde1a730e81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,29 +221,41 @@ false </dd></dl>
 
 </div>
 </div>
-<a id="a211897e8868606c97636147527d722eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a211897e8868606c97636147527d722eb">&#9670;&nbsp;</a></span>timer()</h2>
+<a id="a17bedbeaade121b1157c8042c00f5da6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17bedbeaade121b1157c8042c00f5da6">&#9670;&nbsp;</a></span>time_elapsed()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void timer </td>
+          <td class="memname">bool time_elapsed </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>minutes</em></td><td>)</td>
+          <td class="paramtype">const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;&#160;</td>
+          <td class="paramname"><em>start_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>duration_secs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>starts a countdown timer for a specified number of minutes </p>
+<p>Determines if the number of seconds has elapased since a start time. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">minutes</td><td></td></tr>
+    <tr><td class="paramname">start_time</td><td>the time to count number of seconds from </td></tr>
+    <tr><td class="paramname">duration_secs</td><td>time period to check has elapsed </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true for the duration having passed since the start time, otherwise false. </dd></dl>
 
 </div>
 </div>

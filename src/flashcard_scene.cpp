@@ -156,9 +156,9 @@ void BrowseDecksScene::handleInput()
                         m_uiManager.getWindow()->drawBox((m_uiManager.getWindow()->getSize().X / 2) - 20,
                                                          (m_uiManager.getWindow()->getSize().Y / 2) - 2,
                                                          40,
-                                                         5
-                                                        );
-                        m_uiManager.getWindow()->drawCenteredText("Error: Cannot study empty deck.", m_uiManager.getWindow()->getSize().Y / 2);
+                                                         5);
+                        m_uiManager.getWindow()->drawCenteredText("Error: Cannot study empty deck.",
+                                                                  m_uiManager.getWindow()->getSize().Y / 2);
                         Sleep(1000);
                         m_needsRedraw = true;
                     }
@@ -249,25 +249,25 @@ void FlashcardScene::init()
 
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
-    
+
     if (!m_needsRedraw)
         return;
 
     window->clear();
     window->drawBorder();
-    window->drawBox((window->getSize().X/2) - 22, 6, 44, 7);
+    window->drawBox((window->getSize().X / 2) - 22, 6, 44, 7);
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
         window->drawCenteredText("Question:", 4);
-        window->drawWrappedText(card.question, (window->getSize().X/2) - 20, 8, 40);
+        window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
 
         if (m_showAnswer)
         {
-            window->drawBox((window->getSize().X/2) - 22, (window->getSize().Y / 2) - 1, 44, 7);
+            window->drawBox((window->getSize().X / 2) - 22, (window->getSize().Y / 2) - 1, 44, 7);
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 3);
-            window->drawWrappedText(card.answer, (window->getSize().X/2) - 20, (window->getSize().Y / 2), 40);
+            window->drawWrappedText(card.answer, (window->getSize().X / 2) - 20, (window->getSize().Y / 2), 40);
             auto &menu = m_uiManager.getMenu("difficulty");
 
             // Calculate total width manually
@@ -291,7 +291,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawText(progress, 2, window->getSize().Y - 3);
     }
     else
-    {   
+    {
         window->drawCenteredText("All cards reviewed!", window->getSize().Y / 2);
     }
 

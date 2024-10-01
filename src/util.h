@@ -13,14 +13,15 @@
 #define UTIL_H
 
 #include <algorithm>
+#include <chrono>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <random>
 #include <sstream>
 #include <string>
-#include <windows.h>
 #include <vector>
-#include <random>
+#include <windows.h>
 
 /** used to toggle between simulated input (true) and user input (false) */
 extern bool isTestMode;
@@ -70,11 +71,13 @@ std::filesystem::path getAppPath();
 
 
 /**
- * @brief starts a countdown timer for a specified number of minutes
+ * @brief Determines if the number of seconds has elapased since a start time
  *
- * @param minutes
+ * @param start_time the time to count number of seconds from
+ * @param duration_secs time period to check has elapsed
+ * @return true for the duration having passed since the start time, otherwise false.
  */
-void timer(int minutes);
+bool time_elapsed(const std::chrono::time_point<std::chrono::steady_clock> &start_time, int &duration_secs);
 
 /**
  * @brief An alternative to system('pause')

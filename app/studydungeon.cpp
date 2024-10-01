@@ -7,7 +7,7 @@
 #include "gameloop.h"
 #include "howto_scene.h"
 #include "menu.h"
-#include "test_scene.h"
+#include "settings_scene.h"
 #include "util.h"
 #include <conio.h>
 #include <filesystem>
@@ -23,13 +23,13 @@ class MainMenuScene : public ConsoleUI::Scene
 {
 public:
     MainMenuScene(ConsoleUI::UIManager &uiManager,
-                  std::function<void()> openFibonacciScene,
+                  std::function<void()> openSettingsScene,
                   std::function<void()> openHowToScene,
                   std::function<void()> openBrowseDecks,
                   std::function<void()> openEditDecks)
         : m_uiManager(uiManager)
     {
-        createMainMenu(openFibonacciScene, openHowToScene, openBrowseDecks, openEditDecks);
+        createMainMenu(openSettingsScene, openHowToScene, openBrowseDecks, openEditDecks);
 
         // Create ASCII art and add it to the console window
         std::string asciiArtString = R"(
@@ -71,7 +71,7 @@ public:
            |    /'`\     ;                          _-~          _/
           /~   /    |    )                         /;;;''  ,;;:-~
          |    /     / | /                         |;;'   ,''
-         /   /     |  \\|                         |   ,;(   
+         /   /     |  \\|                         |   ,;(
        _/  /'       \  \_)                   .---__\_    \,--.______
       ( )|'         (~-_|                   (;;'  ;;;~~~/' `;;|  `;;\
        ) `\_         |-_;;--__               ~~~----__/'    /'______/
@@ -87,7 +87,7 @@ public:
         m_uiManager.getWindow()->addAsciiArt(asciiArt2);
     }
 
-    void createMainMenu(std::function<void()> openFibonacciScene,
+    void createMainMenu(std::function<void()> openSettingsScene,
                         std::function<void()> openHowToScene,
                         std::function<void()> openBrowseDecks,
                         std::function<void()> openEditDecks)
@@ -97,7 +97,7 @@ public:
         menu.addButton("Begin Study", openBrowseDecks);
         menu.addButton("Edit Decks", openEditDecks);
         menu.addButton("How To Play", openHowToScene);
-        menu.addButton("Fibonacci Sequence", openFibonacciScene);
+        menu.addButton("Settings", openSettingsScene);
         menu.addButton("Exit", []() {
             clearScreen();
             exit(0);
@@ -149,15 +149,16 @@ private:
 int main()
 {
     // Game settings
-    int session_start{};
-    //int fc_hand_limit{15};
+    auto session_start = std::chrono::steady_clock::now();
+    int study_duration_mins{25}; // default is 25 min session
+    int fc_hand_limit{15};       // default is 15 flash cards per round
     enableVirtualTerminal();
     try
     {
         ConsoleUI::UIManager uiManager;
 
         std::shared_ptr<MainMenuScene> mainMenuScene;
-        std::shared_ptr<FibonacciScene> fibonacciScene;
+        std::shared_ptr<SettingsScene> settingsScene;
         std::shared_ptr<HowToScene> howToScene;
         std::shared_ptr<FlashcardEdit::EditDeckScene> editDecksScene;
         std::shared_ptr<FlashcardApp::BrowseDecksScene> browseDecksScene;
@@ -208,7 +209,7 @@ int main()
             [&]() {
                 createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
                 mainMenuScene->createMainMenu( // Recreate main menu buttons
-                    [&]() { uiManager.setCurrentScene(fibonacciScene); },
+                    [&]() { uiManager.setCurrentScene(settingsScene); },
                     [&]() { uiManager.setCurrentScene(howToScene); },
                     [&]() { uiManager.setCurrentScene(browseDecksScene); },
                     [&]() { uiManager.setCurrentScene(editDecksScene); });
@@ -224,15 +225,14 @@ int main()
 
         // Create HowToScene
         howToScene = std::make_shared<HowToScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
-        // Create FibonacciScene
-        fibonacciScene =
-            std::make_shared<FibonacciScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
+        // Create SettingsScene
+        settingsScene = std::make_shared<SettingsScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
 
 
         // Create MainMenuScene
         mainMenuScene = std::make_shared<MainMenuScene>(
             uiManager,
-            [&]() { uiManager.setCurrentScene(fibonacciScene); },
+            [&]() { uiManager.setCurrentScene(settingsScene); },
             [&]() { uiManager.setCurrentScene(howToScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(editDecksScene); });

@@ -258,6 +258,54 @@ void ConsoleWindow::drawAsciiArt(const std::string &name, int x, int y)
     }
 }
 
+void ConsoleWindow::addANSIArt(const ANSIArt &art)
+{
+    m_ANSIArt.push_back(art);
+}
+
+ANSIArt *ConsoleWindow::getANSIArtByName(const std::string &name)
+{
+    for (auto &art : m_ANSIArt)
+    {
+        if (art.getName() == name)
+        {
+            return &art;
+        }
+    }
+    return nullptr;
+}
+
+void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
+{
+    ANSIArt *art = getANSIArtByName(name); // IMPLEMENT THIS
+    if (art)
+    {
+        art->setPosition(x, y);
+
+        int artX = art->getX();
+        int artY = art->getY();
+        int width = art->getWidth();
+        int height = art->getHeight();
+
+        if (artX + width > m_width || artY + height > m_height)
+        {
+            // Art is too big for the console, display text alternative
+            std::string textAlt = art->getName();
+            int textX = artX + (width - textAlt.length()) / 2;
+            int textY = artY + height / 2;
+            drawText(textAlt, textX, textY);
+        }
+        else
+        {
+            std::vector<std::string> artLines = convertAsciiArtToLines(art->toString());
+            for (size_t i = 0; i < artLines.size(); ++i)
+            {
+                drawText(artLines[i], artX, artY + static_cast<int>(i));
+            }
+        }
+    }
+}
+
 void ConsoleWindow::checkWindowResize(UIManager &uiManager)
 {
     COORD currentSize = getConsoleWindowSize();
@@ -386,6 +434,57 @@ int AsciiArt::getHeight() const
     return m_height;
 }
 
+ANSIArt::ANSIArt(std::vector<std::vector<int>> codes, const std::string &name, int x, int y)
+    : codes(codes), name(name), x(x), y(y)
+{
+    ANSIArt::width = codes.size();
+    ANSIArt::height = codes[0].size();
+}
+
+int ANSIArt::getWidth()
+{
+    return ANSIArt::width;
+}
+
+int ANSIArt::getHeight()
+{
+    return ANSIArt::height;
+}
+
+int ANSIArt::getX()
+{
+    return ANSIArt::x;
+}
+
+int ANSIArt::getY()
+{
+    return ANSIArt::y;
+}
+
+std::string ANSIArt::getName()
+{
+    return ANSIArt::name;
+}
+
+void ANSIArt::setPosition(int x, int y)
+{
+    ANSIArt::x = x;
+    ANSIArt::y = y;
+}
+
+std::string ANSIArt::toString()
+{
+    std::string out = "";
+    for (int i = 0; i < codes.size(); i++)
+    {
+        for (int j = 0; j < codes[i].size(); j++)
+        {
+            out += _ESC + "[48;5;" + std::to_string(codes[i][j]) + "m  " + _ESC + "[0m";
+        }
+        out += "\n";
+    }
+    return out;
+}
 
 // Button implementation
 Button::Button(const std::string &label, std::function<void()> action) : m_label(label), m_action(action)

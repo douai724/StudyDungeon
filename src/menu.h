@@ -43,6 +43,28 @@ public:
     void setPosition(int x, int y);
 };
 
+class ANSIArt
+{
+private:
+    std::string name;
+    std::vector<std::vector<int>> codes;
+    int width;
+    int height;
+    int x;
+    int y;
+
+public:
+    ANSIArt(std::vector<std::vector<int>> codes, const std::string &name, int x = 0, int y = 0);
+
+    int getWidth();
+    int getHeight();
+    int getX();
+    int getY();
+    void setPosition(int x, int y);
+    std::string getName();
+    std::string toString();
+};
+
 class ConsoleWindow
 {
 public:
@@ -68,6 +90,11 @@ public:
     void addAsciiArt(const AsciiArt &art);
     void drawAsciiArt(const std::string &name, int x = -1, int y = -1);
     AsciiArt *getAsciiArtByName(const std::string &name);
+
+    void addANSIArt(const ANSIArt &art);
+    void drawANSIArt(const std::string &name, int x, int y);
+    ANSIArt *getANSIArtByName(const std::string &name);
+
     void drawWrappedText(const std::string &text, int x, int y, int width);
 
 
@@ -77,6 +104,7 @@ private:
     std::vector<std::string> m_textBox;
     int m_textBoxCapacity;
     std::vector<AsciiArt> m_asciiArts;
+    std::vector<ANSIArt> m_ANSIArt;
     COORD m_defaultSize;
     void displayResizeWarning(UIManager &uiManager);
 };

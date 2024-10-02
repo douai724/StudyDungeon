@@ -12,6 +12,8 @@
 #ifndef CARD_TYPES_H
 #define CARD_TYPES_H
 
+#include <map>
+
 /**
  * @brief All possible effects that a playing card could have.
  *
@@ -23,4 +25,5 @@ enum Type
     swapHand
 };
 
+const std::map<enum Type, float> cardPossibilities{{damage, 0.5}, {heal, 0.5}, {swapHand, 0.1}};
 #endif

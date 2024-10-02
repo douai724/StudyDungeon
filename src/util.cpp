@@ -50,15 +50,11 @@ std::filesystem::path getAppPath()
 };
 
 
-/**
- * @brief starts a countdown timer for a specified number of minutes
- *
- * @param minutes
- */
-void timer(int minutes)
+bool time_elapsed(const std::chrono::time_point<std::chrono::steady_clock> &start_time, int &duration_secs)
 {
-    // TODO: implement function
-    std::cout << "length of timer is " << minutes << " minutes.";
+    auto current_time = std::chrono::steady_clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time);
+    return elapsed_time.count() >= duration_secs;
 }
 
 
@@ -261,27 +257,25 @@ std::string getRandomEncouragingQuote()
 
 std::string getRandomPhrase()
 {
-    std::vector<std::pair<std::string, int>> phrases = {
-        {"Farewell, friend", 20},
-        {"Until next time", 20},
-        {"You got this!", 15},
-        {"Safe travels", 15},
-        {"Go away now", 10},
-        {"Patience rewards", 8},
-        {"Where am I?", 6},
-        {"blah blah blah", 4},
-        {"I hate my job", 2}
-    };
+    std::vector<std::pair<std::string, int>> phrases = {{"Farewell, friend", 20},
+                                                        {"Until next time", 20},
+                                                        {"You got this!", 15},
+                                                        {"Safe travels", 15},
+                                                        {"Go away now", 10},
+                                                        {"Patience rewards", 8},
+                                                        {"Where am I?", 6},
+                                                        {"blah blah blah", 4},
+                                                        {"I hate my job", 2}};
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    
+
     std::vector<int> weights;
-    for (const auto& pair : phrases)
+    for (const auto &pair : phrases)
     {
         weights.push_back(pair.second);
     }
-    
+
     std::discrete_distribution<> dist(weights.begin(), weights.end());
 
     return phrases[dist(gen)].first;

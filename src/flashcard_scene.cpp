@@ -181,9 +181,9 @@ void BrowseDecksScene::handleInput()
                         m_uiManager.getWindow()->drawBox((m_uiManager.getWindow()->getSize().X / 2) - 20,
                                                          (m_uiManager.getWindow()->getSize().Y / 2) - 2,
                                                          40,
-                                                         5
-                                                        );
-                        m_uiManager.getWindow()->drawCenteredText("Error: Cannot study empty deck.", m_uiManager.getWindow()->getSize().Y / 2);
+                                                         5);
+                        m_uiManager.getWindow()->drawCenteredText("Error: Cannot study empty deck.",
+                                                                  m_uiManager.getWindow()->getSize().Y / 2);
                         Sleep(1000);
                         m_needsRedraw = true;
                     }

@@ -16,6 +16,7 @@
 #include "player.h"
 #include "playing_card.h"
 #include "util.h"
+#include <ctime>
 #include <iostream>
 #include <string>
 

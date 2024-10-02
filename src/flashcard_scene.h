@@ -87,7 +87,10 @@ public:
 
     void setStaticDrawn(bool staticDrawn) override;
 
-    void setDecksNeedReload(bool needReload) { m_decksNeedReload = needReload; }
+    void setDecksNeedReload(bool needReload)
+    {
+        m_decksNeedReload = needReload;
+    }
 
 private:
     ConsoleUI::UIManager &m_uiManager;                     ///< Reference to the UI manager.
@@ -101,7 +104,6 @@ private:
 
     bool m_staticDrawn = false;
     bool m_decksNeedReload = false;
-
 };
 
 /**
@@ -127,7 +129,8 @@ public:
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
-                   std::function<void(const std::vector<int> &)> showResults);
+                   std::function<void(const std::vector<int> &)> showResults,
+                   StudySettings &studySettings);
     /**
      * @brief Initialize the scene.
      *
@@ -162,7 +165,10 @@ public:
 
     void setStaticDrawn(bool staticDrawn) override;
 
-    void setDecksNeedReload(bool needReload) { m_decksNeedReload = needReload; }
+    void setDecksNeedReload(bool needReload)
+    {
+        m_decksNeedReload = needReload;
+    }
 
 
 private:

@@ -221,9 +221,10 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
                                std::function<void()> goToDeckSelection,
-                               std::function<void(const std::vector<int> &)> showResults)
+                               std::function<void(const std::vector<int> &)> showResults,
+                               StudySettings &studySettings)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
-      m_currentCardIndex(0), m_showAnswer(false)
+      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings)
 {
 
     m_uiManager.clearMenu("difficulty");
@@ -282,7 +283,8 @@ void FlashcardScene::initializeCardOrder()
     std::mt19937 m_rng{std::random_device{}()};
     // Shuffle seen cards based on probability distribution
     std::vector<size_t> shuffledSeenCards;
-    for (size_t i = 0; i < seenCards.size(); ++i) {
+    for (size_t i = 0; i < seenCards.size(); ++i)
+    {
         shuffledSeenCards.push_back(seenCards[dist(m_rng)]);
     }
 
@@ -290,7 +292,8 @@ void FlashcardScene::initializeCardOrder()
     m_cardOrder.insert(m_cardOrder.end(), shuffledSeenCards.begin(), shuffledSeenCards.end());
 
     // Limit the number of cards to study
-    if (m_cardOrder.size() > numCardsToStudy) {
+    if (m_cardOrder.size() > numCardsToStudy)
+    {
         m_cardOrder.resize(numCardsToStudy);
     }
 }

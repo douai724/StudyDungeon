@@ -309,7 +309,6 @@ void FlashcardScene::update()
         endSession();
     }
     Sleep(10);
-
 }
 
 void FlashcardScene::init()
@@ -363,7 +362,10 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
                 window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
             }
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 3);
-            window->drawWrappedText(card.answer, (window->getSize().X / 2 - (textBoxSize / 2)), window->getSize().Y / 2, textBoxSize);
+            window->drawWrappedText(card.answer,
+                                    (window->getSize().X / 2 - (textBoxSize / 2)),
+                                    window->getSize().Y / 2,
+                                    textBoxSize);
 
             auto &menu = m_uiManager.getMenu("difficulty");
 
@@ -388,7 +390,8 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             m_lastAnswerDisplayed = false;
         }
 
-        std::string progress = "Card " + std::to_string(m_currentCardIndex + 1) + " of " + std::to_string(m_cardOrder.size());
+        std::string progress =
+            "Card " + std::to_string(m_currentCardIndex + 1) + " of " + std::to_string(m_cardOrder.size());
         window->drawText(progress, 2, window->getSize().Y - 3);
     }
     else

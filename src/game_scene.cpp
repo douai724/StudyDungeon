@@ -31,10 +31,10 @@ void GameScene::init()
     GameScene::game = Game(user, bot);
 }
 
-void GameScene::setStaticDrawn(bool staticDrawn) {
+void GameScene::setStaticDrawn(bool staticDrawn)
+{
 
     m_staticDrawn = staticDrawn;
-
 }
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)

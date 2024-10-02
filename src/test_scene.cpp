@@ -29,7 +29,8 @@ void FibonacciScene::update()
     // No continuous updates needed for this scene
 }
 
-void FibonacciScene::setStaticDrawn(bool staticDrawn) {
+void FibonacciScene::setStaticDrawn(bool staticDrawn)
+{
     m_staticDrawn = staticDrawn;
 }
 

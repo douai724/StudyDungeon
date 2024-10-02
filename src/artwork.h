@@ -12,8 +12,8 @@
 #ifndef ARTWORK_H
 #define ARTWORK_H
 
-#include "util.h"
 #include "artwork.h"
+#include "util.h"
 #include <iostream>
 #include <string>
 #include <windows.h>

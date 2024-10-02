@@ -293,7 +293,6 @@ int main()
                 //         running = false;
                 //     }
                 // }
-
             }
             catch (const std::exception &e)
             {

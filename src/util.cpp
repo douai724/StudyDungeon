@@ -225,18 +225,7 @@ std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
     return lines;
 }
 
-std::string getRandomPositiveQuote()
-{
-    std::vector<std::pair<std::string, int>> phrases = {{"You're on fire!", 20},
-                                                        {"Brilliant work!", 20},
-                                                        {"Nailed it!", 15},
-                                                        {"You're a pro!", 15},
-                                                        {"Impressive!", 10},
-                                                        {"You're crushing it", 8},
-                                                        {"Stellar job!", 6},
-                                                        {"You're a genius!", 4},
-                                                        {"Unstoppable!", 2}};
-
+std::string getFirstPhrase(std::vector<std::pair<std::string, int>> phrases) {
     std::random_device rd;
     std::mt19937 gen(rd());
 
@@ -251,6 +240,22 @@ std::string getRandomPositiveQuote()
     return phrases[dist(gen)].first;
 }
 
+std::string getRandomPositiveQuote()
+{
+    std::vector<std::pair<std::string, int>> phrases = {{"You're on fire!", 20},
+                                                        {"Brilliant work!", 20},
+                                                        {"Nailed it!", 15},
+                                                        {"You're a pro!", 15},
+                                                        {"Impressive!", 10},
+                                                        {"You're crushing it", 8},
+                                                        {"Stellar job!", 6},
+                                                        {"You're a genius!", 4},
+                                                        {"Unstoppable!", 2}};
+
+    return getFirstPhrase(phrases);
+}
+
+
 std::string getRandomEncouragingQuote()
 {
     std::vector<std::pair<std::string, int>> phrases = {{"Keep going!", 20},
@@ -263,18 +268,7 @@ std::string getRandomEncouragingQuote()
                                                         {"Progress counts!", 4},
                                                         {"Every try helps!", 2}};
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-
-    std::vector<int> weights;
-    for (const auto &pair : phrases)
-    {
-        weights.push_back(pair.second);
-    }
-
-    std::discrete_distribution<> dist(weights.begin(), weights.end());
-
-    return phrases[dist(gen)].first;
+    return getFirstPhrase(phrases);
 }
 
 std::string getRandomPhrase()
@@ -289,16 +283,5 @@ std::string getRandomPhrase()
                                                         {"blah blah blah", 4},
                                                         {"I hate my job", 2}};
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-
-    std::vector<int> weights;
-    for (const auto &pair : phrases)
-    {
-        weights.push_back(pair.second);
-    }
-
-    std::discrete_distribution<> dist(weights.begin(), weights.end());
-
-    return phrases[dist(gen)].first;
+    return getFirstPhrase(phrases);
 }

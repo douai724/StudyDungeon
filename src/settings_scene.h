@@ -35,6 +35,7 @@ public:
     void decFCLimit();
     void reset();
     void startSession();
+    std::chrono::steady_clock::time_point getSessionStart();
 
 
 private:

@@ -77,7 +77,10 @@ std::filesystem::path getAppPath();
  * @param duration_secs time period to check has elapsed
  * @return true for the duration having passed since the start time, otherwise false.
  */
-bool time_elapsed(const std::chrono::time_point<std::chrono::steady_clock> &start_time, int &duration_secs);
+bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_secs);
+
+
+int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_mins);
 
 /**
  * @brief An alternative to system('pause')

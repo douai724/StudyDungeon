@@ -14,13 +14,17 @@
 namespace fs = std::filesystem;
 bool isTestMode = false;
 
-bool enableVirtualTerminal() {
+bool enableVirtualTerminal()
+{
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (hOut == INVALID_HANDLE_VALUE) return false;
+    if (hOut == INVALID_HANDLE_VALUE)
+        return false;
     DWORD dwMode = 0;
-    if (!GetConsoleMode(hOut, &dwMode)) return false;
+    if (!GetConsoleMode(hOut, &dwMode))
+        return false;
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-    if (!SetConsoleMode(hOut, dwMode)) return false;
+    if (!SetConsoleMode(hOut, dwMode))
+        return false;
     return true;
 }
 
@@ -50,13 +54,19 @@ std::filesystem::path getAppPath()
 };
 
 
-bool time_elapsed(const std::chrono::time_point<std::chrono::steady_clock> &start_time, int &duration_secs)
+bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_secs)
 {
     auto current_time = std::chrono::steady_clock::now();
     auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time);
     return elapsed_time.count() >= duration_secs;
 }
 
+int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_mins)
+{
+    auto current_time = std::chrono::steady_clock::now();
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::minutes>(current_time - start_time);
+    return duration_mins - elapsed_time.count();
+}
 
 void pause()
 {
@@ -201,27 +211,25 @@ std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
 
 std::string getRandomPositiveQuote()
 {
-    std::vector<std::pair<std::string, int>> phrases = {
-        {"You're on fire!", 20},
-        {"Brilliant work!", 20},
-        {"Nailed it!", 15},
-        {"You're a pro!", 15},
-        {"Impressive!", 10},
-        {"You're crushing it", 8},
-        {"Stellar job!", 6},
-        {"You're a genius!", 4},
-        {"Unstoppable!", 2}
-    };
+    std::vector<std::pair<std::string, int>> phrases = {{"You're on fire!", 20},
+                                                        {"Brilliant work!", 20},
+                                                        {"Nailed it!", 15},
+                                                        {"You're a pro!", 15},
+                                                        {"Impressive!", 10},
+                                                        {"You're crushing it", 8},
+                                                        {"Stellar job!", 6},
+                                                        {"You're a genius!", 4},
+                                                        {"Unstoppable!", 2}};
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    
+
     std::vector<int> weights;
-    for (const auto& pair : phrases)
+    for (const auto &pair : phrases)
     {
         weights.push_back(pair.second);
     }
-    
+
     std::discrete_distribution<> dist(weights.begin(), weights.end());
 
     return phrases[dist(gen)].first;
@@ -229,27 +237,25 @@ std::string getRandomPositiveQuote()
 
 std::string getRandomEncouragingQuote()
 {
-    std::vector<std::pair<std::string, int>> phrases = {
-        {"Keep going!", 20},
-        {"Don't give up!", 20},
-        {"You can do it!", 15},
-        {"Stay strong!", 15},
-        {"Almost there!", 10},
-        {"Believe in you!", 8},
-        {"Take a breath!", 6},
-        {"Progress counts!", 4},
-        {"Every try helps!", 2}
-    };
+    std::vector<std::pair<std::string, int>> phrases = {{"Keep going!", 20},
+                                                        {"Don't give up!", 20},
+                                                        {"You can do it!", 15},
+                                                        {"Stay strong!", 15},
+                                                        {"Almost there!", 10},
+                                                        {"Believe in you!", 8},
+                                                        {"Take a breath!", 6},
+                                                        {"Progress counts!", 4},
+                                                        {"Every try helps!", 2}};
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    
+
     std::vector<int> weights;
-    for (const auto& pair : phrases)
+    for (const auto &pair : phrases)
     {
         weights.push_back(pair.second);
     }
-    
+
     std::discrete_distribution<> dist(weights.begin(), weights.end());
 
     return phrases[dist(gen)].first;

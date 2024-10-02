@@ -107,13 +107,13 @@ SettingsScene::SettingsScene(ConsoleUI::UIManager &uiManager,
 
     : m_uiManager(uiManager), m_goBack(goBack), m_settings(studySettings)
 {
-    auto &menu = m_uiManager.createMenu("settings", false); // Veritcal menu
-    menu.addButton("Increment Cards", [this]() { incrementCards(); });
-    menu.addButton("Decrement Cards", [this]() { decrementCards(); });
-    menu.addButton("Increment Time", [this]() { incrementStudyMins(); });
-    menu.addButton("Decrement Time", [this]() { decrementStudyMins(); });
-    menu.addButton("Defaults", [this]() { resetDefault(); });
-    menu.addButton("Back", [this]() { m_goBack(); });
+    auto &menu = m_uiManager.createMenu("settings", false); // Horizontal menu
+    menu.addButton(" Increment Cards ", [this]() { incrementCards(); });
+    menu.addButton(" Decrement Cards ", [this]() { decrementCards(); });
+    menu.addButton(" Increment Time ", [this]() { incrementStudyMins(); });
+    menu.addButton(" Decrement Time ", [this]() { decrementStudyMins(); });
+    menu.addButton("    Defaults    ", [this]() { resetDefault(); });
+    menu.addButton("      Back      ", [this]() { m_goBack(); });
 }
 
 void SettingsScene::init()
@@ -130,13 +130,15 @@ void SettingsScene::update()
 void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
 
-    window->clear();
-    window->drawBorder();
-    window->drawCenteredText("Settings", 2);
-    window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
-    window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
-    window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
-
+    if (!m_staticDrawn)
+    {
+        window->clear();
+        window->drawBorder();
+        window->drawCenteredText("Settings", 2);
+        window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
+        window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
+        window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
+    }
 
     // window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 
@@ -144,9 +146,8 @@ void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
     m_uiManager.getMenu("settings")
-        .draw((windowSize.X - 30) / 2,
-              windowSize.Y - m_uiManager.getMenu("settings").getButtonCount() -
-                  4); // Adjust 30 based on your menu width
+        .draw((windowSize.X / 2) - (m_uiManager.getMenu("settings").getMaxWidth() / 2),
+              windowSize.Y / 2); // Adjust 30 based on your menu width
 }
 
 void SettingsScene::handleInput()

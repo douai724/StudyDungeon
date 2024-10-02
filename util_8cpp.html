@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">3f8b01a</span>
+   &#160;<span id="projectnumber">fb1165d</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -84,9 +84,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a224e5626fbbab2a7d160e57af7246f9b"><td class="memItemLeft" align="right" valign="top"><a id="a224e5626fbbab2a7d160e57af7246f9b"></a>
 std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getAppPath</b> ()</td></tr>
 <tr class="separator:a224e5626fbbab2a7d160e57af7246f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17bedbeaade121b1157c8042c00f5da6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a17bedbeaade121b1157c8042c00f5da6">time_elapsed</a> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, int &amp;duration_secs)</td></tr>
-<tr class="memdesc:a17bedbeaade121b1157c8042c00f5da6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the number of seconds has elapased since a start time.  <a href="util_8cpp.html#a17bedbeaade121b1157c8042c00f5da6">More...</a><br /></td></tr>
-<tr class="separator:a17bedbeaade121b1157c8042c00f5da6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab897fdb041fb5dd063d5b54dbccb00a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#ab897fdb041fb5dd063d5b54dbccb00a0">timeComplete</a> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, const int &amp;duration_secs)</td></tr>
+<tr class="memdesc:ab897fdb041fb5dd063d5b54dbccb00a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the number of seconds has elapased since a start time.  <a href="util_8cpp.html#ab897fdb041fb5dd063d5b54dbccb00a0">More...</a><br /></td></tr>
+<tr class="separator:ab897fdb041fb5dd063d5b54dbccb00a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="memItemLeft" align="right" valign="top"><a id="a0fd0d2cffdd6fa0bbfb715d131a2a8ee"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>timeRemainingMins</b> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, const int &amp;duration_mins)</td></tr>
+<tr class="separator:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7167f5c196fc5e167bfabde1a730e81d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8cpp.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a> ()</td></tr>
 <tr class="memdesc:a7167f5c196fc5e167bfabde1a730e81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alternative to system('pause')  <a href="util_8cpp.html#a7167f5c196fc5e167bfabde1a730e81d">More...</a><br /></td></tr>
 <tr class="separator:a7167f5c196fc5e167bfabde1a730e81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,14 +230,14 @@ false </dd></dl>
 
 </div>
 </div>
-<a id="a17bedbeaade121b1157c8042c00f5da6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17bedbeaade121b1157c8042c00f5da6">&#9670;&nbsp;</a></span>time_elapsed()</h2>
+<a id="ab897fdb041fb5dd063d5b54dbccb00a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab897fdb041fb5dd063d5b54dbccb00a0">&#9670;&nbsp;</a></span>timeComplete()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool time_elapsed </td>
+          <td class="memname">bool timeComplete </td>
           <td>(</td>
           <td class="paramtype">const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;&#160;</td>
           <td class="paramname"><em>start_time</em>, </td>
@@ -242,7 +245,7 @@ false </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramtype">const int &amp;&#160;</td>
           <td class="paramname"><em>duration_secs</em>&#160;</td>
         </tr>
         <tr>

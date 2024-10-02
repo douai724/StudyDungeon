@@ -356,11 +356,12 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             window->drawBox((window->getSize().X - textBoxWidth) / 2, 6, textBoxWidth, questionBoxHeight);
             window->drawCenteredText("Question:", 4);
             window->drawWrappedText(card.question, (window->getSize().X - textBoxWidth) / 2 + 2, 8, textBoxWidth - 4);
+            window->drawCenteredText("Press SPACE to show answer", window->getSize().Y * 4 / 5);
 
             m_needsRedraw = false;
         }
 
-        if (m_showAnswer)
+        if (m_showAnswer && m_lastAnswerDisplayed)
         {
             // Clear the answer area
             for (int i = window->getSize().Y / 2 - answerBoxHeight / 2; i < window->getSize().Y / 2 + answerBoxHeight / 2 + 2; ++i)
@@ -388,17 +389,18 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             totalWidth -= 2;
             int menuX = (window->getSize().X - totalWidth) / 2;
             menu.draw(menuX, window->getSize().Y * 2 / 3 + 2);
+            m_lastAnswerDisplayed = false;
         }
         else
         {
-            // Clear the answer area and draw "Press SPACE to show answer"
-            for (int i = (window->getSize().Y * 2 / 3) - 1; i < (window->getSize().Y * 2 / 3) + 2; ++i)
+            // Clear the answer area
+            for (int i = (window->getSize().Y * 2 / 3); i < (window->getSize().Y * 2 / 3) + 2; ++i)
             {
                 window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
             }
-            window->drawCenteredText("Press SPACE to show answer", window->getSize().Y * 2 / 3);
+            
         }
-
+        
         int min_remaining = timeRemainingMins(m_settings.getSessionStart(), m_settings.getStudyDurationMin());
         window->drawText("Time remaining: " + std::to_string(min_remaining) + "min", 2, window->getSize().Y - 4);
         window->drawText(steadyClockToString(m_settings.getSessionStart()), 2, window->getSize().Y - 5);
@@ -406,6 +408,8 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         std::string progress =
             "Card " + std::to_string(m_currentCardIndex + 1) + " of " + std::to_string(m_cardOrder.size());
         window->drawText(progress, 2, window->getSize().Y - 3);
+                    m_lastAnswerDisplayed = false;
+
     }
     else
     {
@@ -430,10 +434,13 @@ void FlashcardScene::handleInput()
                 switch (key)
                 {
                 case _key_left: // Left arrow
+                    m_lastAnswerDisplayed = true;
                     menu.selectPreviousButton();
                     break;
                 case _key_right: // Right arrow
+                    m_lastAnswerDisplayed = true;
                     menu.selectNextButton();
+
                     break;
                 default:
                     inputHandled = false;
@@ -454,6 +461,8 @@ void FlashcardScene::handleInput()
                     m_showAnswer = true;
                     m_lastAnswerDisplayed = true;
                     m_needsRedraw = true;
+                } else {
+                    m_showAnswer = false;
                 }
                 break;
             case _key_enter: // Enter

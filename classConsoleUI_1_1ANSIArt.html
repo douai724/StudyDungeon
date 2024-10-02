@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Study Dungeon: ConsoleUI::AsciiArt Class Reference</title>
+<title>Study Dungeon: ConsoleUI::ANSIArt Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,43 +63,43 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>ConsoleUI</b></li><li class="navelem"><a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a></li>  </ul>
+<li class="navelem"><b>ConsoleUI</b></li><li class="navelem"><a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">ConsoleUI::AsciiArt Class Reference</div>  </div>
+<div class="title">ConsoleUI::ANSIArt Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4834440bbce1730c63833e62c96b7146"><td class="memItemLeft" align="right" valign="top"><a id="a4834440bbce1730c63833e62c96b7146"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AsciiArt</b> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;artLines, int x=0, int y=0)</td></tr>
-<tr class="separator:a4834440bbce1730c63833e62c96b7146"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6b85ff052254a225a609362e33583b6"><td class="memItemLeft" align="right" valign="top"><a id="af6b85ff052254a225a609362e33583b6"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const</td></tr>
-<tr class="separator:af6b85ff052254a225a609362e33583b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdb2e0f14017a79ed7bedd80cb7cd3f1"><td class="memItemLeft" align="right" valign="top"><a id="abdb2e0f14017a79ed7bedd80cb7cd3f1"></a>
-const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getArt</b> () const</td></tr>
-<tr class="separator:abdb2e0f14017a79ed7bedd80cb7cd3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae832f4c746d716836db862b2450e23b5"><td class="memItemLeft" align="right" valign="top"><a id="ae832f4c746d716836db862b2450e23b5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getX</b> () const</td></tr>
-<tr class="separator:ae832f4c746d716836db862b2450e23b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a031e1395bddbc6d3618ad2fa54d08ffb"><td class="memItemLeft" align="right" valign="top"><a id="a031e1395bddbc6d3618ad2fa54d08ffb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getY</b> () const</td></tr>
-<tr class="separator:a031e1395bddbc6d3618ad2fa54d08ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a53bacf8712a435a683c292cd2e3d71"><td class="memItemLeft" align="right" valign="top"><a id="a7a53bacf8712a435a683c292cd2e3d71"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> () const</td></tr>
-<tr class="separator:a7a53bacf8712a435a683c292cd2e3d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56768feb5d4914f9a9a48c02a8e07bb8"><td class="memItemLeft" align="right" valign="top"><a id="a56768feb5d4914f9a9a48c02a8e07bb8"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> () const</td></tr>
-<tr class="separator:a56768feb5d4914f9a9a48c02a8e07bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a036a8fe149f8d94779ebc80387491d79"><td class="memItemLeft" align="right" valign="top"><a id="a036a8fe149f8d94779ebc80387491d79"></a>
+<tr class="memitem:a3532f25a23a6261224dd36a7353d6f35"><td class="memItemLeft" align="right" valign="top"><a id="a3532f25a23a6261224dd36a7353d6f35"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ANSIArt</b> (std::vector&lt; std::vector&lt; int &gt;&gt; codes, const std::string &amp;name, int x=0, int y=0)</td></tr>
+<tr class="separator:a3532f25a23a6261224dd36a7353d6f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a1b866a053f09effbb9d06bed7328d"><td class="memItemLeft" align="right" valign="top"><a id="ae9a1b866a053f09effbb9d06bed7328d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getWidth</b> ()</td></tr>
+<tr class="separator:ae9a1b866a053f09effbb9d06bed7328d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad850ce3b2b88b45dbcf60ca33a855750"><td class="memItemLeft" align="right" valign="top"><a id="ad850ce3b2b88b45dbcf60ca33a855750"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getHeight</b> ()</td></tr>
+<tr class="separator:ad850ce3b2b88b45dbcf60ca33a855750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d5ecb43d50037c1e70c24ea33ae62ad"><td class="memItemLeft" align="right" valign="top"><a id="a8d5ecb43d50037c1e70c24ea33ae62ad"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getX</b> ()</td></tr>
+<tr class="separator:a8d5ecb43d50037c1e70c24ea33ae62ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9239321a9712a2ea19d8d6c8deed865"><td class="memItemLeft" align="right" valign="top"><a id="af9239321a9712a2ea19d8d6c8deed865"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getY</b> ()</td></tr>
+<tr class="separator:af9239321a9712a2ea19d8d6c8deed865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe396261e30ebd7485da91aeacc770f4"><td class="memItemLeft" align="right" valign="top"><a id="afe396261e30ebd7485da91aeacc770f4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setPosition</b> (int x, int y)</td></tr>
-<tr class="separator:a036a8fe149f8d94779ebc80387491d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:afe396261e30ebd7485da91aeacc770f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefd11bb59da7eaa4ef4305109bb1908f"><td class="memItemLeft" align="right" valign="top"><a id="aefd11bb59da7eaa4ef4305109bb1908f"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
+<tr class="separator:aefd11bb59da7eaa4ef4305109bb1908f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c2d8ea9ec503d0f278abfad5d9153a7"><td class="memItemLeft" align="right" valign="top"><a id="a9c2d8ea9ec503d0f278abfad5d9153a7"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> ()</td></tr>
+<tr class="separator:a9c2d8ea9ec503d0f278abfad5d9153a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>

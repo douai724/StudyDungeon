@@ -47,7 +47,8 @@ void BrowseDecksScene::update()
     // No continuous updates needed
 }
 
-void BrowseDecksScene::setStaticDrawn(bool staticDrawn) {
+void BrowseDecksScene::setStaticDrawn(bool staticDrawn)
+{
     m_staticDrawn = staticDrawn;
 }
 
@@ -141,12 +142,12 @@ void BrowseDecksScene::handleInput()
             case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                     m_selectedDeckIndex--;
-                    m_currentPage = 0;
+                m_currentPage = 0;
                 break;
             case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                     m_selectedDeckIndex++;
-                    m_currentPage = 0;
+                m_currentPage = 0;
                 break;
             case _key_left: // Left arrow
                 if (m_currentPage > 0)
@@ -195,7 +196,10 @@ void BrowseDecksScene::handleInput()
                 }
                 break;
             case _key_esc:
-                for (auto &scene : m_uiManager.getScenes()) {scene->setStaticDrawn(false);}
+                for (auto &scene : m_uiManager.getScenes())
+                {
+                    scene->setStaticDrawn(false);
+                }
                 m_goBack();
                 break;
             default:
@@ -235,17 +239,20 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 
 void FlashcardScene::initializeCardOrder()
 {
-    size_t flashcard_limit = 10;
-    size_t numCardsToStudy = min(m_deck.cards.size(), flashcard_limit);
+    size_t numCardsToStudy = min(m_deck.cards.size(), m_settings.getFlashCardLimit());
     m_cardOrder.clear();
 
     // Separate seen and unseen cards
     std::vector<size_t> unseenCards;
     std::vector<size_t> seenCards;
-    for (size_t i = 0; i < m_deck.cards.size(); ++i) {
-        if (m_deck.cards[i].n_times_answered == 0) {
+    for (size_t i = 0; i < numCardsToStudy; ++i)
+    {
+        if (m_deck.cards[i].n_times_answered == 0)
+        {
             unseenCards.push_back(i);
-        } else {
+        }
+        else
+        {
             seenCards.push_back(i);
         }
     }
@@ -256,14 +263,16 @@ void FlashcardScene::initializeCardOrder()
 
     // Calculate weights for seen cards
     std::vector<double> weights(seenCards.size());
-    for (size_t i = 0; i < seenCards.size(); ++i) {
-        const auto& card = m_deck.cards[seenCards[i]];
-        weights[i] = (4 - card.difficulty) * (1.0 / (card.n_times_answered + 1));
+    for (size_t i = 0; i < seenCards.size(); ++i)
+    {
+        const auto &card = m_deck.cards[seenCards[i]];
+        weights[i] = (4 - card.difficulty) * (1 + log(card.n_times_answered + 1));
     }
 
     // Normalize weights to create probability distribution
     double sum = std::accumulate(weights.begin(), weights.end(), 0.0);
-    for (auto& weight : weights) {
+    for (auto &weight : weights)
+    {
         weight /= sum;
     }
 
@@ -281,8 +290,8 @@ void FlashcardScene::initializeCardOrder()
     m_cardOrder.insert(m_cardOrder.end(), shuffledSeenCards.begin(), shuffledSeenCards.end());
 
     // Limit the number of cards to study
-    if (m_cardOrder.size() > flashcard_limit) {
-        m_cardOrder.resize(flashcard_limit);
+    if (m_cardOrder.size() > numCardsToStudy) {
+        m_cardOrder.resize(numCardsToStudy);
     }
 }
 
@@ -296,12 +305,20 @@ void FlashcardScene::init()
     // No init needed
 }
 
-void FlashcardScene::setStaticDrawn(bool staticDrawn) {
+void FlashcardScene::setStaticDrawn(bool staticDrawn)
+{
     m_staticDrawn = staticDrawn;
 }
 
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    m_settings.startSession();
+    if (!m_needsRedraw)
+        return;
+
+    window->clear();
+    window->drawBorder();
+    window->drawBox((window->getSize().X / 2) - 22, 6, 44, 7);
 
     if (!m_staticDrawn)
     {
@@ -310,7 +327,8 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         m_staticDrawn = true;
     }
 
-    if (!m_needsRedraw) return;
+    if (!m_needsRedraw)
+        return;
 
     int textBoxSize = 40;
     // Clear the question area
@@ -323,7 +341,10 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
         window->drawCenteredText("Question:", 4);
-        window->drawWrappedText(card.question, (window->getSize().X / 2 - (textBoxSize / 2)), 8, textBoxSize);
+        window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
+        window->drawText("Time remaining: " + std::to_string(m_settings.getStudyDurationMin()) + "min",
+                         2,
+                         window->getSize().Y - 4);
 
         if (m_showAnswer)
         {
@@ -333,7 +354,10 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
                 window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
             }
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 3);
-            window->drawWrappedText(card.answer, (window->getSize().X / 2 - (textBoxSize / 2)), window->getSize().Y / 2, textBoxSize);
+            window->drawWrappedText(card.answer,
+                                    (window->getSize().X / 2 - (textBoxSize / 2)),
+                                    window->getSize().Y / 2,
+                                    textBoxSize);
 
             auto &menu = m_uiManager.getMenu("difficulty");
 
@@ -413,7 +437,10 @@ void FlashcardScene::handleInput()
                 }
                 break;
             case _key_esc: // Escape key
-                for (auto &scene : m_uiManager.getScenes()) {scene->setStaticDrawn(false);}
+                for (auto &scene : m_uiManager.getScenes())
+                {
+                    scene->setStaticDrawn(false);
+                }
                 endSession();
                 break;
             default:
@@ -433,7 +460,10 @@ void FlashcardScene::selectDifficulty(int difficulty)
     m_difficultyCount[difficulty - 1]++;
     updateCardDifficulty(m_cardOrder[m_currentCardIndex], static_cast<CardDifficulty>(difficulty));
 
-    for (auto &scene : m_uiManager.getScenes()) {scene->setStaticDrawn(false);}
+    for (auto &scene : m_uiManager.getScenes())
+    {
+        scene->setStaticDrawn(false);
+    }
 
 
     nextCard();
@@ -484,11 +514,16 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
     menu.addButton("   Study New Deck?   ", m_goToDeckSelection);
     menu.addButton("  Back to Main Menu  ", m_goToMainMenu);
 
-    if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1]) {
+    if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1])
+    {
         phrase = getRandomPositiveQuote();
-    } else if (m_difficultyCount[HARD - 1] > m_difficultyCount[EASY - 1]) {
+    }
+    else if (m_difficultyCount[HARD - 1] > m_difficultyCount[EASY - 1])
+    {
         phrase = getRandomEncouragingQuote();
-    } else {
+    }
+    else
+    {
         phrase = getRandomEncouragingQuote();
     }
 }
@@ -503,7 +538,8 @@ void ResultsScene::update()
     // No continuous updates needed
 }
 
-void ResultsScene::setStaticDrawn(bool staticDrawn) {
+void ResultsScene::setStaticDrawn(bool staticDrawn)
+{
     m_staticDrawn = staticDrawn;
 }
 
@@ -535,7 +571,7 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     int maxWidth = 0;
     for (size_t i = 0; i < menu.getButtonCount(); ++i)
     {
-        maxWidth = max(menu.getButtonWidth(i), maxWidth); 
+        maxWidth = max(menu.getButtonWidth(i), maxWidth);
     }
     int menuX = (window->getSize().X - maxWidth) / 2;
     menu.draw(menuX, window->getSize().Y * 3 / 4);

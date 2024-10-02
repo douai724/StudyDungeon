@@ -22,7 +22,6 @@
 class MainMenuScene : public ConsoleUI::Scene
 {
 public:
-    
     void Scene::setStaticDrawn(bool staticDrawn) override
     {
         m_staticDrawn = staticDrawn;
@@ -121,7 +120,8 @@ public:
 
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override
     {
-        if (!m_staticDrawn) {
+        if (!m_staticDrawn)
+        {
             window->clear();
             window->drawBorder();
 
@@ -137,7 +137,8 @@ public:
             m_staticDrawn = true;
         }
 
-        if (!m_needsRedraw) {
+        if (!m_needsRedraw)
+        {
             return;
         }
 
@@ -149,7 +150,8 @@ public:
         int menuHeight = menu.getButtonCount();
 
         // Draw a filled box to clear the menu area
-        for (int i = menuY - 1; i < menuY + menuHeight + 1; ++i) {
+        for (int i = menuY - 1; i < menuY + menuHeight + 1; ++i)
+        {
             window->drawText(std::string(menuWidth + 2, ' '), menuX - 1, i);
         }
 
@@ -201,53 +203,54 @@ int main()
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(gameScene); });
 
-    // Create BrowseDecksScene
-    auto createBrowseDecksScene = [&]() {
-        browseDecksScene = std::make_shared<FlashcardApp::BrowseDecksScene>(
+        // Create BrowseDecksScene
+        auto createBrowseDecksScene = [&]() {
+            browseDecksScene = std::make_shared<FlashcardApp::BrowseDecksScene>(
+                uiManager,
+                [&]() { uiManager.setCurrentScene(mainMenuScene); },
+                [&](const FlashCardDeck &deck) {
+                    flashcardScene = std::make_shared<FlashcardApp::FlashcardScene>(
+                        uiManager,
+                        deck,
+                        [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                        [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                        [&](const std::vector<int> &difficultyCount) {
+                            resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
+                                uiManager,
+                                difficultyCount,
+                                [&]() { uiManager.setCurrentScene(mainMenuScene); },
+                                [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                                [&]() { uiManager.setCurrentScene(gameScene); });
+                            uiManager.setCurrentScene(resultsScene);
+                        },
+                        studySettings);
+                    flashcardScene->setStaticDrawn(false);
+                    uiManager.setCurrentScene(flashcardScene);
+                });
+            browseDecksScene->setStaticDrawn(false);
+        };
+
+        createBrowseDecksScene(); // Create initial BrowseDecksScene
+
+        // Create editDecksScene
+        editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
             uiManager,
-            [&]() { uiManager.setCurrentScene(mainMenuScene); },
-            [&](const FlashCardDeck &deck) {
-                flashcardScene = std::make_shared<FlashcardApp::FlashcardScene>(
-                    uiManager,
-                    deck,
+            [&]() {
+                createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
+                mainMenuScene->createMainMenu( // Recreate main menu buttons
+                    [&]() { uiManager.setCurrentScene(settingsScene); },
+                    [&]() { uiManager.setCurrentScene(howToScene); },
                     [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                    [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                    [&](const std::vector<int> &difficultyCount) {
-                        resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
-                            uiManager,
-                            difficultyCount,
-                            [&]() { uiManager.setCurrentScene(mainMenuScene); },
-                            [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                            [&]() { uiManager.setCurrentScene(gameScene); });
-                        uiManager.setCurrentScene(resultsScene);
-                    });
-                flashcardScene->setStaticDrawn(false); 
-                uiManager.setCurrentScene(flashcardScene);
+                    [&]() { uiManager.setCurrentScene(editDecksScene); });
+                uiManager.setCurrentScene(mainMenuScene);
+            },
+            [&](FlashCardDeck &deck) {
+                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
+                    uiManager.setCurrentScene(editDecksScene);
+                });
+                editFlashcardScene->setStaticDrawn(false); // Add this line
+                uiManager.setCurrentScene(editFlashcardScene);
             });
-        browseDecksScene->setStaticDrawn(false);
-    };
-
-    createBrowseDecksScene(); // Create initial BrowseDecksScene
-
-    // Create editDecksScene
-    editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
-        uiManager,
-        [&]() {
-            createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
-            mainMenuScene->createMainMenu( // Recreate main menu buttons
-                [&]() { uiManager.setCurrentScene(settingsScene); },
-                [&]() { uiManager.setCurrentScene(howToScene); },
-                [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                [&]() { uiManager.setCurrentScene(editDecksScene); });
-            uiManager.setCurrentScene(mainMenuScene);
-        },
-        [&](FlashCardDeck &deck) {
-            auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
-                uiManager.setCurrentScene(editDecksScene);
-            });
-            editFlashcardScene->setStaticDrawn(false); // Add this line
-            uiManager.setCurrentScene(editFlashcardScene);
-        });
 
         // Create HowToScene
         howToScene = std::make_shared<HowToScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
@@ -265,7 +268,6 @@ int main()
             [&]() { uiManager.setCurrentScene(howToScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(editDecksScene); });
-
 
 
         // Set initial scene

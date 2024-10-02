@@ -81,12 +81,19 @@ void StudySettings::setStudyDurationMin(const int &mins)
 void StudySettings::startSession()
 {
     m_session_start = std::chrono::steady_clock::now();
+    m_session_underway = true;
+}
+
+boolean StudySession::sessionUnderway()
+{
+    return m_session_underway;
 }
 
 std::chrono::steady_clock::time_point StudySettings::getSessionStart()
 {
     return m_session_start;
 }
+
 
 SettingsScene::SettingsScene(ConsoleUI::UIManager &uiManager,
                              std::function<void()> goBack,

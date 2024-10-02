@@ -190,9 +190,10 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
                                std::function<void()> goToDeckSelection,
-                               std::function<void(const std::vector<int> &)> showResults)
+                               std::function<void(const std::vector<int> &)> showResults,
+                               StudySettings &studySettings)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
-      m_currentCardIndex(0), m_showAnswer(false)
+      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings)
 {
 
     m_uiManager.clearMenu("difficulty");
@@ -208,7 +209,7 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 
 void FlashcardScene::initializeCardOrder()
 {
-    int numCardsToStudy = min(static_cast<int>(m_deck.cards.size()), flashcard_limit);
+    int numCardsToStudy = min(static_cast<int>(m_deck.cards.size()), m_settings.getFlashCardLimit());
     m_cardOrder.resize(numCardsToStudy);
     std::iota(m_cardOrder.begin(), m_cardOrder.end(), 0);
 

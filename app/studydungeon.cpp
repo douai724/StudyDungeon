@@ -149,9 +149,7 @@ private:
 int main()
 {
     // Game settings
-    auto session_start = std::chrono::steady_clock::now();
-    int study_duration_mins{25}; // default is 25 min session
-    int fc_hand_limit{15};       // default is 15 flash cards per round
+    StudySettings studySettings;
     enableVirtualTerminal();
     try
     {
@@ -196,7 +194,8 @@ int main()
                                 [&]() { uiManager.setCurrentScene(browseDecksScene); },
                                 [&]() { uiManager.setCurrentScene(gameScene); });
                             uiManager.setCurrentScene(resultsScene);
-                        });
+                        },
+                        studySettings);
                     uiManager.setCurrentScene(flashcardScene);
                 });
         };
@@ -226,7 +225,10 @@ int main()
         // Create HowToScene
         howToScene = std::make_shared<HowToScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
         // Create SettingsScene
-        settingsScene = std::make_shared<SettingsScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
+        settingsScene = std::make_shared<SettingsScene>(
+            uiManager,
+            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+            studySettings);
 
 
         // Create MainMenuScene

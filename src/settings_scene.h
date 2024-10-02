@@ -13,10 +13,36 @@
 #define SETTINGS_SCENE_H
 
 #include "menu.h"
+#include "util.h"
 #include <functional>
 #include <iostream>
 #include <sstream>
 #include <string>
+
+
+class StudySettings
+{
+public:
+    StudySettings();
+    StudySettings(const int &n_cards, const int &mins);
+    int getFlashCardLimit();
+    int getStudyDurationMin();
+    void setFlashCardLimit(const int &n_cards);
+    void setStudyDurationMin(const int &mins);
+    void incStudyDuration();
+    void decStudyDuration();
+    void incFCLimit();
+    void decFCLimit();
+    void reset();
+    void startSession();
+
+
+private:
+    int m_flashcard_limit;
+    int m_study_duration_mins;
+    std::chrono::steady_clock::time_point m_session_start = std::chrono::steady_clock::now();
+};
+
 
 /**
  * @brief Class for a scene to show the program instructions.
@@ -32,7 +58,7 @@ public:
      * @param uiManager reference to the current UI mananger object
      * @param goBack a function to go back a scene
      */
-    SettingsScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);
+    SettingsScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack, StudySettings &studySettings);
 
     /**
      * @brief function for continuous updates to the program state seperate from rendering and input handling
@@ -57,8 +83,7 @@ public:
 
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
-    int m_card_limit;                  ///< max flashcards per round
-    int m_study_min;                   ///< limit on study duration studying flashcards
+    StudySettings &m_settings;         ///< Reference to the study settings
     std::function<void()> m_goBack;    ///< function to return to the previous scene
 };
 

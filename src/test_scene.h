@@ -54,6 +54,7 @@ public:
      */
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
+    void setStaticDrawn(bool staticDrawn) override;
 
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
@@ -63,6 +64,8 @@ private:
 
     void resetFibonacci();  ///< resets the fibonacci sequence
     void updateFibonacci(); ///< updates the next fibonacci number in the sequence
+
+    bool m_staticDrawn = false;
 };
 
 #endif // FIBONACCI_SCENE_H

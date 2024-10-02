@@ -13,14 +13,21 @@
 #define ARTWORK_H
 
 #include "util.h"
+#include "artwork.h"
 #include <iostream>
+#include <string>
 #include <windows.h>
 
 
-/**
- * @brief Displays an ascii art title
- *
- */
-void splashScreen();
+extern std::string bookshelfFull;
+extern std::string bookshelf1;
+extern std::string bookshelf2;
+extern std::string bookshelf3;
+extern std::string bookshelf4;
+extern std::string bookshelf5;
+extern std::string bookshelf6;
+extern std::string bookshelf7;
+extern std::string bookshelf8;
+extern std::string bookshelf9;
 
 #endif

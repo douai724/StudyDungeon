@@ -58,7 +58,7 @@ const std::string _ESC{"\x1b"};
  * will be interpreted by the console to display colour and formatting
  *
  */
-void enableVirtualTerminal();
+bool enableVirtualTerminal();
 
 
 /**
@@ -125,6 +125,11 @@ std::string convertFileToANSI(std::string filename);
 
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt);
 
+std::string getRandomPositiveQuote();
+
+std::string getRandomEncouragingQuote();
+
 std::string getRandomPhrase();
+
 
 #endif

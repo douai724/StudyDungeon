@@ -22,12 +22,18 @@
 class MainMenuScene : public ConsoleUI::Scene
 {
 public:
+    
+    void Scene::setStaticDrawn(bool staticDrawn) override
+    {
+        m_staticDrawn = staticDrawn;
+    }
+
     MainMenuScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> openFibonacciScene,
                   std::function<void()> openHowToScene,
                   std::function<void()> openBrowseDecks,
                   std::function<void()> openEditDecks)
-        : m_uiManager(uiManager)
+        : m_uiManager(uiManager), m_needsRedraw(true)
     {
         createMainMenu(openFibonacciScene, openHowToScene, openBrowseDecks, openEditDecks);
 
@@ -93,12 +99,13 @@ public:
                         std::function<void()> openEditDecks)
 
     {
+        m_uiManager.clearMenu("main");
         auto &menu = m_uiManager.createMenu("main", false);
-        menu.addButton("Begin Study", openBrowseDecks);
-        menu.addButton("Edit Decks", openEditDecks);
-        menu.addButton("How To Play", openHowToScene);
-        menu.addButton("Fibonacci Sequence", openFibonacciScene);
-        menu.addButton("Exit", []() {
+        menu.addButton("   Begin Study   ", openBrowseDecks);
+        menu.addButton("   Edit Decks    ", openEditDecks);
+        menu.addButton("   How To Play   ", openHowToScene);
+        menu.addButton("    Fibonacci    ", openFibonacciScene);
+        menu.addButton("      Exit       ", []() {
             clearScreen();
             exit(0);
         });
@@ -114,36 +121,54 @@ public:
 
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override
     {
-        window->clear();
-        window->drawBorder();
+        if (!m_staticDrawn) {
+            window->clear();
+            window->drawBorder();
 
-        // Draw the ASCII art
-        window->drawAsciiArt("other_menu",
-                             ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 5,
-                             window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight());
-        window->drawAsciiArt("main_menu",
-                             (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2,
-                             4);
+            // Draw the ASCII art
+            int otherMenuArtX = ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 3;
+            int otherMenuArtY = window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight();
+            int mainMenuArtX = (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2;
+            int mainMenuArtY = 4;
 
+            window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
+            window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
 
-        // Calculate total width of menu buttons
+            m_staticDrawn = true;
+        }
+
+        if (!m_needsRedraw) {
+            return;
+        }
+
+        // Clear only the menu area
         auto &menu = m_uiManager.getMenu("main");
-        int maxMenuWidth = menu.getMaxWidth();
+        int menuX = (window->getSize().X - menu.getMaxWidth()) / 2;
+        int menuY = 20;
+        int menuWidth = menu.getMaxWidth() - 1;
+        int menuHeight = menu.getButtonCount();
 
-        // Calculate starting X position for centered menu
-        int menuX = (window->getSize().X - maxMenuWidth) / 2;
-        int menuY = 20; // Adjust the Y position as needed
+        // Draw a filled box to clear the menu area
+        for (int i = menuY - 1; i < menuY + menuHeight + 1; ++i) {
+            window->drawText(std::string(menuWidth + 2, ' '), menuX - 1, i);
+        }
 
+        // Draw the menu
         menu.draw(menuX, menuY);
+
+        m_needsRedraw = false;
     }
 
     void handleInput() override
     {
         m_uiManager.getMenu("main").handleInput();
+        m_needsRedraw = true;
     }
 
 private:
     ConsoleUI::UIManager &m_uiManager;
+    bool m_needsRedraw;
+    bool m_staticDrawn = false;
 };
 
 int main()
@@ -152,6 +177,7 @@ int main()
     int session_start{};
     //int fc_hand_limit{15};
     enableVirtualTerminal();
+    ShowConsoleCursor(false);
     try
     {
         ConsoleUI::UIManager uiManager;
@@ -176,51 +202,53 @@ int main()
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(gameScene); });
 
-        // Create BrowseDecksScene
-        auto createBrowseDecksScene = [&]() {
-            browseDecksScene = std::make_shared<FlashcardApp::BrowseDecksScene>(
-                uiManager,
-                [&]() { uiManager.setCurrentScene(mainMenuScene); },
-                [&](const FlashCardDeck &deck) {
-                    flashcardScene = std::make_shared<FlashcardApp::FlashcardScene>(
-                        uiManager,
-                        deck,
-                        [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                        [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                        [&](const std::vector<int> &difficultyCount) {
-                            resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
-                                uiManager,
-                                difficultyCount,
-                                [&]() { uiManager.setCurrentScene(mainMenuScene); },
-                                [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                                [&]() { uiManager.setCurrentScene(gameScene); });
-                            uiManager.setCurrentScene(resultsScene);
-                        });
-                    uiManager.setCurrentScene(flashcardScene);
-                });
-        };
-
-        createBrowseDecksScene(); // Create initial BrowseDecksScene
-
-        // Create editDecksScene
-        editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
+    // Create BrowseDecksScene
+    auto createBrowseDecksScene = [&]() {
+        browseDecksScene = std::make_shared<FlashcardApp::BrowseDecksScene>(
             uiManager,
-            [&]() {
-                createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
-                mainMenuScene->createMainMenu( // Recreate main menu buttons
-                    [&]() { uiManager.setCurrentScene(fibonacciScene); },
-                    [&]() { uiManager.setCurrentScene(howToScene); },
+            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+            [&](const FlashCardDeck &deck) {
+                flashcardScene = std::make_shared<FlashcardApp::FlashcardScene>(
+                    uiManager,
+                    deck,
                     [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                    [&]() { uiManager.setCurrentScene(editDecksScene); });
-                uiManager.setCurrentScene(mainMenuScene);
-            },
-            [&](FlashCardDeck &deck) {
-                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
-                    uiManager.setCurrentScene(editDecksScene);
-                });
-                uiManager.setCurrentScene(editFlashcardScene);
+                    [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                    [&](const std::vector<int> &difficultyCount) {
+                        resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
+                            uiManager,
+                            difficultyCount,
+                            [&]() { uiManager.setCurrentScene(mainMenuScene); },
+                            [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                            [&]() { uiManager.setCurrentScene(gameScene); });
+                        uiManager.setCurrentScene(resultsScene);
+                    });
+                flashcardScene->setStaticDrawn(false); // Add this line
+                uiManager.setCurrentScene(flashcardScene);
             });
+        browseDecksScene->setStaticDrawn(false); // Add this line
+    };
 
+    createBrowseDecksScene(); // Create initial BrowseDecksScene
+
+    // Create editDecksScene
+    editDecksScene = std::make_shared<FlashcardEdit::EditDeckScene>(
+        uiManager,
+        [&]() {
+            createBrowseDecksScene();      // Reload BrowseDecksScene when going back from EditDeckScene
+            mainMenuScene->createMainMenu( // Recreate main menu buttons
+                [&]() { uiManager.setCurrentScene(fibonacciScene); },
+                [&]() { uiManager.setCurrentScene(howToScene); },
+                [&]() { uiManager.setCurrentScene(browseDecksScene); },
+                [&]() { uiManager.setCurrentScene(editDecksScene); });
+            uiManager.setCurrentScene(mainMenuScene);
+        },
+        [&](FlashCardDeck &deck) {
+            auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
+                uiManager.setCurrentScene(editDecksScene);
+            });
+            editFlashcardScene->setStaticDrawn(false); // Add this line
+            uiManager.setCurrentScene(editFlashcardScene);
+        });
 
         // Create HowToScene
         howToScene = std::make_shared<HowToScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });
@@ -237,6 +265,8 @@ int main()
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(editDecksScene); });
 
+
+
         // Set initial scene
         uiManager.setCurrentScene(mainMenuScene);
 
@@ -249,6 +279,7 @@ int main()
                 uiManager.update();
                 uiManager.render();
                 uiManager.handleInput();
+                uiManager.checkWindowResize();
 
                 // // Check for exit condition (e.g., a specific key press)
                 // if (_kbhit())
@@ -260,7 +291,7 @@ int main()
                 //     }
                 // }
 
-                Sleep(10);
+                Sleep(50);
             }
             catch (const std::exception &e)
             {

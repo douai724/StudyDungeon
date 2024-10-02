@@ -13,6 +13,8 @@
 
 #include "deck.h"
 #include "menu.h"
+#include "artwork.h"
+
 #include <functional>
 #include <memory>
 #include <vector>
@@ -69,6 +71,11 @@ public:
      */
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override;
+
+    void drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window);
+
+
 private:
     ConsoleUI::UIManager &m_uiManager;                             ///< Reference to the UI manager.
     std::function<void()> m_goBack;                                ///< Function to return to the previous scene.
@@ -78,6 +85,10 @@ private:
     int m_currentPage;                                             ///< Current page number for deck content display.
     int m_maxCardsPerPage;                                         ///< Maximum number of cards displayed per page.
     bool m_needsRedraw;                                            ///< Flag indicating if the scene needs redrawing.
+
+    bool m_staticDrawn = false;
+    int m_prevBookshelfIndex = -1;
+    bool m_paging = false;
 
     /**
      * @brief Loads all flashcard decks from the file system.
@@ -158,6 +169,8 @@ public:
      */
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override;
+
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     FlashCardDeck &m_deck;             ///< Reference to the flashcard deck being edited.
@@ -166,6 +179,8 @@ private:
     int m_currentPage;                 ///< Current page number for flashcard list display.
     int m_maxCardsPerPage;             ///< Maximum number of flashcards displayed per page.
     bool m_needsRedraw;                ///< Flag indicating if the scene needs redrawing.
+
+    bool m_staticDrawn = false;
 
     /**
      * @brief Edits the currently selected flashcard.

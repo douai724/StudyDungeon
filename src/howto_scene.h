@@ -51,9 +51,13 @@ public:
     void init();
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override;
+
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     std::function<void()> m_goBack;    ///< function to return to the previous scene
+
+    bool m_staticDrawn = false;
 };
 
 #endif // HOWTO_SCENE_H

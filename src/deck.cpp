@@ -262,12 +262,12 @@ bool writeFlashCardDeckWithChecks(const FlashCardDeck &deck, fs::path filename, 
 
 std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
 {
-    std::cout << deck_dir_path << std::endl;
+    //std::cout << deck_dir_path << std::endl;
     std::vector<FlashCardDeck> deck_array;
     // Check the deck directory exists
     if (fs::exists(deck_dir_path) && fs::is_directory(deck_dir_path))
     {
-        std::cout << deck_dir_path << " is a directory" << std::endl;
+        //std::cout << deck_dir_path << " is a directory" << std::endl;
         // list out the contents of the directory
         for (const auto &entry : fs::directory_iterator(deck_dir_path))
         {

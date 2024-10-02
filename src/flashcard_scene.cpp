@@ -335,9 +335,9 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
         window->drawCenteredText("Question:", 4);
         window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
-        window->drawText("Time remaining: " + std::to_string(m_settings.getStudyDurationMin()) + "min",
-                         2,
-                         window->getSize().Y - 4);
+        int min_remaining = timeRemainingMins(m_settings.getSessionStart(), m_settings.getStudyDurationMin());
+        window->drawText("Time remaining: " + std::to_string(min_remaining) + "min", 2, window->getSize().Y - 4);
+
 
         if (m_showAnswer)
         {

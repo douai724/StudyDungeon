@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">02b6a5a</span>
+   &#160;<span id="projectnumber">6e5927d</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -68,7 +68,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">ConsoleUI::UIManager Class Reference</div>  </div>
 </div><!--header-->
@@ -109,6 +110,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearAllMenus</b> ()<
 <tr class="memitem:a853ab80a6262de5c6d8b3b72bb38f9cc"><td class="memItemLeft" align="right" valign="top"><a id="a853ab80a6262de5c6d8b3b72bb38f9cc"></a>
 <a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>createAsciiArt</b> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;artLines, int x=-1, int y=-1)</td></tr>
 <tr class="separator:a853ab80a6262de5c6d8b3b72bb38f9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae643d005f38b648656dedb5b87d07e2e"><td class="memItemLeft" align="right" valign="top"><a id="ae643d005f38b648656dedb5b87d07e2e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>checkWindowResize</b> ()</td></tr>
+<tr class="separator:ae643d005f38b648656dedb5b87d07e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb14c14f35ae83108b7bccc029f2cf3"><td class="memItemLeft" align="right" valign="top"><a id="aefb14c14f35ae83108b7bccc029f2cf3"></a>
+std::vector&lt; std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getScenes</b> ()</td></tr>
+<tr class="separator:aefb14c14f35ae83108b7bccc029f2cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:af6df8d2a0c4c8d290123b5e093128f2a"><td class="memItemLeft" align="right" valign="top"><a id="af6df8d2a0c4c8d290123b5e093128f2a"></a>
+std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_window</b></td></tr>
+<tr class="separator:af6df8d2a0c4c8d290123b5e093128f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f1e6ac266bbea30cc7dbf4411dc975d"><td class="memItemLeft" align="right" valign="top"><a id="a9f1e6ac266bbea30cc7dbf4411dc975d"></a>
+std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_currentScene</b></td></tr>
+<tr class="separator:a9f1e6ac266bbea30cc7dbf4411dc975d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcd31259265d57494bd507f3c93490f"><td class="memItemLeft" align="right" valign="top"><a id="adbcd31259265d57494bd507f3c93490f"></a>
+std::unordered_map&lt; std::string, <a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_menus</b></td></tr>
+<tr class="separator:adbcd31259265d57494bd507f3c93490f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>

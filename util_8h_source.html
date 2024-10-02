@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">02b6a5a</span>
+   &#160;<span id="projectnumber">6e5927d</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">   53</a></span>&#160;<span class="keyword">const</span> std::string <a class="code" href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">_ESC</a>{<span class="stringliteral">&quot;\x1b&quot;</span>};</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// const std::string _ESC {&quot;\033&quot;}; // ansi escape code</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a18435a43a5601b8dfd6f366fb2653608">enableVirtualTerminal</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a94f91e485673146337e031d187b32dcd">enableVirtualTerminal</a>();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;std::filesystem::path getAppPath();</div>
@@ -134,27 +134,32 @@ $(function() {
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;std::vector&lt;std::string&gt; convertAsciiArtToLines(<span class="keyword">const</span> std::string &amp;asciiArt);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;std::string getRandomPhrase();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;std::string getRandomPositiveQuote();</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="autil_8h_html_a17bedbeaade121b1157c8042c00f5da6"><div class="ttname"><a href="util_8h.html#a17bedbeaade121b1157c8042c00f5da6">time_elapsed</a></div><div class="ttdeci">bool time_elapsed(const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, int &amp;duration_secs)</div><div class="ttdoc">Determines if the number of seconds has elapased since a start time.</div><div class="ttdef"><b>Definition:</b> util.cpp:71</div></div>
-<div class="ttc" id="autil_8h_html_a18435a43a5601b8dfd6f366fb2653608"><div class="ttname"><a href="util_8h.html#a18435a43a5601b8dfd6f366fb2653608">enableVirtualTerminal</a></div><div class="ttdeci">void enableVirtualTerminal()</div><div class="ttdoc">enables the virtual terminal processing mode</div><div class="ttdef"><b>Definition:</b> util.cpp:17</div></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;std::string getRandomEncouragingQuote();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;std::string getRandomPhrase();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="autil_8h_html_a17bedbeaade121b1157c8042c00f5da6"><div class="ttname"><a href="util_8h.html#a17bedbeaade121b1157c8042c00f5da6">time_elapsed</a></div><div class="ttdeci">bool time_elapsed(const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, int &amp;duration_secs)</div><div class="ttdoc">Determines if the number of seconds has elapased since a start time.</div><div class="ttdef"><b>Definition:</b> util.cpp:53</div></div>
 <div class="ttc" id="autil_8h_html_a3ac06bf7b23f28c5b7425c87d56868a3"><div class="ttname"><a href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">_ESC</a></div><div class="ttdeci">const std::string _ESC</div><div class="ttdef"><b>Definition:</b> util.h:53</div></div>
-<div class="ttc" id="autil_8h_html_a44b530801f49c81b3f065ced260f6f0b"><div class="ttname"><a href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a></div><div class="ttdeci">bool yesNoPrompt()</div><div class="ttdoc">Prompts the user to enter [Yy] for yes and [Nn] for no.</div><div class="ttdef"><b>Definition:</b> util.cpp:122</div></div>
+<div class="ttc" id="autil_8h_html_a44b530801f49c81b3f065ced260f6f0b"><div class="ttname"><a href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a></div><div class="ttdeci">bool yesNoPrompt()</div><div class="ttdoc">Prompts the user to enter [Yy] for yes and [Nn] for no.</div><div class="ttdef"><b>Definition:</b> util.cpp:104</div></div>
 <div class="ttc" id="autil_8h_html_a5b210114c3cfba535f88360ecb1f5215"><div class="ttname"><a href="util_8h.html#a5b210114c3cfba535f88360ecb1f5215">_key_enter</a></div><div class="ttdeci">const int _key_enter</div><div class="ttdef"><b>Definition:</b> util.h:31</div></div>
 <div class="ttc" id="autil_8h_html_a5b45baf894ab1686f8fd40d909bb9127"><div class="ttname"><a href="util_8h.html#a5b45baf894ab1686f8fd40d909bb9127">_arrow_prefix</a></div><div class="ttdeci">const int _arrow_prefix</div><div class="ttdef"><b>Definition:</b> util.h:39</div></div>
 <div class="ttc" id="autil_8h_html_a5b52e02f4c33121f6ed4bce876c1f465"><div class="ttname"><a href="util_8h.html#a5b52e02f4c33121f6ed4bce876c1f465">_key_backspace</a></div><div class="ttdeci">const int _key_backspace</div><div class="ttdef"><b>Definition:</b> util.h:33</div></div>
-<div class="ttc" id="autil_8h_html_a7167f5c196fc5e167bfabde1a730e81d"><div class="ttname"><a href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">An alternative to system('pause')</div><div class="ttdef"><b>Definition:</b> util.cpp:79</div></div>
-<div class="ttc" id="autil_8h_html_a7a2da45e1167a22ea2d5497d1287446b"><div class="ttname"><a href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a></div><div class="ttdeci">void ShowConsoleCursor(bool showflag)</div><div class="ttdoc">hides or shows the cursor icon in the console</div><div class="ttdef"><b>Definition:</b> util.cpp:171</div></div>
+<div class="ttc" id="autil_8h_html_a7167f5c196fc5e167bfabde1a730e81d"><div class="ttname"><a href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">An alternative to system('pause')</div><div class="ttdef"><b>Definition:</b> util.cpp:61</div></div>
+<div class="ttc" id="autil_8h_html_a7a2da45e1167a22ea2d5497d1287446b"><div class="ttname"><a href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a></div><div class="ttdeci">void ShowConsoleCursor(bool showflag)</div><div class="ttdoc">hides or shows the cursor icon in the console</div><div class="ttdef"><b>Definition:</b> util.cpp:153</div></div>
 <div class="ttc" id="autil_8h_html_a7e87a78e3cea9942aa08c399036a7c0c"><div class="ttname"><a href="util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c">isTestMode</a></div><div class="ttdeci">bool isTestMode</div><div class="ttdef"><b>Definition:</b> util.cpp:15</div></div>
 <div class="ttc" id="autil_8h_html_a89f1eda03a4c53844413130a40239f7f"><div class="ttname"><a href="util_8h.html#a89f1eda03a4c53844413130a40239f7f">_key_esc</a></div><div class="ttdeci">const int _key_esc</div><div class="ttdef"><b>Definition:</b> util.h:35</div></div>
-<div class="ttc" id="autil_8h_html_a94327ce1292cf4bd069f00e1c4cc81dd"><div class="ttname"><a href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">convertFileToANSI</a></div><div class="ttdeci">std::string convertFileToANSI(std::string filename)</div><div class="ttdoc">Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each.</div><div class="ttdef"><b>Definition:</b> util.cpp:182</div></div>
+<div class="ttc" id="autil_8h_html_a94327ce1292cf4bd069f00e1c4cc81dd"><div class="ttname"><a href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">convertFileToANSI</a></div><div class="ttdeci">std::string convertFileToANSI(std::string filename)</div><div class="ttdoc">Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each.</div><div class="ttdef"><b>Definition:</b> util.cpp:164</div></div>
+<div class="ttc" id="autil_8h_html_a94f91e485673146337e031d187b32dcd"><div class="ttname"><a href="util_8h.html#a94f91e485673146337e031d187b32dcd">enableVirtualTerminal</a></div><div class="ttdeci">bool enableVirtualTerminal()</div><div class="ttdoc">enables the virtual terminal processing mode</div><div class="ttdef"><b>Definition:</b> util.cpp:17</div></div>
 <div class="ttc" id="autil_8h_html_a9786c183af973fd8b5088123c8baaab2"><div class="ttname"><a href="util_8h.html#a9786c183af973fd8b5088123c8baaab2">_key_right</a></div><div class="ttdeci">const int _key_right</div><div class="ttdef"><b>Definition:</b> util.h:49</div></div>
 <div class="ttc" id="autil_8h_html_aa6eb11398dc1edca8d33026c106e4786"><div class="ttname"><a href="util_8h.html#aa6eb11398dc1edca8d33026c106e4786">_numlock</a></div><div class="ttdeci">const int _numlock</div><div class="ttdef"><b>Definition:</b> util.h:41</div></div>
 <div class="ttc" id="autil_8h_html_ad14f2c10895aad2c35b31c024cd1aba9"><div class="ttname"><a href="util_8h.html#ad14f2c10895aad2c35b31c024cd1aba9">_key_left</a></div><div class="ttdeci">const int _key_left</div><div class="ttdef"><b>Definition:</b> util.h:47</div></div>
 <div class="ttc" id="autil_8h_html_ad182ff2b21290c1b2aa16d26e02d9d99"><div class="ttname"><a href="util_8h.html#ad182ff2b21290c1b2aa16d26e02d9d99">_key_down</a></div><div class="ttdeci">const int _key_down</div><div class="ttdef"><b>Definition:</b> util.h:45</div></div>
 <div class="ttc" id="autil_8h_html_ad3f447306385c257fda0dd4982ab76fa"><div class="ttname"><a href="util_8h.html#ad3f447306385c257fda0dd4982ab76fa">_key_space</a></div><div class="ttdeci">const int _key_space</div><div class="ttdef"><b>Definition:</b> util.h:37</div></div>
-<div class="ttc" id="autil_8h_html_afa7202e3936e1663f0e361cace941194"><div class="ttname"><a href="util_8h.html#afa7202e3936e1663f0e361cace941194">isValidDeckFileName</a></div><div class="ttdeci">bool isValidDeckFileName(std::string name)</div><div class="ttdoc">Checks if name for deckfile meets naming requirements.</div><div class="ttdef"><b>Definition:</b> util.cpp:145</div></div>
+<div class="ttc" id="autil_8h_html_afa7202e3936e1663f0e361cace941194"><div class="ttname"><a href="util_8h.html#afa7202e3936e1663f0e361cace941194">isValidDeckFileName</a></div><div class="ttdeci">bool isValidDeckFileName(std::string name)</div><div class="ttdoc">Checks if name for deckfile meets naming requirements.</div><div class="ttdef"><b>Definition:</b> util.cpp:127</div></div>
 <div class="ttc" id="autil_8h_html_afec13bde649713ed34add93441d3a02d"><div class="ttname"><a href="util_8h.html#afec13bde649713ed34add93441d3a02d">_key_up</a></div><div class="ttdeci">const int _key_up</div><div class="ttdef"><b>Definition:</b> util.h:43</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

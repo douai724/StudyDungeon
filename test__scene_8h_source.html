@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">02b6a5a</span>
+   &#160;<span id="projectnumber">6e5927d</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -91,24 +91,27 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::function&lt;void()&gt; m_goBack;    </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber1;   </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber2;   </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> resetFibonacci();  </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> updateFibonacci(); </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> setStaticDrawn(<span class="keywordtype">bool</span> staticDrawn) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::function&lt;void()&gt; m_goBack;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber1;   </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> m_fibNumber2;   </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> resetFibonacci();  </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> updateFibonacci(); </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// FIBONACCI_SCENE_H</span></div>
-<div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdef"><b>Definition:</b> menu.h:122</div></div>
-<div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdef"><b>Definition:</b> menu.h:132</div></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span> m_staticDrawn = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// FIBONACCI_SCENE_H</span></div>
+<div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdef"><b>Definition:</b> menu.h:134</div></div>
+<div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdef"><b>Definition:</b> menu.h:145</div></div>
 <div class="ttc" id="aclassFibonacciScene_html"><div class="ttname"><a href="classFibonacciScene.html">FibonacciScene</a></div><div class="ttdoc">Class for a scene which the user can simulate the fibonacci sequence.</div><div class="ttdef"><b>Definition:</b> test_scene.h:25</div></div>
 <div class="ttc" id="aclassFibonacciScene_html_a442e5bd252f791715d2b54496613749c"><div class="ttname"><a href="classFibonacciScene.html#a442e5bd252f791715d2b54496613749c">FibonacciScene::FibonacciScene</a></div><div class="ttdeci">FibonacciScene(ConsoleUI::UIManager &amp;uiManager, std::function&lt; void()&gt; goBack)</div><div class="ttdoc">Construct a new Fibonacci Scene object.</div><div class="ttdef"><b>Definition:</b> test_scene.cpp:14</div></div>
 <div class="ttc" id="aclassFibonacciScene_html_a59e8011a9948f0a8c89de440ea715e52"><div class="ttname"><a href="classFibonacciScene.html#a59e8011a9948f0a8c89de440ea715e52">FibonacciScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">function for continuous updates to the program state seperate from rendering and input handling</div><div class="ttdef"><b>Definition:</b> test_scene.cpp:27</div></div>
-<div class="ttc" id="aclassFibonacciScene_html_a6eaa90ab8d38edd5b284ba8b75158e3b"><div class="ttname"><a href="classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b">FibonacciScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">renders the scene on the console window</div><div class="ttdef"><b>Definition:</b> test_scene.cpp:32</div></div>
+<div class="ttc" id="aclassFibonacciScene_html_a6eaa90ab8d38edd5b284ba8b75158e3b"><div class="ttname"><a href="classFibonacciScene.html#a6eaa90ab8d38edd5b284ba8b75158e3b">FibonacciScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">renders the scene on the console window</div><div class="ttdef"><b>Definition:</b> test_scene.cpp:36</div></div>
 <div class="ttc" id="aclassFibonacciScene_html_ad6c46eed19a1a7dfd9c31d781aa96b84"><div class="ttname"><a href="classFibonacciScene.html#ad6c46eed19a1a7dfd9c31d781aa96b84">FibonacciScene::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">function for initialize the Scene</div><div class="ttdef"><b>Definition:</b> test_scene.cpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

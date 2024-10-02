@@ -55,11 +55,17 @@ public:
     void resetDefault();
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override
+    {
+        m_staticDrawn = staticDrawn;
+    }
+
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     int m_card_limit;                  ///< max flashcards per round
     int m_study_min;                   ///< limit on study duration studying flashcards
     std::function<void()> m_goBack;    ///< function to return to the previous scene
+    bool m_staticDrawn = false;
 };
 
 #endif // SETTINGS_SCENE_H

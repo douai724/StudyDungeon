@@ -104,16 +104,6 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
    ConsoleUI::AsciiArt librarianArt2("lib2", librarianPointingLines, 0, 0);
 
 
-
-   uiManager.getWindow()->addAsciiArt(librarianArt);
-   uiManager.getWindow()->addAsciiArt(librarianArt2);
-   
-
-
-    std::vector<std::string> librarianLines = convertAsciiArtToLines(librarian);
-    std::vector<std::string> librarianPointingLines = convertAsciiArtToLines(librarianPointing);
-    ConsoleUI::AsciiArt librarianArt("lib1", librarianLines, 0, 0);
-    ConsoleUI::AsciiArt librarianArt2("lib2", librarianPointingLines, 0, 0);
     uiManager.getWindow()->addAsciiArt(librarianArt);
     uiManager.getWindow()->addAsciiArt(librarianArt2);
 }

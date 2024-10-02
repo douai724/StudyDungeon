@@ -127,8 +127,7 @@ public:
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
-                   std::function<void(const std::vector<int> &)> showResults,
-                   StudySettings &studySettings);
+                   std::function<void(const std::vector<int> &)> showResults);
     /**
      * @brief Initialize the scene.
      *

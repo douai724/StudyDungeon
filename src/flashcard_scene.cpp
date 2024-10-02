@@ -60,6 +60,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawBorder();
         window->drawCenteredText("Browse Decks", 2);
         window->drawText("Use Up/Down to navigate, Enter to select, Escape to go back", 2, window->getSize().Y - 2);
+        loadDecks();
         m_staticDrawn = true;
     }
 
@@ -220,10 +221,9 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
                                std::function<void()> goToDeckSelection,
-                               std::function<void(const std::vector<int> &)> showResults,
-                               StudySettings &studySettings)
+                               std::function<void(const std::vector<int> &)> showResults)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
-      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings)
+      m_currentCardIndex(0), m_showAnswer(false)
 {
 
     m_uiManager.clearMenu("difficulty");
@@ -258,6 +258,7 @@ void FlashcardScene::initializeCardOrder()
     }
 
     // Prioritize unseen cards
+    std::shuffle(unseenCards.begin(), unseenCards.end(), std::default_random_engine());
     m_cardOrder = unseenCards;
 
     // Calculate weights for seen cards
@@ -278,14 +279,20 @@ void FlashcardScene::initializeCardOrder()
     // Create discrete_distribution based on weights
     std::discrete_distribution<> dist(weights.begin(), weights.end());
 
+    std::mt19937 m_rng{std::random_device{}()};
     // Shuffle seen cards based on probability distribution
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(seenCards.begin(), seenCards.end(), std::default_random_engine(g));
-    std::sort(seenCards.begin(), seenCards.end(), [&](size_t a, size_t b) { return weights[a] > weights[b]; });
+    std::vector<size_t> shuffledSeenCards;
+    for (size_t i = 0; i < seenCards.size(); ++i) {
+        shuffledSeenCards.push_back(seenCards[dist(m_rng)]);
+    }
 
     // Append seen cards to the card order
-    m_cardOrder.insert(m_cardOrder.end(), seenCards.begin(), seenCards.end());
+    m_cardOrder.insert(m_cardOrder.end(), shuffledSeenCards.begin(), shuffledSeenCards.end());
+
+    // Limit the number of cards to study
+    if (m_cardOrder.size() > numCardsToStudy) {
+        m_cardOrder.resize(numCardsToStudy);
+    }
 }
 
 void FlashcardScene::update()

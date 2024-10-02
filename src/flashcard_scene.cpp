@@ -224,7 +224,7 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                std::function<void(const std::vector<int> &)> showResults,
                                StudySettings &studySettings)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
-      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings)
+      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings), m_lastAnswerDisplayed(false)
 {
 
     m_uiManager.clearMenu("difficulty");
@@ -301,6 +301,10 @@ void FlashcardScene::initializeCardOrder()
 void FlashcardScene::update()
 {
     // No continuous updates needed
+    m_uiManager.getWindow()->drawText(steadyClockToString(m_settings.getSessionStart()),
+                                      2,
+                                      m_uiManager.getWindow()->getSize().Y - 5);
+    Sleep(10);
 }
 
 void FlashcardScene::init()
@@ -315,40 +319,36 @@ void FlashcardScene::setStaticDrawn(bool staticDrawn)
 
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
-
-    if (!m_needsRedraw)
-        return;
-
-    window->clear();
-    window->drawBorder();
-    window->drawBox((window->getSize().X / 2) - 22, 6, 44, 7);
-
     if (!m_staticDrawn)
     {
         window->clear();
         window->drawBorder();
+        window->drawBox((window->getSize().X / 2) - 22, 6, 44, 7);
         m_staticDrawn = true;
     }
 
-    if (!m_needsRedraw)
-        return;
-
     int textBoxSize = 40;
-    // Clear the question area
-    for (int i = 7; i < 14; ++i)
-    {
-        window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
-    }
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
-        window->drawCenteredText("Question:", 4);
-        window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
+
+        // Update the question area only if the question has changed
+        if (m_lastQuestionDisplayed != card.question)
+        {
+            // Clear the question area
+            for (int i = 7; i < 14; ++i)
+            {
+                window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+            }
+            window->drawCenteredText("Question:", 4);
+            window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
+            m_lastQuestionDisplayed = card.question;
+        }
+
         int min_remaining = timeRemainingMins(m_settings.getSessionStart(), m_settings.getStudyDurationMin());
         window->drawText("Time remaining: " + std::to_string(min_remaining) + "min", 2, window->getSize().Y - 4);
         window->drawText(steadyClockToString(m_settings.getSessionStart()), 2, window->getSize().Y - 5);
-
 
         if (m_showAnswer)
         {
@@ -373,12 +373,17 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             }
             totalWidth -= 2; // Remove extra spacing after last button
             int menuX = (window->getSize().X - totalWidth) / 2;
-            menu.draw(menuX, window->getSize().Y * 2 / 3 + 2); // Move the buttons down by 2 lines
-            window->drawText("Use arrow keys to select difficulty, Enter to confirm", 2, window->getSize().Y - 2);
+            menu.draw(menuX, window->getSize().Y * 2 / 3 + 2);
         }
-        else
+        else if (m_lastAnswerDisplayed)
         {
+            // Clear the answer area if it was previously displayed
+            for (int i = (window->getSize().Y / 2); i < (window->getSize().Y / 2) + 7; ++i)
+            {
+                window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+            }
             window->drawCenteredText("Press SPACE to show answer", window->getSize().Y * 2 / 3);
+            m_lastAnswerDisplayed = false;
         }
 
         std::string progress =
@@ -389,8 +394,6 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     {
         window->drawCenteredText("All cards reviewed!", window->getSize().Y / 2);
     }
-
-    m_needsRedraw = false;
 }
 
 void FlashcardScene::handleInput()
@@ -431,6 +434,8 @@ void FlashcardScene::handleInput()
                 if (!m_showAnswer)
                 {
                     m_showAnswer = true;
+                    m_lastAnswerDisplayed = true;
+                    m_needsRedraw = true;
                 }
                 break;
             case _key_enter: // Enter
@@ -484,6 +489,7 @@ void FlashcardScene::nextCard()
 {
     m_currentCardIndex++;
     m_showAnswer = false;
+    m_lastAnswerDisplayed = false;
     m_needsRedraw = true;
     if (m_currentCardIndex >= m_cardOrder.size())
     {

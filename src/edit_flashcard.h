@@ -11,9 +11,9 @@
 #ifndef EDIT_DECK_SCENE_H
 #define EDIT_DECK_SCENE_H
 
+#include "artwork.h"
 #include "deck.h"
 #include "menu.h"
-#include "artwork.h"
 
 #include <functional>
 #include <memory>

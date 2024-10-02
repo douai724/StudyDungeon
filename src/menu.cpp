@@ -41,7 +41,7 @@ ConsoleWindow::ConsoleWindow() : m_width(0), m_height(0), m_textBoxCapacity(14)
 {
 
     setDefaultSize(1300, 740);
-    setConsoleWindowSize(m_defaultSize.X, m_defaultSize.Y); 
+    setConsoleWindowSize(m_defaultSize.X, m_defaultSize.Y);
     updateSize();
 }
 
@@ -92,7 +92,6 @@ void ConsoleWindow::drawText(const std::string &text, int x, int y)
     setConsoleCursorPosition(x, y);
 
     std::cout << text;
-
 }
 
 void ConsoleWindow::drawCenteredText(const std::string &text, int y)
@@ -222,7 +221,6 @@ void ConsoleWindow::drawWrappedText(const std::string &text, int x, int y, int w
 // Console buffering
 
 
-
 void ConsoleWindow::addAsciiArt(const AsciiArt &art)
 {
     m_asciiArts.push_back(art);
@@ -273,16 +271,17 @@ void ConsoleWindow::checkWindowResize(UIManager &uiManager)
 void ConsoleWindow::displayResizeWarning(UIManager &uiManager)
 {
     clearScreen();
-    uiManager.getWindow()->drawCenteredText("Warning: Window size has changed.", 18); 
+    uiManager.getWindow()->drawCenteredText("Warning: Window size has changed.", 18);
     uiManager.getWindow()->drawCenteredText("The new size may affect the app experience.", 19);
-    uiManager.getWindow()->drawCenteredText("Do you want to keep the new size (y) or revert to the default size (n)?", 20);
+    uiManager.getWindow()->drawCenteredText("Do you want to keep the new size (y) or revert to the default size (n)?",
+                                            20);
 
     while (true)
     {
         int ch = _getch();
         if (ch == 'y' || ch == 'Y')
         {
-            // Keep the new size, do nothing 
+            // Keep the new size, do nothing
             for (auto &scene : uiManager.getScenes())
             {
                 scene->setStaticDrawn(false);
@@ -297,7 +296,7 @@ void ConsoleWindow::displayResizeWarning(UIManager &uiManager)
             {
                 scene->setStaticDrawn(false);
             }
-            
+
             break;
         }
     }
@@ -397,9 +396,12 @@ void Button::draw(int x, int y, bool selected)
 {
     std::string border = selected ? "+" : " ";
     setConsoleCursorPosition(x, y);
-    if (selected) {
+    if (selected)
+    {
         std::cout << border + "[" << m_label << "]" << border;
-    } else {
+    }
+    else
+    {
         std::cout << border << _ESC + "[31;1;4m[" << m_label << "]" + _ESC + +"[0m" << border;
     }
 }
@@ -569,7 +571,10 @@ std::shared_ptr<ConsoleWindow> UIManager::getWindow()
 
 void UIManager::setCurrentScene(std::shared_ptr<Scene> scene)
 {
-    for (auto &scene : getScenes()) {scene->setStaticDrawn(false);}
+    for (auto &scene : getScenes())
+    {
+        scene->setStaticDrawn(false);
+    }
     m_currentScene = scene;
     m_scenes.push_back(scene);
     if (m_currentScene)
@@ -606,8 +611,10 @@ void UIManager::handleInput()
     }
 }
 
-void UIManager::checkWindowResize() {
-    if (m_window) {
+void UIManager::checkWindowResize()
+{
+    if (m_window)
+    {
         m_window->checkWindowResize(*this);
     }
 }

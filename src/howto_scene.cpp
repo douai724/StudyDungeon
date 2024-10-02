@@ -28,7 +28,8 @@ void HowToScene::update()
     // No continuous updates needed for this scene
 }
 
-void HowToScene::setStaticDrawn(bool staticDrawn) {
+void HowToScene::setStaticDrawn(bool staticDrawn)
+{
     m_staticDrawn = staticDrawn;
 }
 

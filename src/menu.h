@@ -3,6 +3,7 @@
 #define MENU_H
 
 #include <algorithm>
+#include <chrono>
 #include <conio.h>
 #include <functional>
 #include <iostream>
@@ -11,7 +12,6 @@
 #include <unordered_map>
 #include <vector>
 #include <windows.h>
-#include <chrono>
 
 namespace ConsoleUI
 {
@@ -79,8 +79,6 @@ private:
     std::vector<AsciiArt> m_asciiArts;
     COORD m_defaultSize;
     void displayResizeWarning(UIManager &uiManager);
-
-    
 };
 
 class Button
@@ -160,7 +158,11 @@ public:
     std::shared_ptr<ConsoleWindow> m_window;
     std::shared_ptr<Scene> m_currentScene;
     std::unordered_map<std::string, Menu> m_menus;
-    std::vector<std::shared_ptr<Scene>> &getScenes() {return m_scenes;}
+    std::vector<std::shared_ptr<Scene>> &getScenes()
+    {
+        return m_scenes;
+    }
+
 private:
     std::vector<std::shared_ptr<Scene>> m_scenes;
 };

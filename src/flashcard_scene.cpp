@@ -332,68 +332,76 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     {
         window->clear();
         window->drawBorder();
-        window->drawBox((window->getSize().X / 2) - 22, 6, 44, 7);
         m_staticDrawn = true;
+        m_needsRedraw = true;
     }
 
-    int textBoxSize = 40;
+    int textBoxWidth = 44;
+    int questionBoxHeight = 9;
+    int answerBoxHeight = 7;
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
         const auto &card = m_deck.cards[m_cardOrder[m_currentCardIndex]];
 
-        // Update the question area only if the question has changed
-        if (m_lastQuestionDisplayed != card.question)
+        if (m_needsRedraw)
         {
             // Clear the question area
-            for (int i = 7; i < 14; ++i)
+            for (int i = 6; i < 6 + questionBoxHeight; ++i)
             {
-                window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+                window->drawText(std::string(textBoxWidth, ' '), (window->getSize().X - textBoxWidth) / 2, i);
             }
-            window->drawCenteredText("Question:", 4);
-            window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
-            m_lastQuestionDisplayed = card.question;
-        }
 
-        int min_remaining = timeRemainingMins(m_settings.getSessionStart(), m_settings.getStudyDurationMin());
-        window->drawText("Time remaining: " + std::to_string(min_remaining) + "min", 2, window->getSize().Y - 4);
-        window->drawText(steadyClockToString(m_settings.getSessionStart()), 2, window->getSize().Y - 5);
+            // Draw the question box and text
+            window->drawBox((window->getSize().X - textBoxWidth) / 2, 6, textBoxWidth, questionBoxHeight);
+            window->drawCenteredText("Question:", 4);
+            window->drawWrappedText(card.question, (window->getSize().X - textBoxWidth) / 2 + 2, 8, textBoxWidth - 4);
+
+            m_needsRedraw = false;
+        }
 
         if (m_showAnswer)
         {
             // Clear the answer area
-            for (int i = (window->getSize().Y / 2); i < (window->getSize().Y / 2) + 7; ++i)
+            for (int i = window->getSize().Y / 2 - answerBoxHeight / 2; i < window->getSize().Y / 2 + answerBoxHeight / 2 + 2; ++i)
             {
-                window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+                window->drawText(std::string(textBoxWidth, ' '), (window->getSize().X - textBoxWidth) / 2, i);
             }
+
+            // Draw the answer box and text
+            window->drawBox((window->getSize().X - textBoxWidth) / 2,
+                            window->getSize().Y / 2 - answerBoxHeight / 2 + 2,
+                            textBoxWidth,
+                            answerBoxHeight);
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 3);
             window->drawWrappedText(card.answer,
-                                    (window->getSize().X / 2 - (textBoxSize / 2)),
-                                    window->getSize().Y / 2,
-                                    textBoxSize);
+                                    (window->getSize().X - textBoxWidth) / 2 + 2,
+                                    window->getSize().Y / 2 - answerBoxHeight / 2 + 4,
+                                    textBoxWidth - 4);
 
             auto &menu = m_uiManager.getMenu("difficulty");
-
-            // Calculate total width manually
             int totalWidth = 0;
             for (size_t i = 0; i < menu.getButtonCount(); ++i)
             {
                 totalWidth += menu.getButtonWidth(i) + 2;
             }
-            totalWidth -= 2; // Remove extra spacing after last button
+            totalWidth -= 2;
             int menuX = (window->getSize().X - totalWidth) / 2;
             menu.draw(menuX, window->getSize().Y * 2 / 3 + 2);
         }
-        else if (m_lastAnswerDisplayed)
+        else
         {
-            // Clear the answer area if it was previously displayed
-            for (int i = (window->getSize().Y / 2); i < (window->getSize().Y / 2) + 7; ++i)
+            // Clear the answer area and draw "Press SPACE to show answer"
+            for (int i = (window->getSize().Y * 2 / 3) - 1; i < (window->getSize().Y * 2 / 3) + 2; ++i)
             {
                 window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
             }
             window->drawCenteredText("Press SPACE to show answer", window->getSize().Y * 2 / 3);
-            m_lastAnswerDisplayed = false;
         }
+
+        int min_remaining = timeRemainingMins(m_settings.getSessionStart(), m_settings.getStudyDurationMin());
+        window->drawText("Time remaining: " + std::to_string(min_remaining) + "min", 2, window->getSize().Y - 4);
+        window->drawText(steadyClockToString(m_settings.getSessionStart()), 2, window->getSize().Y - 5);
 
         std::string progress =
             "Card " + std::to_string(m_currentCardIndex + 1) + " of " + std::to_string(m_cardOrder.size());
@@ -404,6 +412,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawCenteredText("All cards reviewed!", window->getSize().Y / 2);
     }
 }
+
 
 void FlashcardScene::handleInput()
 {

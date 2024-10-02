@@ -217,6 +217,7 @@ private:
 
     std::string m_lastQuestionDisplayed;
     bool m_lastAnswerDisplayed;
+    bool m_answerDrawn;
 };
 
 /**

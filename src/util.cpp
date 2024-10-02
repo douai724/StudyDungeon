@@ -14,32 +14,14 @@
 namespace fs = std::filesystem;
 bool isTestMode = false;
 
-void enableVirtualTerminal()
-{
-    // Get the console handle
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    if (hConsole == INVALID_HANDLE_VALUE)
-    {
-        std::cerr << "Error getting console handle" << std::endl;
-        return;
-    }
-
-    // Get current console mode
-    DWORD consoleMode;
-    if (!GetConsoleMode(hConsole, &consoleMode))
-    {
-        std::cerr << "Error getting console mode" << std::endl;
-        return;
-    }
-
-    // Enable the virtual terminal processing mode
-    consoleMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-    if (!SetConsoleMode(hConsole, consoleMode))
-    {
-        std::cerr << "Error setting console mode" << std::endl;
-        return;
-    }
+bool enableVirtualTerminal() {
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE) return false;
+    DWORD dwMode = 0;
+    if (!GetConsoleMode(hOut, &dwMode)) return false;
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    if (!SetConsoleMode(hOut, dwMode)) return false;
+    return true;
 }
 
 /**
@@ -215,6 +197,62 @@ std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
     }
 
     return lines;
+}
+
+std::string getRandomPositiveQuote()
+{
+    std::vector<std::pair<std::string, int>> phrases = {
+        {"You're on fire!", 20},
+        {"Brilliant work!", 20},
+        {"Nailed it!", 15},
+        {"You're a pro!", 15},
+        {"Impressive!", 10},
+        {"You're crushing it", 8},
+        {"Stellar job!", 6},
+        {"You're a genius!", 4},
+        {"Unstoppable!", 2}
+    };
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    
+    std::vector<int> weights;
+    for (const auto& pair : phrases)
+    {
+        weights.push_back(pair.second);
+    }
+    
+    std::discrete_distribution<> dist(weights.begin(), weights.end());
+
+    return phrases[dist(gen)].first;
+}
+
+std::string getRandomEncouragingQuote()
+{
+    std::vector<std::pair<std::string, int>> phrases = {
+        {"Keep going!", 20},
+        {"Don't give up!", 20},
+        {"You can do it!", 15},
+        {"Stay strong!", 15},
+        {"Almost there!", 10},
+        {"Believe in you!", 8},
+        {"Take a breath!", 6},
+        {"Progress counts!", 4},
+        {"Every try helps!", 2}
+    };
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    
+    std::vector<int> weights;
+    for (const auto& pair : phrases)
+    {
+        weights.push_back(pair.second);
+    }
+    
+    std::discrete_distribution<> dist(weights.begin(), weights.end());
+
+    return phrases[dist(gen)].first;
 }
 
 std::string getRandomPhrase()

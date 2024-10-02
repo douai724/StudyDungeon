@@ -81,10 +81,16 @@ public:
     void resetDefault();
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override
+    {
+        m_staticDrawn = staticDrawn;
+    }
+
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     StudySettings &m_settings;         ///< Reference to the study settings
     std::function<void()> m_goBack;    ///< function to return to the previous scene
+    bool m_staticDrawn = false;
 };
 
 #endif // SETTINGS_SCENE_H

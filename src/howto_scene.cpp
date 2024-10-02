@@ -28,6 +28,10 @@ void HowToScene::update()
     // No continuous updates needed for this scene
 }
 
+void HowToScene::setStaticDrawn(bool staticDrawn) {
+    m_staticDrawn = staticDrawn;
+}
+
 
 void HowToScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
@@ -64,12 +68,12 @@ A study session has 2 phases:
     }
 
 
-    // window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
+    window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 
 
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
-    m_uiManager.getMenu("howto").draw((windowSize.X - 30) / 2, windowSize.Y - 4); // Adjust 30 based on your menu width
+    m_uiManager.getMenu("howto").draw((windowSize.X) / 2 - 4, windowSize.Y - 7); // Adjust 30 based on your menu width
 }
 
 void HowToScene::handleInput()

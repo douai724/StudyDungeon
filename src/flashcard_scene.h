@@ -85,6 +85,10 @@ public:
      */
     void loadDecks();
 
+    void setStaticDrawn(bool staticDrawn) override;
+
+    void setDecksNeedReload(bool needReload) { m_decksNeedReload = needReload; }
+
 private:
     ConsoleUI::UIManager &m_uiManager;                     ///< Reference to the UI manager.
     std::vector<FlashCardDeck> m_decks;                    ///< Vector of loaded flashcard decks.
@@ -94,6 +98,10 @@ private:
     bool m_needsRedraw = true;                             ///< Flag indicating if the scene needs to be redrawn.
     int m_currentPage = 0;                                 ///< Current page number when viewing deck contents.
     int m_maxCardsPerPage = 0;                             ///< Maximum number of cards that can be displayed per page.
+
+    bool m_staticDrawn = false;
+    bool m_decksNeedReload = false;
+
 };
 
 /**
@@ -153,6 +161,11 @@ public:
      */
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override;
+
+    void setDecksNeedReload(bool needReload) { m_decksNeedReload = needReload; }
+
+
 private:
     /**
      * @brief Record the selected difficulty for the current flashcard.
@@ -167,6 +180,8 @@ private:
     // int flashcard_limit = 10;
     bool empty = false;
     StudySettings m_settings;
+
+    bool m_decksNeedReload = false;
 
 
     /**
@@ -188,6 +203,8 @@ private:
     std::function<void()> m_goBack;                 ///< Function to call when going back.
     std::function<void(const std::vector<int> &)> m_showResults; ///< Function to call when showing results.
     bool m_needsRedraw;                                          ///< Flag indicating if the scene needs to be redrawn.
+
+    bool m_staticDrawn = false;
     StudySettings m_studySetting;
 };
 
@@ -242,6 +259,8 @@ public:
      */
     void handleInput() override;
 
+    void setStaticDrawn(bool staticDrawn) override;
+
 private:
     ConsoleUI::UIManager &m_uiManager;         ///< Reference to the UI manager.
     std::vector<int> m_difficultyCount;        ///< Count of cards rated as Easy, Medium, Hard.
@@ -249,6 +268,9 @@ private:
     std::function<void()> m_goToDeckSelection; ///< Function to call when going to deck selection.
     std::function<void()> m_goToGame;          ///< Function to call when starting a new game.
     bool m_needsRedraw;                        ///< Flag indicating if the scene needs to be redrawn.
+    std::string phrase;
+
+    bool m_staticDrawn = false;
 };
 
 } // namespace FlashcardApp

@@ -11,12 +11,15 @@
 #include <unordered_map>
 #include <vector>
 #include <windows.h>
+#include <chrono>
 
 namespace ConsoleUI
 {
 
 void setConsoleCursorPosition(int x, int y);
 COORD getConsoleWindowSize();
+
+class UIManager;
 
 class AsciiArt
 {
@@ -44,18 +47,22 @@ class ConsoleWindow
 {
 public:
     ConsoleWindow();
+    virtual ~ConsoleWindow() = default;
     void updateSize();
     void drawBorder();
     void drawBox(int x, int y, size_t width, size_t height);
     void drawHorizontalLine(int x, int y, size_t length, char ch = '-');
     void drawVerticalLine(int x, int y, int length, char ch = '|');
     void drawCharacter(int x, int y, char ch);
-    void drawText(const std::string &text, int x, int y, bool highlight = false);
+    void drawText(const std::string &text, int x, int y);
     void drawCenteredText(const std::string &text, int y);
     std::string getLineWithAbort(int x, int y, int maxLength);
     std::string getLine(int x, int y, int maxLength = 0);
     void clear();
     COORD getSize() const;
+    void checkWindowResize(UIManager &uiManager);
+    void setDefaultSize(short width, short height);
+    void setConsoleWindowSize(short width, short height);
     void addTextToBox(const std::string &text);
     void drawTextBox(int x, int y, int width, int height);
     void addAsciiArt(const AsciiArt &art);
@@ -63,12 +70,17 @@ public:
     AsciiArt *getAsciiArtByName(const std::string &name);
     void drawWrappedText(const std::string &text, int x, int y, int width);
 
+
 private:
     size_t m_width;
     size_t m_height;
     std::vector<std::string> m_textBox;
     int m_textBoxCapacity;
     std::vector<AsciiArt> m_asciiArts;
+    COORD m_defaultSize;
+    void displayResizeWarning(UIManager &uiManager);
+
+    
 };
 
 class Button
@@ -126,6 +138,7 @@ public:
     virtual void init() = 0;
     virtual void render(std::shared_ptr<ConsoleWindow> window) = 0;
     virtual void handleInput() = 0;
+    virtual void setStaticDrawn(bool staticDrawn) = 0;
 };
 
 class UIManager
@@ -143,11 +156,13 @@ public:
     void clearMenu(const std::string &name);
     void clearAllMenus();
     AsciiArt createAsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x = -1, int y = -1);
-
-private:
+    void checkWindowResize();
     std::shared_ptr<ConsoleWindow> m_window;
     std::shared_ptr<Scene> m_currentScene;
     std::unordered_map<std::string, Menu> m_menus;
+    std::vector<std::shared_ptr<Scene>> &getScenes() {return m_scenes;}
+private:
+    std::vector<std::shared_ptr<Scene>> m_scenes;
 };
 
 } // namespace ConsoleUI

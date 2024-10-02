@@ -11,6 +11,7 @@
 #include "edit_flashcard.h"
 #include "deck.h"
 #include "util.h"
+#include "artwork.h"
 #include <algorithm>
 #include <conio.h>
 #include <iostream>
@@ -92,12 +93,17 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
   |___\_/   /________//   ________         /  / ||_|_|_|
   |___ /   (|________/   |\_______\       /  /| |______|
       /                  \|________)     /  / | |
-   )";
+   )"; 
 
-    std::vector<std::string> librarianLines = convertAsciiArtToLines(librarian);
-    std::vector<std::string> librarianPointingLines = convertAsciiArtToLines(librarianPointing);
-    ConsoleUI::AsciiArt librarianArt("lib1", librarianLines, 0, 0);
-    ConsoleUI::AsciiArt librarianArt2("lib2", librarianPointingLines, 0, 0);
+   
+   
+
+   std::vector<std::string> librarianLines = convertAsciiArtToLines(librarian);
+   std::vector<std::string> librarianPointingLines = convertAsciiArtToLines(librarianPointing);
+   ConsoleUI::AsciiArt librarianArt("lib1", librarianLines, 0, 0);
+   ConsoleUI::AsciiArt librarianArt2("lib2", librarianPointingLines, 0, 0);
+
+
     uiManager.getWindow()->addAsciiArt(librarianArt);
     uiManager.getWindow()->addAsciiArt(librarianArt2);
 }
@@ -112,19 +118,33 @@ void EditFlashcardScene::update()
     // No continuous updates needed
 }
 
+void EditFlashcardScene::setStaticDrawn(bool staticDrawn) {
+    m_staticDrawn = staticDrawn;
+}
+
 void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    if (!m_staticDrawn)
+    {
+        window->clear();
+        window->drawBorder();
+        window->drawCenteredText("Edit Flashcards - " + m_deck.name, 2);
+        window->drawAsciiArt("lib1", (window->getSize().X - window->getAsciiArtByName("lib1")->getWidth()) - 7, 6);
+        m_staticDrawn = true;
+    }
+
     if (!m_needsRedraw)
         return;
-
-    window->clear();
-    window->drawBorder();
-    window->drawCenteredText("Edit Flashcards - " + m_deck.name, 2);
-    window->drawAsciiArt("lib1", (window->getSize().X - window->getAsciiArtByName("lib1")->getWidth()) - 7, 6);
 
     int cardListY = 4;
     m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 3; // 3 lines per card, leave space for instructions
     int totalPages = (static_cast<int>(m_deck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+
+     // Clear the entire card list area
+    for (int i = cardListY; i < window->getSize().Y - 3; ++i)
+    {
+        window->drawText(std::string(window->getSize().X / 2, ' '), 2, i);
+    }
 
     window->drawText("Flashcards (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) + "):",
                      2,
@@ -143,7 +163,6 @@ void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window
         window->drawText("---", 2, yOffset + 3);
     }
 
-
     // Draw instructions
     window->drawText("Up/Down: Navigate Cards, Left/Right: Change Page, Enter: Edit Card, A: Add Card, D: Delete Card, "
                      "Esc: Back to Decks",
@@ -152,6 +171,7 @@ void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window
 
     m_needsRedraw = false;
 }
+
 
 void EditFlashcardScene::handleInput()
 {
@@ -167,21 +187,37 @@ void EditFlashcardScene::handleInput()
             {
             case _key_up: // Up arrow
                 if (m_selectedCardIndex > 0)
+                {
                     m_selectedCardIndex--;
+                    m_needsRedraw = true;
+                }
                 break;
             case _key_down: // Down arrow
                 if (m_selectedCardIndex < m_deck.cards.size() - 1)
+                {
                     m_selectedCardIndex++;
+                    m_needsRedraw = true;
+                }
                 break;
             case _key_left: // Left arrow
                 if (m_currentPage > 0)
+                {
                     m_currentPage--;
+                    m_selectedCardIndex = m_currentPage * m_maxCardsPerPage;
+                
+                    m_needsRedraw = true;
+                }
                 break;
             case _key_right: // Right arrow
             {
                 int totalPages = (static_cast<int>(m_deck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                 if (m_currentPage < totalPages - 1)
+                {
                     m_currentPage++;
+                    m_selectedCardIndex = m_currentPage * m_maxCardsPerPage;
+                    
+                    m_needsRedraw = true;
+                }
             }
             break;
             default:
@@ -226,7 +262,7 @@ void EditFlashcardScene::editSelectedCard()
 
     auto &card = m_deck.cards[m_selectedCardIndex];
     auto window = m_uiManager.getWindow();
-
+    m_staticDrawn = false; 
     window->clear();
     window->drawBorder();
     window->drawAsciiArt("lib1", (window->getSize().X - window->getAsciiArtByName("lib1")->getWidth()) - 7, 6);
@@ -332,6 +368,7 @@ void EditFlashcardScene::editSelectedCard()
 void EditFlashcardScene::addNewCard()
 {
     auto window = m_uiManager.getWindow();
+    m_staticDrawn = false;
     window->clear();
     window->drawBorder();
     window->drawAsciiArt("lib1", (window->getSize().X - window->getAsciiArtByName("lib1")->getWidth()) - 7, 6);
@@ -424,6 +461,7 @@ void EditFlashcardScene::deleteSelectedCard()
         return;
 
     auto window = m_uiManager.getWindow();
+    m_staticDrawn = false;
     window->clear();
     window->drawBorder();
     window->drawCenteredText("Delete Card", 2);
@@ -479,6 +517,40 @@ EditDeckScene::EditDeckScene(ConsoleUI::UIManager &uiManager,
     : m_uiManager(uiManager), m_goBack(goBack), m_openEditFlashcardScene(openEditFlashcardScene),
       m_selectedDeckIndex(0), m_needsRedraw(true), m_currentPage(0), m_maxCardsPerPage(0)
 {
+    
+    std::vector<std::string> shelfFull = convertAsciiArtToLines(bookshelfFull);
+    std::vector<std::string> shelf1 = convertAsciiArtToLines(bookshelf1);
+    std::vector<std::string> shelf2 = convertAsciiArtToLines(bookshelf2);
+    std::vector<std::string> shelf3 = convertAsciiArtToLines(bookshelf3);
+    std::vector<std::string> shelf4 = convertAsciiArtToLines(bookshelf4);
+    std::vector<std::string> shelf5 = convertAsciiArtToLines(bookshelf5);
+    std::vector<std::string> shelf6 = convertAsciiArtToLines(bookshelf6);
+    std::vector<std::string> shelf7 = convertAsciiArtToLines(bookshelf7);
+    std::vector<std::string> shelf8 = convertAsciiArtToLines(bookshelf8);
+    std::vector<std::string> shelf9 = convertAsciiArtToLines(bookshelf9);
+
+    ConsoleUI::AsciiArt artShelfFull("bookfull", shelfFull, 0, 0);
+    ConsoleUI::AsciiArt artShelf1("book1", shelf1, 0, 0);
+    ConsoleUI::AsciiArt artShelf2("book2", shelf2, 0, 0);
+    ConsoleUI::AsciiArt artShelf3("book3", shelf3, 0, 0);
+    ConsoleUI::AsciiArt artShelf4("book4", shelf4, 0, 0);
+    ConsoleUI::AsciiArt artShelf5("book5", shelf5, 0, 0);
+    ConsoleUI::AsciiArt artShelf6("book6", shelf6, 0, 0);
+    ConsoleUI::AsciiArt artShelf7("book7", shelf7, 0, 0);
+    ConsoleUI::AsciiArt artShelf8("book8", shelf8, 0, 0);
+    ConsoleUI::AsciiArt artShelf9("book9", shelf9, 0, 0);
+
+    uiManager.getWindow()->addAsciiArt(artShelfFull);
+    uiManager.getWindow()->addAsciiArt(artShelf1);
+    uiManager.getWindow()->addAsciiArt(artShelf2);
+    uiManager.getWindow()->addAsciiArt(artShelf3);
+    uiManager.getWindow()->addAsciiArt(artShelf4);
+    uiManager.getWindow()->addAsciiArt(artShelf5);
+    uiManager.getWindow()->addAsciiArt(artShelf6);
+    uiManager.getWindow()->addAsciiArt(artShelf7);
+    uiManager.getWindow()->addAsciiArt(artShelf8);
+    uiManager.getWindow()->addAsciiArt(artShelf9);
+
     loadDecks();
 }
 
@@ -501,15 +573,58 @@ void EditDeckScene::update()
     // No continuous updates needed
 }
 
+void EditDeckScene::setStaticDrawn(bool staticDrawn) {
+    m_staticDrawn = staticDrawn;
+}
+
+void EditDeckScene::drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
+    {
+        std::vector<std::string> bookshelfOptions = {
+            "book1", "book2", "book3", "book4", "book5",
+            "book6", "book7", "book8", "book9"
+        };
+
+        std::string selectedBookshelf;
+        if (m_decks.empty() || m_selectedDeckIndex == 0)
+        {
+            selectedBookshelf = "bookfull";
+        }
+        else
+        {
+            int bookshelfIndex = 0;
+            if (bookshelfOptions.size() > 1 && m_paging)
+            {
+                do {
+                    bookshelfIndex = rand() % bookshelfOptions.size();
+                } while (bookshelfIndex == m_prevBookshelfIndex);
+            }
+
+            m_prevBookshelfIndex = bookshelfIndex;
+            selectedBookshelf = bookshelfOptions[bookshelfIndex];
+        }
+
+        window->drawAsciiArt(selectedBookshelf, 4, (window->getSize().Y - window->getAsciiArtByName("book1")->getHeight()) - 3);
+}
+
 void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    if (!m_staticDrawn)
+    {
+        window->clear();
+        window->drawBorder();
+        window->drawCenteredText("Edit Decks", 2);
+        m_staticDrawn = true;
+    }
+
     if (!m_needsRedraw)
         return;
 
-    window->clear();
-    window->drawBorder();
-    window->drawCenteredText("Edit Decks", 2);
-
+    
+    // Clear the deck list area
+    for (int i = 4; i < window->getSize().Y - 2; ++i)
+    {
+        window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+    }
     // Draw deck list
     int deckListY = 4;
     for (size_t i = 0; i < m_decks.size(); ++i)
@@ -517,6 +632,8 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
         window->drawText(deckText, 2, deckListY + static_cast<int>(i));
     }
+
+    drawBookshelf(window);
 
     // Draw selected deck contents with paging
     if (!m_decks.empty())
@@ -528,13 +645,13 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
-                             "):",
-                         cardListX,
-                         cardListY - 1);
+                                "):",
+                            cardListX,
+                            cardListY - 1);
 
         for (size_t i = m_currentPage * m_maxCardsPerPage;
-             i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
-             ++i)
+                i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
+                ++i)
         {
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
@@ -571,14 +688,20 @@ void EditDeckScene::handleInput()
             case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                     m_selectedDeckIndex--;
+                    m_currentPage = 0;
+                    m_paging = true;
                 break;
             case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                     m_selectedDeckIndex++;
+                    m_currentPage = 0;
+                    m_paging = true;
                 break;
             case _key_left: // Left arrow
                 if (m_currentPage > 0)
                     m_currentPage--;
+                    m_paging = false;
+                    
                 break;
             case _key_right: // Right arrow
                 if (!m_decks.empty())
@@ -589,6 +712,7 @@ void EditDeckScene::handleInput()
                     if (m_currentPage < totalPages - 1)
                         m_currentPage++;
                 }
+                m_paging = false;
                 break;
             default:
                 inputHandled = false;

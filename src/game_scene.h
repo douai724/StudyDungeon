@@ -26,6 +26,7 @@ private:
     std::function<void()> m_goBack;
     Game game;
     std::vector<PlayingCard> playlist;
+    bool m_staticDrawn = false;
 
 public:
     GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack);
@@ -33,6 +34,7 @@ public:
     void init() override;
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
     void handleInput() override;
+    void setStaticDrawn(bool staticDrawn) override;
     PlayingCard bot(Player &player);
 };
 

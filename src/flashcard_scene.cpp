@@ -24,7 +24,7 @@ BrowseDecksScene::BrowseDecksScene(ConsoleUI::UIManager &uiManager,
                                    std::function<void(const FlashCardDeck &)> openDeck)
     : m_uiManager(uiManager), m_goBack(goBack), m_openDeck(openDeck), m_currentPage(0), m_maxCardsPerPage(0)
 {
-    m_uiManager.clearAllMenus(); // Clear all menus before creating new ones
+    //m_uiManager.clearAllMenus(); // Clear all menus before creating new ones
     loadDecks();
 }
 
@@ -47,14 +47,38 @@ void BrowseDecksScene::update()
     // No continuous updates needed
 }
 
+void BrowseDecksScene::setStaticDrawn(bool staticDrawn)
+{
+    m_staticDrawn = staticDrawn;
+}
+
 void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    if (!m_staticDrawn)
+    {
+        window->clear();
+        window->drawBorder();
+        window->drawCenteredText("Browse Decks", 2);
+        window->drawText("Use Up/Down to navigate, Enter to select, Escape to go back", 2, window->getSize().Y - 2);
+        m_staticDrawn = true;
+    }
+
+    if (m_decksNeedReload)
+    {
+        loadDecks();
+        m_needsRedraw = true;
+        m_staticDrawn = false;
+        m_decksNeedReload = false;
+    }
+
     if (!m_needsRedraw)
         return;
 
-    window->clear();
-    window->drawBorder();
-    window->drawCenteredText("Browse Decks", 2);
+    // Clear the deck list area
+    for (int i = 4; i < window->getSize().Y - 2; ++i)
+    {
+        window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+    }
 
     // Draw deck list
     int deckListY = 4;
@@ -117,10 +141,12 @@ void BrowseDecksScene::handleInput()
             case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                     m_selectedDeckIndex--;
+                m_currentPage = 0;
                 break;
             case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                     m_selectedDeckIndex++;
+                m_currentPage = 0;
                 break;
             case _key_left: // Left arrow
                 if (m_currentPage > 0)
@@ -169,6 +195,10 @@ void BrowseDecksScene::handleInput()
                 }
                 break;
             case _key_esc:
+                for (auto &scene : m_uiManager.getScenes())
+                {
+                    scene->setStaticDrawn(false);
+                }
                 m_goBack();
                 break;
             default:
@@ -209,15 +239,32 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 
 void FlashcardScene::initializeCardOrder()
 {
-    int numCardsToStudy = min(static_cast<int>(m_deck.cards.size()), m_settings.getFlashCardLimit());
-    m_cardOrder.resize(numCardsToStudy);
-    std::iota(m_cardOrder.begin(), m_cardOrder.end(), 0);
+    size_t numCardsToStudy = min(m_deck.cards.size(), m_settings.getFlashCardLimit());
+    m_cardOrder.clear();
 
-    // Calculate weights for each card
-    std::vector<double> weights(numCardsToStudy);
-    for (int i = 0; i < numCardsToStudy; ++i)
+    // Separate seen and unseen cards
+    std::vector<size_t> unseenCards;
+    std::vector<size_t> seenCards;
+    for (size_t i = 0; i < numCardsToStudy; ++i)
     {
-        const auto &card = m_deck.cards[i];
+        if (m_deck.cards[i].n_times_answered == 0)
+        {
+            unseenCards.push_back(i);
+        }
+        else
+        {
+            seenCards.push_back(i);
+        }
+    }
+
+    // Prioritize unseen cards
+    m_cardOrder = unseenCards;
+
+    // Calculate weights for seen cards
+    std::vector<double> weights(seenCards.size());
+    for (size_t i = 0; i < seenCards.size(); ++i)
+    {
+        const auto &card = m_deck.cards[seenCards[i]];
         weights[i] = (4 - card.difficulty) * (1 + log(card.n_times_answered + 1));
     }
 
@@ -231,11 +278,14 @@ void FlashcardScene::initializeCardOrder()
     // Create discrete_distribution based on weights
     std::discrete_distribution<> dist(weights.begin(), weights.end());
 
-    // Shuffle card order based on probability distribution
+    // Shuffle seen cards based on probability distribution
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(m_cardOrder.begin(), m_cardOrder.end(), std::default_random_engine(g()));
-    std::sort(m_cardOrder.begin(), m_cardOrder.end(), [&](int a, int b) { return weights[a] > weights[b]; });
+    std::shuffle(seenCards.begin(), seenCards.end(), std::default_random_engine(g));
+    std::sort(seenCards.begin(), seenCards.end(), [&](size_t a, size_t b) { return weights[a] > weights[b]; });
+
+    // Append seen cards to the card order
+    m_cardOrder.insert(m_cardOrder.end(), seenCards.begin(), seenCards.end());
 }
 
 void FlashcardScene::update()
@@ -248,6 +298,11 @@ void FlashcardScene::init()
     // No init needed
 }
 
+void FlashcardScene::setStaticDrawn(bool staticDrawn)
+{
+    m_staticDrawn = staticDrawn;
+}
+
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
     m_settings.startSession();
@@ -257,6 +312,23 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->clear();
     window->drawBorder();
     window->drawBox((window->getSize().X / 2) - 22, 6, 44, 7);
+
+    if (!m_staticDrawn)
+    {
+        window->clear();
+        window->drawBorder();
+        m_staticDrawn = true;
+    }
+
+    if (!m_needsRedraw)
+        return;
+
+    int textBoxSize = 40;
+    // Clear the question area
+    for (int i = 7; i < 14; ++i)
+    {
+        window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+    }
 
     if (m_currentCardIndex < m_cardOrder.size())
     {
@@ -269,20 +341,28 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
         if (m_showAnswer)
         {
-            window->drawBox((window->getSize().X / 2) - 22, (window->getSize().Y / 2) - 1, 44, 7);
+            // Clear the answer area
+            for (int i = (window->getSize().Y / 2); i < (window->getSize().Y / 2) + 7; ++i)
+            {
+                window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
+            }
             window->drawCenteredText("Answer:", window->getSize().Y / 2 - 3);
-            window->drawWrappedText(card.answer, (window->getSize().X / 2) - 20, (window->getSize().Y / 2), 40);
+            window->drawWrappedText(card.answer,
+                                    (window->getSize().X / 2 - (textBoxSize / 2)),
+                                    window->getSize().Y / 2,
+                                    textBoxSize);
+
             auto &menu = m_uiManager.getMenu("difficulty");
 
             // Calculate total width manually
             int totalWidth = 0;
             for (size_t i = 0; i < menu.getButtonCount(); ++i)
             {
-                totalWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing
+                totalWidth += menu.getButtonWidth(i) + 2;
             }
-            totalWidth -= 1; // Remove extra spacing after last button
+            totalWidth -= 2; // Remove extra spacing after last button
             int menuX = (window->getSize().X - totalWidth) / 2;
-            menu.draw(menuX, window->getSize().Y * 2 / 3);
+            menu.draw(menuX, window->getSize().Y * 2 / 3 + 2); // Move the buttons down by 2 lines
             window->drawText("Use arrow keys to select difficulty, Enter to confirm", 2, window->getSize().Y - 2);
         }
         else
@@ -350,6 +430,10 @@ void FlashcardScene::handleInput()
                 }
                 break;
             case _key_esc: // Escape key
+                for (auto &scene : m_uiManager.getScenes())
+                {
+                    scene->setStaticDrawn(false);
+                }
                 endSession();
                 break;
             default:
@@ -368,6 +452,13 @@ void FlashcardScene::selectDifficulty(int difficulty)
 {
     m_difficultyCount[difficulty - 1]++;
     updateCardDifficulty(m_cardOrder[m_currentCardIndex], static_cast<CardDifficulty>(difficulty));
+
+    for (auto &scene : m_uiManager.getScenes())
+    {
+        scene->setStaticDrawn(false);
+    }
+
+
     nextCard();
 }
 
@@ -398,6 +489,7 @@ void FlashcardScene::endSession()
 void FlashcardScene::saveUpdatedDeck()
 {
     writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true);
+    m_decksNeedReload = true;
 }
 
 
@@ -411,9 +503,22 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
 {
     m_uiManager.clearMenu("results");
     auto &menu = m_uiManager.createMenu("results", false);
-    menu.addButton("Main Menu", m_goToMainMenu);
-    menu.addButton("Deck Selection", m_goToDeckSelection);
-    menu.addButton("Start game", m_goToGame);
+    menu.addButton("     Start game?     ", m_goToGame);
+    menu.addButton("   Study New Deck?   ", m_goToDeckSelection);
+    menu.addButton("  Back to Main Menu  ", m_goToMainMenu);
+
+    if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1])
+    {
+        phrase = getRandomPositiveQuote();
+    }
+    else if (m_difficultyCount[HARD - 1] > m_difficultyCount[EASY - 1])
+    {
+        phrase = getRandomEncouragingQuote();
+    }
+    else
+    {
+        phrase = getRandomEncouragingQuote();
+    }
 }
 
 void ResultsScene::init()
@@ -426,28 +531,42 @@ void ResultsScene::update()
     // No continuous updates needed
 }
 
+void ResultsScene::setStaticDrawn(bool staticDrawn)
+{
+    m_staticDrawn = staticDrawn;
+}
+
 void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    if (!m_staticDrawn)
+    {
+        window->clear();
+        window->drawBorder();
+        m_staticDrawn = true;
+    }
+
     if (!m_needsRedraw)
         return;
 
-    window->clear();
-    window->drawBorder();
-    window->drawCenteredText("Results", 2);
+    // Clear the results area
+    for (int i = window->getSize().Y / 2 - 4; i < window->getSize().Y * 3 / 4; ++i)
+    {
+        window->drawText(std::string(window->getSize().X - 2, ' '), 1, i);
+    }
 
+    window->drawCenteredText(phrase, window->getSize().Y / 2 - 4);
     window->drawCenteredText("Easy: " + std::to_string(m_difficultyCount[EASY - 1]), window->getSize().Y / 2 - 2);
     window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[MEDIUM - 1]), window->getSize().Y / 2);
     window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[HARD - 1]), window->getSize().Y / 2 + 2);
 
     auto &menu = m_uiManager.getMenu("results");
     // Calculate total width manually
-    int totalWidth = 0;
+    int maxWidth = 0;
     for (size_t i = 0; i < menu.getButtonCount(); ++i)
     {
-        totalWidth += menu.getButtonWidth(i) + 1; // Add 1 for spacing
+        maxWidth = max(menu.getButtonWidth(i), maxWidth);
     }
-    totalWidth -= 1; // Remove extra spacing after last button
-    int menuX = (window->getSize().X - totalWidth) / 2;
+    int menuX = (window->getSize().X - maxWidth) / 2;
     menu.draw(menuX, window->getSize().Y * 3 / 4);
 
     m_needsRedraw = false;

@@ -29,6 +29,10 @@ void FibonacciScene::update()
     // No continuous updates needed for this scene
 }
 
+void FibonacciScene::setStaticDrawn(bool staticDrawn) {
+    m_staticDrawn = staticDrawn;
+}
+
 void FibonacciScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
     window->clear();
@@ -40,8 +44,7 @@ void FibonacciScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
-    m_uiManager.getMenu("fibonacci")
-        .draw((windowSize.X - 30) / 2, windowSize.Y - 4); // Adjust 30 based on your menu width
+    //m_uiManager.getMenu("fibonacci").draw((windowSize.X - 30) / 2, windowSize.Y - 4); // Adjust 30 based on your menu width
 }
 
 void FibonacciScene::handleInput()

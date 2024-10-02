@@ -41,7 +41,7 @@ ConsoleWindow::ConsoleWindow() : m_width(0), m_height(0), m_textBoxCapacity(14)
 {
 
     setDefaultSize(1300, 740);
-    setConsoleWindowSize(m_defaultSize.X, m_defaultSize.Y); 
+    setConsoleWindowSize(m_defaultSize.X, m_defaultSize.Y);
     updateSize();
 }
 
@@ -297,7 +297,7 @@ void ConsoleWindow::displayResizeWarning(UIManager &uiManager)
             {
                 scene->setStaticDrawn(false);
             }
-            
+
             break;
         }
     }

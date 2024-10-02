@@ -300,8 +300,14 @@ void FlashcardScene::initializeCardOrder()
 
 void FlashcardScene::update()
 {
-    // No continuous updates needed
     m_uiManager.getWindow()->drawText(steadyClockToString(m_settings.getSessionStart()), 2, m_uiManager.getWindow()->getSize().Y - 5);
+    if (timeComplete(m_studySetting.getSessionStart(), m_settings.getStudyDurationMin() * 60)) {
+        for (auto &scene : m_uiManager.getScenes())
+        {
+            scene->setStaticDrawn(false);
+        }
+        endSession();
+    }
     Sleep(10);
 
 }

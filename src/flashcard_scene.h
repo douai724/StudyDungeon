@@ -14,6 +14,7 @@
 #include "deck.h"
 #include "menu.h"
 #include "settings_scene.h"
+#include "util.h"
 #include <chrono>
 #include <functional>
 #include <memory>
@@ -43,7 +44,8 @@ public:
      */
     BrowseDecksScene(ConsoleUI::UIManager &uiManager,
                      std::function<void()> goBack,
-                     std::function<void(const FlashCardDeck &)> openDeck);
+                     std::function<void(const FlashCardDeck &)> openDeck,
+                     StudySettings &settings);
 
     /**
      * @brief Initialize the scene.
@@ -104,6 +106,7 @@ private:
 
     bool m_staticDrawn = false;
     bool m_decksNeedReload = false;
+    StudySettings m_settings;
 };
 
 /**

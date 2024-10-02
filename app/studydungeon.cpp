@@ -226,7 +226,8 @@ int main()
                         studySettings);
                     flashcardScene->setStaticDrawn(false);
                     uiManager.setCurrentScene(flashcardScene);
-                });
+                },
+                studySettings);
             browseDecksScene->setStaticDrawn(false);
         };
 
@@ -245,12 +246,15 @@ int main()
                 uiManager.setCurrentScene(mainMenuScene);
             },
             [&](FlashCardDeck &deck) {
-                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(uiManager, deck, [&]() {
-                    uiManager.setCurrentScene(editDecksScene);
-                });
+                auto editFlashcardScene = std::make_shared<FlashcardEdit::EditFlashcardScene>(
+                    uiManager,
+                    deck,
+                    [&]() { uiManager.setCurrentScene(editDecksScene); },
+                    studySettings);
                 editFlashcardScene->setStaticDrawn(false); // Add this line
                 uiManager.setCurrentScene(editFlashcardScene);
-            });
+            },
+            studySettings);
 
         // Create HowToScene
         howToScene = std::make_shared<HowToScene>(uiManager, [&]() { uiManager.setCurrentScene(mainMenuScene); });

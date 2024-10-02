@@ -16,10 +16,16 @@ StudySettings::StudySettings() : m_flashcard_limit(15), m_study_duration_mins(25
 {
 }
 
+std::filesystem::path StudySettings::getDeckDir()
+{
+    return m_deck_dir;
+}
+
 void StudySettings::reset()
 {
     m_flashcard_limit = 15;
     m_study_duration_mins = 25;
+    m_deck_dir = getAppPath().append("Decks/");
 }
 
 
@@ -84,7 +90,7 @@ void StudySettings::startSession()
     m_session_underway = true;
 }
 
-boolean StudySession::sessionUnderway()
+boolean StudySettings::sessionUnderway()
 {
     return m_session_underway;
 }
@@ -101,7 +107,7 @@ SettingsScene::SettingsScene(ConsoleUI::UIManager &uiManager,
 
     : m_uiManager(uiManager), m_goBack(goBack), m_settings(studySettings)
 {
-    auto &menu = m_uiManager.createMenu("settings", true); // Horizontal menu
+    auto &menu = m_uiManager.createMenu("settings", false); // Veritcal menu
     menu.addButton("Increment Cards", [this]() { incrementCards(); });
     menu.addButton("Decrement Cards", [this]() { decrementCards(); });
     menu.addButton("Increment Time", [this]() { incrementStudyMins(); });
@@ -127,8 +133,9 @@ void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->clear();
     window->drawBorder();
     window->drawCenteredText("Settings", 2);
-    window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 5);
-    window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 6);
+    window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
+    window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
+    window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
 
 
     // window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
@@ -137,7 +144,9 @@ void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
     m_uiManager.getMenu("settings")
-        .draw((windowSize.X - 30) / 2, windowSize.Y - 4); // Adjust 30 based on your menu width
+        .draw((windowSize.X - 30) / 2,
+              windowSize.Y - m_uiManager.getMenu("settings").getButtonCount() -
+                  4); // Adjust 30 based on your menu width
 }
 
 void SettingsScene::handleInput()

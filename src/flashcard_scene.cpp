@@ -228,7 +228,7 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
 {
 
     m_uiManager.clearMenu("difficulty");
-
+    m_settings.startSession();
     // Menu for the card difficulty
     auto &menu = m_uiManager.createMenu("difficulty", true);
     menu.addButton("Easy", [this]() { selectDifficulty(1); });
@@ -315,7 +315,7 @@ void FlashcardScene::setStaticDrawn(bool staticDrawn)
 
 void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
-    m_settings.startSession();
+
     if (!m_needsRedraw)
         return;
 
@@ -347,6 +347,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawWrappedText(card.question, (window->getSize().X / 2) - 20, 8, 40);
         int min_remaining = timeRemainingMins(m_settings.getSessionStart(), m_settings.getStudyDurationMin());
         window->drawText("Time remaining: " + std::to_string(min_remaining) + "min", 2, window->getSize().Y - 4);
+        window->drawText(steadyClockToString(m_settings.getSessionStart()), 2, window->getSize().Y - 5);
 
 
         if (m_showAnswer)

@@ -82,6 +82,8 @@ bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &star
 
 int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_mins);
 
+std::string steadyClockToString(const std::chrono::steady_clock::time_point &start_time);
+
 /**
  * @brief An alternative to system('pause')
  * @details implementation based on from https://thelinuxcode.com/system-pause-c/

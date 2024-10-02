@@ -68,6 +68,22 @@ int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &
     return duration_mins - elapsed_time.count();
 }
 
+// Function to convert time_point to a string showing seconds since start
+std::string steadyClockToString(const std::chrono::steady_clock::time_point &start_time)
+{
+    // Get the current time from steady_clock
+    std::chrono::steady_clock::time_point current_time = std::chrono::steady_clock::now();
+
+    // Calculate the duration since the start time in seconds
+    int duration_since_start = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time);
+
+    // Convert the duration to a string
+    std::stringstream ss;
+    ss << duration_since_start.count() << " seconds since start";
+
+    return ss.str();
+}
+
 void pause()
 {
     std::string line;

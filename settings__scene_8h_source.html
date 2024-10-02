@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">7a29c5a</span>
+   &#160;<span id="projectnumber">c30ddb0</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -99,50 +99,55 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> decFCLimit();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> reset();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> startSession();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::chrono::steady_clock::time_point getSessionStart();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> m_flashcard_limit;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> m_study_duration_mins;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::chrono::steady_clock::time_point m_session_start = std::chrono::steady_clock::now();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classSettingsScene.html">   53</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSettingsScene.html">SettingsScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classSettingsScene.html#a3add74c6cc6f85451f4e1e4ff2c6d502">SettingsScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack, <a class="code" href="classStudySettings.html">StudySettings</a> &amp;studySettings);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSettingsScene.html#a7d95c3fb01d5274a204ed6b050dce88f">update</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSettingsScene.html#abd2149ebbecd5b2e46054d58e4ae799b">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> init();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> incrementCards();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> decrementCards();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> incrementStudyMins();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> decrementStudyMins();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> resetDefault();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> setStaticDrawn(<span class="keywordtype">bool</span> staticDrawn)<span class="keyword"> override</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        m_staticDrawn = staticDrawn;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">boolean</span> sessionUnderway();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> endSession();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    std::chrono::steady_clock::time_point getSessionStart();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::filesystem::path getDeckDir();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> m_flashcard_limit;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> m_study_duration_mins;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::chrono::steady_clock::time_point m_session_start = std::chrono::steady_clock::now();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">boolean</span> m_session_underway{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::filesystem::path m_deck_dir = getAppPath().append(<span class="stringliteral">&quot;Decks/&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classSettingsScene.html">   58</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSettingsScene.html">SettingsScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classSettingsScene.html#a3add74c6cc6f85451f4e1e4ff2c6d502">SettingsScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, std::function&lt;<span class="keywordtype">void</span>()&gt; goBack, <a class="code" href="classStudySettings.html">StudySettings</a> &amp;studySettings);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSettingsScene.html#a7d95c3fb01d5274a204ed6b050dce88f">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSettingsScene.html#abd2149ebbecd5b2e46054d58e4ae799b">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> init();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> incrementCards();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> decrementCards();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> incrementStudyMins();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> decrementStudyMins();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> resetDefault();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> handleInput() <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classStudySettings.html">StudySettings</a> &amp;m_settings;         </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::function&lt;void()&gt; m_goBack;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> m_staticDrawn = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;};</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SETTINGS_SCENE_H</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> setStaticDrawn(<span class="keywordtype">bool</span> staticDrawn)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        m_staticDrawn = staticDrawn;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classStudySettings.html">StudySettings</a> &amp;m_settings;         </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::function&lt;void()&gt; m_goBack;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span> m_staticDrawn = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SETTINGS_SCENE_H</span></div>
 <div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdef"><b>Definition:</b> menu.h:132</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdef"><b>Definition:</b> menu.h:143</div></div>
-<div class="ttc" id="aclassSettingsScene_html"><div class="ttname"><a href="classSettingsScene.html">SettingsScene</a></div><div class="ttdoc">Class for a scene to show the program instructions.</div><div class="ttdef"><b>Definition:</b> settings_scene.h:54</div></div>
-<div class="ttc" id="aclassSettingsScene_html_a3add74c6cc6f85451f4e1e4ff2c6d502"><div class="ttname"><a href="classSettingsScene.html#a3add74c6cc6f85451f4e1e4ff2c6d502">SettingsScene::SettingsScene</a></div><div class="ttdeci">SettingsScene(ConsoleUI::UIManager &amp;uiManager, std::function&lt; void()&gt; goBack, StudySettings &amp;studySettings)</div><div class="ttdoc">Construct a new HowTo Scene object.</div><div class="ttdef"><b>Definition:</b> settings_scene.cpp:91</div></div>
-<div class="ttc" id="aclassSettingsScene_html_a7d95c3fb01d5274a204ed6b050dce88f"><div class="ttname"><a href="classSettingsScene.html#a7d95c3fb01d5274a204ed6b050dce88f">SettingsScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">function for continuous updates to the program state seperate from rendering and input handling</div><div class="ttdef"><b>Definition:</b> settings_scene.cpp:111</div></div>
-<div class="ttc" id="aclassSettingsScene_html_abd2149ebbecd5b2e46054d58e4ae799b"><div class="ttname"><a href="classSettingsScene.html#abd2149ebbecd5b2e46054d58e4ae799b">SettingsScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">renders the scene on the console window</div><div class="ttdef"><b>Definition:</b> settings_scene.cpp:117</div></div>
+<div class="ttc" id="aclassSettingsScene_html"><div class="ttname"><a href="classSettingsScene.html">SettingsScene</a></div><div class="ttdoc">Class for a scene to show the program instructions.</div><div class="ttdef"><b>Definition:</b> settings_scene.h:59</div></div>
+<div class="ttc" id="aclassSettingsScene_html_a3add74c6cc6f85451f4e1e4ff2c6d502"><div class="ttname"><a href="classSettingsScene.html#a3add74c6cc6f85451f4e1e4ff2c6d502">SettingsScene::SettingsScene</a></div><div class="ttdeci">SettingsScene(ConsoleUI::UIManager &amp;uiManager, std::function&lt; void()&gt; goBack, StudySettings &amp;studySettings)</div><div class="ttdoc">Construct a new HowTo Scene object.</div><div class="ttdef"><b>Definition:</b> settings_scene.cpp:104</div></div>
+<div class="ttc" id="aclassSettingsScene_html_a7d95c3fb01d5274a204ed6b050dce88f"><div class="ttname"><a href="classSettingsScene.html#a7d95c3fb01d5274a204ed6b050dce88f">SettingsScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">function for continuous updates to the program state seperate from rendering and input handling</div><div class="ttdef"><b>Definition:</b> settings_scene.cpp:124</div></div>
+<div class="ttc" id="aclassSettingsScene_html_abd2149ebbecd5b2e46054d58e4ae799b"><div class="ttname"><a href="classSettingsScene.html#abd2149ebbecd5b2e46054d58e4ae799b">SettingsScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">renders the scene on the console window</div><div class="ttdef"><b>Definition:</b> settings_scene.cpp:130</div></div>
 <div class="ttc" id="aclassStudySettings_html"><div class="ttname"><a href="classStudySettings.html">StudySettings</a></div><div class="ttdef"><b>Definition:</b> settings_scene.h:24</div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Contains useful helper functions.</div></div>
 </div><!-- fragment --></div><!-- contents -->

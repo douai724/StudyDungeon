@@ -211,6 +211,9 @@ private:
 
     bool m_staticDrawn = false;
     StudySettings m_studySetting;
+
+    std::string m_lastQuestionDisplayed;
+    bool m_lastAnswerDisplayed;
 };
 
 /**

@@ -294,7 +294,6 @@ int main()
                 //     }
                 // }
 
-                Sleep(50);
             }
             catch (const std::exception &e)
             {

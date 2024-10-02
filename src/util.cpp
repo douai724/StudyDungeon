@@ -75,7 +75,7 @@ std::string steadyClockToString(const std::chrono::steady_clock::time_point &sta
     std::chrono::steady_clock::time_point current_time = std::chrono::steady_clock::now();
 
     // Calculate the duration since the start time in seconds
-    int duration_since_start = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time);
+    auto duration_since_start = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time);
 
     // Convert the duration to a string
     std::stringstream ss;

@@ -13,6 +13,7 @@
 
 #include "deck.h"
 #include "menu.h"
+#include "settings_scene.h"
 #include <chrono>
 #include <functional>
 #include <memory>
@@ -126,7 +127,8 @@ public:
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
-                   std::function<void(const std::vector<int> &)> showResults);
+                   std::function<void(const std::vector<int> &)> showResults,
+                   StudySettings &studySettings);
     /**
      * @brief Initialize the scene.
      *
@@ -175,8 +177,9 @@ private:
     void updateCardDifficulty(int cardIndex, CardDifficulty difficulty);
     void saveUpdatedDeck();
     void initializeCardOrder();
-    int flashcard_limit = 10;
+    // int flashcard_limit = 10;
     bool empty = false;
+    StudySettings m_settings;
 
     bool m_decksNeedReload = false;
 
@@ -202,6 +205,7 @@ private:
     bool m_needsRedraw;                                          ///< Flag indicating if the scene needs to be redrawn.
 
     bool m_staticDrawn = false;
+    StudySettings m_studySetting;
 };
 
 /**

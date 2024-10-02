@@ -13,8 +13,8 @@
 GameScene::GameScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack)
     : m_uiManager(uiManager), m_goBack(goBack)
 {
-    Player user = Player(100, 100, 5, generateDeck(20));
-    Player bot = Player(100, 100, 5, generateDeck(20));
+    Player user = Player(100, 100, user_hand_size, generateDeck(user_deck_size));
+    Player bot = Player(100, 100, bot_hand_size, generateDeck(bot_deck_size));
 
     GameScene::game = Game(user, bot);
 }
@@ -25,8 +25,8 @@ void GameScene::update()
 
 void GameScene::init()
 {
-    Player user = Player(100, 100, 5, generateDeck(20));
-    Player bot = Player(100, 100, 5, generateDeck(20));
+    Player user = Player(100, 100, user_hand_size, generateDeck(user_deck_size));
+    Player bot = Player(100, 100, bot_hand_size, generateDeck(bot_deck_size));
 
     GameScene::game = Game(user, bot);
 }

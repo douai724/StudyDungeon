@@ -21,8 +21,10 @@ namespace FlashcardApp
 
 BrowseDecksScene::BrowseDecksScene(ConsoleUI::UIManager &uiManager,
                                    std::function<void()> goBack,
-                                   std::function<void(const FlashCardDeck &)> openDeck)
-    : m_uiManager(uiManager), m_goBack(goBack), m_openDeck(openDeck), m_currentPage(0), m_maxCardsPerPage(0)
+                                   std::function<void(const FlashCardDeck &)> openDeck,
+                                   StudySettings &studySettings)
+    : m_uiManager(uiManager), m_goBack(goBack), m_openDeck(openDeck), m_currentPage(0), m_maxCardsPerPage(0),
+      m_settings(studySettings)
 {
     //m_uiManager.clearAllMenus(); // Clear all menus before creating new ones
     loadDecks();
@@ -30,7 +32,7 @@ BrowseDecksScene::BrowseDecksScene(ConsoleUI::UIManager &uiManager,
 
 void BrowseDecksScene::loadDecks()
 {
-    m_decks = loadFlashCardDecks("Decks/");
+    m_decks = loadFlashCardDecks(m_settings.getDeckDir());
     m_selectedDeckIndex = 0;
     m_currentPage = 0;
     m_needsRedraw = true;
@@ -300,10 +302,17 @@ void FlashcardScene::initializeCardOrder()
 
 void FlashcardScene::update()
 {
-    // No continuous updates needed
     m_uiManager.getWindow()->drawText(steadyClockToString(m_settings.getSessionStart()),
                                       2,
                                       m_uiManager.getWindow()->getSize().Y - 5);
+    if (timeComplete(m_studySetting.getSessionStart(), m_settings.getStudyDurationMin() * 60))
+    {
+        for (auto &scene : m_uiManager.getScenes())
+        {
+            scene->setStaticDrawn(false);
+        }
+        endSession();
+    }
     Sleep(10);
 }
 

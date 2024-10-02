@@ -45,9 +45,9 @@ std::string PlayingCard::toString()
     switch (PlayingCard::cardType)
     {
     case 0:
-        return "Deal " + std::to_string(PlayingCard::value) + " damage.";
+        return _ESC + "[40;31m" + "Deal " + std::to_string(PlayingCard::value) + " damage." + _ESC + "[0m";
     case 1:
-        return "Heal " + std::to_string(PlayingCard::value) + " hit points.";
+        return _ESC + "[40;32m" + "Heal " + std::to_string(PlayingCard::value) + " hit points." + _ESC + "[0m";
     case 2:
         return "Swap hands with the enemy player.";
     default:

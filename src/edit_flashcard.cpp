@@ -25,9 +25,10 @@ namespace FlashcardEdit
 
 EditFlashcardScene::EditFlashcardScene(ConsoleUI::UIManager &uiManager,
                                        FlashCardDeck &deck,
-                                       std::function<void()> goBack)
+                                       std::function<void()> goBack,
+                                       StudySettings &studySettings)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_selectedCardIndex(0), m_currentPage(0),
-      m_maxCardsPerPage(0), m_needsRedraw(true)
+      m_maxCardsPerPage(0), m_needsRedraw(true), m_settings(studySettings)
 {
     std::string librarian = R"(
    ____________________________________________________
@@ -512,9 +513,10 @@ void EditFlashcardScene::deleteSelectedCard()
 
 EditDeckScene::EditDeckScene(ConsoleUI::UIManager &uiManager,
                              std::function<void()> goBack,
-                             std::function<void(FlashCardDeck &)> openEditFlashcardScene)
+                             std::function<void(FlashCardDeck &)> openEditFlashcardScene,
+                             StudySettings &studySettings)
     : m_uiManager(uiManager), m_goBack(goBack), m_openEditFlashcardScene(openEditFlashcardScene),
-      m_selectedDeckIndex(0), m_needsRedraw(true), m_currentPage(0), m_maxCardsPerPage(0)
+      m_selectedDeckIndex(0), m_needsRedraw(true), m_currentPage(0), m_maxCardsPerPage(0), m_settings(studySettings)
 {
 
     std::vector<std::string> shelfFull = convertAsciiArtToLines(bookshelfFull);
@@ -555,7 +557,7 @@ EditDeckScene::EditDeckScene(ConsoleUI::UIManager &uiManager,
 
 void EditDeckScene::loadDecks()
 {
-    m_decks = loadFlashCardDecks("Decks/");
+    m_decks = loadFlashCardDecks(m_settings.getDeckDir());
     m_selectedDeckIndex = 0;
     m_currentPage = 0;
     m_needsRedraw = true;

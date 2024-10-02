@@ -17,6 +17,11 @@
 #include "util.h"
 #include <conio.h>
 
+const int user_deck_size{60};
+const int bot_deck_size{60};
+const int user_hand_size{5};
+const int bot_hand_size{5};
+
 class GameScene : public ConsoleUI::Scene
 {
 private:

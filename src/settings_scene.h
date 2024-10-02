@@ -35,13 +35,18 @@ public:
     void decFCLimit();
     void reset();
     void startSession();
+    boolean sessionUnderway();
+    void endSession();
     std::chrono::steady_clock::time_point getSessionStart();
+    std::filesystem::path getDeckDir();
 
 
 private:
     int m_flashcard_limit;
     int m_study_duration_mins;
     std::chrono::steady_clock::time_point m_session_start = std::chrono::steady_clock::now();
+    boolean m_session_underway{false};
+    std::filesystem::path m_deck_dir = getAppPath().append("Decks/");
 };
 
 

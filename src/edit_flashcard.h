@@ -14,6 +14,7 @@
 #include "artwork.h"
 #include "deck.h"
 #include "menu.h"
+#include "settings_scene.h"
 
 #include <functional>
 #include <memory>
@@ -42,7 +43,8 @@ public:
      */
     EditDeckScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> goBack,
-                  std::function<void(FlashCardDeck &)> openEditFlashcardScene);
+                  std::function<void(FlashCardDeck &)> openEditFlashcardScene,
+                  StudySettings &studySettings);
 
 
     void init() override;
@@ -89,6 +91,7 @@ private:
     bool m_staticDrawn = false;
     int m_prevBookshelfIndex = -1;
     bool m_paging = false;
+    StudySettings m_settings;
 
     /**
      * @brief Loads all flashcard decks from the file system.
@@ -139,7 +142,10 @@ public:
      * @param deck Reference to the FlashCardDeck being edited.
      * @param goBack Function to return to the previous scene.
      */
-    EditFlashcardScene(ConsoleUI::UIManager &uiManager, FlashCardDeck &deck, std::function<void()> goBack);
+    EditFlashcardScene(ConsoleUI::UIManager &uiManager,
+                       FlashCardDeck &deck,
+                       std::function<void()> goBack,
+                       StudySettings &studySettings);
 
     void init() override;
 
@@ -181,6 +187,7 @@ private:
     bool m_needsRedraw;                ///< Flag indicating if the scene needs redrawing.
 
     bool m_staticDrawn = false;
+    StudySettings m_settings;
 
     /**
      * @brief Edits the currently selected flashcard.

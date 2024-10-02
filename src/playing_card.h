@@ -13,6 +13,7 @@
 #define PLAYING_CARD_H
 
 #include "card_types.h"
+#include "util.h"
 #include <string>
 
 /**

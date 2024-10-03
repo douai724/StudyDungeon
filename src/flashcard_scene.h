@@ -106,6 +106,8 @@ private:
 
     bool m_staticDrawn = false;
     bool m_decksNeedReload = false;
+    std::chrono::steady_clock::time_point m_lastPageChangeTime;
+    const std::chrono::milliseconds m_pageChangeDelay{200};
     StudySettings m_settings;
 };
 

@@ -642,7 +642,7 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     {
         const auto &selectedDeck = m_decks[m_selectedDeckIndex];
         int cardListX = window->getSize().X / 2;
-        int cardListY = 4;
+        int cardListY = 5;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
         int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
@@ -663,7 +663,7 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             window->drawText("---", cardListX, yOffset + 3);
         }
 
-        window->drawText("Use Left/Right arrows to change pages", cardListX, window->getSize().Y - 3);
+        window->drawText("Use Left/Right arrows to change pages", cardListX + cardListX / 2, window->getSize().Y - 3);
     }
 
     // Draw instructions
@@ -689,32 +689,45 @@ void EditDeckScene::handleInput()
             {
             case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
+                {
                     m_selectedDeckIndex--;
-                m_currentPage = 0;
-                m_paging = true;
+                    m_currentPage = 0;
+                    m_paging = true;
+                    m_needsRedraw = true;
+                }
                 break;
             case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
+                {
                     m_selectedDeckIndex++;
-                m_currentPage = 0;
-                m_paging = true;
+                    m_currentPage = 0;
+                    m_paging = true;
+                    m_needsRedraw = true;
+                }
                 break;
             case _key_left: // Left arrow
-                if (m_currentPage > 0)
+                if (m_currentPage > 0 && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
+                {
                     m_currentPage--;
-                m_paging = false;
-
+                    m_paging = false;
+                    m_needsRedraw = true;
+                    m_lastPageChangeTime = std::chrono::steady_clock::now();
+                }
                 break;
             case _key_right: // Right arrow
-                if (!m_decks.empty())
+                if (!m_decks.empty() && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
                     int totalPages =
                         (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                     if (m_currentPage < totalPages - 1)
+                    {
                         m_currentPage++;
+                        m_paging = false;
+                        m_needsRedraw = true;
+                        m_lastPageChangeTime = std::chrono::steady_clock::now();
+                    }
                 }
-                m_paging = false;
                 break;
             default:
                 inputHandled = false;
@@ -727,33 +740,35 @@ void EditDeckScene::handleInput()
             case _key_enter: // Enter
                 if (!m_decks.empty())
                 {
+                    m_needsRedraw = true;
                     m_openEditFlashcardScene(m_decks[m_selectedDeckIndex]);
                 }
                 break;
             case 'A':
             case 'a':
                 addNewDeck();
+                m_needsRedraw = true;
                 break;
             case 'D':
             case 'd':
                 deleteDeck();
+                m_needsRedraw = true;
                 break;
             case 'R':
             case 'r':
                 renameDeck();
+                m_needsRedraw = true;
                 break;
             case _key_esc:
+                m_needsRedraw = true;
                 m_goBack();
+                
                 break;
             default:
                 inputHandled = false;
             }
         }
 
-        if (inputHandled)
-        {
-            m_needsRedraw = true;
-        }
     }
 }
 

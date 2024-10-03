@@ -63,6 +63,7 @@ public:
     void setPosition(int x, int y);
     std::string getName();
     std::string toString();
+    std::vector<std::vector<int>> getCodes();
 };
 
 class ConsoleWindow
@@ -94,6 +95,7 @@ public:
     void addANSIArt(const ANSIArt &art);
     void drawANSIArt(const std::string &name, int x, int y);
     ANSIArt *getANSIArtByName(const std::string &name);
+    void drawANSICode(int code, int x, int y);
 
     void drawWrappedText(const std::string &text, int x, int y, int width);
 

@@ -134,9 +134,9 @@ public:
             int mainMenuArtX = (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2;
             int mainMenuArtY = 4;
 
-            //    window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
+            window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
             window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
-            window->drawANSIArt("frog", otherMenuArtX, otherMenuArtY);
+            window->drawANSIArt("frog", mainMenuArtX, mainMenuArtY - 10);
 
             m_staticDrawn = true;
         }

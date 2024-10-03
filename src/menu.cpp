@@ -94,6 +94,25 @@ void ConsoleWindow::drawText(const std::string &text, int x, int y)
     std::cout << text;
 }
 
+void ConsoleWindow::drawANSICode(int code, int x, int y)
+{
+
+    LPTSTR lpCharacter = new TCHAR[2];
+    DWORD nLength = 2;
+    COORD dwReadCoord{x, y};
+    DWORD nNumberOfCharsRead;
+
+    ReadConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), lpCharacter, nLength, dwReadCoord, &nNumberOfCharsRead);
+
+
+    setConsoleCursorPosition(x, y);
+    std::string escStart = _ESC + "[48;5;" + std::to_string(code) + "m";
+    std::string escEnd = _ESC + "[0m";
+    std::cout << escStart << lpCharacter[0] << lpCharacter[1] << escEnd;
+
+    delete[] lpCharacter;
+}
+
 void ConsoleWindow::drawCenteredText(const std::string &text, int y)
 {
     int x = static_cast<int>((m_width - text.length()) / 2);
@@ -286,6 +305,7 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
         int artY = art->getY();
         int width = art->getWidth();
         int height = art->getHeight();
+        std::vector<std::vector<int>> codes = art->getCodes();
 
         if (artX + width > m_width || artY + height > m_height)
         {
@@ -297,10 +317,13 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
         }
         else
         {
-            std::vector<std::string> artLines = convertAsciiArtToLines(art->toString());
-            for (size_t i = 0; i < artLines.size(); ++i)
+
+            for (int i = y; i < width + y; i++)
             {
-                drawText(artLines[i], artX, artY + static_cast<int>(i));
+                for (int j = x; j < height + x; j++)
+                {
+                    drawANSICode(codes[i - y][j - x], j * 2 - 1 - x, i);
+                }
             }
         }
     }
@@ -484,6 +507,11 @@ std::string ANSIArt::toString()
         out += "\n";
     }
     return out;
+}
+
+std::vector<std::vector<int>> ANSIArt::getCodes()
+{
+    return ANSIArt::codes;
 }
 
 // Button implementation

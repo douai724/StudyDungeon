@@ -39,13 +39,14 @@ void GameScene::setStaticDrawn(bool staticDrawn)
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
-    
-    if (!m_staticDrawn) {
+
+    if (!m_staticDrawn)
+    {
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
     }
-    
+
     if (!m_needsRedraw)
     {
         return;
@@ -85,23 +86,17 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         {
             std::string option = hand[i].toString();
             std::string cardText = "";
-            window->drawBox(size.X / hand.size() * i, 3 * size.Y / 5, size.X / 5, 2 * size.Y / 5);
+            int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+
             if (m_selectedIndex == i)
             {
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
-                cardText = "+ [" + option + "] + ";
-                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
-                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
-
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                                        FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
+                window->drawANSIArt("cardSelected", size.X / hand.size() * i + 2, 3 * size.Y / 5 - 2);
             }
             else
             {
-                cardText = " [" + option + "]  ";
-                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
-                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
+                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
+                window->drawANSIArt("card", size.X / hand.size() * i + 2, 3 * size.Y / 5 - 2);
             }
         }
     }

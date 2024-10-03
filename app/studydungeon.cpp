@@ -84,8 +84,15 @@ public:
                     `~~~~~~~~'~~~-----....___;;;____---~~
     )";
 
-        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "frog", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(frog);
+        ConsoleUI::ANSIArt title = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "title", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(title);
+
+        ConsoleUI::ANSIArt card = ConsoleUI::ANSIArt(readInANSICodes("CARD.txt"), "card", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(card);
+
+        ConsoleUI::ANSIArt cardSelected =
+            ConsoleUI::ANSIArt(readInANSICodes("CARD_SELECTED.txt"), "cardSelected", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(cardSelected);
 
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
         std::vector<std::string> artLines2 = convertAsciiArtToLines(asciiArtString2);
@@ -131,12 +138,12 @@ public:
             // Draw the ASCII art
             int otherMenuArtX = ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 3;
             int otherMenuArtY = window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight();
-            int mainMenuArtX = (window->getSize().X - window->getANSIArtByName("frog")->getWidth()) / 8;
+            int mainMenuArtX = (window->getSize().X - window->getANSIArtByName("title")->getWidth()) / 8;
             int mainMenuArtY = 10;
 
             window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
             //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
-            window->drawANSIArt("frog", mainMenuArtX, mainMenuArtY - 10);
+            window->drawANSIArt("title", mainMenuArtX, mainMenuArtY - 10);
 
             m_staticDrawn = true;
         }

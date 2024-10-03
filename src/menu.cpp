@@ -106,7 +106,7 @@ void ConsoleWindow::drawANSICode(int code, int x, int y)
 
 
     setConsoleCursorPosition(x, y);
-    std::string escStart = _ESC + "[48;5;" + std::to_string(code) + "m";
+    std::string escStart = _ESC + "[30;48;5;" + std::to_string(code) + "m";
     std::string escEnd = _ESC + "[0m";
     std::cout << escStart << lpCharacter[0] << lpCharacter[1] << escEnd;
 

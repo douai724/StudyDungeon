@@ -762,13 +762,12 @@ void EditDeckScene::handleInput()
             case _key_esc:
                 m_needsRedraw = true;
                 m_goBack();
-                
+
                 break;
             default:
                 inputHandled = false;
             }
         }
-
     }
 }
 

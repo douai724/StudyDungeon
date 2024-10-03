@@ -142,19 +142,21 @@ void BrowseDecksScene::handleInput()
             switch (key)
             {
             case _key_up: // Up arrow
-                if (m_selectedDeckIndex > 0) {
+                if (m_selectedDeckIndex > 0)
+                {
                     m_selectedDeckIndex--;
                     m_needsRedraw = true;
                 }
-                    
+
                 m_currentPage = 0;
                 break;
             case _key_down: // Down arrow
-                if (m_selectedDeckIndex < m_decks.size() - 1) {
+                if (m_selectedDeckIndex < m_decks.size() - 1)
+                {
                     m_selectedDeckIndex++;
                     m_needsRedraw = true;
                 }
-                    
+
                 m_currentPage = 0;
                 break;
             case _key_left: // Left arrow
@@ -223,7 +225,6 @@ void BrowseDecksScene::handleInput()
                 inputHandled = false;
             }
         }
-
     }
 }
 

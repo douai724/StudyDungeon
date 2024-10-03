@@ -91,7 +91,9 @@ private:
     bool m_staticDrawn = false;
     int m_prevBookshelfIndex = -1;
     bool m_paging = false;
+    int bookshelfIndex = 0;
     StudySettings m_settings;
+
 
     /**
      * @brief Loads all flashcard decks from the file system.

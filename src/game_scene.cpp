@@ -39,12 +39,17 @@ void GameScene::setStaticDrawn(bool staticDrawn)
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    
+    if (!m_staticDrawn) {
+        window->clear();
+        window->drawBorder();
+        m_staticDrawn = true;
+    }
+    
     if (!m_needsRedraw)
     {
         return;
     }
-    window->clear();
-    window->drawBorder();
     COORD size = window->getSize();
 
     std::vector<PlayingCard> hand = GameScene::game.p1.getHand();

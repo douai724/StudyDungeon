@@ -179,7 +179,7 @@ std::vector<PlayingCard> generateDeck(int numCards)
                 break;
             }
         } // add error handling here for -1
-        int value = (int)(std::rand() / (double)RAND_MAX * 10);
+        int value = (int)(std::rand() / (double)RAND_MAX * 30);
         PlayingCard card = PlayingCard((enum Type)index, value);
         hand.push_back(card);
     }

@@ -94,6 +94,12 @@ public:
             ConsoleUI::ANSIArt(readInANSICodes("CARD_SELECTED.txt"), "cardSelected", 0, 0);
         m_uiManager.getWindow()->addANSIArt(cardSelected);
 
+        ConsoleUI::ANSIArt heart = ConsoleUI::ANSIArt(readInANSICodes("HEART.txt"), "heart", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(heart);
+
+        ConsoleUI::ANSIArt heartEmpty = ConsoleUI::ANSIArt(readInANSICodes("HEART_EMPTY.txt"), "heartEmpty", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(heartEmpty);
+
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
         std::vector<std::string> artLines2 = convertAsciiArtToLines(asciiArtString2);
         ConsoleUI::AsciiArt asciiArt("main_menu", artLines, 0, 0);

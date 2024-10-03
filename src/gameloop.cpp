@@ -171,11 +171,11 @@ std::vector<PlayingCard> generateDeck(int numCards)
 
         float type = std::rand() / (float)RAND_MAX;
         int index = -1;
-        for (int i = 0; i < distribution.size(); i++)
+        for (int j = 0; j < distribution.size(); j++)
         {
-            if (type <= distribution[i])
+            if (type <= distribution[j])
             {
-                index = i;
+                index = j;
                 break;
             }
         } // add error handling here for -1

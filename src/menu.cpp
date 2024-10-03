@@ -307,25 +307,25 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
         int height = art->getHeight();
         std::vector<std::vector<int>> codes = art->getCodes();
 
-        if (artX + width > m_width || artY + height > m_height)
-        {
-            // Art is too big for the console, display text alternative
-            std::string textAlt = art->getName();
-            int textX = artX + (width - textAlt.length()) / 2;
-            int textY = artY + height / 2;
-            drawText(textAlt, textX, textY);
-        }
-        else
-        {
+        // if (artX + width > m_width || artY + height > m_height)
+        // {
+        //     // Art is too big for the console, display text alternative
+        //     std::string textAlt = art->getName();
+        //     int textX = artX + (width - textAlt.length()) / 2;
+        //     int textY = artY + height / 2;
+        //     drawText(textAlt, textX, textY);
+        // }
+        // else
+        // {
 
-            for (int i = y; i < width + y; i++)
+        for (int i = y; i < width + y; i++)
+        {
+            for (int j = x; j < height + x; j++)
             {
-                for (int j = x; j < height + x; j++)
-                {
-                    drawANSICode(codes[i - y][j - x], j * 2 - 1 - x, i);
-                }
+                drawANSICode(codes[i - y][j - x], j * 2 - 1 - x, i);
             }
         }
+        //}
     }
 }
 

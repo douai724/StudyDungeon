@@ -84,7 +84,7 @@ public:
                     `~~~~~~~~'~~~-----....___;;;____---~~
     )";
 
-        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("test.txt"), "frog", 0, 0);
+        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "frog", 0, 0);
         m_uiManager.getWindow()->addANSIArt(frog);
 
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
@@ -131,11 +131,11 @@ public:
             // Draw the ASCII art
             int otherMenuArtX = ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 3;
             int otherMenuArtY = window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight();
-            int mainMenuArtX = (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2;
-            int mainMenuArtY = 4;
+            int mainMenuArtX = (window->getSize().X - window->getANSIArtByName("frog")->getWidth()) / 8;
+            int mainMenuArtY = 10;
 
             window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
-            window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
+            //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
             window->drawANSIArt("frog", mainMenuArtX, mainMenuArtY - 10);
 
             m_staticDrawn = true;

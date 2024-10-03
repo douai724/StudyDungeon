@@ -107,6 +107,8 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     else
     {
         int cardWidth = size.X / hand.size();
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_REVERSE_VIDEO);
+
         for (int i = 0; i < (int)hand.size(); i++)
         {
             std::string option = hand[i].toString();
@@ -115,15 +117,18 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
             if (m_selectedIndex == i)
             {
-                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
+
                 window->drawANSIArt("cardSelected", size.X / hand.size() * i + 2, 3 * size.Y / 5 - 2);
+                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
             }
             else
             {
-                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
                 window->drawANSIArt("card", size.X / hand.size() * i + 2, 3 * size.Y / 5 - 2);
+                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
             }
         }
+
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_REVERSE_VIDEO);
     }
 
     m_needsRedraw = false;

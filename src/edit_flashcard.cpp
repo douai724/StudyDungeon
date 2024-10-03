@@ -597,7 +597,7 @@ void EditDeckScene::drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> wind
             {
                 bookshelfIndex = rand() % bookshelfOptions.size();
             } while (bookshelfIndex == m_prevBookshelfIndex);
-        } 
+        }
 
         m_prevBookshelfIndex = bookshelfIndex;
         selectedBookshelf = bookshelfOptions[bookshelfIndex];

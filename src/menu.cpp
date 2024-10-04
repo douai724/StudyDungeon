@@ -9,12 +9,6 @@
  *
  */
 #include "menu.h"
-#include "util.h"
-#include <algorithm>
-#include <conio.h>
-#include <iostream>
-#include <string>
-#include <windows.h>
 
 
 namespace ConsoleUI

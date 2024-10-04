@@ -71,6 +71,18 @@ bool Game::isGameOver()
     return false;
 }
 
+short Game::getWinner()
+{
+    if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
+    {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 bool Game::isWinner()
 {
     if (turn == 1)

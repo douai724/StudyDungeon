@@ -29,6 +29,8 @@ void GameScene::init()
     Player bot = Player(100, 100, bot_hand_size, generateDeck(bot_deck_size));
 
     GameScene::game = Game(user, bot);
+
+    GameScene::playlist.clear();
 }
 
 void GameScene::setStaticDrawn(bool staticDrawn)
@@ -169,12 +171,22 @@ void GameScene::handleInput()
             GameScene::game.p1.removeCard(playerCard);
             GameScene::game.nextTurn(playerCard);
             GameScene::playlist.push_back(playerCard);
-            if (GameScene::game.isWinner())
+            if (GameScene::game.isGameOver())
             {
+                short winner = GameScene::game.getWinner();
+                std::string winText = "";
+                if (winner == 1)
+                {
+                    winText = "You won! :)";
+                }
+                else
+                {
+                    winText = "You lost :(";
+                }
                 std::shared_ptr<ConsoleUI::ConsoleWindow> window = m_uiManager.getWindow();
                 window->clear();
                 window->drawBorder();
-                window->drawCenteredText("You won! :)", window->getSize().Y / 2);
+                window->drawCenteredText(winText, window->getSize().Y / 2);
                 Sleep(1000);
                 m_goBack();
             }
@@ -191,12 +203,22 @@ void GameScene::handleInput()
             GameScene::game.p2.removeCard(botCard);
             GameScene::game.nextTurn(botCard);
             GameScene::playlist.push_back(botCard);
-            if (GameScene::game.isWinner())
+            if (GameScene::game.isGameOver())
             {
+                short winner = GameScene::game.getWinner();
+                std::string winText = "";
+                if (winner == 1)
+                {
+                    winText = "You won! :)";
+                }
+                else
+                {
+                    winText = "You lost :(";
+                }
                 std::shared_ptr<ConsoleUI::ConsoleWindow> window = m_uiManager.getWindow();
                 window->clear();
                 window->drawBorder();
-                window->drawCenteredText("Enemy won :()", window->getSize().Y / 2);
+                window->drawCenteredText(winText, window->getSize().Y / 2);
                 Sleep(1000);
                 m_goBack();
             }

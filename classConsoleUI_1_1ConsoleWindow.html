@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">3e9e494</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -73,85 +73,904 @@ $(function() {
 <div class="title">ConsoleUI::ConsoleWindow Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Object repesenting the Console window.  
+ <a href="classConsoleUI_1_1ConsoleWindow.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="menu_8h_source.html">menu.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a8605dff7f02357d1d307b21923e47ec4"><td class="memItemLeft" align="right" valign="top"><a id="a8605dff7f02357d1d307b21923e47ec4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a8605dff7f02357d1d307b21923e47ec4">ConsoleWindow</a> ()</td></tr>
+<tr class="memdesc:a8605dff7f02357d1d307b21923e47ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Console Window object. <br /></td></tr>
+<tr class="separator:a8605dff7f02357d1d307b21923e47ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac98c80b5ee734ccc29c7ff4a44dfcce3"><td class="memItemLeft" align="right" valign="top"><a id="ac98c80b5ee734ccc29c7ff4a44dfcce3"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#ac98c80b5ee734ccc29c7ff4a44dfcce3">~ConsoleWindow</a> ()=default</td></tr>
+<tr class="memdesc:ac98c80b5ee734ccc29c7ff4a44dfcce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Console Window object. <br /></td></tr>
+<tr class="separator:ac98c80b5ee734ccc29c7ff4a44dfcce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54cdfcc106d1e58464bd563e7bc347ac"><td class="memItemLeft" align="right" valign="top"><a id="a54cdfcc106d1e58464bd563e7bc347ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateSize</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a54cdfcc106d1e58464bd563e7bc347ac">updateSize</a> ()</td></tr>
+<tr class="memdesc:a54cdfcc106d1e58464bd563e7bc347ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the size of the console window. <br /></td></tr>
 <tr class="separator:a54cdfcc106d1e58464bd563e7bc347ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb9f8001b8efe0edb0844a540ad3d54d"><td class="memItemLeft" align="right" valign="top"><a id="afb9f8001b8efe0edb0844a540ad3d54d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawBorder</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#afb9f8001b8efe0edb0844a540ad3d54d">drawBorder</a> ()</td></tr>
+<tr class="memdesc:afb9f8001b8efe0edb0844a540ad3d54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a border around the console. <br /></td></tr>
 <tr class="separator:afb9f8001b8efe0edb0844a540ad3d54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a55ae4afee50d30f7769e27531c6bab"><td class="memItemLeft" align="right" valign="top"><a id="a3a55ae4afee50d30f7769e27531c6bab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawBox</b> (int x, int y, size_t width, size_t height)</td></tr>
+<tr class="memitem:a3a55ae4afee50d30f7769e27531c6bab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab">drawBox</a> (int x, int y, size_t width, size_t height)</td></tr>
+<tr class="memdesc:a3a55ae4afee50d30f7769e27531c6bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a box.  <a href="classConsoleUI_1_1ConsoleWindow.html#a3a55ae4afee50d30f7769e27531c6bab">More...</a><br /></td></tr>
 <tr class="separator:a3a55ae4afee50d30f7769e27531c6bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2026ef933b34b330407a1282cd358bc5"><td class="memItemLeft" align="right" valign="top"><a id="a2026ef933b34b330407a1282cd358bc5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawHorizontalLine</b> (int x, int y, size_t length, char ch='-')</td></tr>
+<tr class="memitem:a2026ef933b34b330407a1282cd358bc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5">drawHorizontalLine</a> (int x, int y, size_t length, char ch='-')</td></tr>
+<tr class="memdesc:a2026ef933b34b330407a1282cd358bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a horizontal line using specified character.  <a href="classConsoleUI_1_1ConsoleWindow.html#a2026ef933b34b330407a1282cd358bc5">More...</a><br /></td></tr>
 <tr class="separator:a2026ef933b34b330407a1282cd358bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cf5b93a139ec78c747bbee4b6d69461"><td class="memItemLeft" align="right" valign="top"><a id="a6cf5b93a139ec78c747bbee4b6d69461"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawVerticalLine</b> (int x, int y, size_t length, char ch='|')</td></tr>
+<tr class="memitem:a6cf5b93a139ec78c747bbee4b6d69461"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a6cf5b93a139ec78c747bbee4b6d69461">drawVerticalLine</a> (int x, int y, size_t length, char ch='|')</td></tr>
+<tr class="memdesc:a6cf5b93a139ec78c747bbee4b6d69461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a vertical line using specified character.  <a href="classConsoleUI_1_1ConsoleWindow.html#a6cf5b93a139ec78c747bbee4b6d69461">More...</a><br /></td></tr>
 <tr class="separator:a6cf5b93a139ec78c747bbee4b6d69461"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c4d797703581a0f6c7164b66b19a9ff"><td class="memItemLeft" align="right" valign="top"><a id="a0c4d797703581a0f6c7164b66b19a9ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawCharacter</b> (int x, int y, char ch)</td></tr>
+<tr class="memitem:a0c4d797703581a0f6c7164b66b19a9ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff">drawCharacter</a> (int x, int y, char ch)</td></tr>
+<tr class="memdesc:a0c4d797703581a0f6c7164b66b19a9ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts a character on the screen at a position.  <a href="classConsoleUI_1_1ConsoleWindow.html#a0c4d797703581a0f6c7164b66b19a9ff">More...</a><br /></td></tr>
 <tr class="separator:a0c4d797703581a0f6c7164b66b19a9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7dddf0657da58484c958a488ea6ccfb"><td class="memItemLeft" align="right" valign="top"><a id="ab7dddf0657da58484c958a488ea6ccfb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawText</b> (const std::string &amp;text, int x, int y)</td></tr>
+<tr class="memitem:ab7dddf0657da58484c958a488ea6ccfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#ab7dddf0657da58484c958a488ea6ccfb">drawText</a> (const std::string &amp;text, int x, int y)</td></tr>
+<tr class="memdesc:ab7dddf0657da58484c958a488ea6ccfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts a string of text on the srceen starting at a position.  <a href="classConsoleUI_1_1ConsoleWindow.html#ab7dddf0657da58484c958a488ea6ccfb">More...</a><br /></td></tr>
 <tr class="separator:ab7dddf0657da58484c958a488ea6ccfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7392c45732a07f2a7b544fe8f4e3257d"><td class="memItemLeft" align="right" valign="top"><a id="a7392c45732a07f2a7b544fe8f4e3257d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawCenteredText</b> (const std::string &amp;text, int y)</td></tr>
+<tr class="memitem:a7392c45732a07f2a7b544fe8f4e3257d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d">drawCenteredText</a> (const std::string &amp;text, int y)</td></tr>
+<tr class="memdesc:a7392c45732a07f2a7b544fe8f4e3257d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put a string of text centered horizontally on the screen.  <a href="classConsoleUI_1_1ConsoleWindow.html#a7392c45732a07f2a7b544fe8f4e3257d">More...</a><br /></td></tr>
 <tr class="separator:a7392c45732a07f2a7b544fe8f4e3257d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6eb66761e54f583386328304e376c41"><td class="memItemLeft" align="right" valign="top"><a id="af6eb66761e54f583386328304e376c41"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLineWithAbort</b> (int x, int y, size_t maxLength)</td></tr>
-<tr class="separator:af6eb66761e54f583386328304e376c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed25fa784e8d7c165f3d0539b33ebe05"><td class="memItemLeft" align="right" valign="top"><a id="aed25fa784e8d7c165f3d0539b33ebe05"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLine</b> (int x, int y, size_t maxLength=0)</td></tr>
+<tr class="memitem:aed25fa784e8d7c165f3d0539b33ebe05"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#aed25fa784e8d7c165f3d0539b33ebe05">getLine</a> (int x, int y, size_t maxLength=0)</td></tr>
+<tr class="memdesc:aed25fa784e8d7c165f3d0539b33ebe05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a blank text input field to recieve and display user input.  <a href="classConsoleUI_1_1ConsoleWindow.html#aed25fa784e8d7c165f3d0539b33ebe05">More...</a><br /></td></tr>
 <tr class="separator:aed25fa784e8d7c165f3d0539b33ebe05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf24d0d1cad6c5fa386d70840d3ebcb0"><td class="memItemLeft" align="right" valign="top"><a id="abf24d0d1cad6c5fa386d70840d3ebcb0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0">clear</a> ()</td></tr>
+<tr class="memdesc:abf24d0d1cad6c5fa386d70840d3ebcb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear everything on the screen. <br /></td></tr>
 <tr class="separator:abf24d0d1cad6c5fa386d70840d3ebcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1979a77dd4480e2aeb4458c8aebb41a7"><td class="memItemLeft" align="right" valign="top"><a id="a1979a77dd4480e2aeb4458c8aebb41a7"></a>
-COORD&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> () const</td></tr>
+<tr class="memitem:a1979a77dd4480e2aeb4458c8aebb41a7"><td class="memItemLeft" align="right" valign="top">COORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a1979a77dd4480e2aeb4458c8aebb41a7">getSize</a> () const</td></tr>
+<tr class="memdesc:a1979a77dd4480e2aeb4458c8aebb41a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Size of the console window.  <a href="classConsoleUI_1_1ConsoleWindow.html#a1979a77dd4480e2aeb4458c8aebb41a7">More...</a><br /></td></tr>
 <tr class="separator:a1979a77dd4480e2aeb4458c8aebb41a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb4ff813870a60375ab05a75fddc15b8"><td class="memItemLeft" align="right" valign="top"><a id="adb4ff813870a60375ab05a75fddc15b8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>checkWindowResize</b> (<a class="el" href="classConsoleUI_1_1UIManager.html">UIManager</a> &amp;uiManager)</td></tr>
+<tr class="memitem:adb4ff813870a60375ab05a75fddc15b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#adb4ff813870a60375ab05a75fddc15b8">checkWindowResize</a> (<a class="el" href="classConsoleUI_1_1UIManager.html">UIManager</a> &amp;uiManager)</td></tr>
+<tr class="memdesc:adb4ff813870a60375ab05a75fddc15b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check to see if the console window has been resized.  <a href="classConsoleUI_1_1ConsoleWindow.html#adb4ff813870a60375ab05a75fddc15b8">More...</a><br /></td></tr>
 <tr class="separator:adb4ff813870a60375ab05a75fddc15b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b74a85b52bdbdd6e4c8c0bbeb6130a7"><td class="memItemLeft" align="right" valign="top"><a id="a8b74a85b52bdbdd6e4c8c0bbeb6130a7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDefaultSize</b> (short width, short height)</td></tr>
+<tr class="memitem:a8b74a85b52bdbdd6e4c8c0bbeb6130a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a8b74a85b52bdbdd6e4c8c0bbeb6130a7">setDefaultSize</a> (short width, short height)</td></tr>
+<tr class="memdesc:a8b74a85b52bdbdd6e4c8c0bbeb6130a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the default size of the console window.  <a href="classConsoleUI_1_1ConsoleWindow.html#a8b74a85b52bdbdd6e4c8c0bbeb6130a7">More...</a><br /></td></tr>
 <tr class="separator:a8b74a85b52bdbdd6e4c8c0bbeb6130a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a417ff6a126f7329e729a4842dd3b40"><td class="memItemLeft" align="right" valign="top"><a id="a5a417ff6a126f7329e729a4842dd3b40"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setConsoleWindowSize</b> (short width, short height)</td></tr>
+<tr class="memitem:a5a417ff6a126f7329e729a4842dd3b40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a5a417ff6a126f7329e729a4842dd3b40">setConsoleWindowSize</a> (short width, short height)</td></tr>
+<tr class="memdesc:a5a417ff6a126f7329e729a4842dd3b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the size of the console window.  <a href="classConsoleUI_1_1ConsoleWindow.html#a5a417ff6a126f7329e729a4842dd3b40">More...</a><br /></td></tr>
 <tr class="separator:a5a417ff6a126f7329e729a4842dd3b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memItemLeft" align="right" valign="top"><a id="afc1032310d3d7d0bf917f9994d69a5b9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addTextToBox</b> (const std::string &amp;text)</td></tr>
+<tr class="memitem:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9">addTextToBox</a> (const std::string &amp;text)</td></tr>
+<tr class="memdesc:afc1032310d3d7d0bf917f9994d69a5b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The text to be added to a text box.  <a href="classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9">More...</a><br /></td></tr>
 <tr class="separator:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a233c52d7c4edf952a25c452051c6ad60"><td class="memItemLeft" align="right" valign="top"><a id="a233c52d7c4edf952a25c452051c6ad60"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawTextBox</b> (int x, int y, size_t width, size_t height)</td></tr>
+<tr class="memitem:a233c52d7c4edf952a25c452051c6ad60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a233c52d7c4edf952a25c452051c6ad60">drawTextBox</a> (int x, int y, size_t width, size_t height)</td></tr>
+<tr class="memdesc:a233c52d7c4edf952a25c452051c6ad60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a text box of specified dimensions.  <a href="classConsoleUI_1_1ConsoleWindow.html#a233c52d7c4edf952a25c452051c6ad60">More...</a><br /></td></tr>
 <tr class="separator:a233c52d7c4edf952a25c452051c6ad60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68225a2f55274a85040a7bd5a9517783"><td class="memItemLeft" align="right" valign="top"><a id="a68225a2f55274a85040a7bd5a9517783"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsciiArt</b> (const <a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> &amp;art)</td></tr>
+<tr class="memitem:a68225a2f55274a85040a7bd5a9517783"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a68225a2f55274a85040a7bd5a9517783">addAsciiArt</a> (const <a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> &amp;art)</td></tr>
 <tr class="separator:a68225a2f55274a85040a7bd5a9517783"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c7ff350c92cf2256d555436d7df5ce2"><td class="memItemLeft" align="right" valign="top"><a id="a5c7ff350c92cf2256d555436d7df5ce2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawAsciiArt</b> (const std::string &amp;name, int x=-1, int y=-1)</td></tr>
+<tr class="memitem:a5c7ff350c92cf2256d555436d7df5ce2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a5c7ff350c92cf2256d555436d7df5ce2">drawAsciiArt</a> (const std::string &amp;name, int x=-1, int y=-1)</td></tr>
 <tr class="separator:a5c7ff350c92cf2256d555436d7df5ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92f35d1d6bc1c3d7c47c6bb65bd7ff31"><td class="memItemLeft" align="right" valign="top"><a id="a92f35d1d6bc1c3d7c47c6bb65bd7ff31"></a>
-<a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getAsciiArtByName</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a92f35d1d6bc1c3d7c47c6bb65bd7ff31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a92f35d1d6bc1c3d7c47c6bb65bd7ff31">getAsciiArtByName</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a92f35d1d6bc1c3d7c47c6bb65bd7ff31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and ASCII art object by name.  <a href="classConsoleUI_1_1ConsoleWindow.html#a92f35d1d6bc1c3d7c47c6bb65bd7ff31">More...</a><br /></td></tr>
 <tr class="separator:a92f35d1d6bc1c3d7c47c6bb65bd7ff31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba3aac443765c33fbb1848e8ea3952b8"><td class="memItemLeft" align="right" valign="top"><a id="aba3aac443765c33fbb1848e8ea3952b8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addANSIArt</b> (const <a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a> &amp;art)</td></tr>
+<tr class="memitem:aba3aac443765c33fbb1848e8ea3952b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#aba3aac443765c33fbb1848e8ea3952b8">addANSIArt</a> (const <a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a> &amp;art)</td></tr>
+<tr class="memdesc:aba3aac443765c33fbb1848e8ea3952b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an ansi art object to the consolewindow object.  <a href="classConsoleUI_1_1ConsoleWindow.html#aba3aac443765c33fbb1848e8ea3952b8">More...</a><br /></td></tr>
 <tr class="separator:aba3aac443765c33fbb1848e8ea3952b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034a2564f10427d6b4ebc1ea0a0e2190"><td class="memItemLeft" align="right" valign="top"><a id="a034a2564f10427d6b4ebc1ea0a0e2190"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawANSIArt</b> (const std::string &amp;name, int x, int y)</td></tr>
+<tr class="memitem:a034a2564f10427d6b4ebc1ea0a0e2190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a034a2564f10427d6b4ebc1ea0a0e2190">drawANSIArt</a> (const std::string &amp;name, int x, int y)</td></tr>
+<tr class="memdesc:a034a2564f10427d6b4ebc1ea0a0e2190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the ansi art object at a location.  <a href="classConsoleUI_1_1ConsoleWindow.html#a034a2564f10427d6b4ebc1ea0a0e2190">More...</a><br /></td></tr>
 <tr class="separator:a034a2564f10427d6b4ebc1ea0a0e2190"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e7b4134050b442854f1aa9b73d58c24"><td class="memItemLeft" align="right" valign="top"><a id="a5e7b4134050b442854f1aa9b73d58c24"></a>
-<a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getANSIArtByName</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a5e7b4134050b442854f1aa9b73d58c24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#a5e7b4134050b442854f1aa9b73d58c24">getANSIArtByName</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a5e7b4134050b442854f1aa9b73d58c24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an ANSI artwork by name.  <a href="classConsoleUI_1_1ConsoleWindow.html#a5e7b4134050b442854f1aa9b73d58c24">More...</a><br /></td></tr>
 <tr class="separator:a5e7b4134050b442854f1aa9b73d58c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affbc938b0c64d6ffd1627421515b88ff"><td class="memItemLeft" align="right" valign="top"><a id="affbc938b0c64d6ffd1627421515b88ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawANSICode</b> (int code, int x, int y)</td></tr>
+<tr class="memitem:affbc938b0c64d6ffd1627421515b88ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#affbc938b0c64d6ffd1627421515b88ff">drawANSICode</a> (int code, int x, int y)</td></tr>
+<tr class="memdesc:affbc938b0c64d6ffd1627421515b88ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a 256bit colour on the screen at a position.  <a href="classConsoleUI_1_1ConsoleWindow.html#affbc938b0c64d6ffd1627421515b88ff">More...</a><br /></td></tr>
 <tr class="separator:affbc938b0c64d6ffd1627421515b88ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adee7ce5e8a0abeebcfaff3b7827e4219"><td class="memItemLeft" align="right" valign="top"><a id="adee7ce5e8a0abeebcfaff3b7827e4219"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawWrappedText</b> (const std::string &amp;text, int x, int y, size_t width)</td></tr>
+<tr class="memitem:adee7ce5e8a0abeebcfaff3b7827e4219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1ConsoleWindow.html#adee7ce5e8a0abeebcfaff3b7827e4219">drawWrappedText</a> (const std::string &amp;text, int x, int y, size_t width)</td></tr>
+<tr class="memdesc:adee7ce5e8a0abeebcfaff3b7827e4219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws text on the screen wrapping the string to the next line if it reaches the width.  <a href="classConsoleUI_1_1ConsoleWindow.html#adee7ce5e8a0abeebcfaff3b7827e4219">More...</a><br /></td></tr>
 <tr class="separator:adee7ce5e8a0abeebcfaff3b7827e4219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Object repesenting the Console window. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aba3aac443765c33fbb1848e8ea3952b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba3aac443765c33fbb1848e8ea3952b8">&#9670;&nbsp;</a></span>addANSIArt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::addANSIArt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a> &amp;&#160;</td>
+          <td class="paramname"><em>art</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add an ansi art object to the consolewindow object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">art</td><td>the ansi art oject to add </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a68225a2f55274a85040a7bd5a9517783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68225a2f55274a85040a7bd5a9517783">&#9670;&nbsp;</a></span>addAsciiArt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::addAsciiArt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> &amp;&#160;</td>
+          <td class="paramname"><em>art</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">art</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afc1032310d3d7d0bf917f9994d69a5b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1032310d3d7d0bf917f9994d69a5b9">&#9670;&nbsp;</a></span>addTextToBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::addTextToBox </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The text to be added to a text box. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adb4ff813870a60375ab05a75fddc15b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4ff813870a60375ab05a75fddc15b8">&#9670;&nbsp;</a></span>checkWindowResize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::checkWindowResize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classConsoleUI_1_1UIManager.html">UIManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>uiManager</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check to see if the console window has been resized. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uiManager</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a034a2564f10427d6b4ebc1ea0a0e2190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a034a2564f10427d6b4ebc1ea0a0e2190">&#9670;&nbsp;</a></span>drawANSIArt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawANSIArt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws the ansi art object at a location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>name of the artwork to draw </td></tr>
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="affbc938b0c64d6ffd1627421515b88ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affbc938b0c64d6ffd1627421515b88ff">&#9670;&nbsp;</a></span>drawANSICode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawANSICode </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a 256bit colour on the screen at a position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>256bit colour code </td></tr>
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5c7ff350c92cf2256d555436d7df5ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c7ff350c92cf2256d555436d7df5ce2">&#9670;&nbsp;</a></span>drawAsciiArt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawAsciiArt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3a55ae4afee50d30f7769e27531c6bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a55ae4afee50d30f7769e27531c6bab">&#9670;&nbsp;</a></span>drawBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawBox </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a box. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">width</td><td>width of the box </td></tr>
+    <tr><td class="paramname">height</td><td>height of the box </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7392c45732a07f2a7b544fe8f4e3257d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7392c45732a07f2a7b544fe8f4e3257d">&#9670;&nbsp;</a></span>drawCenteredText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawCenteredText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Put a string of text centered horizontally on the screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>string of text to be displayed </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0c4d797703581a0f6c7164b66b19a9ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c4d797703581a0f6c7164b66b19a9ff">&#9670;&nbsp;</a></span>drawCharacter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawCharacter </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Puts a character on the screen at a position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">ch</td><td>character to draw </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2026ef933b34b330407a1282cd358bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2026ef933b34b330407a1282cd358bc5">&#9670;&nbsp;</a></span>drawHorizontalLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawHorizontalLine </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em> = <code>'-'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a horizontal line using specified character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">length</td><td>length of the line </td></tr>
+    <tr><td class="paramname">ch</td><td>character to use to make the line </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7dddf0657da58484c958a488ea6ccfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7dddf0657da58484c958a488ea6ccfb">&#9670;&nbsp;</a></span>drawText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Puts a string of text on the srceen starting at a position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>the string to be displayed </td></tr>
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a233c52d7c4edf952a25c452051c6ad60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a233c52d7c4edf952a25c452051c6ad60">&#9670;&nbsp;</a></span>drawTextBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawTextBox </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a text box of specified dimensions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">width</td><td>width of the box </td></tr>
+    <tr><td class="paramname">height</td><td>height of the box </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6cf5b93a139ec78c747bbee4b6d69461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf5b93a139ec78c747bbee4b6d69461">&#9670;&nbsp;</a></span>drawVerticalLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawVerticalLine </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em> = <code>'|'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a vertical line using specified character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">length</td><td>length of the line </td></tr>
+    <tr><td class="paramname">ch</td><td>character to use to make th line </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adee7ce5e8a0abeebcfaff3b7827e4219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adee7ce5e8a0abeebcfaff3b7827e4219">&#9670;&nbsp;</a></span>drawWrappedText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::drawWrappedText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws text on the screen wrapping the string to the next line if it reaches the width. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>string of text to display </td></tr>
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">width</td><td>maximum width of the text </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5e7b4134050b442854f1aa9b73d58c24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e7b4134050b442854f1aa9b73d58c24">&#9670;&nbsp;</a></span>getANSIArtByName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classConsoleUI_1_1ANSIArt.html">ANSIArt</a> * ConsoleUI::ConsoleWindow::getANSIArtByName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get an ANSI artwork by name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>name of the artwork </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ANSIArt* </dd></dl>
+
+</div>
+</div>
+<a id="a92f35d1d6bc1c3d7c47c6bb65bd7ff31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f35d1d6bc1c3d7c47c6bb65bd7ff31">&#9670;&nbsp;</a></span>getAsciiArtByName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> * ConsoleUI::ConsoleWindow::getAsciiArtByName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get and ASCII art object by name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>AsciiArt* </dd></dl>
+
+</div>
+</div>
+<a id="aed25fa784e8d7c165f3d0539b33ebe05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed25fa784e8d7c165f3d0539b33ebe05">&#9670;&nbsp;</a></span>getLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ConsoleUI::ConsoleWindow::getLine </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxLength</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a blank text input field to recieve and display user input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>left most positition </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+    <tr><td class="paramname">maxLength</td><td>maximum length of the input field </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+</div>
+</div>
+<a id="a1979a77dd4480e2aeb4458c8aebb41a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1979a77dd4480e2aeb4458c8aebb41a7">&#9670;&nbsp;</a></span>getSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COORD ConsoleUI::ConsoleWindow::getSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Size of the console window. </p>
+<dl class="section return"><dt>Returns</dt><dd>COORD </dd></dl>
+
+</div>
+</div>
+<a id="a5a417ff6a126f7329e729a4842dd3b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a417ff6a126f7329e729a4842dd3b40">&#9670;&nbsp;</a></span>setConsoleWindowSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::setConsoleWindowSize </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the size of the console window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>console window width </td></tr>
+    <tr><td class="paramname">height</td><td>console window height </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b74a85b52bdbdd6e4c8c0bbeb6130a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b74a85b52bdbdd6e4c8c0bbeb6130a7">&#9670;&nbsp;</a></span>setDefaultSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::ConsoleWindow::setDefaultSize </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the default size of the console window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>console window width </td></tr>
+    <tr><td class="paramname">height</td><td>console window height </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8cpp.html">menu.cpp</a></li>

@@ -29,7 +29,7 @@ class Player
 private:
     int hitPoints;
     int maxHitPoints;
-    int handSize;
+    size_t handSize;
     std::vector<PlayingCard> deck;
     std::vector<PlayingCard> hand;
 
@@ -47,7 +47,7 @@ public:
      * @param maxHitPoints the maximum hit points of the player
      * @param hand the hand (list of cards) of the player
      */
-    Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
+    Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck);
 
     /**
      * @brief Returns the current hit points of the player.
@@ -105,14 +105,14 @@ public:
      *
      * @return int the hand size
      */
-    int getHandSize();
+    size_t getHandSize();
 
     /**
      * @brief Sets the hand size of the player
      *
      * @param handSize the hand size to set too
      */
-    void setHandSize(int handSize);
+    void setHandSize(size_t handSize);
 
     std::vector<PlayingCard> getDeck();
 

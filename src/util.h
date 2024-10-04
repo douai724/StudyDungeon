@@ -131,6 +131,8 @@ void ShowConsoleCursor(bool showflag);
  */
 std::string convertFileToANSI(std::string filename);
 
+std::vector<std::vector<int>> readInANSICodes(std::string filename);
+
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt);
 
 std::string getRandomPositiveQuote();

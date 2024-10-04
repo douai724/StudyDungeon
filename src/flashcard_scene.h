@@ -106,6 +106,8 @@ private:
 
     bool m_staticDrawn = false;
     bool m_decksNeedReload = false;
+    std::chrono::steady_clock::time_point m_lastPageChangeTime;
+    const std::chrono::milliseconds m_pageChangeDelay{200};
     StudySettings m_settings;
 };
 
@@ -178,11 +180,11 @@ private:
     /**
      * @brief Record the selected difficulty for the current flashcard.
      *
-     * @param difficulty The difficulty level selected by the user (0: Easy, 1: Medium, 2: Hard).
+     * @param difficulty The difficulty level selected by the user (1: Easy, 2: Medium, 3: Hard).
      */
-    void selectDifficulty(int difficulty);
+    void selectDifficulty(CardDifficulty difficulty);
 
-    void updateCardDifficulty(int cardIndex, CardDifficulty difficulty);
+    void updateCardDifficulty(size_t cardIndex, CardDifficulty difficulty);
     void saveUpdatedDeck();
     void initializeCardOrder();
     // int flashcard_limit = 10;
@@ -217,6 +219,7 @@ private:
 
     std::string m_lastQuestionDisplayed;
     bool m_lastAnswerDisplayed;
+    bool m_answerDrawn;
 };
 
 /**

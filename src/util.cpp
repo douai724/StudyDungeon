@@ -187,6 +187,30 @@ void ShowConsoleCursor(bool showFlag)
     SetConsoleCursorInfo(out, &cursorInfo);
 }
 
+std::vector<std::vector<int>> readInANSICodes(std::string filename)
+{
+    std::vector<std::vector<int>> codes;
+    fs::path path = getAppPath().append("artwork").append(filename);
+    std::cout << path << std::endl;
+    std::ifstream inputBuffer{path};
+    std::string inputLine{};
+
+    while (std::getline(inputBuffer, inputLine))
+    {
+        int curr;
+        std::vector<int> row;
+        std::stringstream ss;
+        ss << inputLine;
+
+        while (ss >> curr)
+        {
+            row.push_back(curr);
+        }
+        codes.push_back(row);
+    }
+    return codes;
+}
+
 std::string convertFileToANSI(std::string filename)
 {
     fs::path path = getAppPath().append("artwork").append(filename);

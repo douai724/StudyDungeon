@@ -71,6 +71,18 @@ bool Game::isGameOver()
     return false;
 }
 
+short Game::getWinner()
+{
+    if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
+    {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 bool Game::isWinner()
 {
     if (turn == 1)
@@ -171,15 +183,15 @@ std::vector<PlayingCard> generateDeck(int numCards)
 
         float type = std::rand() / (float)RAND_MAX;
         int index = -1;
-        for (int i = 0; i < distribution.size(); i++)
+        for (int j = 0; j < distribution.size(); j++)
         {
-            if (type <= distribution[i])
+            if (type <= distribution[j])
             {
-                index = i;
+                index = j;
                 break;
             }
         } // add error handling here for -1
-        int value = (int)(std::rand() / (double)RAND_MAX * 10);
+        int value = (int)(std::rand() / (double)RAND_MAX * 30);
         PlayingCard card = PlayingCard((enum Type)index, value);
         hand.push_back(card);
     }

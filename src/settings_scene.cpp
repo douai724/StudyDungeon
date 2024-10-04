@@ -146,7 +146,7 @@ void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
     m_uiManager.getMenu("settings")
-        .draw((windowSize.X / 2) - (m_uiManager.getMenu("settings").getMaxWidth() / 2),
+        .draw((windowSize.X / 2) - static_cast<int>(m_uiManager.getMenu("settings").getMaxWidth() / 2),
               windowSize.Y / 2); // Adjust 30 based on your menu width
 }
 

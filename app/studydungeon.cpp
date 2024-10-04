@@ -84,6 +84,25 @@ public:
                     `~~~~~~~~'~~~-----....___;;;____---~~
     )";
 
+        ConsoleUI::ANSIArt title = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "title", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(title);
+
+        ConsoleUI::ANSIArt card = ConsoleUI::ANSIArt(readInANSICodes("CARD.txt"), "card", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(card);
+
+        ConsoleUI::ANSIArt cardSelected =
+            ConsoleUI::ANSIArt(readInANSICodes("CARD_SELECTED.txt"), "cardSelected", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(cardSelected);
+
+        ConsoleUI::ANSIArt heart = ConsoleUI::ANSIArt(readInANSICodes("HEART.txt"), "heart", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(heart);
+
+        ConsoleUI::ANSIArt heartEmpty = ConsoleUI::ANSIArt(readInANSICodes("HEART_EMPTY.txt"), "heartEmpty", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(heartEmpty);
+
+        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("SLIME.txt"), "frog", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(frog);
+
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
         std::vector<std::string> artLines2 = convertAsciiArtToLines(asciiArtString2);
         ConsoleUI::AsciiArt asciiArt("main_menu", artLines, 0, 0);
@@ -126,13 +145,17 @@ public:
             window->drawBorder();
 
             // Draw the ASCII art
-            int otherMenuArtX = ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 3;
-            int otherMenuArtY = window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight();
-            int mainMenuArtX = (window->getSize().X - window->getAsciiArtByName("main_menu")->getWidth()) / 2;
-            int mainMenuArtY = 4;
+            int otherMenuArtX =
+                ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 3;
+            int otherMenuArtY =
+                window->getSize().Y - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
+            int mainMenuArtX =
+                (window->getSize().X - static_cast<int>(window->getANSIArtByName("title")->getWidth())) / 8;
+            int mainMenuArtY = 10;
 
             window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
-            window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
+            //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
+            window->drawANSIArt("title", mainMenuArtX, mainMenuArtY - 10);
 
             m_staticDrawn = true;
         }
@@ -144,13 +167,13 @@ public:
 
         // Clear only the menu area
         auto &menu = m_uiManager.getMenu("main");
-        int menuX = (window->getSize().X - menu.getMaxWidth()) / 2;
+        int menuX = (window->getSize().X - static_cast<int>(menu.getMaxWidth())) / 2;
         int menuY = 20;
-        int menuWidth = menu.getMaxWidth() - 1;
-        int menuHeight = menu.getButtonCount();
+        size_t menuWidth = menu.getMaxWidth() - 1;
+        size_t menuHeight = menu.getButtonCount();
 
         // Draw a filled box to clear the menu area
-        for (int i = menuY - 1; i < menuY + menuHeight + 1; ++i)
+        for (int i = menuY - 1; i < menuY + static_cast<int>(menuHeight) + 1; ++i)
         {
             window->drawText(std::string(menuWidth + 2, ' '), menuX - 1, i);
         }

@@ -92,6 +92,8 @@ public:
 
 
     bool isWinner();
+
+    short getWinner();
 };
 
 /**

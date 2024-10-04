@@ -91,6 +91,8 @@ private:
     bool m_staticDrawn = false;
     int m_prevBookshelfIndex = -1;
     bool m_paging = false;
+    std::chrono::steady_clock::time_point m_lastPageChangeTime;
+    const std::chrono::milliseconds m_pageChangeDelay{200};
     int bookshelfIndex = 0;
     StudySettings m_settings;
 

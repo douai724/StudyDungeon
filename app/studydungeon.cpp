@@ -84,7 +84,23 @@ public:
                     `~~~~~~~~'~~~-----....___;;;____---~~
     )";
 
-        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "frog", 0, 0);
+        ConsoleUI::ANSIArt title = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "title", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(title);
+
+        ConsoleUI::ANSIArt card = ConsoleUI::ANSIArt(readInANSICodes("CARD.txt"), "card", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(card);
+
+        ConsoleUI::ANSIArt cardSelected =
+            ConsoleUI::ANSIArt(readInANSICodes("CARD_SELECTED.txt"), "cardSelected", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(cardSelected);
+
+        ConsoleUI::ANSIArt heart = ConsoleUI::ANSIArt(readInANSICodes("HEART.txt"), "heart", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(heart);
+
+        ConsoleUI::ANSIArt heartEmpty = ConsoleUI::ANSIArt(readInANSICodes("HEART_EMPTY.txt"), "heartEmpty", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(heartEmpty);
+
+        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("SLIME.txt"), "frog", 0, 0);
         m_uiManager.getWindow()->addANSIArt(frog);
 
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
@@ -130,16 +146,16 @@ public:
 
             // Draw the ASCII art
             int otherMenuArtX =
-                (window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 3;
+                ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 3;
             int otherMenuArtY =
                 window->getSize().Y - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
             int mainMenuArtX =
-                (window->getSize().X - static_cast<int>(window->getANSIArtByName("frog")->getWidth()) / 8);
+                (window->getSize().X - static_cast<int>(window->getANSIArtByName("title")->getWidth())) / 8;
             int mainMenuArtY = 10;
 
             window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
             //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
-            window->drawANSIArt("frog", mainMenuArtX, mainMenuArtY - 10);
+            window->drawANSIArt("title", mainMenuArtX, mainMenuArtY - 10);
 
             m_staticDrawn = true;
         }

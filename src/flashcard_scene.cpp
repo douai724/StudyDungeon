@@ -143,26 +143,42 @@ void BrowseDecksScene::handleInput()
             {
             case _key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
+                {
                     m_selectedDeckIndex--;
+                    m_needsRedraw = true;
+                }
+
                 m_currentPage = 0;
                 break;
             case _key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
+                {
                     m_selectedDeckIndex++;
+                    m_needsRedraw = true;
+                }
+
                 m_currentPage = 0;
                 break;
             case _key_left: // Left arrow
-                if (m_currentPage > 0)
+                if (m_currentPage > 0 && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
+                {
                     m_currentPage--;
+                    m_needsRedraw = true;
+                    m_lastPageChangeTime = std::chrono::steady_clock::now();
+                }
                 break;
             case _key_right: // Right arrow
-                if (!m_decks.empty())
+                if (!m_decks.empty() && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
                     int totalPages =
                         (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                     if (m_currentPage < totalPages - 1)
+                    {
                         m_currentPage++;
+                        m_needsRedraw = true;
+                        m_lastPageChangeTime = std::chrono::steady_clock::now();
+                    }
                 }
                 break;
             default:
@@ -202,16 +218,12 @@ void BrowseDecksScene::handleInput()
                 {
                     scene->setStaticDrawn(false);
                 }
+                m_needsRedraw = true;
                 m_goBack();
                 break;
             default:
                 inputHandled = false;
             }
-        }
-
-        if (inputHandled)
-        {
-            m_needsRedraw = true;
         }
     }
 }

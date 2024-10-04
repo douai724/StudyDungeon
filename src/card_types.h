@@ -25,5 +25,5 @@ enum Type
     swapHand
 };
 
-const std::map<enum Type, float> cardPossibilities{{damage, 0.5}, {heal, 0.5}, {swapHand, 0.1}};
+const std::map<enum Type, float> cardPossibilities{{damage, 0.8}, {heal, 0.2}, {swapHand, 0.05}};
 #endif

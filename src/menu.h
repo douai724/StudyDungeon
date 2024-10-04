@@ -26,8 +26,8 @@ class AsciiArt
 private:
     std::string m_name;
     std::vector<std::string> m_art;
-    int m_width;
-    int m_height;
+    size_t m_width;
+    size_t m_height;
     int m_x;
     int m_y;
 
@@ -38,8 +38,8 @@ public:
     const std::vector<std::string> &getArt() const;
     int getX() const;
     int getY() const;
-    int getWidth() const;
-    int getHeight() const;
+    size_t getWidth() const;
+    size_t getHeight() const;
     void setPosition(int x, int y);
 };
 
@@ -48,16 +48,16 @@ class ANSIArt
 private:
     std::string name;
     std::vector<std::vector<int>> codes;
-    int width;
-    int height;
-    int x;
-    int y;
+    size_t width;
+    size_t height;
+    int m_x;
+    int m_y;
 
 public:
     ANSIArt(std::vector<std::vector<int>> codes, const std::string &name, int x = 0, int y = 0);
 
-    int getWidth();
-    int getHeight();
+    size_t getWidth();
+    size_t getHeight();
     int getX();
     int getY();
     void setPosition(int x, int y);
@@ -75,19 +75,19 @@ public:
     void drawBorder();
     void drawBox(int x, int y, size_t width, size_t height);
     void drawHorizontalLine(int x, int y, size_t length, char ch = '-');
-    void drawVerticalLine(int x, int y, int length, char ch = '|');
+    void drawVerticalLine(int x, int y, size_t length, char ch = '|');
     void drawCharacter(int x, int y, char ch);
     void drawText(const std::string &text, int x, int y);
     void drawCenteredText(const std::string &text, int y);
-    std::string getLineWithAbort(int x, int y, int maxLength);
-    std::string getLine(int x, int y, int maxLength = 0);
+    std::string getLineWithAbort(int x, int y, size_t maxLength);
+    std::string getLine(int x, int y, size_t maxLength = 0);
     void clear();
     COORD getSize() const;
     void checkWindowResize(UIManager &uiManager);
     void setDefaultSize(short width, short height);
     void setConsoleWindowSize(short width, short height);
     void addTextToBox(const std::string &text);
-    void drawTextBox(int x, int y, int width, int height);
+    void drawTextBox(int x, int y, size_t width, size_t height);
     void addAsciiArt(const AsciiArt &art);
     void drawAsciiArt(const std::string &name, int x = -1, int y = -1);
     AsciiArt *getAsciiArtByName(const std::string &name);
@@ -97,7 +97,7 @@ public:
     ANSIArt *getANSIArtByName(const std::string &name);
     void drawANSICode(int code, int x, int y);
 
-    void drawWrappedText(const std::string &text, int x, int y, int width);
+    void drawWrappedText(const std::string &text, int x, int y, size_t width);
 
 
 private:
@@ -117,7 +117,7 @@ public:
     Button(const std::string &label, std::function<void()> action);
     void draw(int x, int y, bool selected);
     void performAction() const;
-    int getWidth() const;
+    size_t getWidth() const;
     const std::string &getLabel() const;
 
 private:
@@ -136,14 +136,14 @@ public:
     void pushPage();
     void popPage();
     size_t getButtonCount() const;
-    int getButtonWidth(size_t index) const;
+    size_t getButtonWidth(size_t index) const;
     size_t getSelectedIndex() const
     {
         return m_selectedIndex;
     }
     void selectPreviousButton();
     void selectNextButton();
-    int getMaxWidth() const;
+    size_t getMaxWidth() const;
     void activateSelectedButton();
     void clear()
     {

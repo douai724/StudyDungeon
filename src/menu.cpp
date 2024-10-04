@@ -61,9 +61,9 @@ void ConsoleWindow::drawBorder()
 void ConsoleWindow::drawBox(int x, int y, size_t width, size_t height)
 {
     drawHorizontalLine(x, y, width);
-    drawHorizontalLine(x, y + height - 1, width);
-    drawVerticalLine(x, y, height);
-    drawVerticalLine(x + width - 1, y, height);
+    drawHorizontalLine(x, y + static_cast<int>(height) - 1, width);
+    drawVerticalLine(x, y, static_cast<int>(height));
+    drawVerticalLine(x + static_cast<int>(width) - 1, y, height);
 }
 
 void ConsoleWindow::drawHorizontalLine(int x, int y, size_t length, char ch)
@@ -72,7 +72,7 @@ void ConsoleWindow::drawHorizontalLine(int x, int y, size_t length, char ch)
     std::cout << std::string(length, ch);
 }
 
-void ConsoleWindow::drawVerticalLine(int x, int y, int length, char ch)
+void ConsoleWindow::drawVerticalLine(int x, int y, size_t length, char ch)
 {
     for (int i = 0; i < length; ++i)
     {
@@ -99,7 +99,7 @@ void ConsoleWindow::drawANSICode(int code, int x, int y)
 
     LPTSTR lpCharacter = new TCHAR[2];
     DWORD nLength = 2;
-    COORD dwReadCoord{x, y};
+    COORD dwReadCoord{static_cast<short>(x), static_cast<short>(y)};
     DWORD nNumberOfCharsRead;
 
     ReadConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), lpCharacter, nLength, dwReadCoord, &nNumberOfCharsRead);
@@ -120,7 +120,7 @@ void ConsoleWindow::drawCenteredText(const std::string &text, int y)
 }
 
 
-std::string ConsoleWindow::getLine(int x, int y, int maxLength)
+std::string ConsoleWindow::getLine(int x, int y, size_t maxLength)
 {
     std::string input;
     int cursorPos = 0;
@@ -201,17 +201,17 @@ void ConsoleWindow::addTextToBox(const std::string &text)
     }
 }
 
-void ConsoleWindow::drawTextBox(int x, int y, int width, int height)
+void ConsoleWindow::drawTextBox(int x, int y, size_t width, size_t height)
 {
     drawBox(x, y, width, height);
-    for (size_t i = 0; i < m_textBox.size() && i < static_cast<size_t>(height - 2); ++i)
+    for (size_t i = 0; i < m_textBox.size() && i < height - 2; ++i)
     {
         drawText(m_textBox[i].substr(0, width - 2), static_cast<int>(x + 1), static_cast<int>(y + i + 1));
     }
 }
 
 
-void ConsoleWindow::drawWrappedText(const std::string &text, int x, int y, int width)
+void ConsoleWindow::drawWrappedText(const std::string &text, int x, int y, size_t width)
 {
     std::istringstream words(text);
     std::string word;
@@ -254,15 +254,15 @@ void ConsoleWindow::drawAsciiArt(const std::string &name, int x, int y)
 
         int artX = art->getX();
         int artY = art->getY();
-        int width = art->getWidth();
-        int height = art->getHeight();
+        size_t width = art->getWidth();
+        size_t height = art->getHeight();
 
         if (artX + width > m_width || artY + height > m_height)
         {
             // Art is too big for the console, display text alternative
             std::string textAlt = art->getName();
-            int textX = artX + (width - textAlt.length()) / 2;
-            int textY = artY + height / 2;
+            int textX = artX + static_cast<int>(width - textAlt.length()) / 2;
+            int textY = artY + static_cast<int>(height) / 2;
             drawText(textAlt, textX, textY);
         }
         else
@@ -303,8 +303,8 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
 
         int artX = art->getX();
         int artY = art->getY();
-        int width = art->getWidth();
-        int height = art->getHeight();
+        size_t width = art->getWidth();
+        size_t height = art->getHeight();
         std::vector<std::vector<int>> codes = art->getCodes();
 
         // if (artX + width > m_width || artY + height > m_height)
@@ -447,41 +447,41 @@ int AsciiArt::getY() const
     return m_y;
 }
 
-int AsciiArt::getWidth() const
+size_t AsciiArt::getWidth() const
 {
     return m_width;
 }
 
-int AsciiArt::getHeight() const
+size_t AsciiArt::getHeight() const
 {
     return m_height;
 }
 
 ANSIArt::ANSIArt(std::vector<std::vector<int>> codes, const std::string &name, int x, int y)
-    : codes(codes), name(name), x(x), y(y)
+    : codes(codes), name(name), m_x(x), m_y(y)
 {
     ANSIArt::width = codes.size();
     ANSIArt::height = codes[0].size();
 }
 
-int ANSIArt::getWidth()
+size_t ANSIArt::getWidth()
 {
     return ANSIArt::width;
 }
 
-int ANSIArt::getHeight()
+size_t ANSIArt::getHeight()
 {
     return ANSIArt::height;
 }
 
 int ANSIArt::getX()
 {
-    return ANSIArt::x;
+    return ANSIArt::m_x;
 }
 
 int ANSIArt::getY()
 {
-    return ANSIArt::y;
+    return ANSIArt::m_y;
 }
 
 std::string ANSIArt::getName()
@@ -491,16 +491,16 @@ std::string ANSIArt::getName()
 
 void ANSIArt::setPosition(int x, int y)
 {
-    ANSIArt::x = x;
-    ANSIArt::y = y;
+    ANSIArt::m_x = x;
+    ANSIArt::m_y = y;
 }
 
 std::string ANSIArt::toString()
 {
     std::string out = "";
-    for (int i = 0; i < codes.size(); i++)
+    for (size_t i = 0; i < codes.size(); i++)
     {
-        for (int j = 0; j < codes[i].size(); j++)
+        for (size_t j = 0; j < codes[i].size(); j++)
         {
             out += _ESC + "[48;5;" + std::to_string(codes[i][j]) + "m  " + _ESC + "[0m";
         }
@@ -539,7 +539,7 @@ void Button::performAction() const
         m_action();
 }
 
-int Button::getWidth() const
+size_t Button::getWidth() const
 {
     return static_cast<int>(m_label.length() + 4);
 }
@@ -568,7 +568,7 @@ void Menu::draw(int x, int y)
         m_buttons[i].draw(currentX, currentY, i == m_selectedIndex);
         if (horizontal_layout)
         {
-            currentX += m_buttons[i].getWidth() + 1;
+            currentX += static_cast<int>(m_buttons[i].getWidth()) + 1;
         }
         else
         {
@@ -643,7 +643,7 @@ size_t Menu::getButtonCount() const
     return m_buttons.size();
 }
 
-int Menu::getButtonWidth(size_t index) const
+size_t Menu::getButtonWidth(size_t index) const
 {
     if (index < m_buttons.size())
     {
@@ -676,9 +676,9 @@ void Menu::activateSelectedButton()
     }
 }
 
-int Menu::getMaxWidth() const
+size_t Menu::getMaxWidth() const
 {
-    int maxWidth = 0;
+    size_t maxWidth = 0;
     for (const auto &button : m_buttons)
     {
         maxWidth = max(button.getWidth(), maxWidth);

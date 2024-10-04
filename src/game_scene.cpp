@@ -39,13 +39,14 @@ void GameScene::setStaticDrawn(bool staticDrawn)
 
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
-    
-    if (!m_staticDrawn) {
+
+    if (!m_staticDrawn)
+    {
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
     }
-    
+
     if (!m_needsRedraw)
     {
         return;
@@ -80,19 +81,25 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
-        int cardWidth = size.X / hand.size();
-        for (int i = 0; i < (int)hand.size(); i++)
+        size_t cardWidth = size.X / hand.size();
+        for (size_t i = 0; i < hand.size(); i++)
         {
             std::string option = hand[i].toString();
             std::string cardText = "";
-            window->drawBox(size.X / hand.size() * i, 3 * size.Y / 5, size.X / 5, 2 * size.Y / 5);
+            window->drawBox(size.X / static_cast<int>(hand.size()) * static_cast<int>(i),
+                            3 * size.Y / 5,
+                            size.X / 5,
+                            2 * size.Y / 5);
             if (m_selectedIndex == i)
             {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
                 cardText = "+ [" + option + "] + ";
-                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
-                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
+                size_t padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+                window->drawText(cardText,
+                                 size.X / static_cast<int>(hand.size()) * static_cast<int>(i) +
+                                     static_cast<int>(padding),
+                                 4 * size.Y / 5);
 
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
                                         FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -100,8 +107,11 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             else
             {
                 cardText = " [" + option + "]  ";
-                int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
-                window->drawText(cardText, size.X / hand.size() * i + padding, 4 * size.Y / 5);
+                size_t padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+                window->drawText(cardText,
+                                 size.X / static_cast<int>(hand.size()) * static_cast<int>(i) +
+                                     static_cast<int>(padding),
+                                 4 * size.Y / 5);
             }
         }
     }

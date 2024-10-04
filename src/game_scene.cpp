@@ -47,6 +47,7 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
+        window->drawANSIArt("frog", 60, -5);
     }
 
     if (!m_needsRedraw)
@@ -108,7 +109,6 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
-        window->drawANSIArt("frog", 60, -5);
         int cardWidth = size.X / hand.size();
 
         for (int i = 0; i < (int)hand.size(); i++)

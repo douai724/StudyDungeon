@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">ac8f6e6</span>
+   &#160;<span id="projectnumber">7a1dc32</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -88,9 +88,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawBox</b> (int x, i
 <tr class="memitem:a2026ef933b34b330407a1282cd358bc5"><td class="memItemLeft" align="right" valign="top"><a id="a2026ef933b34b330407a1282cd358bc5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>drawHorizontalLine</b> (int x, int y, size_t length, char ch='-')</td></tr>
 <tr class="separator:a2026ef933b34b330407a1282cd358bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95b393ebeae13ad8ce6547d34579c882"><td class="memItemLeft" align="right" valign="top"><a id="a95b393ebeae13ad8ce6547d34579c882"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawVerticalLine</b> (int x, int y, int length, char ch='|')</td></tr>
-<tr class="separator:a95b393ebeae13ad8ce6547d34579c882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf5b93a139ec78c747bbee4b6d69461"><td class="memItemLeft" align="right" valign="top"><a id="a6cf5b93a139ec78c747bbee4b6d69461"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawVerticalLine</b> (int x, int y, size_t length, char ch='|')</td></tr>
+<tr class="separator:a6cf5b93a139ec78c747bbee4b6d69461"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c4d797703581a0f6c7164b66b19a9ff"><td class="memItemLeft" align="right" valign="top"><a id="a0c4d797703581a0f6c7164b66b19a9ff"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>drawCharacter</b> (int x, int y, char ch)</td></tr>
 <tr class="separator:a0c4d797703581a0f6c7164b66b19a9ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,12 +100,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawText</b> (const s
 <tr class="memitem:a7392c45732a07f2a7b544fe8f4e3257d"><td class="memItemLeft" align="right" valign="top"><a id="a7392c45732a07f2a7b544fe8f4e3257d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>drawCenteredText</b> (const std::string &amp;text, int y)</td></tr>
 <tr class="separator:a7392c45732a07f2a7b544fe8f4e3257d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a613b7d438eb41aa7dccd8b0def5b3f6a"><td class="memItemLeft" align="right" valign="top"><a id="a613b7d438eb41aa7dccd8b0def5b3f6a"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLineWithAbort</b> (int x, int y, int maxLength)</td></tr>
-<tr class="separator:a613b7d438eb41aa7dccd8b0def5b3f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae80e17a8ae3e6fa99a33dbceacb2f93c"><td class="memItemLeft" align="right" valign="top"><a id="ae80e17a8ae3e6fa99a33dbceacb2f93c"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLine</b> (int x, int y, int maxLength=0)</td></tr>
-<tr class="separator:ae80e17a8ae3e6fa99a33dbceacb2f93c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6eb66761e54f583386328304e376c41"><td class="memItemLeft" align="right" valign="top"><a id="af6eb66761e54f583386328304e376c41"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLineWithAbort</b> (int x, int y, size_t maxLength)</td></tr>
+<tr class="separator:af6eb66761e54f583386328304e376c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed25fa784e8d7c165f3d0539b33ebe05"><td class="memItemLeft" align="right" valign="top"><a id="aed25fa784e8d7c165f3d0539b33ebe05"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLine</b> (int x, int y, size_t maxLength=0)</td></tr>
+<tr class="separator:aed25fa784e8d7c165f3d0539b33ebe05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf24d0d1cad6c5fa386d70840d3ebcb0"><td class="memItemLeft" align="right" valign="top"><a id="abf24d0d1cad6c5fa386d70840d3ebcb0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
 <tr class="separator:abf24d0d1cad6c5fa386d70840d3ebcb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,9 +124,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setConsoleWindowSize<
 <tr class="memitem:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memItemLeft" align="right" valign="top"><a id="afc1032310d3d7d0bf917f9994d69a5b9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addTextToBox</b> (const std::string &amp;text)</td></tr>
 <tr class="separator:afc1032310d3d7d0bf917f9994d69a5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa5a385e8ba21388a00520ca7067e9de"><td class="memItemLeft" align="right" valign="top"><a id="aaa5a385e8ba21388a00520ca7067e9de"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawTextBox</b> (int x, int y, int width, int height)</td></tr>
-<tr class="separator:aaa5a385e8ba21388a00520ca7067e9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a233c52d7c4edf952a25c452051c6ad60"><td class="memItemLeft" align="right" valign="top"><a id="a233c52d7c4edf952a25c452051c6ad60"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawTextBox</b> (int x, int y, size_t width, size_t height)</td></tr>
+<tr class="separator:a233c52d7c4edf952a25c452051c6ad60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68225a2f55274a85040a7bd5a9517783"><td class="memItemLeft" align="right" valign="top"><a id="a68225a2f55274a85040a7bd5a9517783"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addAsciiArt</b> (const <a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> &amp;art)</td></tr>
 <tr class="separator:a68225a2f55274a85040a7bd5a9517783"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,9 +148,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawANSIArt</b> (cons
 <tr class="memitem:affbc938b0c64d6ffd1627421515b88ff"><td class="memItemLeft" align="right" valign="top"><a id="affbc938b0c64d6ffd1627421515b88ff"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>drawANSICode</b> (int code, int x, int y)</td></tr>
 <tr class="separator:affbc938b0c64d6ffd1627421515b88ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3955706e05bf034eb0ef43cc60753dfe"><td class="memItemLeft" align="right" valign="top"><a id="a3955706e05bf034eb0ef43cc60753dfe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>drawWrappedText</b> (const std::string &amp;text, int x, int y, int width)</td></tr>
-<tr class="separator:a3955706e05bf034eb0ef43cc60753dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adee7ce5e8a0abeebcfaff3b7827e4219"><td class="memItemLeft" align="right" valign="top"><a id="adee7ce5e8a0abeebcfaff3b7827e4219"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawWrappedText</b> (const std::string &amp;text, int x, int y, size_t width)</td></tr>
+<tr class="separator:adee7ce5e8a0abeebcfaff3b7827e4219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>

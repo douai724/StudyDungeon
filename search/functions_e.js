@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sethand_220',['setHand',['../classPlayer.html#ab3075dfec0540bfed4db7c1c059e029a',1,'Player']]],
-  ['sethandsize_221',['setHandSize',['../classPlayer.html#ac5b811a9e470690146f2123d6dadc898',1,'Player']]],
+  ['sethandsize_221',['setHandSize',['../classPlayer.html#a762bc72855354f698ab0170b2d23bbf3',1,'Player']]],
   ['sethitpoints_222',['setHitPoints',['../classPlayer.html#a389b9865ee167e58de339e83d16250d0',1,'Player']]],
   ['setmaxhitpoints_223',['setMaxHitPoints',['../classPlayer.html#ad6aeb2075eb5376d9512023e1754be0b',1,'Player']]],
   ['settingsscene_224',['SettingsScene',['../classSettingsScene.html#a3add74c6cc6f85451f4e1e4ff2c6d502',1,'SettingsScene']]],

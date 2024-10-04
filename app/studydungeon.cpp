@@ -167,7 +167,7 @@ public:
 
         // Clear only the menu area
         auto &menu = m_uiManager.getMenu("main");
-        int menuX = (window->getSize().X - static_cast<int>(menu.getMaxWidth()) / 2);
+        int menuX = (window->getSize().X - static_cast<int>(menu.getMaxWidth())) / 2;
         int menuY = 20;
         size_t menuWidth = menu.getMaxWidth() - 1;
         size_t menuHeight = menu.getButtonCount();

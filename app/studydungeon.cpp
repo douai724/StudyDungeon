@@ -100,6 +100,9 @@ public:
         ConsoleUI::ANSIArt heartEmpty = ConsoleUI::ANSIArt(readInANSICodes("HEART_EMPTY.txt"), "heartEmpty", 0, 0);
         m_uiManager.getWindow()->addANSIArt(heartEmpty);
 
+        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("SLIME.txt"), "frog", 0, 0);
+        m_uiManager.getWindow()->addANSIArt(frog);
+
         std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
         std::vector<std::string> artLines2 = convertAsciiArtToLines(asciiArtString2);
         ConsoleUI::AsciiArt asciiArt("main_menu", artLines, 0, 0);

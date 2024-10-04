@@ -61,53 +61,53 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
                          std::to_string(GameScene::game.p1.getMaxHitPoints()),
                      2,
                      6);
-    for (int i = 0; i < 5; i++)
-    {
-        float calc = GameScene::game.p1.getHitPoints() / (float)GameScene::game.p1.getMaxHitPoints() * 5;
-        if (calc > i)
-        {
-            window->drawANSIArt("heart", 16 * i + 1, 8);
-        }
-        else
-        {
-            window->drawANSIArt("heartEmpty", 16 * i + 1, 8);
-        }
-    }
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     float calc = GameScene::game.p1.getHitPoints() / (float)GameScene::game.p1.getMaxHitPoints() * 5;
+    //     if (calc > i)
+    //     {
+    //         window->drawANSIArt("heart", 16 * i + 1, 8);
+    //     }
+    //     else
+    //     {
+    //         window->drawANSIArt("heartEmpty", 16 * i + 1, 8);
+    //     }
+    // }
 
 
-    window->drawText("ENEMY", size.X / 2, 2);
-    window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p2.getDeck().size()), size.X / 2, 4);
+    window->drawText("ENEMY", size.X - 7, 2);
+    window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p2.getDeck().size()), size.X - 14, 4);
     window->drawText("HP: " + std::to_string(GameScene::game.p2.getHitPoints()) + "/" +
                          std::to_string(GameScene::game.p2.getMaxHitPoints()),
-                     size.X / 2,
+                     size.X - 13,
                      6);
-    for (int i = 0; i < 5; i++)
-    {
-        float calc = GameScene::game.p2.getHitPoints() / (float)GameScene::game.p2.getMaxHitPoints() * 5;
-        if (calc > i)
-        {
-            window->drawANSIArt("heart", 16 * i + 1 + size.X / 2, 8);
-        }
-        else
-        {
-            window->drawANSIArt("heartEmpty", 16 * i + 1 + size.X / 2, 8);
-        }
-    }
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     float calc = GameScene::game.p2.getHitPoints() / (float)GameScene::game.p2.getMaxHitPoints() * 5;
+    //     if (calc > i)
+    //     {
+    //         window->drawANSIArt("heart", 16 * i + 1 + size.X / 2, 8);
+    //     }
+    //     else
+    //     {
+    //         window->drawANSIArt("heartEmpty", 16 * i + 1 + size.X / 2, 8);
+    //     }
+    // }
 
     if (GameScene::playlist.size() > 1)
     {
-        window->drawCenteredText("You played: " + playlist[playlist.size() - 2].toString(), 15);
-        window->drawCenteredText("Enemy played: " + playlist[playlist.size() - 1].toString(), 16);
+        window->drawText("You played: " + playlist[playlist.size() - 2].toString(), 2, 15);
+        window->drawText("Enemy played: " + playlist[playlist.size() - 1].toString(), 2, 16);
     }
 
     if (hand.size() == 0)
     {
-        window->drawCenteredText("No cards in hand. Skip turn", 5);
+        window->drawText("No cards in hand. Skip turn", 2, 5);
     }
     else
     {
+        window->drawANSIArt("frog", 60, -5);
         int cardWidth = size.X / hand.size();
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_REVERSE_VIDEO);
 
         for (int i = 0; i < (int)hand.size(); i++)
         {
@@ -128,7 +128,7 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             }
         }
 
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_REVERSE_VIDEO);
+        // SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_UNDERSCORE);
     }
 
     m_needsRedraw = false;

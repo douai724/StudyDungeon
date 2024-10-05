@@ -460,89 +460,344 @@ private:
     void displayResizeWarning(UIManager &uiManager);
 };
 
+/**
+ * @brief The class for the button object
+ *
+ */
 class Button
 {
 public:
+    /**
+     * @brief Construct a new Button object
+     *
+     * @param label the label on the button
+     * @param action the function to call when the button is activated
+     */
     Button(const std::string &label, std::function<void()> action);
+
+    /**
+     * @brief Draw the button
+     *
+     * @param x left most position
+     * @param y top most position
+     * @param selected is the button selected
+     */
     void draw(int x, int y, bool selected);
+
+    /**
+     * @brief Perform the action associated with the button
+     *
+     */
     void performAction() const;
+
+    /**
+     * @brief Get the Width of the button
+     *
+     * @return size_t
+     */
     size_t getWidth() const;
+
+    /**
+     * @brief Get the Label of the button
+     *
+     * @return const std::string&
+     */
     const std::string &getLabel() const;
 
 private:
+    /** the button label */
     std::string m_label;
+    /** the function to run when button is activated */
     std::function<void()> m_action;
 };
 
+/**
+ * @brief Defines the menu that is made of buttons
+ *
+ */
 class Menu
 {
 public:
+    /**
+     * @brief Construct a new Menu object
+     *
+     * @param horizontal is the menu horizontal or vertical
+     */
     Menu(bool horizontal = false);
+
+    /**
+     * @brief Add a button to the menu
+     *
+     * @param label the label on the button
+     * @param action the function associtated with the button
+     */
     void addButton(const std::string &label, std::function<void()> action);
+
+    /**
+     * @brief Draw the menu
+     *
+     * @param x left most position
+     * @param y top most position
+     */
     void draw(int x, int y);
+
+    /**
+     * @brief Handle the user input on the menu
+     *
+     */
     void handleInput();
+
+    /**
+     * @brief determines if the menu back button has been pressed
+     *
+     * @return true back button pressed
+     * @return false back button not pressed
+     */
     bool isBackButtonPressed() const;
-    void pushPage();
-    void popPage();
+
+    /**
+     * @brief TODO
+     *
+     */
+    // void pushPage();
+
+    /**
+     * @brief TODO
+     *
+     */
+    // void popPage();
+
+    /**
+     * @brief Get the number of buttons in the menu
+     *
+     * @return size_t
+     */
     size_t getButtonCount() const;
+
+    /**
+     * @brief Get the width of the button by index
+     *
+     * @param index index of the button in the menu
+     * @return size_t
+     */
     size_t getButtonWidth(size_t index) const;
+
+    /**
+     * @brief Get the index of the selected menu button
+     *
+     * @return size_t
+     */
     size_t getSelectedIndex() const
     {
         return m_selectedIndex;
     }
+
+    /**
+     * @brief select the previous button in the menu
+     *
+     */
     void selectPreviousButton();
+
+    /**
+     * @brief selecte the next button in the menu
+     *
+     */
     void selectNextButton();
+
+    /**
+     * @brief Get the width of the widest button in the menu
+     *
+     * @return size_t
+     */
     size_t getMaxWidth() const;
+
+    /**
+     * @brief Perform the associated function from the button
+     *
+     */
     void activateSelectedButton();
-    void clear()
-    {
-        m_buttons.clear();
-        m_selectedIndex = 0;
-    }
+
+    /**
+     * @brief removes all buttons in the menu
+     *
+     */
+    void clear();
 
 private:
+    /** all of the buttons in the menu */
     std::vector<Button> m_buttons;
+    /** index of the selected button */
     size_t m_selectedIndex;
+    /** is the menu to be layed out horizontally */
     bool horizontal_layout;
-    std::vector<std::vector<Button>> m_pageHistory;
+    /** TODO */
+    // std::vector<std::vector<Button>> m_pageHistory;
 };
 
+/**
+ * @brief Defines a UI scene
+ *
+ */
 class Scene
 {
 public:
+    /**
+     * @brief Destroy the Scene object
+     *
+     */
     virtual ~Scene() = default;
+
+    /**
+     * @brief What to perfrom on scene update
+     *
+     */
     virtual void update() = 0;
+
+    /**
+     * @brief Initialise the scene
+     *
+     */
     virtual void init() = 0;
+
+    /**
+     * @brief What to render in the console window
+     *
+     * @param window
+     */
     virtual void render(std::shared_ptr<ConsoleWindow> window) = 0;
+
+    /**
+     * @brief Handle user input from the scene
+     *
+     */
     virtual void handleInput() = 0;
+
+    /**
+     * @brief TODO
+     *
+     * @param staticDrawn
+     */
     virtual void setStaticDrawn(bool staticDrawn) = 0;
 };
 
+
+/**
+ * @brief Defines the UI manager
+ *
+ */
 class UIManager
 {
 public:
+    /**
+     * @brief Construct a new UIManager object
+     *
+     */
     UIManager();
+
+    /**
+     * @brief Get the Window object
+     *
+     * @return std::shared_ptr<ConsoleWindow>
+     */
     std::shared_ptr<ConsoleWindow> getWindow();
+
+    /**
+     * @brief Set the Current Scene object
+     *
+     * @param scene
+     */
     void setCurrentScene(std::shared_ptr<Scene> scene);
+
+    /**
+     * @brief Initialise the UI
+     *
+     */
     void init();
+
+    /**
+     * @brief Called each time there is a event
+     *
+     */
     void update();
+
+    /**
+     * @brief Renders objects on the console window
+     *
+     */
     void render();
+
+    /**
+     * @brief Handles user input
+     *
+     */
     void handleInput();
+
+    /**
+     * @brief Create the UI menu
+     *
+     * @param name Name of the menu
+     * @param horizontal is the menu layout horizontal
+     * @return Menu&
+     */
     Menu &createMenu(const std::string &name, bool horizontal = false);
+
+    /**
+     * @brief Get the Menu object by it's name
+     *
+     * @param name the name of the menu to retrieve
+     * @return Menu&
+     */
     Menu &getMenu(const std::string &name);
+
+    /**
+     * @brief Removes the named menu from the UI
+     *
+     * @param name
+     */
     void clearMenu(const std::string &name);
+
+    /**
+     * @brief Removes all menus from the UI
+     *
+     */
     void clearAllMenus();
+
+    /**
+     * @brief Create a Ascii Art object
+     *
+     * @param name the name of the art
+     * @param artLines the vector of strings representing the art
+     * @param x left most position
+     * @param y top most position
+     * @return AsciiArt
+     */
     AsciiArt createAsciiArt(const std::string &name, const std::vector<std::string> &artLines, int x = -1, int y = -1);
+
+    /**
+     * @brief Deteremine if the window has been resized
+     *
+     */
     void checkWindowResize();
+
+    /** pointer to the current window */
     std::shared_ptr<ConsoleWindow> m_window;
+    /** pointer to the current scene */
     std::shared_ptr<Scene> m_currentScene;
+    /**all of the menus in the UI */
     std::unordered_map<std::string, Menu> m_menus;
+
+    /**
+     * @brief Get the Scenes of the UI
+     *
+     * @return std::vector<std::shared_ptr<Scene>>&
+     */
     std::vector<std::shared_ptr<Scene>> &getScenes()
     {
         return m_scenes;
     }
 
 private:
+    /** all of the scenes in the UI */
     std::vector<std::shared_ptr<Scene>> m_scenes;
 };
 

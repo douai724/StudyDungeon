@@ -2,7 +2,7 @@
  * @file howto_scene.h
  * @author Green Alligators
  * @brief
- * @version 0.2
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -20,8 +20,6 @@
 
 /**
  * @brief Class for a scene to show the program instructions.
- *
- * !!! This scene is was a test for the Menu.h console UI System and will most likely not make it to the final release !!!
  *
  */
 class HowToScene : public ConsoleUI::Scene
@@ -48,16 +46,30 @@ public:
      * reset, update and back.
      */
     void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override;
+
+    /**
+     * @brief Initialise the scene
+     *
+     */
     void init();
+
+    /**
+     * @brief Handle the input for the scene
+     *
+     */
     void handleInput() override;
 
+    /**
+     * @brief Set if the scene will need to be redrawn on update
+     *
+     * @param staticDrawn Should the scene be redrawn on updates
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     std::function<void()> m_goBack;    ///< function to return to the previous scene
-
-    bool m_staticDrawn = false;
+    bool m_staticDrawn = false;        ///< Is the scene to be redrawn on update
 };
 
 #endif // HOWTO_SCENE_H

@@ -1,8 +1,8 @@
 /**
  * @file card_types.h
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Defines the cards types for the card duel
+ * @version @PROJECT_VERSION@
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -25,5 +25,9 @@ enum Type
     swapHand
 };
 
+/**
+ * @brief Mapping of probabilities to card types
+ *
+ */
 const std::map<enum Type, float> cardPossibilities{{damage, 0.8}, {heal, 0.2}, {swapHand, 0.1}};
 #endif

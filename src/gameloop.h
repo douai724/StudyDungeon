@@ -2,7 +2,7 @@
  * @file gameloop.h
  * @author Green Alligators
  * @brief
- * @version 0.2
+ * @version @PROJECT_VERSION@
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -70,6 +70,10 @@ public:
      */
     Game(Player p1, Player p2);
 
+    /**
+     * @brief Construct a new Game object
+     *
+     */
     Game();
 
     /**
@@ -90,9 +94,19 @@ public:
       */
     bool isGameOver();
 
-
+    /**
+     * @brief Is the player the winner
+     *
+     * @return true the player is the winner
+     * @return false the player is not the winner
+     */
     bool isWinner();
 
+    /**
+     * @brief Which player was the winner
+     *
+     * @return short
+     */
     short getWinner();
 };
 

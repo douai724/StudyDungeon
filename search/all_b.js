@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['mainmenuscene_100',['MainMenuScene',['../classMainMenuScene.html',1,'']]],
-  ['menu_101',['Menu',['../classConsoleUI_1_1Menu.html',1,'ConsoleUI']]],
-  ['menu_2ecpp_102',['menu.cpp',['../menu_8cpp.html',1,'']]],
-  ['menu_2eh_103',['menu.h',['../menu_8h.html',1,'']]]
+  ['m_5fcurrentscene_116',['m_currentScene',['../classConsoleUI_1_1UIManager.html#a9f1e6ac266bbea30cc7dbf4411dc975d',1,'ConsoleUI::UIManager']]],
+  ['m_5fmenus_117',['m_menus',['../classConsoleUI_1_1UIManager.html#adbcd31259265d57494bd507f3c93490f',1,'ConsoleUI::UIManager']]],
+  ['m_5fwindow_118',['m_window',['../classConsoleUI_1_1UIManager.html#af6df8d2a0c4c8d290123b5e093128f2a',1,'ConsoleUI::UIManager']]],
+  ['mainmenuscene_119',['MainMenuScene',['../classMainMenuScene.html',1,'']]],
+  ['menu_120',['Menu',['../classConsoleUI_1_1Menu.html',1,'ConsoleUI::Menu'],['../classConsoleUI_1_1Menu.html#ac6e578bd04e52005a58867010aa4eeef',1,'ConsoleUI::Menu::Menu()']]],
+  ['menu_2ecpp_121',['menu.cpp',['../menu_8cpp.html',1,'']]],
+  ['menu_2eh_122',['menu.h',['../menu_8h.html',1,'']]]
 ];

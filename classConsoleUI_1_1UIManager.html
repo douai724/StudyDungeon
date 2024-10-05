@@ -74,61 +74,339 @@ $(function() {
 <div class="title">ConsoleUI::UIManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines the UI manager.  
+ <a href="classConsoleUI_1_1UIManager.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="menu_8h_source.html">menu.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a214b2426396060648298c4910df40ad0"><td class="memItemLeft" align="right" valign="top"><a id="a214b2426396060648298c4910df40ad0"></a>
-std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getWindow</b> ()</td></tr>
+<tr class="memitem:a72eb669142ae6481ee8426ae20fd21d6"><td class="memItemLeft" align="right" valign="top"><a id="a72eb669142ae6481ee8426ae20fd21d6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a72eb669142ae6481ee8426ae20fd21d6">UIManager</a> ()</td></tr>
+<tr class="memdesc:a72eb669142ae6481ee8426ae20fd21d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classConsoleUI_1_1UIManager.html" title="Defines the UI manager.">UIManager</a> object. <br /></td></tr>
+<tr class="separator:a72eb669142ae6481ee8426ae20fd21d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214b2426396060648298c4910df40ad0"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a214b2426396060648298c4910df40ad0">getWindow</a> ()</td></tr>
+<tr class="memdesc:a214b2426396060648298c4910df40ad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Window object.  <a href="classConsoleUI_1_1UIManager.html#a214b2426396060648298c4910df40ad0">More...</a><br /></td></tr>
 <tr class="separator:a214b2426396060648298c4910df40ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1bf20d9803f298273d754609a17a2e7"><td class="memItemLeft" align="right" valign="top"><a id="ae1bf20d9803f298273d754609a17a2e7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCurrentScene</b> (std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt; scene)</td></tr>
+<tr class="memitem:ae1bf20d9803f298273d754609a17a2e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#ae1bf20d9803f298273d754609a17a2e7">setCurrentScene</a> (std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt; scene)</td></tr>
+<tr class="memdesc:ae1bf20d9803f298273d754609a17a2e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Current <a class="el" href="classConsoleUI_1_1Scene.html" title="Defines a UI scene.">Scene</a> object.  <a href="classConsoleUI_1_1UIManager.html#ae1bf20d9803f298273d754609a17a2e7">More...</a><br /></td></tr>
 <tr class="separator:ae1bf20d9803f298273d754609a17a2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae99e31f90255fd07f0cbf2f87ef17a04"><td class="memItemLeft" align="right" valign="top"><a id="ae99e31f90255fd07f0cbf2f87ef17a04"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#ae99e31f90255fd07f0cbf2f87ef17a04">init</a> ()</td></tr>
+<tr class="memdesc:ae99e31f90255fd07f0cbf2f87ef17a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the UI. <br /></td></tr>
 <tr class="separator:ae99e31f90255fd07f0cbf2f87ef17a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d1d601a91b497a794219cd4140beac0"><td class="memItemLeft" align="right" valign="top"><a id="a5d1d601a91b497a794219cd4140beac0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a5d1d601a91b497a794219cd4140beac0">update</a> ()</td></tr>
+<tr class="memdesc:a5d1d601a91b497a794219cd4140beac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called each time there is a event. <br /></td></tr>
 <tr class="separator:a5d1d601a91b497a794219cd4140beac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac166e7aa48c087f94acac7a9cb688ef5"><td class="memItemLeft" align="right" valign="top"><a id="ac166e7aa48c087f94acac7a9cb688ef5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#ac166e7aa48c087f94acac7a9cb688ef5">render</a> ()</td></tr>
+<tr class="memdesc:ac166e7aa48c087f94acac7a9cb688ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders objects on the console window. <br /></td></tr>
 <tr class="separator:ac166e7aa48c087f94acac7a9cb688ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89bd00803b8baacf1b0181d606599ab6"><td class="memItemLeft" align="right" valign="top"><a id="a89bd00803b8baacf1b0181d606599ab6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleInput</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a89bd00803b8baacf1b0181d606599ab6">handleInput</a> ()</td></tr>
+<tr class="memdesc:a89bd00803b8baacf1b0181d606599ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles user input. <br /></td></tr>
 <tr class="separator:a89bd00803b8baacf1b0181d606599ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a798ddd9c6f71fa755042d861018e5cd0"><td class="memItemLeft" align="right" valign="top"><a id="a798ddd9c6f71fa755042d861018e5cd0"></a>
-<a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>createMenu</b> (const std::string &amp;name, bool horizontal=false)</td></tr>
+<tr class="memitem:a798ddd9c6f71fa755042d861018e5cd0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a798ddd9c6f71fa755042d861018e5cd0">createMenu</a> (const std::string &amp;name, bool horizontal=false)</td></tr>
+<tr class="memdesc:a798ddd9c6f71fa755042d861018e5cd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the UI menu.  <a href="classConsoleUI_1_1UIManager.html#a798ddd9c6f71fa755042d861018e5cd0">More...</a><br /></td></tr>
 <tr class="separator:a798ddd9c6f71fa755042d861018e5cd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae28f8fa953f9c104fd54624a1cdea0c5"><td class="memItemLeft" align="right" valign="top"><a id="ae28f8fa953f9c104fd54624a1cdea0c5"></a>
-<a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getMenu</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:ae28f8fa953f9c104fd54624a1cdea0c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#ae28f8fa953f9c104fd54624a1cdea0c5">getMenu</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ae28f8fa953f9c104fd54624a1cdea0c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classConsoleUI_1_1Menu.html" title="Defines the menu that is made of buttons.">Menu</a> object by it's name.  <a href="classConsoleUI_1_1UIManager.html#ae28f8fa953f9c104fd54624a1cdea0c5">More...</a><br /></td></tr>
 <tr class="separator:ae28f8fa953f9c104fd54624a1cdea0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec7b1558face6be47afe0c611c4d57c9"><td class="memItemLeft" align="right" valign="top"><a id="aec7b1558face6be47afe0c611c4d57c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearMenu</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:aec7b1558face6be47afe0c611c4d57c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#aec7b1558face6be47afe0c611c4d57c9">clearMenu</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:aec7b1558face6be47afe0c611c4d57c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the named menu from the UI.  <a href="classConsoleUI_1_1UIManager.html#aec7b1558face6be47afe0c611c4d57c9">More...</a><br /></td></tr>
 <tr class="separator:aec7b1558face6be47afe0c611c4d57c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafbcbe5137a85bb4360638e85e1cd6c2"><td class="memItemLeft" align="right" valign="top"><a id="aafbcbe5137a85bb4360638e85e1cd6c2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearAllMenus</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#aafbcbe5137a85bb4360638e85e1cd6c2">clearAllMenus</a> ()</td></tr>
+<tr class="memdesc:aafbcbe5137a85bb4360638e85e1cd6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all menus from the UI. <br /></td></tr>
 <tr class="separator:aafbcbe5137a85bb4360638e85e1cd6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a853ab80a6262de5c6d8b3b72bb38f9cc"><td class="memItemLeft" align="right" valign="top"><a id="a853ab80a6262de5c6d8b3b72bb38f9cc"></a>
-<a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>&#160;</td><td class="memItemRight" valign="bottom"><b>createAsciiArt</b> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;artLines, int x=-1, int y=-1)</td></tr>
+<tr class="memitem:a853ab80a6262de5c6d8b3b72bb38f9cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a853ab80a6262de5c6d8b3b72bb38f9cc">createAsciiArt</a> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;artLines, int x=-1, int y=-1)</td></tr>
+<tr class="memdesc:a853ab80a6262de5c6d8b3b72bb38f9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Ascii Art object.  <a href="classConsoleUI_1_1UIManager.html#a853ab80a6262de5c6d8b3b72bb38f9cc">More...</a><br /></td></tr>
 <tr class="separator:a853ab80a6262de5c6d8b3b72bb38f9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae643d005f38b648656dedb5b87d07e2e"><td class="memItemLeft" align="right" valign="top"><a id="ae643d005f38b648656dedb5b87d07e2e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>checkWindowResize</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#ae643d005f38b648656dedb5b87d07e2e">checkWindowResize</a> ()</td></tr>
+<tr class="memdesc:ae643d005f38b648656dedb5b87d07e2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deteremine if the window has been resized. <br /></td></tr>
 <tr class="separator:ae643d005f38b648656dedb5b87d07e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefb14c14f35ae83108b7bccc029f2cf3"><td class="memItemLeft" align="right" valign="top"><a id="aefb14c14f35ae83108b7bccc029f2cf3"></a>
-std::vector&lt; std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getScenes</b> ()</td></tr>
+<tr class="memitem:aefb14c14f35ae83108b7bccc029f2cf3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#aefb14c14f35ae83108b7bccc029f2cf3">getScenes</a> ()</td></tr>
+<tr class="memdesc:aefb14c14f35ae83108b7bccc029f2cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Scenes of the UI.  <a href="classConsoleUI_1_1UIManager.html#aefb14c14f35ae83108b7bccc029f2cf3">More...</a><br /></td></tr>
 <tr class="separator:aefb14c14f35ae83108b7bccc029f2cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:af6df8d2a0c4c8d290123b5e093128f2a"><td class="memItemLeft" align="right" valign="top"><a id="af6df8d2a0c4c8d290123b5e093128f2a"></a>
-std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_window</b></td></tr>
+<tr class="memitem:af6df8d2a0c4c8d290123b5e093128f2a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#af6df8d2a0c4c8d290123b5e093128f2a">m_window</a></td></tr>
 <tr class="separator:af6df8d2a0c4c8d290123b5e093128f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f1e6ac266bbea30cc7dbf4411dc975d"><td class="memItemLeft" align="right" valign="top"><a id="a9f1e6ac266bbea30cc7dbf4411dc975d"></a>
-std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_currentScene</b></td></tr>
+<tr class="memitem:a9f1e6ac266bbea30cc7dbf4411dc975d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#a9f1e6ac266bbea30cc7dbf4411dc975d">m_currentScene</a></td></tr>
 <tr class="separator:a9f1e6ac266bbea30cc7dbf4411dc975d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbcd31259265d57494bd507f3c93490f"><td class="memItemLeft" align="right" valign="top"><a id="adbcd31259265d57494bd507f3c93490f"></a>
-std::unordered_map&lt; std::string, <a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_menus</b></td></tr>
+<tr class="memitem:adbcd31259265d57494bd507f3c93490f"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, <a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1UIManager.html#adbcd31259265d57494bd507f3c93490f">m_menus</a></td></tr>
 <tr class="separator:adbcd31259265d57494bd507f3c93490f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the UI manager. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aec7b1558face6be47afe0c611c4d57c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7b1558face6be47afe0c611c4d57c9">&#9670;&nbsp;</a></span>clearMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::UIManager::clearMenu </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes the named menu from the UI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a853ab80a6262de5c6d8b3b72bb38f9cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853ab80a6262de5c6d8b3b72bb38f9cc">&#9670;&nbsp;</a></span>createAsciiArt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classConsoleUI_1_1AsciiArt.html">AsciiArt</a> ConsoleUI::UIManager::createAsciiArt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>artLines</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a Ascii Art object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the art </td></tr>
+    <tr><td class="paramname">artLines</td><td>the vector of strings representing the art </td></tr>
+    <tr><td class="paramname">x</td><td>left most position </td></tr>
+    <tr><td class="paramname">y</td><td>top most position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classConsoleUI_1_1AsciiArt.html" title="An object that stores ascii art in the form of a string.">AsciiArt</a> </dd></dl>
+
+</div>
+</div>
+<a id="a798ddd9c6f71fa755042d861018e5cd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a798ddd9c6f71fa755042d861018e5cd0">&#9670;&nbsp;</a></span>createMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &amp; ConsoleUI::UIManager::createMenu </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>horizontal</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create the UI menu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of the menu </td></tr>
+    <tr><td class="paramname">horizontal</td><td>is the menu layout horizontal </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classConsoleUI_1_1Menu.html" title="Defines the menu that is made of buttons.">Menu</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="ae28f8fa953f9c104fd54624a1cdea0c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae28f8fa953f9c104fd54624a1cdea0c5">&#9670;&nbsp;</a></span>getMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classConsoleUI_1_1Menu.html">Menu</a> &amp; ConsoleUI::UIManager::getMenu </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the <a class="el" href="classConsoleUI_1_1Menu.html" title="Defines the menu that is made of buttons.">Menu</a> object by it's name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the menu to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classConsoleUI_1_1Menu.html" title="Defines the menu that is made of buttons.">Menu</a>&amp; </dd></dl>
+
+</div>
+</div>
+<a id="aefb14c14f35ae83108b7bccc029f2cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb14c14f35ae83108b7bccc029f2cf3">&#9670;&nbsp;</a></span>getScenes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classConsoleUI_1_1Scene.html">Scene</a>&gt; &gt;&amp; ConsoleUI::UIManager::getScenes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the Scenes of the UI. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::shared_ptr&lt;Scene&gt;&gt;&amp; </dd></dl>
+
+</div>
+</div>
+<a id="a214b2426396060648298c4910df40ad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a214b2426396060648298c4910df40ad0">&#9670;&nbsp;</a></span>getWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a> &gt; ConsoleUI::UIManager::getWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Window object. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;ConsoleWindow&gt; </dd></dl>
+
+</div>
+</div>
+<a id="ae1bf20d9803f298273d754609a17a2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1bf20d9803f298273d754609a17a2e7">&#9670;&nbsp;</a></span>setCurrentScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConsoleUI::UIManager::setCurrentScene </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classConsoleUI_1_1Scene.html">Scene</a> &gt;&#160;</td>
+          <td class="paramname"><em>scene</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the Current <a class="el" href="classConsoleUI_1_1Scene.html" title="Defines a UI scene.">Scene</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scene</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a9f1e6ac266bbea30cc7dbf4411dc975d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f1e6ac266bbea30cc7dbf4411dc975d">&#9670;&nbsp;</a></span>m_currentScene</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classConsoleUI_1_1Scene.html">Scene</a>&gt; ConsoleUI::UIManager::m_currentScene</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>pointer to the current scene </p>
+
+</div>
+</div>
+<a id="adbcd31259265d57494bd507f3c93490f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbcd31259265d57494bd507f3c93490f">&#9670;&nbsp;</a></span>m_menus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::string, <a class="el" href="classConsoleUI_1_1Menu.html">Menu</a>&gt; ConsoleUI::UIManager::m_menus</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>all of the menus in the UI </p>
+
+</div>
+</div>
+<a id="af6df8d2a0c4c8d290123b5e093128f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6df8d2a0c4c8d290123b5e093128f2a">&#9670;&nbsp;</a></span>m_window</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classConsoleUI_1_1ConsoleWindow.html">ConsoleWindow</a>&gt; ConsoleUI::UIManager::m_window</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>pointer to the current window </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8h_source.html">menu.h</a></li>
 <li>/home/runner/work/StudyDungeon/StudyDungeon/src/<a class="el" href="menu_8cpp.html">menu.cpp</a></li>

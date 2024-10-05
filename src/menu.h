@@ -555,17 +555,6 @@ public:
      */
     bool isBackButtonPressed() const;
 
-    /**
-     * @brief TODO
-     *
-     */
-    // void pushPage();
-
-    /**
-     * @brief TODO
-     *
-     */
-    // void popPage();
 
     /**
      * @brief Get the number of buttons in the menu
@@ -630,8 +619,6 @@ private:
     size_t m_selectedIndex;
     /** is the menu to be layed out horizontally */
     bool horizontal_layout;
-    /** TODO */
-    // std::vector<std::vector<Button>> m_pageHistory;
 };
 
 /**

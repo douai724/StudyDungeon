@@ -614,24 +614,6 @@ bool Menu::isBackButtonPressed() const
 }
 
 
-// void Menu::pushPage()
-// {
-//     m_pageHistory.push_back(m_buttons);
-//     m_buttons.clear();
-//     m_selectedIndex = 0;
-// }
-
-// void Menu::popPage()
-// {
-//     if (!m_pageHistory.empty())
-//     {
-//         m_buttons = m_pageHistory.back();
-//         m_pageHistory.pop_back();
-//         m_selectedIndex = 0;
-//     }
-// }
-
-
 size_t Menu::getButtonCount() const
 {
     return m_buttons.size();

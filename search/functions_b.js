@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nextturn_318',['nextTurn',['../classGame.html#a976c1a460f61317f6b82c298da5c2bbf',1,'Game']]]
+  ['nextturn_343',['nextTurn',['../classGame.html#a976c1a460f61317f6b82c298da5c2bbf',1,'Game']]]
 ];

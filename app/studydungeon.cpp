@@ -109,6 +109,41 @@ public:
         ConsoleUI::AsciiArt asciiArt2("other_menu", artLines2, 0, 0);
         m_uiManager.getWindow()->addAsciiArt(asciiArt);
         m_uiManager.getWindow()->addAsciiArt(asciiArt2);
+
+
+
+    std::vector<std::string> shelfFull = convertAsciiArtToLines(bookshelfFull);
+    std::vector<std::string> shelf1 = convertAsciiArtToLines(bookshelf1);
+    std::vector<std::string> shelf2 = convertAsciiArtToLines(bookshelf2);
+    std::vector<std::string> shelf3 = convertAsciiArtToLines(bookshelf3);
+    std::vector<std::string> shelf4 = convertAsciiArtToLines(bookshelf4);
+    std::vector<std::string> shelf5 = convertAsciiArtToLines(bookshelf5);
+    std::vector<std::string> shelf6 = convertAsciiArtToLines(bookshelf6);
+    std::vector<std::string> shelf7 = convertAsciiArtToLines(bookshelf7);
+    std::vector<std::string> shelf8 = convertAsciiArtToLines(bookshelf8);
+    std::vector<std::string> shelf9 = convertAsciiArtToLines(bookshelf9);
+
+    ConsoleUI::AsciiArt artShelfFull("bookfull", shelfFull, 0, 0);
+    ConsoleUI::AsciiArt artShelf1("book1", shelf1, 0, 0);
+    ConsoleUI::AsciiArt artShelf2("book2", shelf2, 0, 0);
+    ConsoleUI::AsciiArt artShelf3("book3", shelf3, 0, 0);
+    ConsoleUI::AsciiArt artShelf4("book4", shelf4, 0, 0);
+    ConsoleUI::AsciiArt artShelf5("book5", shelf5, 0, 0);
+    ConsoleUI::AsciiArt artShelf6("book6", shelf6, 0, 0);
+    ConsoleUI::AsciiArt artShelf7("book7", shelf7, 0, 0);
+    ConsoleUI::AsciiArt artShelf8("book8", shelf8, 0, 0);
+    ConsoleUI::AsciiArt artShelf9("book9", shelf9, 0, 0);
+
+    uiManager.getWindow()->addAsciiArt(artShelfFull);
+    uiManager.getWindow()->addAsciiArt(artShelf1);
+    uiManager.getWindow()->addAsciiArt(artShelf2);
+    uiManager.getWindow()->addAsciiArt(artShelf3);
+    uiManager.getWindow()->addAsciiArt(artShelf4);
+    uiManager.getWindow()->addAsciiArt(artShelf5);
+    uiManager.getWindow()->addAsciiArt(artShelf6);
+    uiManager.getWindow()->addAsciiArt(artShelf7);
+    uiManager.getWindow()->addAsciiArt(artShelf8);
+    uiManager.getWindow()->addAsciiArt(artShelf9);
     }
 
     void createMainMenu(std::function<void()> openSettingsScene,
@@ -224,7 +259,8 @@ int main()
             std::vector<int>{0, 0, 0}, // Initial difficulty count
             [&]() { uiManager.setCurrentScene(mainMenuScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
-            [&]() { uiManager.setCurrentScene(gameScene); });
+            [&]() { uiManager.setCurrentScene(gameScene); },
+            false); // Pass false for the initial ResultsScene
 
         // Create BrowseDecksScene
         auto createBrowseDecksScene = [&]() {
@@ -237,13 +273,14 @@ int main()
                         deck,
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                        [&](const std::vector<int> &difficultyCount) {
+                        [&](const std::vector<int> &difficultyCount, bool sessionComplete) {
                             resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
                                 uiManager,
                                 difficultyCount,
                                 [&]() { uiManager.setCurrentScene(mainMenuScene); },
                                 [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                                [&]() { uiManager.setCurrentScene(gameScene); });
+                                [&]() { uiManager.setCurrentScene(gameScene); },
+                                sessionComplete); // Pass the sessionCompleted value
                             uiManager.setCurrentScene(resultsScene);
                         },
                         studySettings);

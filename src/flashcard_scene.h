@@ -94,6 +94,9 @@ public:
         m_decksNeedReload = needReload;
     }
 
+    void drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window);
+
+
 private:
     ConsoleUI::UIManager &m_uiManager;                     ///< Reference to the UI manager.
     std::vector<FlashCardDeck> m_decks;                    ///< Vector of loaded flashcard decks.
@@ -109,6 +112,10 @@ private:
     std::chrono::steady_clock::time_point m_lastPageChangeTime;
     const std::chrono::milliseconds m_pageChangeDelay{200};
     StudySettings m_settings;
+
+    bool m_paging = false;
+    int m_prevBookshelfIndex = -1;
+    int bookshelfIndex = 0;
 };
 
 /**
@@ -134,7 +141,7 @@ public:
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
-                   std::function<void(const std::vector<int> &)> showResults,
+                   std::function<void(const std::vector<int> &, bool)> showResults,
                    StudySettings &studySettings);
     /**
      * @brief Initialize the scene.
@@ -202,7 +209,7 @@ private:
     /**
      * @brief End the current study session and show results.
      */
-    void endSession();
+    void endSession(bool sessionComplete);
 
     ConsoleUI::UIManager &m_uiManager;              ///< Reference to the UI manager.
     FlashCardDeck m_deck;                           ///< The flashcard deck being studied.
@@ -211,7 +218,7 @@ private:
     bool m_showAnswer = false;                      ///< Flag indicating whether the answer is currently visible.
     std::vector<int> m_difficultyCount = {0, 0, 0}; ///< Count of cards rated as Easy, Medium, Hard.
     std::function<void()> m_goBack;                 ///< Function to call when going back.
-    std::function<void(const std::vector<int> &)> m_showResults; ///< Function to call when showing results.
+    std::function<void(const std::vector<int> &, bool)> m_showResults; ///< Function to call when showing results.
     bool m_needsRedraw;                                          ///< Flag indicating if the scene needs to be redrawn.
 
     bool m_staticDrawn = false;
@@ -247,7 +254,8 @@ public:
                  const std::vector<int> &difficultyCount,
                  std::function<void()> goToMainMenu,
                  std::function<void()> goToDeckSelection,
-                 std::function<void()> goToGame);
+                 std::function<void()> goToGame,
+                 bool sessionComplete);
     void init() override;
 
     /**
@@ -285,6 +293,7 @@ private:
     std::string phrase;
 
     bool m_staticDrawn = false;
+    bool m_sessionComplete;
 };
 
 } // namespace FlashcardApp

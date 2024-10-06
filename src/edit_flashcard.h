@@ -85,7 +85,7 @@ private:
     std::vector<FlashCardDeck> m_decks;                            ///< Vector of all loaded flashcard decks.
     size_t m_selectedDeckIndex;                                    ///< Index of the currently selected deck.
     int m_currentPage;                                             ///< Current page number for deck content display.
-    int m_maxCardsPerPage;                                         ///< Maximum number of cards displayed per page.
+    size_t m_maxCardsPerPage;                                      ///< Maximum number of cards displayed per page.
     bool m_needsRedraw;                                            ///< Flag indicating if the scene needs redrawing.
 
     bool m_staticDrawn = false;
@@ -187,7 +187,7 @@ private:
     std::function<void()> m_goBack;    ///< Function to return to the previous scene.
     size_t m_selectedCardIndex;        ///< Index of the currently selected flashcard.
     int m_currentPage;                 ///< Current page number for flashcard list display.
-    int m_maxCardsPerPage;             ///< Maximum number of flashcards displayed per page.
+    size_t m_maxCardsPerPage;          ///< Maximum number of flashcards displayed per page.
     bool m_needsRedraw;                ///< Flag indicating if the scene needs redrawing.
 
     bool m_staticDrawn = false;

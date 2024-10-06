@@ -2,7 +2,7 @@
  * @file player.h
  * @author Green Alligators
  * @brief This file defines the classes and methods for a Player
- * @version 0.2
+ * @version @PROJECT_VERSION@
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -27,10 +27,15 @@
 class Player
 {
 private:
+    /** current health of the player */
     int hitPoints;
+    /** maximum health of the player */
     int maxHitPoints;
-    int handSize;
+    /** number of cards the player will have in hand */
+    size_t handSize;
+    /** players' deck of cards */
     std::vector<PlayingCard> deck;
+    /** cards in the players' hand */
     std::vector<PlayingCard> hand;
 
 public:
@@ -47,7 +52,7 @@ public:
      * @param maxHitPoints the maximum hit points of the player
      * @param hand the hand (list of cards) of the player
      */
-    Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck);
+    Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck);
 
     /**
      * @brief Returns the current hit points of the player.
@@ -105,17 +110,27 @@ public:
      *
      * @return int the hand size
      */
-    int getHandSize();
+    size_t getHandSize();
 
     /**
      * @brief Sets the hand size of the player
      *
      * @param handSize the hand size to set too
      */
-    void setHandSize(int handSize);
+    void setHandSize(size_t handSize);
 
+    /**
+     * @brief Get the Deck of the player
+     *
+     * @return std::vector<PlayingCard>
+     */
     std::vector<PlayingCard> getDeck();
 
+    /**
+     * @brief Set the Deck of the player
+     *
+     * @param deck The deck of cards for the player
+     */
     void setDeck(std::vector<PlayingCard> deck);
 
     /**

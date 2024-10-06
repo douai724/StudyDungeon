@@ -14,7 +14,7 @@ Player::Player()
 {
 }
 
-Player::Player(int hitPoints, int maxHitPoints, int handSize, std::vector<PlayingCard> deck)
+Player::Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck)
     : hitPoints(hitPoints), maxHitPoints(maxHitPoints), handSize(handSize), deck(deck)
 {
     for (int i = 0; i < Player::handSize; i++)
@@ -65,12 +65,12 @@ void Player::setHand(std::vector<PlayingCard> playerHand)
     Player::hand = playerHand;
 }
 
-int Player::getHandSize()
+size_t Player::getHandSize()
 {
     return Player::handSize;
 }
 
-void Player::setHandSize(int handSize)
+void Player::setHandSize(size_t handSize)
 {
     Player::handSize = handSize;
 }

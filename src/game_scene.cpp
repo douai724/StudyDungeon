@@ -102,31 +102,32 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawText("You played: " + playlist[playlist.size() - 2].toString(), 2, 15);
         window->drawText("Enemy played: " + playlist[playlist.size() - 1].toString(), 2, 16);
     }
-
-    if (hand.size() == 0)
+    int hand_size_int = static_cast<int>(hand.size());
+    if (hand_size_int == 0)
     {
         window->drawText("No cards in hand. Skip turn", 2, 5);
     }
     else
     {
-        int cardWidth = size.X / hand.size();
+        int cardWidth = size.X / hand_size_int;
 
-        for (int i = 0; i < (int)hand.size(); i++)
+        for (int i = 0; i < hand_size_int; i++)
         {
             std::string option = hand[i].toString();
             std::string cardText = "";
-            int padding = cardText.length() < cardWidth ? (cardWidth - cardText.length()) / 2 : 0;
+
+            int padding = cardText.length() < cardWidth ? (cardWidth - static_cast<int>(cardText.length())) / 2 : 0;
 
             if (m_selectedIndex == i)
             {
 
-                window->drawANSIArt("cardSelected", size.X / hand.size() * i + 2, 3 * size.Y / 5 - 2);
-                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
+                window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
+                window->drawText(" [" + option + "] ", size.X / hand_size_int * i + padding / 2, 4 * size.Y / 5);
             }
             else
             {
-                window->drawANSIArt("card", size.X / hand.size() * i + 2, 3 * size.Y / 5 - 2);
-                window->drawText(" [" + option + "] ", size.X / hand.size() * i + padding / 2, 4 * size.Y / 5);
+                window->drawANSIArt("card", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
+                window->drawText(" [" + option + "] ", size.X / hand_size_int * i + padding / 2, 4 * size.Y / 5);
             }
         }
 

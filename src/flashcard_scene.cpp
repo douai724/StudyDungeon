@@ -245,9 +245,9 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
     m_settings.startSession();
     // Menu for the card difficulty
     auto &menu = m_uiManager.createMenu("difficulty", true);
-    menu.addButton("Easy", [this]() { selectDifficulty(1); });
-    menu.addButton("Medium", [this]() { selectDifficulty(2); });
-    menu.addButton("Hard", [this]() { selectDifficulty(3); });
+    menu.addButton("Easy", [this]() { selectDifficulty(EASY); });
+    menu.addButton("Medium", [this]() { selectDifficulty(MEDIUM); });
+    menu.addButton("Hard", [this]() { selectDifficulty(HARD); });
 
     initializeCardOrder();
 }
@@ -395,13 +395,13 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
                                     textBoxWidth - 4);
 
             auto &menu = m_uiManager.getMenu("difficulty");
-            int totalWidth = 0;
+            size_t totalWidth = 0;
             for (size_t i = 0; i < menu.getButtonCount(); ++i)
             {
                 totalWidth += menu.getButtonWidth(i) + 2;
             }
             totalWidth -= 2;
-            int menuX = (window->getSize().X - totalWidth) / 2;
+            int menuX = (window->getSize().X - static_cast<int>(totalWidth)) / 2;
             menu.draw(menuX, window->getSize().Y * 2 / 3 + 2);
             m_lastAnswerDisplayed = false;
         }
@@ -497,10 +497,12 @@ void FlashcardScene::handleInput()
     }
 }
 
-void FlashcardScene::selectDifficulty(int difficulty)
+void FlashcardScene::selectDifficulty(CardDifficulty difficulty)
 {
+    // Difficulties start from 0 = UNKNOWN, but this array only counts EASY, MEDIUM, HARD
+    // -1 from the difficulty to make it match the 0-based index of the array.
     m_difficultyCount[difficulty - 1]++;
-    updateCardDifficulty(m_cardOrder[m_currentCardIndex], static_cast<CardDifficulty>(difficulty));
+    updateCardDifficulty(m_cardOrder[m_currentCardIndex], difficulty);
 
     for (auto &scene : m_uiManager.getScenes())
     {
@@ -511,7 +513,7 @@ void FlashcardScene::selectDifficulty(int difficulty)
     nextCard();
 }
 
-void FlashcardScene::updateCardDifficulty(int cardIndex, CardDifficulty difficulty)
+void FlashcardScene::updateCardDifficulty(size_t cardIndex, CardDifficulty difficulty)
 {
     auto &card = m_deck.cards[cardIndex];
     card.difficulty = difficulty;
@@ -611,12 +613,12 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     auto &menu = m_uiManager.getMenu("results");
     // Calculate total width manually
-    int maxWidth = 0;
+    size_t maxWidth = 0;
     for (size_t i = 0; i < menu.getButtonCount(); ++i)
     {
         maxWidth = max(menu.getButtonWidth(i), maxWidth);
     }
-    int menuX = (window->getSize().X - maxWidth) / 2;
+    int menuX = (window->getSize().X - static_cast<int>(maxWidth)) / 2;
     menu.draw(menuX, window->getSize().Y * 3 / 4);
 
     m_needsRedraw = false;

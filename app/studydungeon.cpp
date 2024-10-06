@@ -145,9 +145,12 @@ public:
             window->drawBorder();
 
             // Draw the ASCII art
-            int otherMenuArtX = ((window->getSize().X - window->getAsciiArtByName("other_menu")->getWidth()) / 2) - 3;
-            int otherMenuArtY = window->getSize().Y - window->getAsciiArtByName("other_menu")->getHeight();
-            int mainMenuArtX = (window->getSize().X - window->getANSIArtByName("title")->getWidth()) / 8;
+            int otherMenuArtX =
+                ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 3;
+            int otherMenuArtY =
+                window->getSize().Y - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
+            int mainMenuArtX =
+                (window->getSize().X - static_cast<int>(window->getANSIArtByName("title")->getWidth())) / 8;
             int mainMenuArtY = 10;
 
             window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
@@ -164,13 +167,13 @@ public:
 
         // Clear only the menu area
         auto &menu = m_uiManager.getMenu("main");
-        int menuX = (window->getSize().X - menu.getMaxWidth()) / 2;
+        int menuX = (window->getSize().X - static_cast<int>(menu.getMaxWidth())) / 2;
         int menuY = 20;
-        int menuWidth = menu.getMaxWidth() - 1;
-        int menuHeight = menu.getButtonCount();
+        size_t menuWidth = menu.getMaxWidth() - 1;
+        size_t menuHeight = menu.getButtonCount();
 
         // Draw a filled box to clear the menu area
-        for (int i = menuY - 1; i < menuY + menuHeight + 1; ++i)
+        for (int i = menuY - 1; i < menuY + static_cast<int>(menuHeight) + 1; ++i)
         {
             window->drawText(std::string(menuWidth + 2, ' '), menuX - 1, i);
         }

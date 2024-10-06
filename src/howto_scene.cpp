@@ -75,9 +75,20 @@ A study session has 2 phases:
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
     m_uiManager.getMenu("howto").draw((windowSize.X) / 2 - 4, windowSize.Y - 7); // Adjust 30 based on your menu width
+    window->drawText("Press ENTER to go back", windowSize.X / 2 - 11, windowSize.Y - 5);
 }
 
 void HowToScene::handleInput()
 {
+    if (_kbhit())
+    {
+        int key = _getch();
+
+        if (key == _key_esc) {
+            m_goBack();
+        }
+    }
+    
     m_uiManager.getMenu("howto").handleInput();
+
 }

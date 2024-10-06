@@ -129,28 +129,33 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     {
         const auto &selectedDeck = m_decks[m_selectedDeckIndex];
         int cardListX = window->getSize().X / 2;
-        int cardListY = 4;
+        int cardListY = 5;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
-        int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+        size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
-                             "):",
-                         cardListX,
-                         cardListY - 1);
+                            "):",
+                        cardListX,
+                        cardListY - 1);
 
-        for (size_t i = m_currentPage * m_maxCardsPerPage; 
-             i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
-             ++i)
+        for (size_t i = m_currentPage * m_maxCardsPerPage;
+            i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
+            ++i)
         {
             const auto &card = selectedDeck.cards[i];
-            int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
-            window->drawWrappedText("Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            window->drawWrappedText("A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+            int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
+
+            // Truncate question and answer to fit within the available space
+            std::string truncatedQuestion = card.question.substr(0, window->getSize().X - cardListX - 5);
+            std::string truncatedAnswer = card.answer.substr(0, window->getSize().X - cardListX - 5);
+
+            window->drawText("Q: " + truncatedQuestion, cardListX, yOffset);
+            window->drawText("A: " + truncatedAnswer, cardListX, yOffset + 1);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
-            window->drawText("---", cardListX, yOffset + 3);        
+            window->drawText("---", cardListX, yOffset + 3);
         }
 
-        window->drawText("Use Left/Right arrows to change pages", cardListX, window->getSize().Y - 3);  
+        window->drawText("Use Left/Right arrows to change pages", cardListX + cardListX / 2, window->getSize().Y - 3);
     }
 
     // Draw instructions

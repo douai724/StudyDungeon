@@ -368,7 +368,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             window->drawBox((window->getSize().X - textBoxWidth) / 2, 6, textBoxWidth, questionBoxHeight);
             window->drawCenteredText("Question:", 4);
             window->drawWrappedText(card.question, (window->getSize().X - textBoxWidth) / 2 + 2, 8, textBoxWidth - 4);
-            window->drawCenteredText("Press SPACE to show answer", window->getSize().Y * 4 / 5);
+            window->drawCenteredText("Press SPACE to interact", window->getSize().Y * 4 / 5);
 
             m_needsRedraw = false;
         }
@@ -468,22 +468,14 @@ void FlashcardScene::handleInput()
             switch (key)
             {
             case _key_space: // Spacebar
-                if (!m_showAnswer)
-                {
+
+                if (m_showAnswer) {
+                    auto &menu = m_uiManager.getMenu("difficulty");
+                    menu.activateSelectedButton();
+                } else {
                     m_showAnswer = true;
                     m_lastAnswerDisplayed = true;
                     m_needsRedraw = true;
-                }
-                else
-                {
-                    m_showAnswer = false;
-                }
-                break;
-            case _key_enter: // Enter
-                if (m_showAnswer)
-                {
-                    auto &menu = m_uiManager.getMenu("difficulty");
-                    menu.activateSelectedButton();
                 }
                 break;
             case _key_esc: // Escape key

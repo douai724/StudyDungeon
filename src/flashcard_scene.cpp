@@ -10,6 +10,8 @@
  */
 #include "flashcard_scene.h"
 #include "edit_flashcard.h"
+#include "artwork.h"
+#include "util.h"
 #include <algorithm>
 #include <conio.h>
 #include <numeric>
@@ -36,6 +38,35 @@ void BrowseDecksScene::loadDecks()
     m_selectedDeckIndex = 0;
     m_currentPage = 0;
     m_needsRedraw = true;
+}
+
+void BrowseDecksScene::drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
+{
+    std::vector<std::string> bookshelfOptions =
+        {"book1", "book2", "book3", "book4", "book5", "book6", "book7", "book8", "book9"};
+
+    std::string selectedBookshelf;
+    if (m_decks.empty() || m_selectedDeckIndex == 0)
+    {
+        selectedBookshelf = "bookfull";
+    }
+    else
+    {
+        if (bookshelfOptions.size() > 1 && m_paging)
+        {
+            do
+            {
+                bookshelfIndex = rand() % bookshelfOptions.size();
+            } while (bookshelfIndex == m_prevBookshelfIndex);
+        }
+
+        m_prevBookshelfIndex = bookshelfIndex;
+        selectedBookshelf = bookshelfOptions[bookshelfIndex];
+    }
+
+    window->drawAsciiArt(selectedBookshelf,
+                         4,
+                         (window->getSize().Y - static_cast<int>(window->getAsciiArtByName("book1")->getHeight())) - 3);
 }
 
 void BrowseDecksScene::init()
@@ -85,42 +116,46 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
     // Draw deck list
     int deckListY = 4;
-    window->drawText("Choose a deck below to begin.", 2, deckListY);
-    int y_offset = 2; // number of lines before the deck names print
     for (size_t i = 0; i < m_decks.size(); ++i)
     {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;
-        window->drawText(deckText, 2, deckListY + static_cast<int>(i) + y_offset);
+        window->drawText(deckText, 2, deckListY + static_cast<int>(i));
     }
+
+    drawBookshelf(window);
 
     // Draw selected deck contents with paging
     if (!m_decks.empty())
     {
         const auto &selectedDeck = m_decks[m_selectedDeckIndex];
         int cardListX = window->getSize().X / 2;
-        int cardListY = 4;
+        int cardListY = 5;
         m_maxCardsPerPage = (window->getSize().Y - cardListY - 5) / 5; // 5 lines per card, leave space for instructions
-        int totalPages = (static_cast<int>(selectedDeck.cards.size()) + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
+        size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
-                             "):",
-                         cardListX,
-                         cardListY - 1);
+                            "):",
+                        cardListX,
+                        cardListY - 1);
 
         for (size_t i = m_currentPage * m_maxCardsPerPage;
-             i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
-             ++i)
+            i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
+            ++i)
         {
             const auto &card = selectedDeck.cards[i];
-            int yOffset = cardListY + (i % m_maxCardsPerPage) * 5;
-            window->drawWrappedText("Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            window->drawWrappedText("A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+            int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
+
+            // Truncate question and answer to fit within the available space
+            std::string truncatedQuestion = card.question.substr(0, window->getSize().X - cardListX - 5);
+            std::string truncatedAnswer = card.answer.substr(0, window->getSize().X - cardListX - 5);
+
+            window->drawText("Q: " + truncatedQuestion, cardListX, yOffset);
+            window->drawText("A: " + truncatedAnswer, cardListX, yOffset + 1);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
-            window->drawText("Times answered: " + std::to_string(card.n_times_answered), cardListX + 20, yOffset + 2);
-            window->drawText("---", cardListX + 20, yOffset + 3);
+            window->drawText("---", cardListX, yOffset + 3);
         }
 
-        window->drawText("Use Left/Right arrows to change pages", cardListX, window->getSize().Y - 3);
+        window->drawText("Use Left/Right arrows to change pages", cardListX + cardListX / 2, window->getSize().Y - 3);
     }
 
     // Draw instructions
@@ -146,6 +181,7 @@ void BrowseDecksScene::handleInput()
                 {
                     m_selectedDeckIndex--;
                     m_needsRedraw = true;
+                    m_paging = true;
                 }
 
                 m_currentPage = 0;
@@ -155,6 +191,7 @@ void BrowseDecksScene::handleInput()
                 {
                     m_selectedDeckIndex++;
                     m_needsRedraw = true;
+                    m_paging = true;
                 }
 
                 m_currentPage = 0;
@@ -165,6 +202,7 @@ void BrowseDecksScene::handleInput()
                     m_currentPage--;
                     m_needsRedraw = true;
                     m_lastPageChangeTime = std::chrono::steady_clock::now();
+                    m_paging = false;
                 }
                 break;
             case _key_right: // Right arrow
@@ -178,6 +216,7 @@ void BrowseDecksScene::handleInput()
                         m_currentPage++;
                         m_needsRedraw = true;
                         m_lastPageChangeTime = std::chrono::steady_clock::now();
+                        m_paging = false;
                     }
                 }
                 break;
@@ -235,7 +274,7 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
                                std::function<void()> goToDeckSelection,
-                               std::function<void(const std::vector<int> &)> showResults,
+                               std::function<void(const std::vector<int> &, bool)> showResults,
                                StudySettings &studySettings)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
       m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings), m_lastAnswerDisplayed(false)
@@ -323,7 +362,7 @@ void FlashcardScene::update()
         {
             scene->setStaticDrawn(false);
         }
-        endSession();
+        endSession(true);
     }
     Sleep(10);
 }
@@ -368,7 +407,7 @@ void FlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             window->drawBox((window->getSize().X - textBoxWidth) / 2, 6, textBoxWidth, questionBoxHeight);
             window->drawCenteredText("Question:", 4);
             window->drawWrappedText(card.question, (window->getSize().X - textBoxWidth) / 2 + 2, 8, textBoxWidth - 4);
-            window->drawCenteredText("Press SPACE to show answer", window->getSize().Y * 4 / 5);
+            window->drawCenteredText("Press SPACE to interact", window->getSize().Y * 4 / 5);
 
             m_needsRedraw = false;
         }
@@ -468,22 +507,14 @@ void FlashcardScene::handleInput()
             switch (key)
             {
             case _key_space: // Spacebar
-                if (!m_showAnswer)
-                {
+
+                if (m_showAnswer) {
+                    auto &menu = m_uiManager.getMenu("difficulty");
+                    menu.activateSelectedButton();
+                } else {
                     m_showAnswer = true;
                     m_lastAnswerDisplayed = true;
                     m_needsRedraw = true;
-                }
-                else
-                {
-                    m_showAnswer = false;
-                }
-                break;
-            case _key_enter: // Enter
-                if (m_showAnswer)
-                {
-                    auto &menu = m_uiManager.getMenu("difficulty");
-                    menu.activateSelectedButton();
                 }
                 break;
             case _key_esc: // Escape key
@@ -491,7 +522,7 @@ void FlashcardScene::handleInput()
                 {
                     scene->setStaticDrawn(false);
                 }
-                endSession();
+                endSession(false);
                 break;
             default:
                 inputHandled = false;
@@ -536,14 +567,14 @@ void FlashcardScene::nextCard()
     m_needsRedraw = true;
     if (m_currentCardIndex >= m_cardOrder.size())
     {
-        endSession();
+        endSession(true); // Pass true if the session is completed
     }
 }
 
-void FlashcardScene::endSession()
+void FlashcardScene::endSession(bool sessionCompleted)
 {
     saveUpdatedDeck();
-    m_showResults(m_difficultyCount);
+    m_showResults(m_difficultyCount, sessionCompleted);
 }
 
 void FlashcardScene::saveUpdatedDeck()
@@ -557,15 +588,21 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,
                            std::function<void()> goToMainMenu,
                            std::function<void()> goToDeckSelection,
-                           std::function<void()> goToGame)
+                           std::function<void()> goToGame,
+                           bool sessionComplete)
     : m_uiManager(uiManager), m_difficultyCount(difficultyCount), m_goToMainMenu(goToMainMenu),
-      m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true)
+      m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true), m_sessionComplete(sessionComplete)
 {
     m_uiManager.clearMenu("results");
     auto &menu = m_uiManager.createMenu("results", false);
     menu.addButton("     Start game?     ", m_goToGame);
     menu.addButton("   Study New Deck?   ", m_goToDeckSelection);
     menu.addButton("  Back to Main Menu  ", m_goToMainMenu);
+
+    m_uiManager.clearMenu("session skipped");
+    auto &menu2 = m_uiManager.createMenu("session skipped", false);
+    menu2.addButton("   Study New Deck?   ", m_goToDeckSelection);
+    menu2.addButton("  Back to Main Menu  ", m_goToMainMenu);
 
     if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1])
     {
@@ -619,15 +656,30 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[MEDIUM - 1]), window->getSize().Y / 2);
     window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[HARD - 1]), window->getSize().Y / 2 + 2);
 
-    auto &menu = m_uiManager.getMenu("results");
-    // Calculate total width manually
-    size_t maxWidth = 0;
-    for (size_t i = 0; i < menu.getButtonCount(); ++i)
+    if (m_sessionComplete)
     {
-        maxWidth = max(menu.getButtonWidth(i), maxWidth);
+        auto &menu = m_uiManager.getMenu("results");
+        // Calculate total width manually
+        size_t maxWidth = 0;
+        for (size_t i = 0; i < menu.getButtonCount(); ++i)
+        {
+            maxWidth = max(menu.getButtonWidth(i), maxWidth);
+        }
+        int menuX = (window->getSize().X - static_cast<int>(maxWidth)) / 2;
+        menu.draw(menuX, window->getSize().Y * 3 / 4);
     }
-    int menuX = (window->getSize().X - static_cast<int>(maxWidth)) / 2;
-    menu.draw(menuX, window->getSize().Y * 3 / 4);
+    else
+    {
+        auto &menu = m_uiManager.getMenu("session skipped");
+        // Calculate total width manually
+        size_t maxWidth = 0;
+        for (size_t i = 0; i < menu.getButtonCount(); ++i)
+        {
+            maxWidth = max(menu.getButtonWidth(i), maxWidth);
+        }
+        int menuX = (window->getSize().X - static_cast<int>(maxWidth)) / 2;
+        menu.draw(menuX, window->getSize().Y * 3 / 4);
+    }
 
     m_needsRedraw = false;
 }
@@ -636,8 +688,13 @@ void ResultsScene::handleInput()
 {
     if (_kbhit())
     {
-        m_uiManager.getMenu("results").handleInput();
-        m_needsRedraw = true;
+        if (m_sessionComplete) {
+            m_uiManager.getMenu("results").handleInput();
+            m_needsRedraw = true;
+        } else {
+            m_uiManager.getMenu("session skipped").handleInput();
+            m_needsRedraw = true;
+        }
     }
 }
 

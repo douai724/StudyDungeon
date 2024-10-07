@@ -30,81 +30,7 @@ EditFlashcardScene::EditFlashcardScene(ConsoleUI::UIManager &uiManager,
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_selectedCardIndex(0), m_currentPage(0),
       m_maxCardsPerPage(0), m_needsRedraw(true), m_settings(studySettings)
 {
-    std::string librarian = R"(
-   ____________________________________________________
-  |____________________________________________________|
-  | __     __   ____   ___ ||  ____    ____     _  __  |
-  ||  |__ |--|_| || |_|   |||_|**|*|__|+|+||___| ||  | |
-  ||==|^^||--| |=||=| |=*=||| |~~|~|  |=|=|| | |~||==| |
-  ||  |##||  | | || | |JRO|||-|  | |==|+|+||-|-|~||__| |
-  ||__|__||__|_|_||_|_|___|||_|__|_|__|_|_||_|_|_||__|_|
-  ||_______________________||__________________________|
-  | _____________________  ||      __   __  _  __    _ |
-  ||=|=|=|=|=|=|=|=|=|=|=| __..\/ |  |_|  ||#||==|  / /|
-  || | | | | | | | | | | |/\ \  \\|++|=|  || ||==| / / |
-  ||_|_|_|_|_|_|_|_|_|_|_/_/\_.___\__|_|__||_||__|/_/__|
-  |____________________ /\~()/()~//\ __________________|
-  | __   __    _  _     \_  (_ .  _/ _    ___     _____|
-  ||~~|_|..|__| || |_ _   \ //\\ /  |=|__|~|~|___| | | |
-  ||--|+|^^|==|1||2| | |__/\ __ /\__| |==|x|x|+|+|=|=|=|
-  ||__|_|__|__|_||_|_| /  \ \  / /  \_|__|_|_|_|_|_|_|_|
-  |_________________ _/    \/\/\/    \_ _______________|
-  | _____   _   __  |/      \../      \|  __   __   ___|
-  ||_____|_| |_|##|_||   |   \/ __|   ||_|==|_|++|_|-|||
-  ||______||=|#|--| |\   \   o    /   /| |  |~|  | | |||
-  ||______||_|_|__|_|_\   \  o   /   /_|_|__|_|__|_|_|||
-  |_________ __________\___\____/___/___________ ______|
-  |__    _  /    ________     ______           /| _ _ _|
-  |\ \  |=|/   //    /| //   /  /  / |        / ||%|%|%|
-  | \/\ |*/  .//____//.//   /__/__/ (_)      /  ||=|=|=|
-__|  \/\|/   /(____|/ //                    /  /||~|~|~|__
-  |___\_/   /________//   ________         /  / ||_|_|_|
-  |___ /   (|________/   |\_______\       /  /| |______|
-      /                  \|________)     /  / | |
-    )";
 
-    std::string librarianPointing = R"(
-   ____________________________________________________
-  |____________________________________________________|
-  | __     __   ____   ___ ||  ____    ____     _  __  |
-  ||  |__ |--|_| || |_|   |||_|**|*|__|+|+||___| ||  | |
-  ||==|^^||--| |=||=| |=*=||| |~~|~|  |=|=|| | |~||==| |
-  ||  |##||  | | || | |JRO|||-|  | |==|+|+||-|-|~||__| |
-  ||__|__||__|_|_||_|_|___|||_|__|_|__|_|_||_|_|_||__|_|
-  ||_______________________||___|                    |_|
-  | _____________________  ||   |                    | |
-  ||=|=|=|=|=|=|=|=|=|=|=| __..\|__  ________________|/|
-  || | | | | | | | | | | |/\ \  \\ |/|=|  || ||==| / / |
-  ||_|_|_|_|_|_|_|_|_|_|_/_/\_.___\`_|_|__||_||__|/_/__|
-  |____________________ /\~()/()~//\ __________________|
-  | __   __    _  _     \_  (_ .  _/ _      _     _____|
-  ||~~|_|..|__| || |_ _   \ //\\ /  |=|_  /) |___| | | |
-  ||--|+|^^|==|1||2| | |__/\ __ /\__| |(\/((\ +|+|=|=|=|
-  ||__|_|__|__|_||_|_| /  \ \  / /  \_|_\___/|_|_|_|_|_|
-  |_________________ _/    \/\/\/    \_ /   /__________|
-  | _____   _   __  |/      \../      \/   /   __   ___|
-  ||_____|_| |_|##|_||   |   \/ __\       /=|_|++|_|-|||
-  ||______||=|#|--| |\   \   o     \_____/  |~|  | | |||
-  ||______||_|_|__|_|_\   \  o     | |_|_|__|_|__|_|_|||
-  |_________ __________\___\_______|____________ ______|
-  |__    _  /    ________     ______           /| _ _ _|
-  |\ \  |=|/   //    /| //   /  /  / |        / ||%|%|%|
-  | \/\ |*/  .//____// //   /__/__/ (_)      /  ||=|=|=|
-__|  \/\|/   /(____|/ //                    /  /||~|~|~|__
-  |___\_/   /________//   ________         /  / ||_|_|_|
-  |___ /   (|________/   |\_______\       /  /| |______|
-      /                  \|________)     /  / | |
-   )";
-
-
-    std::vector<std::string> librarianLines = convertAsciiArtToLines(librarian);
-    std::vector<std::string> librarianPointingLines = convertAsciiArtToLines(librarianPointing);
-    ConsoleUI::AsciiArt librarianArt("lib1", librarianLines, 0, 0);
-    ConsoleUI::AsciiArt librarianArt2("lib2", librarianPointingLines, 0, 0);
-
-
-    uiManager.getWindow()->addAsciiArt(librarianArt);
-    uiManager.getWindow()->addAsciiArt(librarianArt2);
 }
 
 void EditFlashcardScene::init()
@@ -318,43 +244,7 @@ void EditFlashcardScene::editSelectedCard()
     if (!newAnswer.empty())
         card.answer = newAnswer;
 
-    // Edit difficulty
-    window->drawText("Current difficulty: " + cardDifficultyToStr(card.difficulty), 2, 15);
-    window->drawText("Enter new difficulty (0: Unknown, 1: Easy, 2: Medium, 3: Hard):", 2, 16);
-    std::string newDifficultyStr =
-        window->getLine(2, 17, (window->getSize().X - window->getAsciiArtByName("lib2")->getWidth()) - 10);
-    if (newDifficultyStr == "\x1B") // Esc key
-    {
-        window->drawText("Editing aborted. Press any key to continue...", 2, 19);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
-
-        _getch();
-        m_needsRedraw = true;
-        return;
-    }
-    if (!newDifficultyStr.empty())
-    {
-        try
-        {
-            int newDifficulty = std::stoi(newDifficultyStr);
-            if (newDifficulty >= 0 && newDifficulty <= 3)
-            {
-                card.difficulty = static_cast<CardDifficulty>(newDifficulty);
-            }
-            else
-            {
-                window->drawText("Invalid difficulty. Keeping current difficulty.", 2, 19);
-            }
-        }
-        catch (const std::invalid_argument &)
-        {
-            window->drawText("Invalid input. Keeping current difficulty.", 2, 19);
-        }
-    }
-
+    
     //Save changes to file
     writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true);
 
@@ -414,23 +304,7 @@ void EditFlashcardScene::addNewCard()
     }
 
 
-    window->drawText("Enter the difficulty (0: Unknown 1: Easy, 2: Medium, 3: Hard):", 2, 12);
-    std::string difficultyStr = window->getLine(2, 14, lib2_x_pos - 10);
-    int difficulty = std::stoi(difficultyStr);
-    newCard.difficulty = static_cast<CardDifficulty>(difficulty);
-
-    if (difficultyStr == "\x1B") // Esc key
-    {
-        window->drawText("Editing aborted. Press any key to continue...", 2, 19);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
-
-        _getch();
-        m_needsRedraw = true;
-        return;
-    }
+    newCard.difficulty = UNKNOWN;
 
     newCard.n_times_answered = 0;
 
@@ -517,6 +391,21 @@ void EditFlashcardScene::deleteSelectedCard()
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*------EDIT DECK SCENE------*/
 
 EditDeckScene::EditDeckScene(ConsoleUI::UIManager &uiManager,
@@ -526,40 +415,6 @@ EditDeckScene::EditDeckScene(ConsoleUI::UIManager &uiManager,
     : m_uiManager(uiManager), m_goBack(goBack), m_openEditFlashcardScene(openEditFlashcardScene),
       m_selectedDeckIndex(0), m_needsRedraw(true), m_currentPage(0), m_maxCardsPerPage(0), m_settings(studySettings)
 {
-
-    std::vector<std::string> shelfFull = convertAsciiArtToLines(bookshelfFull);
-    std::vector<std::string> shelf1 = convertAsciiArtToLines(bookshelf1);
-    std::vector<std::string> shelf2 = convertAsciiArtToLines(bookshelf2);
-    std::vector<std::string> shelf3 = convertAsciiArtToLines(bookshelf3);
-    std::vector<std::string> shelf4 = convertAsciiArtToLines(bookshelf4);
-    std::vector<std::string> shelf5 = convertAsciiArtToLines(bookshelf5);
-    std::vector<std::string> shelf6 = convertAsciiArtToLines(bookshelf6);
-    std::vector<std::string> shelf7 = convertAsciiArtToLines(bookshelf7);
-    std::vector<std::string> shelf8 = convertAsciiArtToLines(bookshelf8);
-    std::vector<std::string> shelf9 = convertAsciiArtToLines(bookshelf9);
-
-    ConsoleUI::AsciiArt artShelfFull("bookfull", shelfFull, 0, 0);
-    ConsoleUI::AsciiArt artShelf1("book1", shelf1, 0, 0);
-    ConsoleUI::AsciiArt artShelf2("book2", shelf2, 0, 0);
-    ConsoleUI::AsciiArt artShelf3("book3", shelf3, 0, 0);
-    ConsoleUI::AsciiArt artShelf4("book4", shelf4, 0, 0);
-    ConsoleUI::AsciiArt artShelf5("book5", shelf5, 0, 0);
-    ConsoleUI::AsciiArt artShelf6("book6", shelf6, 0, 0);
-    ConsoleUI::AsciiArt artShelf7("book7", shelf7, 0, 0);
-    ConsoleUI::AsciiArt artShelf8("book8", shelf8, 0, 0);
-    ConsoleUI::AsciiArt artShelf9("book9", shelf9, 0, 0);
-
-    uiManager.getWindow()->addAsciiArt(artShelfFull);
-    uiManager.getWindow()->addAsciiArt(artShelf1);
-    uiManager.getWindow()->addAsciiArt(artShelf2);
-    uiManager.getWindow()->addAsciiArt(artShelf3);
-    uiManager.getWindow()->addAsciiArt(artShelf4);
-    uiManager.getWindow()->addAsciiArt(artShelf5);
-    uiManager.getWindow()->addAsciiArt(artShelf6);
-    uiManager.getWindow()->addAsciiArt(artShelf7);
-    uiManager.getWindow()->addAsciiArt(artShelf8);
-    uiManager.getWindow()->addAsciiArt(artShelf9);
-
     loadDecks();
 }
 
@@ -655,18 +510,23 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
-                             "):",
-                         cardListX,
-                         cardListY - 1);
+                            "):",
+                        cardListX,
+                        cardListY - 1);
 
         for (size_t i = m_currentPage * m_maxCardsPerPage;
-             i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
-             ++i)
+            i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
+            ++i)
         {
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
-            window->drawWrappedText("Q: " + card.question, cardListX, yOffset, window->getSize().X - cardListX - 2);
-            window->drawWrappedText("A: " + card.answer, cardListX, yOffset + 1, window->getSize().X - cardListX - 2);
+
+            // Truncate question and answer to fit within the available space
+            std::string truncatedQuestion = card.question.substr(0, window->getSize().X - cardListX - 5);
+            std::string truncatedAnswer = card.answer.substr(0, window->getSize().X - cardListX - 5);
+
+            window->drawText("Q: " + truncatedQuestion, cardListX, yOffset);
+            window->drawText("A: " + truncatedAnswer, cardListX, yOffset + 1);
             window->drawText("D: " + cardDifficultyToStr(card.difficulty), cardListX, yOffset + 2);
             window->drawText("---", cardListX, yOffset + 3);
         }
@@ -785,9 +645,25 @@ void EditDeckScene::addNewDeck()
     window->clear();
     window->drawBorder();
     window->drawCenteredText("Add New Deck", 2);
+    int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth());
+    int lib2_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth());
+    window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Enter the name for the new deck (max 30 characters):", 2, 4);
     std::string deckName = window->getLine(2, 6, 30);
+
+    if (deckName == "\x1B") // Esc key
+    {
+        window->drawText("Editing aborted. Press any key to continue...", 2, 19);
+        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
+        window->drawText(getRandomPhrase(),
+                         window->getAsciiArtByName("lib2")->getX() + 34,
+                         window->getAsciiArtByName("lib2")->getY() + 9);
+
+        _getch();
+        m_needsRedraw = true;
+        return;
+    }
 
     // Replace spaces with underscores in the filename
     std::string deckFilename = deckName;
@@ -803,6 +679,10 @@ void EditDeckScene::addNewDeck()
     m_selectedDeckIndex = (int)m_decks.size() - 1;
 
     window->drawText("New deck added successfully!", 2, 6);
+    window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
+    window->drawText(getRandomPhrase(),
+                    window->getAsciiArtByName("lib2")->getX() + 34,
+                    window->getAsciiArtByName("lib2")->getY() + 9);
 
     window->drawText("Press any key to continue...", 2, 10);
     _getch();
@@ -819,6 +699,9 @@ void EditDeckScene::deleteDeck()
     window->clear();
     window->drawBorder();
     window->drawCenteredText("Delete Deck", 2);
+    int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth()); //TODO these variables are repeated a lot in this file, could chuck em at the
+    int lib2_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth()); // top of the file or in the header somewhere
+    window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Are you sure you want to delete the deck '" + m_decks[m_selectedDeckIndex].name + "'?", 2, 4);
     window->drawText("Type \"delete\" and press enter to confirm.", 2, 5);
@@ -829,10 +712,19 @@ void EditDeckScene::deleteDeck()
         m_decks.erase(m_decks.begin() + m_selectedDeckIndex);
         if (m_selectedDeckIndex >= m_decks.size())
             m_selectedDeckIndex = m_decks.size() - 1;
+
+            window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
+            window->drawText(getRandomPhrase(),
+                             window->getAsciiArtByName("lib2")->getX() + 34,
+                             window->getAsciiArtByName("lib2")->getY() + 9);
         window->drawText("Deck deleted successfully!", 2, 6);
     }
     else
     {
+        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
+        window->drawText(getRandomPhrase(),
+                            window->getAsciiArtByName("lib2")->getX() + 34,
+                            window->getAsciiArtByName("lib2")->getY() + 9);
         window->drawText("Deck deletion canceled.", 2, 6);
     }
 

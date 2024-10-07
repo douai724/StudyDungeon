@@ -39,4 +39,8 @@ extern std::string bookshelf8;
 /** ASCII art work of a bookshelf - variation 9*/
 extern std::string bookshelf9;
 
+extern std::string librarian;
+
+extern std::string librarianPointing;
+
 #endif

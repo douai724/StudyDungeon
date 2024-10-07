@@ -31,7 +31,7 @@ void StudySettings::reset()
 
 void StudySettings::incFCLimit()
 {
-    if (m_flashcard_limit < 100)
+    if (m_flashcard_limit < 90)
     {
         m_flashcard_limit++;
     }
@@ -110,10 +110,10 @@ SettingsScene::SettingsScene(ConsoleUI::UIManager &uiManager,
     auto &menu = m_uiManager.createMenu("settings", false); // Horizontal menu
     menu.addButton(" Increment Cards ", [this]() { incrementCards(); });
     menu.addButton(" Decrement Cards ", [this]() { decrementCards(); });
-    menu.addButton(" Increment Time ", [this]() { incrementStudyMins(); });
-    menu.addButton(" Decrement Time ", [this]() { decrementStudyMins(); });
-    menu.addButton("    Defaults    ", [this]() { resetDefault(); });
-    menu.addButton("      Back      ", [this]() { m_goBack(); });
+    menu.addButton(" Increment Time  ", [this]() { incrementStudyMins(); });
+    menu.addButton(" Decrement Time  ", [this]() { decrementStudyMins(); });
+    menu.addButton("    Defaults     ", [this]() { resetDefault(); });
+    menu.addButton("      Back       ", [this]() { m_goBack(); });
 }
 
 void SettingsScene::init()

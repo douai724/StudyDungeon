@@ -164,10 +164,10 @@ public:
         m_uiManager.clearMenu("main");
         auto &menu = m_uiManager.createMenu("main", false);
         menu.addButton("   Begin Study   ", openBrowseDecks);
-        menu.addButton("   Edit Decks    ", openEditDecks);
-        menu.addButton("   How To Play   ", openHowToScene);
-        menu.addButton("    Settings     ", openSettingsScene);
-        menu.addButton("      Exit       ", []() {
+        menu.addButton("    Edit Decks   ", openEditDecks);
+        menu.addButton("  About Program  ", openHowToScene);
+        menu.addButton("     Settings    ", openSettingsScene);
+        menu.addButton("       Exit      ", []() {
             clearScreen();
             exit(0);
         });

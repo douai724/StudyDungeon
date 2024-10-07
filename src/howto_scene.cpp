@@ -67,6 +67,9 @@ A study session has 2 phases:
         window->drawText(line, x_start, y_start);
         y_start++;
     }
+    window->drawText("Editing disclaimers:", 3, window->getSize().Y - 12);
+    window->drawWrappedText("- when adding/editing text for a flashcard, you are limited to 90 characters", 3, window->getSize().Y - 10, 40);
+    window->drawWrappedText("- when adding/renaming text for a deck, you are limited to 30 characters", 3, window->getSize().Y - 7, 40);
 
 
     window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);

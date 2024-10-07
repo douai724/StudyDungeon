@@ -21,6 +21,7 @@
 namespace FlashcardEdit
 {
 
+
 /*------EDIT FLASHCARD SCENE------*/
 
 EditFlashcardScene::EditFlashcardScene(ConsoleUI::UIManager &uiManager,
@@ -46,6 +47,17 @@ void EditFlashcardScene::update()
 void EditFlashcardScene::setStaticDrawn(bool staticDrawn)
 {
     m_staticDrawn = staticDrawn;
+}
+
+void EditFlashcardScene::drawLibrarianComment() {
+    auto window = m_uiManager.getWindow();
+    window->drawAsciiArt("lib2",
+                        (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) -
+                            7,
+                        6);
+    window->drawText(getRandomPhrase(),
+                    window->getAsciiArtByName("lib2")->getX() + 34,
+                    window->getAsciiArtByName("lib2")->getY() + 9);
 }
 
 void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
@@ -214,10 +226,7 @@ void EditFlashcardScene::editSelectedCard()
     if (newQuestion == "\x1B") // Esc key
     {
         window->drawText("Editing aborted. Press any key to continue...", 2, 11);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
         _getch();
         m_needsRedraw = true;
         return;
@@ -233,10 +242,7 @@ void EditFlashcardScene::editSelectedCard()
     if (newAnswer == "\x1B") // Esc key
     {
         window->drawText("Editing aborted. Press any key to continue...", 2, 15);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
         _getch();
         m_needsRedraw = true;
         return;
@@ -250,10 +256,7 @@ void EditFlashcardScene::editSelectedCard()
 
     window->drawText("Card updated successfully!", 2, 21);
     window->drawText("Press any key to continue...", 2, 22);
-    window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-    window->drawText(getRandomPhrase(),
-                     window->getAsciiArtByName("lib2")->getX() + 34,
-                     window->getAsciiArtByName("lib2")->getY() + 9);
+    drawLibrarianComment();
 
     _getch(); // Wait for a key press
 
@@ -278,10 +281,7 @@ void EditFlashcardScene::addNewCard()
     if (newCard.question == "\x1B") // Esc key
     {
         window->drawText("Editing aborted. Press any key to continue...", 2, 19);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
 
         _getch();
         m_needsRedraw = true;
@@ -293,10 +293,7 @@ void EditFlashcardScene::addNewCard()
     if (newCard.answer == "\x1B") // Esc key
     {
         window->drawText("Editing aborted. Press any key to continue...", 2, 19);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
 
         _getch();
         m_needsRedraw = true;
@@ -314,18 +311,12 @@ void EditFlashcardScene::addNewCard()
     if (writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true))
     {
         window->drawText("New card added successfully!", 2, 16);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
     }
     else
     {
         window->drawText("Failed to update the deck file.", 2, 16);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
     }
 
     window->drawText("Press any key to continue...", 2, 18);
@@ -361,27 +352,18 @@ void EditFlashcardScene::deleteSelectedCard()
         if (writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true))
         {
             window->drawText("Card deleted successfully!", 2, 6);
-            window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-            window->drawText(getRandomPhrase(),
-                             window->getAsciiArtByName("lib2")->getX() + 34,
-                             window->getAsciiArtByName("lib2")->getY() + 9);
+            drawLibrarianComment();
         }
         else
         {
             window->drawText("Failed to update the deck file.", 2, 6);
-            window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-            window->drawText(getRandomPhrase(),
-                             window->getAsciiArtByName("lib2")->getX() + 34,
-                             window->getAsciiArtByName("lib2")->getY() + 9);
+            drawLibrarianComment();
         }
     }
     else
     {
         window->drawText("Card deletion canceled.", 2, 6);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
     }
 
     window->drawText("Press any key to continue...", 2, 8);
@@ -469,6 +451,17 @@ void EditDeckScene::drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> wind
     window->drawAsciiArt(selectedBookshelf,
                          4,
                          (window->getSize().Y - static_cast<int>(window->getAsciiArtByName("book1")->getHeight())) - 3);
+}
+
+void EditDeckScene::drawLibrarianComment() {
+    auto window = m_uiManager.getWindow();
+    window->drawAsciiArt("lib2",
+                        (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) -
+                            7,
+                        6);
+    window->drawText(getRandomPhrase(),
+                    window->getAsciiArtByName("lib2")->getX() + 34,
+                    window->getAsciiArtByName("lib2")->getY() + 9);
 }
 
 void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
@@ -655,10 +648,7 @@ void EditDeckScene::addNewDeck()
     if (deckName == "\x1B") // Esc key
     {
         window->drawText("Editing aborted. Press any key to continue...", 2, 19);
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
 
         _getch();
         m_needsRedraw = true;
@@ -679,10 +669,7 @@ void EditDeckScene::addNewDeck()
     m_selectedDeckIndex = (int)m_decks.size() - 1;
 
     window->drawText("New deck added successfully!", 2, 6);
-    window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-    window->drawText(getRandomPhrase(),
-                    window->getAsciiArtByName("lib2")->getX() + 34,
-                    window->getAsciiArtByName("lib2")->getY() + 9);
+    drawLibrarianComment();
 
     window->drawText("Press any key to continue...", 2, 10);
     _getch();
@@ -713,18 +700,12 @@ void EditDeckScene::deleteDeck()
         if (m_selectedDeckIndex >= m_decks.size())
             m_selectedDeckIndex = m_decks.size() - 1;
 
-            window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-            window->drawText(getRandomPhrase(),
-                             window->getAsciiArtByName("lib2")->getX() + 34,
-                             window->getAsciiArtByName("lib2")->getY() + 9);
+            drawLibrarianComment();
         window->drawText("Deck deleted successfully!", 2, 6);
     }
     else
     {
-        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-        window->drawText(getRandomPhrase(),
-                            window->getAsciiArtByName("lib2")->getX() + 34,
-                            window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
         window->drawText("Deck deletion canceled.", 2, 6);
     }
 
@@ -754,13 +735,7 @@ void EditDeckScene::renameDeck()
     if (newDeckName == "\x1B") // Esc key
     {
         window->drawText("Renaming aborted. Press any key to continue...", 2, 19);
-        window->drawAsciiArt("lib2",
-                             (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) -
-                                 7,
-                             6);
-        window->drawText(getRandomPhrase(),
-                         window->getAsciiArtByName("lib2")->getX() + 34,
-                         window->getAsciiArtByName("lib2")->getY() + 9);
+        drawLibrarianComment();
 
         _getch();
         m_needsRedraw = true;
@@ -777,12 +752,7 @@ void EditDeckScene::renameDeck()
     m_decks[m_selectedDeckIndex].name = newDeckName;
     m_decks[m_selectedDeckIndex].filename = newFilename;
     window->drawText("Deck renamed successfully!", 2, 8);
-    window->drawAsciiArt("lib2",
-                         (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) - 7,
-                         6);
-    window->drawText(getRandomPhrase(),
-                     window->getAsciiArtByName("lib2")->getX() + 34,
-                     window->getAsciiArtByName("lib2")->getY() + 9);
+    drawLibrarianComment();
 
     window->drawText("Press any key to continue...", 2, 10);
     _getch();

@@ -1,7 +1,7 @@
 /**
  * @file settings_scene.cpp
  * @author Green Alligators
- * @brief
+ * @brief Defines the UI scene for the game settings
  * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
@@ -138,9 +138,9 @@ void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         m_staticDrawn = true;
     }
 
-        window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
-        window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
-        window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
+    window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
+    window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
+    window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
     // window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 
 

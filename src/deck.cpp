@@ -4,7 +4,7 @@
  * @brief Functions and classes relating to flashcards
  *
  *
- * @version 0.2
+ * @version @PROJECT_VERSION@
  * @date 2024-08-23
  *
  * @copyright Copyright (c) 2024

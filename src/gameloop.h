@@ -1,7 +1,7 @@
 /**
  * @file gameloop.h
  * @author Green Alligators
- * @brief
+ * @brief Controls the game play and game loop of the card duel game
  * @version @PROJECT_VERSION@
  * @date 2024-08-27
  *

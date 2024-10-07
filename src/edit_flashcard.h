@@ -1,13 +1,14 @@
 /**
  * @file edit_flashcard.h
  * @author your name (you@domain.com)
- * @brief
- * @version 0.2
+ * @brief Classes and functions that are used in the UI scene for editing flashcards
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
+#pragma once
 #ifndef EDIT_DECK_SCENE_H
 #define EDIT_DECK_SCENE_H
 
@@ -15,9 +16,14 @@
 #include "deck.h"
 #include "menu.h"
 #include "settings_scene.h"
-
+#include "util.h"
+#include <algorithm>
+#include <conio.h>
 #include <functional>
+#include <iostream>
+#include <limits>
 #include <memory>
+#include <sstream>
 #include <vector>
 
 namespace FlashcardEdit
@@ -47,7 +53,12 @@ public:
                   StudySettings &studySettings);
 
 
+    /**
+     * @brief Initialises the scene
+     *
+     */
     void init() override;
+
     /**
      * @brief Updates the scene state.
      *
@@ -75,6 +86,11 @@ public:
 
     void setStaticDrawn(bool staticDrawn) override;
 
+    /**
+     * @brief Draws the books shelf art
+     *
+     * @param window The console window to add the bookshelf art to
+     */
     void drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window);
 
 
@@ -151,6 +167,10 @@ public:
                        std::function<void()> goBack,
                        StudySettings &studySettings);
 
+    /**
+     * @brief Initialises the scene
+     *
+     */
     void init() override;
 
     /**

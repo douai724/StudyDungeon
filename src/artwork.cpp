@@ -2,7 +2,7 @@
  * @file artwork.cpp
  * @author Green Alligators
  * @brief ASCII art used in the program
- * @version 0.2
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -261,7 +261,7 @@ std::string bookshelf9 = R"(
 )";
 
 
-    std::string librarian = R"(
+std::string librarian = R"(
    ____________________________________________________
   |____________________________________________________|
   | __     __   ____   ___ ||  ____    ____     _  __  |
@@ -294,7 +294,7 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
       /                  \|________)     /  / | |
     )";
 
-    std::string librarianPointing = R"(
+std::string librarianPointing = R"(
    ____________________________________________________
   |____________________________________________________|
   | __     __   ____   ___ ||  ____    ____     _  __  |

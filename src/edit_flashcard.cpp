@@ -1,22 +1,15 @@
 /**
  * @file edit_flashcard.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Functions used in the UI scene for editing flashcards
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
 #include "edit_flashcard.h"
-#include "artwork.h"
-#include "deck.h"
-#include "util.h"
-#include <algorithm>
-#include <conio.h>
-#include <iostream>
-#include <limits>
-#include <sstream>
+
 
 namespace FlashcardEdit
 {
@@ -30,7 +23,6 @@ EditFlashcardScene::EditFlashcardScene(ConsoleUI::UIManager &uiManager,
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_selectedCardIndex(0), m_currentPage(0),
       m_maxCardsPerPage(0), m_needsRedraw(true), m_settings(studySettings)
 {
-
 }
 
 void EditFlashcardScene::init()
@@ -244,7 +236,7 @@ void EditFlashcardScene::editSelectedCard()
     if (!newAnswer.empty())
         card.answer = newAnswer;
 
-    
+
     //Save changes to file
     writeFlashCardDeckWithChecks(m_deck, m_deck.filename, true);
 
@@ -391,21 +383,6 @@ void EditFlashcardScene::deleteSelectedCard()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*------EDIT DECK SCENE------*/
 
 EditDeckScene::EditDeckScene(ConsoleUI::UIManager &uiManager,
@@ -510,13 +487,13 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
-                            "):",
-                        cardListX,
-                        cardListY - 1);
+                             "):",
+                         cardListX,
+                         cardListY - 1);
 
         for (size_t i = m_currentPage * m_maxCardsPerPage;
-            i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
-            ++i)
+             i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
+             ++i)
         {
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
@@ -681,8 +658,8 @@ void EditDeckScene::addNewDeck()
     window->drawText("New deck added successfully!", 2, 6);
     window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
     window->drawText(getRandomPhrase(),
-                    window->getAsciiArtByName("lib2")->getX() + 34,
-                    window->getAsciiArtByName("lib2")->getY() + 9);
+                     window->getAsciiArtByName("lib2")->getX() + 34,
+                     window->getAsciiArtByName("lib2")->getY() + 9);
 
     window->drawText("Press any key to continue...", 2, 10);
     _getch();
@@ -699,8 +676,14 @@ void EditDeckScene::deleteDeck()
     window->clear();
     window->drawBorder();
     window->drawCenteredText("Delete Deck", 2);
-    int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth()); //TODO these variables are repeated a lot in this file, could chuck em at the
-    int lib2_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth()); // top of the file or in the header somewhere
+    int lib1_x_pos =
+        window->getSize().X -
+        static_cast<int>(
+            window->getAsciiArtByName("lib1")
+                ->getWidth()); //TODO these variables are repeated a lot in this file, could chuck em at the
+    int lib2_x_pos =
+        window->getSize().X -
+        static_cast<int>(window->getAsciiArtByName("lib2")->getWidth()); // top of the file or in the header somewhere
     window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Are you sure you want to delete the deck '" + m_decks[m_selectedDeckIndex].name + "'?", 2, 4);
@@ -713,18 +696,18 @@ void EditDeckScene::deleteDeck()
         if (m_selectedDeckIndex >= m_decks.size())
             m_selectedDeckIndex = m_decks.size() - 1;
 
-            window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
-            window->drawText(getRandomPhrase(),
-                             window->getAsciiArtByName("lib2")->getX() + 34,
-                             window->getAsciiArtByName("lib2")->getY() + 9);
+        window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
+        window->drawText(getRandomPhrase(),
+                         window->getAsciiArtByName("lib2")->getX() + 34,
+                         window->getAsciiArtByName("lib2")->getY() + 9);
         window->drawText("Deck deleted successfully!", 2, 6);
     }
     else
     {
         window->drawAsciiArt("lib2", lib2_x_pos - 7, 6);
         window->drawText(getRandomPhrase(),
-                            window->getAsciiArtByName("lib2")->getX() + 34,
-                            window->getAsciiArtByName("lib2")->getY() + 9);
+                         window->getAsciiArtByName("lib2")->getX() + 34,
+                         window->getAsciiArtByName("lib2")->getY() + 9);
         window->drawText("Deck deletion canceled.", 2, 6);
     }
 

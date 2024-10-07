@@ -2,21 +2,14 @@
  * @file flashcard_scene.cpp
  * @author Green Alligators
  * @brief
- * @version 0.2
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
 #include "flashcard_scene.h"
-#include "edit_flashcard.h"
-#include "artwork.h"
-#include "util.h"
-#include <algorithm>
-#include <conio.h>
-#include <numeric>
-#include <random>
-#include <sstream>
+
 
 namespace FlashcardApp
 {
@@ -134,13 +127,13 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         size_t totalPages = (selectedDeck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
 
         window->drawText("Deck Contents (Page " + std::to_string(m_currentPage + 1) + "/" + std::to_string(totalPages) +
-                            "):",
-                        cardListX,
-                        cardListY - 1);
+                             "):",
+                         cardListX,
+                         cardListY - 1);
 
         for (size_t i = m_currentPage * m_maxCardsPerPage;
-            i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
-            ++i)
+             i < min(selectedDeck.cards.size(), (m_currentPage + 1) * m_maxCardsPerPage);
+             ++i)
         {
             const auto &card = selectedDeck.cards[i];
             int yOffset = cardListY + static_cast<int>(i % m_maxCardsPerPage) * 5;
@@ -508,10 +501,13 @@ void FlashcardScene::handleInput()
             {
             case _key_space: // Spacebar
 
-                if (m_showAnswer) {
+                if (m_showAnswer)
+                {
                     auto &menu = m_uiManager.getMenu("difficulty");
                     menu.activateSelectedButton();
-                } else {
+                }
+                else
+                {
                     m_showAnswer = true;
                     m_lastAnswerDisplayed = true;
                     m_needsRedraw = true;
@@ -591,7 +587,8 @@ ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            std::function<void()> goToGame,
                            bool sessionComplete)
     : m_uiManager(uiManager), m_difficultyCount(difficultyCount), m_goToMainMenu(goToMainMenu),
-      m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true), m_sessionComplete(sessionComplete)
+      m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true),
+      m_sessionComplete(sessionComplete)
 {
     m_uiManager.clearMenu("results");
     auto &menu = m_uiManager.createMenu("results", false);
@@ -688,10 +685,13 @@ void ResultsScene::handleInput()
 {
     if (_kbhit())
     {
-        if (m_sessionComplete) {
+        if (m_sessionComplete)
+        {
             m_uiManager.getMenu("results").handleInput();
             m_needsRedraw = true;
-        } else {
+        }
+        else
+        {
             m_uiManager.getMenu("session skipped").handleInput();
             m_needsRedraw = true;
         }

@@ -1,15 +1,15 @@
 /**
  * @file howto_scene.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Defines the UI scene for the howto scene explaining how the program works
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
 #include "howto_scene.h"
-#include <string>
+
 
 HowToScene::HowToScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack)
     : m_uiManager(uiManager), m_goBack(goBack)
@@ -87,11 +87,11 @@ void HowToScene::handleInput()
     {
         int key = _getch();
 
-        if (key == _key_esc) {
+        if (key == _key_esc)
+        {
             m_goBack();
         }
     }
-    
-    m_uiManager.getMenu("howto").handleInput();
 
+    m_uiManager.getMenu("howto").handleInput();
 }

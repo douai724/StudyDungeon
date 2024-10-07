@@ -1,7 +1,7 @@
 /**
  * @file howto_scene.h
  * @author Green Alligators
- * @brief
+ * @brief Defines the UI scene for the howto scene explaining how the program works
  * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
 
 /**
  * @brief Class for a scene to show the program instructions.

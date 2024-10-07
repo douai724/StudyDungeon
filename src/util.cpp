@@ -1,8 +1,8 @@
 /**
  * @file util.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Utilities and helpers for the program
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

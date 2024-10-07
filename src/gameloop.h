@@ -1,7 +1,7 @@
 /**
  * @file gameloop.h
  * @author Green Alligators
- * @brief
+ * @brief Controls the game play and game loop of the card duel game
  * @version @PROJECT_VERSION@
  * @date 2024-08-27
  *
@@ -95,10 +95,10 @@ public:
     bool isGameOver();
 
     /**
-     * @brief Is the player the winner
+     * @brief Is there a winner
      *
-     * @return true the player is the winner
-     * @return false the player is not the winner
+     * @return true if there is a winner
+     * @return false if there is not the winner
      */
     bool isWinner();
 

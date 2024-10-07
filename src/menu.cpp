@@ -1,8 +1,8 @@
 /**
  * @file menu.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Classes and functions for the UI system
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

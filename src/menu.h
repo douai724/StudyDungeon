@@ -1,7 +1,7 @@
 /**
  * @file menu.h
  * @author Green Alligators
- * @brief
+ * @brief Classes and functions for the UI system
  * @version @PROJECT_VERSION@
  * @date 2024-10-05
  *

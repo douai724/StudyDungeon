@@ -1,8 +1,8 @@
 /**
  * @file flashcard_scene.h
- * @author Green ALligators
- * @brief
- * @version 0.2
+ * @author Green Alligators
+ * @brief Classes and functions used in the study session UI scene for reviewing flashcards
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -11,14 +11,20 @@
 
 #pragma once
 
+#include "artwork.h"
 #include "deck.h"
+#include "edit_flashcard.h"
 #include "menu.h"
 #include "settings_scene.h"
 #include "util.h"
+#include <algorithm>
 #include <chrono>
+#include <conio.h>
 #include <functional>
 #include <memory>
+#include <numeric>
 #include <random>
+#include <sstream>
 #include <vector>
 
 namespace FlashcardApp
@@ -219,7 +225,7 @@ private:
     std::vector<int> m_difficultyCount = {0, 0, 0}; ///< Count of cards rated as Easy, Medium, Hard.
     std::function<void()> m_goBack;                 ///< Function to call when going back.
     std::function<void(const std::vector<int> &, bool)> m_showResults; ///< Function to call when showing results.
-    bool m_needsRedraw;                                          ///< Flag indicating if the scene needs to be redrawn.
+    bool m_needsRedraw; ///< Flag indicating if the scene needs to be redrawn.
 
     bool m_staticDrawn = false;
     StudySettings m_studySetting;

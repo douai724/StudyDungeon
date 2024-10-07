@@ -1,13 +1,14 @@
 /**
  * @file game_scene.h
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Classes and functions for the card duel game
+ * @version @PROJECT_VERSION@
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
+#pragma once
 #ifndef GAME_SCENE_H
 #define GAME_SCENE_H
 
@@ -88,14 +89,6 @@ public:
      * @param staticDrawn
      */
     void setStaticDrawn(bool staticDrawn) override;
-
-    /**
-     * @brief //FIXME this method doesn't currently exist
-     *
-     * @param player
-     * @return PlayingCard
-     */
-    PlayingCard bot(Player &player);
 };
 
 #endif

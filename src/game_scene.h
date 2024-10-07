@@ -88,14 +88,6 @@ public:
      * @param staticDrawn
      */
     void setStaticDrawn(bool staticDrawn) override;
-
-    /**
-     * @brief //FIXME this method doesn't currently exist
-     *
-     * @param player
-     * @return PlayingCard
-     */
-    PlayingCard bot(Player &player);
 };
 
 #endif

@@ -95,10 +95,10 @@ public:
     bool isGameOver();
 
     /**
-     * @brief Is the player the winner
+     * @brief Is there a winner
      *
-     * @return true the player is the winner
-     * @return false the player is not the winner
+     * @return true if there is a winner
+     * @return false if there is not the winner
      */
     bool isWinner();
 

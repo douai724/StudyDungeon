@@ -21,12 +21,32 @@ TEST_CASE("Retrieve members")
 TEST_CASE("Equality is correct")
 {
     PlayingCard card1 = PlayingCard((enum Type)0, 15);
-    PlayingCard cardRef = card1;
-    PlayingCard *cardPtr = &card1;
 
-    PlayingCard card2 = PlayingCard((enum Type)0, 15);
+    SECTION("Cards are equal")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)0, 15);
 
-    REQUIRE(card1 == cardRef);
-    REQUIRE(card1 == *cardPtr);
-    REQUIRE(card1 == card2);
+        REQUIRE(card1 == card2);
+    }
+
+    SECTION("Cards are different types")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)1, 15);
+
+        REQUIRE(card1 != card2);
+    }
+
+    SECTION("Cards have different values")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)0, 20);
+
+        REQUIRE(card1 != card2);
+    }
+
+    SECTION("Cards have different types and values")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)1, 20);
+
+        REQUIRE(card1 != card2);
+    }
 }

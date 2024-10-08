@@ -75,12 +75,26 @@ int StudySettings::getStudyDurationMin()
 
 void StudySettings::setFlashCardLimit(const int &n_cards)
 {
-    m_flashcard_limit = n_cards;
+    if (n_cards < 1)
+    {
+        m_flashcard_limit = 1;
+    }
+    else
+    {
+        m_flashcard_limit = n_cards;
+    }
 }
 
 void StudySettings::setStudyDurationMin(const int &mins)
 {
-    m_study_duration_mins = mins;
+    if (mins < 1)
+    {
+        m_study_duration_mins = 1;
+    }
+    else
+    {
+        m_study_duration_mins = mins;
+    }
 }
 
 

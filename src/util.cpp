@@ -150,7 +150,7 @@ bool yesNoPrompt()
 }
 
 
-bool isValidDeckFileName(std::string name)
+bool isValidDeckFileName(const std::string &name)
 {
     int max_length{20};
     if (name == "")
@@ -249,7 +249,7 @@ std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
     return lines;
 }
 
-std::string getFirstPhrase(std::vector<std::pair<std::string, int>> phrases)
+std::string getFirstPhrase(const std::vector<std::pair<std::string, int>> &phrases)
 {
     std::random_device rd;
     std::mt19937 gen(rd());

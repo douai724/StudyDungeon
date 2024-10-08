@@ -41,15 +41,15 @@ void EditFlashcardScene::setStaticDrawn(bool staticDrawn)
     m_staticDrawn = staticDrawn;
 }
 
-void EditFlashcardScene::drawLibrarianComment() {
+void EditFlashcardScene::drawLibrarianComment()
+{
     auto window = m_uiManager.getWindow();
     window->drawAsciiArt("lib2",
-                        (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) -
-                            7,
-                        6);
+                         (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) - 7,
+                         6);
     window->drawText(getRandomPhrase(),
-                    window->getAsciiArtByName("lib2")->getX() + 34,
-                    window->getAsciiArtByName("lib2")->getY() + 9);
+                     window->getAsciiArtByName("lib2")->getX() + 34,
+                     window->getAsciiArtByName("lib2")->getY() + 9);
 }
 
 void EditFlashcardScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
@@ -430,15 +430,15 @@ void EditDeckScene::drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> wind
                          (window->getSize().Y - static_cast<int>(window->getAsciiArtByName("book1")->getHeight())) - 3);
 }
 
-void EditDeckScene::drawLibrarianComment() {
+void EditDeckScene::drawLibrarianComment()
+{
     auto window = m_uiManager.getWindow();
     window->drawAsciiArt("lib2",
-                        (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) -
-                            7,
-                        6);
+                         (window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth())) - 7,
+                         6);
     window->drawText(getRandomPhrase(),
-                    window->getAsciiArtByName("lib2")->getX() + 34,
-                    window->getAsciiArtByName("lib2")->getY() + 9);
+                     window->getAsciiArtByName("lib2")->getX() + 34,
+                     window->getAsciiArtByName("lib2")->getY() + 9);
 }
 
 void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
@@ -683,7 +683,7 @@ void EditDeckScene::deleteDeck()
         if (m_selectedDeckIndex >= m_decks.size())
             m_selectedDeckIndex = m_decks.size() - 1;
 
-            drawLibrarianComment();
+        drawLibrarianComment();
         window->drawText("Deck deleted successfully!", 2, 6);
     }
     else

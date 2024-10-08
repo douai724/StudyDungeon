@@ -1,7 +1,11 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "util.h"
+#include <algorithm>
 #include <chrono>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <thread>
 
 TEST_CASE("Filename validity checker")
@@ -25,4 +29,34 @@ TEST_CASE("Timer")
     REQUIRE_FALSE(timeComplete(start_time, duration_secs));
     std::this_thread::sleep_for(std::chrono::milliseconds(3000));
     REQUIRE(timeComplete(start_time, duration_secs));
+}
+
+
+TEST_CASE("yesNoPrompt ")
+{
+    SECTION("handles valid inputs")
+    {
+        // Redirect cin
+        std::istringstream in("Y\n");
+        std::cin.rdbuf(in.rdbuf()); // redirect std::cin to in
+        REQUIRE(yesNoPrompt() == true);
+
+        // Redirect cin for "N"
+        std::istringstream in2("N\n");
+        std::cin.rdbuf(in2.rdbuf()); // redirect std::cin to in2
+        REQUIRE(yesNoPrompt() == false);
+    }
+
+    SECTION("handles invalid inputs before valid input")
+    {
+        // Test invalid input followed by valid "Y"
+        std::istringstream in("abc\nY\n");
+        std::cin.rdbuf(in.rdbuf());
+        REQUIRE(yesNoPrompt() == true);
+
+        // Test invalid input followed by valid "N"
+        std::istringstream in2("123\nN\n");
+        std::cin.rdbuf(in2.rdbuf());
+        REQUIRE(yesNoPrompt() == false);
+    }
 }

@@ -100,44 +100,6 @@ short Game::getWinner()
     }
 }
 
-bool Game::isWinner()
-{
-    if (turn == 1)
-    {
-        if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
-        {
-            return false;
-        }
-        else if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    if (turn == 2)
-    {
-        if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
-        {
-            return false;
-        }
-        else if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else
-    {
-        return false; /* its saying not all paths return a value*/
-    }
-}
-
 void Game::swapHandEffect()
 {
     std::vector<PlayingCard> temp = Game::p1.getHand();

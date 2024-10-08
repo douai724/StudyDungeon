@@ -114,14 +114,6 @@ public:
     bool isGameOver();
 
     /**
-     * @brief Is there a winner
-     *
-     * @return true if there is a winner
-     * @return false if there is not the winner
-     */
-    bool isWinner();
-
-    /**
      * @brief Which player was the winner
      *
      * @return short

@@ -202,3 +202,26 @@ TEST_CASE("Constructor")
         REQUIRE_NOTHROW(testGame.turn);
     }
 }
+
+TEST_CASE("Switch turn in game")
+{
+    Game testGame{};
+
+    SECTION("First turn is player 1's")
+    {
+        REQUIRE(testGame.turn == 1);
+    }
+
+    SECTION("Swap to player 2's turn")
+    {
+        testGame.switchTurn();
+        REQUIRE(testGame.turn == 2);
+    }
+
+    SECTION("Swap to player 1's turn")
+    {
+        testGame.switchTurn();
+        testGame.switchTurn();
+        REQUIRE(testGame.turn == 1);
+    }
+}

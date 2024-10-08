@@ -114,7 +114,7 @@ bool yesNoPrompt();
  * @return true
  * @return false
  */
-bool isValidDeckFileName(std::string name);
+bool isValidDeckFileName(const std::string &name);
 
 
 /**

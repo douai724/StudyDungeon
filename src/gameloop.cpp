@@ -19,10 +19,38 @@ Game::Game()
     Game::p1 = Player(100, 100, 5, std::vector<PlayingCard>{});
 }
 
-void Game::nextTurn(PlayingCard nextCard)
+void Game::nextTurn(PlayingCard &nextCard)
 {
+    // play the card effect
+    playEffect(nextCard);
 
-    // draw a card
+    // have current player draw card
+    drawCard();
+
+    // swap turns
+    switchTurn();
+}
+
+void Game::playEffect(PlayingCard &card)
+{
+    switch ((int)card.getType())
+    {
+    case 0:
+        damageEffect(card);
+        break;
+    case 1:
+        healEffect(card);
+        break;
+    case 2:
+        swapHandEffect();
+        break;
+    default:
+        throw -1;
+    }
+}
+
+void Game::drawCard()
+{
     if (turn == 1)
     {
         p1.drawCard();
@@ -31,24 +59,10 @@ void Game::nextTurn(PlayingCard nextCard)
     {
         p2.drawCard();
     }
+}
 
-    // apply effect
-    switch ((int)nextCard.getType())
-    {
-    case 0:
-        damageEffect(nextCard);
-        break;
-    case 1:
-        healEffect(nextCard);
-        break;
-    case 2:
-        swapHandEffect();
-        break;
-    default:
-        throw -1;
-    }
-
-    // switch turns
+void Game::switchTurn()
+{
     if (Game::turn == 1)
     {
         Game::turn = 2;

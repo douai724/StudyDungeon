@@ -63,6 +63,25 @@ public:
     void swapHandEffect();
 
     /**
+     * @brief Switches the turn to the next player
+     *
+     */
+    void switchTurn();
+
+    /**
+     * @brief Plays the effect of the given playing card
+     *
+     * @param card
+     */
+    void playEffect(PlayingCard &card);
+
+    /**
+     * @brief Draws a card for the player whose turn it is
+     *
+     */
+    void drawCard();
+
+    /**
      * @brief Construct a new Game object.
      *
      * @param p1 Player 1
@@ -80,7 +99,7 @@ public:
       * @brief Plays the next turn of the game.
       *
       */
-    void nextTurn(PlayingCard nextCard);
+    void nextTurn(PlayingCard &nextCard);
 
     /**
       * @brief Checks if the game is over.

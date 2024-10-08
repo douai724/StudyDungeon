@@ -46,6 +46,7 @@ public:
      * @param uiManager Reference to the UIManager for handling UI operations.
      * @param goBack Function to return to the previous scene.
      * @param openEditFlashcardScene Function to open the EditFlashcardScene for a specific deck.
+     * @param studySettings Reference to the StudySettings object.
      */
     EditDeckScene(ConsoleUI::UIManager &uiManager, 
                   std::function<void()> goBack,
@@ -84,6 +85,10 @@ public:
      */
     void handleInput() override;
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
     /**
@@ -101,46 +106,90 @@ public:
      */
     void loadDecks();
 
+    /**
+     * @brief Gets the vector of loaded flashcard decks.
+     * @return const std::vector<FlashCardDeck>& The vector of loaded flashcard decks.
+     */
     const std::vector<FlashCardDeck>& getDecks() const {
         return m_decks;
     }
 
+    /**
+     * @brief Gets the index of the currently selected deck.
+     * @return size_t The index of the currently selected deck.
+     */
     size_t getSelectedDeckIndex() const {
         return m_selectedDeckIndex;
     }
 
+    /**
+     * @brief Sets the index of the currently selected deck.
+     * @param index The index to set as the selected deck.
+     */
     void setSelectedDeckIndex(size_t index) {
         m_selectedDeckIndex = index;
     }
 
+    /**
+     * @brief Gets the current page number for deck content display.
+     * @return int The current page number.
+     */
     int getCurrentPage() const {
         return m_currentPage;  
     }
 
+    /**
+     * @brief Sets the current page number for deck content display.
+     * @param page The page number to set as the current page.
+     */
     void setCurrentPage(int page) {
         m_currentPage = page;
     }
 
+    /**
+     * @brief Gets the maximum number of cards displayed per page.
+     * @return size_t The maximum number of cards per page.
+     */
     size_t getMaxCardsPerPage() const {
         return m_maxCardsPerPage;
     }
 
+    /**
+     * @brief Sets the maximum number of cards displayed per page.
+     * @param maxCards The maximum number of cards to display per page.
+     */
     void setMaxCardsPerPage(size_t maxCards) {
         m_maxCardsPerPage = maxCards;
     }
 
+    /**
+     * @brief Gets the flag indicating if the scene needs redrawing.
+     * @return bool True if the scene needs redrawing, false otherwise.
+     */
     bool getNeedsRedraw() const {
         return m_needsRedraw;
     }
     
+    /**
+     * @brief Sets the flag indicating if the scene needs redrawing.
+     * @param needsRedraw Boolean value to set as the needs redraw flag.
+     */
     void setNeedsRedraw(bool needsRedraw) {
         m_needsRedraw = needsRedraw;
     }
 
+    /**
+     * @brief Gets the study settings object.
+     * @return StudySettings& Reference to the study settings object.
+     */
     StudySettings& getStudySettings() {
         return m_settings;
     }
 
+    /**
+     * @brief Sets the study settings object.
+     * @param settings The study settings object to set.
+     */
     void setStudySettings(const StudySettings& settings) {
         m_settings = settings;
     }
@@ -155,13 +204,13 @@ private:
     size_t m_maxCardsPerPage;                                      ///< Maximum number of cards displayed per page.
     bool m_needsRedraw;                                            ///< Flag indicating if the scene needs redrawing.
     
-    bool m_staticDrawn = false;
-    int m_prevBookshelfIndex = -1;
-    bool m_paging = false;
-    std::chrono::steady_clock::time_point m_lastPageChangeTime;
-    const std::chrono::milliseconds m_pageChangeDelay{200};
-    int bookshelfIndex = 0;
-    StudySettings m_settings;
+    bool m_staticDrawn = false;                                    ///< Flag indicating if the static elements have been drawn.
+    int m_prevBookshelfIndex = -1;                                 ///< Index of the previously displayed bookshelf.
+    bool m_paging = false;                                         ///< Flag indicating if paging is in progress.
+    std::chrono::steady_clock::time_point m_lastPageChangeTime;    ///< Time point of the last page change.
+    const std::chrono::milliseconds m_pageChangeDelay{200};        ///< Delay between page changes in milliseconds.
+    int bookshelfIndex = 0;                                        ///< Index of the current bookshelf.
+    StudySettings m_settings;                                      ///< Study settings object.
 
 
     /**
@@ -188,7 +237,9 @@ private:
      */
     void renameDeck();
     
-    //TODO comment
+    /**
+     * @brief Draws the librarian comment on the console window.
+     */
     void drawLibrarianComment();
 
 };
@@ -208,6 +259,7 @@ public:
      * @param uiManager Reference to the UIManager for handling UI operations.
      * @param deck Reference to the FlashCardDeck being edited.
      * @param goBack Function to return to the previous scene.
+     * @param studySettings Reference to the StudySettings object.
      */
     EditFlashcardScene(ConsoleUI::UIManager &uiManager,
                        FlashCardDeck &deck,
@@ -246,48 +298,96 @@ public:
      */
     void handleInput() override;
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
+    /**
+     * @brief Gets the flashcard deck being edited.
+     * @return const FlashCardDeck& Reference to the flashcard deck.
+     */
     const FlashCardDeck& getDeck() const {
         return m_deck;
     }
 
+    /**
+     * @brief Gets the index of the currently selected flashcard.
+     * @return size_t The index of the currently selected flashcard.
+     */
     size_t getSelectedCardIndex() const {
         return m_selectedCardIndex;
     }
 
+    /**
+     * @brief Sets the index of the currently selected flashcard.
+     * @param index The index to set as the selected flashcard.
+     */
     void setSelectedCardIndex(size_t index) {
         m_selectedCardIndex = index;
     }
 
+    /**
+     * @brief Gets the current page number for flashcard list display.
+     * @return int The current page number.
+     */
     int getCurrentPage() const {
         return m_currentPage;
     }
 
+    /**
+     * @brief Sets the current page number for flashcard list display.
+     * @param page The page number to set as the current page.
+     */
     void setCurrentPage(int page) {
         m_currentPage = page;
     }
 
+    /**
+     * @brief Gets the maximum number of flashcards displayed per page.
+     * @return size_t The maximum number of flashcards per page.
+     */
     size_t getMaxCardsPerPage() const {
         return m_maxCardsPerPage;
     }
 
+    /**
+     * @brief Sets the maximum number of flashcards displayed per page.
+     * @param maxCards The maximum number of flashcards to display per page.
+     */
     void setMaxCardsPerPage(size_t maxCards) {
         m_maxCardsPerPage = maxCards;
     }
     
+    /**
+     * @brief Gets the flag indicating if the scene needs redrawing.
+     * @return bool True if the scene needs redrawing, false otherwise.
+     */
     bool getNeedsRedraw() const {
         return m_needsRedraw;
     }
 
+    /**
+     * @brief Sets the flag indicating if the scene needs redrawing.
+     * @param needsRedraw Boolean value to set as the needs redraw flag.
+     */
     void setNeedsRedraw(bool needsRedraw) {
         m_needsRedraw = needsRedraw;
     }
 
+    /**
+     * @brief Gets the study settings object.
+     * @return StudySettings& Reference to the study settings object.
+     */
     StudySettings& getStudySettings() {
         return m_settings;
     }
 
+    /**
+     * @brief Sets the study settings object.
+     * @param settings The study settings object to set.
+     */
     void setStudySettings(const StudySettings& settings) {
         m_settings = settings;
     }
@@ -301,8 +401,8 @@ private:
     size_t m_maxCardsPerPage;          ///< Maximum number of flashcards displayed per page.
     bool m_needsRedraw;                ///< Flag indicating if the scene needs redrawing.
     
-    bool m_staticDrawn = false;
-    StudySettings m_settings;
+    bool m_staticDrawn = false;        ///< Flag indicating if the static elements have been drawn.
+    StudySettings m_settings;          ///< Study settings object.
     
     /**
      * @brief Edits the currently selected flashcard.
@@ -330,10 +430,12 @@ private:
      */
     void deleteSelectedCard();
     
-    //TODO comment
+    /**
+     * @brief Draws the librarian comment on the console window.
+     */
     void drawLibrarianComment();
 };
 
-} // namespace FlashcardEdit
+} // namespace
 
-#endif // EDIT_DECK_SCENE_H
+#endif

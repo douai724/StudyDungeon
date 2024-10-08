@@ -8,6 +8,6 @@ var searchData=
   ['isbackbuttonpressed_138',['isBackButtonPressed',['../classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e',1,'ConsoleUI::Menu']]],
   ['isgameover_139',['isGameOver',['../classGame.html#a102ce6e5a222e403aa7a0465ff6281dc',1,'Game']]],
   ['istestmode_140',['isTestMode',['../util_8cpp.html#a7e87a78e3cea9942aa08c399036a7c0c',1,'isTestMode():&#160;util.cpp'],['../util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c',1,'isTestMode():&#160;util.cpp']]],
-  ['isvaliddeckfilename_141',['isValidDeckFileName',['../util_8cpp.html#afa7202e3936e1663f0e361cace941194',1,'isValidDeckFileName(std::string name):&#160;util.cpp'],['../util_8h.html#afa7202e3936e1663f0e361cace941194',1,'isValidDeckFileName(std::string name):&#160;util.cpp']]],
+  ['isvaliddeckfilename_141',['isValidDeckFileName',['../util_8cpp.html#ae057994e6f1604b9ca2e4eb62a0c19f4',1,'isValidDeckFileName(const std::string &amp;name):&#160;util.cpp'],['../util_8h.html#ae057994e6f1604b9ca2e4eb62a0c19f4',1,'isValidDeckFileName(const std::string &amp;name):&#160;util.cpp']]],
   ['iswinner_142',['isWinner',['../classGame.html#a60d8f669c158cce8665cf8e9c7ca72c3',1,'Game']]]
 ];

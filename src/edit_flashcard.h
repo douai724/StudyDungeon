@@ -4,9 +4,9 @@
  * @brief Classes and functions that are used in the UI scene for editing flashcards
  * @version @PROJECT_VERSION@
  * @date 2024-09-19
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 #pragma once
 #ifndef EDIT_DECK_SCENE_H
@@ -33,12 +33,12 @@ namespace FlashcardEdit
 /**
  * @class EditDeckScene
  * @brief Represents the scene for editing flashcard decks.
- * 
+ *
  * This class manages the user interface for editing flashcard decks, including
  * functionality to view, add, delete, and rename decks, as well as to edit
  * individual flashcards within a deck.
  */
-class EditDeckScene : public ConsoleUI::Scene 
+class EditDeckScene : public ConsoleUI::Scene
 {
 public:
     /**
@@ -47,7 +47,7 @@ public:
      * @param goBack Function to return to the previous scene.
      * @param openEditFlashcardScene Function to open the EditFlashcardScene for a specific deck.
      */
-    EditDeckScene(ConsoleUI::UIManager &uiManager, 
+    EditDeckScene(ConsoleUI::UIManager &uiManager,
                   std::function<void()> goBack,
                   std::function<void(FlashCardDeck &)> openEditFlashcardScene,
                   StudySettings &studySettings);
@@ -61,7 +61,7 @@ public:
 
     /**
      * @brief Updates the scene state.
-     * 
+     *
      * This function is called every frame to update the scene's state.
      * Currently, it doesn't perform any operations as the scene doesn't require continuous updates.
      */
@@ -70,7 +70,7 @@ public:
     /**
      * @brief Renders the scene on the console window.
      * @param window Shared pointer to the ConsoleWindow to render on.
-     * 
+     *
      * This function draws the list of decks, the contents of the selected deck,
      * and navigation instructions on the console window.
      */
@@ -78,7 +78,7 @@ public:
 
     /**
      * @brief Handles user input for the scene.
-     * 
+     *
      * This function processes keyboard input to navigate through decks,
      * change pages, and perform actions like adding, deleting, or renaming decks.
      */
@@ -95,53 +95,64 @@ public:
 
     /**
      * @brief Loads all flashcard decks from the file system.
-     * 
-     * This function reads all .deck files from the "Decks/" directory 
+     *
+     * This function reads all .deck files from the "Decks/" directory
      * and populates the m_decks vector with the loaded FlashCardDeck objects.
      */
     void loadDecks();
 
-    const std::vector<FlashCardDeck>& getDecks() const {
+    const std::vector<FlashCardDeck> &getDecks() const
+    {
         return m_decks;
     }
 
-    size_t getSelectedDeckIndex() const {
+    size_t getSelectedDeckIndex() const
+    {
         return m_selectedDeckIndex;
     }
 
-    void setSelectedDeckIndex(size_t index) {
+    void setSelectedDeckIndex(size_t index)
+    {
         m_selectedDeckIndex = index;
     }
 
-    int getCurrentPage() const {
-        return m_currentPage;  
+    int getCurrentPage() const
+    {
+        return m_currentPage;
     }
 
-    void setCurrentPage(int page) {
+    void setCurrentPage(int page)
+    {
         m_currentPage = page;
     }
 
-    size_t getMaxCardsPerPage() const {
+    size_t getMaxCardsPerPage() const
+    {
         return m_maxCardsPerPage;
     }
 
-    void setMaxCardsPerPage(size_t maxCards) {
+    void setMaxCardsPerPage(size_t maxCards)
+    {
         m_maxCardsPerPage = maxCards;
     }
 
-    bool getNeedsRedraw() const {
+    bool getNeedsRedraw() const
+    {
         return m_needsRedraw;
     }
-    
-    void setNeedsRedraw(bool needsRedraw) {
+
+    void setNeedsRedraw(bool needsRedraw)
+    {
         m_needsRedraw = needsRedraw;
     }
 
-    StudySettings& getStudySettings() {
+    StudySettings &getStudySettings()
+    {
         return m_settings;
     }
 
-    void setStudySettings(const StudySettings& settings) {
+    void setStudySettings(const StudySettings &settings)
+    {
         m_settings = settings;
     }
 
@@ -154,7 +165,7 @@ private:
     int m_currentPage;                                             ///< Current page number for deck content display.
     size_t m_maxCardsPerPage;                                      ///< Maximum number of cards displayed per page.
     bool m_needsRedraw;                                            ///< Flag indicating if the scene needs redrawing.
-    
+
     bool m_staticDrawn = false;
     int m_prevBookshelfIndex = -1;
     bool m_paging = false;
@@ -166,7 +177,7 @@ private:
 
     /**
      * @brief Adds a new flashcard deck.
-     * 
+     *
      * This function prompts the user for a deck name, creates a new .deck file,
      * and adds the new deck to the m_decks vector.
      */
@@ -174,7 +185,7 @@ private:
 
     /**
      * @brief Deletes the currently selected flashcard deck.
-     * 
+     *
      * This function removes the selected deck's .deck file from the file system
      * and removes the deck from the m_decks vector.
      */
@@ -182,21 +193,20 @@ private:
 
     /**
      * @brief Renames the currently selected flashcard deck.
-     * 
-     * This function prompts the user for a new deck name, renames the .deck file, 
+     *
+     * This function prompts the user for a new deck name, renames the .deck file,
      * and updates the deck's name in the m_decks vector.
      */
     void renameDeck();
-    
+
     //TODO comment
     void drawLibrarianComment();
-
 };
 
 /**
  * @class EditFlashcardScene
  * @brief Represents the scene for editing individual flashcards within a deck.
- * 
+ *
  * This class manages the user interface for editing flashcards, including
  * functionality to view, add, edit, and delete flashcards within a specific deck.
  */
@@ -222,8 +232,8 @@ public:
 
     /**
      * @brief Updates the scene state.
-     * 
-     * This function is called every frame to update the scene's state. 
+     *
+     * This function is called every frame to update the scene's state.
      * Currently, it doesn't perform any operations as the scene doesn't require continuous updates.
      */
     void update() override;
@@ -231,8 +241,8 @@ public:
     /**
      * @brief Renders the scene on the console window.
      * @param window Shared pointer to the ConsoleWindow to render on.
-     * 
-     * This function draws the list of flashcards in the current deck, 
+     *
+     * This function draws the list of flashcards in the current deck,
      * displaying the question, answer, and difficulty of each card.
      * It also shows navigation instructions and handles pagination if necessary.
      */
@@ -240,7 +250,7 @@ public:
 
     /**
      * @brief Handles user input for the scene.
-     * 
+     *
      * This function processes keyboard input to navigate through flashcards,
      * change pages, and perform actions like adding, editing, or deleting flashcards.
      */
@@ -248,47 +258,58 @@ public:
 
     void setStaticDrawn(bool staticDrawn) override;
 
-    const FlashCardDeck& getDeck() const {
+    const FlashCardDeck &getDeck() const
+    {
         return m_deck;
     }
 
-    size_t getSelectedCardIndex() const {
+    size_t getSelectedCardIndex() const
+    {
         return m_selectedCardIndex;
     }
 
-    void setSelectedCardIndex(size_t index) {
+    void setSelectedCardIndex(size_t index)
+    {
         m_selectedCardIndex = index;
     }
 
-    int getCurrentPage() const {
+    int getCurrentPage() const
+    {
         return m_currentPage;
     }
 
-    void setCurrentPage(int page) {
+    void setCurrentPage(int page)
+    {
         m_currentPage = page;
     }
 
-    size_t getMaxCardsPerPage() const {
+    size_t getMaxCardsPerPage() const
+    {
         return m_maxCardsPerPage;
     }
 
-    void setMaxCardsPerPage(size_t maxCards) {
+    void setMaxCardsPerPage(size_t maxCards)
+    {
         m_maxCardsPerPage = maxCards;
     }
-    
-    bool getNeedsRedraw() const {
+
+    bool getNeedsRedraw() const
+    {
         return m_needsRedraw;
     }
 
-    void setNeedsRedraw(bool needsRedraw) {
+    void setNeedsRedraw(bool needsRedraw)
+    {
         m_needsRedraw = needsRedraw;
     }
 
-    StudySettings& getStudySettings() {
+    StudySettings &getStudySettings()
+    {
         return m_settings;
     }
 
-    void setStudySettings(const StudySettings& settings) {
+    void setStudySettings(const StudySettings &settings)
+    {
         m_settings = settings;
     }
 
@@ -300,13 +321,13 @@ private:
     int m_currentPage;                 ///< Current page number for flashcard list display.
     size_t m_maxCardsPerPage;          ///< Maximum number of flashcards displayed per page.
     bool m_needsRedraw;                ///< Flag indicating if the scene needs redrawing.
-    
+
     bool m_staticDrawn = false;
     StudySettings m_settings;
-    
+
     /**
      * @brief Edits the currently selected flashcard.
-     * 
+     *
      * This function allows the user to modify the question, answer, and difficulty
      * of the selected flashcard. It updates the flashcard in the deck and saves
      * changes to the file.
@@ -315,21 +336,21 @@ private:
 
     /**
      * @brief Adds a new flashcard to the deck.
-     * 
+     *
      * This function prompts the user for a question, answer, and difficulty level
-     * for a new flashcard. It then adds the new card to the deck and saves 
+     * for a new flashcard. It then adds the new card to the deck and saves
      * changes to the file.
      */
     void addNewCard();
 
     /**
      * @brief Deletes the currently selected flashcard from the deck.
-     * 
+     *
      * This function removes the selected flashcard from the deck after
      * confirming with the user. It then saves the changes to the file.
      */
     void deleteSelectedCard();
-    
+
     //TODO comment
     void drawLibrarianComment();
 };

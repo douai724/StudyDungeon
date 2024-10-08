@@ -8,6 +8,7 @@ set(TEST_SOURCES
     "menu_test.cpp"
     "player_test.cpp"
     "playing_card_test.cpp"
+    "settings_test.cpp"
     "util_test.cpp"
 
 )

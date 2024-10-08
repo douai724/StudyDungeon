@@ -169,3 +169,15 @@ TEST_CASE("Effects are applied")
         REQUIRE(testPlayer.getHitPoints() == 100);
     }
 }
+
+TEST_CASE("Player default constructor")
+{
+    Player testPlayer{};
+    SECTION("members are correctly initialized to defaults")
+    {
+        REQUIRE(testPlayer.getMaxHitPoints() == 100);
+        REQUIRE(testPlayer.getHitPoints() == 100);
+        REQUIRE(testPlayer.getHandSize() == 5);
+        REQUIRE(testPlayer.getDeck().size() == 0);
+    }
+}

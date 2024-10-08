@@ -16,12 +16,43 @@ Game::Game(Player p1, Player p2) : p1(p1), p2(p2), turn(1)
 
 Game::Game()
 {
+    Game::p1 = Player(100, 100, 5, std::vector<PlayingCard>());
+    Game::p2 = Player(100, 100, 5, std::vector<PlayingCard>());
+    Game::turn = 1;
 }
 
-void Game::nextTurn(PlayingCard nextCard)
+void Game::nextTurn(PlayingCard &nextCard)
 {
+    // play the card effect
+    playEffect(nextCard);
 
-    // draw a card
+    // have current player draw card
+    drawCard();
+
+    // swap turns
+    switchTurn();
+}
+
+void Game::playEffect(PlayingCard &card)
+{
+    switch ((int)card.getType())
+    {
+    case 0:
+        damageEffect(card);
+        break;
+    case 1:
+        healEffect(card);
+        break;
+    case 2:
+        swapHandEffect();
+        break;
+    default:
+        throw -1;
+    }
+}
+
+void Game::drawCard()
+{
     if (turn == 1)
     {
         p1.drawCard();
@@ -30,24 +61,10 @@ void Game::nextTurn(PlayingCard nextCard)
     {
         p2.drawCard();
     }
+}
 
-    // apply effect
-    switch ((int)nextCard.getType())
-    {
-    case 0:
-        damageEffect(nextCard);
-        break;
-    case 1:
-        healEffect(nextCard);
-        break;
-    case 2:
-        swapHandEffect();
-        break;
-    default:
-        throw -1;
-    }
-
-    // switch turns
+void Game::switchTurn()
+{
     if (Game::turn == 1)
     {
         Game::turn = 2;
@@ -80,44 +97,6 @@ short Game::getWinner()
     else
     {
         return 1;
-    }
-}
-
-bool Game::isWinner()
-{
-    if (turn == 1)
-    {
-        if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
-        {
-            return false;
-        }
-        else if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    if (turn == 2)
-    {
-        if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
-        {
-            return false;
-        }
-        else if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else
-    {
-        return false; /* its saying not all paths return a value*/
     }
 }
 

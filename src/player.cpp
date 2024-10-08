@@ -12,6 +12,10 @@
 
 Player::Player()
 {
+    Player::hitPoints = 100;
+    Player::maxHitPoints = 100;
+    Player::handSize = 5;
+    Player::deck = std::vector<PlayingCard>{};
 }
 
 Player::Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck)

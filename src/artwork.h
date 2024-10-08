@@ -43,4 +43,10 @@ extern std::string librarian;
 
 extern std::string librarianPointing;
 
+extern std::string dragon;
+
+extern std::string asciiArtString;
+
+extern std::string asciiArtString2;
+
 #endif

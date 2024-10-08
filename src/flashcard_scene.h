@@ -147,7 +147,7 @@ public:
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
-                   std::function<void(const std::vector<int> &, bool)> showResults,
+                   std::function<void(const std::vector<int> &, int, bool)> showResults,
                    StudySettings &studySettings);
     /**
      * @brief Initialize the scene.
@@ -224,7 +224,7 @@ private:
     bool m_showAnswer = false;                      ///< Flag indicating whether the answer is currently visible.
     std::vector<int> m_difficultyCount = {0, 0, 0}; ///< Count of cards rated as Easy, Medium, Hard.
     std::function<void()> m_goBack;                 ///< Function to call when going back.
-    std::function<void(const std::vector<int> &, bool)> m_showResults; ///< Function to call when showing results.
+    std::function<void(const std::vector<int> &, int, bool)> m_showResults; ///< Function to call when showing results.
     bool m_needsRedraw; ///< Flag indicating if the scene needs to be redrawn.
 
     bool m_staticDrawn = false;
@@ -233,6 +233,7 @@ private:
     std::string m_lastQuestionDisplayed;
     bool m_lastAnswerDisplayed;
     bool m_answerDrawn;
+    int m_score;
 };
 
 /**
@@ -258,6 +259,7 @@ public:
      */
     ResultsScene(ConsoleUI::UIManager &uiManager,
                  const std::vector<int> &difficultyCount,
+                 int score,
                  std::function<void()> goToMainMenu,
                  std::function<void()> goToDeckSelection,
                  std::function<void()> goToGame,
@@ -300,6 +302,7 @@ private:
 
     bool m_staticDrawn = false;
     bool m_sessionComplete;
+    int m_score;
 };
 
 } // namespace FlashcardApp

@@ -188,3 +188,17 @@ TEST_CASE("CARD EFFECTS")
         REQUIRE(testGame.p2.getHitPoints() == 98);
     }
 }
+
+TEST_CASE("Constructor")
+{
+    SECTION("default constructor members can be accessed")
+    {
+        Game testGame{};
+
+        REQUIRE_NOTHROW(testGame.p1);
+
+        REQUIRE_NOTHROW(testGame.p2);
+
+        REQUIRE_NOTHROW(testGame.turn);
+    }
+}

@@ -100,8 +100,8 @@ void ConsoleWindow::drawANSICode(int code, int x, int y)
 
 
     setConsoleCursorPosition(x, y);
-    std::string escStart = _ESC + "[48;5;" + std::to_string(code) + "m";
-    std::string escEnd = _ESC + "[0m";
+    std::string escStart = key::ESC + "[48;5;" + std::to_string(code) + "m";
+    std::string escEnd = key::ESC + "[0m";
     std::cout << escStart << lpCharacter[0] << lpCharacter[1] << escEnd;
 
     delete[] lpCharacter;
@@ -135,30 +135,30 @@ std::string ConsoleWindow::getLine(int x, int y, size_t maxLength)
         // Get user input
         int ch = _getch();
 
-        if (ch == _key_esc) // Escape key
+        if (ch == key::key_esc) // Escape key
         {
             return "\x1B"; // Return the escape character to indicate abort
         }
-        else if (ch == _arrow_prefix || ch == _numlock) // Arrow key prefix
+        else if (ch == key::arrow_prefix || ch == key::numlock) // Arrow key prefix
         {
             ch = _getch();
             switch (ch)
             {
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 if (cursorPos > 0)
                     cursorPos--;
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
                 if (cursorPos < input.length())
                     cursorPos++;
                 break;
             }
         }
-        else if (ch == _key_enter) // Enter key
+        else if (ch == key::key_enter) // Enter key
         {
             break;
         }
-        else if (ch == _key_backspace) // Backspace
+        else if (ch == key::key_backspace) // Backspace
         {
             if (cursorPos > 0)
             {
@@ -496,7 +496,7 @@ std::string ANSIArt::toString()
     {
         for (size_t j = 0; j < codes[i].size(); j++)
         {
-            out += _ESC + "[48;5;" + std::to_string(codes[i][j]) + "m  " + _ESC + "[0m";
+            out += key::ESC + "[48;5;" + std::to_string(codes[i][j]) + "m  " + key::ESC + "[0m";
         }
         out += "\n";
     }
@@ -523,7 +523,7 @@ void Button::draw(int x, int y, bool selected)
     }
     else
     {
-        std::cout << border << _ESC + "[31;1;4m[" << m_label << "]" + _ESC + +"[0m" << border;
+        std::cout << border << key::ESC + "[31;1;4m[" << m_label << "]" + key::ESC + +"[0m" << border;
     }
 }
 
@@ -574,17 +574,17 @@ void Menu::draw(int x, int y)
 void Menu::handleInput()
 {
     int key = _getch();
-    if (key == _arrow_prefix || key == 0) // Arrow key
+    if (key == key::arrow_prefix || key == key::numlock) // Arrow key
     {
         key = _getch();
         if (horizontal_layout)
         {
             switch (key)
             {
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
                 m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
                 break;
             }
@@ -593,16 +593,16 @@ void Menu::handleInput()
         {
             switch (key)
             {
-            case _key_up: // Up arrow
+            case key::key_up: // Up arrow
                 m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
                 break;
-            case _key_down: // Down arrow
+            case key::key_down: // Down arrow
                 m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
                 break;
             }
         }
     }
-    else if (key == _key_enter)
+    else if (key == key::key_enter)
     {
         m_buttons[m_selectedIndex].performAction();
     }

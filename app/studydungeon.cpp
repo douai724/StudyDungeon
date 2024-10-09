@@ -323,7 +323,7 @@ int main()
                 // if (_kbhit())
                 // {
                 //     int ch = _getch();
-                //     if (ch == _key_esc)
+                //     if (ch == key::key_esc)
                 //     { // ESC key
                 //         running = false;
                 //     }

@@ -207,13 +207,14 @@ TEST_CASE("Next turn")
     for (int i = 1; i <= 5; i++)
     {
         PlayingCard testCard1 = PlayingCard((enum Type)0, i);
-        PlayingCard testCard2 = PlayingCard((enum Type)0, 10 + i);
+        PlayingCard testCard2 = PlayingCard((enum Type)1, 10 + i);
         deck1.push_back(testCard1);
         deck2.push_back(testCard2);
     }
 
 
     Game testGame{};
+    // player 1 damages, player 2 heals
     testGame.p1.setDeck(deck1);
     testGame.p2.setDeck(deck2);
 
@@ -239,6 +240,7 @@ TEST_CASE("Next turn")
     SECTION("P2 turn")
     {
         testGame.turn = 2;
+        testGame.p2.setHitPoints(89);
         REQUIRE(testGame.turn == 2);
         testGame.p2.drawCard();
         PlayingCard playerCard = testGame.p2.getHand()[0];
@@ -246,13 +248,25 @@ TEST_CASE("Next turn")
         REQUIRE(testGame.p2.getDeck().size() == 4);
         REQUIRE(testGame.p1.getHitPoints() == 100);
         testGame.nextTurn(playerCard);
-        // check applies effect
-        REQUIRE(testGame.p1.getHitPoints() == 89);
+        // check applies effect (healing)
+        REQUIRE(testGame.p2.getHitPoints() == 100);
         // check draws card to hand
         REQUIRE(testGame.p2.getHandSize() == 5);
         REQUIRE(testGame.p2.getDeck().size() == 3);
         // REQUIRE(testGame.p1.getHitPoints() == 90);
         // check turn switches
         REQUIRE(testGame.turn == 1);
+    }
+
+    SECTION("p1 plays switch hand")
+    {
+        testGame.p1.drawCard();
+        testGame.p2.drawCard();
+        std::vector<PlayingCard> h1 = testGame.p1.getHand();
+        std::vector<PlayingCard> h2 = testGame.p2.getHand();
+        PlayingCard playerCard = PlayingCard((enum Type)2, 0);
+        testGame.nextTurn(playerCard);
+        REQUIRE(testGame.p1.getHand().at(0) == h2.at(0));
+        REQUIRE(testGame.p2.getHand().at(0) == h1.at(0));
     }
 }

@@ -181,3 +181,19 @@ TEST_CASE("Player default constructor")
         REQUIRE(testPlayer.getDeck().size() == 0);
     }
 }
+
+TEST_CASE("Player hand size is updated and retrieved")
+{
+    Player testPlayer = Player(100, 100, 1, std::vector<PlayingCard>());
+
+    SECTION("Retrieve hand size")
+    {
+        REQUIRE(testPlayer.getHandSize() == 1);
+    }
+
+    SECTION("Update hand size")
+    {
+        testPlayer.setHandSize(2);
+        REQUIRE(testPlayer.getHandSize() == 2);
+    }
+}

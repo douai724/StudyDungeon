@@ -107,6 +107,33 @@ TEST_CASE("Player hand is updated and retrieved")
         REQUIRE_THROWS(testPlayer.getCard(3));
     }
 }
+
+TEST_CASE("Player deck is updated and retrieved")
+{
+    // set up cards
+    PlayingCard card1 = PlayingCard((enum Type)0, 5);
+    PlayingCard card2 = PlayingCard((enum Type)0, 10);
+
+    // set up deck
+    std::vector<PlayingCard> testDeck;
+    testDeck.push_back(card1);
+    testDeck.push_back(card2);
+
+    // set up player with empty deck
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
+
+    REQUIRE(testPlayer.getDeck().size() == 0);
+
+    SECTION("Update and retrieve deck")
+    {
+        testPlayer.setDeck(testDeck);
+
+        REQUIRE(testPlayer.getDeck()[0] == card1);
+        REQUIRE(testPlayer.getDeck()[1] == card2);
+        REQUIRE(testPlayer.getDeck().size() == (int)2);
+    }
+}
+
 TEST_CASE("Effects are applied")
 {
     Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());

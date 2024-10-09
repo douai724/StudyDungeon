@@ -31,6 +31,7 @@ TEST_CASE("Win condition")
         testGame.p1.setHitPoints(0);
 
         REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.getWinner() == 2);
     }
 
     SECTION("Player 2 drops to 0 hp")
@@ -40,6 +41,7 @@ TEST_CASE("Win condition")
         testGame.p2.setHitPoints(0);
 
         REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.getWinner() == 1);
     }
 
     SECTION("Players are out of cards")
@@ -47,6 +49,20 @@ TEST_CASE("Win condition")
         testGame.p1.drawCard();
         testGame.p2.drawCard();
         REQUIRE(testGame.isGameOver() == true);
+    }
+
+    SECTION("Player 1 is out of cards")
+    {
+        testGame.p1.drawCard();
+        REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.getWinner() == 2);
+    }
+
+    SECTION("Player 2 is out of cards")
+    {
+        testGame.p2.drawCard();
+        REQUIRE(testGame.isGameOver() == true);
+        REQUIRE(testGame.getWinner() == 1);
     }
 }
 

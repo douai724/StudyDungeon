@@ -224,3 +224,10 @@ TEST_CASE("Player hand size is updated and retrieved")
         REQUIRE(testPlayer.getHandSize() == 2);
     }
 }
+
+TEST_CASE("Player to string")
+{
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
+
+    REQUIRE(testPlayer.toString() == "100/100// 0");
+}

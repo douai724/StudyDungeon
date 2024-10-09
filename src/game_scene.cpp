@@ -113,6 +113,21 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 
         for (int i = 0; i < hand_size_int; i++)
         {
+
+            std::string colour = "";
+
+            switch (hand[i].getType())
+            {
+            case 0:
+                colour = key::ESC + "[31m";
+                break;
+            case 1:
+                colour = key::ESC + "[32m";
+                break;
+            default:
+                colour = "";
+            }
+
             std::string option = hand[i].toString();
             std::string cardText = "";
 
@@ -122,15 +137,15 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             {
 
                 window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawWrappedText(" [" + option + "] ",
+                window->drawWrappedText(" [" + colour + option + key::ESC + "[0m" + "]",
                                         size.X / hand_size_int * i + padding / 2,
                                         4 * size.Y / 5,
-                                        size.X / 5);
+                                        size.X / 5 + colour.length());
             }
             else
             {
                 window->drawANSIArt("card", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawWrappedText(" [" + option + "] ",
+                window->drawWrappedText(" [" + colour + option + key::ESC + "[0m" + "]",
                                         size.X / hand_size_int * i + padding / 2,
                                         4 * size.Y / 5,
                                         size.X / 5);

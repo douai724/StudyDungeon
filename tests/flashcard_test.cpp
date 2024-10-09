@@ -1,22 +1,18 @@
-#include <catch2/catch_test_macros.hpp>
+#include "flashcard_scene.h"
 #include "menu.h"
 #include "util.h"
-#include "flashcard_scene.h"
+#include <catch2/catch_test_macros.hpp>
 
 
-
-TEST_CASE("FlashcardScene::updateCardDifficulty() updates card difficulty and times answered", "[flashcard_scene]") {
+TEST_CASE("FlashcardScene::updateCardDifficulty() updates card difficulty and times answered", "[flashcard_scene]")
+{
     // Arrange
     ConsoleUI::UIManager uiManager;
     FlashCardDeck deck;
     deck.cards.push_back(FlashCard{"Question 1", "Answer 1", EASY, 0});
     StudySettings studySettings;
-    FlashcardApp::FlashcardScene scene(uiManager,
-                                       deck,
-                                       []() {},
-                                       []() {},
-                                       [](const std::vector<int> &, int, bool) {},
-                                       studySettings);
+    FlashcardApp::FlashcardScene
+        scene(uiManager, deck, []() {}, []() {}, [](const std::vector<int> &, int, bool) {}, studySettings);
     size_t cardIndex = 0;
     CardDifficulty newDifficulty = MEDIUM;
 
@@ -28,7 +24,8 @@ TEST_CASE("FlashcardScene::updateCardDifficulty() updates card difficulty and ti
     REQUIRE(scene.m_deck.cards[scene.m_cardOrder[cardIndex]].n_times_answered == 1);
 }
 
-TEST_CASE("BrowseDecksScene::loadDecks() loads decks correctly", "[browse_decks_scene]") {
+TEST_CASE("BrowseDecksScene::loadDecks() loads decks correctly", "[browse_decks_scene]")
+{
     // Arrange
     ConsoleUI::UIManager uiManager;
     StudySettings studySettings;
@@ -38,7 +35,6 @@ TEST_CASE("BrowseDecksScene::loadDecks() loads decks correctly", "[browse_decks_
     scene.loadDecks();
 
 
-
     // Assert
     //REQUIRE(!scene.m_decks.empty());
     REQUIRE(scene.m_selectedDeckIndex == 0);
@@ -46,19 +42,16 @@ TEST_CASE("BrowseDecksScene::loadDecks() loads decks correctly", "[browse_decks_
 }
 
 
-TEST_CASE("FlashcardScene::nextCard() moves to the next card correctly", "[flashcard_scene]") {
+TEST_CASE("FlashcardScene::nextCard() moves to the next card correctly", "[flashcard_scene]")
+{
     // Arrange
     ConsoleUI::UIManager uiManager;
     FlashCardDeck deck;
     deck.cards.push_back(FlashCard{"Question 1", "Answer 1", EASY, 0});
     deck.cards.push_back(FlashCard{"Question 2", "Answer 2", MEDIUM, 1});
     StudySettings studySettings;
-    FlashcardApp::FlashcardScene scene(uiManager,
-                                       deck,
-                                       []() {},
-                                       []() {},
-                                       [](const std::vector<int> &, int, bool) {},
-                                       studySettings);
+    FlashcardApp::FlashcardScene
+        scene(uiManager, deck, []() {}, []() {}, [](const std::vector<int> &, int, bool) {}, studySettings);
 
     // Act
     scene.nextCard();

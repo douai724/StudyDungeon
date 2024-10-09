@@ -82,6 +82,10 @@ A study session has 2 phases:
                             window->getSize().X - 30,
                             window->getSize().Y - 10,
                             27);
+    window->drawWrappedText("Pixel art by: ",
+                            window->getSize().X - 30,
+                            window->getSize().Y - 8,
+                            27);
 
 
     window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);

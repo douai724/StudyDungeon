@@ -125,14 +125,6 @@ bool isValidDeckFileName(const std::string &name);
  */
 void ShowConsoleCursor(bool showflag);
 
-/**
- * @brief Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each
- *
- * @param filename
- * @return std::string A string with the ANSI escape sequences embedded
- */
-std::string convertFileToANSI(std::string filename);
-
 std::vector<std::vector<int>> readInANSICodes(std::string filename);
 
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt);

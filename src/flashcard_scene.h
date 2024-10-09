@@ -102,10 +102,9 @@ public:
 
     void drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window);
 
-    std::vector<FlashCardDeck> m_decks;                    ///< Vector of loaded flashcard decks.
-    size_t m_selectedDeckIndex = 0;                        ///< Index of the currently selected deck.
-    int m_currentPage = 0;                                 ///< Current page number when viewing deck contents.
-
+    std::vector<FlashCardDeck> m_decks; ///< Vector of loaded flashcard decks.
+    size_t m_selectedDeckIndex = 0;     ///< Index of the currently selected deck.
+    int m_currentPage = 0;              ///< Current page number when viewing deck contents.
 
 
 private:
@@ -198,12 +197,11 @@ public:
     void nextCard();
 
 
-    std::vector<size_t> m_cardOrder;                ///< Randomized order of flashcards for the session.
-    FlashCardDeck m_deck;                           ///< The flashcard deck being studied.
-    size_t m_currentCardIndex = 0;                  ///< Index of the current flashcard being shown.
-    bool m_showAnswer = false;                      ///< Flag indicating whether the answer is currently visible.
+    std::vector<size_t> m_cardOrder; ///< Randomized order of flashcards for the session.
+    FlashCardDeck m_deck;            ///< The flashcard deck being studied.
+    size_t m_currentCardIndex = 0;   ///< Index of the current flashcard being shown.
+    bool m_showAnswer = false;       ///< Flag indicating whether the answer is currently visible.
     bool m_lastAnswerDisplayed;
-
 
 
 private:
@@ -214,7 +212,7 @@ private:
      */
     void selectDifficulty(CardDifficulty difficulty);
 
-    
+
     void saveUpdatedDeck();
     // int flashcard_limit = 10;
     bool empty = false;

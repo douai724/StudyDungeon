@@ -60,3 +60,20 @@ TEST_CASE("yesNoPrompt ")
         REQUIRE(yesNoPrompt() == false);
     }
 }
+
+TEST_CASE("Convert ASCII art to lines")
+{
+    std::string testArt = R"(---
+| |
+---)";
+
+    std::string line1 = "---";
+    std::string line2 = "| |";
+    std::string line3 = "---";
+
+    std::vector<std::string> outputLines = convertAsciiArtToLines(testArt);
+
+    REQUIRE(outputLines[0] == line1);
+    REQUIRE(outputLines[1] == line2);
+    REQUIRE(outputLines[2] == line3);
+}

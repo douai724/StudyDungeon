@@ -74,6 +74,8 @@ public:
         std::vector<std::string> shelf8 = convertAsciiArtToLines(bookshelf8);
         std::vector<std::string> shelf9 = convertAsciiArtToLines(bookshelf9);
         std::vector<std::string> dragonLines = convertAsciiArtToLines(dragon);
+        std::vector<std::string> carLines = convertAsciiArtToLines(car);
+        
 
         ConsoleUI::AsciiArt artShelfFull("bookfull", shelfFull, 0, 0);
         ConsoleUI::AsciiArt artShelf1("book1", shelf1, 0, 0);
@@ -86,6 +88,7 @@ public:
         ConsoleUI::AsciiArt artShelf8("book8", shelf8, 0, 0);
         ConsoleUI::AsciiArt artShelf9("book9", shelf9, 0, 0);
         ConsoleUI::AsciiArt artDragon("dragon", dragonLines, 0, 0);
+        ConsoleUI::AsciiArt artCar("car", carLines, 0, 0);
 
         uiManager.getWindow()->addAsciiArt(artShelfFull);
         uiManager.getWindow()->addAsciiArt(artShelf1);
@@ -98,6 +101,7 @@ public:
         uiManager.getWindow()->addAsciiArt(artShelf8);
         uiManager.getWindow()->addAsciiArt(artShelf9);
         uiManager.getWindow()->addAsciiArt(artDragon);
+        uiManager.getWindow()->addAsciiArt(artCar);
 
         std::vector<std::string> librarianLines = convertAsciiArtToLines(librarian);
         std::vector<std::string> librarianPointingLines = convertAsciiArtToLines(librarianPointing);
@@ -144,16 +148,18 @@ public:
 
             // Draw the ASCII art
             int otherMenuArtX =
-                ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 3;
+                ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 5;
             int otherMenuArtY =
-                window->getSize().Y - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
+                (window->getSize().Y - 2) - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
             int mainMenuArtX =
                 (window->getSize().X - static_cast<int>(window->getANSIArtByName("title")->getWidth())) / 8;
             int mainMenuArtY = 10;
 
             window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
+            window->drawAsciiArt("car", window->getSize().X - 35, window->getSize().Y - 5);
             //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
             window->drawANSIArt("title", mainMenuArtX, mainMenuArtY - 10);
+        
 
             m_staticDrawn = true;
         }

@@ -443,11 +443,13 @@ void EditDeckScene::drawLibrarianComment()
 
 void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    int deckListY = 4;
     if (!m_staticDrawn)
     {
         window->clear();
         window->drawBorder();
         window->drawCenteredText("Edit Decks", 2);
+        
         m_staticDrawn = true;
     }
 
@@ -455,13 +457,13 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         return;
 
 
+    
     // Clear the deck list area
-    for (int i = 4; i < window->getSize().Y - 2; ++i)
+    for (int i = deckListY; i < window->getSize().Y - 2; ++i)
     {
         window->drawText(std::string(window->getSize().X - 4, ' '), 2, i);
     }
     // Draw deck list
-    int deckListY = 4;
     for (size_t i = 0; i < m_decks.size(); ++i)
     {
         std::string deckText = (i == m_selectedDeckIndex ? "> " : "  ") + m_decks[i].name;

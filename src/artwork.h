@@ -49,4 +49,6 @@ extern std::string asciiArtString;
 
 extern std::string asciiArtString2;
 
+extern std::string car;
+
 #endif

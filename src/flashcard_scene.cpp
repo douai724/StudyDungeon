@@ -88,6 +88,7 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawText("Use Up/Down to navigate, Enter to select, Escape to go back", 2, window->getSize().Y - 2);
         loadDecks();
         m_staticDrawn = true;
+        
     }
 
     if (m_decksNeedReload)

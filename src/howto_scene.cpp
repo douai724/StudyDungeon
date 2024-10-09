@@ -77,6 +77,13 @@ A study session has 2 phases:
                             window->getSize().Y - 7,
                             40);
 
+    window->drawText("Credits:", window->getSize().X - 30, window->getSize().Y - 12);
+    window->drawWrappedText("Ascii art from: https://www.asciiart.eu/",
+                            window->getSize().X - 30,
+                            window->getSize().Y - 10,
+                            27);
+
+
 
     window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 

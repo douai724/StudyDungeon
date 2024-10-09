@@ -661,11 +661,7 @@ void EditDeckScene::deleteDeck()
     window->clear();
     window->drawBorder();
     window->drawCenteredText("Delete Deck", 2);
-    int lib1_x_pos =
-        window->getSize().X -
-        static_cast<int>(
-            window->getAsciiArtByName("lib1")
-                ->getWidth());
+    int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth());
     window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Are you sure you want to delete the deck '" + m_decks[m_selectedDeckIndex].name + "'?", 2, 4);

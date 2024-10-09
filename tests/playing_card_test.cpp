@@ -50,3 +50,36 @@ TEST_CASE("Equality is correct")
         REQUIRE(card1 != card2);
     }
 }
+
+TEST_CASE("PlayingCard to string")
+{
+    SECTION("Damage card")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)0, 15);
+        REQUIRE(testCard.toString() == "Deal 15 damage.");
+    }
+
+    SECTION("Heal card")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)1, 15);
+        REQUIRE(testCard.toString() == "Heal 15 hit points.");
+    }
+
+    SECTION("Swap hand card")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)2, 0);
+        REQUIRE(testCard.toString() == "Swap hands with the enemy player.");
+    }
+
+    SECTION("Enum type -1")
+    {
+        PlayingCard testCard = PlayingCard((enum Type) - 1, 15);
+        REQUIRE(testCard.toString() == "Unknown ability");
+    }
+
+    SECTION("Enum type 100")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)100, 15);
+        REQUIRE(testCard.toString() == "Unknown ability");
+    }
+}

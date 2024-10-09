@@ -23,11 +23,12 @@ Game::Game()
 
 void Game::nextTurn(PlayingCard &nextCard)
 {
-    // play the card effect
-    playEffect(nextCard);
 
     // have current player draw card
     drawCard();
+
+    // play the card effect
+    playEffect(nextCard);
 
     // swap turns
     switchTurn();
@@ -57,9 +58,13 @@ void Game::drawCard()
     {
         p1.drawCard();
     }
-    else
+    else if (turn == 2)
     {
         p2.drawCard();
+    }
+    else
+    {
+        return;
     }
 }
 
@@ -69,9 +74,13 @@ void Game::switchTurn()
     {
         Game::turn = 2;
     }
-    else
+    else if (Game::turn == 2)
     {
         Game::turn = 1;
+    }
+    else
+    {
+        return;
     }
 }
 

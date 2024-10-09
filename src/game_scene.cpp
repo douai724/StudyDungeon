@@ -122,12 +122,18 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             {
 
                 window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawText(" [" + option + "] ", size.X / hand_size_int * i + padding / 2, 4 * size.Y / 5);
+                window->drawWrappedText(" [" + option + "] ",
+                                        size.X / hand_size_int * i + padding / 2,
+                                        4 * size.Y / 5,
+                                        size.X / 5);
             }
             else
             {
                 window->drawANSIArt("card", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawText(" [" + option + "] ", size.X / hand_size_int * i + padding / 2, 4 * size.Y / 5);
+                window->drawWrappedText(" [" + option + "] ",
+                                        size.X / hand_size_int * i + padding / 2,
+                                        4 * size.Y / 5,
+                                        size.X / 5);
             }
         }
 

@@ -669,8 +669,8 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 4);
 
         window->drawAsciiArt("dragon",
-                             windowX / 2 - (window->getAsciiArtByName("dragon")->getWidth() / 2 - 11),
-                             windowY / 2 - (window->getAsciiArtByName("dragon")->getHeight() / 2));
+                             windowX / 2 - (static_cast<int>(window->getAsciiArtByName("dragon")->getWidth()) / 2),
+                             windowY / 2 - (static_cast<int>(window->getAsciiArtByName("dragon")->getHeight()) / 2));
         window->drawCenteredText(phrase, windowY / 2 - 4);
 
         std::string easyText = "\033[32mEasy: " + std::to_string(m_difficultyCount[EASY - 1]) + "\033[0m";

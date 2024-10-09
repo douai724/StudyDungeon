@@ -199,7 +199,6 @@ void EditFlashcardScene::editSelectedCard()
     window->clear();
     window->drawBorder();
     int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth());
-    int lib2_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth());
     window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
     window->drawCenteredText("Edit Flashcard", 2);
 
@@ -328,7 +327,6 @@ void EditFlashcardScene::deleteSelectedCard()
     window->drawBorder();
     window->drawCenteredText("Delete Card", 2);
     int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth());
-    int lib2_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth());
     window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Are you sure you want to delete the selected card? (Y/N)", 2, 4);
@@ -617,7 +615,6 @@ void EditDeckScene::addNewDeck()
     window->drawBorder();
     window->drawCenteredText("Add New Deck", 2);
     int lib1_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib1")->getWidth());
-    int lib2_x_pos = window->getSize().X - static_cast<int>(window->getAsciiArtByName("lib2")->getWidth());
     window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Enter the name for the new deck (max 30 characters):", 2, 4);
@@ -668,10 +665,7 @@ void EditDeckScene::deleteDeck()
         window->getSize().X -
         static_cast<int>(
             window->getAsciiArtByName("lib1")
-                ->getWidth()); //TODO these variables are repeated a lot in this file, could chuck em at the
-    int lib2_x_pos =
-        window->getSize().X -
-        static_cast<int>(window->getAsciiArtByName("lib2")->getWidth()); // top of the file or in the header somewhere
+                ->getWidth());
     window->drawAsciiArt("lib1", lib1_x_pos - 7, 6);
 
     window->drawText("Are you sure you want to delete the deck '" + m_decks[m_selectedDeckIndex].name + "'?", 2, 4);

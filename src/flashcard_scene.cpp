@@ -533,24 +533,27 @@ void FlashcardScene::handleInput()
 }
 
 int easyStreak = 0;
-void FlashcardScene::selectDifficulty(CardDifficulty difficulty) {
+void FlashcardScene::selectDifficulty(CardDifficulty difficulty)
+{
     m_difficultyCount[difficulty - 1]++;
-    switch (difficulty) {
-        case EASY:   
-            m_score += 20;
-            easyStreak++; 
-            if (easyStreak >= 3) {
-                m_score += 10; // Bonus for 3+ Easy cards in a row
-            }
-            break;
-        case MEDIUM: 
-            m_score += 10;
-            easyStreak = 0; // Reset easy streak
-            break;  
-        case HARD:
-            m_score += 5;
-            easyStreak = 0;
-            break;
+    switch (difficulty)
+    {
+    case EASY:
+        m_score += 20;
+        easyStreak++;
+        if (easyStreak >= 3)
+        {
+            m_score += 10; // Bonus for 3+ Easy cards in a row
+        }
+        break;
+    case MEDIUM:
+        m_score += 10;
+        easyStreak = 0; // Reset easy streak
+        break;
+    case HARD:
+        m_score += 5;
+        easyStreak = 0;
+        break;
     }
 
     for (auto &scene : m_uiManager.getScenes())
@@ -649,48 +652,56 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
     int windowX = static_cast<int>(window->getSize().X);
     int windowY = static_cast<int>(window->getSize().Y);
-    
+
     if (!m_staticDrawn)
     {
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
 
-            // Clear the text areas
-    window->drawText(std::string(phrase.length(), ' '), (windowX - static_cast<int>(phrase.length())) / 2, windowY / 2 - 4);
-    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 - 2);
-    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2);
-    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 2);
-    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 4);
+        // Clear the text areas
+        window->drawText(std::string(phrase.length(), ' '),
+                         (windowX - static_cast<int>(phrase.length())) / 2,
+                         windowY / 2 - 4);
+        window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 - 2);
+        window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2);
+        window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 2);
+        window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 4);
 
-    window->drawAsciiArt("dragon", windowX / 2 - (window->getAsciiArtByName("dragon")->getWidth() / 2 - 11), 
-                                   windowY / 2 - (window->getAsciiArtByName("dragon")->getHeight() / 2));
-    window->drawCenteredText(phrase, windowY / 2 - 4);
+        window->drawAsciiArt("dragon",
+                             windowX / 2 - (window->getAsciiArtByName("dragon")->getWidth() / 2 - 11),
+                             windowY / 2 - (window->getAsciiArtByName("dragon")->getHeight() / 2));
+        window->drawCenteredText(phrase, windowY / 2 - 4);
 
-    std::string easyText = "\033[32mEasy: " + std::to_string(m_difficultyCount[EASY - 1]) + "\033[0m";
-    std::string mediumText = "\033[33mMedium: " + std::to_string(m_difficultyCount[MEDIUM - 1]) + "\033[0m";
-    std::string hardText = "\033[31mHard: " + std::to_string(m_difficultyCount[HARD - 1]) + "\033[0m";
+        std::string easyText = "\033[32mEasy: " + std::to_string(m_difficultyCount[EASY - 1]) + "\033[0m";
+        std::string mediumText = "\033[33mMedium: " + std::to_string(m_difficultyCount[MEDIUM - 1]) + "\033[0m";
+        std::string hardText = "\033[31mHard: " + std::to_string(m_difficultyCount[HARD - 1]) + "\033[0m";
 
-    window->drawText(easyText, windowX / 2 - (static_cast<int>(easyText.length() - 7) / 2), windowY / 2 - 2);
-    window->drawText(mediumText, windowX / 2 - (static_cast<int>(mediumText.length() - 7) / 2), windowY / 2);
-    window->drawText(hardText, windowX / 2 - (static_cast<int>(hardText.length() - 7) / 2), windowY / 2 + 2);
+        window->drawText(easyText, windowX / 2 - (static_cast<int>(easyText.length() - 7) / 2), windowY / 2 - 2);
+        window->drawText(mediumText, windowX / 2 - (static_cast<int>(mediumText.length() - 7) / 2), windowY / 2);
+        window->drawText(hardText, windowX / 2 - (static_cast<int>(hardText.length() - 7) / 2), windowY / 2 + 2);
 
-    std::string scoreText = std::to_string(m_score) + "\033[0m";
+        std::string scoreText = std::to_string(m_score) + "\033[0m";
 
-    // Color the score based on easy and hard counts
-    if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1])
-    {
-        window->drawText("\033[35mScore: " + scoreText, windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2), windowY / 2 + 4);
-
-    }
-    else if (m_difficultyCount[HARD - 1] > m_difficultyCount[EASY - 1])
-    {
-        window->drawText("\033[33mScore: " + scoreText, windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2), windowY / 2 + 4);
-    }
-    else
-    {
-        window->drawText("\033[36mScore: " + scoreText, windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2), windowY / 2 + 4);
-    }
+        // Color the score based on easy and hard counts
+        if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1])
+        {
+            window->drawText("\033[35mScore: " + scoreText,
+                             windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2),
+                             windowY / 2 + 4);
+        }
+        else if (m_difficultyCount[HARD - 1] > m_difficultyCount[EASY - 1])
+        {
+            window->drawText("\033[33mScore: " + scoreText,
+                             windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2),
+                             windowY / 2 + 4);
+        }
+        else
+        {
+            window->drawText("\033[36mScore: " + scoreText,
+                             windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2),
+                             windowY / 2 + 4);
+        }
     }
 
     if (!m_needsRedraw)

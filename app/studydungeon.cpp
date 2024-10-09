@@ -237,7 +237,7 @@ int main()
                         deck,
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                        [&](const std::vector<int> &difficultyCount,int score, bool sessionComplete) {
+                        [&](const std::vector<int> &difficultyCount, int score, bool sessionComplete) {
                             resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
                                 uiManager,
                                 difficultyCount,

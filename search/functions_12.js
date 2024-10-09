@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['writeflashcarddeck_416',['writeFlashCardDeck',['../deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756',1,'deck.h']]],
-  ['writeflashcarddeckwithchecks_417',['writeFlashCardDeckWithChecks',['../deck_8h.html#ae408e4996fd4d4245bc6276659061b0a',1,'deck.h']]]
+  ['writeflashcarddeck_442',['writeFlashCardDeck',['../deck_8h.html#a1000161378f28bd3bf9fdbaa347bf756',1,'deck.h']]],
+  ['writeflashcarddeckwithchecks_443',['writeFlashCardDeckWithChecks',['../deck_8h.html#ae408e4996fd4d4245bc6276659061b0a',1,'deck.h']]]
 ];

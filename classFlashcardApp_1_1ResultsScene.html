@@ -90,9 +90,9 @@ Inheritance diagram for FlashcardApp::ResultsScene:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a787d3b3039092026f4e65d3353b7cd55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1ResultsScene.html#a787d3b3039092026f4e65d3353b7cd55">ResultsScene</a> (<a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, const std::vector&lt; int &gt; &amp;difficultyCount, std::function&lt; void()&gt; goToMainMenu, std::function&lt; void()&gt; goToDeckSelection, std::function&lt; void()&gt; goToGame, bool sessionComplete)</td></tr>
-<tr class="memdesc:a787d3b3039092026f4e65d3353b7cd55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classFlashcardApp_1_1ResultsScene.html" title="A scene for displaying the results of a flashcard study session.">ResultsScene</a> object.  <a href="classFlashcardApp_1_1ResultsScene.html#a787d3b3039092026f4e65d3353b7cd55">More...</a><br /></td></tr>
-<tr class="separator:a787d3b3039092026f4e65d3353b7cd55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967d274788934f59bbdf4115dd5b57aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1ResultsScene.html#a967d274788934f59bbdf4115dd5b57aa">ResultsScene</a> (<a class="el" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager, const std::vector&lt; int &gt; &amp;difficultyCount, int score, std::function&lt; void()&gt; goToMainMenu, std::function&lt; void()&gt; goToDeckSelection, std::function&lt; void()&gt; goToGame, bool sessionComplete)</td></tr>
+<tr class="memdesc:a967d274788934f59bbdf4115dd5b57aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classFlashcardApp_1_1ResultsScene.html" title="A scene for displaying the results of a flashcard study session.">ResultsScene</a> object.  <a href="classFlashcardApp_1_1ResultsScene.html#a967d274788934f59bbdf4115dd5b57aa">More...</a><br /></td></tr>
+<tr class="separator:a967d274788934f59bbdf4115dd5b57aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abba0176ca28af3f4e59765afeb3cdc20"><td class="memItemLeft" align="right" valign="top"><a id="abba0176ca28af3f4e59765afeb3cdc20"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1ResultsScene.html#abba0176ca28af3f4e59765afeb3cdc20">init</a> () override</td></tr>
 <tr class="memdesc:abba0176ca28af3f4e59765afeb3cdc20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise the scene. <br /></td></tr>
@@ -119,8 +119,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <div class="textblock"><p>A scene for displaying the results of a flashcard study session. </p>
 <p>This class represents a user interface scene that shows the user their performance in a completed flashcard study session, displaying the number of cards rated as Easy, Medium, and Hard. It also provides options for the user to navigate to other parts of the application. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a787d3b3039092026f4e65d3353b7cd55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a787d3b3039092026f4e65d3353b7cd55">&#9670;&nbsp;</a></span>ResultsScene()</h2>
+<a id="a967d274788934f59bbdf4115dd5b57aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a967d274788934f59bbdf4115dd5b57aa">&#9670;&nbsp;</a></span>ResultsScene()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,6 +136,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td></td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>difficultyCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>score</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

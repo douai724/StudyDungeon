@@ -211,30 +211,6 @@ std::vector<std::vector<int>> readInANSICodes(std::string filename)
     return codes;
 }
 
-std::string convertFileToANSI(std::string filename)
-{
-    fs::path path = getAppPath().append("artwork").append(filename);
-    std::cout << path << std::endl;
-    std::ifstream inputBuffer{path};
-    std::string inputLine{};
-    std::string img = "";
-
-    while (std::getline(inputBuffer, inputLine))
-    {
-        std::string curr;
-        std::vector<std::string> row;
-        std::stringstream ss;
-        ss << inputLine;
-
-        while (ss >> curr)
-        {
-            img += key::ESC + "[48;5;" + curr + "m  " + key::ESC + "[0m";
-        }
-        img += "\n";
-    }
-    return img;
-}
-
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
 {
     std::vector<std::string> lines;

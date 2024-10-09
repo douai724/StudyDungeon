@@ -10,7 +10,7 @@ set(TEST_SOURCES
     "playing_card_test.cpp"
     "settings_test.cpp"
     "util_test.cpp"
-
+    "flashcard_test.cpp"
 )
 set(TEST_INCLUDES "./")
 

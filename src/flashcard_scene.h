@@ -102,15 +102,16 @@ public:
 
     void drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window);
 
+    std::vector<FlashCardDeck> m_decks; ///< Vector of loaded flashcard decks.
+    size_t m_selectedDeckIndex = 0;     ///< Index of the currently selected deck.
+    int m_currentPage = 0;              ///< Current page number when viewing deck contents.
+
 
 private:
     ConsoleUI::UIManager &m_uiManager;                     ///< Reference to the UI manager.
-    std::vector<FlashCardDeck> m_decks;                    ///< Vector of loaded flashcard decks.
-    size_t m_selectedDeckIndex = 0;                        ///< Index of the currently selected deck.
     std::function<void()> m_goBack;                        ///< Function to call when going back.
     std::function<void(const FlashCardDeck &)> m_openDeck; ///< Function to call when opening a deck.
     bool m_needsRedraw = true;                             ///< Flag indicating if the scene needs to be redrawn.
-    int m_currentPage = 0;                                 ///< Current page number when viewing deck contents.
     int m_maxCardsPerPage = 0;                             ///< Maximum number of cards that can be displayed per page.
 
     bool m_staticDrawn = false;
@@ -187,6 +188,20 @@ public:
     {
         m_decksNeedReload = needReload;
     }
+    void updateCardDifficulty(size_t cardIndex, CardDifficulty difficulty);
+    void initializeCardOrder();
+
+    /**
+     * @brief Move to the next flashcard in the deck.
+     */
+    void nextCard();
+
+
+    std::vector<size_t> m_cardOrder; ///< Randomized order of flashcards for the session.
+    FlashCardDeck m_deck;            ///< The flashcard deck being studied.
+    size_t m_currentCardIndex = 0;   ///< Index of the current flashcard being shown.
+    bool m_showAnswer = false;       ///< Flag indicating whether the answer is currently visible.
+    bool m_lastAnswerDisplayed;
 
 
 private:
@@ -197,9 +212,8 @@ private:
      */
     void selectDifficulty(CardDifficulty difficulty);
 
-    void updateCardDifficulty(size_t cardIndex, CardDifficulty difficulty);
+
     void saveUpdatedDeck();
-    void initializeCardOrder();
     // int flashcard_limit = 10;
     bool empty = false;
     StudySettings m_settings;
@@ -208,20 +222,11 @@ private:
 
 
     /**
-     * @brief Move to the next flashcard in the deck.
-     */
-    void nextCard();
-
-    /**
      * @brief End the current study session and show results.
      */
     void endSession(bool sessionComplete);
 
     ConsoleUI::UIManager &m_uiManager;              ///< Reference to the UI manager.
-    FlashCardDeck m_deck;                           ///< The flashcard deck being studied.
-    std::vector<size_t> m_cardOrder;                ///< Randomized order of flashcards for the session.
-    size_t m_currentCardIndex = 0;                  ///< Index of the current flashcard being shown.
-    bool m_showAnswer = false;                      ///< Flag indicating whether the answer is currently visible.
     std::vector<int> m_difficultyCount = {0, 0, 0}; ///< Count of cards rated as Easy, Medium, Hard.
     std::function<void()> m_goBack;                 ///< Function to call when going back.
     std::function<void(const std::vector<int> &, int, bool)> m_showResults; ///< Function to call when showing results.
@@ -231,7 +236,6 @@ private:
     StudySettings m_studySetting;
 
     std::string m_lastQuestionDisplayed;
-    bool m_lastAnswerDisplayed;
     bool m_answerDrawn;
     int m_score;
 };

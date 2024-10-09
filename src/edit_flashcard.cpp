@@ -449,7 +449,7 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->clear();
         window->drawBorder();
         window->drawCenteredText("Edit Decks", 2);
-        
+
         m_staticDrawn = true;
     }
 
@@ -457,7 +457,6 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         return;
 
 
-    
     // Clear the deck list area
     for (int i = deckListY; i < window->getSize().Y - 2; ++i)
     {

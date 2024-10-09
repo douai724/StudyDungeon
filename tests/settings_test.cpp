@@ -68,7 +68,11 @@ TEST_CASE("Session limits")
 {
     SECTION("lower bounds")
     {
-        test_settings.setStudyDurationMin(1);
+        test_settings.setStudyDurationMin(2);
+        REQUIRE(test_settings.getStudyDurationMin() == 2);
+        test_settings.decStudyDuration();
+        REQUIRE(test_settings.getStudyDurationMin() == 1);
+        test_settings.decStudyDuration();
         REQUIRE(test_settings.getStudyDurationMin() == 1);
         // minimum should be 1
         test_settings.setStudyDurationMin(0);

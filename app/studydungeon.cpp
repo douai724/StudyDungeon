@@ -75,7 +75,7 @@ public:
         std::vector<std::string> shelf9 = convertAsciiArtToLines(bookshelf9);
         std::vector<std::string> dragonLines = convertAsciiArtToLines(dragon);
         std::vector<std::string> carLines = convertAsciiArtToLines(car);
-        
+
 
         ConsoleUI::AsciiArt artShelfFull("bookfull", shelfFull, 0, 0);
         ConsoleUI::AsciiArt artShelf1("book1", shelf1, 0, 0);
@@ -159,7 +159,7 @@ public:
             window->drawAsciiArt("car", window->getSize().X - 35, window->getSize().Y - 5);
             //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
             window->drawANSIArt("title", mainMenuArtX, mainMenuArtY - 10);
-        
+
 
             m_staticDrawn = true;
         }

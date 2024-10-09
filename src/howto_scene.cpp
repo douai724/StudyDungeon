@@ -84,7 +84,6 @@ A study session has 2 phases:
                             27);
 
 
-
     window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 
 

@@ -89,85 +89,87 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c">isTestMode</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Defines the character code recieved by getch on key press</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="util_8h.html#a5b210114c3cfba535f88360ecb1f5215">   31</a></span>&#160;<span class="comment"></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a5b210114c3cfba535f88360ecb1f5215">_key_enter</a>{13};</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="util_8h.html#a5b52e02f4c33121f6ed4bce876c1f465">   33</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a5b52e02f4c33121f6ed4bce876c1f465">_key_backspace</a>{8};</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="util_8h.html#a89f1eda03a4c53844413130a40239f7f">   35</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a89f1eda03a4c53844413130a40239f7f">_key_esc</a>{27};</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="util_8h.html#ad3f447306385c257fda0dd4982ab76fa">   37</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ad3f447306385c257fda0dd4982ab76fa">_key_space</a>{32};</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="util_8h.html#a5b45baf894ab1686f8fd40d909bb9127">   39</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a5b45baf894ab1686f8fd40d909bb9127">_arrow_prefix</a>{224};</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="util_8h.html#aa6eb11398dc1edca8d33026c106e4786">   41</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#aa6eb11398dc1edca8d33026c106e4786">_numlock</a>{0};</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="util_8h.html#afec13bde649713ed34add93441d3a02d">   43</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#afec13bde649713ed34add93441d3a02d">_key_up</a>{72};</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="util_8h.html#ad182ff2b21290c1b2aa16d26e02d9d99">   45</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ad182ff2b21290c1b2aa16d26e02d9d99">_key_down</a>{80};</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="util_8h.html#ad14f2c10895aad2c35b31c024cd1aba9">   47</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ad14f2c10895aad2c35b31c024cd1aba9">_key_left</a>{75};</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="util_8h.html#a9786c183af973fd8b5088123c8baaab2">   49</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a9786c183af973fd8b5088123c8baaab2">_key_right</a>{77};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">   53</a></span>&#160;<span class="keyword">const</span> std::string <a class="code" href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">_ESC</a>{<span class="stringliteral">&quot;\x1b&quot;</span>};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// const std::string _ESC {&quot;\033&quot;}; // ansi escape code</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a94f91e485673146337e031d187b32dcd">enableVirtualTerminal</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;std::filesystem::path getAppPath();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0">timeComplete</a>(<span class="keyword">const</span> std::chrono::time_point&lt;std::chrono::steady_clock&gt; &amp;start_time, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;duration_secs);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> timeRemainingMins(<span class="keyword">const</span> std::chrono::time_point&lt;std::chrono::steady_clock&gt; &amp;start_time, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;duration_mins);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>key</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// Defines the character code recieved by getch on key press</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="util_8h.html#a5ccd3270524830517044c62dfc8d18d7">   33</a></span>&#160;<span class="comment"></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a5ccd3270524830517044c62dfc8d18d7">key_enter</a>{13};</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="util_8h.html#aa8f39972f3ab6cb54063c19fccf3a23d">   35</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#aa8f39972f3ab6cb54063c19fccf3a23d">key_backspace</a>{8};</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="util_8h.html#ae1c21c9cdc6726824880732f83e88555">   37</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ae1c21c9cdc6726824880732f83e88555">key_esc</a>{27};</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="util_8h.html#a258bcbf1265a520c7c51a237c3981994">   39</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a258bcbf1265a520c7c51a237c3981994">key_space</a>{32};</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="util_8h.html#a86def49bcf8e0d713209ebb12d6d8215">   41</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a86def49bcf8e0d713209ebb12d6d8215">arrow_prefix</a>{224};</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="util_8h.html#ab02ce7ff6b28c740cf8260e5124e7f57">   43</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ab02ce7ff6b28c740cf8260e5124e7f57">numlock</a>{0};</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="util_8h.html#ae6fa8e71c36ef7c09f85848aaf3dd5ba">   45</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ae6fa8e71c36ef7c09f85848aaf3dd5ba">key_up</a>{72};</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="util_8h.html#ad7ec4a21073ecae317b0ed655dfa69d4">   47</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#ad7ec4a21073ecae317b0ed655dfa69d4">key_down</a>{80};</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="util_8h.html#a9e24ac614a888d5b4cd4c42bc5a130f0">   49</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a9e24ac614a888d5b4cd4c42bc5a130f0">key_left</a>{75};</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="util_8h.html#a0f78dbe153b6bb91af7755f0052f955d">   51</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="util_8h.html#a0f78dbe153b6bb91af7755f0052f955d">key_right</a>{77};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="util_8h.html#a7f7ee7baebe35951d8d9a2cbee35104f">   55</a></span>&#160;<span class="keyword">const</span> std::string <a class="code" href="util_8h.html#a7f7ee7baebe35951d8d9a2cbee35104f">ESC</a>{<span class="stringliteral">&quot;\x1b&quot;</span>};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// const std::string ESC {&quot;\033&quot;}; // ansi escape code</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <span class="comment">// namespace key</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"></span><span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a94f91e485673146337e031d187b32dcd">enableVirtualTerminal</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;std::filesystem::path getAppPath();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0">timeComplete</a>(<span class="keyword">const</span> std::chrono::time_point&lt;std::chrono::steady_clock&gt; &amp;start_time, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;duration_secs);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;std::string steadyClockToString(<span class="keyword">const</span> std::chrono::steady_clock::time_point &amp;start_time);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> timeRemainingMins(<span class="keyword">const</span> std::chrono::time_point&lt;std::chrono::steady_clock&gt; &amp;start_time, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;duration_mins);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a>();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * @brief Clears the screen.</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * @details Credit: SirEnder125 on cplusplus.com</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;std::string steadyClockToString(<span class="keyword">const</span> std::chrono::steady_clock::time_point &amp;start_time);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment"> * @brief Clears the screen.</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">void</span> clearScreen();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#ae057994e6f1604b9ca2e4eb62a0c19f4">isValidDeckFileName</a>(<span class="keyword">const</span> std::string &amp;name);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a>(<span class="keywordtype">bool</span> showflag);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;std::string <a class="code" href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">convertFileToANSI</a>(std::string filename);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;std::vector&lt;std::vector&lt;int&gt;&gt; readInANSICodes(std::string filename);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> * @details Credit: SirEnder125 on cplusplus.com</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">void</span> clearScreen();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a>();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="util_8h.html#ae057994e6f1604b9ca2e4eb62a0c19f4">isValidDeckFileName</a>(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a>(<span class="keywordtype">bool</span> showflag);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;std::string <a class="code" href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">convertFileToANSI</a>(std::string filename);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;std::vector&lt;std::string&gt; convertAsciiArtToLines(<span class="keyword">const</span> std::string &amp;asciiArt);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;std::vector&lt;std::vector&lt;int&gt;&gt; readInANSICodes(std::string filename);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;std::string getRandomPositiveQuote();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;std::vector&lt;std::string&gt; convertAsciiArtToLines(<span class="keyword">const</span> std::string &amp;asciiArt);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;std::string getRandomEncouragingQuote();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;std::string getRandomPositiveQuote();</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;std::string getRandomPhrase();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;std::string getRandomEncouragingQuote();</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="autil_8h_html_a3ac06bf7b23f28c5b7425c87d56868a3"><div class="ttname"><a href="util_8h.html#a3ac06bf7b23f28c5b7425c87d56868a3">_ESC</a></div><div class="ttdeci">const std::string _ESC</div><div class="ttdef"><b>Definition:</b> util.h:53</div></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;std::string getRandomPhrase();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="autil_8h_html_a0f78dbe153b6bb91af7755f0052f955d"><div class="ttname"><a href="util_8h.html#a0f78dbe153b6bb91af7755f0052f955d">key::key_right</a></div><div class="ttdeci">const int key_right</div><div class="ttdef"><b>Definition:</b> util.h:51</div></div>
+<div class="ttc" id="autil_8h_html_a258bcbf1265a520c7c51a237c3981994"><div class="ttname"><a href="util_8h.html#a258bcbf1265a520c7c51a237c3981994">key::key_space</a></div><div class="ttdeci">const int key_space</div><div class="ttdef"><b>Definition:</b> util.h:39</div></div>
 <div class="ttc" id="autil_8h_html_a44b530801f49c81b3f065ced260f6f0b"><div class="ttname"><a href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a></div><div class="ttdeci">bool yesNoPrompt()</div><div class="ttdoc">Prompts the user to enter [Yy] for yes and [Nn] for no.</div><div class="ttdef"><b>Definition:</b> util.cpp:130</div></div>
-<div class="ttc" id="autil_8h_html_a5b210114c3cfba535f88360ecb1f5215"><div class="ttname"><a href="util_8h.html#a5b210114c3cfba535f88360ecb1f5215">_key_enter</a></div><div class="ttdeci">const int _key_enter</div><div class="ttdef"><b>Definition:</b> util.h:31</div></div>
-<div class="ttc" id="autil_8h_html_a5b45baf894ab1686f8fd40d909bb9127"><div class="ttname"><a href="util_8h.html#a5b45baf894ab1686f8fd40d909bb9127">_arrow_prefix</a></div><div class="ttdeci">const int _arrow_prefix</div><div class="ttdef"><b>Definition:</b> util.h:39</div></div>
-<div class="ttc" id="autil_8h_html_a5b52e02f4c33121f6ed4bce876c1f465"><div class="ttname"><a href="util_8h.html#a5b52e02f4c33121f6ed4bce876c1f465">_key_backspace</a></div><div class="ttdeci">const int _key_backspace</div><div class="ttdef"><b>Definition:</b> util.h:33</div></div>
+<div class="ttc" id="autil_8h_html_a5ccd3270524830517044c62dfc8d18d7"><div class="ttname"><a href="util_8h.html#a5ccd3270524830517044c62dfc8d18d7">key::key_enter</a></div><div class="ttdeci">const int key_enter</div><div class="ttdef"><b>Definition:</b> util.h:33</div></div>
 <div class="ttc" id="autil_8h_html_a7167f5c196fc5e167bfabde1a730e81d"><div class="ttname"><a href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">An alternative to system('pause')</div><div class="ttdef"><b>Definition:</b> util.cpp:87</div></div>
 <div class="ttc" id="autil_8h_html_a7a2da45e1167a22ea2d5497d1287446b"><div class="ttname"><a href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a></div><div class="ttdeci">void ShowConsoleCursor(bool showflag)</div><div class="ttdoc">hides or shows the cursor icon in the console</div><div class="ttdef"><b>Definition:</b> util.cpp:179</div></div>
 <div class="ttc" id="autil_8h_html_a7e87a78e3cea9942aa08c399036a7c0c"><div class="ttname"><a href="util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c">isTestMode</a></div><div class="ttdeci">bool isTestMode</div><div class="ttdef"><b>Definition:</b> util.cpp:15</div></div>
-<div class="ttc" id="autil_8h_html_a89f1eda03a4c53844413130a40239f7f"><div class="ttname"><a href="util_8h.html#a89f1eda03a4c53844413130a40239f7f">_key_esc</a></div><div class="ttdeci">const int _key_esc</div><div class="ttdef"><b>Definition:</b> util.h:35</div></div>
+<div class="ttc" id="autil_8h_html_a7f7ee7baebe35951d8d9a2cbee35104f"><div class="ttname"><a href="util_8h.html#a7f7ee7baebe35951d8d9a2cbee35104f">key::ESC</a></div><div class="ttdeci">const std::string ESC</div><div class="ttdef"><b>Definition:</b> util.h:55</div></div>
+<div class="ttc" id="autil_8h_html_a86def49bcf8e0d713209ebb12d6d8215"><div class="ttname"><a href="util_8h.html#a86def49bcf8e0d713209ebb12d6d8215">key::arrow_prefix</a></div><div class="ttdeci">const int arrow_prefix</div><div class="ttdef"><b>Definition:</b> util.h:41</div></div>
 <div class="ttc" id="autil_8h_html_a94327ce1292cf4bd069f00e1c4cc81dd"><div class="ttname"><a href="util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd">convertFileToANSI</a></div><div class="ttdeci">std::string convertFileToANSI(std::string filename)</div><div class="ttdoc">Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each.</div><div class="ttdef"><b>Definition:</b> util.cpp:214</div></div>
 <div class="ttc" id="autil_8h_html_a94f91e485673146337e031d187b32dcd"><div class="ttname"><a href="util_8h.html#a94f91e485673146337e031d187b32dcd">enableVirtualTerminal</a></div><div class="ttdeci">bool enableVirtualTerminal()</div><div class="ttdoc">enables the virtual terminal processing mode</div><div class="ttdef"><b>Definition:</b> util.cpp:17</div></div>
-<div class="ttc" id="autil_8h_html_a9786c183af973fd8b5088123c8baaab2"><div class="ttname"><a href="util_8h.html#a9786c183af973fd8b5088123c8baaab2">_key_right</a></div><div class="ttdeci">const int _key_right</div><div class="ttdef"><b>Definition:</b> util.h:49</div></div>
-<div class="ttc" id="autil_8h_html_aa6eb11398dc1edca8d33026c106e4786"><div class="ttname"><a href="util_8h.html#aa6eb11398dc1edca8d33026c106e4786">_numlock</a></div><div class="ttdeci">const int _numlock</div><div class="ttdef"><b>Definition:</b> util.h:41</div></div>
+<div class="ttc" id="autil_8h_html_a9e24ac614a888d5b4cd4c42bc5a130f0"><div class="ttname"><a href="util_8h.html#a9e24ac614a888d5b4cd4c42bc5a130f0">key::key_left</a></div><div class="ttdeci">const int key_left</div><div class="ttdef"><b>Definition:</b> util.h:49</div></div>
+<div class="ttc" id="autil_8h_html_aa8f39972f3ab6cb54063c19fccf3a23d"><div class="ttname"><a href="util_8h.html#aa8f39972f3ab6cb54063c19fccf3a23d">key::key_backspace</a></div><div class="ttdeci">const int key_backspace</div><div class="ttdef"><b>Definition:</b> util.h:35</div></div>
+<div class="ttc" id="autil_8h_html_ab02ce7ff6b28c740cf8260e5124e7f57"><div class="ttname"><a href="util_8h.html#ab02ce7ff6b28c740cf8260e5124e7f57">key::numlock</a></div><div class="ttdeci">const int numlock</div><div class="ttdef"><b>Definition:</b> util.h:43</div></div>
 <div class="ttc" id="autil_8h_html_ab897fdb041fb5dd063d5b54dbccb00a0"><div class="ttname"><a href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0">timeComplete</a></div><div class="ttdeci">bool timeComplete(const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, const int &amp;duration_secs)</div><div class="ttdoc">Determines if the number of seconds has elapased since a start time.</div><div class="ttdef"><b>Definition:</b> util.cpp:57</div></div>
-<div class="ttc" id="autil_8h_html_ad14f2c10895aad2c35b31c024cd1aba9"><div class="ttname"><a href="util_8h.html#ad14f2c10895aad2c35b31c024cd1aba9">_key_left</a></div><div class="ttdeci">const int _key_left</div><div class="ttdef"><b>Definition:</b> util.h:47</div></div>
-<div class="ttc" id="autil_8h_html_ad182ff2b21290c1b2aa16d26e02d9d99"><div class="ttname"><a href="util_8h.html#ad182ff2b21290c1b2aa16d26e02d9d99">_key_down</a></div><div class="ttdeci">const int _key_down</div><div class="ttdef"><b>Definition:</b> util.h:45</div></div>
-<div class="ttc" id="autil_8h_html_ad3f447306385c257fda0dd4982ab76fa"><div class="ttname"><a href="util_8h.html#ad3f447306385c257fda0dd4982ab76fa">_key_space</a></div><div class="ttdeci">const int _key_space</div><div class="ttdef"><b>Definition:</b> util.h:37</div></div>
+<div class="ttc" id="autil_8h_html_ad7ec4a21073ecae317b0ed655dfa69d4"><div class="ttname"><a href="util_8h.html#ad7ec4a21073ecae317b0ed655dfa69d4">key::key_down</a></div><div class="ttdeci">const int key_down</div><div class="ttdef"><b>Definition:</b> util.h:47</div></div>
 <div class="ttc" id="autil_8h_html_ae057994e6f1604b9ca2e4eb62a0c19f4"><div class="ttname"><a href="util_8h.html#ae057994e6f1604b9ca2e4eb62a0c19f4">isValidDeckFileName</a></div><div class="ttdeci">bool isValidDeckFileName(const std::string &amp;name)</div><div class="ttdoc">Checks if name for deckfile meets naming requirements.</div><div class="ttdef"><b>Definition:</b> util.cpp:153</div></div>
-<div class="ttc" id="autil_8h_html_afec13bde649713ed34add93441d3a02d"><div class="ttname"><a href="util_8h.html#afec13bde649713ed34add93441d3a02d">_key_up</a></div><div class="ttdeci">const int _key_up</div><div class="ttdef"><b>Definition:</b> util.h:43</div></div>
+<div class="ttc" id="autil_8h_html_ae1c21c9cdc6726824880732f83e88555"><div class="ttname"><a href="util_8h.html#ae1c21c9cdc6726824880732f83e88555">key::key_esc</a></div><div class="ttdeci">const int key_esc</div><div class="ttdef"><b>Definition:</b> util.h:37</div></div>
+<div class="ttc" id="autil_8h_html_ae6fa8e71c36ef7c09f85848aaf3dd5ba"><div class="ttname"><a href="util_8h.html#ae6fa8e71c36ef7c09f85848aaf3dd5ba">key::key_up</a></div><div class="ttdeci">const int key_up</div><div class="ttdef"><b>Definition:</b> util.h:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

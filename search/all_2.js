@@ -1,17 +1,18 @@
 var searchData=
 [
-  ['bookshelf1_22',['bookshelf1',['../artwork_8cpp.html#a18c95c8746732d2f0bbe4bd2174b645d',1,'bookshelf1():&#160;artwork.cpp'],['../artwork_8h.html#a18c95c8746732d2f0bbe4bd2174b645d',1,'bookshelf1():&#160;artwork.cpp']]],
-  ['bookshelf2_23',['bookshelf2',['../artwork_8cpp.html#ac08072a2240c772f285f909ae59748fa',1,'bookshelf2():&#160;artwork.cpp'],['../artwork_8h.html#ac08072a2240c772f285f909ae59748fa',1,'bookshelf2():&#160;artwork.cpp']]],
-  ['bookshelf3_24',['bookshelf3',['../artwork_8cpp.html#a5e56bbc56a658a9ddd66c1752296a1f7',1,'bookshelf3():&#160;artwork.cpp'],['../artwork_8h.html#a5e56bbc56a658a9ddd66c1752296a1f7',1,'bookshelf3():&#160;artwork.cpp']]],
-  ['bookshelf4_25',['bookshelf4',['../artwork_8cpp.html#a55019e4d678b75eb97483fcfa59fc47c',1,'bookshelf4():&#160;artwork.cpp'],['../artwork_8h.html#a55019e4d678b75eb97483fcfa59fc47c',1,'bookshelf4():&#160;artwork.cpp']]],
-  ['bookshelf5_26',['bookshelf5',['../artwork_8cpp.html#a59ecaea520a9fcace909518e8043c383',1,'bookshelf5():&#160;artwork.cpp'],['../artwork_8h.html#a59ecaea520a9fcace909518e8043c383',1,'bookshelf5():&#160;artwork.cpp']]],
-  ['bookshelf6_27',['bookshelf6',['../artwork_8h.html#aa017ee499bf1cf5c26d7a080ef67f13b',1,'bookshelf6():&#160;artwork.cpp'],['../artwork_8cpp.html#aa017ee499bf1cf5c26d7a080ef67f13b',1,'bookshelf6():&#160;artwork.cpp']]],
-  ['bookshelf7_28',['bookshelf7',['../artwork_8h.html#a4bdef56eb3c0d9a1d3aa5bf0aa11fe2f',1,'bookshelf7():&#160;artwork.cpp'],['../artwork_8cpp.html#a4bdef56eb3c0d9a1d3aa5bf0aa11fe2f',1,'bookshelf7():&#160;artwork.cpp']]],
-  ['bookshelf8_29',['bookshelf8',['../artwork_8cpp.html#abeb979b63bf47e7f7495b9be481a5a71',1,'bookshelf8():&#160;artwork.cpp'],['../artwork_8h.html#abeb979b63bf47e7f7495b9be481a5a71',1,'bookshelf8():&#160;artwork.cpp']]],
-  ['bookshelf9_30',['bookshelf9',['../artwork_8cpp.html#a62835570054ac66529ee611e882e8921',1,'bookshelf9():&#160;artwork.cpp'],['../artwork_8h.html#a62835570054ac66529ee611e882e8921',1,'bookshelf9():&#160;artwork.cpp']]],
-  ['bookshelffull_31',['bookshelfFull',['../artwork_8cpp.html#a514deec76b0931ff4562159067365cf7',1,'bookshelfFull():&#160;artwork.cpp'],['../artwork_8h.html#a514deec76b0931ff4562159067365cf7',1,'bookshelfFull():&#160;artwork.cpp']]],
-  ['bot_5fdeck_5fsize_32',['bot_deck_size',['../game__scene_8h.html#a835358a1a387ace6dfc384dbc212a6dd',1,'game_scene.h']]],
-  ['bot_5fhand_5fsize_33',['bot_hand_size',['../game__scene_8h.html#a4536834f5a114579cbcbda36dd0388d3',1,'game_scene.h']]],
-  ['browsedecksscene_34',['BrowseDecksScene',['../classFlashcardApp_1_1BrowseDecksScene.html#a9c9eb4fd541eaabce490431fd9436cae',1,'FlashcardApp::BrowseDecksScene::BrowseDecksScene()'],['../classFlashcardApp_1_1BrowseDecksScene.html',1,'FlashcardApp::BrowseDecksScene']]],
-  ['button_35',['Button',['../classConsoleUI_1_1Button.html#aaa7102cef5f6fe4a8cace8df352acccf',1,'ConsoleUI::Button::Button()'],['../classConsoleUI_1_1Button.html',1,'ConsoleUI::Button']]]
+  ['card_5ftypes_2eh_26',['card_types.h',['../card__types_8h.html',1,'']]],
+  ['carddifficulty_27',['CardDifficulty',['../deck_8h.html#abb990f45a98cd7c14e01df00bbae7500',1,'deck.h']]],
+  ['carddifficultytostr_28',['cardDifficultyToStr',['../deck_8h.html#a86bf6016f9556419d98f7c566f5f30ae',1,'cardDifficultyToStr(const CardDifficulty &amp;difficulty):&#160;deck.cpp'],['../deck_8cpp.html#a86bf6016f9556419d98f7c566f5f30ae',1,'cardDifficultyToStr(const CardDifficulty &amp;difficulty):&#160;deck.cpp']]],
+  ['cardpossibilities_29',['cardPossibilities',['../card__types_8h.html#ae4ff59a5901c1316b84f4d7144fd6567',1,'card_types.h']]],
+  ['cards_30',['cards',['../classFlashCardDeck.html#a965e252310c8ea651f145f1ed781b4e5',1,'FlashCardDeck']]],
+  ['checkwindowresize_31',['checkWindowResize',['../classConsoleUI_1_1ConsoleWindow.html#adb4ff813870a60375ab05a75fddc15b8',1,'ConsoleUI::ConsoleWindow::checkWindowResize()'],['../classConsoleUI_1_1UIManager.html#ae643d005f38b648656dedb5b87d07e2e',1,'ConsoleUI::UIManager::checkWindowResize()']]],
+  ['clear_32',['clear',['../classConsoleUI_1_1ConsoleWindow.html#abf24d0d1cad6c5fa386d70840d3ebcb0',1,'ConsoleUI::ConsoleWindow::clear()'],['../classConsoleUI_1_1Menu.html#acf81c6529ae2b90b02d2b472f26f5b1f',1,'ConsoleUI::Menu::clear()']]],
+  ['clearallmenus_33',['clearAllMenus',['../classConsoleUI_1_1UIManager.html#aafbcbe5137a85bb4360638e85e1cd6c2',1,'ConsoleUI::UIManager']]],
+  ['clearmenu_34',['clearMenu',['../classConsoleUI_1_1UIManager.html#aec7b1558face6be47afe0c611c4d57c9',1,'ConsoleUI::UIManager']]],
+  ['consolewindow_35',['ConsoleWindow',['../classConsoleUI_1_1ConsoleWindow.html',1,'ConsoleUI::ConsoleWindow'],['../classConsoleUI_1_1ConsoleWindow.html#a8605dff7f02357d1d307b21923e47ec4',1,'ConsoleUI::ConsoleWindow::ConsoleWindow()']]],
+  ['convertfiletoansi_36',['convertFileToANSI',['../util_8h.html#a94327ce1292cf4bd069f00e1c4cc81dd',1,'convertFileToANSI(std::string filename):&#160;util.cpp'],['../util_8cpp.html#a94327ce1292cf4bd069f00e1c4cc81dd',1,'convertFileToANSI(std::string filename):&#160;util.cpp']]],
+  ['createasciiart_37',['createAsciiArt',['../classConsoleUI_1_1UIManager.html#a853ab80a6262de5c6d8b3b72bb38f9cc',1,'ConsoleUI::UIManager']]],
+  ['createdeckfilename_38',['createDeckFilename',['../deck_8cpp.html#a8d1bd86906f6289f92426ffa5cbfe9fd',1,'createDeckFilename(std::filesystem::path deck_dir):&#160;deck.cpp'],['../deck_8h.html#a8d1bd86906f6289f92426ffa5cbfe9fd',1,'createDeckFilename(std::filesystem::path deck_dir):&#160;deck.cpp']]],
+  ['createexampledecks_39',['createExampleDecks',['../deck_8h.html#ac2ae4147f7100c31d1dc283f57c0870d',1,'createExampleDecks():&#160;deck.cpp'],['../deck_8cpp.html#ac2ae4147f7100c31d1dc283f57c0870d',1,'createExampleDecks():&#160;deck.cpp']]],
+  ['createmenu_40',['createMenu',['../classConsoleUI_1_1UIManager.html#a798ddd9c6f71fa755042d861018e5cd0',1,'ConsoleUI::UIManager']]]
 ];

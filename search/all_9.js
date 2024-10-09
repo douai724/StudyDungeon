@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['incfclimit_140',['incFCLimit',['../classStudySettings.html#acba6bf322fbc1b68c1954832baba24fd',1,'StudySettings']]],
-  ['incrementcards_141',['incrementCards',['../classSettingsScene.html#a073b19bc1fd76a61c42dd5afef51c17f',1,'SettingsScene']]],
-  ['incrementstudymins_142',['incrementStudyMins',['../classSettingsScene.html#af1fcae4c154e8059b5ade3120bfeb756',1,'SettingsScene']]],
-  ['incstudyduration_143',['incStudyDuration',['../classStudySettings.html#af64f842f50f25a4bedff91a317fcb414',1,'StudySettings']]],
-  ['init_144',['init',['../classGameScene.html#a8036306ddd9d1ef92bed9c0f56cd26c4',1,'GameScene::init()'],['../classSettingsScene.html#ad468dc60f2bc864e53d1800190f9512b',1,'SettingsScene::init()'],['../classConsoleUI_1_1UIManager.html#ae99e31f90255fd07f0cbf2f87ef17a04',1,'ConsoleUI::UIManager::init()'],['../classConsoleUI_1_1Scene.html#a07c7f83e8086c563ed3a302cb3cc46bf',1,'ConsoleUI::Scene::init()'],['../classHowToScene.html#a35b95857243ff0d6ef4702a630ca9e9d',1,'HowToScene::init()'],['../classFlashcardApp_1_1ResultsScene.html#abba0176ca28af3f4e59765afeb3cdc20',1,'FlashcardApp::ResultsScene::init()'],['../classFlashcardApp_1_1FlashcardScene.html#af24635891cdd61a48f296c58ff8050f1',1,'FlashcardApp::FlashcardScene::init()'],['../classFlashcardApp_1_1BrowseDecksScene.html#a4e8eaa1466bff96d1eaf23e5dc086105',1,'FlashcardApp::BrowseDecksScene::init()'],['../classFlashcardEdit_1_1EditFlashcardScene.html#ab937ecd40ac4826ba9b833c86f47a5e4',1,'FlashcardEdit::EditFlashcardScene::init()'],['../classFlashcardEdit_1_1EditDeckScene.html#ad861b611dfc9810e696b5c9b3db826a4',1,'FlashcardEdit::EditDeckScene::init()'],['../classMainMenuScene.html#a4f4394ad74f8c3bced02cc7b37bc6775',1,'MainMenuScene::init()']]],
-  ['isbackbuttonpressed_145',['isBackButtonPressed',['../classConsoleUI_1_1Menu.html#a6397689bdcabe64990f3426a86a83e1e',1,'ConsoleUI::Menu']]],
-  ['isgameover_146',['isGameOver',['../classGame.html#a102ce6e5a222e403aa7a0465ff6281dc',1,'Game']]],
-  ['istestmode_147',['isTestMode',['../util_8cpp.html#a7e87a78e3cea9942aa08c399036a7c0c',1,'isTestMode():&#160;util.cpp'],['../util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c',1,'isTestMode():&#160;util.cpp']]],
-  ['isvaliddeckfilename_148',['isValidDeckFileName',['../util_8cpp.html#ae057994e6f1604b9ca2e4eb62a0c19f4',1,'isValidDeckFileName(const std::string &amp;name):&#160;util.cpp'],['../util_8h.html#ae057994e6f1604b9ca2e4eb62a0c19f4',1,'isValidDeckFileName(const std::string &amp;name):&#160;util.cpp']]]
+  ['key_5fbackspace_140',['key_backspace',['../util_8h.html#aa8f39972f3ab6cb54063c19fccf3a23d',1,'key']]],
+  ['key_5fdown_141',['key_down',['../util_8h.html#ad7ec4a21073ecae317b0ed655dfa69d4',1,'key']]],
+  ['key_5fenter_142',['key_enter',['../util_8h.html#a5ccd3270524830517044c62dfc8d18d7',1,'key']]],
+  ['key_5fesc_143',['key_esc',['../util_8h.html#ae1c21c9cdc6726824880732f83e88555',1,'key']]],
+  ['key_5fleft_144',['key_left',['../util_8h.html#a9e24ac614a888d5b4cd4c42bc5a130f0',1,'key']]],
+  ['key_5fright_145',['key_right',['../util_8h.html#a0f78dbe153b6bb91af7755f0052f955d',1,'key']]],
+  ['key_5fspace_146',['key_space',['../util_8h.html#a258bcbf1265a520c7c51a237c3981994',1,'key']]],
+  ['key_5fup_147',['key_up',['../util_8h.html#ae6fa8e71c36ef7c09f85848aaf3dd5ba',1,'key']]]
 ];

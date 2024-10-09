@@ -68,7 +68,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">FlashcardApp::FlashcardScene Class Reference</div>  </div>
 </div><!--header-->
@@ -111,11 +112,43 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a6896427e0d30d07b41e49902cdb0e4"><td class="memItemLeft" align="right" valign="top"><a id="a2a6896427e0d30d07b41e49902cdb0e4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setDecksNeedReload</b> (bool needReload)</td></tr>
 <tr class="separator:a2a6896427e0d30d07b41e49902cdb0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a834cb38abd1d7277818749cd8eb66df2"><td class="memItemLeft" align="right" valign="top"><a id="a834cb38abd1d7277818749cd8eb66df2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCardDifficulty</b> (size_t cardIndex, <a class="el" href="deck_8h.html#abb990f45a98cd7c14e01df00bbae7500">CardDifficulty</a> difficulty)</td></tr>
+<tr class="separator:a834cb38abd1d7277818749cd8eb66df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c5755cbdebc2b5a2143d9cffe4e893"><td class="memItemLeft" align="right" valign="top"><a id="a96c5755cbdebc2b5a2143d9cffe4e893"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeCardOrder</b> ()</td></tr>
+<tr class="separator:a96c5755cbdebc2b5a2143d9cffe4e893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9e7edb420ab52ea3d297c66e9abaa28"><td class="memItemLeft" align="right" valign="top"><a id="aa9e7edb420ab52ea3d297c66e9abaa28"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1FlashcardScene.html#aa9e7edb420ab52ea3d297c66e9abaa28">nextCard</a> ()</td></tr>
+<tr class="memdesc:aa9e7edb420ab52ea3d297c66e9abaa28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move to the next flashcard in the deck. <br /></td></tr>
+<tr class="separator:aa9e7edb420ab52ea3d297c66e9abaa28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classConsoleUI_1_1Scene"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classConsoleUI_1_1Scene')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></td></tr>
 <tr class="memitem:a1bad644bbc948894ea57244347196c89 inherit pub_methods_classConsoleUI_1_1Scene"><td class="memItemLeft" align="right" valign="top"><a id="a1bad644bbc948894ea57244347196c89"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConsoleUI_1_1Scene.html#a1bad644bbc948894ea57244347196c89">~Scene</a> ()=default</td></tr>
 <tr class="memdesc:a1bad644bbc948894ea57244347196c89 inherit pub_methods_classConsoleUI_1_1Scene"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classConsoleUI_1_1Scene.html" title="Defines a UI scene.">Scene</a> object. <br /></td></tr>
 <tr class="separator:a1bad644bbc948894ea57244347196c89 inherit pub_methods_classConsoleUI_1_1Scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:acd1d3f29ac090795d48dc848ab27317a"><td class="memItemLeft" align="right" valign="top"><a id="acd1d3f29ac090795d48dc848ab27317a"></a>
+std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1FlashcardScene.html#acd1d3f29ac090795d48dc848ab27317a">m_cardOrder</a></td></tr>
+<tr class="memdesc:acd1d3f29ac090795d48dc848ab27317a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Randomized order of flashcards for the session. <br /></td></tr>
+<tr class="separator:acd1d3f29ac090795d48dc848ab27317a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af105e391ac6abf6702cc2bd2c429acd4"><td class="memItemLeft" align="right" valign="top"><a id="af105e391ac6abf6702cc2bd2c429acd4"></a>
+<a class="el" href="classFlashCardDeck.html">FlashCardDeck</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1FlashcardScene.html#af105e391ac6abf6702cc2bd2c429acd4">m_deck</a></td></tr>
+<tr class="memdesc:af105e391ac6abf6702cc2bd2c429acd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flashcard deck being studied. <br /></td></tr>
+<tr class="separator:af105e391ac6abf6702cc2bd2c429acd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bcb5e94a65db43bfe230246c8b9e30f"><td class="memItemLeft" align="right" valign="top"><a id="a5bcb5e94a65db43bfe230246c8b9e30f"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1FlashcardScene.html#a5bcb5e94a65db43bfe230246c8b9e30f">m_currentCardIndex</a> = 0</td></tr>
+<tr class="memdesc:a5bcb5e94a65db43bfe230246c8b9e30f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of the current flashcard being shown. <br /></td></tr>
+<tr class="separator:a5bcb5e94a65db43bfe230246c8b9e30f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a293be716170c0eea505d1e539134a0f3"><td class="memItemLeft" align="right" valign="top"><a id="a293be716170c0eea505d1e539134a0f3"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFlashcardApp_1_1FlashcardScene.html#a293be716170c0eea505d1e539134a0f3">m_showAnswer</a> = false</td></tr>
+<tr class="memdesc:a293be716170c0eea505d1e539134a0f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating whether the answer is currently visible. <br /></td></tr>
+<tr class="separator:a293be716170c0eea505d1e539134a0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1733ac4c07cc5b7856454ccce2025e8"><td class="memItemLeft" align="right" valign="top"><a id="ae1733ac4c07cc5b7856454ccce2025e8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_lastAnswerDisplayed</b></td></tr>
+<tr class="separator:ae1733ac4c07cc5b7856454ccce2025e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A scene for studying flashcards from a selected deck. </p>

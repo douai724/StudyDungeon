@@ -290,27 +290,16 @@ ANSIArt *ConsoleWindow::getANSIArtByName(const std::string &name)
 
 void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
 {
-    ANSIArt *art = getANSIArtByName(name); // IMPLEMENT THIS
+    ANSIArt *art = getANSIArtByName(name);
     if (art)
     {
         art->setPosition(x, y);
 
         int artX = art->getX();
         int artY = art->getY();
-        size_t width = art->getWidth();
-        size_t height = art->getHeight();
+        int width = (int)art->getWidth();
+        int height = (int)art->getHeight();
         std::vector<std::vector<int>> codes = art->getCodes();
-
-        // if (artX + width > m_width || artY + height > m_height)
-        // {
-        //     // Art is too big for the console, display text alternative
-        //     std::string textAlt = art->getName();
-        //     int textX = artX + (width - textAlt.length()) / 2;
-        //     int textY = artY + height / 2;
-        //     drawText(textAlt, textX, textY);
-        // }
-        // else
-        // {
 
         for (int i = y; i < width + y; i++)
         {
@@ -319,7 +308,6 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
                 drawANSICode(codes[i - y][j - x], j * 2 - 1 - x, i);
             }
         }
-        //}
     }
 }
 

@@ -18,6 +18,8 @@ PlayingCard::PlayingCard(enum Type cardType, int value)
 
 PlayingCard::PlayingCard()
 {
+    PlayingCard::cardType = (enum Type)0;
+    PlayingCard::value = 0;
 }
 
 bool PlayingCard::operator==(PlayingCard &other)

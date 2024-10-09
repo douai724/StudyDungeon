@@ -83,3 +83,18 @@ TEST_CASE("PlayingCard to string")
         REQUIRE(testCard.toString() == "Unknown ability");
     }
 }
+
+TEST_CASE("Playing card default constructor")
+{
+    PlayingCard testCard{};
+
+    SECTION("Correct card type")
+    {
+        REQUIRE(testCard.getType() == (enum Type)0);
+    }
+
+    SECTION("Correct card value")
+    {
+        REQUIRE(testCard.getValue() == 0);
+    }
+}

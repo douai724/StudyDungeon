@@ -228,7 +228,7 @@ std::string convertFileToANSI(std::string filename)
 
         while (ss >> curr)
         {
-            img += _ESC + "[48;5;" + curr + "m  " + _ESC + "[0m";
+            img += key::ESC + "[48;5;" + curr + "m  " + key::ESC + "[0m";
         }
         img += "\n";
     }

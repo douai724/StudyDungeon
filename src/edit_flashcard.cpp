@@ -113,26 +113,26 @@ void EditFlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == _numlock) // Arrow key prefix
+        if (key == key::arrow_prefix || key == key::numlock) // Arrow key prefix
         {
             key = _getch(); // Get the actual arrow key code
             switch (key)
             {
-            case _key_up: // Up arrow
+            case key::key_up: // Up arrow
                 if (m_selectedCardIndex > 0)
                 {
                     m_selectedCardIndex--;
                     m_needsRedraw = true;
                 }
                 break;
-            case _key_down: // Down arrow
+            case key::key_down: // Down arrow
                 if (m_selectedCardIndex < m_deck.cards.size() - 1)
                 {
                     m_selectedCardIndex++;
                     m_needsRedraw = true;
                 }
                 break;
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 if (m_currentPage > 0)
                 {
                     m_currentPage--;
@@ -141,7 +141,7 @@ void EditFlashcardScene::handleInput()
                     m_needsRedraw = true;
                 }
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
             {
                 size_t totalPages = (m_deck.cards.size() + m_maxCardsPerPage - 1) / m_maxCardsPerPage;
                 if (m_currentPage < totalPages - 1)
@@ -161,7 +161,7 @@ void EditFlashcardScene::handleInput()
         {
             switch (key)
             {
-            case _key_enter: // Enter
+            case key::key_enter: // Enter
                 if (!m_deck.cards.empty())
                     editSelectedCard();
                 break;
@@ -173,7 +173,7 @@ void EditFlashcardScene::handleInput()
             case 'd':
                 deleteSelectedCard();
                 break;
-            case _key_esc: // Esc
+            case key::key_esc: // Esc
                 m_goBack();
                 break;
             default:
@@ -449,7 +449,7 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->clear();
         window->drawBorder();
         window->drawCenteredText("Edit Decks", 2);
-        
+
         m_staticDrawn = true;
     }
 
@@ -457,7 +457,6 @@ void EditDeckScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         return;
 
 
-    
     // Clear the deck list area
     for (int i = deckListY; i < window->getSize().Y - 2; ++i)
     {
@@ -522,12 +521,12 @@ void EditDeckScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == 0)
+        if (key == key::arrow_prefix || key == 0)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)
             {
-            case _key_up: // Up arrow
+            case key::key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                 {
                     m_selectedDeckIndex--;
@@ -536,7 +535,7 @@ void EditDeckScene::handleInput()
                     m_needsRedraw = true;
                 }
                 break;
-            case _key_down: // Down arrow
+            case key::key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                 {
                     m_selectedDeckIndex++;
@@ -545,7 +544,7 @@ void EditDeckScene::handleInput()
                     m_needsRedraw = true;
                 }
                 break;
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 if (m_currentPage > 0 && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
                 {
                     m_currentPage--;
@@ -554,7 +553,7 @@ void EditDeckScene::handleInput()
                     m_lastPageChangeTime = std::chrono::steady_clock::now();
                 }
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
                 if (!m_decks.empty() && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
@@ -577,7 +576,7 @@ void EditDeckScene::handleInput()
         {
             switch (key)
             {
-            case _key_enter: // Enter
+            case key::key_enter: // Enter
                 if (!m_decks.empty())
                 {
                     m_needsRedraw = true;
@@ -599,7 +598,7 @@ void EditDeckScene::handleInput()
                 renameDeck();
                 m_needsRedraw = true;
                 break;
-            case _key_esc:
+            case key::key_esc:
                 m_needsRedraw = true;
                 m_goBack();
 

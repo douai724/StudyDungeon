@@ -140,18 +140,18 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 void GameScene::handleInput()
 {
     int key = _getch();
-    if (key == _arrow_prefix || key == _numlock) // Arrow key
+    if (key == key::arrow_prefix || key == key::numlock) // Arrow key
     {
         key = _getch();
         switch (key)
         {
-        case _key_left:
+        case key::key_left:
             if (m_selectedIndex > 0)
             {
                 m_selectedIndex--;
             }
             break;
-        case _key_right: // Down arrow
+        case key::key_right: // Down arrow
             if (m_selectedIndex < GameScene::game.p1.getHand().size() - 1)
             {
                 m_selectedIndex++;
@@ -159,7 +159,7 @@ void GameScene::handleInput()
             break;
         }
     }
-    else if (key == _key_enter) // Enter key
+    else if (key == key::key_enter) // Enter key
     {
         // Player turn
         if (GameScene::game.p1.getHand().size() == 0)
@@ -228,7 +228,7 @@ void GameScene::handleInput()
 
         m_selectedIndex = 0;
     }
-    else if (key == _key_esc)
+    else if (key == key::key_esc)
     { // Escape key
         m_goBack();
     }

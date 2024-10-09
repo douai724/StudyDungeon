@@ -84,7 +84,6 @@ A study session has 2 phases:
                             27);
 
 
-
     window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 
 
@@ -100,7 +99,7 @@ void HowToScene::handleInput()
     {
         int key = _getch();
 
-        if (key == _key_esc)
+        if (key == key::key_esc)
         {
             m_goBack();
         }

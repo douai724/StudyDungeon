@@ -88,7 +88,6 @@ void BrowseDecksScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->drawText("Use Up/Down to navigate, Enter to select, Escape to go back", 2, window->getSize().Y - 2);
         loadDecks();
         m_staticDrawn = true;
-        
     }
 
     if (m_decksNeedReload)
@@ -165,12 +164,12 @@ void BrowseDecksScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == _numlock)
+        if (key == key::arrow_prefix || key == key::numlock)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             switch (key)
             {
-            case _key_up: // Up arrow
+            case key::key_up: // Up arrow
                 if (m_selectedDeckIndex > 0)
                 {
                     m_selectedDeckIndex--;
@@ -180,7 +179,7 @@ void BrowseDecksScene::handleInput()
 
                 m_currentPage = 0;
                 break;
-            case _key_down: // Down arrow
+            case key::key_down: // Down arrow
                 if (m_selectedDeckIndex < m_decks.size() - 1)
                 {
                     m_selectedDeckIndex++;
@@ -190,7 +189,7 @@ void BrowseDecksScene::handleInput()
 
                 m_currentPage = 0;
                 break;
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 if (m_currentPage > 0 && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
                 {
                     m_currentPage--;
@@ -199,7 +198,7 @@ void BrowseDecksScene::handleInput()
                     m_paging = false;
                 }
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
                 if (!m_decks.empty() && std::chrono::steady_clock::now() - m_lastPageChangeTime >= m_pageChangeDelay)
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
@@ -222,7 +221,7 @@ void BrowseDecksScene::handleInput()
         {
             switch (key)
             {
-            case _key_enter: // Enter
+            case key::key_enter: // Enter
                 if (!m_decks.empty())
                 {
                     const auto &selectedDeck = m_decks[m_selectedDeckIndex];
@@ -246,7 +245,7 @@ void BrowseDecksScene::handleInput()
                     }
                 }
                 break;
-            case _key_esc:
+            case key::key_esc:
                 for (auto &scene : m_uiManager.getScenes())
                 {
                     scene->setStaticDrawn(false);
@@ -470,7 +469,7 @@ void FlashcardScene::handleInput()
         int key = _getch();
         bool inputHandled = true;
 
-        if (key == _arrow_prefix || key == _numlock)
+        if (key == key::arrow_prefix || key == key::numlock)
         {                   // Arrow key prefix
             key = _getch(); // Get the actual arrow key code
             if (m_showAnswer)
@@ -478,11 +477,11 @@ void FlashcardScene::handleInput()
                 auto &menu = m_uiManager.getMenu("difficulty");
                 switch (key)
                 {
-                case _key_left: // Left arrow
+                case key::key_left: // Left arrow
                     m_lastAnswerDisplayed = true;
                     menu.selectPreviousButton();
                     break;
-                case _key_right: // Right arrow
+                case key::key_right: // Right arrow
                     m_lastAnswerDisplayed = true;
                     menu.selectNextButton();
 
@@ -500,7 +499,7 @@ void FlashcardScene::handleInput()
         {
             switch (key)
             {
-            case _key_space: // Spacebar
+            case key::key_space: // Spacebar
 
                 if (m_showAnswer)
                 {
@@ -514,7 +513,7 @@ void FlashcardScene::handleInput()
                     m_needsRedraw = true;
                 }
                 break;
-            case _key_esc: // Escape key
+            case key::key_esc: // Escape key
                 for (auto &scene : m_uiManager.getScenes())
                 {
                     scene->setStaticDrawn(false);

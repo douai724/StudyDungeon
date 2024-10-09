@@ -267,10 +267,10 @@ FlashcardScene::FlashcardScene(ConsoleUI::UIManager &uiManager,
                                const FlashCardDeck &deck,
                                std::function<void()> goBack,
                                std::function<void()> goToDeckSelection,
-                               std::function<void(const std::vector<int> &, bool)> showResults,
+                               std::function<void(const std::vector<int> &, int, bool)> showResults,
                                StudySettings &studySettings)
     : m_uiManager(uiManager), m_deck(deck), m_goBack(goBack), m_showResults(showResults), m_needsRedraw(true),
-      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings), m_lastAnswerDisplayed(false)
+      m_currentCardIndex(0), m_showAnswer(false), m_settings(studySettings), m_lastAnswerDisplayed(false), m_score(0)
 {
 
     m_uiManager.clearMenu("difficulty");
@@ -532,19 +532,32 @@ void FlashcardScene::handleInput()
     }
 }
 
-void FlashcardScene::selectDifficulty(CardDifficulty difficulty)
-{
-    // Difficulties start from 0 = UNKNOWN, but this array only counts EASY, MEDIUM, HARD
-    // -1 from the difficulty to make it match the 0-based index of the array.
+int easyStreak = 0;
+void FlashcardScene::selectDifficulty(CardDifficulty difficulty) {
     m_difficultyCount[difficulty - 1]++;
-    updateCardDifficulty(m_cardOrder[m_currentCardIndex], difficulty);
+    switch (difficulty) {
+        case EASY:   
+            m_score += 20;
+            easyStreak++; 
+            if (easyStreak >= 3) {
+                m_score += 10; // Bonus for 3+ Easy cards in a row
+            }
+            break;
+        case MEDIUM: 
+            m_score += 10;
+            easyStreak = 0; // Reset easy streak
+            break;  
+        case HARD:
+            m_score += 5;
+            easyStreak = 0;
+            break;
+    }
 
     for (auto &scene : m_uiManager.getScenes())
     {
         scene->setStaticDrawn(false);
     }
-
-
+    updateCardDifficulty(m_cardOrder[m_currentCardIndex], difficulty);
     nextCard();
 }
 
@@ -570,7 +583,7 @@ void FlashcardScene::nextCard()
 void FlashcardScene::endSession(bool sessionCompleted)
 {
     saveUpdatedDeck();
-    m_showResults(m_difficultyCount, sessionCompleted);
+    m_showResults(m_difficultyCount, m_score, sessionCompleted);
 }
 
 void FlashcardScene::saveUpdatedDeck()
@@ -582,13 +595,14 @@ void FlashcardScene::saveUpdatedDeck()
 
 ResultsScene::ResultsScene(ConsoleUI::UIManager &uiManager,
                            const std::vector<int> &difficultyCount,
+                           int score,
                            std::function<void()> goToMainMenu,
                            std::function<void()> goToDeckSelection,
                            std::function<void()> goToGame,
                            bool sessionComplete)
     : m_uiManager(uiManager), m_difficultyCount(difficultyCount), m_goToMainMenu(goToMainMenu),
       m_goToDeckSelection(goToDeckSelection), m_goToGame(goToGame), m_needsRedraw(true),
-      m_sessionComplete(sessionComplete)
+      m_sessionComplete(sessionComplete), m_score(score)
 {
     m_uiManager.clearMenu("results");
     auto &menu = m_uiManager.createMenu("results", false);
@@ -630,28 +644,58 @@ void ResultsScene::setStaticDrawn(bool staticDrawn)
     m_staticDrawn = staticDrawn;
 }
 
+
 void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
+    int windowX = static_cast<int>(window->getSize().X);
+    int windowY = static_cast<int>(window->getSize().Y);
+    
     if (!m_staticDrawn)
     {
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
+
+            // Clear the text areas
+    window->drawText(std::string(phrase.length(), ' '), (windowX - static_cast<int>(phrase.length())) / 2, windowY / 2 - 4);
+    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 - 2);
+    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2);
+    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 2);
+    window->drawText(std::string(20, ' '), (windowX - 20) / 2, windowY / 2 + 4);
+
+    window->drawAsciiArt("dragon", windowX / 2 - (window->getAsciiArtByName("dragon")->getWidth() / 2 - 11), 
+                                   windowY / 2 - (window->getAsciiArtByName("dragon")->getHeight() / 2));
+    window->drawCenteredText(phrase, windowY / 2 - 4);
+
+    std::string easyText = "\033[32mEasy: " + std::to_string(m_difficultyCount[EASY - 1]) + "\033[0m";
+    std::string mediumText = "\033[33mMedium: " + std::to_string(m_difficultyCount[MEDIUM - 1]) + "\033[0m";
+    std::string hardText = "\033[31mHard: " + std::to_string(m_difficultyCount[HARD - 1]) + "\033[0m";
+
+    window->drawText(easyText, windowX / 2 - (static_cast<int>(easyText.length() - 7) / 2), windowY / 2 - 2);
+    window->drawText(mediumText, windowX / 2 - (static_cast<int>(mediumText.length() - 7) / 2), windowY / 2);
+    window->drawText(hardText, windowX / 2 - (static_cast<int>(hardText.length() - 7) / 2), windowY / 2 + 2);
+
+    std::string scoreText = std::to_string(m_score) + "\033[0m";
+
+    // Color the score based on easy and hard counts
+    if (m_difficultyCount[EASY - 1] > m_difficultyCount[HARD - 1])
+    {
+        window->drawText("\033[35mScore: " + scoreText, windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2), windowY / 2 + 4);
+
+    }
+    else if (m_difficultyCount[HARD - 1] > m_difficultyCount[EASY - 1])
+    {
+        window->drawText("\033[33mScore: " + scoreText, windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2), windowY / 2 + 4);
+    }
+    else
+    {
+        window->drawText("\033[36mScore: " + scoreText, windowX / 2 - (static_cast<int>(scoreText.length() + 5) / 2), windowY / 2 + 4);
+    }
     }
 
     if (!m_needsRedraw)
         return;
 
-    // Clear the results area
-    for (int i = window->getSize().Y / 2 - 4; i < window->getSize().Y * 3 / 4; ++i)
-    {
-        window->drawText(std::string(window->getSize().X - 2, ' '), 1, i);
-    }
-
-    window->drawCenteredText(phrase, window->getSize().Y / 2 - 4);
-    window->drawCenteredText("Easy: " + std::to_string(m_difficultyCount[EASY - 1]), window->getSize().Y / 2 - 2);
-    window->drawCenteredText("Medium: " + std::to_string(m_difficultyCount[MEDIUM - 1]), window->getSize().Y / 2);
-    window->drawCenteredText("Hard: " + std::to_string(m_difficultyCount[HARD - 1]), window->getSize().Y / 2 + 2);
 
     if (m_sessionComplete)
     {
@@ -662,8 +706,8 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         {
             maxWidth = max(menu.getButtonWidth(i), maxWidth);
         }
-        int menuX = (window->getSize().X - static_cast<int>(maxWidth)) / 2;
-        menu.draw(menuX, window->getSize().Y * 3 / 4);
+        int menuX = (windowX - static_cast<int>(maxWidth)) / 2;
+        menu.draw(menuX, windowY * 3 / 4);
     }
     else
     {
@@ -674,8 +718,8 @@ void ResultsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         {
             maxWidth = max(menu.getButtonWidth(i), maxWidth);
         }
-        int menuX = (window->getSize().X - static_cast<int>(maxWidth)) / 2;
-        menu.draw(menuX, window->getSize().Y * 3 / 4);
+        int menuX = (windowX - static_cast<int>(maxWidth)) / 2;
+        menu.draw(menuX, windowY * 3 / 4);
     }
 
     m_needsRedraw = false;

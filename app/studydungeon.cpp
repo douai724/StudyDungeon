@@ -36,54 +36,6 @@ public:
     {
         createMainMenu(openSettingsScene, openHowToScene, openBrowseDecks, openEditDecks);
 
-        // Create ASCII art and add it to the console window
-        std::string asciiArtString = R"(
-(`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
-( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
-(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
-/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
-\_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
-.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
-\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
-`-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
-)";
-        std::string asciiArtString2 = R"(
-                                     /|
-                                    |\|
-                                    |||
-                                    |||
-                                    |||
-                                    |||
-                                    |||
-                                    |||
-                                 ~-[{o}]-~
-                                    |/|
-             ___                    |/|
-            ///~`     |\\_          `0'         =\\\\         . .
-           ,  |='  ,))\_| ~-_                    _)  \      _/_/|
-          / ,' ,;((((((    ~ \                  `~~~\-~-_ /~ (_/\
-        /' -~/~)))))))'\_   _/'                      \_  /'  D   |
-       (       (((((( ~-/ ~-/                          ~-;  /    \--_
-        ~~--|   ))''    ')  `                            `~~\_    \  )
-            :        (_  ~\           ,                    /~~-      /
-             \        \_   )--__  /(_/)                   |    )    )|
-     _       |_     \__/~-__    ~~   ,'      /,_;,   __--(   _/      |
-    ~\`\    /' ~~~----|     ~~~~~~~~'        \-  ((~~    __-~        |
-    ()  `\`\_(_     _-~~-\                      ``~~ ~~~~~~   \_     /
-          ----'   /      \                                   )      )
-           ;`~--'        :                                _-    ,;;(
-           |    `\       |                             _-~    ,;;;;)
-           |    /'`\     ;                          _-~          _/
-          /~   /    |    )                         /;;;''  ,;;:-~
-         |    /     / | /                         |;;'   ,''
-         /   /     |  \\|                         |   ,;(
-       _/  /'       \  \_)                   .---__\_    \,--.______
-      ( )|'         (~-_|                   (;;'  ;;;~~~/' `;;|  `;;\
-       ) `\_         |-_;;--__               ~~~----__/'    /'______/
-       `----'       (   `~--_ ~~~;;------------~~~~~ ;;;'_/'
-                    `~~~~~~~~'~~~-----....___;;;____---~~
-    )";
-
         ConsoleUI::ANSIArt title = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "title", 0, 0);
         m_uiManager.getWindow()->addANSIArt(title);
 
@@ -121,6 +73,7 @@ public:
         std::vector<std::string> shelf7 = convertAsciiArtToLines(bookshelf7);
         std::vector<std::string> shelf8 = convertAsciiArtToLines(bookshelf8);
         std::vector<std::string> shelf9 = convertAsciiArtToLines(bookshelf9);
+        std::vector<std::string> dragonLines = convertAsciiArtToLines(dragon);
 
         ConsoleUI::AsciiArt artShelfFull("bookfull", shelfFull, 0, 0);
         ConsoleUI::AsciiArt artShelf1("book1", shelf1, 0, 0);
@@ -132,6 +85,7 @@ public:
         ConsoleUI::AsciiArt artShelf7("book7", shelf7, 0, 0);
         ConsoleUI::AsciiArt artShelf8("book8", shelf8, 0, 0);
         ConsoleUI::AsciiArt artShelf9("book9", shelf9, 0, 0);
+        ConsoleUI::AsciiArt artDragon("dragon", dragonLines, 0, 0);
 
         uiManager.getWindow()->addAsciiArt(artShelfFull);
         uiManager.getWindow()->addAsciiArt(artShelf1);
@@ -143,6 +97,7 @@ public:
         uiManager.getWindow()->addAsciiArt(artShelf7);
         uiManager.getWindow()->addAsciiArt(artShelf8);
         uiManager.getWindow()->addAsciiArt(artShelf9);
+        uiManager.getWindow()->addAsciiArt(artDragon);
 
         std::vector<std::string> librarianLines = convertAsciiArtToLines(librarian);
         std::vector<std::string> librarianPointingLines = convertAsciiArtToLines(librarianPointing);
@@ -164,9 +119,9 @@ public:
         auto &menu = m_uiManager.createMenu("main", false);
         menu.addButton("   Begin Study   ", openBrowseDecks);
         menu.addButton("    Edit Decks   ", openEditDecks);
-        menu.addButton("  About Program  ", openHowToScene);
         menu.addButton("     Settings    ", openSettingsScene);
-        menu.addButton("       Exit      ", []() {
+        menu.addButton("  About Program  ", openHowToScene);
+        menu.addButton("   Exit Program  ", []() {
             clearScreen();
             exit(0);
         });
@@ -265,6 +220,7 @@ int main()
         resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
             uiManager,
             std::vector<int>{0, 0, 0}, // Initial difficulty count
+            0,
             [&]() { uiManager.setCurrentScene(mainMenuScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
             [&]() { uiManager.setCurrentScene(gameScene); },
@@ -281,10 +237,11 @@ int main()
                         deck,
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                        [&](const std::vector<int> &difficultyCount, bool sessionComplete) {
+                        [&](const std::vector<int> &difficultyCount,int score, bool sessionComplete) {
                             resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
                                 uiManager,
                                 difficultyCount,
+                                score,
                                 [&]() { uiManager.setCurrentScene(mainMenuScene); },
                                 [&]() { uiManager.setCurrentScene(browseDecksScene); },
                                 [&]() { uiManager.setCurrentScene(gameScene); },

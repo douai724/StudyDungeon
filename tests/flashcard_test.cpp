@@ -31,6 +31,7 @@ TEST_CASE("BrowseDecksScene::loadDecks() loads decks correctly", "[browse_decks_
     StudySettings studySettings;
     FlashcardApp::BrowseDecksScene scene(uiManager, []() {}, [](const FlashCardDeck &) {}, studySettings);
 
+    std::cerr << studySettings.getDeckDir() << std::endl;
     // Act
     scene.loadDecks();
 

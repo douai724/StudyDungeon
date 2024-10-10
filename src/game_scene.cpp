@@ -49,7 +49,9 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
-        window->drawANSIArt("frog", (size.X - window->getANSIArtByName("frog")->getWidth() * 2) / 2, -5);
+        window->drawANSIArt("frog",
+                            (size.X - static_cast<int>(window->getANSIArtByName("frog")->getWidth()) * 2) / 2,
+                            -5);
     }
 
     if (!m_needsRedraw)
@@ -108,7 +110,8 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             std::string option = hand[i].toString();
             std::string cardText = " [" + colour + option + key::ESC + "[0m" + "]";
 
-            int padding = option.length() + 2 < cardWidth * 2 ? (cardWidth * 2 - (option.length() + 2)) / 2 : 4;
+            int padding =
+                option.length() + 2 < cardWidth * 2 ? (cardWidth * 2 - (static_cast<int>(option.length()) + 2)) / 2 : 4;
 
             if (m_selectedIndex == i)
             {

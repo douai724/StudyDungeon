@@ -42,19 +42,20 @@ void GameScene::setStaticDrawn(bool staticDrawn)
 void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 {
 
+    COORD size = window->getSize();
+
     if (!m_staticDrawn)
     {
         window->clear();
         window->drawBorder();
         m_staticDrawn = true;
-        window->drawANSIArt("frog", 60, -5);
+        window->drawANSIArt("frog", (size.X - window->getANSIArtByName("frog")->getWidth() * 2) / 2, -5);
     }
 
     if (!m_needsRedraw)
     {
         return;
     }
-    COORD size = window->getSize();
 
     std::vector<PlayingCard> hand = GameScene::game.p1.getHand();
 
@@ -64,19 +65,6 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
                          std::to_string(GameScene::game.p1.getMaxHitPoints()),
                      2,
                      6);
-    // for (int i = 0; i < 5; i++)
-    // {
-    //     float calc = GameScene::game.p1.getHitPoints() / (float)GameScene::game.p1.getMaxHitPoints() * 5;
-    //     if (calc > i)
-    //     {
-    //         window->drawANSIArt("heart", 16 * i + 1, 8);
-    //     }
-    //     else
-    //     {
-    //         window->drawANSIArt("heartEmpty", 16 * i + 1, 8);
-    //     }
-    // }
-
 
     window->drawText("ENEMY", size.X - 7, 2);
     window->drawText("DECK SIZE:" + std::to_string(GameScene::game.p2.getDeck().size()), size.X - 14, 4);
@@ -84,18 +72,6 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
                          std::to_string(GameScene::game.p2.getMaxHitPoints()),
                      size.X - 13,
                      6);
-    // for (int i = 0; i < 5; i++)
-    // {
-    //     float calc = GameScene::game.p2.getHitPoints() / (float)GameScene::game.p2.getMaxHitPoints() * 5;
-    //     if (calc > i)
-    //     {
-    //         window->drawANSIArt("heart", 16 * i + 1 + size.X / 2, 8);
-    //     }
-    //     else
-    //     {
-    //         window->drawANSIArt("heartEmpty", 16 * i + 1 + size.X / 2, 8);
-    //     }
-    // }
 
     if (GameScene::playlist.size() > 1)
     {
@@ -109,7 +85,8 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
-        int cardWidth = (int)window->getANSIArtByName("frog")->getWidth();
+        int cardWidth = (int)window->getANSIArtByName("card")->getWidth();
+        int cardHeight = (int)window->getANSIArtByName("card")->getHeight();
 
         for (int i = 0; i < hand_size_int; i++)
         {
@@ -131,21 +108,21 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             std::string option = hand[i].toString();
             std::string cardText = " [" + colour + option + key::ESC + "[0m" + "]";
 
-            int padding = option.length() + 2 < cardWidth ? (cardWidth - option.length() + 2) / 2 : 4;
+            int padding = option.length() + 2 < cardWidth * 2 ? (cardWidth * 2 - (option.length() + 2)) / 2 : 4;
 
             if (m_selectedIndex == i)
             {
 
-                window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
+                window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, size.Y - cardHeight);
             }
             else
             {
-                window->drawANSIArt("card", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
+                window->drawANSIArt("card", size.X / hand_size_int * i + 2, size.Y - cardHeight);
             }
 
             window->drawWrappedText(cardText,
                                     size.X / hand_size_int * i + padding,
-                                    4 * size.Y / 5,
+                                    size.Y - (cardHeight / 2),
                                     size.X / 5 + colour.length());
         }
     }

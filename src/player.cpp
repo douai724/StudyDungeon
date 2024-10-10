@@ -10,15 +10,15 @@
  */
 #include "player.h"
 
-Player::Player()
+Player::Player() : hitPoints(100), maxHitPoints(100), handSize(5), deck(std::vector<PlayingCard>{})
 {
-    Player::hitPoints = 100;
-    Player::maxHitPoints = 100;
-    Player::handSize = 5;
-    Player::deck = std::vector<PlayingCard>{};
+    // Player::hitPoints = 100;
+    // Player::maxHitPoints = 100;
+    // Player::handSize = 5;
+    // Player::deck = std::vector<PlayingCard>{};
 }
 
-Player::Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck)
+Player::Player(int hitPoints, int maxHitPoints, size_t handSize, const std::vector<PlayingCard> &deck)
     : hitPoints(hitPoints), maxHitPoints(maxHitPoints), handSize(handSize), deck(deck)
 {
     for (int i = 0; i < Player::handSize; i++)
@@ -64,7 +64,7 @@ std::vector<PlayingCard> Player::getHand()
     return Player::hand;
 }
 
-void Player::setHand(std::vector<PlayingCard> playerHand)
+void Player::setHand(const std::vector<PlayingCard> &playerHand)
 {
     Player::hand = playerHand;
 }
@@ -84,7 +84,7 @@ std::vector<PlayingCard> Player::getDeck()
     return Player::deck;
 }
 
-void Player::setDeck(std::vector<PlayingCard> deck)
+void Player::setDeck(const std::vector<PlayingCard> &deck)
 {
     Player::deck = deck;
 }

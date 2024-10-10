@@ -113,7 +113,7 @@ std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getA
 <tr class="memdesc:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to display the time remaining to users. To determine the actual end the session use <a class="el" href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0" title="Determines if the number of seconds has elapased since a start time.">timeComplete()</a>  <a href="util_8h.html#a0fd0d2cffdd6fa0bbfb715d131a2a8ee">More...</a><br /></td></tr>
 <tr class="separator:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a62c0bc6d6ff71c49a05e06cfaf85f8ca">steadyClockToString</a> (const std::chrono::steady_clock::time_point &amp;start_time)</td></tr>
-<tr class="memdesc:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a timepoint to a string.  <a href="util_8h.html#a62c0bc6d6ff71c49a05e06cfaf85f8ca">More...</a><br /></td></tr>
+<tr class="memdesc:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the number of seconds past since the time point as "X seconds since start".  <a href="util_8h.html#a62c0bc6d6ff71c49a05e06cfaf85f8ca">More...</a><br /></td></tr>
 <tr class="separator:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7167f5c196fc5e167bfabde1a730e81d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a> ()</td></tr>
 <tr class="memdesc:a7167f5c196fc5e167bfabde1a730e81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alternative to system('pause')  <a href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">More...</a><br /></td></tr>
@@ -401,7 +401,7 @@ false is not a valid file name a deck </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Converts a timepoint to a string. </p>
+<p>Gives the number of seconds past since the time point as "X seconds since start". </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">start_time</td><td>a timepoint to turn into a string </td></tr>

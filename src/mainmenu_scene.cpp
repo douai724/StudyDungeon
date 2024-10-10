@@ -140,12 +140,10 @@ void MainMenuScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 5;
         int otherMenuArtY =
             (window->getSize().Y - 2) - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
-        int mainMenuArtX = (window->getSize().X - static_cast<int>(window->getANSIArtByName("title")->getHeight())) / 8;
-        int mainMenuArtY = 10;
 
         window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
         window->drawAsciiArt("car", window->getSize().X - 35, window->getSize().Y - 5);
-        window->drawANSIArt("title", (size.X - (window->getANSIArtByName("title")->getHeight() * 2)) / 2, 5);
+        window->drawANSIArt("title", (size.X - (window->getANSIArtByName("title")->getWidth() * 2)) / 2, 5);
 
 
         m_staticDrawn = true;

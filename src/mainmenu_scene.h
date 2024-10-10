@@ -34,9 +34,8 @@ class MainMenuScene : public ConsoleUI::Scene
 {
 public:
     /**
-     * @brief Configures the objects that need to be redrawn after the initial scene rendering
-     *
-     * @param staticDrawn
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
      */
     void setStaticDrawn(bool staticDrawn) override;
 

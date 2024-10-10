@@ -93,6 +93,10 @@ public:
      */
     void loadDecks();
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
     void setDecksNeedReload(bool needReload)
@@ -182,6 +186,10 @@ public:
      */
     void handleInput() override;
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
     void setDecksNeedReload(bool needReload)
@@ -232,12 +240,12 @@ private:
     std::function<void(const std::vector<int> &, int, bool)> m_showResults; ///< Function to call when showing results.
     bool m_needsRedraw; ///< Flag indicating if the scene needs to be redrawn.
 
-    bool m_staticDrawn = false;
-    StudySettings m_studySetting;
+    bool m_staticDrawn = false;   ///< Flag indicating if the static elements have been drawn.
+    StudySettings m_studySetting; ///< study session settings
 
-    std::string m_lastQuestionDisplayed;
-    bool m_answerDrawn;
-    int m_score;
+    std::string m_lastQuestionDisplayed; ///< The last question displayed
+    bool m_answerDrawn;                  ///< has the answer been drawn
+    int m_score;                         ///< score of the flashcards
 };
 
 /**
@@ -293,6 +301,10 @@ public:
      */
     void handleInput() override;
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
 private:
@@ -304,9 +316,9 @@ private:
     bool m_needsRedraw;                        ///< Flag indicating if the scene needs to be redrawn.
     std::string phrase;
 
-    bool m_staticDrawn = false;
-    bool m_sessionComplete;
-    int m_score;
+    bool m_staticDrawn = false; ///< Flag indicating if the static elements have been drawn.
+    bool m_sessionComplete;     ///< Has the study session completed
+    int m_score;                ///< Score based on difficulty of cards
 };
 
 } // namespace FlashcardApp

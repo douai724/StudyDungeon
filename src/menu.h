@@ -660,9 +660,8 @@ public:
     virtual void handleInput() = 0;
 
     /**
-     * @brief does the scene need to be redrawn on updates
-     *
-     * @param staticDrawn
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
      */
     virtual void setStaticDrawn(bool staticDrawn) = 0;
 };

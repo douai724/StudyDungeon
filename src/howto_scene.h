@@ -61,16 +61,15 @@ public:
     void handleInput() override;
 
     /**
-     * @brief Set if the scene will need to be redrawn on update
-     *
-     * @param staticDrawn Should the scene be redrawn on updates
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
      */
     void setStaticDrawn(bool staticDrawn) override;
 
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     std::function<void()> m_goBack;    ///< function to return to the previous scene
-    bool m_staticDrawn = false;        ///< Is the scene to be redrawn on update
+    bool m_staticDrawn = false;        ///< Flag indicating if the static elements have been drawn.
 };
 
 #endif // HOWTO_SCENE_H

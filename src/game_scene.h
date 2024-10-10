@@ -84,9 +84,8 @@ public:
     void handleInput() override;
 
     /**
-     * @brief Set the Static Drawn object
-     *
-     * @param staticDrawn
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
      */
     void setStaticDrawn(bool staticDrawn) override;
 };

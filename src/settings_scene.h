@@ -218,20 +218,19 @@ public:
     void handleInput() override;
 
     /**
-     * @brief Set the staticDrawn flag to determine if object needs to be redrawn
-     *
-     * @param staticDrawn
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
      */
     void setStaticDrawn(bool staticDrawn) override
     {
-        m_staticDrawn = staticDrawn;
+        m_staticDrawn = staticDrawn; ///< Flag indicating if the static elements have been drawn.
     }
 
 private:
     ConsoleUI::UIManager &m_uiManager; ///< Reference to the UI manager.
     StudySettings &m_settings;         ///< Reference to the study settings
     std::function<void()> m_goBack;    ///< function to return to the previous scene
-    bool m_staticDrawn = false;        ///< Should the object be redrawn
+    bool m_staticDrawn = false;        ///< Flag indicating if the static elements have been drawn.
 };
 
 #endif // SETTINGS_SCENE_H

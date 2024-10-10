@@ -148,3 +148,53 @@ TEST_CASE("ANSI art")
         REQUIRE(testArt.getY() == 17);
     }
 }
+
+TEST_CASE("Menu")
+{
+    ConsoleUI::Menu testMenu{};
+
+    REQUIRE(testMenu.getButtonCount() == 0);
+    REQUIRE(testMenu.getSelectedIndex() == 0);
+
+    testMenu.addButton("testButton1", []() {});
+    testMenu.addButton("testButton2", []() {});
+
+    SECTION("Correct button count")
+    {
+        REQUIRE(testMenu.getButtonCount() == 2);
+    }
+
+    SECTION("Next button is selected")
+    {
+        testMenu.selectNextButton();
+        REQUIRE(testMenu.getSelectedIndex() == 1);
+    }
+
+    SECTION("Previous button is selected")
+    {
+        testMenu.selectNextButton();
+        testMenu.selectPreviousButton();
+        REQUIRE(testMenu.getSelectedIndex() == 0);
+    }
+
+    SECTION("Do not select next button when there is none")
+    {
+        testMenu.selectNextButton();
+        testMenu.selectNextButton();
+        testMenu.selectNextButton();
+        REQUIRE(testMenu.getSelectedIndex() == 1);
+    }
+
+    SECTION("Do not select previous button when there is none")
+    {
+        testMenu.selectPreviousButton();
+        REQUIRE(testMenu.getSelectedIndex() == 0);
+    }
+
+    SECTION("Clear buttons")
+    {
+        testMenu.clear();
+        REQUIRE(testMenu.getButtonCount() == 0);
+        REQUIRE(testMenu.getSelectedIndex() == 0);
+    }
+}

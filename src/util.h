@@ -26,6 +26,10 @@
 /** used to toggle between simulated input (true) and user input (false) */
 extern bool isTestMode;
 
+/**
+ * @brief mapping of character codes recieved by getch on key press to their keyboard name for easy reference.
+ *
+ */
 namespace key
 {
 // Defines the character code recieved by getch on key press
@@ -81,9 +85,21 @@ std::filesystem::path getAppPath();
  */
 bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_secs);
 
-
+/**
+ * @brief Used to display the time remaining to users. To determine the actual end the session use timeComplete()
+ *
+ * @param start_time The time the timer started
+ * @param duration_mins the period in minutes to check how much from the start time is remaining
+ * @return int
+ */
 int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_mins);
 
+/**
+ * @brief Converts a timepoint to a string
+ *
+ * @param start_time a timepoint to turn into a string
+ * @return std::string
+ */
 std::string steadyClockToString(const std::chrono::steady_clock::time_point &start_time);
 
 /**
@@ -93,7 +109,7 @@ std::string steadyClockToString(const std::chrono::steady_clock::time_point &sta
  */
 void pause();
 
-/*
+/**
  * @brief Clears the screen.
  *
  * @details Credit: SirEnder125 on cplusplus.com
@@ -113,8 +129,8 @@ bool yesNoPrompt();
  * @details Deck filenames should only contain [A-Za-z0-9] characters
  *
  * @param name
- * @return true
- * @return false
+ * @return true is a valid file name for a deck
+ * @return false is not a valid file name a deck
  */
 bool isValidDeckFileName(const std::string &name);
 
@@ -125,14 +141,41 @@ bool isValidDeckFileName(const std::string &name);
  */
 void ShowConsoleCursor(bool showflag);
 
+/**
+ * @brief reads a file of integers (0-255) that will be used to create ANSI colours
+ *
+ * @param filename the file containing whitespace separated integers representing ANSI colours
+ * @return std::vector<std::vector<int>>
+ */
 std::vector<std::vector<int>> readInANSICodes(std::string filename);
 
+/**
+ * @brief Vectorises a string on the newline character
+ *
+ * @param asciiArt String of an ASCII artwork to be vectorised
+ * @return std::vector<std::string>
+ */
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt);
 
+/**
+ * @brief Get a Random Positive Quote
+ *
+ * @return std::string
+ */
 std::string getRandomPositiveQuote();
 
+/**
+ * @brief Get a Random Encouraging Quote
+ *
+ * @return std::string
+ */
 std::string getRandomEncouragingQuote();
 
+/**
+ * @brief Get a Random Phrase
+ *
+ * @return std::string
+ */
 std::string getRandomPhrase();
 
 

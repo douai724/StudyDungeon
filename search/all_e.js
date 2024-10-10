@@ -5,7 +5,7 @@ var searchData=
   ['pause_174',['pause',['../util_8h.html#a7167f5c196fc5e167bfabde1a730e81d',1,'pause():&#160;util.cpp'],['../util_8cpp.html#a7167f5c196fc5e167bfabde1a730e81d',1,'pause():&#160;util.cpp']]],
   ['performaction_175',['performAction',['../classConsoleUI_1_1Button.html#aa6298e8a8e32982b4eb1ba339cdd4a86',1,'ConsoleUI::Button']]],
   ['playeffect_176',['playEffect',['../classGame.html#a8526d58171328b5a5fb5c3267eb60b8b',1,'Game']]],
-  ['player_177',['Player',['../classPlayer.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()'],['../classPlayer.html#a315ec798941d4d2848991128ffa0a6fa',1,'Player::Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector&lt; PlayingCard &gt; deck)'],['../classPlayer.html',1,'Player']]],
+  ['player_177',['Player',['../classPlayer.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()'],['../classPlayer.html#a7101ee3276dfe8627514a06e7ed975ab',1,'Player::Player(int hitPoints, int maxHitPoints, size_t handSize, const std::vector&lt; PlayingCard &gt; &amp;deck)'],['../classPlayer.html',1,'Player']]],
   ['player_2ecpp_178',['player.cpp',['../player_8cpp.html',1,'']]],
   ['player_2eh_179',['player.h',['../player_8h.html',1,'']]],
   ['playing_5fcard_2ecpp_180',['playing_card.cpp',['../playing__card_8cpp.html',1,'']]],

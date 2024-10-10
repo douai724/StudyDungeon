@@ -95,7 +95,7 @@ bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &star
 int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_mins);
 
 /**
- * @brief Converts a timepoint to a string
+ * @brief Gives the number of seconds past since the time point as "X seconds since start"
  *
  * @param start_time a timepoint to turn into a string
  * @return std::string

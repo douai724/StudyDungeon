@@ -109,7 +109,7 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
-        int cardWidth = size.X / hand_size_int;
+        int cardWidth = (int)window->getANSIArtByName("frog")->getWidth();
 
         for (int i = 0; i < hand_size_int; i++)
         {
@@ -129,30 +129,25 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
             }
 
             std::string option = hand[i].toString();
-            std::string cardText = "";
+            std::string cardText = " [" + colour + option + key::ESC + "[0m" + "]";
 
-            int padding = cardText.length() < cardWidth ? (cardWidth - static_cast<int>(cardText.length())) / 2 : 0;
+            int padding = option.length() + 2 < cardWidth ? (cardWidth - option.length() + 2) / 2 : 4;
 
             if (m_selectedIndex == i)
             {
 
                 window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawWrappedText(" [" + colour + option + key::ESC + "[0m" + "]",
-                                        size.X / hand_size_int * i + padding / 2,
-                                        4 * size.Y / 5,
-                                        size.X / 5 + colour.length());
             }
             else
             {
                 window->drawANSIArt("card", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawWrappedText(" [" + colour + option + key::ESC + "[0m" + "]",
-                                        size.X / hand_size_int * i + padding / 2,
-                                        4 * size.Y / 5,
-                                        size.X / 5);
             }
-        }
 
-        // SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_UNDERSCORE);
+            window->drawWrappedText(cardText,
+                                    size.X / hand_size_int * i + padding,
+                                    4 * size.Y / 5,
+                                    size.X / 5 + colour.length());
+        }
     }
 
     m_needsRedraw = false;

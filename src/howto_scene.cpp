@@ -2,7 +2,7 @@
  * @file howto_scene.cpp
  * @author Green Alligators
  * @brief Defines the UI scene for the howto scene explaining how the program works
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

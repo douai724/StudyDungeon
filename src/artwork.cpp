@@ -2,7 +2,7 @@
  * @file artwork.cpp
  * @author Green Alligators
  * @brief ASCII art used in the program
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

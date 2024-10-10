@@ -2,7 +2,7 @@
  * @file gameloop.cpp
  * @author Green Alligators
  * @brief Defines the gameplay and game loop of the card duel game
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

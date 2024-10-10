@@ -2,7 +2,7 @@
  * @file artwork.h
  * @author Green Alligators
  * @brief Defines variables containg ASCII artwork
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024

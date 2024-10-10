@@ -2,7 +2,7 @@
  * @file flashcard_scene.h
  * @author Green Alligators
  * @brief Classes and functions used in the study session UI scene for reviewing flashcards
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

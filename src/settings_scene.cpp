@@ -2,7 +2,7 @@
  * @file settings_scene.cpp
  * @author Green Alligators
  * @brief Defines the UI scene for the game settings
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

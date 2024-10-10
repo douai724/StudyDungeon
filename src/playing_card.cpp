@@ -2,7 +2,7 @@
  * @file playing_card.cpp
  * @author Green Alligators
  * @brief This file defines the classes and methods used for a Playing Card
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

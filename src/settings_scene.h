@@ -2,7 +2,7 @@
  * @file settings_scene.h
  * @author Green Alligators
  * @brief The menu and settings for the over all game
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

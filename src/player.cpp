@@ -2,7 +2,7 @@
  * @file player.cpp
  * @author Green Alligators
  * @brief Definitiona for the player class that is used in the card duel game
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

@@ -2,7 +2,7 @@
  * @file util.cpp
  * @author Green Alligators
  * @brief Utilities and helpers for the program
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -42,7 +42,7 @@ std::filesystem::path getAppPath()
     if (GetModuleFileNameA(NULL, exePath, MAX_PATH) == 0)
     {
         std::cerr << "Failed to get exe path" << std::endl;
-        // TODO deal with error
+        throw 0;
     }
 
     // Convert the path to the exe to a filesystem path object

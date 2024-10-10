@@ -1,3 +1,13 @@
+/**
+ * @file mainmenu_scene.cpp
+ * @author Green Alligators
+ * @brief Class and functions for the main menu scene
+ * @version 1.0.0
+ * @date 2024-10-10
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
 #include "mainmenu_scene.h"
 
 

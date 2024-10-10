@@ -2,7 +2,7 @@
  * @file menu.h
  * @author Green Alligators
  * @brief Classes and functions for the UI system
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-10-05
  *
  * @copyright Copyright (c) 2024
@@ -660,7 +660,7 @@ public:
     virtual void handleInput() = 0;
 
     /**
-     * @brief //TODO
+     * @brief does the scene need to be redrawn on updates
      *
      * @param staticDrawn
      */

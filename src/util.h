@@ -2,7 +2,7 @@
  * @file util.h
  * @author Green Alligators
  * @brief Contains useful helper functions
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-08-08
  *
  * @copyright Copyright (c) 2024

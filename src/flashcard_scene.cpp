@@ -1,8 +1,8 @@
 /**
  * @file flashcard_scene.cpp
  * @author Green Alligators
- * @brief
- * @version @PROJECT_VERSION@
+ * @brief Functions used for the flashcard study scene
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

@@ -2,7 +2,7 @@
  * @file card_types.h
  * @author Green Alligators
  * @brief Defines the cards types for the card duel
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024

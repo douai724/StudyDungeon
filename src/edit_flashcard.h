@@ -2,7 +2,7 @@
  * @file edit_flashcard.h
  * @author your name (you@domain.com)
  * @brief Classes and functions that are used in the UI scene for editing flashcards
- * @version @PROJECT_VERSION@
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024

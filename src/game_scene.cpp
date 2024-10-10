@@ -1,8 +1,8 @@
 /**
  * @file game_scene.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Classes and functions for the card duel game
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -109,29 +109,45 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
     }
     else
     {
-        int cardWidth = size.X / hand_size_int;
+        int cardWidth = (int)window->getANSIArtByName("frog")->getWidth();
 
         for (int i = 0; i < hand_size_int; i++)
         {
-            std::string option = hand[i].toString();
-            std::string cardText = "";
 
-            int padding = cardText.length() < cardWidth ? (cardWidth - static_cast<int>(cardText.length())) / 2 : 0;
+            std::string colour = "";
+
+            switch (hand[i].getType())
+            {
+            case 0:
+                colour = key::ESC + "[31m";
+                break;
+            case 1:
+                colour = key::ESC + "[32m";
+                break;
+            default:
+                colour = "";
+            }
+
+            std::string option = hand[i].toString();
+            std::string cardText = " [" + colour + option + key::ESC + "[0m" + "]";
+
+            int padding = option.length() + 2 < cardWidth ? (cardWidth - option.length() + 2) / 2 : 4;
 
             if (m_selectedIndex == i)
             {
 
                 window->drawANSIArt("cardSelected", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawText(" [" + option + "] ", size.X / hand_size_int * i + padding / 2, 4 * size.Y / 5);
             }
             else
             {
                 window->drawANSIArt("card", size.X / hand_size_int * i + 2, 3 * size.Y / 5 - 2);
-                window->drawText(" [" + option + "] ", size.X / hand_size_int * i + padding / 2, 4 * size.Y / 5);
             }
-        }
 
-        // SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COMMON_LVB_UNDERSCORE);
+            window->drawWrappedText(cardText,
+                                    size.X / hand_size_int * i + padding,
+                                    4 * size.Y / 5,
+                                    size.X / 5 + colour.length());
+        }
     }
 
     m_needsRedraw = false;
@@ -140,18 +156,18 @@ void GameScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
 void GameScene::handleInput()
 {
     int key = _getch();
-    if (key == _arrow_prefix || key == _numlock) // Arrow key
+    if (key == key::arrow_prefix || key == key::numlock) // Arrow key
     {
         key = _getch();
         switch (key)
         {
-        case _key_left:
+        case key::key_left:
             if (m_selectedIndex > 0)
             {
                 m_selectedIndex--;
             }
             break;
-        case _key_right: // Down arrow
+        case key::key_right: // Down arrow
             if (m_selectedIndex < GameScene::game.p1.getHand().size() - 1)
             {
                 m_selectedIndex++;
@@ -159,14 +175,14 @@ void GameScene::handleInput()
             break;
         }
     }
-    else if (key == _key_enter) // Enter key
+    else if (key == key::key_enter) // Enter key
     {
         // Player turn
         if (GameScene::game.p1.getHand().size() == 0)
         {
             GameScene::game.turn = 2; // skip turn
         }
-        else
+        if (!GameScene::game.isGameOver())
         {
             PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
             GameScene::game.p1.removeCard(playerCard);
@@ -198,7 +214,7 @@ void GameScene::handleInput()
         {
             GameScene::game.turn = 1; // skip turn
         }
-        else
+        if (!GameScene::game.isGameOver())
         {
             PlayingCard botCard = GameScene::game.p2.getHand()[0];
             GameScene::game.p2.removeCard(botCard);
@@ -225,10 +241,11 @@ void GameScene::handleInput()
             }
         }
 
-
         m_selectedIndex = 0;
+        m_needsRedraw = true;
+        m_staticDrawn = false;
     }
-    else if (key == _key_esc)
+    else if (key == key::key_esc)
     { // Escape key
         m_goBack();
     }

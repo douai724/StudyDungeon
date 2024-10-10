@@ -1,8 +1,8 @@
 /**
  * @file gameloop.h
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Controls the game play and game loop of the card duel game
+ * @version 1.0.0
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -63,6 +63,25 @@ public:
     void swapHandEffect();
 
     /**
+     * @brief Switches the turn to the next player
+     *
+     */
+    void switchTurn();
+
+    /**
+     * @brief Plays the effect of the given playing card
+     *
+     * @param card
+     */
+    void playEffect(PlayingCard &card);
+
+    /**
+     * @brief Draws a card for the player whose turn it is
+     *
+     */
+    void drawCard();
+
+    /**
      * @brief Construct a new Game object.
      *
      * @param p1 Player 1
@@ -70,13 +89,17 @@ public:
      */
     Game(Player p1, Player p2);
 
+    /**
+     * @brief Construct a new Game object
+     *
+     */
     Game();
 
     /**
       * @brief Plays the next turn of the game.
       *
       */
-    void nextTurn(PlayingCard nextCard);
+    void nextTurn(PlayingCard &nextCard);
 
     /**
       * @brief Checks if the game is over.
@@ -90,9 +113,11 @@ public:
       */
     bool isGameOver();
 
-
-    bool isWinner();
-
+    /**
+     * @brief Which player was the winner
+     *
+     * @return short
+     */
     short getWinner();
 };
 

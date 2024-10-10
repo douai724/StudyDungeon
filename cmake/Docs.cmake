@@ -13,6 +13,7 @@ configure_file(
         ${DOXYGEN_EXECUTABLE}
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/docs/
         COMMENT "Generating HTML documentation with Doxygen"
+        VERBATIM
     )
     message("Directory " ${CMAKE_SOURCE_DIR}/docs/)
     else (DOXYGEN_FOUND)

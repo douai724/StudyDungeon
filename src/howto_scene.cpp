@@ -1,15 +1,15 @@
 /**
  * @file howto_scene.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Defines the UI scene for the howto scene explaining how the program works
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
 #include "howto_scene.h"
-#include <string>
+
 
 HowToScene::HowToScene(ConsoleUI::UIManager &uiManager, std::function<void()> goBack)
     : m_uiManager(uiManager), m_goBack(goBack)
@@ -67,6 +67,22 @@ A study session has 2 phases:
         window->drawText(line, x_start, y_start);
         y_start++;
     }
+    window->drawText("Editing disclaimers:", 3, window->getSize().Y - 12);
+    window->drawWrappedText("- when adding/editing text for a flashcard, you are limited to 90 characters",
+                            3,
+                            window->getSize().Y - 10,
+                            40);
+    window->drawWrappedText("- when adding/renaming text for a deck, you are limited to 30 characters",
+                            3,
+                            window->getSize().Y - 7,
+                            40);
+
+    window->drawText("Credits:", window->getSize().X - 30, window->getSize().Y - 12);
+    window->drawWrappedText("Ascii art from: https://www.asciiart.eu/",
+                            window->getSize().X - 30,
+                            window->getSize().Y - 10,
+                            27);
+    window->drawWrappedText("Pixel art by: ", window->getSize().X - 30, window->getSize().Y - 8, 27);
 
 
     window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
@@ -75,9 +91,20 @@ A study session has 2 phases:
     // Draw the menu at the bottom center of the screen
     auto windowSize = window->getSize();
     m_uiManager.getMenu("howto").draw((windowSize.X) / 2 - 4, windowSize.Y - 7); // Adjust 30 based on your menu width
+    window->drawText("Press ENTER to go back", windowSize.X / 2 - 11, windowSize.Y - 5);
 }
 
 void HowToScene::handleInput()
 {
+    if (_kbhit())
+    {
+        int key = _getch();
+
+        if (key == key::key_esc)
+        {
+            m_goBack();
+        }
+    }
+
     m_uiManager.getMenu("howto").handleInput();
 }

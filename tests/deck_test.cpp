@@ -103,14 +103,14 @@ TEST_CASE("Deck reading and writing")
     {
         std::filesystem::path app_path = getAppPath();
         std::filesystem::path decks_dir = app_path;
-        decks_dir.append("TEST_Decks");
+        decks_dir.append("Decks");
         std::filesystem::path new_deck = decks_dir;
         new_deck.append("new.deck");
         // std::cerr << "new deck path:" << new_deck << std::endl;
 
         if (std::filesystem::exists(new_deck))
         {
-            std::cerr << "REMOVING FILE TEST_decks/new.deck" << std::endl;
+            std::cerr << "REMOVING FILE Decks/new.deck" << std::endl;
             std::filesystem::remove(new_deck);
         }
         REQUIRE(writeFlashCardDeckWithChecks(example_decks.at(1), new_deck, false));
@@ -122,7 +122,7 @@ TEST_CASE("Deck reading and writing")
     {
         std::filesystem::path app_path = getAppPath();
         std::filesystem::path decks_dir = app_path;
-        decks_dir.append("TEST_Decks");
+        decks_dir.append("Decks");
         std::filesystem::path example1_deck = decks_dir;
         example1_deck.append("example1.deck");
         FlashCardDeck example1 = readFlashCardDeck(example1_deck);

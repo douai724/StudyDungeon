@@ -2,7 +2,7 @@
  * @file playing_card.h
  * @author Green Alligators
  * @brief This file defines the classes and methods used for a Playing Card
- * @version 0.2
+ * @version 1.0.0
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -17,7 +17,7 @@
 #include <string>
 
 /**
- * @brief
+ * @brief Class to define the playing card object
  *
  */
 class PlayingCard

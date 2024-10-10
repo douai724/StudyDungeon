@@ -1,8 +1,8 @@
 /**
  * @file artwork.h
  * @author Green Alligators
- * @brief
- * @version 0.1
+ * @brief Defines variables containg ASCII artwork
+ * @version 1.0.0
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -18,16 +18,37 @@
 #include <string>
 #include <windows.h>
 
-
+/** ASCII art work of a bookshelf */
 extern std::string bookshelfFull;
+/** ASCII art work of a bookshelf - variation 1 */
 extern std::string bookshelf1;
+/** ASCII art work of a bookshelf - variation 2*/
 extern std::string bookshelf2;
+/** ASCII art work of a bookshelf - variation 3*/
 extern std::string bookshelf3;
+/** ASCII art work of a bookshelf - variation 4*/
 extern std::string bookshelf4;
+/** ASCII art work of a bookshelf - variation 5*/
 extern std::string bookshelf5;
+/** ASCII art work of a bookshelf - variation 6*/
 extern std::string bookshelf6;
+/** ASCII art work of a bookshelf - variation 7*/
 extern std::string bookshelf7;
+/** ASCII art work of a bookshelf - variation 8*/
 extern std::string bookshelf8;
+/** ASCII art work of a bookshelf - variation 9*/
 extern std::string bookshelf9;
+
+extern std::string librarian;
+
+extern std::string librarianPointing;
+
+extern std::string dragon;
+
+extern std::string asciiArtString;
+
+extern std::string asciiArtString2;
+
+extern std::string car;
 
 #endif

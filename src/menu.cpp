@@ -1,20 +1,14 @@
 /**
  * @file menu.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Classes and functions for the UI system
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
  *
  */
 #include "menu.h"
-#include "util.h"
-#include <algorithm>
-#include <conio.h>
-#include <iostream>
-#include <string>
-#include <windows.h>
 
 
 namespace ConsoleUI
@@ -106,8 +100,8 @@ void ConsoleWindow::drawANSICode(int code, int x, int y)
 
 
     setConsoleCursorPosition(x, y);
-    std::string escStart = _ESC + "[48;5;" + std::to_string(code) + "m";
-    std::string escEnd = _ESC + "[0m";
+    std::string escStart = key::ESC + "[48;5;" + std::to_string(code) + "m";
+    std::string escEnd = key::ESC + "[0m";
     std::cout << escStart << lpCharacter[0] << lpCharacter[1] << escEnd;
 
     delete[] lpCharacter;
@@ -141,30 +135,30 @@ std::string ConsoleWindow::getLine(int x, int y, size_t maxLength)
         // Get user input
         int ch = _getch();
 
-        if (ch == _key_esc) // Escape key
+        if (ch == key::key_esc) // Escape key
         {
             return "\x1B"; // Return the escape character to indicate abort
         }
-        else if (ch == _arrow_prefix || ch == _numlock) // Arrow key prefix
+        else if (ch == key::arrow_prefix || ch == key::numlock) // Arrow key prefix
         {
             ch = _getch();
             switch (ch)
             {
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 if (cursorPos > 0)
                     cursorPos--;
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
                 if (cursorPos < input.length())
                     cursorPos++;
                 break;
             }
         }
-        else if (ch == _key_enter) // Enter key
+        else if (ch == key::key_enter) // Enter key
         {
             break;
         }
-        else if (ch == _key_backspace) // Backspace
+        else if (ch == key::key_backspace) // Backspace
         {
             if (cursorPos > 0)
             {
@@ -296,27 +290,16 @@ ANSIArt *ConsoleWindow::getANSIArtByName(const std::string &name)
 
 void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
 {
-    ANSIArt *art = getANSIArtByName(name); // IMPLEMENT THIS
+    ANSIArt *art = getANSIArtByName(name);
     if (art)
     {
         art->setPosition(x, y);
 
         int artX = art->getX();
         int artY = art->getY();
-        size_t width = art->getWidth();
-        size_t height = art->getHeight();
+        int width = (int)art->getWidth();
+        int height = (int)art->getHeight();
         std::vector<std::vector<int>> codes = art->getCodes();
-
-        // if (artX + width > m_width || artY + height > m_height)
-        // {
-        //     // Art is too big for the console, display text alternative
-        //     std::string textAlt = art->getName();
-        //     int textX = artX + (width - textAlt.length()) / 2;
-        //     int textY = artY + height / 2;
-        //     drawText(textAlt, textX, textY);
-        // }
-        // else
-        // {
 
         for (int i = y; i < width + y; i++)
         {
@@ -325,7 +308,6 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
                 drawANSICode(codes[i - y][j - x], j * 2 - 1 - x, i);
             }
         }
-        //}
     }
 }
 
@@ -502,7 +484,7 @@ std::string ANSIArt::toString()
     {
         for (size_t j = 0; j < codes[i].size(); j++)
         {
-            out += _ESC + "[48;5;" + std::to_string(codes[i][j]) + "m  " + _ESC + "[0m";
+            out += key::ESC + "[48;5;" + std::to_string(codes[i][j]) + "m  " + key::ESC + "[0m";
         }
         out += "\n";
     }
@@ -529,7 +511,7 @@ void Button::draw(int x, int y, bool selected)
     }
     else
     {
-        std::cout << border << _ESC + "[31;1;4m[" << m_label << "]" + _ESC + +"[0m" << border;
+        std::cout << border << key::ESC + "[31;1;4m[" << m_label << "]" + key::ESC + +"[0m" << border;
     }
 }
 
@@ -580,17 +562,17 @@ void Menu::draw(int x, int y)
 void Menu::handleInput()
 {
     int key = _getch();
-    if (key == _arrow_prefix || key == 0) // Arrow key
+    if (key == key::arrow_prefix || key == key::numlock) // Arrow key
     {
         key = _getch();
         if (horizontal_layout)
         {
             switch (key)
             {
-            case _key_left: // Left arrow
+            case key::key_left: // Left arrow
                 m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
                 break;
-            case _key_right: // Right arrow
+            case key::key_right: // Right arrow
                 m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
                 break;
             }
@@ -599,16 +581,16 @@ void Menu::handleInput()
         {
             switch (key)
             {
-            case _key_up: // Up arrow
+            case key::key_up: // Up arrow
                 m_selectedIndex = (m_selectedIndex - 1 + m_buttons.size()) % m_buttons.size();
                 break;
-            case _key_down: // Down arrow
+            case key::key_down: // Down arrow
                 m_selectedIndex = (m_selectedIndex + 1) % m_buttons.size();
                 break;
             }
         }
     }
-    else if (key == _key_enter)
+    else if (key == key::key_enter)
     {
         m_buttons[m_selectedIndex].performAction();
     }
@@ -617,24 +599,6 @@ void Menu::handleInput()
 bool Menu::isBackButtonPressed() const
 {
     return m_buttons[m_selectedIndex].getLabel() == "Back";
-}
-
-
-void Menu::pushPage()
-{
-    m_pageHistory.push_back(m_buttons);
-    m_buttons.clear();
-    m_selectedIndex = 0;
-}
-
-void Menu::popPage()
-{
-    if (!m_pageHistory.empty())
-    {
-        m_buttons = m_pageHistory.back();
-        m_pageHistory.pop_back();
-        m_selectedIndex = 0;
-    }
 }
 
 
@@ -684,6 +648,12 @@ size_t Menu::getMaxWidth() const
         maxWidth = max(button.getWidth(), maxWidth);
     }
     return maxWidth;
+}
+
+void Menu::clear()
+{
+    m_buttons.clear();
+    m_selectedIndex = 0;
 }
 
 // UIManager implementation

@@ -1,8 +1,8 @@
 /**
  * @file settings_scene.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Defines the UI scene for the game settings
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -31,7 +31,7 @@ void StudySettings::reset()
 
 void StudySettings::incFCLimit()
 {
-    if (m_flashcard_limit < 100)
+    if (m_flashcard_limit < 90)
     {
         m_flashcard_limit++;
     }
@@ -75,12 +75,26 @@ int StudySettings::getStudyDurationMin()
 
 void StudySettings::setFlashCardLimit(const int &n_cards)
 {
-    m_flashcard_limit = n_cards;
+    if (n_cards < 1)
+    {
+        m_flashcard_limit = 1;
+    }
+    else
+    {
+        m_flashcard_limit = n_cards;
+    }
 }
 
 void StudySettings::setStudyDurationMin(const int &mins)
 {
-    m_study_duration_mins = mins;
+    if (mins < 1)
+    {
+        m_study_duration_mins = 1;
+    }
+    else
+    {
+        m_study_duration_mins = mins;
+    }
 }
 
 
@@ -110,10 +124,10 @@ SettingsScene::SettingsScene(ConsoleUI::UIManager &uiManager,
     auto &menu = m_uiManager.createMenu("settings", false); // Horizontal menu
     menu.addButton(" Increment Cards ", [this]() { incrementCards(); });
     menu.addButton(" Decrement Cards ", [this]() { decrementCards(); });
-    menu.addButton(" Increment Time ", [this]() { incrementStudyMins(); });
-    menu.addButton(" Decrement Time ", [this]() { decrementStudyMins(); });
-    menu.addButton("    Defaults    ", [this]() { resetDefault(); });
-    menu.addButton("      Back      ", [this]() { m_goBack(); });
+    menu.addButton(" Increment Time  ", [this]() { incrementStudyMins(); });
+    menu.addButton(" Decrement Time  ", [this]() { decrementStudyMins(); });
+    menu.addButton("    Defaults     ", [this]() { resetDefault(); });
+    menu.addButton("      Back       ", [this]() { m_goBack(); });
 }
 
 void SettingsScene::init()
@@ -135,11 +149,12 @@ void SettingsScene::render(std::shared_ptr<ConsoleUI::ConsoleWindow> window)
         window->clear();
         window->drawBorder();
         window->drawCenteredText("Settings", 2);
-        window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
-        window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
-        window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
+        m_staticDrawn = true;
     }
 
+    window->drawCenteredText("Deck location: " + m_settings.getDeckDir().string(), 5);
+    window->drawCenteredText("Number of Cards per Round: " + std::to_string(m_settings.getFlashCardLimit()), 6);
+    window->drawCenteredText("Study time (mins): " + std::to_string(m_settings.getStudyDurationMin()), 7);
     // window->drawCenteredText("Playing the Game", window->getSize().Y / 2 - 2);
 
 

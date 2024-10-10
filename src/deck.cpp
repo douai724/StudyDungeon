@@ -2,9 +2,7 @@
  * @file deck.cpp
  * @author Green Alligators
  * @brief Functions and classes relating to flashcards
- *
- *
- * @version 0.2
+ * @version 1.0.0
  * @date 2024-08-23
  *
  * @copyright Copyright (c) 2024
@@ -170,7 +168,7 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
         lineCount++;
     }
 
-    // TODO replace the below with a method that will remove any empty cards in the deck
+
     // remove the empty card that should be at the end of the deck after reading in the files
     if (deck.cards.at(cardNum).question == "" && deck.cards.at(cardNum).answer == "")
     {
@@ -183,7 +181,7 @@ FlashCardDeck readFlashCardDeck(fs::path deck_file)
 
 bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
 {
-    //TODO this needs a try block
+
     if (fs::is_directory(filename.parent_path()))
     {
         // open file
@@ -208,7 +206,7 @@ bool writeFlashCardDeck(const FlashCardDeck &deck, fs::path filename)
 // write the FlashCardDeck to a file but will first check if file exists and if so should be overwritten
 bool writeFlashCardDeckWithChecks(const FlashCardDeck &deck, fs::path filename, bool force_overwrite = false)
 {
-    //FIXME this function is not complete and so doesn't work properly....
+
     // check filename ends with .deck
     if (!filename.string().ends_with(".deck"))
     {
@@ -217,11 +215,12 @@ bool writeFlashCardDeckWithChecks(const FlashCardDeck &deck, fs::path filename, 
 
     if (fs::exists(filename))
     {
+
         if (!fs::is_regular_file(filename))
         {
             // path exists but is not a file
-            //TODO throw exception
-            return false;
+            std::cerr << "path to deck file exists but is not a regular file" << std::endl;
+            throw 0;
         }
         else
         {
@@ -249,7 +248,6 @@ bool writeFlashCardDeckWithChecks(const FlashCardDeck &deck, fs::path filename, 
     }
     else
     {
-        // TODO
         // ensure parent directory exists
         if (fs::is_directory(filename.parent_path()))
         {
@@ -283,7 +281,7 @@ std::vector<FlashCardDeck> loadFlashCardDecks(fs::path deck_dir_path)
     else
     {
         std::cerr << "Directory does not exist, or is not a directory";
-        //TODO deal with error
+        throw 0;
     }
 
     return deck_array;
@@ -309,7 +307,8 @@ std::filesystem::path createDeckFilename(std::filesystem::path deck_dir)
 {
     if (!fs::is_directory(deck_dir))
     {
-        // TODO throw exception - path not a directory
+        std::cerr << "path to deck directory is not a directory" << std::endl;
+        throw 0;
     }
     std::string input{};
     std::cerr

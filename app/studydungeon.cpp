@@ -6,6 +6,7 @@
 #include "game_scene.h"
 #include "gameloop.h"
 #include "howto_scene.h"
+#include "mainmenu_scene.h"
 #include "menu.h"
 #include "settings_scene.h"
 #include "util.h"
@@ -18,183 +19,6 @@
 #include <vector>
 #include <windows.h>
 
-
-class MainMenuScene : public ConsoleUI::Scene
-{
-public:
-    void Scene::setStaticDrawn(bool staticDrawn) override
-    {
-        m_staticDrawn = staticDrawn;
-    }
-
-    MainMenuScene(ConsoleUI::UIManager &uiManager,
-                  std::function<void()> openSettingsScene,
-                  std::function<void()> openHowToScene,
-                  std::function<void()> openBrowseDecks,
-                  std::function<void()> openEditDecks)
-        : m_uiManager(uiManager), m_needsRedraw(true)
-    {
-        createMainMenu(openSettingsScene, openHowToScene, openBrowseDecks, openEditDecks);
-
-        // Create ASCII art and add it to the console window
-        std::string asciiArtString = R"(
-(`-').->(`-')                _(`-')                   _(`-')              <-. (`-')_            (`-')  _           <-. (`-')_
-( OO)_  ( OO).->       .->  ( (OO ).->     .->       ( (OO ).->     .->      \( OO) )    .->    ( OO).-/     .->      \( OO) )
-(_)--\_) /    '._  ,--.(,--.  \    .'_  ,--.'  ,-.     \    .'_ ,--.(,--.  ,--./ ,--/  ,---(`-')(,------.(`-')----. ,--./ ,--/
-/    _ / |'--...__)|  | |(`-')'`'-..__)(`-')'.'  /     '`'-..__)|  | |(`-')|   \ |  | '  .-(OO ) |  .---'( OO).-.  '|   \ |  |
-\_..`--. `--.  .--'|  | |(OO )|  |  ' |(OO \    /      |  |  ' ||  | |(OO )|  . '|  |)|  | .-, \(|  '--. ( _) | |  ||  . '|  |)
-.-._)   \   |  |   |  | | |  \|  |  / : |  /   /)      |  |  / :|  | | |  \|  |\    | |  | '.(_/ |  .--'  \|  |)|  ||  |\    |
-\       /   |  |   \  '-'(_ .'|  '-'  / `-/   /`       |  '-'  /\  '-'(_ .'|  | \   | |  '-'  |  |  `---.  '  '-'  '|  | \   |
-`-----'    `--'    `-----'   `------'    `--'         `------'  `-----'   `--'  `--'  `-----'   `------'   `-----' `--'  `--'
-)";
-        std::string asciiArtString2 = R"(
-                                     /|
-                                    |\|
-                                    |||
-                                    |||
-                                    |||
-                                    |||
-                                    |||
-                                    |||
-                                 ~-[{o}]-~
-                                    |/|
-             ___                    |/|
-            ///~`     |\\_          `0'         =\\\\         . .
-           ,  |='  ,))\_| ~-_                    _)  \      _/_/|
-          / ,' ,;((((((    ~ \                  `~~~\-~-_ /~ (_/\
-        /' -~/~)))))))'\_   _/'                      \_  /'  D   |
-       (       (((((( ~-/ ~-/                          ~-;  /    \--_
-        ~~--|   ))''    ')  `                            `~~\_    \  )
-            :        (_  ~\           ,                    /~~-      /
-             \        \_   )--__  /(_/)                   |    )    )|
-     _       |_     \__/~-__    ~~   ,'      /,_;,   __--(   _/      |
-    ~\`\    /' ~~~----|     ~~~~~~~~'        \-  ((~~    __-~        |
-    ()  `\`\_(_     _-~~-\                      ``~~ ~~~~~~   \_     /
-          ----'   /      \                                   )      )
-           ;`~--'        :                                _-    ,;;(
-           |    `\       |                             _-~    ,;;;;)
-           |    /'`\     ;                          _-~          _/
-          /~   /    |    )                         /;;;''  ,;;:-~
-         |    /     / | /                         |;;'   ,''
-         /   /     |  \\|                         |   ,;(
-       _/  /'       \  \_)                   .---__\_    \,--.______
-      ( )|'         (~-_|                   (;;'  ;;;~~~/' `;;|  `;;\
-       ) `\_         |-_;;--__               ~~~----__/'    /'______/
-       `----'       (   `~--_ ~~~;;------------~~~~~ ;;;'_/'
-                    `~~~~~~~~'~~~-----....___;;;____---~~
-    )";
-
-        ConsoleUI::ANSIArt title = ConsoleUI::ANSIArt(readInANSICodes("STUDY_DUNGEON.txt"), "title", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(title);
-
-        ConsoleUI::ANSIArt card = ConsoleUI::ANSIArt(readInANSICodes("CARD.txt"), "card", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(card);
-
-        ConsoleUI::ANSIArt cardSelected =
-            ConsoleUI::ANSIArt(readInANSICodes("CARD_SELECTED.txt"), "cardSelected", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(cardSelected);
-
-        ConsoleUI::ANSIArt heart = ConsoleUI::ANSIArt(readInANSICodes("HEART.txt"), "heart", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(heart);
-
-        ConsoleUI::ANSIArt heartEmpty = ConsoleUI::ANSIArt(readInANSICodes("HEART_EMPTY.txt"), "heartEmpty", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(heartEmpty);
-
-        ConsoleUI::ANSIArt frog = ConsoleUI::ANSIArt(readInANSICodes("SLIME.txt"), "frog", 0, 0);
-        m_uiManager.getWindow()->addANSIArt(frog);
-
-        std::vector<std::string> artLines = convertAsciiArtToLines(asciiArtString);
-        std::vector<std::string> artLines2 = convertAsciiArtToLines(asciiArtString2);
-        ConsoleUI::AsciiArt asciiArt("main_menu", artLines, 0, 0);
-        ConsoleUI::AsciiArt asciiArt2("other_menu", artLines2, 0, 0);
-        m_uiManager.getWindow()->addAsciiArt(asciiArt);
-        m_uiManager.getWindow()->addAsciiArt(asciiArt2);
-    }
-
-    void createMainMenu(std::function<void()> openSettingsScene,
-                        std::function<void()> openHowToScene,
-                        std::function<void()> openBrowseDecks,
-                        std::function<void()> openEditDecks)
-
-    {
-        m_uiManager.clearMenu("main");
-        auto &menu = m_uiManager.createMenu("main", false);
-        menu.addButton("   Begin Study   ", openBrowseDecks);
-        menu.addButton("   Edit Decks    ", openEditDecks);
-        menu.addButton("   How To Play   ", openHowToScene);
-        menu.addButton("    Settings     ", openSettingsScene);
-        menu.addButton("      Exit       ", []() {
-            clearScreen();
-            exit(0);
-        });
-    }
-
-    void init() override
-    {
-    }
-
-    void update() override
-    {
-    }
-
-    void render(std::shared_ptr<ConsoleUI::ConsoleWindow> window) override
-    {
-        if (!m_staticDrawn)
-        {
-            window->clear();
-            window->drawBorder();
-
-            // Draw the ASCII art
-            int otherMenuArtX =
-                ((window->getSize().X - static_cast<int>(window->getAsciiArtByName("other_menu")->getWidth())) / 2) - 3;
-            int otherMenuArtY =
-                window->getSize().Y - static_cast<int>(window->getAsciiArtByName("other_menu")->getHeight());
-            int mainMenuArtX =
-                (window->getSize().X - static_cast<int>(window->getANSIArtByName("title")->getWidth())) / 8;
-            int mainMenuArtY = 10;
-
-            window->drawAsciiArt("other_menu", otherMenuArtX, otherMenuArtY);
-            //window->drawAsciiArt("main_menu", mainMenuArtX, mainMenuArtY);
-            window->drawANSIArt("title", mainMenuArtX, mainMenuArtY - 10);
-
-            m_staticDrawn = true;
-        }
-
-        if (!m_needsRedraw)
-        {
-            return;
-        }
-
-        // Clear only the menu area
-        auto &menu = m_uiManager.getMenu("main");
-        int menuX = (window->getSize().X - static_cast<int>(menu.getMaxWidth())) / 2;
-        int menuY = 20;
-        size_t menuWidth = menu.getMaxWidth() - 1;
-        size_t menuHeight = menu.getButtonCount();
-
-        // Draw a filled box to clear the menu area
-        for (int i = menuY - 1; i < menuY + static_cast<int>(menuHeight) + 1; ++i)
-        {
-            window->drawText(std::string(menuWidth + 2, ' '), menuX - 1, i);
-        }
-
-        // Draw the menu
-        menu.draw(menuX, menuY);
-
-        m_needsRedraw = false;
-    }
-
-    void handleInput() override
-    {
-        m_uiManager.getMenu("main").handleInput();
-        m_needsRedraw = true;
-    }
-
-private:
-    ConsoleUI::UIManager &m_uiManager;
-    bool m_needsRedraw;
-    bool m_staticDrawn = false;
-};
 
 int main()
 {
@@ -222,9 +46,11 @@ int main()
         resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
             uiManager,
             std::vector<int>{0, 0, 0}, // Initial difficulty count
+            0,
             [&]() { uiManager.setCurrentScene(mainMenuScene); },
             [&]() { uiManager.setCurrentScene(browseDecksScene); },
-            [&]() { uiManager.setCurrentScene(gameScene); });
+            [&]() { uiManager.setCurrentScene(gameScene); },
+            false); // Pass false for the initial ResultsScene
 
         // Create BrowseDecksScene
         auto createBrowseDecksScene = [&]() {
@@ -237,13 +63,15 @@ int main()
                         deck,
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
                         [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                        [&](const std::vector<int> &difficultyCount) {
+                        [&](const std::vector<int> &difficultyCount, int score, bool sessionComplete) {
                             resultsScene = std::make_shared<FlashcardApp::ResultsScene>(
                                 uiManager,
                                 difficultyCount,
+                                score,
                                 [&]() { uiManager.setCurrentScene(mainMenuScene); },
                                 [&]() { uiManager.setCurrentScene(browseDecksScene); },
-                                [&]() { uiManager.setCurrentScene(gameScene); });
+                                [&]() { uiManager.setCurrentScene(gameScene); },
+                                sessionComplete); // Pass the sessionCompleted value
                             uiManager.setCurrentScene(resultsScene);
                         },
                         studySettings);
@@ -315,7 +143,7 @@ int main()
                 // if (_kbhit())
                 // {
                 //     int ch = _getch();
-                //     if (ch == _key_esc)
+                //     if (ch == key::key_esc)
                 //     { // ESC key
                 //         running = false;
                 //     }

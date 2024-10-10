@@ -1,8 +1,8 @@
 /**
  * @file util.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Utilities and helpers for the program
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -42,7 +42,7 @@ std::filesystem::path getAppPath()
     if (GetModuleFileNameA(NULL, exePath, MAX_PATH) == 0)
     {
         std::cerr << "Failed to get exe path" << std::endl;
-        // TODO deal with error
+        throw 0;
     }
 
     // Convert the path to the exe to a filesystem path object
@@ -150,7 +150,7 @@ bool yesNoPrompt()
 }
 
 
-bool isValidDeckFileName(std::string name)
+bool isValidDeckFileName(const std::string &name)
 {
     int max_length{20};
     if (name == "")
@@ -211,30 +211,6 @@ std::vector<std::vector<int>> readInANSICodes(std::string filename)
     return codes;
 }
 
-std::string convertFileToANSI(std::string filename)
-{
-    fs::path path = getAppPath().append("artwork").append(filename);
-    std::cout << path << std::endl;
-    std::ifstream inputBuffer{path};
-    std::string inputLine{};
-    std::string img = "";
-
-    while (std::getline(inputBuffer, inputLine))
-    {
-        std::string curr;
-        std::vector<std::string> row;
-        std::stringstream ss;
-        ss << inputLine;
-
-        while (ss >> curr)
-        {
-            img += _ESC + "[48;5;" + curr + "m  " + _ESC + "[0m";
-        }
-        img += "\n";
-    }
-    return img;
-}
-
 std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
 {
     std::vector<std::string> lines;
@@ -249,7 +225,7 @@ std::vector<std::string> convertAsciiArtToLines(const std::string &asciiArt)
     return lines;
 }
 
-std::string getFirstPhrase(std::vector<std::pair<std::string, int>> phrases)
+std::string getFirstPhrase(const std::vector<std::pair<std::string, int>> &phrases)
 {
     std::random_device rd;
     std::mt19937 gen(rd());

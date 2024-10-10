@@ -2,11 +2,10 @@
  * @file deck.h
  * @author Green Alligators
  * @brief Functions and classes relating to flashcards.
- *
  * @details These functions are involved with the parsing of files to create flashcards which
  * are then converted into a deck. Cards are also parsed to text and written to file to save them.
  *
- * @version 0.2
+ * @version 1.0.0
  * @date 2024-08-07
  *
  * @copyright Copyright (c) 2024
@@ -112,8 +111,6 @@ public:
  */
 class FlashCardDeck
 {
-    // TODO: add constructor
-    // TODO add destructor
 public:
     /** The name of the flashcard deck */
     std::string name{};

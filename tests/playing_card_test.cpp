@@ -21,12 +21,80 @@ TEST_CASE("Retrieve members")
 TEST_CASE("Equality is correct")
 {
     PlayingCard card1 = PlayingCard((enum Type)0, 15);
-    PlayingCard cardRef = card1;
-    PlayingCard *cardPtr = &card1;
 
-    PlayingCard card2 = PlayingCard((enum Type)0, 15);
+    SECTION("Cards are equal")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)0, 15);
 
-    REQUIRE(card1 == cardRef);
-    REQUIRE(card1 == *cardPtr);
-    REQUIRE(card1 == card2);
+        REQUIRE(card1 == card2);
+    }
+
+    SECTION("Cards are different types")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)1, 15);
+
+        REQUIRE(card1 != card2);
+    }
+
+    SECTION("Cards have different values")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)0, 20);
+
+        REQUIRE(card1 != card2);
+    }
+
+    SECTION("Cards have different types and values")
+    {
+        PlayingCard card2 = PlayingCard((enum Type)1, 20);
+
+        REQUIRE(card1 != card2);
+    }
+}
+
+TEST_CASE("PlayingCard to string")
+{
+    SECTION("Damage card")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)0, 15);
+        REQUIRE(testCard.toString() == "Deal 15 damage.");
+    }
+
+    SECTION("Heal card")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)1, 15);
+        REQUIRE(testCard.toString() == "Heal 15 hit points.");
+    }
+
+    SECTION("Swap hand card")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)2, 0);
+        REQUIRE(testCard.toString() == "Swap hands with the enemy player.");
+    }
+
+    SECTION("Enum type -1")
+    {
+        PlayingCard testCard = PlayingCard((enum Type) - 1, 15);
+        REQUIRE(testCard.toString() == "Unknown ability");
+    }
+
+    SECTION("Enum type 100")
+    {
+        PlayingCard testCard = PlayingCard((enum Type)100, 15);
+        REQUIRE(testCard.toString() == "Unknown ability");
+    }
+}
+
+TEST_CASE("Playing card default constructor")
+{
+    PlayingCard testCard{};
+
+    SECTION("Correct card type")
+    {
+        REQUIRE(testCard.getType() == (enum Type)0);
+    }
+
+    SECTION("Correct card value")
+    {
+        REQUIRE(testCard.getValue() == 0);
+    }
 }

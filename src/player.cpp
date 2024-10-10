@@ -1,8 +1,8 @@
 /**
  * @file player.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Definitiona for the player class that is used in the card duel game
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -12,6 +12,10 @@
 
 Player::Player()
 {
+    Player::hitPoints = 100;
+    Player::maxHitPoints = 100;
+    Player::handSize = 5;
+    Player::deck = std::vector<PlayingCard>{};
 }
 
 Player::Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck)

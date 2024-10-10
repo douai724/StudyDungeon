@@ -1,8 +1,8 @@
 /**
  * @file gameloop.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief Defines the gameplay and game loop of the card duel game
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -16,29 +16,33 @@ Game::Game(Player p1, Player p2) : p1(p1), p2(p2), turn(1)
 
 Game::Game()
 {
+    Game::p1 = Player(100, 100, 5, std::vector<PlayingCard>());
+    Game::p2 = Player(100, 100, 5, std::vector<PlayingCard>());
+    Game::turn = 1;
 }
 
-void Game::nextTurn(PlayingCard nextCard)
+void Game::nextTurn(PlayingCard &nextCard)
 {
 
-    // draw a card
-    if (turn == 1)
-    {
-        p1.drawCard();
-    }
-    else
-    {
-        p2.drawCard();
-    }
+    // have current player draw card
+    drawCard();
 
-    // apply effect
-    switch ((int)nextCard.getType())
+    // play the card effect
+    playEffect(nextCard);
+
+    // swap turns
+    switchTurn();
+}
+
+void Game::playEffect(PlayingCard &card)
+{
+    switch ((int)card.getType())
     {
     case 0:
-        damageEffect(nextCard);
+        damageEffect(card);
         break;
     case 1:
-        healEffect(nextCard);
+        healEffect(card);
         break;
     case 2:
         swapHandEffect();
@@ -46,15 +50,37 @@ void Game::nextTurn(PlayingCard nextCard)
     default:
         throw -1;
     }
+}
 
-    // switch turns
+void Game::drawCard()
+{
+    if (turn == 1)
+    {
+        p1.drawCard();
+    }
+    else if (turn == 2)
+    {
+        p2.drawCard();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void Game::switchTurn()
+{
     if (Game::turn == 1)
     {
         Game::turn = 2;
     }
-    else
+    else if (Game::turn == 2)
     {
         Game::turn = 1;
+    }
+    else
+    {
+        return;
     }
 }
 
@@ -80,44 +106,6 @@ short Game::getWinner()
     else
     {
         return 1;
-    }
-}
-
-bool Game::isWinner()
-{
-    if (turn == 1)
-    {
-        if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
-        {
-            return false;
-        }
-        else if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    if (turn == 2)
-    {
-        if (p2.getHitPoints() <= 0 || p2.getDeck().size() == 0)
-        {
-            return false;
-        }
-        else if (p1.getHitPoints() <= 0 || p1.getDeck().size() == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else
-    {
-        return false; /* its saying not all paths return a value*/
     }
 }
 

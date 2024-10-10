@@ -1,8 +1,8 @@
 /**
  * @file playing_card.cpp
  * @author Green Alligators
- * @brief
- * @version 0.2
+ * @brief This file defines the classes and methods used for a Playing Card
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -18,6 +18,8 @@ PlayingCard::PlayingCard(enum Type cardType, int value)
 
 PlayingCard::PlayingCard()
 {
+    PlayingCard::cardType = (enum Type)0;
+    PlayingCard::value = 0;
 }
 
 bool PlayingCard::operator==(PlayingCard &other)
@@ -45,9 +47,9 @@ std::string PlayingCard::toString()
     switch (PlayingCard::cardType)
     {
     case 0:
-        return _ESC + "[40;31m" + "Deal " + std::to_string(PlayingCard::value) + " damage." + _ESC + "[0m";
+        return "Deal " + std::to_string(PlayingCard::value) + " damage.";
     case 1:
-        return _ESC + "[40;32m" + "Heal " + std::to_string(PlayingCard::value) + " hit points." + _ESC + "[0m";
+        return "Heal " + std::to_string(PlayingCard::value) + " hit points.";
     case 2:
         return "Swap hands with the enemy player.";
     default:

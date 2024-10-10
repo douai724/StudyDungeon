@@ -1,6 +1,6 @@
 # CMakeLists files/configuration based on https://github.com/franneck94/UdemyCmake/
 cmake_minimum_required(VERSION 3.5.0)
-project(StudyDungeon VERSION 0.1.0 LANGUAGES C CXX)
+project(StudyDungeon VERSION 1.0.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -55,7 +55,7 @@ add_subdirectory(configured)
 add_subdirectory(src)
 add_subdirectory(app)
 
-# TODO Create a post-build command that will copy the Deck directory to where the exe is
+# Create a post-build command that will copy the Deck directory to where the exe is
 set(DECK_TEMPLATE_DIR ${CMAKE_SOURCE_DIR}/Decks)
 set(DECK_DEST EXECUTABLE_OUTPUT_PATH)
 

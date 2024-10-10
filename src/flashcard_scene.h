@@ -1,8 +1,8 @@
 /**
  * @file flashcard_scene.h
- * @author Green ALligators
- * @brief
- * @version 0.2
+ * @author Green Alligators
+ * @brief Classes and functions used in the study session UI scene for reviewing flashcards
+ * @version 1.0.0
  * @date 2024-09-19
  *
  * @copyright Copyright (c) 2024
@@ -11,14 +11,20 @@
 
 #pragma once
 
+#include "artwork.h"
 #include "deck.h"
+#include "edit_flashcard.h"
 #include "menu.h"
 #include "settings_scene.h"
 #include "util.h"
+#include <algorithm>
 #include <chrono>
+#include <conio.h>
 #include <functional>
 #include <memory>
+#include <numeric>
 #include <random>
+#include <sstream>
 #include <vector>
 
 namespace FlashcardApp
@@ -87,6 +93,10 @@ public:
      */
     void loadDecks();
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
     void setDecksNeedReload(bool needReload)
@@ -94,14 +104,18 @@ public:
         m_decksNeedReload = needReload;
     }
 
+    void drawBookshelf(std::shared_ptr<ConsoleUI::ConsoleWindow> window);
+
+    std::vector<FlashCardDeck> m_decks; ///< Vector of loaded flashcard decks.
+    size_t m_selectedDeckIndex = 0;     ///< Index of the currently selected deck.
+    int m_currentPage = 0;              ///< Current page number when viewing deck contents.
+
+
 private:
     ConsoleUI::UIManager &m_uiManager;                     ///< Reference to the UI manager.
-    std::vector<FlashCardDeck> m_decks;                    ///< Vector of loaded flashcard decks.
-    size_t m_selectedDeckIndex = 0;                        ///< Index of the currently selected deck.
     std::function<void()> m_goBack;                        ///< Function to call when going back.
     std::function<void(const FlashCardDeck &)> m_openDeck; ///< Function to call when opening a deck.
     bool m_needsRedraw = true;                             ///< Flag indicating if the scene needs to be redrawn.
-    int m_currentPage = 0;                                 ///< Current page number when viewing deck contents.
     int m_maxCardsPerPage = 0;                             ///< Maximum number of cards that can be displayed per page.
 
     bool m_staticDrawn = false;
@@ -109,6 +123,10 @@ private:
     std::chrono::steady_clock::time_point m_lastPageChangeTime;
     const std::chrono::milliseconds m_pageChangeDelay{200};
     StudySettings m_settings;
+
+    bool m_paging = false;
+    int m_prevBookshelfIndex = -1;
+    int bookshelfIndex = 0;
 };
 
 /**
@@ -134,7 +152,7 @@ public:
                    const FlashCardDeck &deck,
                    std::function<void()> goBack,
                    std::function<void()> goToDeckSelection,
-                   std::function<void(const std::vector<int> &)> showResults,
+                   std::function<void(const std::vector<int> &, int, bool)> showResults,
                    StudySettings &studySettings);
     /**
      * @brief Initialize the scene.
@@ -168,12 +186,30 @@ public:
      */
     void handleInput() override;
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
     void setDecksNeedReload(bool needReload)
     {
         m_decksNeedReload = needReload;
     }
+    void updateCardDifficulty(size_t cardIndex, CardDifficulty difficulty);
+    void initializeCardOrder();
+
+    /**
+     * @brief Move to the next flashcard in the deck.
+     */
+    void nextCard();
+
+
+    std::vector<size_t> m_cardOrder; ///< Randomized order of flashcards for the session.
+    FlashCardDeck m_deck;            ///< The flashcard deck being studied.
+    size_t m_currentCardIndex = 0;   ///< Index of the current flashcard being shown.
+    bool m_showAnswer = false;       ///< Flag indicating whether the answer is currently visible.
+    bool m_lastAnswerDisplayed;
 
 
 private:
@@ -184,9 +220,8 @@ private:
      */
     void selectDifficulty(CardDifficulty difficulty);
 
-    void updateCardDifficulty(size_t cardIndex, CardDifficulty difficulty);
+
     void saveUpdatedDeck();
-    void initializeCardOrder();
     // int flashcard_limit = 10;
     bool empty = false;
     StudySettings m_settings;
@@ -195,31 +230,22 @@ private:
 
 
     /**
-     * @brief Move to the next flashcard in the deck.
-     */
-    void nextCard();
-
-    /**
      * @brief End the current study session and show results.
      */
-    void endSession();
+    void endSession(bool sessionComplete);
 
     ConsoleUI::UIManager &m_uiManager;              ///< Reference to the UI manager.
-    FlashCardDeck m_deck;                           ///< The flashcard deck being studied.
-    std::vector<size_t> m_cardOrder;                ///< Randomized order of flashcards for the session.
-    size_t m_currentCardIndex = 0;                  ///< Index of the current flashcard being shown.
-    bool m_showAnswer = false;                      ///< Flag indicating whether the answer is currently visible.
     std::vector<int> m_difficultyCount = {0, 0, 0}; ///< Count of cards rated as Easy, Medium, Hard.
     std::function<void()> m_goBack;                 ///< Function to call when going back.
-    std::function<void(const std::vector<int> &)> m_showResults; ///< Function to call when showing results.
-    bool m_needsRedraw;                                          ///< Flag indicating if the scene needs to be redrawn.
+    std::function<void(const std::vector<int> &, int, bool)> m_showResults; ///< Function to call when showing results.
+    bool m_needsRedraw; ///< Flag indicating if the scene needs to be redrawn.
 
-    bool m_staticDrawn = false;
-    StudySettings m_studySetting;
+    bool m_staticDrawn = false;   ///< Flag indicating if the static elements have been drawn.
+    StudySettings m_studySetting; ///< study session settings
 
-    std::string m_lastQuestionDisplayed;
-    bool m_lastAnswerDisplayed;
-    bool m_answerDrawn;
+    std::string m_lastQuestionDisplayed; ///< The last question displayed
+    bool m_answerDrawn;                  ///< has the answer been drawn
+    int m_score;                         ///< score of the flashcards
 };
 
 /**
@@ -245,9 +271,11 @@ public:
      */
     ResultsScene(ConsoleUI::UIManager &uiManager,
                  const std::vector<int> &difficultyCount,
+                 int score,
                  std::function<void()> goToMainMenu,
                  std::function<void()> goToDeckSelection,
-                 std::function<void()> goToGame);
+                 std::function<void()> goToGame,
+                 bool sessionComplete);
     void init() override;
 
     /**
@@ -273,6 +301,10 @@ public:
      */
     void handleInput() override;
 
+    /**
+     * @brief Sets the static drawn state of the scene.
+     * @param staticDrawn Boolean indicating whether the static elements have been drawn.
+     */
     void setStaticDrawn(bool staticDrawn) override;
 
 private:
@@ -284,7 +316,9 @@ private:
     bool m_needsRedraw;                        ///< Flag indicating if the scene needs to be redrawn.
     std::string phrase;
 
-    bool m_staticDrawn = false;
+    bool m_staticDrawn = false; ///< Flag indicating if the static elements have been drawn.
+    bool m_sessionComplete;     ///< Has the study session completed
+    int m_score;                ///< Score based on difficulty of cards
 };
 
 } // namespace FlashcardApp

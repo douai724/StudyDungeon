@@ -107,6 +107,33 @@ TEST_CASE("Player hand is updated and retrieved")
         REQUIRE_THROWS(testPlayer.getCard(3));
     }
 }
+
+TEST_CASE("Player deck is updated and retrieved")
+{
+    // set up cards
+    PlayingCard card1 = PlayingCard((enum Type)0, 5);
+    PlayingCard card2 = PlayingCard((enum Type)0, 10);
+
+    // set up deck
+    std::vector<PlayingCard> testDeck;
+    testDeck.push_back(card1);
+    testDeck.push_back(card2);
+
+    // set up player with empty deck
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
+
+    REQUIRE(testPlayer.getDeck().size() == 0);
+
+    SECTION("Update and retrieve deck")
+    {
+        testPlayer.setDeck(testDeck);
+
+        REQUIRE(testPlayer.getDeck()[0] == card1);
+        REQUIRE(testPlayer.getDeck()[1] == card2);
+        REQUIRE(testPlayer.getDeck().size() == (int)2);
+    }
+}
+
 TEST_CASE("Effects are applied")
 {
     Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
@@ -168,4 +195,39 @@ TEST_CASE("Effects are applied")
 
         REQUIRE(testPlayer.getHitPoints() == 100);
     }
+}
+
+TEST_CASE("Player default constructor")
+{
+    Player testPlayer{};
+    SECTION("members are correctly initialized to defaults")
+    {
+        REQUIRE(testPlayer.getMaxHitPoints() == 100);
+        REQUIRE(testPlayer.getHitPoints() == 100);
+        REQUIRE(testPlayer.getHandSize() == 5);
+        REQUIRE(testPlayer.getDeck().size() == 0);
+    }
+}
+
+TEST_CASE("Player hand size is updated and retrieved")
+{
+    Player testPlayer = Player(100, 100, 1, std::vector<PlayingCard>());
+
+    SECTION("Retrieve hand size")
+    {
+        REQUIRE(testPlayer.getHandSize() == 1);
+    }
+
+    SECTION("Update hand size")
+    {
+        testPlayer.setHandSize(2);
+        REQUIRE(testPlayer.getHandSize() == 2);
+    }
+}
+
+TEST_CASE("Player to string")
+{
+    Player testPlayer = Player(100, 100, 5, std::vector<PlayingCard>());
+
+    REQUIRE(testPlayer.toString() == "100/100// 0");
 }

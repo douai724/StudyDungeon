@@ -2,7 +2,7 @@
  * @file util.h
  * @author Green Alligators
  * @brief Contains useful helper functions
- * @version 0.1
+ * @version 1.0.0
  * @date 2024-08-08
  *
  * @copyright Copyright (c) 2024
@@ -26,33 +26,35 @@
 /** used to toggle between simulated input (true) and user input (false) */
 extern bool isTestMode;
 
+namespace key
+{
 // Defines the character code recieved by getch on key press
 /** key code for enter */
-const int _key_enter{13};
+const int key_enter{13};
 /** key code for backspace */
-const int _key_backspace{8};
+const int key_backspace{8};
 /** key code for escape */
-const int _key_esc{27};
+const int key_esc{27};
 /** key code for space */
-const int _key_space{32};
+const int key_space{32};
 /** key code for if an arrow has been pressed */
-const int _arrow_prefix{224};
+const int arrow_prefix{224};
 /** key code for if an arrow is pressed but numlock is on */
-const int _numlock{0};
+const int numlock{0};
 /** key code for up arrow */
-const int _key_up{72};
+const int key_up{72};
 /** key code for down arrow */
-const int _key_down{80};
+const int key_down{80};
 /** key code for down arrow */
-const int _key_left{75};
+const int key_left{75};
 /** key code for right arrow */
-const int _key_right{77};
+const int key_right{77};
 
 
 /** escape sequence for virtual terminal sequences */
-const std::string _ESC{"\x1b"};
-// const std::string _ESC {"\033"}; // ansi escape code
-
+const std::string ESC{"\x1b"};
+// const std::string ESC {"\033"}; // ansi escape code
+} // namespace key
 /**
  * @brief enables the virtual terminal processing mode
  * @details sets the ENABLE_VIRTUAL_TERMINAL_PROCESSING flag so that virtual terminal sequences
@@ -114,7 +116,7 @@ bool yesNoPrompt();
  * @return true
  * @return false
  */
-bool isValidDeckFileName(std::string name);
+bool isValidDeckFileName(const std::string &name);
 
 
 /**
@@ -122,14 +124,6 @@ bool isValidDeckFileName(std::string name);
  *
  */
 void ShowConsoleCursor(bool showflag);
-
-/**
- * @brief Reads in a file of 256bit colour values and wraps the ANSI escape sequences around each
- *
- * @param filename
- * @return std::string A string with the ANSI escape sequences embedded
- */
-std::string convertFileToANSI(std::string filename);
 
 std::vector<std::vector<int>> readInANSICodes(std::string filename);
 

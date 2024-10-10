@@ -2,7 +2,7 @@
  * @file player.h
  * @author Green Alligators
  * @brief This file defines the classes and methods for a Player
- * @version 0.2
+ * @version 1.0.0
  * @date 2024-08-27
  *
  * @copyright Copyright (c) 2024
@@ -27,10 +27,15 @@
 class Player
 {
 private:
+    /** current health of the player */
     int hitPoints;
+    /** maximum health of the player */
     int maxHitPoints;
+    /** number of cards the player will have in hand */
     size_t handSize;
+    /** players' deck of cards */
     std::vector<PlayingCard> deck;
+    /** cards in the players' hand */
     std::vector<PlayingCard> hand;
 
 public:
@@ -114,8 +119,18 @@ public:
      */
     void setHandSize(size_t handSize);
 
+    /**
+     * @brief Get the Deck of the player
+     *
+     * @return std::vector<PlayingCard>
+     */
     std::vector<PlayingCard> getDeck();
 
+    /**
+     * @brief Set the Deck of the player
+     *
+     * @param deck The deck of cards for the player
+     */
     void setDeck(std::vector<PlayingCard> deck);
 
     /**

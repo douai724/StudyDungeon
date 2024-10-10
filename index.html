@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -84,7 +84,24 @@ $(function() {
 </ul>
 </li>
 </ol>
-<p>Creating Decks: </p>
+<p>Creating Decks:</p>
+<ol type="1">
+<li>Go into the <code>Decks/</code> directory</li>
+<li>Select <code>Add file</code> -&gt; <code>Create new file</code></li>
+<li>Name the file ensuring it has a suffix of <code>.deck</code></li>
+<li>First line of the file is the deck name visible in the program</li>
+<li>add cards using the following template:</li>
+</ol>
+<div class="fragment"><div class="line">Q: &lt;question&gt;</div>
+<div class="line">A: &lt;answer&gt;</div>
+<div class="line">D: UNKNOWN</div>
+<div class="line">N: 0</div>
+<div class="line">-</div>
+</div><!-- fragment --><p>Replace <code>&lt;question&gt;</code> with your question text and <code>&lt;answer&gt;</code> with your answer text. The line with only <code>-</code> denotes the end of each card.</p>
+<ul>
+<li><code>D:</code> is the card difficulty, options are <code>UNKNOWN</code>, <code>EASY</code>, <code>MEDIUM</code>, and <code>HARD</code></li>
+<li><code>N:</code> is the number of times the card has been answered </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

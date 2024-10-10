@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Study Dungeon
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">A group project for COSC345</div>
   </td>
@@ -71,70 +71,67 @@ $(function() {
 <div class="title">mainmenu_scene.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef MENUSCENE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define MENUSCENE_H</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="artwork_8h.html">artwork.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="menu_8h.html">menu.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;conio.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classMainMenuScene.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMainMenuScene.html">MainMenuScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#a7a1bbfff42714760e1b482b50d10b509">setStaticDrawn</a>(<span class="keywordtype">bool</span> staticDrawn) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classMainMenuScene.html">MainMenuScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openSettingsScene,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openHowToScene,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openBrowseDecks,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openEditDecks);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> createMainMenu(std::function&lt;<span class="keywordtype">void</span>()&gt; openSettingsScene,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        std::function&lt;<span class="keywordtype">void</span>()&gt; openHowToScene,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        std::function&lt;<span class="keywordtype">void</span>()&gt; openBrowseDecks,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        std::function&lt;<span class="keywordtype">void</span>()&gt; openEditDecks);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#a4f4394ad74f8c3bced02cc7b37bc6775">init</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#a8d767eeae7d00a48f781c2704f37b53d">update</a>() <span class="keyword">override</span>;</div>
+<a href="mainmenu__scene_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef MENUSCENE_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define MENUSCENE_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="artwork_8h.html">artwork.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="menu_8h.html">menu.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;conio.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classMainMenuScene.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMainMenuScene.html">MainMenuScene</a> : <span class="keyword">public</span> <a class="code" href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#a7a1bbfff42714760e1b482b50d10b509">setStaticDrawn</a>(<span class="keywordtype">bool</span> staticDrawn) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#abba3fc2621d161e6b197b60bd8ea22ec">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#aff6baae5fad03cf96ba120f41c26c33e">handleInput</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span> m_staticDrawn = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classMainMenuScene.html#a6b6ab5184beef74da3c72f3e04e18916">MainMenuScene</a>(<a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;uiManager,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openSettingsScene,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openHowToScene,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openBrowseDecks,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                  std::function&lt;<span class="keywordtype">void</span>()&gt; openEditDecks);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#ab2c4be9e4d3d8a43d2697f3acbffa9a3">createMainMenu</a>(std::function&lt;<span class="keywordtype">void</span>()&gt; openSettingsScene,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        std::function&lt;<span class="keywordtype">void</span>()&gt; openHowToScene,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        std::function&lt;<span class="keywordtype">void</span>()&gt; openBrowseDecks,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        std::function&lt;<span class="keywordtype">void</span>()&gt; openEditDecks);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#a4f4394ad74f8c3bced02cc7b37bc6775">init</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#a8d767eeae7d00a48f781c2704f37b53d">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#abba3fc2621d161e6b197b60bd8ea22ec">render</a>(std::shared_ptr&lt;ConsoleUI::ConsoleWindow&gt; window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainMenuScene.html#aff6baae5fad03cf96ba120f41c26c33e">handleInput</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a> &amp;m_uiManager; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span> m_needsRedraw;                </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">bool</span> m_staticDrawn = <span class="keyword">false</span>;        </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aartwork_8h_html"><div class="ttname"><a href="artwork_8h.html">artwork.h</a></div><div class="ttdoc">Defines variables containg ASCII artwork.</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1Scene_html"><div class="ttname"><a href="classConsoleUI_1_1Scene.html">ConsoleUI::Scene</a></div><div class="ttdoc">Defines a UI scene.</div><div class="ttdef"><b>Definition:</b> menu.h:629</div></div>
 <div class="ttc" id="aclassConsoleUI_1_1UIManager_html"><div class="ttname"><a href="classConsoleUI_1_1UIManager.html">ConsoleUI::UIManager</a></div><div class="ttdoc">Defines the UI manager.</div><div class="ttdef"><b>Definition:</b> menu.h:676</div></div>
-<div class="ttc" id="aclassMainMenuScene_html"><div class="ttname"><a href="classMainMenuScene.html">MainMenuScene</a></div><div class="ttdef"><b>Definition:</b> mainmenu_scene.h:21</div></div>
-<div class="ttc" id="aclassMainMenuScene_html_a4f4394ad74f8c3bced02cc7b37bc6775"><div class="ttname"><a href="classMainMenuScene.html#a4f4394ad74f8c3bced02cc7b37bc6775">MainMenuScene::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">Initialise the scene.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:112</div></div>
-<div class="ttc" id="aclassMainMenuScene_html_a7a1bbfff42714760e1b482b50d10b509"><div class="ttname"><a href="classMainMenuScene.html#a7a1bbfff42714760e1b482b50d10b509">MainMenuScene::setStaticDrawn</a></div><div class="ttdeci">void setStaticDrawn(bool staticDrawn) override</div><div class="ttdoc">//TODO</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:4</div></div>
-<div class="ttc" id="aclassMainMenuScene_html_a8d767eeae7d00a48f781c2704f37b53d"><div class="ttname"><a href="classMainMenuScene.html#a8d767eeae7d00a48f781c2704f37b53d">MainMenuScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">What to perfrom on scene update.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:116</div></div>
-<div class="ttc" id="aclassMainMenuScene_html_abba3fc2621d161e6b197b60bd8ea22ec"><div class="ttname"><a href="classMainMenuScene.html#abba3fc2621d161e6b197b60bd8ea22ec">MainMenuScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">What to render in the console window.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:120</div></div>
-<div class="ttc" id="aclassMainMenuScene_html_aff6baae5fad03cf96ba120f41c26c33e"><div class="ttname"><a href="classMainMenuScene.html#aff6baae5fad03cf96ba120f41c26c33e">MainMenuScene::handleInput</a></div><div class="ttdeci">void handleInput() override</div><div class="ttdoc">Handle user input from the scene.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:168</div></div>
+<div class="ttc" id="aclassMainMenuScene_html"><div class="ttname"><a href="classMainMenuScene.html">MainMenuScene</a></div><div class="ttdoc">The class for the the main menu ui.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.h:34</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_a4f4394ad74f8c3bced02cc7b37bc6775"><div class="ttname"><a href="classMainMenuScene.html#a4f4394ad74f8c3bced02cc7b37bc6775">MainMenuScene::init</a></div><div class="ttdeci">void init() override</div><div class="ttdoc">Initialise the scene.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:122</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_a6b6ab5184beef74da3c72f3e04e18916"><div class="ttname"><a href="classMainMenuScene.html#a6b6ab5184beef74da3c72f3e04e18916">MainMenuScene::MainMenuScene</a></div><div class="ttdeci">MainMenuScene(ConsoleUI::UIManager &amp;uiManager, std::function&lt; void()&gt; openSettingsScene, std::function&lt; void()&gt; openHowToScene, std::function&lt; void()&gt; openBrowseDecks, std::function&lt; void()&gt; openEditDecks)</div><div class="ttdoc">Construct a new Main Menu Scene object.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:19</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_a7a1bbfff42714760e1b482b50d10b509"><div class="ttname"><a href="classMainMenuScene.html#a7a1bbfff42714760e1b482b50d10b509">MainMenuScene::setStaticDrawn</a></div><div class="ttdeci">void setStaticDrawn(bool staticDrawn) override</div><div class="ttdoc">Configures the objects that need to be redrawn after the initial scene rendering.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:14</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_a8d767eeae7d00a48f781c2704f37b53d"><div class="ttname"><a href="classMainMenuScene.html#a8d767eeae7d00a48f781c2704f37b53d">MainMenuScene::update</a></div><div class="ttdeci">void update() override</div><div class="ttdoc">Actions to perform on events.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:126</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_ab2c4be9e4d3d8a43d2697f3acbffa9a3"><div class="ttname"><a href="classMainMenuScene.html#ab2c4be9e4d3d8a43d2697f3acbffa9a3">MainMenuScene::createMainMenu</a></div><div class="ttdeci">void createMainMenu(std::function&lt; void()&gt; openSettingsScene, std::function&lt; void()&gt; openHowToScene, std::function&lt; void()&gt; openBrowseDecks, std::function&lt; void()&gt; openEditDecks)</div><div class="ttdoc">Create a Main Menu object.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:104</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_abba3fc2621d161e6b197b60bd8ea22ec"><div class="ttname"><a href="classMainMenuScene.html#abba3fc2621d161e6b197b60bd8ea22ec">MainMenuScene::render</a></div><div class="ttdeci">void render(std::shared_ptr&lt; ConsoleUI::ConsoleWindow &gt; window) override</div><div class="ttdoc">The scene objects to render.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:130</div></div>
+<div class="ttc" id="aclassMainMenuScene_html_aff6baae5fad03cf96ba120f41c26c33e"><div class="ttname"><a href="classMainMenuScene.html#aff6baae5fad03cf96ba120f41c26c33e">MainMenuScene::handleInput</a></div><div class="ttdeci">void handleInput() override</div><div class="ttdoc">Input handler for the scene.</div><div class="ttdef"><b>Definition:</b> mainmenu_scene.cpp:178</div></div>
 <div class="ttc" id="amenu_8h_html"><div class="ttname"><a href="menu_8h.html">menu.h</a></div><div class="ttdoc">Classes and functions for the UI system.</div></div>
 <div class="ttc" id="autil_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div><div class="ttdoc">Contains useful helper functions.</div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -91,6 +92,12 @@ $(function() {
 </div>
 <p><a href="util_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacekey"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html">key</a></td></tr>
+<tr class="memdesc:namespacekey"><td class="mdescLeft">&#160;</td><td class="mdescRight">mapping of character codes recieved by getch on key press to their keyboard name for easy reference. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a94f91e485673146337e031d187b32dcd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a94f91e485673146337e031d187b32dcd">enableVirtualTerminal</a> ()</td></tr>
@@ -102,17 +109,17 @@ std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getA
 <tr class="memitem:ab897fdb041fb5dd063d5b54dbccb00a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0">timeComplete</a> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, const int &amp;duration_secs)</td></tr>
 <tr class="memdesc:ab897fdb041fb5dd063d5b54dbccb00a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the number of seconds has elapased since a start time.  <a href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0">More...</a><br /></td></tr>
 <tr class="separator:ab897fdb041fb5dd063d5b54dbccb00a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="memItemLeft" align="right" valign="top"><a id="a0fd0d2cffdd6fa0bbfb715d131a2a8ee"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>timeRemainingMins</b> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, const int &amp;duration_mins)</td></tr>
+<tr class="memitem:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a0fd0d2cffdd6fa0bbfb715d131a2a8ee">timeRemainingMins</a> (const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;start_time, const int &amp;duration_mins)</td></tr>
+<tr class="memdesc:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to display the time remaining to users. To determine the actual end the session use <a class="el" href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0" title="Determines if the number of seconds has elapased since a start time.">timeComplete()</a>  <a href="util_8h.html#a0fd0d2cffdd6fa0bbfb715d131a2a8ee">More...</a><br /></td></tr>
 <tr class="separator:a0fd0d2cffdd6fa0bbfb715d131a2a8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="memItemLeft" align="right" valign="top"><a id="a62c0bc6d6ff71c49a05e06cfaf85f8ca"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>steadyClockToString</b> (const std::chrono::steady_clock::time_point &amp;start_time)</td></tr>
+<tr class="memitem:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a62c0bc6d6ff71c49a05e06cfaf85f8ca">steadyClockToString</a> (const std::chrono::steady_clock::time_point &amp;start_time)</td></tr>
+<tr class="memdesc:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a timepoint to a string.  <a href="util_8h.html#a62c0bc6d6ff71c49a05e06cfaf85f8ca">More...</a><br /></td></tr>
 <tr class="separator:a62c0bc6d6ff71c49a05e06cfaf85f8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7167f5c196fc5e167bfabde1a730e81d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">pause</a> ()</td></tr>
 <tr class="memdesc:a7167f5c196fc5e167bfabde1a730e81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">An alternative to system('pause')  <a href="util_8h.html#a7167f5c196fc5e167bfabde1a730e81d">More...</a><br /></td></tr>
 <tr class="separator:a7167f5c196fc5e167bfabde1a730e81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d7e8af417b6d543da691e9c0e2f6f9f"><td class="memItemLeft" align="right" valign="top"><a id="a9d7e8af417b6d543da691e9c0e2f6f9f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</td></tr>
+<tr class="memitem:a9d7e8af417b6d543da691e9c0e2f6f9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a> ()</td></tr>
+<tr class="memdesc:a9d7e8af417b6d543da691e9c0e2f6f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the screen.  <a href="util_8h.html#a9d7e8af417b6d543da691e9c0e2f6f9f">More...</a><br /></td></tr>
 <tr class="separator:a9d7e8af417b6d543da691e9c0e2f6f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44b530801f49c81b3f065ced260f6f0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">yesNoPrompt</a> ()</td></tr>
 <tr class="memdesc:a44b530801f49c81b3f065ced260f6f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompts the user to enter [Yy] for yes and [Nn] for no.  <a href="util_8h.html#a44b530801f49c81b3f065ced260f6f0b">More...</a><br /></td></tr>
@@ -124,47 +131,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearScreen</b> ()</t
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7a2da45e1167a22ea2d5497d1287446b">ShowConsoleCursor</a> (bool showflag)</td></tr>
 <tr class="memdesc:a7a2da45e1167a22ea2d5497d1287446b"><td class="mdescLeft">&#160;</td><td class="mdescRight">hides or shows the cursor icon in the console <br /></td></tr>
 <tr class="separator:a7a2da45e1167a22ea2d5497d1287446b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3034fc0e79c0952309e9fbb9ac4df10"><td class="memItemLeft" align="right" valign="top"><a id="ab3034fc0e79c0952309e9fbb9ac4df10"></a>
-std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>readInANSICodes</b> (std::string filename)</td></tr>
+<tr class="memitem:ab3034fc0e79c0952309e9fbb9ac4df10"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ab3034fc0e79c0952309e9fbb9ac4df10">readInANSICodes</a> (std::string filename)</td></tr>
+<tr class="memdesc:ab3034fc0e79c0952309e9fbb9ac4df10"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads a file of integers (0-255) that will be used to create ANSI colours  <a href="util_8h.html#ab3034fc0e79c0952309e9fbb9ac4df10">More...</a><br /></td></tr>
 <tr class="separator:ab3034fc0e79c0952309e9fbb9ac4df10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d50bc198ca2a698cdecd835181eeb4b"><td class="memItemLeft" align="right" valign="top"><a id="a2d50bc198ca2a698cdecd835181eeb4b"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>convertAsciiArtToLines</b> (const std::string &amp;asciiArt)</td></tr>
+<tr class="memitem:a2d50bc198ca2a698cdecd835181eeb4b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a2d50bc198ca2a698cdecd835181eeb4b">convertAsciiArtToLines</a> (const std::string &amp;asciiArt)</td></tr>
+<tr class="memdesc:a2d50bc198ca2a698cdecd835181eeb4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectorises a string on the newline character.  <a href="util_8h.html#a2d50bc198ca2a698cdecd835181eeb4b">More...</a><br /></td></tr>
 <tr class="separator:a2d50bc198ca2a698cdecd835181eeb4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fbeed0ec76fc48b256f0e6461806054"><td class="memItemLeft" align="right" valign="top"><a id="a4fbeed0ec76fc48b256f0e6461806054"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getRandomPositiveQuote</b> ()</td></tr>
+<tr class="memitem:a4fbeed0ec76fc48b256f0e6461806054"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a4fbeed0ec76fc48b256f0e6461806054">getRandomPositiveQuote</a> ()</td></tr>
+<tr class="memdesc:a4fbeed0ec76fc48b256f0e6461806054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a Random Positive Quote.  <a href="util_8h.html#a4fbeed0ec76fc48b256f0e6461806054">More...</a><br /></td></tr>
 <tr class="separator:a4fbeed0ec76fc48b256f0e6461806054"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18b6267b1bf9743006620b33fe730b12"><td class="memItemLeft" align="right" valign="top"><a id="a18b6267b1bf9743006620b33fe730b12"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getRandomEncouragingQuote</b> ()</td></tr>
+<tr class="memitem:a18b6267b1bf9743006620b33fe730b12"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a18b6267b1bf9743006620b33fe730b12">getRandomEncouragingQuote</a> ()</td></tr>
+<tr class="memdesc:a18b6267b1bf9743006620b33fe730b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a Random Encouraging Quote.  <a href="util_8h.html#a18b6267b1bf9743006620b33fe730b12">More...</a><br /></td></tr>
 <tr class="separator:a18b6267b1bf9743006620b33fe730b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2163d1c42d1e7e19343c0e4593fecbec"><td class="memItemLeft" align="right" valign="top"><a id="a2163d1c42d1e7e19343c0e4593fecbec"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getRandomPhrase</b> ()</td></tr>
+<tr class="memitem:a2163d1c42d1e7e19343c0e4593fecbec"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a2163d1c42d1e7e19343c0e4593fecbec">getRandomPhrase</a> ()</td></tr>
+<tr class="memdesc:a2163d1c42d1e7e19343c0e4593fecbec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a Random Phrase.  <a href="util_8h.html#a2163d1c42d1e7e19343c0e4593fecbec">More...</a><br /></td></tr>
 <tr class="separator:a2163d1c42d1e7e19343c0e4593fecbec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a7e87a78e3cea9942aa08c399036a7c0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7e87a78e3cea9942aa08c399036a7c0c">isTestMode</a></td></tr>
 <tr class="separator:a7e87a78e3cea9942aa08c399036a7c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ccd3270524830517044c62dfc8d18d7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a5ccd3270524830517044c62dfc8d18d7">key::key_enter</a> {13}</td></tr>
+<tr class="memitem:a5ccd3270524830517044c62dfc8d18d7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#a5ccd3270524830517044c62dfc8d18d7">key::key_enter</a> {13}</td></tr>
 <tr class="separator:a5ccd3270524830517044c62dfc8d18d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8f39972f3ab6cb54063c19fccf3a23d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#aa8f39972f3ab6cb54063c19fccf3a23d">key::key_backspace</a> {8}</td></tr>
+<tr class="memitem:aa8f39972f3ab6cb54063c19fccf3a23d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#aa8f39972f3ab6cb54063c19fccf3a23d">key::key_backspace</a> {8}</td></tr>
 <tr class="separator:aa8f39972f3ab6cb54063c19fccf3a23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1c21c9cdc6726824880732f83e88555"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ae1c21c9cdc6726824880732f83e88555">key::key_esc</a> {27}</td></tr>
+<tr class="memitem:ae1c21c9cdc6726824880732f83e88555"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#ae1c21c9cdc6726824880732f83e88555">key::key_esc</a> {27}</td></tr>
 <tr class="separator:ae1c21c9cdc6726824880732f83e88555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a258bcbf1265a520c7c51a237c3981994"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a258bcbf1265a520c7c51a237c3981994">key::key_space</a> {32}</td></tr>
+<tr class="memitem:a258bcbf1265a520c7c51a237c3981994"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#a258bcbf1265a520c7c51a237c3981994">key::key_space</a> {32}</td></tr>
 <tr class="separator:a258bcbf1265a520c7c51a237c3981994"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86def49bcf8e0d713209ebb12d6d8215"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a86def49bcf8e0d713209ebb12d6d8215">key::arrow_prefix</a> {224}</td></tr>
+<tr class="memitem:a86def49bcf8e0d713209ebb12d6d8215"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#a86def49bcf8e0d713209ebb12d6d8215">key::arrow_prefix</a> {224}</td></tr>
 <tr class="separator:a86def49bcf8e0d713209ebb12d6d8215"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab02ce7ff6b28c740cf8260e5124e7f57"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ab02ce7ff6b28c740cf8260e5124e7f57">key::numlock</a> {0}</td></tr>
+<tr class="memitem:ab02ce7ff6b28c740cf8260e5124e7f57"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#ab02ce7ff6b28c740cf8260e5124e7f57">key::numlock</a> {0}</td></tr>
 <tr class="separator:ab02ce7ff6b28c740cf8260e5124e7f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6fa8e71c36ef7c09f85848aaf3dd5ba"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ae6fa8e71c36ef7c09f85848aaf3dd5ba">key::key_up</a> {72}</td></tr>
+<tr class="memitem:ae6fa8e71c36ef7c09f85848aaf3dd5ba"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#ae6fa8e71c36ef7c09f85848aaf3dd5ba">key::key_up</a> {72}</td></tr>
 <tr class="separator:ae6fa8e71c36ef7c09f85848aaf3dd5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7ec4a21073ecae317b0ed655dfa69d4"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#ad7ec4a21073ecae317b0ed655dfa69d4">key::key_down</a> {80}</td></tr>
+<tr class="memitem:ad7ec4a21073ecae317b0ed655dfa69d4"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#ad7ec4a21073ecae317b0ed655dfa69d4">key::key_down</a> {80}</td></tr>
 <tr class="separator:ad7ec4a21073ecae317b0ed655dfa69d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e24ac614a888d5b4cd4c42bc5a130f0"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a9e24ac614a888d5b4cd4c42bc5a130f0">key::key_left</a> {75}</td></tr>
+<tr class="memitem:a9e24ac614a888d5b4cd4c42bc5a130f0"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#a9e24ac614a888d5b4cd4c42bc5a130f0">key::key_left</a> {75}</td></tr>
 <tr class="separator:a9e24ac614a888d5b4cd4c42bc5a130f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f78dbe153b6bb91af7755f0052f955d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a0f78dbe153b6bb91af7755f0052f955d">key::key_right</a> {77}</td></tr>
+<tr class="memitem:a0f78dbe153b6bb91af7755f0052f955d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#a0f78dbe153b6bb91af7755f0052f955d">key::key_right</a> {77}</td></tr>
 <tr class="separator:a0f78dbe153b6bb91af7755f0052f955d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f7ee7baebe35951d8d9a2cbee35104f"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a7f7ee7baebe35951d8d9a2cbee35104f">key::ESC</a> {&quot;\x1b&quot;}</td></tr>
+<tr class="memitem:a7f7ee7baebe35951d8d9a2cbee35104f"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekey.html#a7f7ee7baebe35951d8d9a2cbee35104f">key::ESC</a> {&quot;\x1b&quot;}</td></tr>
 <tr class="separator:a7f7ee7baebe35951d8d9a2cbee35104f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -174,6 +181,53 @@ Variables</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2024-08-08</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a9d7e8af417b6d543da691e9c0e2f6f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d7e8af417b6d543da691e9c0e2f6f9f">&#9670;&nbsp;</a></span>clearScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clearScreen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clears the screen. </p>
+<p>Credit: SirEnder125 on cplusplus.com </p>
+
+</div>
+</div>
+<a id="a2d50bc198ca2a698cdecd835181eeb4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d50bc198ca2a698cdecd835181eeb4b">&#9670;&nbsp;</a></span>convertAsciiArtToLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; convertAsciiArtToLines </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>asciiArt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vectorises a string on the newline character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">asciiArt</td><td>String of an ASCII artwork to be vectorised </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::string&gt; </dd></dl>
+
+</div>
+</div>
 <a id="a94f91e485673146337e031d187b32dcd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a94f91e485673146337e031d187b32dcd">&#9670;&nbsp;</a></span>enableVirtualTerminal()</h2>
 
@@ -191,6 +245,66 @@ Variables</h2></td></tr>
 
 <p>enables the virtual terminal processing mode </p>
 <p>sets the ENABLE_VIRTUAL_TERMINAL_PROCESSING flag so that virtual terminal sequences will be interpreted by the console to display colour and formatting </p>
+
+</div>
+</div>
+<a id="a18b6267b1bf9743006620b33fe730b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18b6267b1bf9743006620b33fe730b12">&#9670;&nbsp;</a></span>getRandomEncouragingQuote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getRandomEncouragingQuote </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a Random Encouraging Quote. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+</div>
+</div>
+<a id="a2163d1c42d1e7e19343c0e4593fecbec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2163d1c42d1e7e19343c0e4593fecbec">&#9670;&nbsp;</a></span>getRandomPhrase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getRandomPhrase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a Random Phrase. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+</div>
+</div>
+<a id="a4fbeed0ec76fc48b256f0e6461806054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fbeed0ec76fc48b256f0e6461806054">&#9670;&nbsp;</a></span>getRandomPositiveQuote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getRandomPositiveQuote </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a Random Positive Quote. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
 
 </div>
 </div>
@@ -218,9 +332,9 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dl class="section return"><dt>Returns</dt><dd>true is a valid file name for a deck </dd>
 <dd>
-false </dd></dl>
+false is not a valid file name a deck </dd></dl>
 
 </div>
 </div>
@@ -241,6 +355,60 @@ false </dd></dl>
 
 <p>An alternative to system('pause') </p>
 <p>implementation based on from <a href="https://thelinuxcode.com/system-pause-c/">https://thelinuxcode.com/system-pause-c/</a> </p>
+
+</div>
+</div>
+<a id="ab3034fc0e79c0952309e9fbb9ac4df10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3034fc0e79c0952309e9fbb9ac4df10">&#9670;&nbsp;</a></span>readInANSICodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;int&gt; &gt; readInANSICodes </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reads a file of integers (0-255) that will be used to create ANSI colours </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the file containing whitespace separated integers representing ANSI colours </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::vector&lt;int&gt;&gt; </dd></dl>
+
+</div>
+</div>
+<a id="a62c0bc6d6ff71c49a05e06cfaf85f8ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c0bc6d6ff71c49a05e06cfaf85f8ca">&#9670;&nbsp;</a></span>steadyClockToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string steadyClockToString </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::steady_clock::time_point &amp;&#160;</td>
+          <td class="paramname"><em>start_time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a timepoint to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_time</td><td>a timepoint to turn into a string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
 
 </div>
 </div>
@@ -282,6 +450,44 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="a0fd0d2cffdd6fa0bbfb715d131a2a8ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fd0d2cffdd6fa0bbfb715d131a2a8ee">&#9670;&nbsp;</a></span>timeRemainingMins()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int timeRemainingMins </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::time_point&lt; std::chrono::steady_clock &gt; &amp;&#160;</td>
+          <td class="paramname"><em>start_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>duration_mins</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Used to display the time remaining to users. To determine the actual end the session use <a class="el" href="util_8h.html#ab897fdb041fb5dd063d5b54dbccb00a0" title="Determines if the number of seconds has elapased since a start time.">timeComplete()</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start_time</td><td>The time the timer started </td></tr>
+    <tr><td class="paramname">duration_mins</td><td>the period in minutes to check how much from the start time is remaining </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <a id="a44b530801f49c81b3f065ced260f6f0b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44b530801f49c81b3f065ced260f6f0b">&#9670;&nbsp;</a></span>yesNoPrompt()</h2>
 
@@ -305,36 +511,6 @@ false for [Nn] </dd></dl>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a86def49bcf8e0d713209ebb12d6d8215"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86def49bcf8e0d713209ebb12d6d8215">&#9670;&nbsp;</a></span>arrow_prefix</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::arrow_prefix {224}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for if an arrow has been pressed </p>
-
-</div>
-</div>
-<a id="a7f7ee7baebe35951d8d9a2cbee35104f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f7ee7baebe35951d8d9a2cbee35104f">&#9670;&nbsp;</a></span>ESC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::string key::ESC {&quot;\x1b&quot;}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>escape sequence for virtual terminal sequences </p>
-
-</div>
-</div>
 <a id="a7e87a78e3cea9942aa08c399036a7c0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e87a78e3cea9942aa08c399036a7c0c">&#9670;&nbsp;</a></span>isTestMode</h2>
 
@@ -355,141 +531,6 @@ false for [Nn] </dd></dl>
 </table>
 </div><div class="memdoc">
 <p>used to toggle between simulated input (true) and user input (false) </p>
-
-</div>
-</div>
-<a id="aa8f39972f3ab6cb54063c19fccf3a23d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8f39972f3ab6cb54063c19fccf3a23d">&#9670;&nbsp;</a></span>key_backspace</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_backspace {8}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for backspace </p>
-
-</div>
-</div>
-<a id="ad7ec4a21073ecae317b0ed655dfa69d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7ec4a21073ecae317b0ed655dfa69d4">&#9670;&nbsp;</a></span>key_down</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_down {80}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for down arrow </p>
-
-</div>
-</div>
-<a id="a5ccd3270524830517044c62dfc8d18d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ccd3270524830517044c62dfc8d18d7">&#9670;&nbsp;</a></span>key_enter</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_enter {13}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for enter </p>
-
-</div>
-</div>
-<a id="ae1c21c9cdc6726824880732f83e88555"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1c21c9cdc6726824880732f83e88555">&#9670;&nbsp;</a></span>key_esc</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_esc {27}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for escape </p>
-
-</div>
-</div>
-<a id="a9e24ac614a888d5b4cd4c42bc5a130f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e24ac614a888d5b4cd4c42bc5a130f0">&#9670;&nbsp;</a></span>key_left</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_left {75}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for down arrow </p>
-
-</div>
-</div>
-<a id="a0f78dbe153b6bb91af7755f0052f955d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f78dbe153b6bb91af7755f0052f955d">&#9670;&nbsp;</a></span>key_right</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_right {77}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for right arrow </p>
-
-</div>
-</div>
-<a id="a258bcbf1265a520c7c51a237c3981994"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a258bcbf1265a520c7c51a237c3981994">&#9670;&nbsp;</a></span>key_space</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_space {32}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for space </p>
-
-</div>
-</div>
-<a id="ae6fa8e71c36ef7c09f85848aaf3dd5ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6fa8e71c36ef7c09f85848aaf3dd5ba">&#9670;&nbsp;</a></span>key_up</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::key_up {72}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for up arrow </p>
-
-</div>
-</div>
-<a id="ab02ce7ff6b28c740cf8260e5124e7f57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab02ce7ff6b28c740cf8260e5124e7f57">&#9670;&nbsp;</a></span>numlock</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int key::numlock {0}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>key code for if an arrow is pressed but numlock is on </p>
 
 </div>
 </div>

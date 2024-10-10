@@ -8,7 +8,7 @@ var searchData=
   ['addtexttobox_5',['addTextToBox',['../classConsoleUI_1_1ConsoleWindow.html#afc1032310d3d7d0bf917f9994d69a5b9',1,'ConsoleUI::ConsoleWindow']]],
   ['ansiart_6',['ANSIArt',['../classConsoleUI_1_1ANSIArt.html#a3532f25a23a6261224dd36a7353d6f35',1,'ConsoleUI::ANSIArt::ANSIArt()'],['../classConsoleUI_1_1ANSIArt.html',1,'ConsoleUI::ANSIArt']]],
   ['answer_7',['answer',['../classFlashCard.html#a16e6c0d06046cfe05bf4bc055c1e6c4a',1,'FlashCard']]],
-  ['arrow_5fprefix_8',['arrow_prefix',['../util_8h.html#a86def49bcf8e0d713209ebb12d6d8215',1,'key']]],
+  ['arrow_5fprefix_8',['arrow_prefix',['../namespacekey.html#a86def49bcf8e0d713209ebb12d6d8215',1,'key']]],
   ['artwork_2ecpp_9',['artwork.cpp',['../artwork_8cpp.html',1,'']]],
   ['artwork_2eh_10',['artwork.h',['../artwork_8h.html',1,'']]],
   ['asciiart_11',['AsciiArt',['../classConsoleUI_1_1AsciiArt.html#a4834440bbce1730c63833e62c96b7146',1,'ConsoleUI::AsciiArt::AsciiArt()'],['../classConsoleUI_1_1AsciiArt.html',1,'ConsoleUI::AsciiArt']]]

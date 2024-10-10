@@ -182,7 +182,7 @@ void GameScene::handleInput()
         {
             GameScene::game.turn = 2; // skip turn
         }
-        else
+        if (!GameScene::game.isGameOver())
         {
             PlayingCard playerCard = GameScene::game.p1.getHand()[m_selectedIndex];
             GameScene::game.p1.removeCard(playerCard);
@@ -214,7 +214,7 @@ void GameScene::handleInput()
         {
             GameScene::game.turn = 1; // skip turn
         }
-        else
+        if (!GameScene::game.isGameOver())
         {
             PlayingCard botCard = GameScene::game.p2.getHand()[0];
             GameScene::game.p2.removeCard(botCard);
@@ -240,7 +240,6 @@ void GameScene::handleInput()
                 m_goBack();
             }
         }
-
 
         m_selectedIndex = 0;
         m_needsRedraw = true;

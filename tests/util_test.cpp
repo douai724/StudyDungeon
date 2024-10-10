@@ -77,3 +77,10 @@ TEST_CASE("Convert ASCII art to lines")
     REQUIRE(outputLines[1] == line2);
     REQUIRE(outputLines[2] == line3);
 }
+
+TEST_CASE("read ANSI art")
+{
+
+    std::vector<std::vector<int>> test_codes{std::vector<int>{0, 1}, std::vector<int>{2, 3}};
+    REQUIRE(readInANSICodes("test_ansi.txt") == test_codes);
+}

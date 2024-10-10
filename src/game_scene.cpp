@@ -243,6 +243,8 @@ void GameScene::handleInput()
 
 
         m_selectedIndex = 0;
+        m_needsRedraw = true;
+        m_staticDrawn = false;
     }
     else if (key == key::key_esc)
     { // Escape key

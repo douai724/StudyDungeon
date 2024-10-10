@@ -1,0 +1,56 @@
+COSC349 - Elasticity
+Q: What is elasticity in the cloud computing context?
+A: Elasticity means that a service can scale up and down. Clients usually only pay for the services in use. Scaling may happen automatically.
+D: EASY
+N: 1
+-
+Q: What is scalability?
+A: The ability of a service to handle high peak loads.
+D: EASY
+N: 1
+-
+Q: What can make scalability difficult?
+A: Dependencies in the system, for example, a global lock.
+D: EASY
+N: 1
+-
+Q: What are two ways we can make systems scalable?
+A: Partitioning and Caching
+D: EASY
+N: 1
+-
+Q: What is partitioning?
+A: Partitioning relates to the workload of the system. Partitioning is breaking up the workload to be handled by different services, e.g. partitioning a subset of digital mailboxes to be handled by different servers.
+D: EASY
+N: 1
+-
+Q: Where can we partition workload in the system?
+A: At the application level, within the programming language, or at the server level.
+D: EASY
+N: 1
+-
+Q: What does partitioning on the application level entail?
+A: Understanding the semantics of your application and partitioning the workload based on that, e.g. partitioning by users or objects.
+D: MEDIUM
+N: 1
+-
+Q: What does partitioning on the programming language level entail?
+A: Some procedural languages support distributed deployment which you can utilize for partitioning.
+D: MEDIUM
+N: 1
+-
+Q: What does partitioning on the server level entail?
+A: Running the system code on multiple servers/CPUs. The system must support multi-processing.
+D: EASY
+N: 1
+-
+Q: What kind of data suits caching really well?
+A: Read only data.
+D: EASY
+N: 1
+-
+Q: How can caching help the scalability of a system?
+A: A system is aided by caching because not all requests need to be delivered all the way to the server. Thus, retrievals from across the world will often take less time.
+D: EASY
+N: 1
+-

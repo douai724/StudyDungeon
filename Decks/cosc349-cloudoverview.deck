@@ -1,0 +1,56 @@
+COSC349 - Cloud Overview
+Q: What is 'on-demand self-service'?
+A: The ability for the consumer to be able to provision their own cloud services without the need of human interaction from the provider.
+D: EASY
+N: 1
+-
+Q: What is 'broad network access'?
+A: The idea that cloud services can be accessed over a network and have multi-device support.
+D: EASY
+N: 1
+-
+Q: What is 'rapid elasticity'?
+A: The ability of systems to scale quickly with demand. Thus, resources should be easy to provision and release, and should appear unlimited to the user.
+D: EASY
+N: 1
+-
+Q: What is 'resource pooling'?
+A: The provider has multiple tenants on physical infrastructure and the services provided are independent of location.
+D: MEDIUM
+N: 1
+-
+Q: What is 'measured service'?
+A: The resources allocated to a client are metered in a fair and transparent way. The client can monitor their usage.
+D: MEDIUM
+N: 1
+-
+Q: What are the 3 cloud service models?
+A: IaaS (Infrastructure as a Service), PaaS (Platform as a Service) and SaaS (Software as a Service)
+D: EASY
+N: 1
+-
+Q: What is the 'private cloud'?
+A: A cloud network that is provisioned for use only by a single company.
+D: EASY
+N: 1
+-
+Q: What is a 'community cloud'?
+A: A cloud that is exclusive to businesses with a shared concern.
+D: MEDIUM
+N: 1
+-
+Q: What is the 'public cloud'?
+A: Available for anyone to use.
+D: EASY
+N: 1
+-
+Q: Who usually hosts the public cloud?
+A: Business, academic or government organizations.
+D: EASY
+N: 1
+-
+Q: What is the 'hybrid cloud'?
+A: Any combination of private, community and public cloud.
+D: EASY
+N: 1
+-

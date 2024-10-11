@@ -301,9 +301,9 @@ void ConsoleWindow::drawANSIArt(const std::string &name, int x, int y)
         int height = (int)art->getHeight();
         std::vector<std::vector<int>> codes = art->getCodes();
 
-        for (int i = y; i < height + y; i++)
+        for (int i = y; i < width + y; i++)
         {
-            for (int j = x; j < width + x; j++)
+            for (int j = x; j < height + x; j++)
             {
                 drawANSICode(codes[i - y][j - x], j * 2 - 1 - x, i);
             }
@@ -442,8 +442,8 @@ size_t AsciiArt::getHeight() const
 ANSIArt::ANSIArt(std::vector<std::vector<int>> codes, const std::string &name, int x, int y)
     : codes(codes), name(name), m_x(x), m_y(y)
 {
-    ANSIArt::width = codes[0].size();
-    ANSIArt::height = codes.size();
+    ANSIArt::width = codes.size();
+    ANSIArt::height = codes[0].size();
 }
 
 size_t ANSIArt::getWidth()

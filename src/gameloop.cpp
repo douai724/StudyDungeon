@@ -14,11 +14,11 @@ Game::Game(Player p1, Player p2) : p1(p1), p2(p2), turn(1)
 {
 }
 
-Game::Game()
+Game::Game() : p1(Player()), p2(Player()), turn(1)
 {
-    Game::p1 = Player(100, 100, 5, std::vector<PlayingCard>());
-    Game::p2 = Player(100, 100, 5, std::vector<PlayingCard>());
-    Game::turn = 1;
+    // Game::p1 = Player(100, 100, 5, std::vector<PlayingCard>());
+    // Game::p2 = Player(100, 100, 5, std::vector<PlayingCard>());
+    // Game::turn = 1;
 }
 
 void Game::nextTurn(PlayingCard &nextCard)

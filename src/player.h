@@ -52,7 +52,7 @@ public:
      * @param maxHitPoints the maximum hit points of the player
      * @param hand the hand (list of cards) of the player
      */
-    Player(int hitPoints, int maxHitPoints, size_t handSize, std::vector<PlayingCard> deck);
+    Player(int hitPoints, int maxHitPoints, size_t handSize, const std::vector<PlayingCard> &deck);
 
     /**
      * @brief Returns the current hit points of the player.
@@ -103,7 +103,7 @@ public:
       *
       * @param hand the vector of playing cards to set as the player's hand
       */
-    void setHand(std::vector<PlayingCard> hand);
+    void setHand(const std::vector<PlayingCard> &hand);
 
     /**
      * @brief Returns the hand size of the player
@@ -131,7 +131,7 @@ public:
      *
      * @param deck The deck of cards for the player
      */
-    void setDeck(std::vector<PlayingCard> deck);
+    void setDeck(const std::vector<PlayingCard> &deck);
 
     /**
      * @brief Draws a card from the player's deck and adds it to the player's hand

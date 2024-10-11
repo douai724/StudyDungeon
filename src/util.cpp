@@ -54,6 +54,7 @@ std::filesystem::path getAppPath()
 };
 
 
+// used for determining end of study session
 bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_secs)
 {
     auto current_time = std::chrono::steady_clock::now();
@@ -61,6 +62,8 @@ bool timeComplete(const std::chrono::time_point<std::chrono::steady_clock> &star
     return elapsed_time.count() >= duration_secs;
 }
 
+
+// used for showing user number of minutes remaining
 int timeRemainingMins(const std::chrono::time_point<std::chrono::steady_clock> &start_time, const int &duration_mins)
 {
     auto current_time = std::chrono::steady_clock::now();

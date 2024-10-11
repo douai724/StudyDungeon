@@ -77,3 +77,29 @@ TEST_CASE("Convert ASCII art to lines")
     REQUIRE(outputLines[1] == line2);
     REQUIRE(outputLines[2] == line3);
 }
+
+TEST_CASE("read ANSI art")
+{
+
+    std::vector<std::vector<int>> test_codes{std::vector<int>{0, 1}, std::vector<int>{2, 3}};
+    REQUIRE(readInANSICodes("test_ansi.txt") == test_codes);
+}
+
+
+TEST_CASE("time remaining")
+{
+    SECTION("1 minute")
+    {
+
+        std::chrono::time_point<std::chrono::steady_clock> s_time = std::chrono::steady_clock::now();
+        // start with 2 minutes total duration
+        int t_min{2};
+
+        // ensure some time has passed during the test (3s)
+        std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+        // 1 minute 57 s remaining -> 2 minute reported, clicks down after every 60s
+        REQUIRE(timeRemainingMins(s_time, t_min) == 2);
+        std::this_thread::sleep_for(std::chrono::milliseconds(60000));
+        REQUIRE(timeRemainingMins(s_time, t_min) == 1);
+    }
+}

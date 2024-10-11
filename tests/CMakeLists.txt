@@ -27,6 +27,12 @@ add_custom_command(TARGET ${TEST_MAIN} POST_BUILD
     COMMENT "Copying Decks/ from ${PROJECT_SOURCE_DIR}/tests/Test_decks to $<TARGET_FILE_DIR:${TEST_MAIN}>/Decks"
 )
 
+add_custom_command(TARGET ${TEST_MAIN} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${PROJECT_SOURCE_DIR}/tests/artwork $<TARGET_FILE_DIR:${TEST_MAIN}>/artwork
+    COMMENT "Copying artwork/ from ${PROJECT_SOURCE_DIR}/tests/artwork to $<TARGET_FILE_DIR:${TEST_MAIN}>/artwork"
+)
+
 # add_test(NAME ${TEST_MAIN}
 # COMMAND ${TEST_MAIN})
 catch_discover_tests(${TEST_MAIN})
